@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://fvbwyoeuebsq"]
+
+[ext_resource type="Script" uid="uid://0dpt80ohnf2c" path="res://scenes/DeckBags/deck_bag.gd" id="1_dj1gj"]
+[ext_resource type="Texture2D" uid="uid://c1dukcnhc68ht" path="res://assets/DeckBags/DeckBag.png" id="1_sv76t"]
+[ext_resource type="Theme" uid="uid://df5t7rctr0cta" path="res://scenes/TextThemes/Monocraft8.tres" id="3_gj06o"]
+
+[node name="DeckBag" type="Node2D" unique_id=2145809580]
+script = ExtResource("1_dj1gj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1978618198]
+texture = ExtResource("1_sv76t")
+
+[node name="Label" type="Label" parent="." unique_id=1543378354]
+offset_left = 18.0
+offset_top = 15.0
+offset_right = 58.0
+offset_bottom = 24.0
+theme = ExtResource("3_gj06o")
+text = "25"

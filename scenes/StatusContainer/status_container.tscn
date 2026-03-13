@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://btuuwdwpgo70s"]
+
+[ext_resource type="Script" uid="uid://bbiuk8ae1yfa3" path="res://scenes/StatusContainer/status_container.gd" id="1_yn8h3"]
+
+[node name="StatusContainer" type="HBoxContainer" unique_id=680689049]
+offset_right = 96.0
+offset_bottom = 32.0
+theme_override_constants/separation = 0
+script = ExtResource("1_yn8h3")

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://nshhxd6alqcr"]
+
+[ext_resource type="PackedScene" uid="uid://df2ks37twndxh" path="res://scenes/Action/action.tscn" id="1_r2tdm"]
+[ext_resource type="Script" uid="uid://ddbo8vpp8bjna" path="res://scenes/Action/attack_debuff_action.gd" id="2_ny3ji"]
+
+[node name="AttackDebuffAction" unique_id=1450534971 instance=ExtResource("1_r2tdm")]
+script = ExtResource("2_ny3ji")

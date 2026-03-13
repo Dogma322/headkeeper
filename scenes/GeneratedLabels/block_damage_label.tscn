@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://x13ldqeg06f0"]
+
+[ext_resource type="Script" uid="uid://blq2mhbbwty7x" path="res://scenes/GeneratedLabels/block_damage_label.gd" id="1_h0sk3"]
+[ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="1_igv2v"]
+
+[sub_resource type="Theme" id="Theme_h0sk3"]
+default_font = ExtResource("1_igv2v")
+default_font_size = 16
+
+[node name="BlockDamageLabel" type="Node2D" unique_id=1194874749]
+script = ExtResource("1_h0sk3")
+
+[node name="Label" type="Label" parent="." unique_id=319812133]
+modulate = Color(0.080169864, 0.65110743, 0.9116767, 1)
+offset_left = -40.0
+offset_top = -7.0
+offset_right = 40.0
+offset_bottom = 9.0
+theme = SubResource("Theme_h0sk3")
+text = "BLOCK"
+horizontal_alignment = 1

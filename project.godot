@@ -1,0 +1,51 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Headkeeper"
+run/main_scene="uid://dks3x17ep5x0n"
+config/features=PackedStringArray("4.6", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+BoardManager="*uid://h5bj6gegd8b2"
+Global="*uid://bvh7rsw62i480"
+Signals="*uid://deeasqn7l3e3b"
+CombatManager="*uid://ccoqet5nfosap"
+ActionManager="*uid://dxn6s5lbn5mm0"
+AnimationManager="*uid://b70whaam1fg5q"
+DominoManager="*uid://coyhjvcswrj2u"
+TextFormatter="*uid://cmg8og8huhp86"
+StatusManager="*uid://dpqq3wbxa1lnn"
+Hand="*uid://bnr8o6y2c8n08"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
+[global_group]
+
+DominoSlots=""
+Dominoes=""
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+rendering_device/driver.windows="d3d12"

@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://c63tsp6yujri6"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_qwl1h"]
+[ext_resource type="Texture2D" uid="uid://r4obdm3s0xb8" path="res://assets/Enemies/MushCaves/ArmoredMushroom-Sheet_Shadow.png" id="2_m22kf"]
+[ext_resource type="Script" uid="uid://7yrca2fs8w2u" path="res://scenes/Enemies/MushCaves/enm_armored_mush.gd" id="2_pxtpe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxtpe"]
+atlas = ExtResource("2_m22kf")
+region = Rect2(0, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3rei"]
+atlas = ExtResource("2_m22kf")
+region = Rect2(192, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7maeg"]
+atlas = ExtResource("2_m22kf")
+region = Rect2(384, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1m3t"]
+atlas = ExtResource("2_m22kf")
+region = Rect2(576, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkbxw"]
+atlas = ExtResource("2_m22kf")
+region = Rect2(768, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibygt"]
+atlas = ExtResource("2_m22kf")
+region = Rect2(960, 0, 192, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a8h7u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxtpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3rei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7maeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1m3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkbxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibygt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="EnmArmoredMush" unique_id=1770774892 instance=ExtResource("1_qwl1h")]
+script = ExtResource("2_pxtpe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1" unique_id=801316476]
+position = Vector2(-6, -41)
+sprite_frames = SubResource("SpriteFrames_a8h7u")
+autoplay = "default"
+frame_progress = 0.029906664
+
+[node name="AimMarker" parent="." index="2" unique_id=1904937536]
+position = Vector2(-12, -42)
+
+[node name="IntentIcon" parent="." index="4" unique_id=354376541]
+offset_top = -109.0
+offset_bottom = -77.0

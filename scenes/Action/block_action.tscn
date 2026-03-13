@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bu5o5jbc8fvtl"]
+
+[ext_resource type="PackedScene" uid="uid://df2ks37twndxh" path="res://scenes/Action/action.tscn" id="1_7w8a3"]
+[ext_resource type="Script" uid="uid://cw5fnv6yufsmr" path="res://scenes/Action/block_action.gd" id="2_slbl8"]
+
+[node name="BlockAction" unique_id=1450534971 instance=ExtResource("1_7w8a3")]
+script = ExtResource("2_slbl8")

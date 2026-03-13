@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://6kj6l8s8oern"]
+
+[ext_resource type="FontFile" uid="uid://bg2a4wo64yqve" path="res://assets/Fonts/shadowpixelF1.ttf" id="1_swb7u"]
+
+[resource]
+default_font = ExtResource("1_swb7u")
+default_font_size = 6

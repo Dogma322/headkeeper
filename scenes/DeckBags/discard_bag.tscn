@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cagbtkvoqcjjb"]
+
+[ext_resource type="Script" uid="uid://ceveiau2xirfb" path="res://scenes/DeckBags/discard_bag.gd" id="1_3r3kb"]
+[ext_resource type="Texture2D" uid="uid://fbdwqko8aunm" path="res://assets/DeckBags/DiscardBag.png" id="2_3nkvy"]
+[ext_resource type="Theme" uid="uid://df5t7rctr0cta" path="res://scenes/TextThemes/Monocraft8.tres" id="2_3r3kb"]
+
+[node name="DiscardBag" type="Node2D" unique_id=571906125]
+script = ExtResource("1_3r3kb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=331770985]
+texture = ExtResource("2_3nkvy")
+
+[node name="Label" type="Label" parent="." unique_id=1647923687]
+offset_left = -57.0
+offset_top = 16.0
+offset_right = -17.0
+offset_bottom = 25.0
+theme = ExtResource("2_3r3kb")
+text = "25"
+horizontal_alignment = 2

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b6lpjea1xud8y"]
+
+[ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="1_b8ijv"]
+[ext_resource type="Script" uid="uid://d0bncgpj54y61" path="res://scenes/GeneratedLabels/status_label.gd" id="1_yyhg8"]
+
+[sub_resource type="Theme" id="Theme_yyhg8"]
+default_font = ExtResource("1_b8ijv")
+default_font_size = 16
+
+[node name="StatusLabel" type="Node2D" unique_id=2015190733]
+script = ExtResource("1_yyhg8")
+
+[node name="Label" type="Label" parent="." unique_id=113369335]
+self_modulate = Color(0.972549, 1, 1, 1)
+offset_left = -140.0
+offset_top = -7.0
+offset_right = 156.0
+offset_bottom = 9.0
+theme = SubResource("Theme_yyhg8")
+text = "Статус"
+horizontal_alignment = 1

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://2fknooe0fxyo"]
+
+[ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="1_4yrjj"]
+[ext_resource type="Script" uid="uid://cqp5qvrq3xc1l" path="res://scenes/GeneratedLabels/damage_label.gd" id="1_yqh5i"]
+
+[sub_resource type="Theme" id="Theme_yqh5i"]
+default_font = ExtResource("1_4yrjj")
+default_font_size = 16
+
+[node name="DamageLabel" type="Node2D" unique_id=2047326619]
+script = ExtResource("1_yqh5i")
+
+[node name="Label" type="Label" parent="." unique_id=329741843]
+modulate = Color(0.965619, 0.31165314, 0.19855171, 1)
+offset_left = -27.0
+offset_top = -8.0
+offset_right = 30.0
+offset_bottom = 8.0
+theme = SubResource("Theme_yqh5i")
+text = "25"
+horizontal_alignment = 1

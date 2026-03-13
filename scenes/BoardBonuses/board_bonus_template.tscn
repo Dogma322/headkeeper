@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://y2gpqujcdgnt"]
+
+[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="1_exe40"]
+[ext_resource type="Script" uid="uid://cka0aiwmd0jwc" path="res://scenes/BoardBonuses/board_bonus_template.gd" id="1_tjdc5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjdc5"]
+atlas = ExtResource("1_exe40")
+region = Rect2(664, 16, 28, 28)
+
+[node name="BoardBonusTemplate" type="TextureRect" unique_id=470544141]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -612.0
+offset_bottom = -332.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_tjdc5")
+stretch_mode = 2
+script = ExtResource("1_tjdc5")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1593218824]
+position = Vector2(14, 14)

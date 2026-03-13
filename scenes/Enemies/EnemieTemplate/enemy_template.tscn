@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://cyuqq1npphoex"]
+
+[ext_resource type="Script" uid="uid://djek4idwxt57g" path="res://scenes/Enemies/EnemieTemplate/enemy_template.gd" id="1_hmud8"]
+[ext_resource type="Texture2D" uid="uid://b1kh07hg3pi8b" path="res://assets/UI/HPBar/Under2.png" id="2_keqak"]
+[ext_resource type="Texture2D" uid="uid://bb45ada0y8mxj" path="res://assets/UI/HPBar/Over2.png" id="3_qy182"]
+[ext_resource type="Texture2D" uid="uid://hlb83quv0ufa" path="res://assets/UI/HPBar/Progress2.png" id="4_es5c3"]
+[ext_resource type="Theme" uid="uid://df5t7rctr0cta" path="res://scenes/TextThemes/Monocraft8.tres" id="5_eedry"]
+[ext_resource type="Texture2D" uid="uid://jxgvj1rrw6me" path="res://assets/Icons/ArmorIcon/ArmorIcon.png" id="6_es5c3"]
+[ext_resource type="PackedScene" uid="uid://btuuwdwpgo70s" path="res://scenes/StatusContainer/status_container.tscn" id="6_keqak"]
+[ext_resource type="Texture2D" uid="uid://crhvfuhnj1g00" path="res://assets/Icons/IntentIcons/AttackBuff.png" id="7_qy182"]
+
+[node name="EnemyTemplate" type="Node2D" unique_id=1770774892]
+script = ExtResource("1_hmud8")
+
+[node name="HpBar" type="TextureProgressBar" parent="." unique_id=1285442904]
+offset_left = -48.0
+offset_top = 43.0
+offset_right = 48.0
+offset_bottom = 60.0
+value = 50.0
+texture_under = ExtResource("2_keqak")
+texture_over = ExtResource("3_qy182")
+texture_progress = ExtResource("4_es5c3")
+
+[node name="HpBarLabel" type="Label" parent="HpBar" unique_id=820338015]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 4.0
+offset_right = 95.0
+offset_bottom = 13.0
+theme = ExtResource("5_eedry")
+text = "100/100"
+horizontal_alignment = 1
+
+[node name="ArmorIcon" type="TextureRect" parent="HpBar" unique_id=1254885413]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -8.0
+offset_right = 19.0
+offset_bottom = 24.0
+texture = ExtResource("6_es5c3")
+stretch_mode = 2
+
+[node name="ArmorLabel" type="Label" parent="HpBar/ArmorIcon" unique_id=1467418540]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 11.0
+offset_right = 29.0
+offset_bottom = 20.0
+theme = ExtResource("5_eedry")
+text = "23"
+horizontal_alignment = 1
+
+[node name="AimMarker" type="Marker2D" parent="." unique_id=1904937536]
+
+[node name="StatusContainer" parent="." unique_id=680689049 node_paths=PackedStringArray("status_owner") instance=ExtResource("6_keqak")]
+offset_left = -47.0
+offset_top = 60.0
+offset_right = 49.0
+offset_bottom = 92.0
+status_owner = NodePath("..")
+
+[node name="IntentIcon" type="TextureRect" parent="." unique_id=354376541]
+offset_left = -16.0
+offset_top = -98.0
+offset_right = 16.0
+offset_bottom = -66.0
+texture = ExtResource("7_qy182")
+stretch_mode = 2
+
+[node name="DamageLabel" type="Label" parent="IntentIcon" unique_id=182006990]
+layout_mode = 0
+offset_top = 13.0
+offset_right = 40.0
+offset_bottom = 22.0
+theme = ExtResource("5_eedry")
+text = "23"

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bn0602p7re11e"]
+
+[ext_resource type="Texture2D" uid="uid://bsilri58yw8y7" path="res://assets/Backgrounds/DarkMushBackground2.png" id="1_e0sve"]
+
+[node name="BattleBackground" type="Node2D" unique_id=631565350]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1623490566]
+position = Vector2(320, 180)
+texture = ExtResource("1_e0sve")

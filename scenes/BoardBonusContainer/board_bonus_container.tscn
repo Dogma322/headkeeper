@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://drlsgry4o0pof"]
+
+[ext_resource type="Script" uid="uid://bvu41fp5fvbnb" path="res://scenes/BoardBonusContainer/board_bonus_container.gd" id="1_s6k4d"]
+[ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="2_jmx1r"]
+
+[node name="BoardBonusContainer" type="HBoxContainer" unique_id=481023013]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -444.0
+offset_bottom = -332.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 2
+alignment = 1
+script = ExtResource("1_s6k4d")
+
+[node name="BoardBonusTemplate" parent="." unique_id=470544141 instance=ExtResource("2_jmx1r")]
+layout_mode = 2
+
+[node name="BoardBonusTemplate2" parent="." unique_id=851524689 instance=ExtResource("2_jmx1r")]
+layout_mode = 2
+
+[node name="BoardBonusTemplate3" parent="." unique_id=871400959 instance=ExtResource("2_jmx1r")]
+layout_mode = 2
+
+[node name="BoardBonusTemplate4" parent="." unique_id=431579233 instance=ExtResource("2_jmx1r")]
+layout_mode = 2
+
+[node name="BoardBonusTemplate5" parent="." unique_id=637141856 instance=ExtResource("2_jmx1r")]
+layout_mode = 2
+
+[node name="BoardBonusTemplate6" parent="." unique_id=1402264799 instance=ExtResource("2_jmx1r")]
+layout_mode = 2

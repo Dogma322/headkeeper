@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://xwvo0wtyl8d1"]
+
+[ext_resource type="Script" uid="uid://c6n3fml5d3cvl" path="res://scenes/StatusIconUi/status_icon_ui.gd" id="1_rpp6m"]
+[ext_resource type="Theme" uid="uid://6kj6l8s8oern" path="res://scenes/TextThemes/Shadow6.tres" id="2_sohgh"]
+
+[node name="StatusIconUI" type="TextureRect" unique_id=1997461397]
+offset_right = 16.0
+offset_bottom = 16.0
+stretch_mode = 2
+script = ExtResource("1_rpp6m")
+
+[node name="StacksLabel" type="Label" parent="." unique_id=1517286957]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme = ExtResource("2_sohgh")
+text = "12"
+vertical_alignment = 2

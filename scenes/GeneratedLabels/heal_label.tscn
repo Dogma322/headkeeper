@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ce0fer8axd7ao"]
+
+[ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="1_7r262"]
+[ext_resource type="Script" uid="uid://b022ucknb6ccr" path="res://scenes/GeneratedLabels/heal_label.gd" id="1_8tdv2"]
+
+[sub_resource type="Theme" id="Theme_8tdv2"]
+default_font = ExtResource("1_7r262")
+default_font_size = 16
+
+[node name="HealLabel" type="Node2D" unique_id=1407594933]
+script = ExtResource("1_8tdv2")
+
+[node name="Label" type="Label" parent="." unique_id=1099780713]
+modulate = Color(0, 0.9019608, 0.41568628, 1)
+offset_left = -27.0
+offset_top = -8.0
+offset_right = 30.0
+offset_bottom = 8.0
+theme = SubResource("Theme_8tdv2")
+text = "25"
+horizontal_alignment = 1

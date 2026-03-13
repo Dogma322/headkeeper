@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dnco2xl6pi07y"]
+
+[ext_resource type="Script" uid="uid://cojc613kiq7f1" path="res://scenes/Dominoes/DominoTemplate/domino_template.gd" id="1_tq51k"]
+[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="2_2aomr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vk1yc"]
+atlas = ExtResource("2_2aomr")
+region = Rect2(485, 16, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2aomr"]
+atlas = ExtResource("2_2aomr")
+region = Rect2(147, 170, 26, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbdcl"]
+atlas = ExtResource("2_2aomr")
+region = Rect2(115, 163, 26, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2aomr"]
+size = Vector2(32, 64)
+
+[node name="DominoTemplate" type="Node2D" unique_id=1771172059 groups=["Dominoes"]]
+script = ExtResource("1_tq51k")
+a = 2
+b = 3
+
+[node name="Visual" type="Node2D" parent="." unique_id=2092962026]
+
+[node name="Back" type="Sprite2D" parent="Visual" unique_id=1409418696]
+texture = SubResource("AtlasTexture_vk1yc")
+
+[node name="TopIcons" type="Sprite2D" parent="Visual" unique_id=1407603542]
+position = Vector2(0, -17)
+texture = SubResource("AtlasTexture_2aomr")
+
+[node name="BotIcons" type="Sprite2D" parent="Visual" unique_id=189273046]
+position = Vector2(0, 17)
+texture = SubResource("AtlasTexture_jbdcl")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1733465482]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1296131305]
+shape = SubResource("RectangleShape2D_2aomr")
+
+[node name="AimMarker" type="Marker2D" parent="." unique_id=1837320360]
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dx2yty7752sow"]
+
+[ext_resource type="Script" uid="uid://cghk8ntndyryd" path="res://scenes/Boards/BoardTemplate/board_template.gd" id="1_0j5cu"]
+[ext_resource type="Texture2D" uid="uid://c0bxvi5grd5ow" path="res://assets/UI/Board/Board1.png" id="1_e04n2"]
+
+[node name="BoardTemplate" type="Node2D" unique_id=183639370]
+script = ExtResource("1_0j5cu")
+
+[node name="BoardSprite" type="Sprite2D" parent="." unique_id=224441976]
+texture = ExtResource("1_e04n2")
+
+[node name="Slots" type="Node2D" parent="." unique_id=180253986]
