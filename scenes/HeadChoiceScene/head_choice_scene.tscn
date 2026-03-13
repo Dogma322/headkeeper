@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://caovgfyajqfdl"]
+
+[ext_resource type="Script" uid="uid://eww4rgt3mp0s" path="res://scenes/HeadChoiceScene/head_choice_scene.gd" id="1_d26a6"]
+
+[node name="HeadChoiceScene" type="Node2D" unique_id=598777679]
+script = ExtResource("1_d26a6")

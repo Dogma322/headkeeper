@@ -10,6 +10,7 @@ region = Rect2(64, 0, 16, 16)
 [resource]
 script = ExtResource("1_5gmja")
 id = "Vulnerable"
+name_key = "Уязвимость"
 reducible = true
 stackable = true
 texture = SubResource("AtlasTexture_recj0")

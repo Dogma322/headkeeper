@@ -6,7 +6,7 @@ func _ready():
 	max_health = 95
 	health = max_health
 
-	behavior_mode = BehaviorMode.CHANCE_BASED
+	behavior_mode = BehaviorMode.SEQUENTIAL
 	first_action_index = 0
 
 
@@ -15,7 +15,7 @@ func _ready():
 	{
 		"func": Callable(self,"action_attack"),
 		"intent": IntentState.ATTACK,
-		"damage": 14,
+		"damage": 17,
 		"chance": 25,
 		"max_repeats": 1
 	},
@@ -30,7 +30,7 @@ func _ready():
 	{
 		"func": Callable(self,"action_attack_buff"),
 		"intent": IntentState.ATTACK_BUFF,
-		"damage": 15,
+		"damage": 12,
 		"chance": 45,
 		"max_repeats": 1
 	}
@@ -54,8 +54,11 @@ func action_attack():
 func action_buff():
 
 	ActionManager.add(
-		AttackAction.new(self,Global.hero,final_damage(20))
+		BlockAction.new(self,self,15)
 	)
+	#ActionManager.add(
+		#BlockAction.new(self,self,15)
+	#)
 
 
 
@@ -64,5 +67,9 @@ func action_buff():
 func action_attack_buff():
 
 	ActionManager.add(
-		AttackAction.new(self,Global.hero,final_damage(30))
+		AttackAction.new(self,Global.hero,final_damage(12))
+	)
+	
+	ActionManager.add(
+		BlockAction.new(self,self,12)
 	)

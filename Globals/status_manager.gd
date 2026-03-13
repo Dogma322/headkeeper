@@ -1,6 +1,7 @@
 extends Node
 
 var vulnerable = preload("res://resources/statuses/vulnerable.tres")
+var corruption = preload("res://resources/statuses/corruption.tres")
 
 
 

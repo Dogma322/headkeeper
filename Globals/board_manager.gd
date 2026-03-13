@@ -44,12 +44,55 @@ func disable_highlight():
 		
 		
 func generate_bonuses():
-	var temp_slots = []
-	for slot in get_tree().get_nodes_in_group("DominoSlots"):
+
+	var all_slots = get_tree().get_nodes_in_group("DominoSlots")
+
+	# очищаем старые бонусы
+	for slot in all_slots:
 		slot.remove_bonuses()
-		temp_slots.append(slot)
-		
-		
-	for bb in bonus_pool:
-		var slot = temp_slots.pick_random()
-		slot.add_bonus(bb.instantiate())
+
+	for bonus_scene in bonus_pool:
+
+		var bonus = bonus_scene.instantiate()
+		var valid_slots = []
+
+		for slot in all_slots:
+
+			if slot.start_slot:
+				continue
+
+			if slot.bonuses.size() >= 2:
+				continue
+
+			if !is_distance_valid(bonus.distance, slot.slot_distance):
+				continue
+
+			valid_slots.append(slot)
+
+		if valid_slots.size() == 0:
+			print("No slot for bonus")
+			continue
+
+		var slot = valid_slots.pick_random()
+		slot.add_bonus(bonus)
+
+func is_distance_valid(bonus_distance, slot_distance):
+
+	match bonus_distance:
+
+		BoardBonus.Distance.ANY:
+			return true
+
+		BoardBonus.Distance.NEAR:
+			return slot_distance == DominoSlot.SlotDistance.NEAR
+
+		BoardBonus.Distance.MIDDLE:
+			return slot_distance == DominoSlot.SlotDistance.NEAR \
+			or slot_distance == DominoSlot.SlotDistance.MIDDLE
+
+		BoardBonus.Distance.FAR:
+			return slot_distance == DominoSlot.SlotDistance.NEAR \
+			or slot_distance == DominoSlot.SlotDistance.MIDDLE \
+			or slot_distance == DominoSlot.SlotDistance.FAR
+
+	return false

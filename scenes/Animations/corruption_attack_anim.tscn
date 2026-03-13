@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://j7udv63v22rf"]
+
+[ext_resource type="Script" uid="uid://dqmxymow2m5xf" path="res://scenes/Animations/corruption_attack_anim.gd" id="1_a8aat"]
+[ext_resource type="Texture2D" uid="uid://dscbv3dvx754m" path="res://assets/ActioAnimations/Corruption.png" id="2_y8qtp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbn8a"]
+atlas = ExtResource("2_y8qtp")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxosp"]
+atlas = ExtResource("2_y8qtp")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2dr6"]
+atlas = ExtResource("2_y8qtp")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56rmy"]
+atlas = ExtResource("2_y8qtp")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5xpu"]
+atlas = ExtResource("2_y8qtp")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj5bn"]
+atlas = ExtResource("2_y8qtp")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwvpb"]
+atlas = ExtResource("2_y8qtp")
+region = Rect2(384, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ro5h3"]
+atlas = ExtResource("2_y8qtp")
+region = Rect2(448, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok3oe"]
+atlas = ExtResource("2_y8qtp")
+region = Rect2(512, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqxd2"]
+atlas = ExtResource("2_y8qtp")
+region = Rect2(576, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k68mq"]
+atlas = ExtResource("2_y8qtp")
+region = Rect2(640, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bslv4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbn8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxosp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2dr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56rmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5xpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sj5bn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwvpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ro5h3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok3oe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqxd2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k68mq")
+}],
+"loop": false,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="CorruptionAttackAnim" type="Node2D" unique_id=615510361]
+script = ExtResource("1_a8aat")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1087294282]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_bslv4")
+autoplay = "default"
+frame = 10
+frame_progress = 1.0

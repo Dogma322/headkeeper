@@ -8,6 +8,11 @@ var flamed = []
 
 var draw_counter = 5
 
+var value1_played_dominoes = 0
+var value2_played_dominoes = 0
+var value3_played_dominoes = 0
+var value4_played_dominoes = 0
+
 @onready var start_deck := {
 	"3_2_atk1": preload("res://scenes/Dominoes/DominoTemplate/domino_template.tscn"),
 	"3_2_atk2": preload("res://scenes/Dominoes/DominoTemplate/domino_template.tscn"),

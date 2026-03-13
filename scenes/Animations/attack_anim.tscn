@@ -3,26 +3,6 @@
 [ext_resource type="Script" uid="uid://cfgikhcq4mvl5" path="res://scenes/Animations/attack_anim.gd" id="1_y4kt1"]
 [ext_resource type="Texture2D" uid="uid://cudbdpf7fq7q4" path="res://assets/ActioAnimations/Attack.png" id="2_wwlaj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qmtkt"]
-atlas = ExtResource("2_wwlaj")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rqxnr"]
-atlas = ExtResource("2_wwlaj")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xg7n5"]
-atlas = ExtResource("2_wwlaj")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o8f8c"]
-atlas = ExtResource("2_wwlaj")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rtjg3"]
-atlas = ExtResource("2_wwlaj")
-region = Rect2(256, 0, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_hafi3"]
 atlas = ExtResource("2_wwlaj")
 region = Rect2(320, 0, 64, 64)
@@ -63,21 +43,6 @@ region = Rect2(832, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qmtkt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rqxnr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xg7n5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o8f8c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rtjg3")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_hafi3")
 }, {
 "duration": 1.0,
@@ -113,7 +78,8 @@ animations = [{
 script = ExtResource("1_y4kt1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1689255593]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ihr4a")
 autoplay = "default"
-frame = 13
+frame = 8
 frame_progress = 1.0

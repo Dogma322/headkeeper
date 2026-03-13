@@ -27,6 +27,8 @@ DominoManager="*uid://coyhjvcswrj2u"
 TextFormatter="*uid://cmg8og8huhp86"
 StatusManager="*uid://dpqq3wbxa1lnn"
 Hand="*uid://bnr8o6y2c8n08"
+HeadManager="*uid://c1bjs00du5xti"
+EnemyManager="*uid://cqdvayo0fp5c6"
 
 [display]
 

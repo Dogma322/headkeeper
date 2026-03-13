@@ -8,6 +8,8 @@ signal status_changed
 
 @export_group("Status Data")
 @export var id: String
+@export var name_key: String
+@export var des_key: String
 @export var reducible: bool
 @export var stackable: bool
 @export var can_go_negative: bool

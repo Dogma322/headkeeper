@@ -13,6 +13,7 @@ var dragging := false
 var returning_to_hand = false
 var drag_offset := Vector2.ZERO
 
+var domino_types = ["Attack"]
 
 var board:BoardManager
 
@@ -33,7 +34,51 @@ func _ready():
 func add_action():
 	ActionManager.add(AttackAction.new(self, Global.enemy, final_damage(5)))
 	#ActionManager.add(AttackDebuffAction.new(self, Global.enemy, final_damage(5), StatusManager.vulnerable, 2))
+	#ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.corruption, 5))
 	#ActionManager.add(BlockAction.new(self, Global.hero,5))
+	domino_played()
+	
+func domino_played():
+	for type in domino_types:
+		if type == "Attack":
+			Signals.attack_dm_played.emit(self)
+		if type == "Defense":
+			Signals.defense_dm_played.emit(self)
+		if type == "Skill":
+			Signals.skill_dm_played.emit(self)
+			
+
+	if a == 1:
+		Signals._1dm_played.emit(self)
+		DominoManager.value1_played_dominoes += 1
+	if a == 2:
+		Signals._2dm_played.emit(self)
+		DominoManager.value2_played_dominoes += 1
+	if a == 3:
+		Signals._3dm_played.emit(self)
+		DominoManager.value3_played_dominoes += 1
+	if a == 4:
+		Signals._4dm_played.emit(self)
+		DominoManager.value4_played_dominoes += 1
+
+		
+
+	if b == 1:
+		Signals._1dm_played.emit(self)
+		if b != a:
+			DominoManager.value1_played_dominoes += 1
+	if b == 2:
+		Signals._2dm_played.emit(self)
+		if b != a:
+			DominoManager.value2_played_dominoes += 1
+	if b == 3:
+		Signals._3dm_played.emit(self)
+		if b != a:
+			DominoManager.value3_played_dominoes += 1
+	if b == 4:
+		Signals._4dm_played.emit(self)
+		if b != a:
+			DominoManager.value4_played_dominoes += 1
 	
 func final_damage(_damage: int):
 	var new_damage = ActionManager.calculate_damage(self, Global.enemy,_damage)

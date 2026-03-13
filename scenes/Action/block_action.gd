@@ -10,3 +10,4 @@ func _init(_source,_target,_block):
 
 func execute():
 	target.take_block(block)
+	AnimationManager.spawn_anim(AnimationManager.armor_anim, target, block)

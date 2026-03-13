@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dfi5vaxxifyad"]
+
+[ext_resource type="Script" uid="uid://cvj8ivyg4besa" path="res://scenes/Action/debuff_action.gd" id="1_ggsg5"]
+
+[node name="DebuffAction" type="Node2D" unique_id=1056246460]
+script = ExtResource("1_ggsg5")

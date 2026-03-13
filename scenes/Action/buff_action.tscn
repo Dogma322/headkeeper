@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cnweojwxsg1tw"]
+
+[ext_resource type="Script" uid="uid://ci547ym6v2jnr" path="res://scenes/Action/buff_action.gd" id="1_46esm"]
+
+[node name="BuffAction" type="Node2D" unique_id=46054268]
+script = ExtResource("1_46esm")

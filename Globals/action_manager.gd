@@ -45,8 +45,9 @@ func play_actions():
 			return
 
 		var action:Action = queue.pop_front()
+		print(action)
 		if action.source != action.target:
-			if action.source is Domino or action.source is BoardBonus:
+			if action.source is Domino or action.source is BoardBonus or action.source is Head:
 				action.source.play_anim()
 			#if action is AttackAction:
 				AnimationManager.spawn_proj(action.source.aim_marker.global_position, action.target.aim_marker.global_position)

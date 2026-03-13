@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ol6gnq15r485"]
+
+[ext_resource type="Script" uid="uid://biorgawm34o45" path="res://scenes/Action/corruption_attack_action.gd" id="1_omsjr"]
+
+[node name="CorruptionAttackAction" type="Node2D" unique_id=390308782]
+script = ExtResource("1_omsjr")

@@ -65,6 +65,8 @@ var intent_damage = 0
 var will_attack = true #Переменная для ActionManager, которая говорит будет ли враг в свой ход двигаться
 var is_dead = false
 
+var base_sprite_position
+var damage_tween: Tween
 
 @onready var hp_bar = $HpBar
 @onready var hp_bar_label = $HpBar/HpBarLabel
@@ -79,7 +81,7 @@ var is_dead = false
 
 
 func _ready():
-
+	base_sprite_position = sprite.position
 	health = max_health
 	Global.enemy = self
 
@@ -113,14 +115,9 @@ func final_damage(damage):
 
 
 func take_damage(damage):
-
+	take_damage_anim()
 	if is_dead:
 		return
-
-	var tween = get_tree().create_tween()
-	tween.tween_property(sprite, "modulate", Color(2,2,2,1), 0.05)
-	tween.tween_property(sprite, "modulate", Color(1,1,1,1), 0.05)
-	
 	
 	if block > damage:
 		block -= damage
@@ -132,6 +129,21 @@ func take_damage(damage):
 
 	if health <= 0:
 		dead()
+		
+func take_damage_anim():
+
+	if damage_tween:
+		damage_tween.kill()
+
+	damage_tween = get_tree().create_tween()
+
+	damage_tween.tween_property(sprite, "position", base_sprite_position + Vector2(2,0), 0.05)
+	damage_tween.tween_property(sprite, "position", base_sprite_position + Vector2(-2,0), 0.05)
+	damage_tween.tween_property(sprite, "position", base_sprite_position, 0.05)
+
+	sprite.material = preload("res://scenes/WhiteShader/white_shader.tres")
+	await get_tree().create_timer(0.1).timeout
+	sprite.material = null
 
 
 func take_heal(heal):
@@ -314,7 +326,9 @@ func add_action():
 	var action = actions[current_action_index]
 
 	action["func"].call()
-
+	
+	await Signals.enemy_turn_end
+	
 	plan_next_action()
 	
 	

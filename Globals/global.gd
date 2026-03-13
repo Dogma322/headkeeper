@@ -5,3 +5,4 @@ extends Node
 @onready var fight_scene
 @onready var board
 @onready var board_bonus_container
+@onready var head_holder

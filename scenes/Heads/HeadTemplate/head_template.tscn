@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://wnn8ykfdaka3"]
+
+[ext_resource type="Script" uid="uid://dpcipc4w0t4o8" path="res://scenes/Heads/HeadTemplate/head_template.gd" id="1_qrntt"]
+[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_jvpof"]
+[ext_resource type="Texture2D" uid="uid://btaxaokybm6bs" path="res://assets/NinePatchTexture/9patch.png" id="3_11iga"]
+[ext_resource type="Theme" uid="uid://mh7q61dm1im4" path="res://scenes/TextThemes/volda10.tres" id="4_3ojyp"]
+[ext_resource type="Theme" uid="uid://u6ptbmerxst5" path="res://scenes/TextThemes/volda7.tres" id="5_t3amr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ojyp"]
+atlas = ExtResource("2_jvpof")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajw7s"]
+size = Vector2(27, 27)
+
+[node name="HeadTemplate" type="Node2D" unique_id=1378211630]
+script = ExtResource("1_qrntt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1248791630]
+texture = SubResource("AtlasTexture_3ojyp")
+
+[node name="DesArea" type="Area2D" parent="." unique_id=592936283]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesArea" unique_id=743844504]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_ajw7s")
+
+[node name="DesPanel" type="Control" parent="." unique_id=1042038706]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -13.0
+offset_top = -57.0
+offset_right = 108.0
+offset_bottom = -18.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="DesPanel" unique_id=913572262]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -23.0
+offset_right = 139.0
+offset_bottom = 39.0
+texture = ExtResource("3_11iga")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="NameLabel" type="Label" parent="DesPanel" unique_id=1422703216]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -20.0
+offset_right = 133.0
+theme = ExtResource("4_3ojyp")
+theme_override_colors/font_color = Color(1, 0.6862745, 0.3019608, 1)
+text = "Берсерк"
+
+[node name="DesLabel" type="RichTextLabel" parent="DesPanel" unique_id=1590894567]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -5.0
+offset_right = 134.0
+offset_bottom = 35.0
+theme = ExtResource("5_t3amr")
+text = "Когда играется кость со значением 3, наносит 2 урона"
+
+[node name="AimMarker" type="Marker2D" parent="." unique_id=516333298]
+
+[connection signal="mouse_entered" from="DesArea" to="." method="_on_des_area_mouse_entered"]
+[connection signal="mouse_exited" from="DesArea" to="." method="_on_des_area_mouse_exited"]

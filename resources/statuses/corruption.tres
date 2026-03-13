@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3 uid="uid://bpoyj7cngev6s"]
+
+[ext_resource type="Script" uid="uid://blunke6p68gfy" path="res://resources/statuses/corruption.gd" id="1_13210"]
+[ext_resource type="Texture2D" uid="uid://f4nkkac62hic" path="res://assets/Statuses/StatusAtlas.png" id="2_13210"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu0eh"]
+atlas = ExtResource("2_13210")
+region = Rect2(32, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_13210")
+name_key = "Скверна"
+reducible = true
+stackable = true
+turn_begin_effect = true
+texture = SubResource("AtlasTexture_xu0eh")
+metadata/_custom_type_script = "uid://dyln3pjhpe4xd"

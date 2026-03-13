@@ -75,24 +75,19 @@ sprite_frames = SubResource("SpriteFrames_icnct")
 autoplay = "default"
 frame_progress = 0.11893064
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1278289245]
+[node name="Container" type="VBoxContainer" parent="." unique_id=1278289245]
 offset_left = -14.0
 offset_top = -29.0
 offset_right = 14.0
 offset_bottom = 30.0
 theme_override_constants/separation = 2
+alignment = 1
 
-[node name="BoardBonusTemplate" parent="VBoxContainer" unique_id=155450759 instance=ExtResource("4_o1lvt")]
+[node name="BoardBonusTemplate" parent="Container" unique_id=155450759 instance=ExtResource("4_o1lvt")]
 layout_mode = 2
 
-[node name="BoardBonusTemplate2" parent="VBoxContainer" unique_id=1861431850 instance=ExtResource("4_o1lvt")]
+[node name="BoardBonusTemplate2" parent="Container" unique_id=1861431850 instance=ExtResource("4_o1lvt")]
 layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=234739684]
-offset_left = -16.0
-offset_top = -32.0
-offset_right = 16.0
-offset_bottom = 32.0
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

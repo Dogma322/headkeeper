@@ -6,10 +6,10 @@ var player_turn = true
 
 func _ready() -> void:
 	Signals.play_btn_pressed.connect(play_dominoes)
-	Signals.player_turn_begin.connect(player_turn_begin)
-	Signals.player_turn_end.connect(player_turn_end)
-	Signals.enemy_turn_begin.connect(enemy_turn_begin)
-	Signals.enemy_turn_end.connect(enemy_turn_end)
+	#Signals.player_turn_begin.connect(player_turn_begin)
+	#Signals.player_turn_end.connect(player_turn_end)
+	#Signals.enemy_turn_begin.connect(enemy_turn_begin)
+	#Signals.enemy_turn_end.connect(enemy_turn_end)
 	
 	await get_tree().create_timer(0.5).timeout
 	player_turn_begin()
@@ -17,10 +17,10 @@ func _ready() -> void:
 
 
 func play_dominoes():
-	
-	Global.board_bonus_container.add_bonus_actions()
-	ActionManager.play_actions()
-	await Signals.actions_completed
+	if Global.board_bonus_container.get_child_count() > 0:
+		Global.board_bonus_container.add_bonus_actions()
+		ActionManager.play_actions()
+		await Signals.actions_completed
 	
 	
 	for dm in DominoManager.dominoes_on_board:
@@ -49,7 +49,13 @@ func player_turn_end():
 func enemy_turn_begin():
 	player_turn = false
 	
+	apply_enemy_turn_begin_status_effects()
+	await ActionManager.play_actions()
+	
 	Global.enemy.add_action()
+	
+	#print("ACT_SIZE")
+	#print(ActionManager.queue.size())
 	
 	await get_tree().create_timer(0.5).timeout
 	if Global.enemy.will_attack:
@@ -62,5 +68,14 @@ func enemy_turn_begin():
 	
 	enemy_turn_end()
 	
+	
+func apply_enemy_turn_begin_status_effects():
+	for icon in Global.enemy.status_container.get_children():
+		if icon.status.turn_begin_effect:
+			icon.status.apply_status_effect()
+
+	
 func enemy_turn_end():
+	Signals.enemy_turn_end.emit()
 	player_turn_begin()
+	

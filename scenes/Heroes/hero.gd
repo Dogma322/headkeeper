@@ -20,6 +20,9 @@ var incoming_damage_mult = 1
 
 var statuses = []
 
+var base_sprite_position
+var damage_tween: Tween
+
 @onready var hp_bar = $HpBar
 @onready var sprite = $AnimatedSprite2D
 @onready var hp_bar_label = $HpBar/HpBarLabel
@@ -32,6 +35,8 @@ func _ready() -> void:
 	Global.hero = self
 	update_hp_bar()
 	Signals.player_turn_begin.connect(remove_block)
+	
+	base_sprite_position = sprite.position
 
 func remove_block():
 	block = 0
@@ -49,6 +54,8 @@ func update_hp_bar():
 		block_icon.visible = false
 	
 func take_damage(damage):
+	take_damage_anim()
+	
 	var tween = get_tree().create_tween()
 	tween.tween_property(sprite, "modulate", Color(2,2,2,1), 0.05)
 	tween.tween_property(sprite, "modulate", Color(1,1,1,1), 0.05)
@@ -63,6 +70,24 @@ func take_damage(damage):
 	
 	if health <= 0:
 		dead()
+
+func take_damage_anim():
+
+	if damage_tween:
+		damage_tween.kill()
+
+	damage_tween = get_tree().create_tween()
+
+	damage_tween.tween_property(sprite, "position", base_sprite_position + Vector2(2,0), 0.05)
+	damage_tween.tween_property(sprite, "position", base_sprite_position + Vector2(-2,0), 0.05)
+	damage_tween.tween_property(sprite, "position", base_sprite_position, 0.05)
+
+	sprite.material = preload("res://scenes/WhiteShader/white_shader.tres")
+	await get_tree().create_timer(0.1).timeout
+	sprite.material = null
+
+
+
 
 func take_heal(heal):
 	health += heal

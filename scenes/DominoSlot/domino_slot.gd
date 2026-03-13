@@ -24,8 +24,7 @@ var mouse_inside := false
 
 var bonuses = []
 
-@onready var container = $VBoxContainer
-#@onready var h_cont = $HBoxContainer
+@onready var container = $Container
 
 
 
@@ -132,8 +131,9 @@ func remove_domino():
 	domino = null
 	
 	for bb in bonuses:
-		bb.get_parent().remove_child(bb)
-		container.add_child(bb)
+		if bb != null:
+			bb.get_parent().remove_child(bb)
+			container.add_child(bb)
 		
 
 	

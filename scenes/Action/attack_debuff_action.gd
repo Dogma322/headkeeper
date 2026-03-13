@@ -16,3 +16,6 @@ func _init(_source,_target,_damage,_status,_stacks):
 func execute():
 	target.take_damage(damage)
 	target.status_container.add_status(status,stacks)
+	AnimationManager.spawn_damage_label(damage, target)
+	AnimationManager.spawn_anim(AnimationManager.attack_anim, target, damage)
+	AnimationManager.spawn_status_label(target, status.name_key, stacks)

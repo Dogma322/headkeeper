@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://fvbwyoeuebsq" path="res://scenes/DeckBags/deck_bag.tscn" id="8_qxp17"]
 [ext_resource type="PackedScene" uid="uid://cagbtkvoqcjjb" path="res://scenes/DeckBags/discard_bag.tscn" id="9_lhbvr"]
 [ext_resource type="PackedScene" uid="uid://drlsgry4o0pof" path="res://scenes/BoardBonusContainer/board_bonus_container.tscn" id="10_lhbvr"]
+[ext_resource type="PackedScene" uid="uid://bbvfro8a5geyx" path="res://scenes/HeadHolder/head_holder.tscn" id="11_aonfs"]
+[ext_resource type="PackedScene" uid="uid://dmn1nxgk76p1g" path="res://scenes/Heads/hd_berserk.tscn" id="12_m8wss"]
 
 [node name="BattleScene" type="Node2D" unique_id=563303012]
 script = ExtResource("1_ydxg7")
@@ -54,3 +56,7 @@ offset_left = 16.0
 offset_top = 49.0
 offset_right = 194.0
 offset_bottom = 77.0
+
+[node name="HeadHolder" parent="." unique_id=2074985017 instance=ExtResource("11_aonfs")]
+
+[node name="hd_berserk" parent="HeadHolder" unique_id=1378211630 instance=ExtResource("12_m8wss")]

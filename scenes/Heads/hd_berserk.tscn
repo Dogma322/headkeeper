@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dmn1nxgk76p1g"]
+
+[ext_resource type="PackedScene" uid="uid://wnn8ykfdaka3" path="res://scenes/Heads/HeadTemplate/head_template.tscn" id="1_aiguo"]
+[ext_resource type="Script" uid="uid://c5kfhbhttyn17" path="res://scenes/Heads/hd_berserk.gd" id="2_isnif"]
+
+[node name="hd_berserk" unique_id=1378211630 instance=ExtResource("1_aiguo")]
+script = ExtResource("2_isnif")
