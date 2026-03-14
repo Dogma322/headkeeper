@@ -1,19 +1,9 @@
 [gd_scene format=3 uid="uid://dnco2xl6pi07y"]
 
 [ext_resource type="Script" uid="uid://cojc613kiq7f1" path="res://scenes/Dominoes/DominoTemplate/domino_template.gd" id="1_tq51k"]
-[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="2_2aomr"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vk1yc"]
-atlas = ExtResource("2_2aomr")
-region = Rect2(485, 16, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2aomr"]
-atlas = ExtResource("2_2aomr")
-region = Rect2(147, 170, 26, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jbdcl"]
-atlas = ExtResource("2_2aomr")
-region = Rect2(115, 163, 26, 26)
+[ext_resource type="Texture2D" uid="uid://btaxaokybm6bs" path="res://assets/NinePatchTexture/9patch.png" id="3_qbpuh"]
+[ext_resource type="Theme" uid="uid://mh7q61dm1im4" path="res://scenes/TextThemes/volda10.tres" id="4_im8wu"]
+[ext_resource type="Theme" uid="uid://u6ptbmerxst5" path="res://scenes/TextThemes/volda7.tres" id="5_gdd4n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2aomr"]
 size = Vector2(32, 64)
@@ -26,15 +16,12 @@ b = 3
 [node name="Visual" type="Node2D" parent="." unique_id=2092962026]
 
 [node name="Back" type="Sprite2D" parent="Visual" unique_id=1409418696]
-texture = SubResource("AtlasTexture_vk1yc")
 
 [node name="TopIcons" type="Sprite2D" parent="Visual" unique_id=1407603542]
 position = Vector2(0, -17)
-texture = SubResource("AtlasTexture_2aomr")
 
 [node name="BotIcons" type="Sprite2D" parent="Visual" unique_id=189273046]
 position = Vector2(0, 17)
-texture = SubResource("AtlasTexture_jbdcl")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1733465482]
 
@@ -42,6 +29,45 @@ texture = SubResource("AtlasTexture_jbdcl")
 shape = SubResource("RectangleShape2D_2aomr")
 
 [node name="AimMarker" type="Marker2D" parent="." unique_id=1837320360]
+
+[node name="DesPanel" type="Control" parent="." unique_id=1446575058]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -53.0
+offset_top = -65.0
+offset_right = 68.0
+offset_bottom = -26.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="DesPanel" unique_id=1268317931]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -23.0
+offset_right = 109.0
+offset_bottom = 27.0
+texture = ExtResource("3_qbpuh")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="NameLabel" type="Label" parent="DesPanel" unique_id=280948769]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = -20.0
+offset_right = 133.0
+theme = ExtResource("4_im8wu")
+theme_override_colors/font_color = Color(1, 0.6862745, 0.3019608, 1)
+text = "Берсерк"
+
+[node name="DesLabel" type="RichTextLabel" parent="DesPanel" unique_id=608750902]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -18.0
+offset_right = 104.0
+offset_bottom = 23.0
+theme = ExtResource("5_gdd4n")
+text = "Когда играется кость со значением 3, наносит 2 урона"
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

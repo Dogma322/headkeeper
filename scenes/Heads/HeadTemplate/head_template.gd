@@ -89,6 +89,8 @@ func _on_des_area_mouse_exited() -> void:
 
 		
 func show_des():
+	if DominoManager.dm_dragging:
+		return
 	z_index = 100
 	update_labels()
 	var tween = get_tree().create_tween()

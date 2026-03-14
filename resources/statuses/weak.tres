@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3 uid="uid://cfipt5hqurnuw"]
+
+[ext_resource type="Script" uid="uid://c2s0ls08rm6gk" path="res://resources/statuses/weak.gd" id="1_i16ux"]
+[ext_resource type="Texture2D" uid="uid://f4nkkac62hic" path="res://assets/Statuses/StatusAtlas.png" id="2_s2onm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpike"]
+atlas = ExtResource("2_s2onm")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_i16ux")
+id = "weak"
+name_key = "Слабость"
+reducible = true
+stackable = true
+texture = SubResource("AtlasTexture_mpike")
+metadata/_custom_type_script = "uid://dyln3pjhpe4xd"

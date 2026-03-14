@@ -13,19 +13,21 @@ var value2_played_dominoes = 0
 var value3_played_dominoes = 0
 var value4_played_dominoes = 0
 
+var dm_dragging = false
+
 @onready var start_deck := {
-	"3_2_atk1": preload("res://scenes/Dominoes/DominoTemplate/domino_template.tscn"),
-	"3_2_atk2": preload("res://scenes/Dominoes/DominoTemplate/domino_template.tscn"),
-	"3_2_atk3": preload("res://scenes/Dominoes/DominoTemplate/domino_template.tscn"),
-	"3_2_atk4": preload("res://scenes/Dominoes/DominoTemplate/domino_template.tscn"),
-	"3_2_atk5": preload("res://scenes/Dominoes/DominoTemplate/domino_template.tscn"),
-	"3_2_atk6": preload("res://scenes/Dominoes/DominoTemplate/domino_template.tscn"),
-	"3_2_atk7": preload("res://scenes/Dominoes/DominoTemplate/domino_template.tscn"),
-	"3_2_atk8": preload("res://scenes/Dominoes/DominoTemplate/domino_template.tscn"),
-	"3_2_atk9": preload("res://scenes/Dominoes/DominoTemplate/domino_template.tscn"),
-	"3_2_atk10": preload("res://scenes/Dominoes/DominoTemplate/domino_template.tscn"),
-	"3_2_atk11": preload("res://scenes/Dominoes/DominoTemplate/domino_template.tscn"),
-	"3_2_atk12": preload("res://scenes/Dominoes/DominoTemplate/domino_template.tscn"),
+	#"4_2_atk_vulnerable": preload("res://scenes/Dominoes/StartDominoes/dm_start_4_2_vulnerable_attack.tscn"),
+	"3_2_atk": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_atck.tscn"),
+	"3_2_def": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_def.tscn"),
+	"3_2_atk2": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_atck.tscn"),
+	"3_2_def2": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_def.tscn"),
+	"3_2_atk3": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_atck.tscn"),
+	"3_2_def3": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_def.tscn"),
+	"3_2_atk4": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_atck.tscn"),
+	"3_2_def4": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_def.tscn"),
+	"3_2_atk5": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_atck.tscn"),
+	"3_2_def5": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_def.tscn"),
+
 }
 
 

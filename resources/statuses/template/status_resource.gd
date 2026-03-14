@@ -4,7 +4,8 @@ class_name StatusResource
 signal status_applied(status: StatusResource)
 signal status_changed
 
-
+var name
+var des
 
 @export_group("Status Data")
 @export var id: String
@@ -41,3 +42,7 @@ func set_stacks(value):
 	
 func apply_status_effect():
 	pass
+	
+func update_text():
+	name = ""
+	des = ""

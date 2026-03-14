@@ -6,5 +6,8 @@ func initialize_status():
 	_on_status_changed()
 
 func _on_status_changed():
-	print("INIT")
 	owner.incoming_damage_mult = 1.5
+	
+func update_text():
+	name = "Уязвимость"
+	des = "Уязвимость ы"

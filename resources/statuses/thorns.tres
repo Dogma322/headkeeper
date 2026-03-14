@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3 uid="uid://bxw3sehcgiorv"]
+
+[ext_resource type="Script" uid="uid://2kfk453bdrfd" path="res://resources/statuses/thorns.gd" id="1_111lq"]
+[ext_resource type="Texture2D" uid="uid://f4nkkac62hic" path="res://assets/Statuses/StatusAtlas.png" id="2_gu5j5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gqax"]
+atlas = ExtResource("2_gu5j5")
+region = Rect2(48, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_111lq")
+id = "thorns"
+name_key = "Шипы"
+stackable = true
+event_based_effect = true
+texture = SubResource("AtlasTexture_5gqax")
+metadata/_custom_type_script = "uid://dyln3pjhpe4xd"

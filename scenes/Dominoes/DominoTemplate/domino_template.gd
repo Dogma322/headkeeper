@@ -15,28 +15,41 @@ var drag_offset := Vector2.ZERO
 
 var domino_types = ["Attack"]
 
-var board:BoardManager
 
 var damage
 var block
 var heal
 
+var mouse_over_des = false
+var des_tween: Tween
+
 @onready var top_icons = $Visual/TopIcons
 @onready var bot_icons = $Visual/BotIcons
 @onready var aim_marker = $AimMarker
 
+@onready var dm_name: String
+@onready var description: String = ""
+@onready var des_panel = $DesPanel
+@onready var des_label = $DesPanel/DesLabel
 
 
-func _ready():
 
-	board = BoardManager
+func _ready() -> void:
+	update_labels()
+	hide_des_fast()
+	
+
+
+func add_actions():
+	add_action()
+	domino_played()
 
 func add_action():
-	ActionManager.add(AttackAction.new(self, Global.enemy, final_damage(5)))
-	#ActionManager.add(AttackDebuffAction.new(self, Global.enemy, final_damage(5), StatusManager.vulnerable, 2))
+	#ActionManager.add(AttackAction.new(self, Global.enemy, 5))
+	#ActionManager.add(AttackDebuffAction.new(self, Global.enemy, 5, StatusManager.weak, 2))
+	ActionManager.add(AttackDebuffAction.new(self, Global.enemy, 5, StatusManager.vulnerable, 2))
 	#ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.corruption, 5))
 	#ActionManager.add(BlockAction.new(self, Global.hero,5))
-	domino_played()
 	
 func domino_played():
 	for type in domino_types:
@@ -94,6 +107,9 @@ func get_open_value():
 		return a
 
 	return null
+	
+func final_block(block):
+	return ActionManager.calculate_block(block)
 
 
 
@@ -145,6 +161,7 @@ func _on_area_2d_input_event(_viewport, event, _shape):
 	if event is InputEventMouseButton:
 
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			hide_des_fast()
 		
 			if event.pressed:
 				if slot:
@@ -161,7 +178,7 @@ func _on_area_2d_input_event(_viewport, event, _shape):
 
 
 func start_drag():
-	print("DRAAAG")
+	DominoManager.dm_dragging = true
 	if returning_to_hand:
 		return
 
@@ -190,6 +207,7 @@ func _process(_delta):
 
 
 func stop_drag():
+	DominoManager.dm_dragging = false
 	if not dragging:
 		return
 
@@ -242,7 +260,42 @@ func _on_area_2d_mouse_entered() -> void:
 	if slot:
 		return
 	BoardManager.highlight_avaiable_slots([a,b])
+	mouse_over_des = true
+	show_des()
 
 
 func _on_area_2d_mouse_exited() -> void:
 	BoardManager.disable_highlight()
+	mouse_over_des = false
+	hide_des()
+	
+func show_des():
+	if DominoManager.dm_dragging:
+		return
+	if dragging:
+		return
+	update_labels()
+	des_panel.visible = true
+	
+	if des_tween and des_tween.is_running():
+		des_tween.kill()
+	
+	des_tween = get_tree().create_tween()
+	des_tween.tween_property(des_panel, "modulate:a", 1, 0.15)
+
+func hide_des():
+	if not mouse_over_des: # не скрываем, если курсор снова вернулся
+		if des_tween and des_tween.is_running():
+			des_tween.kill()
+		
+		des_tween = get_tree().create_tween()
+		des_tween.tween_property(des_panel, "modulate:a", 0, 0.15)
+		await des_tween.finished
+		if not mouse_over_des:
+			des_panel.visible = false
+			
+func hide_des_fast():
+	des_panel.visible = false
+			
+func update_labels():
+	des_label.text = ""

@@ -11,7 +11,7 @@ func _init(_source,_target,_status,_stacks):
 	stacks = _stacks
 
 func execute():
-	target.status_container.add_status(status,stacks)
+	StatusManager.apply_status(status, stacks, target)
 	AnimationManager.spawn_anim(AnimationManager.buff_anim, target, 0)
 	AnimationManager.spawn_status_label(target, status.name_key, stacks)
 	

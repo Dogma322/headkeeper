@@ -39,18 +39,6 @@ region = Rect2(256, 128, 128, 128)
 atlas = ExtResource("2_g41r0")
 region = Rect2(384, 128, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cj2ha"]
-atlas = ExtResource("2_g41r0")
-region = Rect2(512, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lgqhc"]
-atlas = ExtResource("2_g41r0")
-region = Rect2(0, 256, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pwhhy"]
-atlas = ExtResource("2_g41r0")
-region = Rect2(128, 256, 128, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_7sebn"]
 atlas = ExtResource("2_g41r0")
 region = Rect2(256, 256, 128, 128)
@@ -98,15 +86,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_m5pju")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cj2ha")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lgqhc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pwhhy")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_7sebn")
 }, {
 "duration": 1.0,
@@ -129,5 +108,5 @@ script = ExtResource("1_ak8lk")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=436291632]
 sprite_frames = SubResource("SpriteFrames_b3wqg")
 autoplay = "default"
-frame = 15
+frame = 12
 frame_progress = 1.0

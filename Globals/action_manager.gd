@@ -9,14 +9,18 @@ func _ready() -> void:
 	Signals.play_dominoes.connect(play_actions)
 
 func calculate_damage(source, target, damage):
+
 	if source != Global.enemy:
-		var final_damage = ceil(((damage + Global.hero.bonus_damage) * Global.hero.damage_mult) * Global.enemy.incoming_damage_mult)
-		print("income")
-		print(Global.enemy.incoming_damage_mult)
+		var final_damage = int(ceil(((damage + Global.hero.bonus_damage) * Global.hero.damage_mult) * Global.enemy.incoming_damage_mult))
 		return final_damage
+
 	if source == Global.enemy:
-		var final_damage = ceil(((damage + Global.enemy.bonus_damage) * Global.enemy.damage_mult) * Global.hero.incoming_damage_mult)
+		var final_damage = int(ceil(((damage + Global.enemy.bonus_damage) * Global.enemy.damage_mult) * Global.hero.incoming_damage_mult))
 		return final_damage
+		
+func calculate_block(block):
+	return block
+	
 	
 
 func add(action:Action):
@@ -53,7 +57,7 @@ func play_actions():
 				AnimationManager.spawn_proj(action.source.aim_marker.global_position, action.target.aim_marker.global_position)
 				await Signals.projectile_hit
 		action.execute()
-		await get_tree().create_timer(0.4).timeout
+		await get_tree().create_timer(0.35).timeout
 
 	running = false
 	

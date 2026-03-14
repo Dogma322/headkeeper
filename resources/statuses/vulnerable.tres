@@ -9,7 +9,7 @@ region = Rect2(64, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_5gmja")
-id = "Vulnerable"
+id = "vulnerable"
 name_key = "Уязвимость"
 reducible = true
 stackable = true

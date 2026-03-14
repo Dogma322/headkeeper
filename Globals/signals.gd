@@ -16,8 +16,10 @@ signal enemy_attack
 signal deck_changed
 signal discard_changed
 
+
 signal domino_selected
 signal head_selected
+signal action_card_selected
 
 signal _1dm_played(domino)
 signal _2dm_played(domino)
@@ -27,3 +29,9 @@ signal _4dm_played(domino)
 signal attack_dm_played(domino: Domino)
 signal defense_dm_played(domino: Domino)
 signal skill_dm_played(domino: Domino)
+
+signal enemy_take_damage
+signal hero_take_damage
+
+signal deal_enemy_thorn_damage
+signal deal_hero_thorn_damage

@@ -1,5 +1,8 @@
 extends Node
 
+func _ready() -> void:
+	TranslationServer.set_locale("ru")
+
 @onready var hero
 @onready var enemy
 @onready var fight_scene

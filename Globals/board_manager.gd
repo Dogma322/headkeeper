@@ -1,7 +1,8 @@
 extends Node2D
 
-@onready var bonus = preload("res://scenes/BoardBonuses/board_bonus_template.tscn")
-@onready var bonus_pool = [bonus, bonus, bonus, bonus, bonus]
+@onready var h_5dmg_bonus = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_5_damage.tscn")
+@onready var h_5def_bonus = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_5_defense.tscn")
+@onready var bonus_pool = [h_5dmg_bonus, h_5dmg_bonus, h_5dmg_bonus, h_5def_bonus, h_5def_bonus]
 
 var slots = []
 var target_slot

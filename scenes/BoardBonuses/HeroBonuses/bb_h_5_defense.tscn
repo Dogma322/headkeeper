@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://n6x2q2k02miw"]
+
+[ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_0tqjo"]
+[ext_resource type="Script" uid="uid://c7vbhund8m31d" path="res://scenes/BoardBonuses/HeroBonuses/bb_h_5_defense.gd" id="2_famh5"]
+[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_frjy6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52gs3"]
+atlas = ExtResource("3_frjy6")
+region = Rect2(934, 16, 28, 28)
+
+[node name="bb_h_5_defense" unique_id=470544141 instance=ExtResource("1_0tqjo")]
+script = ExtResource("2_famh5")
+
+[node name="Sprite2D" parent="." index="0" unique_id=790081820]
+texture = SubResource("AtlasTexture_52gs3")
+
+[node name="ValueLabel" parent="." index="2" unique_id=1340414324]
+offset_left = 5.0
+text = "5"

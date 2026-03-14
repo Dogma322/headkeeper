@@ -1,7 +1,6 @@
 extends Node2D
 class_name Enemy
 
-
 enum IntentState {
 	ATTACK,
 	DEFENSE,
@@ -40,9 +39,20 @@ var block = 0:
 		
 
 		
-var bonus_damage = 0
-var damage_mult = 1
-var incoming_damage_mult = 1
+var bonus_damage = 0:
+	set(value):
+		bonus_damage = value
+		update_damage_label()
+		
+var damage_mult = 1:
+	set(value):
+		damage_mult = value
+		update_damage_label()
+		
+var incoming_damage_mult = 1:
+	set(value):
+		incoming_damage_mult = value
+		update_damage_label()
 
 var statuses = []
 
@@ -131,7 +141,7 @@ func take_damage(damage):
 		dead()
 		
 func take_damage_anim():
-
+		
 	if damage_tween:
 		damage_tween.kill()
 
@@ -307,15 +317,20 @@ func plan_next_action():
 
 	intent_state = action["intent"]
 
+	update_damage_label()
+
+	update_intent_icon()
+
+
+func update_damage_label():
+	var action = actions[current_action_index]
+	
 	if action.has("damage"):
 		intent_damage = final_damage(action["damage"])
 	else:
 		intent_damage = 0
 
 	damage_label.text = str(intent_damage)
-
-	update_intent_icon()
-
 
 
 func add_action():

@@ -48,7 +48,9 @@ func action_attack():
 	ActionManager.add(
 		AttackAction.new(self, Global.hero, final_damage(17))
 	)
-
+	#ActionManager.add(
+		#DebuffAction.new(self, Global.hero, StatusManager.vulnerable, 2)
+	#)
 
 
 func action_buff():
@@ -56,9 +58,9 @@ func action_buff():
 	ActionManager.add(
 		BlockAction.new(self,self,15)
 	)
-	#ActionManager.add(
-		#BlockAction.new(self,self,15)
-	#)
+	ActionManager.add(
+		BuffAction.new(self, self,StatusManager.thorns,2)
+	)
 
 
 

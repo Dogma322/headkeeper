@@ -1,6 +1,5 @@
 extends Node2D
 
-@export var head_scenes: Array[PackedScene]
 
 @export var min_heads := 3
 @export var max_heads := 5
@@ -26,15 +25,11 @@ func spawn_heads():
 
 	var count = randi_range(min_heads, max_heads)
 
-	var pool = head_scenes.duplicate()
 
 	for i in range(count):
 
-		if pool.is_empty():
-			pool = head_scenes.duplicate()
-
-		var scene = pool.pick_random()
-		pool.erase(scene)
+		var scene = HeadManager.temp_head_pool.pick_random()
+		HeadManager.temp_head_pool.erase(scene)
 
 		var head = scene.instantiate()
 

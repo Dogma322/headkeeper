@@ -9,6 +9,7 @@ region = Rect2(32, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_13210")
+id = "corruption"
 name_key = "Скверна"
 reducible = true
 stackable = true

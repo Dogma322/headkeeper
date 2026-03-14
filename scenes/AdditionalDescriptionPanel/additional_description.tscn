@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bm8hl0h6ybgvr"]
+
+[ext_resource type="Texture2D" uid="uid://btaxaokybm6bs" path="res://assets/NinePatchTexture/9patch.png" id="1_2ryre"]
+[ext_resource type="Script" uid="uid://defuvnrmdudt3" path="res://scenes/AdditionalDescriptionPanel/additional_description.gd" id="1_j5y1w"]
+[ext_resource type="Theme" uid="uid://mh7q61dm1im4" path="res://scenes/TextThemes/volda10.tres" id="2_j5y1w"]
+[ext_resource type="Theme" uid="uid://u6ptbmerxst5" path="res://scenes/TextThemes/volda7.tres" id="3_dm7b5"]
+
+[node name="AdditionalDescription" type="Control" unique_id=1979256086]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -516.0
+offset_bottom = -310.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j5y1w")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1852226047]
+layout_mode = 0
+offset_right = 124.0
+offset_bottom = 50.0
+texture = ExtResource("1_2ryre")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="NameLabel" type="Label" parent="." unique_id=2014952826]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 120.0
+offset_bottom = 17.0625
+theme = ExtResource("2_j5y1w")
+theme_override_colors/font_color = Color(1, 0.6862745, 0.3019608, 1)
+text = "Берсерк"
+
+[node name="DesLabel" type="RichTextLabel" parent="." unique_id=290774196]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 17.0
+offset_right = 119.0
+offset_bottom = 46.0
+theme = ExtResource("3_dm7b5")
+text = "Когда играется кость со значением 3, наносит 2 урона"
