@@ -23,6 +23,8 @@ var heal
 var mouse_over_des = false
 var des_tween: Tween
 
+var domino_choice = false
+
 @onready var top_icons = $Visual/TopIcons
 @onready var bot_icons = $Visual/BotIcons
 @onready var aim_marker = $AimMarker
@@ -164,6 +166,17 @@ func _on_area_2d_input_event(_viewport, event, _shape):
 			hide_des_fast()
 		
 			if event.pressed:
+				
+				
+				if domino_choice:
+					if Global.choice_scene.choice_locked:
+						return
+					Global.choice_scene.choice_selected(self)
+					add_domino_to_deck()
+					Signals.domino_selected.emit()
+					return
+					
+					
 				if slot:
 					slot.remove_chain()
 					#Hand.add_domino(self)
@@ -174,6 +187,15 @@ func _on_area_2d_input_event(_viewport, event, _shape):
 
 			else:
 				stop_drag()
+
+func add_domino_to_deck():
+	var tween = get_tree().create_tween()
+	var pos = Vector2(15,300)
+	tween.set_parallel()
+	tween.tween_property(self, "global_position", pos, 0.5)
+	tween.tween_property(self, "scale", Vector2(0,0), 0.5)
+	DominoManager.temp_deck.append(self)
+	domino_choice = false
 
 
 

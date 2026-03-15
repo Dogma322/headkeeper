@@ -3,7 +3,7 @@ extends Enemy
 
 func _ready():
 
-	max_health = 95
+	max_health = 1
 	health = max_health
 
 	behavior_mode = BehaviorMode.SEQUENTIAL

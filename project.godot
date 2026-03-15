@@ -30,6 +30,7 @@ Hand="*uid://bnr8o6y2c8n08"
 HeadManager="*uid://c1bjs00du5xti"
 EnemyManager="*uid://cqdvayo0fp5c6"
 ActionCardManager="*uid://bmpktw6r0gusn"
+Transition="*uid://c21vchucx2ll6"
 
 [display]
 

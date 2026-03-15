@@ -53,7 +53,9 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and head_choice:
 		if _is_mouse_over(event.position):
 			head_choice = false
+			get_parent().choice_selected(self)
 			add_head_to_head_holder()
+			Signals.head_selected.emit()
 			
 func add_head_to_head_holder():
 	apply_passive_effect()

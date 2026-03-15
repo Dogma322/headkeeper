@@ -1,96 +1,208 @@
 extends Node2D
 
+@export var spacing := 110
+@export var y_position := 180
 
-@export var min_heads := 3
-@export var max_heads := 5
-
-@export var spacing := 80
-@export var y_position := 160
-
-@export var float_amplitude := 10
+@export var float_amplitude := 8
 @export var float_speed := 2.0
 
-var heads: Array = []
+var choices: Array = []
 var base_positions: Array[Vector2] = []
 var offsets: Array = []
+
 var time := 0.0
 
+var choosing := false
+var spawning := false
+var choice_locked := false
 
-func generate_heads():
-	pass
+
+func _ready() -> void:
+	Global.choice_scene = self
+
+
+func clear_choices():
+
+	for c in choices:
+		if is_instance_valid(c):
+			c.queue_free()
+
+	choices.clear()
+	base_positions.clear()
+	offsets.clear()
+
+
 
 func spawn_heads():
 
-	clear_heads()
+	clear_choices()
 
-	var count = randi_range(min_heads, max_heads)
+	spawning = true
+	choice_locked = false
 
+	for i in range(3):
 
-	for i in range(count):
-
-		var scene = HeadManager.temp_head_pool.pick_random()
-		HeadManager.temp_head_pool.erase(scene)
-
+		var scene = HeadManager.temp_head_pool.values().pick_random()
 		var head = scene.instantiate()
 
+		head.scale = Vector2.ZERO
 		head.head_choice = true
 
 		add_child(head)
 
-		heads.append(head)
+		choices.append(head)
 
-	align_heads()
+	align_choices()
+	await animate_spawn()
 
 
-func align_heads():
+
+func spawn_dominoes():
+
+	clear_choices()
+
+	spawning = true
+	choice_locked = false
+
+	for i in range(3):
+
+		var scene = DominoManager.temp_domino_pool.values().pick_random()
+		var domino = scene.instantiate()
+
+		domino.scale = Vector2.ZERO
+		domino.domino_choice = true
+
+		add_child(domino)
+
+		choices.append(domino)
+
+	align_choices()
+	await animate_spawn()
+
+
+
+func align_choices():
 
 	base_positions.clear()
 	offsets.clear()
 
-	var screen_width = get_viewport_rect().size.x
+	var screen = get_viewport_rect().size
+	var total_width = (choices.size() - 1) * spacing
+	var start_x = screen.x / 2 - total_width / 2
 
-	var total_width = (heads.size() - 1) * spacing
+	for i in range(choices.size()):
 
-	var start_x = screen_width / 2 - total_width / 2
+		var obj = choices[i]
 
-	for i in range(heads.size()):
-
-		var head = heads[i]
+		if not is_instance_valid(obj):
+			continue
 
 		var pos = Vector2(
 			start_x + i * spacing,
 			y_position
 		)
 
-		head.position = pos
+		obj.position = pos
 
 		base_positions.append(pos)
-
 		offsets.append(randf() * TAU)
+
+
+
+func animate_spawn():
+
+	for i in range(choices.size()):
+
+		if i >= choices.size():
+			break
+
+		var obj = choices[i]
+
+		if not is_instance_valid(obj):
+			continue
+
+		var tween = create_tween()
+
+		tween.tween_property(
+			obj,
+			"scale",
+			Vector2.ONE,
+			0.35
+		).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
+		await get_tree().create_timer(0.08).timeout
+
+	spawning = false
+	choosing = true
+
+
+
+func choice_selected(selected):
+
+	if spawning:
+		return
+
+	if not choosing:
+		return
+
+	if choice_locked:
+		return
+
+	choice_locked = true
+	choosing = false
+
+	for obj in choices:
+
+		if obj == selected:
+			continue
+
+		if obj is Domino:
+			obj.domino_choice = false
+
+		if obj is Head:
+			obj.head_choice = false
+
+	choices.erase(selected)
+
+	for obj in choices:
+
+		if not is_instance_valid(obj):
+			continue
+
+		var tween = create_tween()
+
+		tween.tween_property(
+			obj,
+			"scale",
+			Vector2.ZERO,
+			0.25
+		).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+
+		await tween.finished
+
+		if is_instance_valid(obj):
+			obj.queue_free()
+
+	choices.clear()
+	base_positions.clear()
+	offsets.clear()
+
 
 
 func _process(delta):
 
 	time += delta * float_speed
 
-	for i in range(heads.size()):
+	for i in range(choices.size()):
 
-		var head = heads[i]
+		if i >= base_positions.size():
+			return
 
-		if not is_instance_valid(head):
+		var obj = choices[i]
+
+		if not is_instance_valid(obj):
 			continue
 
 		var base = base_positions[i]
 
-		head.position.y = base.y + sin(time + offsets[i]) * float_amplitude
-
-
-func clear_heads():
-
-	for head in heads:
-		if is_instance_valid(head):
-			head.queue_free()
-
-	heads.clear()
-	base_positions.clear()
-	offsets.clear()
+		obj.position.y = base.y + sin(time + offsets[i]) * float_amplitude

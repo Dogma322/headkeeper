@@ -1,11 +1,17 @@
 extends Node
 
+var pos = Vector2(535,170)
+
+@onready var mush = preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn")
+
 #@onready var tutorial_mushman = preload("res://scenes/Enemies/MushroomCaves/enm_tutorial_mushman.tscn")
 #@onready var wolf1 = preload("res://scenes/Enemies/Forest/enm_wolf_1.tscn")
 #@onready var high_druid = preload("res://scenes/Enemies/Forest/enm_high_druid.tscn")
 
 @onready var early_enemy_pool: = {
-		"armored_mush": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
+	"armored_mush": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
+	"armored_mush1": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
+	"armored_mush2": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
 	
 	
 	#"mushman1": preload("res://scenes/Enemies/MushroomCaves/end_mushroomman_1.tscn"),
@@ -18,6 +24,8 @@ extends Node
 
 @onready var mid_enemy_pool: = {
 	"armored_mush": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
+	"armored_mush1": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
+	"armored_mush2": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
 	
 	#"armored_mush": preload("res://scenes/Enemies/MushroomCaves/enm_armored_mush.tscn"),
 	#"elder_witch": preload("res://scenes/Enemies/Swamp/enm_elder_witch.tscn"),
@@ -32,6 +40,8 @@ extends Node
 
 @onready var late_enemy_pool: = {
 	"armored_mush": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
+	"armored_mush1": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
+	"armored_mush2": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
 	
 	
 	#"crowwoman": preload("res://scenes/Enemies/Forest/enm_crowwoman.tscn"),
@@ -45,6 +55,8 @@ extends Node
 	
 @onready var endless_mode_pool: = {
 	"armored_mush": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
+	"armored_mush1": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
+	"armored_mush2": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
 	
 	#"void_warrior": preload("res://scenes/Enemies/EndlessMode/enm_void_warrior_1.tscn"),
 	#"void_wisp1": preload("res://scenes/Enemies/EndlessMode/enm_void_wisp_1.tscn"),
@@ -62,3 +74,60 @@ func reset_enemy_pools():
 	temp_early_enemy_pool = early_enemy_pool.duplicate()
 	temp_mid_enemy_pool = mid_enemy_pool.duplicate()
 	temp_late_enemy_pool = late_enemy_pool.duplicate()
+	
+func set_enemy():
+	if Global.enemy:
+		Global.enemy.queue_free()
+		
+	var new_enemy
+		
+	if CombatManager.stage == 0:
+		new_enemy = mush.instantiate()
+		
+	if CombatManager.stage == 1:
+		new_enemy = mush.instantiate()
+		
+	if CombatManager.stage > 1 and CombatManager.stage < 4:
+		var keys =  temp_early_enemy_pool.keys()
+		var random_key = keys.pick_random()
+		var enemy = temp_early_enemy_pool[random_key]
+
+		EnemyManager.temp_early_enemy_pool.erase(random_key)
+		new_enemy = enemy.instantiate()
+		
+	if CombatManager.stage >= 4 and CombatManager.stage < 7:
+		var keys = temp_mid_enemy_pool.keys()
+		var random_key = keys.pick_random()
+		var enemy = temp_mid_enemy_pool[random_key]
+
+		temp_mid_enemy_pool.erase(random_key)
+		new_enemy = enemy.instantiate()
+		
+	if CombatManager.stage >= 7 and CombatManager.stage < 10:
+		var keys = temp_late_enemy_pool.keys()
+		var random_key = keys.pick_random()
+		var enemy = temp_late_enemy_pool[random_key]
+
+		temp_late_enemy_pool.erase(random_key)
+		new_enemy = enemy.instantiate()
+		
+	if CombatManager.stage == 10:
+		new_enemy = mush.instantiate()
+
+	if CombatManager.stage > 10:
+		var keys = endless_mode_pool.keys()
+		var random_key = keys.pick_random()
+		var enemy = endless_mode_pool[random_key]
+		
+		new_enemy = enemy.instantiate()
+
+	
+	Global.fight_scene.characters.add_child(new_enemy)
+	Global.enemy = new_enemy
+	Global.enemy.global_position = pos
+	
+	#set_background()
+	#set_music()
+		
+
+	

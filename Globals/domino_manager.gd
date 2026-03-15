@@ -15,6 +15,10 @@ var value4_played_dominoes = 0
 
 var dm_dragging = false
 
+var dm_crit = 0
+var dm_repeat = 0
+var corruption_bonus = 0
+
 @onready var start_deck := {
 	#"4_2_atk_vulnerable": preload("res://scenes/Dominoes/StartDominoes/dm_start_4_2_vulnerable_attack.tscn"),
 	"3_2_atk": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_atck.tscn"),
@@ -30,9 +34,29 @@ var dm_dragging = false
 
 }
 
+@onready var domino_pool:= {
+	"3_2_atk": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_atck.tscn"),
+	"3_2_def": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_def.tscn"),
+	"3_2_atk2": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_atck.tscn"),
+	"3_2_def2": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_def.tscn"),
+	"3_2_atk3": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_atck.tscn"),
+	"3_2_def3": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_def.tscn"),
+	"3_2_atk4": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_atck.tscn"),
+	"3_2_def4": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_def.tscn"),
+	"3_2_atk5": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_atck.tscn"),
+	"3_2_def5": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_def.tscn"),
+
+}
+
+var temp_domino_pool 
+
 
 func _ready() -> void:
 	set_deck()
+	reset_domino_pool()
+	
+func reset_domino_pool():
+	temp_domino_pool = domino_pool.duplicate()
 	
 
 	

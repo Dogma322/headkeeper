@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c21vchucx2ll6"]
+
+[ext_resource type="Script" uid="uid://bbxus3wkhnsa3" path="res://scenes/Transition/transition.gd" id="1_5mmex"]
+[ext_resource type="Texture2D" uid="uid://dhoxcp4cs8usp" path="res://assets/Backgrounds/Blackout.png" id="2_0watu"]
+
+[node name="Transition" type="CanvasLayer" unique_id=1973252117]
+script = ExtResource("1_5mmex")
+
+[node name="Blackout" type="Sprite2D" parent="." unique_id=975031223]
+position = Vector2(320, 180)
+texture = ExtResource("2_0watu")

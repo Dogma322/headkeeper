@@ -59,7 +59,7 @@ func spawn_damage_label(damage, target):
 	
 func spawn_heal_label(damage, target):
 	var label = heal_label.instantiate()
-	label.damage = damage
+	label.heal = damage
 	Global.fight_scene.add_child(label)
 	label.global_position = get_pos(target)
 	label.animate()

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dr7wx1mkxpyl7"]
+
+[ext_resource type="Script" uid="uid://8ybedqvlcgsy" path="res://scenes/ActionCardContainer/action_card_container.gd" id="1_7rfco"]
+[ext_resource type="PackedScene" uid="uid://dq5uno2yympg" path="res://scenes/ActionCards/ActionCardTemplate/action_card_template.tscn" id="2_0ac1x"]
+
+[node name="ActionCardContainer" type="HBoxContainer" unique_id=1117680451]
+offset_top = 84.0
+offset_right = 640.0
+offset_bottom = 228.0
+theme_override_constants/separation = 20
+alignment = 1
+script = ExtResource("1_7rfco")
+
+[node name="ActionCardTemplate" parent="." unique_id=1280652209 instance=ExtResource("2_0ac1x")]
+layout_mode = 2
+
+[node name="ActionCardTemplate2" parent="." unique_id=1267714733 instance=ExtResource("2_0ac1x")]
+layout_mode = 2

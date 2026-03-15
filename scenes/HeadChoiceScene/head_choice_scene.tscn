@@ -2,5 +2,8 @@
 
 [ext_resource type="Script" uid="uid://eww4rgt3mp0s" path="res://scenes/HeadChoiceScene/head_choice_scene.gd" id="1_d26a6"]
 
-[node name="HeadChoiceScene" type="Node2D" unique_id=598777679]
+[node name="ChoiceScene" type="Node2D" unique_id=598777679]
 script = ExtResource("1_d26a6")
+spacing = 90
+y_position = 140
+float_amplitude = 4

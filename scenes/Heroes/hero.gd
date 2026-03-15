@@ -2,6 +2,7 @@ extends Node2D
 
 var max_health = 100:
 	set(value):
+		max_health = value
 		update_hp_bar()
 var health = 100:
 	set(value):

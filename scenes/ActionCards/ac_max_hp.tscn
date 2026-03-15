@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://barj23thfyhwt"]
+
+[ext_resource type="PackedScene" uid="uid://dq5uno2yympg" path="res://scenes/ActionCards/ActionCardTemplate/action_card_template.tscn" id="1_c25dd"]
+[ext_resource type="Script" uid="uid://dxjapy873n6cx" path="res://scenes/ActionCards/ac_max_hp.gd" id="2_im40j"]
+[ext_resource type="Texture2D" uid="uid://0olrrrf6tg0a" path="res://assets/ActionCards/Icons/MaxHPIcons.png" id="3_31dyv"]
+
+[node name="ac_max_hp" unique_id=1280652209 instance=ExtResource("1_c25dd")]
+script = ExtResource("2_im40j")
+
+[node name="TextureRect" parent="." index="0" unique_id=577427704]
+texture = ExtResource("3_31dyv")

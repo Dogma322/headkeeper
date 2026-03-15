@@ -5,12 +5,19 @@ var player_turn = true
 var stage = 1
 
 func _ready() -> void:
+	
+	await get_tree().process_frame
+	
+	Transition.blackout_off()
+	
 	Signals.play_btn_pressed.connect(play_dominoes)
 	Signals.enemy_dead.connect(enemy_dead)
 	#Signals.player_turn_begin.connect(player_turn_begin)
 	#Signals.player_turn_end.connect(player_turn_end)
 	#Signals.enemy_turn_begin.connect(enemy_turn_begin)
 	#Signals.enemy_turn_end.connect(enemy_turn_end)
+	
+	
 	
 	await get_tree().create_timer(0.5).timeout
 	player_turn_begin()
@@ -85,39 +92,50 @@ func enemy_turn_end():
 	
 func enemy_dead():
 	player_turn_end()
+	DominoManager.reshuffle_discard_into_deck()
 	await get_tree().create_timer(1).timeout
 	show_rewards()
 	
 func show_rewards():
 	show_domino_choice()
 	await Signals.domino_selected
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(1).timeout
 	
-	if stage == 1 or stage == 4 or stage == 7:
+	if stage == 2 or stage == 4 or stage == 7:
 		show_head_choice()
 		await Signals.head_selected
-		
 	else:
 		show_action_cards()
 		await Signals.action_card_selected
 		
+	await get_tree().create_timer(1).timeout
+	
+	
 	change_stage()
 	
 	
 func show_domino_choice():
-	pass
+	Global.choice_scene.spawn_dominoes()
 	
 func show_head_choice():
-	pass
+	Global.choice_scene.spawn_heads()
 	
 func show_action_cards():
-	ActionCardManager.generate_action_cards()
+	ActionCardManager.show_action_cards()
+	
 	
 	
 func change_stage():
 	stage += 1
+	Transition.blackout_on()
+	await get_tree().create_timer(1).timeout
+	EnemyManager.set_enemy()
+	Transition.blackout_off()
+	await get_tree().create_timer(1).timeout
+	player_turn_begin()
 	
-
+func clear_statuses():
+	pass
 	
 	
 	

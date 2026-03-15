@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://citxejsl30j6s"]
+
+[ext_resource type="PackedScene" uid="uid://dq5uno2yympg" path="res://scenes/ActionCards/ActionCardTemplate/action_card_template.tscn" id="1_81iy0"]
+[ext_resource type="Script" uid="uid://degisb7bovrmu" path="res://scenes/ActionCards/ac_bonuses.gd" id="2_d1pv0"]
+[ext_resource type="Texture2D" uid="uid://r6v6irpg8g3p" path="res://assets/ActionCards/Icons/RandomBonusIcons.png" id="3_nrvad"]
+
+[node name="ac_bonuses" unique_id=1280652209 instance=ExtResource("1_81iy0")]
+script = ExtResource("2_d1pv0")
+
+[node name="TextureRect" parent="." index="0" unique_id=577427704]
+texture = ExtResource("3_nrvad")

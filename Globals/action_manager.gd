@@ -46,22 +46,28 @@ func play_actions():
 	while queue.size() > 0:
 		
 		if Global.enemy.is_dead:
+			running = false
+			queue.clear()
 			return
 
 		var action:Action = queue.pop_front()
-		print(action)
 		if action.source != action.target:
 			if action.source is Domino or action.source is BoardBonus or action.source is Head:
 				action.source.play_anim()
-			#if action is AttackAction:
 				AnimationManager.spawn_proj(action.source.aim_marker.global_position, action.target.aim_marker.global_position)
 				await Signals.projectile_hit
 		action.execute()
 		await get_tree().create_timer(0.35).timeout
+		
+
 
 	running = false
 	
 	Signals.actions_completed.emit()
+	
+func play_one_action():
+	var action = queue.pop_front()
+	action.execute()
 
 
 func wait(time:float):

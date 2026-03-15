@@ -1,9 +1,6 @@
 extends Control
 
 
-
-
-
 func _on_btn_pressed() -> void:
 	Signals.play_btn_pressed.emit()
 
