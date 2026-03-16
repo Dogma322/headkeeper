@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ckxtopodoa4sl"]
+
+[ext_resource type="PackedScene" uid="uid://dq5uno2yympg" path="res://scenes/ActionCards/ActionCardTemplate/action_card_template.tscn" id="1_0k5nl"]
+[ext_resource type="Script" uid="uid://b37h6bp60m6e6" path="res://scenes/ActionCards/ac_vulnerable_bonus.gd" id="2_qu5iw"]
+[ext_resource type="Texture2D" uid="uid://dljywb20gq4on" path="res://assets/ActionCards/Icons/VulnerableBonusIcon.png" id="2_w0fql"]
+
+[node name="ac_vulnerable_bonus" unique_id=1280652209 instance=ExtResource("1_0k5nl")]
+script = ExtResource("2_qu5iw")
+
+[node name="TextureRect" parent="." index="0" unique_id=577427704]
+texture = ExtResource("2_w0fql")

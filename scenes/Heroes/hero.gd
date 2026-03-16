@@ -19,6 +19,8 @@ var damage_mult = 1
 var bonus_damage = 0
 var incoming_damage_mult = 1
 
+var is_dead
+
 var statuses = []
 
 var base_sprite_position
@@ -56,10 +58,32 @@ func update_hp_bar():
 	
 func take_damage(damage):
 	take_damage_anim()
+	if is_dead:
+		return
+		
+		
+		
+		
+		
+	var invincible_status = get_status("invincible")
+
+	if invincible_status and invincible_status.stacks > 0:
+		damage = 0
+		
+		
+		
+		
+		
+	var evasion_status = get_status("evasion")
+
+	if evasion_status and evasion_status.stacks > 0:
+
+		evasion_status.stacks -= 1
+
+		damage = 0
 	
-	var tween = get_tree().create_tween()
-	tween.tween_property(sprite, "modulate", Color(2,2,2,1), 0.05)
-	tween.tween_property(sprite, "modulate", Color(1,1,1,1), 0.05)
+	
+	
 	
 	if block > damage:
 		block -= damage
@@ -69,8 +93,16 @@ func take_damage(damage):
 		block = 0
 	health -= damage
 	
+	AnimationManager.spawn_damage_label(damage, self)
+
 	if health <= 0:
 		dead()
+		
+func get_status(status_id:String):
+	for icon in status_container.get_children():
+		if icon.status.id == status_id:
+			return icon.status
+	return null
 
 func take_damage_anim():
 

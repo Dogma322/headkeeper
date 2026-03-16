@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bqtiihmsb6kjk"]
+
+[ext_resource type="PackedScene" uid="uid://dq5uno2yympg" path="res://scenes/ActionCards/ActionCardTemplate/action_card_template.tscn" id="1_cwpmx"]
+[ext_resource type="Script" uid="uid://cpgbl62x5vm07" path="res://scenes/ActionCards/ac_weak_bonus.gd" id="2_72i1u"]
+[ext_resource type="Texture2D" uid="uid://cly4q3s0mnxpy" path="res://assets/ActionCards/Icons/WeakBonusIcon.png" id="2_88tfd"]
+
+[node name="ac_weak_bonus" unique_id=1280652209 instance=ExtResource("1_cwpmx")]
+script = ExtResource("2_72i1u")
+
+[node name="TextureRect" parent="." index="0" unique_id=577427704]
+texture = ExtResource("2_88tfd")

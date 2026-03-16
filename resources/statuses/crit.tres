@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3 uid="uid://iifq43vh2vmj"]
+
+[ext_resource type="Script" uid="uid://c35lttg20sn15" path="res://resources/statuses/crit.gd" id="1_ouimu"]
+[ext_resource type="Texture2D" uid="uid://f4nkkac62hic" path="res://assets/Statuses/StatusAtlas.png" id="2_ouimu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dingf"]
+atlas = ExtResource("2_ouimu")
+region = Rect2(128, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_ouimu")
+id = "crit"
+stackable = true
+event_based_effect = true
+texture = SubResource("AtlasTexture_dingf")
+metadata/_custom_type_script = "uid://dyln3pjhpe4xd"

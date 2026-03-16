@@ -28,8 +28,8 @@ func spawn_anim(scene: PackedScene, target, damage):
 	
 	if scene == heal_anim:
 		spawn_heal_label(damage, target)
-	if scene == attack_anim:
-		spawn_damage_label(damage, target)
+	#if scene == attack_anim:
+		#spawn_damage_label(damage, target)
 	
 	
 	await get_tree().create_timer(0.5).timeout

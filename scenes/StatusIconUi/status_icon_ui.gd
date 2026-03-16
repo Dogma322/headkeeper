@@ -14,7 +14,7 @@ var des_tween: Tween
 var mouse_over_des = false
 
 func _ready() -> void:
-	hide_des()
+	hide_des_fast()
 
 
 
@@ -33,7 +33,11 @@ func _on_status_changed():
 	if not status:
 		return
 		
-	if status.reducible and status.stacks <= 0:
+	if !status.stackable:
+		stacks_label.visible = false
+		
+	if status.stacks <= 0 and !status.can_go_negative:
+		status.remove_status_effect()
 		queue_free()
 		
 	stacks_label.text = str(status.stacks)
@@ -54,9 +58,10 @@ func _on_mouse_exited():
 	#description_panel.visible = false
 	
 func show_des():
+
 	if DominoManager.dm_dragging:
 		return
-	#update_labels()
+	update_labels()
 	
 	z_index = 10
 
@@ -90,6 +95,8 @@ func hide_des():
 			des_panel.visible = false
 		z_index = 0
 
+func hide_des_fast():
+	des_panel.visible = false
 	
 func update_labels():
 	status.update_text()

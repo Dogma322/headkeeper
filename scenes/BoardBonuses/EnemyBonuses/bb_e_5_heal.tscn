@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bynsr74eyxcmt"]
+
+[ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_82tf7"]
+[ext_resource type="Script" uid="uid://4qv0i57ukhon" path="res://scenes/BoardBonuses/EnemyBonuses/bb_e_5_heal.gd" id="2_4mba3"]
+[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_3ouml"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ktwj"]
+atlas = ExtResource("3_3ouml")
+region = Rect2(874, 48, 28, 28)
+
+[node name="bb_e_5heal" unique_id=470544141 instance=ExtResource("1_82tf7")]
+script = ExtResource("2_4mba3")
+
+[node name="Sprite2D" parent="." index="0" unique_id=790081820]
+texture = SubResource("AtlasTexture_0ktwj")
+
+[node name="ValueLabel" parent="." index="2" unique_id=1340414324]
+offset_left = 5.0
+text = "5"

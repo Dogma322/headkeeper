@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://eiiauemfy1dn"]
+
+[ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_f8scj"]
+[ext_resource type="Script" uid="uid://u88ut46ll2et" path="res://scenes/BoardBonuses/HeroBonuses/bb_h_heal.gd" id="2_6cg2h"]
+[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_swwxi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cv30"]
+atlas = ExtResource("3_swwxi")
+region = Rect2(904, 16, 28, 28)
+
+[node name="bb_h_heal" unique_id=470544141 instance=ExtResource("1_f8scj")]
+script = ExtResource("2_6cg2h")
+
+[node name="Sprite2D" parent="." index="0" unique_id=790081820]
+texture = SubResource("AtlasTexture_3cv30")
+
+[node name="ValueLabel" parent="." index="2" unique_id=1340414324]
+offset_left = 4.0
+text = "3"

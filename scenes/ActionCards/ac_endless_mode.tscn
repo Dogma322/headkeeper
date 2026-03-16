@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://mj1x1mya7by0"]
+
+[ext_resource type="PackedScene" uid="uid://dq5uno2yympg" path="res://scenes/ActionCards/ActionCardTemplate/action_card_template.tscn" id="1_qtb3t"]
+[ext_resource type="Script" uid="uid://br1cjdtg480se" path="res://scenes/ActionCards/ac_endless_mode.gd" id="2_6pk86"]
+[ext_resource type="Texture2D" uid="uid://cp8p88yaaojtb" path="res://assets/ActionCards/Icons/EndlessModeIcon.png" id="3_ag42y"]
+
+[node name="ac_endless_mode" unique_id=1280652209 instance=ExtResource("1_qtb3t")]
+script = ExtResource("2_6pk86")
+
+[node name="TextureRect" parent="." index="0" unique_id=577427704]
+texture = ExtResource("3_ag42y")

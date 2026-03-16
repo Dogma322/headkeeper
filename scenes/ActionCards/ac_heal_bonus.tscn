@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://crr8qdpctof2s"]
+
+[ext_resource type="PackedScene" uid="uid://dq5uno2yympg" path="res://scenes/ActionCards/ActionCardTemplate/action_card_template.tscn" id="1_qqmvi"]
+[ext_resource type="Script" uid="uid://pq1dp3q1d5f5" path="res://scenes/ActionCards/ac_heal_bonus.gd" id="2_v5w2k"]
+[ext_resource type="Texture2D" uid="uid://c1t1bp7afitea" path="res://assets/ActionCards/Icons/HealBonusIcon.png" id="3_g64o4"]
+
+[node name="ac_heal_bonus" unique_id=1280652209 instance=ExtResource("1_qqmvi")]
+script = ExtResource("2_v5w2k")
+
+[node name="TextureRect" parent="." index="0" unique_id=577427704]
+texture = ExtResource("3_g64o4")

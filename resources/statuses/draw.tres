@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3 uid="uid://bvl8l58p7y31"]
+
+[ext_resource type="Script" uid="uid://bd82ngimicfal" path="res://resources/statuses/draw.gd" id="1_xeu22"]
+[ext_resource type="Texture2D" uid="uid://f4nkkac62hic" path="res://assets/Statuses/StatusAtlas.png" id="2_v33gp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2nk0"]
+atlas = ExtResource("2_v33gp")
+region = Rect2(161, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_xeu22")
+id = "draw"
+stackable = true
+turn_begin_effect = true
+texture = SubResource("AtlasTexture_q2nk0")
+metadata/_custom_type_script = "uid://dyln3pjhpe4xd"

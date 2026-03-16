@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://37nkxqp8ivpj"]
+
+[ext_resource type="PackedScene" uid="uid://dnco2xl6pi07y" path="res://scenes/Dominoes/DominoTemplate/domino_template.tscn" id="1_ktcs3"]
+[ext_resource type="Script" uid="uid://bu0k4r2ybf1xa" path="res://scenes/Dominoes/StartDominoes/dm_start_3_1_attack.gd" id="2_qr7c6"]
+[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="2_rbfuv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr7c6"]
+atlas = ExtResource("2_rbfuv")
+region = Rect2(16, 16, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nu603"]
+atlas = ExtResource("2_rbfuv")
+region = Rect2(114, 162, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6yjh"]
+atlas = ExtResource("2_rbfuv")
+region = Rect2(187, 171, 10, 10)
+
+[node name="dm_start_3_1_attack" unique_id=1771172059 instance=ExtResource("1_ktcs3")]
+script = ExtResource("2_qr7c6")
+a = 3
+b = 1
+
+[node name="Back" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="0" unique_id=1409418696]
+texture = SubResource("AtlasTexture_qr7c6")
+
+[node name="TopIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="1" unique_id=1407603542]
+texture = SubResource("AtlasTexture_nu603")
+
+[node name="BotIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="2" unique_id=189273046]
+texture = SubResource("AtlasTexture_g6yjh")

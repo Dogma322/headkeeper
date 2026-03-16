@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3 uid="uid://dik6jl0qnrkx8"]
+
+[ext_resource type="Script" uid="uid://cyx883e50jis" path="res://resources/statuses/evasion.gd" id="1_1kf2b"]
+[ext_resource type="Texture2D" uid="uid://f4nkkac62hic" path="res://assets/Statuses/StatusAtlas.png" id="2_ndcf7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gowtu"]
+atlas = ExtResource("2_ndcf7")
+region = Rect2(96, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_1kf2b")
+id = "evasion"
+stackable = true
+event_based_effect = true
+texture = SubResource("AtlasTexture_gowtu")
+metadata/_custom_type_script = "uid://dyln3pjhpe4xd"

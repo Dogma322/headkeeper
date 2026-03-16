@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ooclj6d747a2"]
+
+[ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_xgmip"]
+[ext_resource type="Script" uid="uid://b0apixxlu3r4u" path="res://scenes/BoardBonuses/EnemyBonuses/bb_e_10_defense.gd" id="2_0xomp"]
+[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_ytcwq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7oy8"]
+atlas = ExtResource("3_ytcwq")
+region = Rect2(934, 48, 28, 28)
+
+[node name="bb_e_10defense" unique_id=470544141 instance=ExtResource("1_xgmip")]
+script = ExtResource("2_0xomp")
+
+[node name="Sprite2D" parent="." index="0" unique_id=790081820]
+texture = SubResource("AtlasTexture_x7oy8")
+
+[node name="ValueLabel" parent="." index="2" unique_id=1340414324]
+offset_left = -1.0
+text = "10"

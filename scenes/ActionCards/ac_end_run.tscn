@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cgcrgslyj5xy7"]
+
+[ext_resource type="PackedScene" uid="uid://dq5uno2yympg" path="res://scenes/ActionCards/ActionCardTemplate/action_card_template.tscn" id="1_qyfpv"]
+[ext_resource type="Script" uid="uid://803wt7828fl1" path="res://scenes/ActionCards/ac_end_run.gd" id="2_5qbye"]
+[ext_resource type="Texture2D" uid="uid://chr36ldfm3304" path="res://assets/ActionCards/Icons/EndRunIcon.png" id="3_acjv5"]
+
+[node name="ac_end_run" unique_id=1280652209 instance=ExtResource("1_qyfpv")]
+script = ExtResource("2_5qbye")
+
+[node name="TextureRect" parent="." index="0" unique_id=577427704]
+texture = ExtResource("3_acjv5")

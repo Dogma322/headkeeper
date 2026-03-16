@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://byulf2j8q7e8i"]
+
+[ext_resource type="PackedScene" uid="uid://dq5uno2yympg" path="res://scenes/ActionCards/ActionCardTemplate/action_card_template.tscn" id="1_31odu"]
+[ext_resource type="Script" uid="uid://fmik7ahebqqr" path="res://scenes/ActionCards/ac_attack_bonus.gd" id="2_l3v0q"]
+[ext_resource type="Texture2D" uid="uid://bxsc5qm63ltxn" path="res://assets/ActionCards/Icons/AttackBonusIcon.png" id="3_r62wl"]
+
+[node name="ac_attack_bonus" unique_id=1280652209 instance=ExtResource("1_31odu")]
+script = ExtResource("2_l3v0q")
+
+[node name="TextureRect" parent="." index="0" unique_id=577427704]
+texture = ExtResource("3_r62wl")

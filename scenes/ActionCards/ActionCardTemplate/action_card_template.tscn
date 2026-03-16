@@ -22,11 +22,12 @@ texture = ExtResource("2_7eo55")
 [node name="Label" type="Label" parent="." unique_id=1284463239]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 87.0
+offset_top = 77.0
 offset_right = 87.0
 offset_bottom = 137.0
 theme = ExtResource("3_p6wmb")
-text = "asdads"
+theme_override_constants/line_spacing = -2
+text = "FSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
 horizontal_alignment = 1
 autowrap_mode = 3
 

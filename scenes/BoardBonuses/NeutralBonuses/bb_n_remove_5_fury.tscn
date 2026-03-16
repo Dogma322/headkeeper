@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dfjj7t6frc1wf"]
+
+[ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_e5lbk"]
+[ext_resource type="Script" uid="uid://664j7o88dwhi" path="res://scenes/BoardBonuses/NeutralBonuses/bb_n_remove_5_fury.gd" id="2_lwifh"]
+[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="2_wjxth"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwifh"]
+atlas = ExtResource("2_wjxth")
+region = Rect2(904, 112, 28, 28)
+
+[node name="bb_n_remove_5_fury" unique_id=470544141 instance=ExtResource("1_e5lbk")]
+script = ExtResource("2_lwifh")
+
+[node name="Sprite2D" parent="." index="0" unique_id=790081820]
+texture = SubResource("AtlasTexture_lwifh")
+
+[node name="ValueLabel" parent="." index="2" unique_id=1340414324]
+offset_left = 5.0
+offset_top = 4.0
+offset_bottom = 12.0
+text = "-5"

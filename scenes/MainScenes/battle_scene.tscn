@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dmn1nxgk76p1g" path="res://scenes/Heads/hd_berserk.tscn" id="12_m8wss"]
 [ext_resource type="PackedScene" uid="uid://dr7wx1mkxpyl7" path="res://scenes/ActionCardContainer/action_card_container.tscn" id="13_4d2li"]
 [ext_resource type="PackedScene" uid="uid://caovgfyajqfdl" path="res://scenes/HeadChoiceScene/head_choice_scene.tscn" id="14_36n0a"]
+[ext_resource type="PackedScene" uid="uid://bmdtecafi1ta3" path="res://scenes/RemoveDominoScene/remove_domino_scene.tscn" id="15_36n0a"]
 
 [node name="BattleScene" type="Node2D" unique_id=563303012]
 script = ExtResource("1_ydxg7")
@@ -36,10 +37,10 @@ position = Vector2(103, 170)
 position = Vector2(535, 170)
 
 [node name="PlayBtn" parent="." unique_id=870213553 instance=ExtResource("6_cbqmc")]
-offset_left = 413.0
-offset_top = 9.0
-offset_right = 509.0
-offset_bottom = 34.0
+offset_left = 414.0
+offset_top = -50.0
+offset_right = 510.0
+offset_bottom = -25.0
 
 [node name="UI" type="Node2D" parent="." unique_id=494084482]
 
@@ -68,3 +69,5 @@ offset_top = -240.0
 offset_bottom = -82.0
 
 [node name="ChoiceScene" parent="." unique_id=598777679 instance=ExtResource("14_36n0a")]
+
+[node name="RemoveDominoScene" parent="." unique_id=1801682247 instance=ExtResource("15_36n0a")]

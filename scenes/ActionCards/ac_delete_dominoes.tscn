@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ctd1lv7wqhuyb"]
+
+[ext_resource type="PackedScene" uid="uid://dq5uno2yympg" path="res://scenes/ActionCards/ActionCardTemplate/action_card_template.tscn" id="1_qoao5"]
+[ext_resource type="Script" uid="uid://tw8oyrs1r5ie" path="res://scenes/ActionCards/ac_delete_dominoes.gd" id="2_q7wg6"]
+[ext_resource type="Texture2D" uid="uid://br8o6lq5kr6nr" path="res://assets/ActionCards/Icons/Remove2BonesIcons.png" id="3_nejd7"]
+
+[node name="ac_delete_dominoes" unique_id=1280652209 instance=ExtResource("1_qoao5")]
+script = ExtResource("2_q7wg6")
+
+[node name="TextureRect" parent="." index="0" unique_id=577427704]
+texture = ExtResource("3_nejd7")

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dddbwtpakyrma"]
+
+[ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_xy27h"]
+[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="2_56tsd"]
+[ext_resource type="Script" uid="uid://ca03oum2ybtqb" path="res://scenes/BoardBonuses/NeutralBonuses/bb_e_remove_invincible.gd" id="2_m6qdu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6qdu"]
+atlas = ExtResource("2_56tsd")
+region = Rect2(964, 112, 28, 28)
+
+[node name="bb_e_remove_invincible" unique_id=470544141 instance=ExtResource("1_xy27h")]
+script = ExtResource("2_m6qdu")
+
+[node name="Sprite2D" parent="." index="0" unique_id=790081820]
+texture = SubResource("AtlasTexture_m6qdu")

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3 uid="uid://450undfqewu7"]
+
+[ext_resource type="Script" uid="uid://dud41u0i88kke" path="res://resources/statuses/invincible.gd" id="1_e3nx2"]
+[ext_resource type="Texture2D" uid="uid://f4nkkac62hic" path="res://assets/Statuses/StatusAtlas.png" id="2_6g5wy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb0il"]
+atlas = ExtResource("2_6g5wy")
+region = Rect2(112, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_e3nx2")
+id = "invincible"
+event_based_effect = true
+texture = SubResource("AtlasTexture_nb0il")
+metadata/_custom_type_script = "uid://dyln3pjhpe4xd"

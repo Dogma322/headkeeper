@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bumaoeji8vx6c"]
+
+[ext_resource type="PackedScene" uid="uid://dq5uno2yympg" path="res://scenes/ActionCards/ActionCardTemplate/action_card_template.tscn" id="1_mxbrt"]
+[ext_resource type="Script" uid="uid://lqs5aukfk4od" path="res://scenes/ActionCards/ac_repeat_bonus.gd" id="2_3bm0v"]
+[ext_resource type="Texture2D" uid="uid://dmb6lb3kynp1l" path="res://assets/ActionCards/Icons/RepeatBonusIcon.png" id="2_is156"]
+
+[node name="ac_repeat_bonus" unique_id=1280652209 instance=ExtResource("1_mxbrt")]
+script = ExtResource("2_3bm0v")
+
+[node name="TextureRect" parent="." index="0" unique_id=577427704]
+texture = ExtResource("2_is156")

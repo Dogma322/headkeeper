@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://btnxk8vmsjatg"]
+
+[ext_resource type="PackedScene" uid="uid://dq5uno2yympg" path="res://scenes/ActionCards/ActionCardTemplate/action_card_template.tscn" id="1_vc0on"]
+[ext_resource type="Script" uid="uid://dcyifqw4508ml" path="res://scenes/ActionCards/ac_defense_bonus.gd" id="2_cuooj"]
+
+[node name="ac_defense_bonus" unique_id=1280652209 instance=ExtResource("1_vc0on")]
+script = ExtResource("2_cuooj")

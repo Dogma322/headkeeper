@@ -2,9 +2,11 @@ extends Enemy
 
 
 func _ready():
-
-	max_health = 1
+	location = "MushroomCaves"
+	max_health = 100
 	health = max_health
+	
+	bonus_pool = [BoardManager.n_larva, BoardManager.n_larva, BoardManager.n_larva, BoardManager.n_larva, BoardManager.n_larva, ]
 
 	behavior_mode = BehaviorMode.SEQUENTIAL
 	first_action_index = 0
@@ -41,6 +43,12 @@ func _ready():
 
 	plan_next_action()
 
+#func add_start_fight_action():
+	#ActionManager.add(
+		#BuffAction.new(self, self,StatusManager.evasion,10)
+	#)
+
+
 
 
 func action_attack():
@@ -48,6 +56,24 @@ func action_attack():
 	ActionManager.add(
 		AttackAction.new(self, Global.hero, final_damage(17))
 	)
+	
+
+	ActionManager.add(
+		BuffAction.new(self, self,StatusManager.fury,larvas * 2)
+		)
+	ActionManager.add(
+		HealAction.new(self, self, larvas * 5)
+		)
+	
+	larvas = 0
+	
+	
+	#if get_status("invincible") == null:
+		#ActionManager.add(
+			#BuffAction.new(self, self,StatusManager.invincible,1)
+		#)
+	
+
 	#ActionManager.add(
 		#DebuffAction.new(self, Global.hero, StatusManager.vulnerable, 2)
 	#)
@@ -61,8 +87,6 @@ func action_buff():
 	ActionManager.add(
 		BuffAction.new(self, self,StatusManager.thorns,2)
 	)
-
-
 
 
 

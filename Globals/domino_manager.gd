@@ -7,6 +7,7 @@ var discard = []
 var flamed = []
 
 var draw_counter = 5
+var bonus_draw_counter = 0
 
 var value1_played_dominoes = 0
 var value2_played_dominoes = 0
@@ -14,23 +15,26 @@ var value3_played_dominoes = 0
 var value4_played_dominoes = 0
 
 var dm_dragging = false
+var block_domino_input = false
+var delete_mode = false
 
-var dm_crit = 0
-var dm_repeat = 0
-var corruption_bonus = 0
+
+
+var double_next_dm = 0
 
 @onready var start_deck := {
 	#"4_2_atk_vulnerable": preload("res://scenes/Dominoes/StartDominoes/dm_start_4_2_vulnerable_attack.tscn"),
 	"3_2_atk": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_atck.tscn"),
 	"3_2_def": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_def.tscn"),
-	"3_2_atk2": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_atck.tscn"),
-	"3_2_def2": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_def.tscn"),
-	"3_2_atk3": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_atck.tscn"),
-	"3_2_def3": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_def.tscn"),
-	"3_2_atk4": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_atck.tscn"),
-	"3_2_def4": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_def.tscn"),
-	"3_2_atk5": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_atck.tscn"),
-	"3_2_def5": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_def.tscn"),
+	"2_1_atk": preload("res://scenes/Dominoes/StartDominoes/dm_start_2_1_attack.tscn"),
+	"2_1_atk2": preload("res://scenes/Dominoes/StartDominoes/dm_start_2_1_attack.tscn"),
+	"2_1_def": preload("res://scenes/Dominoes/StartDominoes/dm_start_2_1_defense.tscn"),
+	"3_1_atk": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_1_attack.tscn"),
+	"3_1_def": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_1_defense.tscn"),
+	"3_1_def2": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_1_defense.tscn"),
+	"4_2_def_vulnerable": preload("res://scenes/Dominoes/StartDominoes/dm_start_4_2_vulnerable_attack.tscn"),
+	"4_2_def_heal": preload("res://scenes/Dominoes/StartDominoes/dm_start_4_2_heal_defense.tscn"),
+	
 
 }
 
@@ -89,5 +93,9 @@ func reshuffle_discard_into_deck():
 	
 
 
-		
+func reset_turn_data():
+	pass
+	
+func reset_run_data():
+	pass
 	

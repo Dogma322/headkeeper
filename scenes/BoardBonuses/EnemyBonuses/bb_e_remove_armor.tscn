@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ciw2hewhlml30"]
+
+[ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_ajcc7"]
+[ext_resource type="Script" uid="uid://bwugvs8ejo04j" path="res://scenes/BoardBonuses/EnemyBonuses/bb_e_remove_armor.gd" id="2_bapog"]
+[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_rjimr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxtoy"]
+atlas = ExtResource("3_rjimr")
+region = Rect2(964, 80, 28, 28)
+
+[node name="bb_e_remove_armor" unique_id=470544141 instance=ExtResource("1_ajcc7")]
+script = ExtResource("2_bapog")
+
+[node name="Sprite2D" parent="." index="0" unique_id=790081820]
+texture = SubResource("AtlasTexture_lxtoy")

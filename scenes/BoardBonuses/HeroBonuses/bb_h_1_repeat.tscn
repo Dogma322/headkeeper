@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cbwl46nt81pmr"]
+
+[ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_71ji6"]
+[ext_resource type="Script" uid="uid://cbndrgdrjcfe8" path="res://scenes/BoardBonuses/HeroBonuses/bb_h_1_repeat.gd" id="2_psfhv"]
+[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_3675j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8da7n"]
+atlas = ExtResource("3_3675j")
+region = Rect2(664, 16, 28, 28)
+
+[node name="bb_h_1repeat" unique_id=470544141 instance=ExtResource("1_71ji6")]
+script = ExtResource("2_psfhv")
+
+[node name="Sprite2D" parent="." index="0" unique_id=790081820]
+texture = SubResource("AtlasTexture_8da7n")

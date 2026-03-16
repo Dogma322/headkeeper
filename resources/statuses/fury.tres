@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3 uid="uid://ckx2gct70vgdr"]
+
+[ext_resource type="Script" uid="uid://cuwyfqx3o33im" path="res://resources/statuses/fury.gd" id="1_740mv"]
+[ext_resource type="Texture2D" uid="uid://f4nkkac62hic" path="res://assets/Statuses/StatusAtlas.png" id="2_g0k3w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7b4ap"]
+atlas = ExtResource("2_g0k3w")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_740mv")
+id = "fury"
+stackable = true
+can_go_negative = true
+texture = SubResource("AtlasTexture_7b4ap")
+metadata/_custom_type_script = "uid://dyln3pjhpe4xd"

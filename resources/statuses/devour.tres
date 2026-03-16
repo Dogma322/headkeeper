@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3 uid="uid://gl3665x10sef"]
+
+[ext_resource type="Script" uid="uid://dkkhajss0w10a" path="res://resources/statuses/devour.gd" id="1_0c52e"]
+[ext_resource type="Texture2D" uid="uid://f4nkkac62hic" path="res://assets/Statuses/StatusAtlas.png" id="2_dr0um"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w21gy"]
+atlas = ExtResource("2_dr0um")
+region = Rect2(80, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_0c52e")
+id = "devour"
+event_based_effect = true
+texture = SubResource("AtlasTexture_w21gy")
+metadata/_custom_type_script = "uid://dyln3pjhpe4xd"

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bpskeowftdng0"]
+
+[ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_owh82"]
+[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="2_pfgpp"]
+[ext_resource type="Script" uid="uid://cwhlxt5f0qmum" path="res://scenes/BoardBonuses/EnemyBonuses/bb_e_2_thorns.gd" id="2_q7cc0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7cc0"]
+atlas = ExtResource("2_pfgpp")
+region = Rect2(784, 48, 28, 28)
+
+[node name="bb_e_2thorns" unique_id=470544141 instance=ExtResource("1_owh82")]
+script = ExtResource("2_q7cc0")
+
+[node name="Sprite2D" parent="." index="0" unique_id=790081820]
+texture = SubResource("AtlasTexture_q7cc0")
+
+[node name="ValueLabel" parent="." index="2" unique_id=1340414324]
+offset_left = 5.0
+text = "2"

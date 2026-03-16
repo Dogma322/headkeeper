@@ -20,6 +20,8 @@ signal discard_changed
 signal domino_selected
 signal head_selected
 signal action_card_selected
+signal domino_deleted_from_deck
+signal domino_delete_completed
 
 signal _1dm_played(domino)
 signal _2dm_played(domino)
@@ -35,3 +37,8 @@ signal hero_take_damage
 
 signal deal_enemy_thorn_damage
 signal deal_hero_thorn_damage
+
+signal reset_turn_data
+signal reset_run_data
+
+signal fight_started

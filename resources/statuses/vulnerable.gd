@@ -8,6 +8,9 @@ func initialize_status():
 func _on_status_changed():
 	owner.incoming_damage_mult = 1.5
 	
+func remove_status_effect():
+	owner.incoming_damage_mult = 1
+	
 func update_text():
-	name = "Уязвимость"
-	des = "Уязвимость ы"
+	name = tr("st_vulnerable_name")
+	des = tr("st_vulnerable_in_game_des")

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dndf1dhgtdxdw"]
+
+[ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_60or3"]
+[ext_resource type="Script" uid="uid://d4imjbe0pumt7" path="res://scenes/BoardBonuses/EnemyBonuses/bb_e_1_evasion.gd" id="2_u2lf3"]
+[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_4ymmv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jc5jf"]
+atlas = ExtResource("3_4ymmv")
+region = Rect2(844, 80, 28, 28)
+
+[node name="bb_e_1evasion" unique_id=470544141 instance=ExtResource("1_60or3")]
+script = ExtResource("2_u2lf3")
+
+[node name="Sprite2D" parent="." index="0" unique_id=790081820]
+texture = SubResource("AtlasTexture_jc5jf")

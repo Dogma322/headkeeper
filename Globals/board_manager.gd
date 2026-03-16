@@ -2,7 +2,41 @@ extends Node2D
 
 @onready var h_5dmg_bonus = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_5_damage.tscn")
 @onready var h_5def_bonus = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_5_defense.tscn")
-@onready var bonus_pool = [h_5dmg_bonus, h_5dmg_bonus, h_5dmg_bonus, h_5def_bonus, h_5def_bonus]
+@onready var h_3heal = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_heal.tscn")
+@onready var h_draw = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_draw.tscn")
+@onready var h_thorns = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_thorns.tscn")
+@onready var h_1fury = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_fury.tscn")
+@onready var h_1vulnerable = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_vulnerable.tscn")
+@onready var h_1weak = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_weak.tscn")
+@onready var h_1crit = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_crit.tscn")
+@onready var h_1repeat = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_repeat.tscn")
+
+@onready var e_5dmg = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_5_damage.tscn")
+@onready var e_10dmg = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_10_damage.tscn")
+@onready var e_15dmg = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_15_damage.tscn")
+@onready var e_5def = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_5_defense.tscn")
+@onready var e_10def = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_10_defense.tscn")
+@onready var e_15def = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_15_defense.tscn")
+@onready var e_5fury = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_5_fury.tscn")
+@onready var e_10fury = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_10_fury.tscn")
+@onready var e_5heal = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_5_heal.tscn")
+@onready var e_10heal = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_h_10_heal.tscn")
+@onready var e_15heal = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_15_heal.tscn")
+@onready var e_2vulnerable = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_2_vulnerable.tscn")
+@onready var e_2weak = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_2_weak.tscn")
+@onready var e_1thorns = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_1_thorns.tscn")
+@onready var e_2thorns = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_2_thorns.tscn")
+@onready var e_decrease_5_max_hp = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_decrease_5_max_hp.tscn")
+@onready var e_1evasion = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_1_evasion.tscn")
+
+@onready var n_remove_invincible = preload("res://scenes/BoardBonuses/NeutralBonuses/bb_e_remove_invincible.tscn")
+@onready var n_larva = preload("res://scenes/BoardBonuses/NeutralBonuses/bb_n_larva.tscn")
+@onready var n_remove_armor = preload("res://scenes/BoardBonuses/NeutralBonuses/bb_n_remove_armor.tscn")
+@onready var n_remove_5fury = preload("res://scenes/BoardBonuses/NeutralBonuses/bb_n_remove_5_fury.tscn")
+@onready var n_remove_10fury = preload("res://scenes/BoardBonuses/NeutralBonuses/bb_n_remove_10_fury.tscn")
+
+
+@onready var bonus_pool = [h_5dmg_bonus, h_5dmg_bonus, h_5def_bonus, n_remove_5fury, n_remove_5fury]
 
 var slots = []
 var target_slot
@@ -52,7 +86,12 @@ func generate_bonuses():
 	for slot in all_slots:
 		slot.remove_bonuses()
 
-	for bonus_scene in bonus_pool:
+
+	var bonuses = bonus_pool + Global.enemy.bonus_pool
+
+
+
+	for bonus_scene in bonuses:
 
 		var bonus = bonus_scene.instantiate()
 		var valid_slots = []
@@ -71,7 +110,6 @@ func generate_bonuses():
 			valid_slots.append(slot)
 
 		if valid_slots.size() == 0:
-			print("No slot for bonus")
 			continue
 
 		var slot = valid_slots.pick_random()

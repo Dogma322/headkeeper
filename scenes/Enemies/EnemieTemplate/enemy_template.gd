@@ -54,6 +54,13 @@ var incoming_damage_mult = 1:
 		incoming_damage_mult = value
 		update_damage_label()
 
+var location = "MushroomCaves"
+
+var invinsible = false
+var evasion = 0
+var larvas = 0
+
+
 var statuses = []
 
 var behavior_mode = BehaviorMode.SEQUENTIAL
@@ -78,6 +85,8 @@ var is_dead = false
 var base_sprite_position
 var damage_tween: Tween
 
+var bonus_pool = []
+
 @onready var hp_bar = $HpBar
 @onready var hp_bar_label = $HpBar/HpBarLabel
 @onready var sprite = $AnimatedSprite2D
@@ -100,6 +109,7 @@ func _ready():
 	intent_icon_animation()
 	
 	Signals.enemy_turn_begin.connect(remove_block)
+	Signals.fight_started.connect(add_start_fight_action)
 
 func remove_block():
 	block = 0
@@ -128,6 +138,30 @@ func take_damage(damage):
 	take_damage_anim()
 	if is_dead:
 		return
+		
+		
+		
+		
+		
+	var invincible_status = get_status("invincible")
+
+	if invincible_status and invincible_status.stacks > 0:
+		damage = 0
+		
+		
+		
+		
+		
+	var evasion_status = get_status("evasion")
+
+	if evasion_status and evasion_status.stacks > 0:
+
+		evasion_status.stacks -= 1
+
+		damage = 0
+	
+	
+	
 	
 	if block > damage:
 		block -= damage
@@ -136,9 +170,19 @@ func take_damage(damage):
 		damage -= block
 		block = 0
 	health -= damage
+	
+	AnimationManager.spawn_damage_label(damage, self)
 
 	if health <= 0:
 		dead()
+		
+func get_status(status_id:String):
+	for icon in status_container.get_children():
+		if icon.status.id == status_id:
+			return icon.status
+	return null
+		
+		
 		
 func take_damage_anim():
 		
@@ -154,6 +198,8 @@ func take_damage_anim():
 	sprite.material = preload("res://scenes/WhiteShader/white_shader.tres")
 	await get_tree().create_timer(0.1).timeout
 	sprite.material = null
+	
+
 
 
 func take_heal(heal):
@@ -165,7 +211,8 @@ func take_block(armor):
 
 
 func dead():
-
+	if is_dead:
+		return
 	is_dead = true
 	Signals.enemy_dead.emit()
 	
@@ -345,6 +392,9 @@ func add_action():
 	await Signals.enemy_turn_end
 	
 	plan_next_action()
+	
+func add_start_fight_action():
+	pass
 	
 	
 func attack_animation():

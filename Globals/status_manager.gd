@@ -4,6 +4,12 @@ var vulnerable = preload("res://resources/statuses/vulnerable.tres")
 var corruption = preload("res://resources/statuses/corruption.tres")
 var thorns = preload("res://resources/statuses/thorns.tres")
 var weak = preload("res://resources/statuses/weak.tres")
+var invincible = preload("res://resources/statuses/invincible.tres")
+var evasion = preload("res://resources/statuses/evasion.tres")
+var draw = preload("res://resources/statuses/draw.tres")
+var fury = preload("res://resources/statuses/fury.tres")
+var repeat = preload("res://resources/statuses/repeat.tres")
+var crit = preload("res://resources/statuses/crit.tres")
 
 
 

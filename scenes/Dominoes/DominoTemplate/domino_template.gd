@@ -20,10 +20,13 @@ var damage
 var block
 var heal
 
+var doubled = false
+
 var mouse_over_des = false
 var des_tween: Tween
 
 var domino_choice = false
+var deleted = false
 
 @onready var top_icons = $Visual/TopIcons
 @onready var bot_icons = $Visual/BotIcons
@@ -43,8 +46,24 @@ func _ready() -> void:
 
 
 func add_actions():
+	if DominoManager.double_next_dm > 0:
+		print("DOUBLED")
+		add_action()
+		domino_played()
+		DominoManager.double_next_dm -= 1
+		doubled = true
+	
 	add_action()
 	domino_played()
+	
+
+
+func get_status(target, status_id:String):
+	for icon in target.status_container.get_children():
+		if icon.status.id == status_id:
+			return icon.status
+	return null
+
 
 func add_action():
 	#ActionManager.add(AttackAction.new(self, Global.enemy, 5))
@@ -97,7 +116,6 @@ func domino_played():
 	
 func final_damage(_damage: int):
 	var new_damage = ActionManager.calculate_damage(self, Global.enemy,_damage)
-	print(Global.enemy.incoming_damage_mult)
 	return new_damage
 
 func get_open_value():
@@ -168,6 +186,23 @@ func _on_area_2d_input_event(_viewport, event, _shape):
 			if event.pressed:
 				
 				
+				
+				
+				if DominoManager.block_domino_input:
+					return
+				
+				if DominoManager.delete_mode:
+					if !deleted:
+							deleted = true
+							remove_from_deck()
+							return
+					else:
+						return
+				
+				
+				
+				
+				
 				if domino_choice:
 					if Global.choice_scene.choice_locked:
 						return
@@ -196,6 +231,17 @@ func add_domino_to_deck():
 	tween.tween_property(self, "scale", Vector2(0,0), 0.5)
 	DominoManager.temp_deck.append(self)
 	domino_choice = false
+
+func remove_from_deck():
+	Signals.domino_deleted_from_deck.emit()
+	var tween = get_tree().create_tween()
+	tween.set_parallel()
+
+	tween.tween_property(self, "scale", Vector2(0,0), 0.25)
+	tween.tween_property(self, "rotation_degrees", 180, 0.25)
+	await tween.finished
+	DominoManager.temp_deck.erase(self)
+	queue_free()
 
 
 

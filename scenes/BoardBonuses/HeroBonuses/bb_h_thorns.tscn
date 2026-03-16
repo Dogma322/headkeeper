@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://3kb2s8nq8b7d"]
+
+[ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_1lxvr"]
+[ext_resource type="Script" uid="uid://w3gpj3wjmj3i" path="res://scenes/BoardBonuses/HeroBonuses/bb_h_thorns.gd" id="2_dax7e"]
+[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="2_wa1ef"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dax7e"]
+atlas = ExtResource("2_wa1ef")
+region = Rect2(844, 16, 28, 28)
+
+[node name="bb_h_thorns" unique_id=470544141 instance=ExtResource("1_1lxvr")]
+script = ExtResource("2_dax7e")
+
+[node name="Sprite2D" parent="." index="0" unique_id=790081820]
+texture = SubResource("AtlasTexture_dax7e")
+
+[node name="ValueLabel" parent="." index="2" unique_id=1340414324]
+offset_left = 4.0
+text = "4"

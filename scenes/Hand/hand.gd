@@ -113,8 +113,11 @@ func update_layout():
 func draw_dominoes():
 
 	await get_tree().create_timer(0.2).timeout
+	
+	var draw_count = DominoManager.draw_counter + DominoManager.bonus_draw_counter
+	DominoManager.bonus_draw_counter = 0
 		
-	for i in range(5):
+	for i in range(draw_count):
 		
 		if DominoManager.temp_deck.size() == 0 and DominoManager.discard.size() == 0:
 			return
