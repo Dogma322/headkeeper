@@ -7,4 +7,4 @@ func _ready() -> void:
 
 func add_bonus_actions():
 	for bb in get_children():
-		bb.add_action()
+		bb.add_actions()

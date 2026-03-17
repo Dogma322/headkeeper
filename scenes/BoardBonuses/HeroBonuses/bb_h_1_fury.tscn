@@ -10,6 +10,7 @@ region = Rect2(814, 16, 28, 28)
 
 [node name="bb_h_1fury" unique_id=470544141 instance=ExtResource("1_kw4cr")]
 script = ExtResource("2_1ux7g")
+type = 1
 
 [node name="Sprite2D" parent="." index="0" unique_id=790081820]
 texture = SubResource("AtlasTexture_5cg67")

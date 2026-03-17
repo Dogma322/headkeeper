@@ -16,6 +16,10 @@ signal enemy_attack
 signal deck_changed
 signal discard_changed
 
+signal domino_played
+signal green_bonus_played
+signal red_bonus_played
+signal yellow_bonus_played
 
 signal domino_selected
 signal head_selected
@@ -42,3 +46,5 @@ signal reset_turn_data
 signal reset_run_data
 
 signal fight_started
+
+signal hero_healed

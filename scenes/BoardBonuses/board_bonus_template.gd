@@ -5,6 +5,10 @@ class_name BoardBonus
 
 enum Distance {ANY, NEAR, MIDDLE, FAR}
 
+@export var type: Type
+
+enum Type {RED, GREEN, YELLOW}
+
 var slot_owner
 
 var mouse_over_des = false
@@ -24,6 +28,10 @@ func _ready() -> void:
 	hide_des()
 
 func play_anim():
+	
+	if type == 1:
+		BoardManager.green_bonuses_activated += 1
+		
 	z_index = 999
 	var tween = get_tree().create_tween()
 	tween.set_parallel()
@@ -32,8 +40,24 @@ func play_anim():
 	await tween.finished
 	queue_free()
 	
+func add_actions():
+	add_action()
+	bonus_played()
+	
 func add_action():
 	ActionManager.add(AttackAction.new(self, Global.enemy, 5))
+	
+func bonus_played():
+	if type == 0:
+		Signals.red_bonus_played.emit()
+	if type == 1:
+		Signals.green_bonus_played.emit()
+	if type == 2:
+		Signals.yellow_bonus_played.emit()
+
+	
+
+		
 	
 func _on_mouse_entered():
 	mouse_over_des = true

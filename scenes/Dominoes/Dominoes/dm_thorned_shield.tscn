@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bpc8vnptpfca1"]
+
+[ext_resource type="PackedScene" uid="uid://dnco2xl6pi07y" path="res://scenes/Dominoes/DominoTemplate/domino_template.tscn" id="1_cf46e"]
+[ext_resource type="Script" uid="uid://davuusdwcic4f" path="res://scenes/Dominoes/Dominoes/dm_thorned_shield.gd" id="2_y2yc6"]
+[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_rsd4j"]
+[ext_resource type="PackedScene" uid="uid://bm8hl0h6ybgvr" path="res://scenes/AdditionalDescriptionPanel/additional_description.tscn" id="4_raj7b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_raj7b"]
+atlas = ExtResource("3_rsd4j")
+region = Rect2(263, 16, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kixxh"]
+atlas = ExtResource("3_rsd4j")
+region = Rect2(50, 515, 28, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm1bd"]
+atlas = ExtResource("3_rsd4j")
+region = Rect2(50, 650, 28, 12)
+
+[node name="dm_thorned_shield" unique_id=1771172059 instance=ExtResource("1_cf46e")]
+script = ExtResource("2_y2yc6")
+a = 1
+b = 2
+
+[node name="Back" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="0" unique_id=1409418696]
+texture = SubResource("AtlasTexture_raj7b")
+
+[node name="TopIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="1" unique_id=1407603542]
+texture = SubResource("AtlasTexture_kixxh")
+
+[node name="BotIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="2" unique_id=189273046]
+texture = SubResource("AtlasTexture_vm1bd")
+
+[node name="AdditionalDescription" parent="DesPanel" parent_id_path=PackedInt32Array(1446575058) index="3" unique_id=1979256086 instance=ExtResource("4_raj7b")]
+layout_mode = 1
+offset_left = 112.0
+offset_top = -23.0
+offset_right = -9.0
+offset_bottom = -62.0
+type = "Thorns"

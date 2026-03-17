@@ -19,6 +19,7 @@ var domino_types = ["Attack"]
 var damage
 var block
 var heal
+var corruption
 
 var doubled = false
 
@@ -73,6 +74,9 @@ func add_action():
 	#ActionManager.add(BlockAction.new(self, Global.hero,5))
 	
 func domino_played():
+	
+	Signals.domino_played.emit()
+	
 	for type in domino_types:
 		if type == "Attack":
 			Signals.attack_dm_played.emit(self)
@@ -117,6 +121,12 @@ func domino_played():
 func final_damage(_damage: int):
 	var new_damage = ActionManager.calculate_damage(self, Global.enemy,_damage)
 	return new_damage
+	
+func final_heal(heal):
+	return heal
+	
+func final_corruption(corruption):
+	return corruption
 
 func get_open_value():
 
@@ -134,15 +144,9 @@ func final_block(block):
 
 
 func rotate_to_match(required_value:int, dir:int):
-	# Определяем какая сторона соединяется с родительским домино
-	if a == required_value:
-		connected_side = 0
-	else:
-		connected_side = 1
 
 	var angle = 0
 
-	# Основной угол в зависимости от направления слота
 	match dir:
 		DominoSlot.Direction.UP:
 			angle = 180
@@ -153,13 +157,11 @@ func rotate_to_match(required_value:int, dir:int):
 		DominoSlot.Direction.RIGHT:
 			angle = 270
 
-	# Если соединена «вторая сторона», переворачиваем домино на 180°
 	if connected_side == 1:
 		angle += 180
 
 	rotation_degrees = angle % 360
 
-	# Поворачиваем символы против поворота домино, чтобы они всегда были читаемы
 	if top_icons and bot_icons:
 		top_icons.rotation_degrees = -rotation_degrees
 		bot_icons.rotation_degrees = -rotation_degrees
@@ -297,6 +299,7 @@ func stop_drag():
 func move_to_hand(pos:Vector2):
 	returning_to_hand = true
 	reset_rotation()
+	connected_side = 1 
 	
 	var tween = create_tween()
 	

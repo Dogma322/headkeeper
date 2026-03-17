@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://cd2o67gfa1ugp"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_4ke8r"]
+[ext_resource type="Script" uid="uid://dqgy1ucvqpfq7" path="res://scenes/Enemies/MushCaves/enm_turret.gd" id="2_cmj1t"]
+[ext_resource type="Texture2D" uid="uid://s40dnv6dxtip" path="res://assets/Enemies/MushCaves/MushroomTurretWithShadow-Sheet.png" id="2_puqm6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmj1t"]
+atlas = ExtResource("2_puqm6")
+region = Rect2(0, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5plve"]
+atlas = ExtResource("2_puqm6")
+region = Rect2(192, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvdq8"]
+atlas = ExtResource("2_puqm6")
+region = Rect2(384, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sku1y"]
+atlas = ExtResource("2_puqm6")
+region = Rect2(576, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dua0j"]
+atlas = ExtResource("2_puqm6")
+region = Rect2(768, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhiue"]
+atlas = ExtResource("2_puqm6")
+region = Rect2(960, 0, 192, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i1roj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmj1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5plve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvdq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sku1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dua0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhiue")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enm_turret" unique_id=1770774892 instance=ExtResource("1_4ke8r")]
+script = ExtResource("2_cmj1t")
+
+[node name="IntentIcon" parent="." index="3" unique_id=354376541]
+offset_top = -108.0
+offset_bottom = -76.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=694323842]
+position = Vector2(-4, -39)
+sprite_frames = SubResource("SpriteFrames_i1roj")
+autoplay = "default"

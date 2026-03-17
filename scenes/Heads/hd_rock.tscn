@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cf4silbnyx7oi"]
+
+[ext_resource type="PackedScene" uid="uid://wnn8ykfdaka3" path="res://scenes/Heads/HeadTemplate/head_template.tscn" id="1_0tmwc"]
+[ext_resource type="Script" uid="uid://b5owxhq2aetur" path="res://scenes/Heads/hd_rock.gd" id="2_k3lmn"]
+[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="3_166oo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prwl0"]
+atlas = ExtResource("3_166oo")
+region = Rect2(33, 0, 32, 32)
+
+[node name="hd_rock" unique_id=1378211630 instance=ExtResource("1_0tmwc")]
+script = ExtResource("2_k3lmn")
+
+[node name="Sprite2D" parent="." index="0" unique_id=1248791630]
+texture = SubResource("AtlasTexture_prwl0")

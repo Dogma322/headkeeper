@@ -5,7 +5,7 @@ var max_hp = preload("res://scenes/ActionCards/ac_max_hp.tscn")
 var bonuses = preload("res://scenes/ActionCards/ac_bonuses.tscn")
 var delete_dominoes = preload("res://scenes/ActionCards/ac_delete_dominoes.tscn")
 
-var heal_bonus = preload("res://scenes/ActionCards/ac_heal.tscn")
+var heal_bonus = preload("res://scenes/ActionCards/ac_heal_bonus.tscn")
 var attack_bonus = preload("res://scenes/ActionCards/ac_attack_bonus.tscn")
 var defense_bonus = preload("res://scenes/ActionCards/ac_defense_bonus.tscn")
 var draw_bonus = preload("res://scenes/ActionCards/ac_draw_bonus.tscn")
@@ -28,8 +28,8 @@ var endless_mode_pool_with_bonus = [heal, max_hp, bonuses, delete_dominoes]
 var endless_mode_pool_without_bonus = [heal, max_hp, delete_dominoes]
 
 var action_card_is_pressed = false
-var bonus_action_cards_pool = [heal_bonus, attack_bonus, defense_bonus, draw_bonus, repeat_bonus, 
-crit_bonus,vulnerable_bonus, weak_bonus]
+var bonus_action_cards_pool = [heal_bonus, attack_bonus, defense_bonus, draw_bonus, 
+vulnerable_bonus, weak_bonus]
 
 func _ready() -> void:
 	Signals.action_card_selected.connect(hide_cont)

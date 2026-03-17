@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dlh11askbd35m"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_2l7n2"]
+[ext_resource type="Texture2D" uid="uid://gxlorujy77em" path="res://assets/Enemies/Forest/InfestedCultistWithShadow-Sheet.png" id="2_aupfv"]
+[ext_resource type="Script" uid="uid://g8am7ovwm8r0" path="res://scenes/Enemies/Forest/enm_cultist_1.gd" id="2_jl1u6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl1u6"]
+atlas = ExtResource("2_aupfv")
+region = Rect2(0, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e6r6"]
+atlas = ExtResource("2_aupfv")
+region = Rect2(192, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxdry"]
+atlas = ExtResource("2_aupfv")
+region = Rect2(384, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4d85b"]
+atlas = ExtResource("2_aupfv")
+region = Rect2(576, 0, 192, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_glrco"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl1u6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7e6r6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxdry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4d85b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enm_cultist1" unique_id=1770774892 instance=ExtResource("1_2l7n2")]
+script = ExtResource("2_jl1u6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=814103889]
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_glrco")
+autoplay = "default"
+frame_progress = 0.17060544

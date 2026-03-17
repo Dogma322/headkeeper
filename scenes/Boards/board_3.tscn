@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://deyrtpkstx5x4"]
+
+[ext_resource type="PackedScene" uid="uid://dx2yty7752sow" path="res://scenes/Boards/BoardTemplate/board_template.tscn" id="1_sm2fv"]
+[ext_resource type="Script" uid="uid://bi4e6868lrj7w" path="res://scenes/Boards/board_3.gd" id="2_feu2a"]
+[ext_resource type="Texture2D" uid="uid://ceruolvhdj1kh" path="res://assets/UI/Board/Board3.png" id="3_185lu"]
+[ext_resource type="PackedScene" uid="uid://b024032pallcd" path="res://scenes/DominoSlot/domino_slot.tscn" id="4_jkkxg"]
+[ext_resource type="PackedScene" uid="uid://d2xfxeooqsmmv" path="res://scenes/DominoSlot/domino_slot_horizontal.tscn" id="5_p411u"]
+
+[node name="Board3" unique_id=183639370 instance=ExtResource("1_sm2fv")]
+script = ExtResource("2_feu2a")
+
+[node name="BoardSprite" parent="." index="0" unique_id=224441976]
+texture = ExtResource("3_185lu")
+
+[node name="DominoSlot" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="0" unique_id=1301988008 instance=ExtResource("4_jkkxg")]
+position = Vector2(0, 32)
+start_slot = true
+slot_distance = 0
+
+[node name="DominoSlot2" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="1" unique_id=1396408240 node_paths=PackedStringArray("parent_slot") instance=ExtResource("4_jkkxg")]
+position = Vector2(0, 96)
+parent_slot = NodePath("../DominoSlot")
+direction = 1
+
+[node name="DominoSlotHorizontal" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="2" unique_id=1815297257 node_paths=PackedStringArray("parent_slot") instance=ExtResource("5_p411u")]
+position = Vector2(48, 112)
+parent_slot = NodePath("../DominoSlot2")
+direction = 3
+slot_distance = 2
+
+[node name="DominoSlotHorizontal2" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="3" unique_id=506260090 node_paths=PackedStringArray("parent_slot") instance=ExtResource("5_p411u")]
+position = Vector2(-48, 112)
+parent_slot = NodePath("../DominoSlot2")
+direction = 2
+slot_distance = 2
+
+[node name="DominoSlot3" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="4" unique_id=149470143 node_paths=PackedStringArray("parent_slot") instance=ExtResource("4_jkkxg")]
+position = Vector2(0, -32)
+parent_slot = NodePath("../DominoSlot")
+slot_distance = 2
+
+[node name="DominoSlotHorizontal3" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="5" unique_id=1229413512 node_paths=PackedStringArray("parent_slot") instance=ExtResource("5_p411u")]
+position = Vector2(-48, 48)
+parent_slot = NodePath("../DominoSlot")
+direction = 2
+slot_distance = 1
+
+[node name="DominoSlot4" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="6" unique_id=1064693995 node_paths=PackedStringArray("parent_slot") instance=ExtResource("4_jkkxg")]
+position = Vector2(-64, 0)
+parent_slot = NodePath("../DominoSlotHorizontal3")
+slot_distance = 2
+
+[node name="DominoSlot5" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="7" unique_id=371251036 node_paths=PackedStringArray("parent_slot") instance=ExtResource("4_jkkxg")]
+position = Vector2(-64, -64)
+parent_slot = NodePath("../DominoSlot4")
+slot_distance = 2
+
+[node name="DominoSlotHorizontal4" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="8" unique_id=727372025 node_paths=PackedStringArray("parent_slot") instance=ExtResource("5_p411u")]
+position = Vector2(-48, -112)
+parent_slot = NodePath("../DominoSlot5")
+slot_distance = 3
+
+[node name="DominoSlotHorizontal5" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="9" unique_id=967559461 node_paths=PackedStringArray("parent_slot") instance=ExtResource("5_p411u")]
+position = Vector2(48, 48)
+parent_slot = NodePath("../DominoSlot")
+direction = 3
+slot_distance = 1
+
+[node name="DominoSlot6" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="10" unique_id=982224593 node_paths=PackedStringArray("parent_slot") instance=ExtResource("4_jkkxg")]
+position = Vector2(64, 0)
+parent_slot = NodePath("../DominoSlotHorizontal5")
+slot_distance = 2
+
+[node name="DominoSlot7" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="11" unique_id=519037230 node_paths=PackedStringArray("parent_slot") instance=ExtResource("4_jkkxg")]
+position = Vector2(64, -64)
+parent_slot = NodePath("../DominoSlot6")
+slot_distance = 2
+
+[node name="DominoSlotHorizontal6" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="12" unique_id=1061193068 node_paths=PackedStringArray("parent_slot") instance=ExtResource("5_p411u")]
+position = Vector2(48, -112)
+parent_slot = NodePath("../DominoSlot7")
+slot_distance = 3

@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dkr2v6qca1sru"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_y1qky"]
+[ext_resource type="Script" uid="uid://bbdec0jsruq65" path="res://scenes/Enemies/MushCaves/enm_mushman_1.gd" id="2_mc3ca"]
+[ext_resource type="Texture2D" uid="uid://bxsvdyqmpmoi6" path="res://assets/Enemies/MushCaves/MushroomMan2WithShadow-Sheet.png" id="3_j8t8y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scb86"]
+atlas = ExtResource("3_j8t8y")
+region = Rect2(0, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqrt6"]
+atlas = ExtResource("3_j8t8y")
+region = Rect2(192, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blvtj"]
+atlas = ExtResource("3_j8t8y")
+region = Rect2(384, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wfx8"]
+atlas = ExtResource("3_j8t8y")
+region = Rect2(576, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2a7y"]
+atlas = ExtResource("3_j8t8y")
+region = Rect2(768, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxcv3"]
+atlas = ExtResource("3_j8t8y")
+region = Rect2(960, 0, 192, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y5ejo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scb86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqrt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blvtj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wfx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2a7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxcv3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enm_mushman1" unique_id=1770774892 instance=ExtResource("1_y1qky")]
+script = ExtResource("2_mc3ca")
+
+[node name="IntentIcon" parent="." index="3" unique_id=354376541]
+offset_top = -123.0
+offset_bottom = -91.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=268504481]
+position = Vector2(-3, -34)
+sprite_frames = SubResource("SpriteFrames_y5ejo")
+autoplay = "default"

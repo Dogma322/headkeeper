@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://ofs2tb0rhab3"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_n6a2m"]
+[ext_resource type="Script" uid="uid://cp6xiunso35hf" path="res://scenes/Enemies/Swamp/enm_horned_witch_2.gd" id="2_dfmbn"]
+[ext_resource type="Texture2D" uid="uid://cwtdn5o61xfmd" path="res://assets/Enemies/Swamp/WitchSwordsmen2WithShadow-Sheet.png" id="2_m2dpa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfmbn"]
+atlas = ExtResource("2_m2dpa")
+region = Rect2(0, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stpas"]
+atlas = ExtResource("2_m2dpa")
+region = Rect2(192, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m28vj"]
+atlas = ExtResource("2_m2dpa")
+region = Rect2(384, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hc6jf"]
+atlas = ExtResource("2_m2dpa")
+region = Rect2(576, 0, 192, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x0d64"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfmbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stpas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m28vj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hc6jf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enm_horned_witch2" unique_id=1770774892 instance=ExtResource("1_n6a2m")]
+script = ExtResource("2_dfmbn")
+
+[node name="IntentIcon" parent="." index="3" unique_id=354376541]
+offset_top = -132.0
+offset_bottom = -100.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1903636567]
+position = Vector2(-4, -33)
+sprite_frames = SubResource("SpriteFrames_x0d64")
+autoplay = "default"
+frame_progress = 0.014841033

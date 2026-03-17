@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://ce11ua47giwaa"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_exhyb"]
+[ext_resource type="Script" uid="uid://bvnpxidi187jl" path="res://scenes/Enemies/Swamp/enm_shadow.gd" id="2_5tl4y"]
+[ext_resource type="Texture2D" uid="uid://b5yowt4d4ug3n" path="res://assets/Enemies/Swamp/ShadowWithShadow-Sheet.png" id="3_455j1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgcnb"]
+atlas = ExtResource("3_455j1")
+region = Rect2(0, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u80ac"]
+atlas = ExtResource("3_455j1")
+region = Rect2(192, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1n3p"]
+atlas = ExtResource("3_455j1")
+region = Rect2(384, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0bs2"]
+atlas = ExtResource("3_455j1")
+region = Rect2(576, 0, 192, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i0mg8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgcnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u80ac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1n3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0bs2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enm_shadow" unique_id=1770774892 instance=ExtResource("1_exhyb")]
+script = ExtResource("2_5tl4y")
+
+[node name="IntentIcon" parent="." index="3" unique_id=354376541]
+offset_top = -129.0
+offset_bottom = -97.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=791479222]
+position = Vector2(-6, -33)
+sprite_frames = SubResource("SpriteFrames_i0mg8")
+autoplay = "default"
+frame = 3
+frame_progress = 0.50615996

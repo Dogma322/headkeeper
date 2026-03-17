@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bnbkoid1r85sl"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_clwt7"]
+[ext_resource type="Script" uid="uid://7pravyoh7r21" path="res://scenes/Enemies/Forest/enm_deer_2.gd" id="2_bux3x"]
+[ext_resource type="Texture2D" uid="uid://djnq7yfe75esr" path="res://assets/Enemies/Forest/Deer2WithShadow-Sheet.png" id="2_tobge"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bux3x"]
+atlas = ExtResource("2_tobge")
+region = Rect2(0, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6lyi"]
+atlas = ExtResource("2_tobge")
+region = Rect2(192, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywch7"]
+atlas = ExtResource("2_tobge")
+region = Rect2(384, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbodg"]
+atlas = ExtResource("2_tobge")
+region = Rect2(576, 0, 192, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_csr07"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bux3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6lyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywch7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbodg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enm_deer2" unique_id=1770774892 instance=ExtResource("1_clwt7")]
+script = ExtResource("2_bux3x")
+
+[node name="IntentIcon" parent="." index="3" unique_id=354376541]
+offset_top = -138.0
+offset_bottom = -106.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=425618209]
+position = Vector2(-8, -39)
+sprite_frames = SubResource("SpriteFrames_csr07")
+autoplay = "default"
+frame_progress = 0.332854

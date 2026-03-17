@@ -54,7 +54,8 @@ func move_to_hand(domino, pos:Vector2):
 func add_domino(domino:Domino):
 
 	domino.slot = null
-
+	domino.connected_side = 1 
+	
 	if domino not in dominoes:
 		dominoes.append(domino)
 

@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://cagbtkvoqcjjb" path="res://scenes/DeckBags/discard_bag.tscn" id="9_lhbvr"]
 [ext_resource type="PackedScene" uid="uid://drlsgry4o0pof" path="res://scenes/BoardBonusContainer/board_bonus_container.tscn" id="10_lhbvr"]
 [ext_resource type="PackedScene" uid="uid://bbvfro8a5geyx" path="res://scenes/HeadHolder/head_holder.tscn" id="11_aonfs"]
-[ext_resource type="PackedScene" uid="uid://dmn1nxgk76p1g" path="res://scenes/Heads/hd_berserk.tscn" id="12_m8wss"]
 [ext_resource type="PackedScene" uid="uid://dr7wx1mkxpyl7" path="res://scenes/ActionCardContainer/action_card_container.tscn" id="13_4d2li"]
 [ext_resource type="PackedScene" uid="uid://caovgfyajqfdl" path="res://scenes/HeadChoiceScene/head_choice_scene.tscn" id="14_36n0a"]
 [ext_resource type="PackedScene" uid="uid://bmdtecafi1ta3" path="res://scenes/RemoveDominoScene/remove_domino_scene.tscn" id="15_36n0a"]
@@ -62,12 +61,11 @@ offset_bottom = 77.0
 
 [node name="HeadHolder" parent="." unique_id=2074985017 instance=ExtResource("11_aonfs")]
 
-[node name="hd_berserk" parent="HeadHolder" unique_id=1378211630 instance=ExtResource("12_m8wss")]
-
 [node name="ActionCardContainer" parent="." unique_id=1117680451 instance=ExtResource("13_4d2li")]
 offset_top = -240.0
 offset_bottom = -82.0
 
 [node name="ChoiceScene" parent="." unique_id=598777679 instance=ExtResource("14_36n0a")]
+spacing = 100
 
 [node name="RemoveDominoScene" parent="." unique_id=1801682247 instance=ExtResource("15_36n0a")]

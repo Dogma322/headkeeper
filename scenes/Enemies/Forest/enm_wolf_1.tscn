@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://ctfie7lp4rdrw"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_i645w"]
+[ext_resource type="Script" uid="uid://d38akygjdbafk" path="res://scenes/Enemies/Forest/enm_wolf_1.gd" id="2_7qsjw"]
+[ext_resource type="Texture2D" uid="uid://2ecj840tca2i" path="res://assets/Enemies/Forest/WolfWithShadow-Sheet.png" id="3_33x5j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ndxe"]
+atlas = ExtResource("3_33x5j")
+region = Rect2(0, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rg4tx"]
+atlas = ExtResource("3_33x5j")
+region = Rect2(192, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqsni"]
+atlas = ExtResource("3_33x5j")
+region = Rect2(384, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arlbo"]
+atlas = ExtResource("3_33x5j")
+region = Rect2(576, 0, 192, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1jdn2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ndxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rg4tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqsni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arlbo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enm_wolf1" unique_id=1770774892 instance=ExtResource("1_i645w")]
+script = ExtResource("2_7qsjw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1360406396]
+position = Vector2(-10, -32)
+sprite_frames = SubResource("SpriteFrames_1jdn2")
+autoplay = "default"
+frame_progress = 0.9520521

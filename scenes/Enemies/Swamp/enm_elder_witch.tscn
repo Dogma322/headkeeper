@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://b5anwll0eib1p"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_xcwtf"]
+[ext_resource type="Script" uid="uid://c3dyjgdo3x3hd" path="res://scenes/Enemies/Swamp/enm_elder_witch.gd" id="2_5lm83"]
+[ext_resource type="Texture2D" uid="uid://5wi6n8ooec50" path="res://assets/Enemies/Swamp/ElderWitchSheetShadow.png" id="2_nq40k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lm83"]
+atlas = ExtResource("2_nq40k")
+region = Rect2(0, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivuxb"]
+atlas = ExtResource("2_nq40k")
+region = Rect2(192, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrw13"]
+atlas = ExtResource("2_nq40k")
+region = Rect2(384, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byx70"]
+atlas = ExtResource("2_nq40k")
+region = Rect2(576, 0, 192, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hmk5t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lm83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivuxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrw13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byx70")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enm_elder_witch" unique_id=1770774892 instance=ExtResource("1_xcwtf")]
+script = ExtResource("2_5lm83")
+
+[node name="IntentIcon" parent="." index="3" unique_id=354376541]
+offset_top = -135.0
+offset_bottom = -103.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1036970126]
+position = Vector2(-10, -39)
+sprite_frames = SubResource("SpriteFrames_hmk5t")
+autoplay = "default"

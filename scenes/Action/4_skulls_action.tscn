@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bd5y3rbtdfd4"]
+
+[ext_resource type="PackedScene" uid="uid://df2ks37twndxh" path="res://scenes/Action/action.tscn" id="1_x053k"]
+[ext_resource type="Script" uid="uid://duxntunqvt808" path="res://scenes/Action/4_skulls_action.gd" id="2_02xg7"]
+
+[node name="4SkullsAction" unique_id=1450534971 instance=ExtResource("1_x053k")]
+script = ExtResource("2_02xg7")

@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://jl5dld2wh3n1"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_jnb6q"]
+[ext_resource type="Script" uid="uid://ct32l3it33jy" path="res://scenes/Enemies/MushCaves/enm_mush_warrior.gd" id="2_1d4ok"]
+[ext_resource type="Texture2D" uid="uid://diur33mncofk5" path="res://assets/Enemies/MushCaves/CommonMushroomWithShadow-Sheet.png" id="3_2rq6u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyh8h"]
+atlas = ExtResource("3_2rq6u")
+region = Rect2(0, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llplc"]
+atlas = ExtResource("3_2rq6u")
+region = Rect2(192, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhplh"]
+atlas = ExtResource("3_2rq6u")
+region = Rect2(384, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ap83"]
+atlas = ExtResource("3_2rq6u")
+region = Rect2(576, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l533u"]
+atlas = ExtResource("3_2rq6u")
+region = Rect2(768, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ah7p"]
+atlas = ExtResource("3_2rq6u")
+region = Rect2(960, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn5qk"]
+atlas = ExtResource("3_2rq6u")
+region = Rect2(1152, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhjew"]
+atlas = ExtResource("3_2rq6u")
+region = Rect2(1344, 0, 192, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mpxy4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyh8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llplc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhplh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ap83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l533u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ah7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn5qk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhjew")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="enm_mush_warrior" unique_id=1770774892 instance=ExtResource("1_jnb6q")]
+script = ExtResource("2_1d4ok")
+
+[node name="IntentIcon" parent="." index="3" unique_id=354376541]
+offset_top = -108.0
+offset_bottom = -76.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=678349706]
+position = Vector2(0, -35)
+sprite_frames = SubResource("SpriteFrames_mpxy4")
+autoplay = "default"
+frame_progress = 0.17195292

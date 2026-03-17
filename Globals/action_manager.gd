@@ -63,6 +63,9 @@ func calculate_block(block):
 
 func add(action:Action):
 	queue.append(action)
+	
+	if action is HealAction and action.target == Global.hero:
+		Signals.hero_healed.emit()
 
 
 func insert_next(action:Action):
@@ -104,6 +107,7 @@ func play_actions():
 					await Signals.projectile_hit
 				
 		action.execute()
+		
 		
 		
 		await get_tree().create_timer(0.35).timeout

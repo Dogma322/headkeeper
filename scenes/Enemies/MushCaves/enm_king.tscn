@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cchy43qsi5ib4"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_dxsrd"]
+[ext_resource type="Script" uid="uid://c3ipfrrrj1j1x" path="res://scenes/Enemies/MushCaves/enm_king.gd" id="2_ljtrq"]
+[ext_resource type="Texture2D" uid="uid://s54xk6u4sbuv" path="res://assets/Enemies/MushCaves/MushroomKingWithShadow-Sheet.png" id="2_m85qo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljtrq"]
+atlas = ExtResource("2_m85qo")
+region = Rect2(0, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv26b"]
+atlas = ExtResource("2_m85qo")
+region = Rect2(192, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkymq"]
+atlas = ExtResource("2_m85qo")
+region = Rect2(384, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6kut"]
+atlas = ExtResource("2_m85qo")
+region = Rect2(576, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icn1f"]
+atlas = ExtResource("2_m85qo")
+region = Rect2(768, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrfjd"]
+atlas = ExtResource("2_m85qo")
+region = Rect2(960, 0, 192, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lfcmc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljtrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv26b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkymq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6kut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icn1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrfjd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="enm_king" unique_id=1770774892 instance=ExtResource("1_dxsrd")]
+script = ExtResource("2_ljtrq")
+
+[node name="IntentIcon" parent="." index="3" unique_id=354376541]
+offset_top = -146.0
+offset_bottom = -114.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1301828372]
+position = Vector2(-3, -37)
+sprite_frames = SubResource("SpriteFrames_lfcmc")
+autoplay = "default"
+frame_progress = 0.064211324

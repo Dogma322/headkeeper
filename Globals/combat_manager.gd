@@ -10,6 +10,9 @@ var stage = 1
 func _ready() -> void:
 	
 	await get_tree().process_frame
+	EnemyManager.set_enemy()
+	Global.fight_background.set_background()
+	
 	
 	Transition.blackout_off()
 	
@@ -17,8 +20,11 @@ func _ready() -> void:
 	Signals.enemy_dead.connect(enemy_dead)
 	
 	
-	
+
 	await get_tree().create_timer(0.5).timeout
+	
+	BoardManager.generate_board()
+	
 	player_turn_begin()
 
 
@@ -59,13 +65,14 @@ func player_turn_begin():
 	
 	apply_hero_turn_begin_status_effects()
 	await ActionManager.play_actions()
+	add_heads_turn_begin_actions()
+	await ActionManager.play_actions()
 	
 	
 	turn += 1
 	if turn == 1:
 		Signals.fight_started.emit()
 		
-	Signals.player_turn_begin.emit()
 
 
 	await get_tree().create_timer(0.5).timeout
@@ -128,6 +135,9 @@ func enemy_turn_begin():
 	
 	await Signals.actions_completed
 	
+	if Global.enemy.is_dead:
+		return 
+	
 	enemy_turn_end()
 	
 	
@@ -140,6 +150,10 @@ func apply_hero_turn_begin_status_effects():
 	for icon in Global.hero.status_container.get_children():
 		if icon.status.turn_begin_effect:
 			icon.status.apply_status_effect()
+
+func add_heads_turn_begin_actions():
+	for head in Global.head_holder.get_children():
+		head.turn_begin_add_action()
 
 	
 func enemy_turn_end():
@@ -195,11 +209,12 @@ func show_delete_domino_menu():
 	
 	
 func change_stage():
-	
+	reset_fight_data()
 	stage += 1
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
 	reset_turn_data()
+	BoardManager.generate_board()
 	EnemyManager.set_enemy()
 	Global.fight_background.set_background()
 	Transition.blackout_off()
@@ -218,6 +233,13 @@ func reset_run_data():
 	Signals.reset_run_data.emit()
 	
 	stage = 1
+	
+func reset_fight_data():
+	BoardManager.green_bonuses_activated = 0
+	DominoManager.value1_played_dominoes = 0
+	DominoManager.value2_played_dominoes = 0
+	DominoManager.value3_played_dominoes = 0
+	DominoManager.value4_played_dominoes = 0
 	
 func clear_statuses():
 	for icon in Global.hero.status_container.get_children():

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bajhvo110yxeh"]
+
+[ext_resource type="PackedScene" uid="uid://wnn8ykfdaka3" path="res://scenes/Heads/HeadTemplate/head_template.tscn" id="1_ons7l"]
+[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_6b1h4"]
+[ext_resource type="Script" uid="uid://cj1h6jfys25gr" path="res://scenes/Heads/hd_squid.gd" id="2_6u8xd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6u8xd"]
+atlas = ExtResource("2_6b1h4")
+region = Rect2(95, 0, 32, 32)
+
+[node name="hd_squid" unique_id=1378211630 instance=ExtResource("1_ons7l")]
+script = ExtResource("2_6u8xd")
+
+[node name="Sprite2D" parent="." index="0" unique_id=1248791630]
+texture = SubResource("AtlasTexture_6u8xd")

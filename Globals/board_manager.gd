@@ -1,5 +1,8 @@
 extends Node2D
 
+var green_bonuses_activated = 0
+
+
 @onready var h_5dmg_bonus = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_5_damage.tscn")
 @onready var h_5def_bonus = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_5_defense.tscn")
 @onready var h_3heal = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_heal.tscn")
@@ -36,7 +39,14 @@ extends Node2D
 @onready var n_remove_10fury = preload("res://scenes/BoardBonuses/NeutralBonuses/bb_n_remove_10_fury.tscn")
 
 
-@onready var bonus_pool = [h_5dmg_bonus, h_5dmg_bonus, h_5def_bonus, n_remove_5fury, n_remove_5fury]
+@onready var bonus_pool = [h_5dmg_bonus, h_5def_bonus]
+
+@onready var board1 = preload("res://scenes/Boards/BoardTemplate/board_1.tscn")
+@onready var board2 = preload("res://scenes/Boards/board_2.tscn")
+@onready var board3 = preload("res://scenes/Boards/board_3.tscn")
+
+@onready var board_pool = [board1]
+
 
 var slots = []
 var target_slot
@@ -46,6 +56,19 @@ var target_slot
 func _ready():
 	slots = get_tree().get_nodes_in_group("domino_slots")
 
+func reset_run():
+	bonus_pool = [h_5dmg_bonus, h_5def_bonus]
+	board_pool = [board1]
+	
+func generate_board():
+	var pos = Global.board.global_position
+	if board_pool.size() == 0:
+		board_pool = [board1, board2, board3]
+	var new_board = board_pool.pick_random().instantiate()
+	Global.board.queue_free()
+	Global.board = new_board
+	Global.fight_scene.add_child(new_board)
+	new_board.global_position = pos
 
 
 func get_closest_slot(pos:Vector2):

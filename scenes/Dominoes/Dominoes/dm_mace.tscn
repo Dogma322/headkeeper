@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://sy3x45r60ahy"]
+
+[ext_resource type="PackedScene" uid="uid://dnco2xl6pi07y" path="res://scenes/Dominoes/DominoTemplate/domino_template.tscn" id="1_qjomt"]
+[ext_resource type="Script" uid="uid://ckj85x6fhnkmy" path="res://scenes/Dominoes/Dominoes/dm_mace.gd" id="2_5m8ha"]
+[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_pwcqb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udyxy"]
+atlas = ExtResource("3_pwcqb")
+region = Rect2(16, 16, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1qjd"]
+atlas = ExtResource("3_pwcqb")
+region = Rect2(310, 483, 19, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hud26"]
+atlas = ExtResource("3_pwcqb")
+region = Rect2(82, 578, 28, 30)
+
+[node name="dm_mace" unique_id=1771172059 instance=ExtResource("1_qjomt")]
+script = ExtResource("2_5m8ha")
+a = 1
+
+[node name="Back" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="0" unique_id=1409418696]
+texture = SubResource("AtlasTexture_udyxy")
+
+[node name="TopIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="1" unique_id=1407603542]
+texture = SubResource("AtlasTexture_e1qjd")
+
+[node name="BotIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="2" unique_id=189273046]
+texture = SubResource("AtlasTexture_hud26")

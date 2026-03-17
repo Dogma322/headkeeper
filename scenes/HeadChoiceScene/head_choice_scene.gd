@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var spacing := 110
+@export var spacing = 100
 @export var y_position := 180
 
 @export var float_amplitude := 8
@@ -41,9 +41,17 @@ func spawn_heads():
 	choice_locked = false
 
 	for i in range(3):
+		var keys =  HeadManager.temp_head_pool.keys()
+		var random_key = keys.pick_random()
+		var head_scene = HeadManager.temp_head_pool[random_key]
 
-		var scene = HeadManager.temp_head_pool.values().pick_random()
-		var head = scene.instantiate()
+		HeadManager.temp_head_pool.erase(random_key)
+
+		var head = head_scene.instantiate()
+
+
+		#var scene = HeadManager.temp_head_pool.values().pick_random()
+		#var head = scene.instantiate()
 
 		head.scale = Vector2.ZERO
 		head.head_choice = true
@@ -64,10 +72,18 @@ func spawn_dominoes():
 	spawning = true
 	choice_locked = false
 
+	var temp_dominoes = DominoManager.domino_pool.values().duplicate()
+
 	for i in range(3):
 
-		var scene = DominoManager.temp_domino_pool.values().pick_random()
-		var domino = scene.instantiate()
+		var domino_scene = temp_dominoes.pick_random()
+		temp_dominoes.erase(domino_scene) # чтобы не выбрать ту же карту дважды
+
+		var domino = domino_scene.instantiate()
+
+
+		#var scene = DominoManager.temp_domino_pool.values().pick_random()
+		#var domino = scene.instantiate()
 
 		domino.scale = Vector2.ZERO
 		domino.domino_choice = true

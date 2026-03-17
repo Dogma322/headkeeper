@@ -67,6 +67,7 @@ offset_top = -18.0
 offset_right = 104.0
 offset_bottom = 23.0
 theme = ExtResource("5_gdd4n")
+bbcode_enabled = true
 text = "Когда играется кость со значением 3, наносит 2 урона"
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

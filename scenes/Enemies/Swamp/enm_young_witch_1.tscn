@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dusnhq15n8x06"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_jigem"]
+[ext_resource type="Script" uid="uid://bpwmvcyo0ygth" path="res://scenes/Enemies/Swamp/enm_young_witch_1.gd" id="2_buo56"]
+[ext_resource type="Texture2D" uid="uid://dfku3byxm1o5c" path="res://assets/Enemies/Swamp/YoungWitch1WithShadow-Sheet.png" id="2_r0ah0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buo56"]
+atlas = ExtResource("2_r0ah0")
+region = Rect2(0, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1nhx"]
+atlas = ExtResource("2_r0ah0")
+region = Rect2(192, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkgol"]
+atlas = ExtResource("2_r0ah0")
+region = Rect2(384, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_617rf"]
+atlas = ExtResource("2_r0ah0")
+region = Rect2(576, 0, 192, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8hkd3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buo56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1nhx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkgol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_617rf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enm_young_witch1" unique_id=1770774892 instance=ExtResource("1_jigem")]
+script = ExtResource("2_buo56")
+
+[node name="IntentIcon" parent="." index="3" unique_id=354376541]
+offset_top = -108.0
+offset_bottom = -76.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=342823110]
+position = Vector2(-2, -35)
+sprite_frames = SubResource("SpriteFrames_8hkd3")
+autoplay = "default"
+frame_progress = 0.5690237

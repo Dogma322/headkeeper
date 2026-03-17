@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://nbx72akb20rp"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_7qtys"]
+[ext_resource type="Texture2D" uid="uid://b475tm77bmwk1" path="res://assets/Enemies/Forest/CrowWomanWithShadow-Sheet.png" id="2_ejos7"]
+[ext_resource type="Script" uid="uid://bo17mdwno67p4" path="res://scenes/Enemies/Forest/enm_crowwoman.gd" id="2_hg7ul"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg7ul"]
+atlas = ExtResource("2_ejos7")
+region = Rect2(0, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jao4w"]
+atlas = ExtResource("2_ejos7")
+region = Rect2(192, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkss6"]
+atlas = ExtResource("2_ejos7")
+region = Rect2(384, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38n3n"]
+atlas = ExtResource("2_ejos7")
+region = Rect2(576, 0, 192, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_muwj1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg7ul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jao4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkss6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38n3n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enm_crowwoman" unique_id=1770774892 instance=ExtResource("1_7qtys")]
+script = ExtResource("2_hg7ul")
+
+[node name="IntentIcon" parent="." index="3" unique_id=354376541]
+offset_top = -130.0
+offset_bottom = -98.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1734595421]
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_muwj1")
+autoplay = "default"

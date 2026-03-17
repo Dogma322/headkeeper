@@ -3,10 +3,10 @@ extends Enemy
 
 func _ready():
 	location = "MushroomCaves"
-	max_health = 100
+	max_health = 95
 	health = max_health
 	
-	bonus_pool = [BoardManager.n_larva, BoardManager.n_larva, BoardManager.n_larva, BoardManager.n_larva, BoardManager.n_larva, ]
+	bonus_pool = [BoardManager.e_1thorns, BoardManager.e_1thorns, BoardManager.e_10def]
 
 	behavior_mode = BehaviorMode.SEQUENTIAL
 	first_action_index = 0
@@ -58,14 +58,14 @@ func action_attack():
 	)
 	
 
-	ActionManager.add(
-		BuffAction.new(self, self,StatusManager.fury,larvas * 2)
-		)
-	ActionManager.add(
-		HealAction.new(self, self, larvas * 5)
-		)
-	
-	larvas = 0
+	#ActionManager.add(
+		#BuffAction.new(self, self,StatusManager.fury,larvas * 2)
+		#)
+	#ActionManager.add(
+		#HealAction.new(self, self, larvas * 5)
+		#)
+	#
+	#larvas = 0
 	
 	
 	#if get_status("invincible") == null:
@@ -97,5 +97,5 @@ func action_attack_buff():
 	)
 	
 	ActionManager.add(
-		BlockAction.new(self,self,12)
+		BlockAction.new(self,self,10)
 	)

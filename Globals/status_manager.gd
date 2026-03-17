@@ -10,6 +10,7 @@ var draw = preload("res://resources/statuses/draw.tres")
 var fury = preload("res://resources/statuses/fury.tres")
 var repeat = preload("res://resources/statuses/repeat.tres")
 var crit = preload("res://resources/statuses/crit.tres")
+var devour = preload("res://resources/statuses/devour.tres")
 
 
 

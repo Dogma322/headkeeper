@@ -14,3 +14,9 @@ func _ready() -> void:
 @onready var fight_background
 @onready var remove_domino_scene
 @onready var play_btn 
+
+func _input(event):
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_F:
+			if enemy:
+				enemy.take_damage(1000)

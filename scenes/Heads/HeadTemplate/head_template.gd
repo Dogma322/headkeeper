@@ -6,6 +6,7 @@ class_name Head
 @onready var name_label = $DesPanel/NameLabel
 @onready var des_label = $DesPanel/DesLabel
 @onready var aim_marker = $AimMarker
+@onready var label = $Label
 
 @onready var hd_name: String
 @onready var description: String
@@ -22,6 +23,7 @@ var head_choice = false
 
 func _ready() -> void:
 	des_panel.modulate.a = 0
+	label.visible = false
 	
 	update_labels()
 
@@ -41,11 +43,15 @@ func play_anim():
 func add_action():
 	pass
 	
+func turn_begin_add_action():
+	pass
+	
 func apply_passive_effect():
 	pass
 	
 func remove_passive_effect():
 	pass
+
 
 
 func _input(event: InputEvent) -> void:
