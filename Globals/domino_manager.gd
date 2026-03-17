@@ -75,23 +75,31 @@ var corruption_bonus = 0
 
 }
 
-var temp_domino_pool 
+#var temp_domino_pool 
 
 
 func _ready() -> void:
+	reset()
+	Signals.reset_run_data.connect(reset)
+	
+func reset():
+	#temp_domino_pool = domino_pool.duplicate()
+	
+	dominoes_on_board.clear()
+	temp_deck.clear()
+	deck.clear()
+	discard.clear()
+	
+	Hand.dominoes.clear()
+	for dm in Hand.get_children():
+		dm.queue_free()
+	
 	set_deck()
-	reset_domino_pool()
-	
-func reset_domino_pool():
-	temp_domino_pool = domino_pool.duplicate()
-	
 
 	
 	
 func set_deck():
-	temp_deck.clear()
-	deck.clear()
-	discard.clear()
+
 
 	for i in range(1): 
 		for key in start_deck.keys():

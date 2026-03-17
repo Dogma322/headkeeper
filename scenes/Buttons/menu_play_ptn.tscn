@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bsrdnool06g4h"]
+
+[ext_resource type="Texture2D" uid="uid://2w7c0afjt20f" path="res://assets/UI/Buttons/BigMenuButton.png" id="1_jt84h"]
+[ext_resource type="Script" uid="uid://7m5gw0hptae5" path="res://scenes/Buttons/menu_play_ptn.gd" id="2_6cq85"]
+[ext_resource type="Theme" uid="uid://cprf3ls2l5ilt" path="res://scenes/TextThemes/volda15.tres" id="2_oi5fd"]
+
+[node name="MenuPlayPtn" type="TextureButton" unique_id=1791264381]
+texture_normal = ExtResource("1_jt84h")
+script = ExtResource("2_6cq85")
+
+[node name="Label" type="Label" parent="." unique_id=1144994412]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 12.0
+offset_right = 127.0
+offset_bottom = 35.0
+theme = ExtResource("2_oi5fd")
+text = "ИГРАТЬ"
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

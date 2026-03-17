@@ -56,6 +56,7 @@ offset_top = -5.0
 offset_right = 134.0
 offset_bottom = 35.0
 theme = ExtResource("5_dryf5")
+bbcode_enabled = true
 text = "Когда играется кость со значением 3, наносит 2 урона"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

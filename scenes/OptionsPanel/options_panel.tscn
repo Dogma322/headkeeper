@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://csbo55doneg6b"]
+
+[ext_resource type="Script" uid="uid://co3n6566yjfoi" path="res://scenes/OptionsPanel/options_panel.gd" id="1_6b8f5"]
+[ext_resource type="Texture2D" uid="uid://c5vqfl3gisqxr" path="res://assets/UI/OptionsMenu/OptionsBack.png" id="1_hmfqu"]
+[ext_resource type="Theme" uid="uid://cprf3ls2l5ilt" path="res://scenes/TextThemes/volda15.tres" id="2_1qmy7"]
+[ext_resource type="Theme" uid="uid://dqyxam6mhw2pp" path="res://scenes/TextThemes/Volda12.tres" id="3_6b8f5"]
+[ext_resource type="PackedScene" uid="uid://b6kg1e5g2wvsm" path="res://scenes/VolumeSlider/volume_slider.tscn" id="4_2427u"]
+[ext_resource type="Texture2D" uid="uid://dkx2gyy8n2fqm" path="res://assets/UI/OptionsMenu/GiveUpBtnTest.png" id="5_04qni"]
+[ext_resource type="Texture2D" uid="uid://bpuept8cxfcoo" path="res://assets/UI/OptionsMenu/OptionsButton.png" id="7_2427u"]
+
+[node name="OptionsPanel" type="Node2D" unique_id=1496924105]
+z_index = 100
+script = ExtResource("1_6b8f5")
+
+[node name="OptionsPanel" type="Control" parent="." unique_id=539636346]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="ColorRect" type="ColorRect" parent="OptionsPanel" unique_id=883642749]
+modulate = Color(1, 1, 1, 0.5411765)
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="OptionsPanel" unique_id=1690774234]
+layout_mode = 0
+offset_left = 475.0
+offset_top = -6.0
+offset_right = 667.0
+offset_bottom = 162.0
+texture = ExtResource("1_hmfqu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel" unique_id=1432786771]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 7.0
+offset_right = 632.0
+offset_bottom = 151.0
+
+[node name="StageLabel" type="Label" parent="OptionsPanel/VBoxContainer" unique_id=1470405959]
+layout_mode = 2
+theme = ExtResource("2_1qmy7")
+text = "Этап 1"
+horizontal_alignment = 1
+
+[node name="SfxLabel" type="Label" parent="OptionsPanel/VBoxContainer" unique_id=334658054]
+layout_mode = 2
+theme = ExtResource("3_6b8f5")
+text = "Громкость эффектов"
+
+[node name="SfxSlider" parent="OptionsPanel/VBoxContainer" unique_id=1484721557 instance=ExtResource("4_2427u")]
+layout_mode = 2
+bus_name = "SFX"
+
+[node name="MusicLabel" type="Label" parent="OptionsPanel/VBoxContainer" unique_id=1523791938]
+layout_mode = 2
+theme = ExtResource("3_6b8f5")
+text = "Громкость эффектов"
+
+[node name="MusicSlider" parent="OptionsPanel/VBoxContainer" unique_id=273278515 instance=ExtResource("4_2427u")]
+layout_mode = 2
+bus_name = "Music"
+
+[node name="EndRunBtn" type="TextureButton" parent="OptionsPanel/VBoxContainer" unique_id=479652596]
+layout_mode = 2
+texture_normal = ExtResource("5_04qni")
+
+[node name="EndRunBtnLabel" type="Label" parent="OptionsPanel/VBoxContainer/EndRunBtn" unique_id=205271632]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 144.0
+offset_bottom = 21.875
+theme = ExtResource("3_6b8f5")
+text = "Сдаться"
+horizontal_alignment = 1
+
+[node name="OptionsButton" type="TextureButton" parent="." unique_id=771565013]
+offset_left = 607.0
+offset_top = 7.0
+offset_right = 633.0
+offset_bottom = 33.0
+texture_normal = ExtResource("7_2427u")
+
+[connection signal="mouse_entered" from="OptionsPanel/VBoxContainer/EndRunBtn" to="." method="_on_end_run_btn_mouse_entered"]
+[connection signal="mouse_exited" from="OptionsPanel/VBoxContainer/EndRunBtn" to="." method="_on_end_run_btn_mouse_exited"]
+[connection signal="pressed" from="OptionsPanel/VBoxContainer/EndRunBtn" to="." method="_on_end_run_btn_pressed"]
+[connection signal="mouse_entered" from="OptionsButton" to="." method="_on_options_button_mouse_entered"]
+[connection signal="mouse_exited" from="OptionsButton" to="." method="_on_options_button_mouse_exited"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]

@@ -43,7 +43,7 @@ func move_to_hand(domino, pos:Vector2):
 		Vector2(1,1),
 		0.3
 	).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-
+	Signals.play_domino_draged_sound.emit()
 	await tween.finished
 
 	domino.returning_to_hand = false
@@ -160,6 +160,9 @@ func draw_domino(domino):
 
 func discard_all_dominoes():
 	# Собираем все домино из руки и из played_domino
+	
+	Signals.play_discard_all_dominoes_sound.emit()
+	
 	var all_dominoes := []
 	all_dominoes.append_array(dominoes)
 	all_dominoes.append_array(DominoManager.dominoes_on_board)

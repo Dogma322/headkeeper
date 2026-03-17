@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cdx24mq4bbdgo"]
+
+[ext_resource type="Theme" uid="uid://dqyxam6mhw2pp" path="res://scenes/TextThemes/Volda12.tres" id="1_bq13k"]
+[ext_resource type="Script" uid="uid://un7rinkawwbn" path="res://scenes/GeneratedLabels/stage_label.gd" id="1_shg0l"]
+
+[node name="StageLabel" type="Label" unique_id=725999995]
+offset_right = 45.0
+offset_bottom = 14.0625
+theme = ExtResource("1_bq13k")
+text = "Stage 1/10"
+script = ExtResource("1_shg0l")

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://qmr6x180d788"]
+
+[ext_resource type="FontFile" uid="uid://e47c4g1girqd" path="res://assets/Fonts/Monocraft.otf" id="1_flibv"]
+
+[resource]
+default_font = ExtResource("1_flibv")
+default_font_size = 9

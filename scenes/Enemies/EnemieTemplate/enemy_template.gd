@@ -170,8 +170,11 @@ func take_damage(damage):
 		damage -= block
 		block = 0
 	health -= damage
-	
-	AnimationManager.spawn_damage_label(damage, self)
+
+	if damage == 0:
+		AnimationManager.spawn_block_label(self)
+	else:
+		AnimationManager.spawn_damage_label(damage, self)
 
 	if health <= 0:
 		dead()

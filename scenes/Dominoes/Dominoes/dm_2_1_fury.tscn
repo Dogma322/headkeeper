@@ -19,7 +19,7 @@ region = Rect2(121, 265, 15, 13)
 
 [node name="dm_2_1_fury" unique_id=1771172059 instance=ExtResource("1_xcmj1")]
 script = ExtResource("2_h6o10")
-b = 0
+b = 1
 
 [node name="Back" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="0" unique_id=1409418696]
 texture = SubResource("AtlasTexture_h6o10")

@@ -14,6 +14,7 @@ func _on_pressed() -> void:
 	if !ActionCardManager.action_card_is_pressed:
 		ActionCardManager.action_card_is_pressed = true
 		effect()
+		Signals.play_action_card_sound.emit()
 		if !bonus_card:
 			Signals.action_card_selected.emit()
 	

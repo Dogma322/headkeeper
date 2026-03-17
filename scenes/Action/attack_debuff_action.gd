@@ -22,9 +22,10 @@ func execute():
 	target.take_damage(final_damage)
 	#AnimationManager.spawn_damage_label(final_damage, target)
 	AnimationManager.spawn_anim(AnimationManager.attack_anim, target, final_damage)
+	Signals.play_damage_sound.emit()
 	
-	
-	AnimationManager.spawn_status_label(target, status.name_key, stacks)
+	status.update_text()
+	AnimationManager.spawn_status_label(target, status.name, stacks)
 	StatusManager.apply_status(status, stacks, target)
 	
 	

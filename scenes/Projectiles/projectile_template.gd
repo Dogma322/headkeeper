@@ -3,15 +3,39 @@ extends Node2D
 @export var speed := 1250
 @export var trail_length := 12
 
-@onready var trail: Line2D = $Trail
-@onready var bullet_data: Dictionary
 
-
+@onready var sprite = $Sprite2D
+@onready var trail = $Trail
 
 
 func _ready():
 	# ВАЖНО: хвост живёт в мировых координатах
 	trail.top_level = true
+
+func set_proj(action):
+	var color: Color
+	
+	if action is AttackAction:
+		color = Color.RED
+	elif action is BlockAction:
+		color = Color.BLUE
+	elif action is HealAction:
+		color = Color.GREEN
+	elif action is BuffAction:
+		color = Color.ORANGE
+	elif action is DebuffAction or action is AttackDebuffAction:
+		color = Color.PURPLE
+	else:
+		color = Color.WHITE
+	
+	apply_color(color)
+
+
+func apply_color(color: Color):
+	# меняем цвет спрайта
+	sprite.modulate = color
+	# меняем цвет трейла
+	trail.default_color = color
 
 
 func fly(from: Vector2, to: Vector2):

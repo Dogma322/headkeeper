@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d2rp2pqpehagd"]
 
 [ext_resource type="Script" uid="uid://dutuv5niky73d" path="res://scenes/Projectiles/projectile_template.gd" id="1_e8s78"]
-[ext_resource type="Texture2D" uid="uid://hlemg2iqc73x" path="res://assets/Projectiles/BloodParticle.png" id="2_e8s78"]
+[ext_resource type="Texture2D" uid="uid://bmsjfgdsk7s71" path="res://assets/Projectiles/CircleParticle.png" id="2_e8s78"]
 
 [sub_resource type="Curve" id="Curve_e8s78"]
 _data = [Vector2(0.01980199, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.9887641), 0.0, 0.0, 0, 0]

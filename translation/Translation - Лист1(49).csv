@@ -1,0 +1,258 @@
+,en,ru
+UI,,
+play,PLAY,ИГРАТЬ
+tutorial,TUTORIAL,ОБУЧЕНИЕ
+end_turn,End turn,Завершить ход
+choose_bone,Choose a tile,Выберите кость
+choose_head,Choose and add a head,Выберите и добавьте голову
+skip,Skip,Пропустить
+victory,VICTORY,ПОБЕДА
+endless_mode,Endless mode,Бесконечный режим
+give_up,Give up,Сдаться
+stage,Stage %s,Этап %s
+sfx_volume,Effects volume,Громкость эффектов
+music_volume,Music volume,Громкость музыки
+end_run,End run,Закончить забег
+block_damage,Block,Блок
+,,
+,,
+bone_bag_name,Tile Bag,Мешок для костей
+discard_bag_name,Discard Bag,Мешок для сброса
+bag_des,Currently contains %s of your tiles.,В мешке сейчас %s костей.
+,,
+intent_attack_des,The enemy intends to attack.,Враг планирует атаковать.
+intent_attack_buff_des,The enemy intends to attack and apply a buff to itself.,Враг планирует атаковать и наложить на себя положительный эффект.
+intent_attack_debuff_des,The enemy intends to attack and inflict a debuff on you.,Враг планирует атаковать и наложить на вас отрицательный эффект.
+intent_debuff_des,The enemy intends to inflict a debuff on you.,Враг планирует наложить на вас отрицательный эффект.
+intent_buff,The enemy intends to apply a buff to itself.,Враг планирует наложить на себя положительный эффект.
+,,
+heal_card_des,Restore %s HP. ,Восстановить %s здоровья
+remove_card_des,Remove a tile from your deck.,Убрать кость из колоды.
+remove_2_domino_des,Remove 2 tiles from your deck.,Убрать 2 кости из колоды.
+remove_bone_text,Click on the tiles you want to remove,"Кликните на кости, которые хотите убрать"
+add_bone_for_damage_card_des,"Add a tile to your deck, but lose %s health.","Добавить кость в колоду, но потерять %s здоровья."
+more_options_card_des,Increase the number of available tiles and heads by 1 when gaining rewards.,Увеличить число доступных костей и голов при получении наград на 1. 
+attack_bb_card_des,A bonus that deals 5 damage starts appearing on the board.,"На поле начинает появляться бонус, который наносит 5 урона."
+defense_bb_card_des,A bonus that gain 4 block starts appearing on the board.,"На поле начинает появляться бонус, который дает 4 брони."
+heal_bb_card_des,A bonus that restores 3 health starts appearing on the board.,"На поле начинает появляться бонус, который восстанавливает 3 здоровья."
+draw_bb_card_des,"A bonus that, when activated, draws 1 extra tile on your next turn starts appearing on the board.","На поле начинает появляться бонус, при активации которого, вы возьмете на 1 кость больше в следующем ходу."
+weak_bb_card_des,A bonus starts appearing on the board that reduces the enemy’s damage by 25%.,"На поле начинает появляться бонус, который уменьшает урон врага на 25%."
+vulnerable_bb_card_des,A bonus starts appearing on the board that increases attack damage against the enemy by 50%.,"На поле начинает появляться бонус, который увеличивает урон от атака по врагу на 50%."
+repeat_bb_card_des,A bonus starts appearing on the board that doubles the effect of your next played tile.,"На поле начинает появляться бонус, который удваивает эффект следующей сыгранной кости."
+crit_bb_card_des,A bonus starts appearing on the board that doubles the damage of your next red tile.,"На поле начинает появляться бонус, который удваивает урон следующей красной кости."
+,,
+inscrease_max_hp_card_des,Increase max HP by %s.,Увеличить максимальное здоровье на %s.
+add_board_bonus_des,Add a bonus to the board.,Добавить бонус на поле.
+,,
+,,
+,,
+,,
+DOMINOES,,
+attack_des,Deal %s damage.,Наносит %s урона.
+defense_des,Give %s block.,Дает %s брони.
+heal_des,Restores %s HP.,Восстанавливает %s здоровья.
+corruption_des,Apply Corruption %s.,Накладывает Скверна %s.
+weak_des,Apply Weak  %s.,Накладывает Слабость %s.
+strength_des,Apply Fury %s.,Накладывает Ярость %s.
+thorns_des,Apply Thorns %s.,Накладывает Шипы %s.
+draw_1_des,"At the start of the next turn, draw 1 more tile.",В начале следующего хода возьмите на 1 кость больше.
+draw_2+_des,"At the start of the next turn, draw %s more tiles.",В начале следующего хода возьмите на %s кости больше.
+vulnerable_des,Apply Vulnerable %s.,Накладывает Уязвимость %s.
+,,
+,,
+1value_attack_des,Deals 2 damage for each tile with a value of 1 played this fight. (Deals %s damage).,Наносит 2 урона за каждую разыгранную кость со значением 1 в этом бою. (Наносит %s урона).
+2value_attack_des,Deals 2 damage for each tile with a value of 2 played this fight. (Deals %s damage).,Наносит 2 урона за каждую разыгранную кость со значением 2 в этом бою. (Наносит %s урона).
+3value_attack_des,Deals 2 damage for each tile with a value of 3 played this fight. (Deals %s damage).,Наносит 2 урона за каждую разыгранную кость со значением 3 в этом бою. (Наносит %s урона).
+4value_attack_des,Deals 2 damage for each tile with a value of 4 played this fight. (Deals %s damage).,Наносит 2 урона за каждую разыгранную кость со значением 4 в этом бою. (Наносит %s урона).
+,,
+,,
+dm_spear_des,Deals %s damage. Triggers each time you play a red tile.,Наносит %s урона. Срабатывает каждый раз когда вы разыгрываете красную кость.
+dm_steel_shield_des,Gain %s block. Triggers each time you play a blue tile.,Дает %s брони. Срабатывает каждый раз когда вы разыгрываете синюю кость.
+dm_dark_sphere_des,Applies %s Corruption. Triggers each time you play a green tile.,Накладывает %s Скверны. Срабатывает каждый раз когда вы разыгрываете зеленую кость.
+dm_claws_des,Deals %s damage. Increases its damage by 4 until the end of the battle.,Наносит %s урона. Увеличивает свой урон на 4 до конца боя.
+dm_repeat_des,The next tile triggers twice.,Следующая кость сработает дважды.
+dm_dagger_des,Deals %s damage. Triggers each time you restore health.,Наносит %s урона. Срабатывает каждый раз когда вы восстанавливаете здоровье.
+dm_hammer_des,Deals 2 damage for each your bonus activated this battle. (Deals %s damage).,Наносит 2 урона за каждый ваш активированный бонус в этом бою. (Наносит %s урона). 
+dm_dark_staff_des,Applies Corruption 1 for each tile with a value of 1 played this battle. (Applies %s Corruption),Накладывает Скверна 1 за каждую разыгранную кость со значением 1 в этом бою. (Накладывает %s Скверны).
+dm_shield_strike_des,Deals damage equal to your block.,Наносит урон равный вашей броне.
+dm_mace_des,Deals 3 damage for each tile played this turn. (Deals %s damage).,Наносит 3 урона за каждую сыгранную в этом ходу кость. (Наносит %s урона)
+,,
+,,
+dm_bonus_up_des,All bonuses gain +%s power until the end of the battle.,Ваши бонусы получают +%s к силе до конца боя.
+dm_crit_des,The next red tile deals double damage.,Следующая красная кость наносит двойной урон.
+dm_activate_bonus_des,Activates a random green bonus and doubles its effect.,Активирует случайный зелёный бонус и удваивает его эффект.
+dm_remove_bonus_des,Removes a random red bonus from the board.,Убирает случайный красный бонус с поля.
+dm_cloak_des,Discard all tiles from your hand and draw 3 tiles.,Сбросьте все кости из руки и возьмите 3 кости.
+dm_thorned_shield_des,Gain %s block and applies Thorns 2. Triggers each time you play a tile with a value of 2.,Дает %s брони и Шипы 2. Срабатывает каждый раз когда вы разыгрываете кость со значением 2.
+dm_horn_des,Applies Fury %s. Triggers each time you play a tile with a value of 3.,Накладывает Ярость %s. Срабатывает каждый раз когда вы разыгрываете кость со значением 3.
+,,
+,,
+dm_attack_is_attack,"When you play a red tile, deal 2 damage.","Когда вы разыгрываете красную кость, наносит 2 урона."
+dm_dom_is_attack,"When you play a tile, deal 2 damage.","Когда вы разыгрываете кость, наносит 2 урона."
+dm_skill_is_corruption,"When you play a green tile, apply Corruption 2.","Когда вы разыгрываете зеленую кость, накладывает 2 Скверны."
+dm_defense_is_thorns,"When you play a blue tile, apply Thorns 2.","Когда вы играете синюю кость, накладывает Шипы 2."
+dm_attack_is_strength,"When you play a red tile, apply Fury 1.","Когда вы играете красную кость, накладывает Ярость 1."
+dm_attack_is_defense,"When you play a red tile, gain 2 block.","Когда вы играете красную кость, дает 2 брони."
+dm_skill_is_heal,"When you play a green tile, restore 2 HP.","Когда вы разыгрываете зеленую кость, восстановите 2 здоровья."
+,,
+,,
+STATUSES,,
+st_weak_name,Weak,Слабость
+st_weak_des,Target deals 25% less attack damage.,Цель наносит на 25% меньше урона от атак.
+st_weak_in_game_des,Target deals 25% less attack damage.,Цель наносит на 25% меньше урона от атак.
+st_strength_name,Fury,Ярость
+st_strength_des,Adds bonus damage to attacks.,Добавляет дополнительный урон к атакам.
+st_strength_in_game_des,Increases attack damage by %s.,Увеличивает урон от атак на %s.
+st_negative_strength_in_game_des,Decreases attack damage by %s.,Уменьшает урон от атак на %s.
+,,
+st_corruption_name,Corruption,Скверна
+st_corruption_des,"At turn start, deals damage and decreases by 1.",В начале хода наносит урон и уменьшается на 1.
+st_corruption_in_game_des,"At turn start, deals %s damage and decreases by 1.",В начале хода наносит %s урона и уменьшается на 1.
+st_thorns_name,Thorns,Шипы
+st_thorns_des,Deals damage back on each attack.,Наносит урон в ответ на каждую атаку.
+st_thorns_in_game_des,Deals %s damage back on each attack.,Наносит %s урона в ответ на каждую атаку.
+st_vulnerable_name,Vulnerable,Уязвимость
+st_vulnerable_des,Vulnerable creatures take 50% more damage from attacks.,Уязвимые существа получают на 50% больше урона от атак.
+st_vulnerable_in_game_des,Takes 50% more damage from attacks.,Получает на 50% больше урона от атак.
+st_repeat_name,Repeat,Повтор
+st_repeat_des,The next tile played will trigger twice.,Следующая разыгранная кость сработает дважды.
+st_repeat_in_game_des,The next tile played will trigger twice.,Следующая разыгранная кость сработает дважды.
+st_crit_name,Crit,Крит
+st_crit_des,The next red tile will deal double damage.,Следующая красная кость нанесет удвоенный урон.
+st_crit_in_game_des,The next red tile will deal double damage.,Следующая красная кость нанесет удвоенный урон.
+st_evasion_name,Evasion,Уклонение
+st_evasion_des,The next attack against the target deals 0 damage.,Следующая атака по цели нанесет 0 урона.
+st_evasion_in_game_des,The next attack against the target deals 0 damage.,Следующая атака по цели нанесет 0 урона.
+st_draw_name,Draw,Добор
+st_draw_in_game_des,"At the start of the next turn, draw %s more tiles.",В начале следующего хода возьмите на %s костей больше.
+,,
+st_invincible_name,Invincible,Неуязвимость
+st_invincible_des,Takes no damage.,Не получает урон.
+st_invincible_in_game_des,Takes no damage. Activate a yellow bonus on the board to remove Invincible.,"Не получает урон. Активируйте желтый бонус на поле, чтобы убрать Неуязвимость."
+st_devour_name,Devouring,Пожирание
+st_devour_des,"At the end of its turn, the enemy gains 2 Fury and restores 5 HP for each Larva on the board.",В конце своего хода враг получит 2 Ярости и восстановит 5 здоровья за каждую Личинку на поле.
+st_devour_in_game_des,"At the end of its turn, the enemy gains 2 Fury and restores 5 HP for each Larva on the board.",В конце своего хода враг получит 2 Ярости и восстановит 5 здоровья за каждую Личинку на поле.
+,,
+,,
+,,
+,,
+st_decrease_max_health,%s Max HP ,%s Макс. здоровье
+st_increase_max_health,%s Max HP ,%s Макс. здоровье
+,,
+,,
+,,
+st_weak_apply,Weak %s,Слабость %s
+st_corruption_apply,Corruption %s,Скверна %s
+st_vulnerable_apply,Vulnerable %s,Уязвимость %s
+,,
+BONUSES,,
+bn_attack_name,Attack Bonus,Бонус Атаки
+bn_defense_name,Defense Bonus,Бонус Защиты
+bn_heal_name,Heal Bonus,Бонус Лечения
+bn_draw_name,Draw Bonus,Бонус Добора
+,,
+bn_thorns_name,Thorns Bonus,Бонус Шипов
+bn_strength_name,Fury Bonus,Бонус Ярости
+bn_crit_name,Crit Bonus,Бонус Крита
+bn_repeat_name,Repeat Bonus,Бонус Повтора
+bn_weak_name,Weak Bonus,Бонус Слабости
+bn_vulnerable_name,Vulnerable Bonus,Бонус Уязвимости
+,,
+,,
+,,
+,,
+bn_enm_strength_name,Strength Curse,Проклятие Силы
+bn_enm_strength_des,Applies Rage %s to the enemy.,Накладывает на врага Ярость %s.
+bn_enm_attack_name,Attack Curse,Проклятие Атаки
+bn_enm_attack_des,You take %s damage.,Вы получаете %s урона.
+bn_enm_defense_name,Armor Curse,Проклятие Брони
+bn_enm_defense_des,The enemy gains %s block.,Враг получает %s брони.
+bn_enm_heal_name,Heal Curse,Проклятие Лечения
+bn_enm_heal_des,The enemy restores %s HP.,Враг восстанавливает %s здоровья.
+bn_enm_vulnerable_name,Vulnerable Curse,Проклятие Уязвимости
+bn_enm_vulnerable_des,Applies Vulnerable %s to you.,Накладывает на вас Уязвимость %s.
+bn_enm_weak_name,Weak Curse,Проклятие Слабости
+bn_enm_weak_des,Applies Weak %s to you.,Накладывает на вас Слабость %s.
+bn_enm_evasion_name,Evasion Curse,Проклятие Уклонения
+bn_enm_evasion_des,Applies Evasion %s to the enemy.,Накладывает на врага Уклонение %s.
+bn_enm_thorns_name,Thorns Curse,Проклятие Шипов
+bn_enm_thorns_des,Applies Thorns %s to the enemy.,Накладывает на врага Шипы %s.
+bn_enm_void_name,Void,Пустота
+bn_enm_void_des,Instantly kills you.,Моментально убивает вас.
+,,
+bn_enm_lose_strength_name,Drowsiness Curse,Проклятие Сонливости
+bn_enm_lose_strength_des,You loses %s Fury.,Вы теряете %s Ярости.
+,,
+bn_enm_end_turn_name,Time Curse,Проклятие Времени
+bn_enm_end_turn_des,Ends your turn.,Завершает ваш ход.
+bn_enm_cursed_domino_name,Cursed Tile,Проклятая Кость
+bn_enm_cursed_domino_des,Adds a cursed tile to your deck.,Добавляет вам в колоду проклятую кость.
+,,
+,,
+,,
+bn_enm_decrease_max_hp_name,Health Curse,Проклятие Здоровья
+bn_enm_decrease_max_hp_des,Reduces your maximum HP by %s.,Уменьшает ваше максимальное здоровье на %s.
+bn_enm_remove_armpr_name,Armor Curse,Проклятие Брони
+bn_enm_remove_armor_des,You lose all block.,Вы теряете всю броню.
+,,
+,,
+,,
+bn_remove_invincible_name,Remove Invincible,Снять Неуязвимость
+bn_remove_invincible_des,Enemy loses Invincible.,Враг теряет Неуязвиость.
+bn_remove_strength_name,Remove Fury,Снять Ярость
+bn_remove_strength_des,Enemy loses %s Fury.,Враг теряет %s Ярости.
+bn_remove_enemy_armor_name,Remove Armor,Снять Броню
+bn_remove_enemy_armor_des,Enemy lose all block.,Враг теряет всю броню.
+bn_larva_name,Larva,Личинка
+bn_larva_des,"At the end of its turn, the enemy gains 2 Fury and restores 5 HP for each Larva on the board.",В конце своего хода враг получит 2 Ярости и восстановит 5 здоровья за каждую Личинку на поле.
+,,
+,,
+,,
+HEADS,,
+hd_warrior_name,Berserk,Берсерк
+hd_warrior_des,"When you play a tile with a value of 3, deal 3 damage.","Когда вы играете кость со значением 3, наносит 3 урона."
+hd_rock_name,Rock,Скала
+hd_rock_des,"When you play a blue tile, gain 2 block. -%s max HP.","Когда вы играете синюю кость, дает 2 брони. -%s Макс. здоровья."
+hd_squid_name,Brain Eater,Мозгоед
+hd_squid_des,"At the start of your turn, draw 1 additional tile.",В начале хода вы берете на 1 кость больше.
+hd_false_king_name,False King,Ложный Король
+hd_false_king_des,Your first tile played each turn triggers twice.  -%s max HP.,Ваша первая кость за ход сработает дважды. -%s Макс. здоровья.
+hd_thorn_name,White Thorn,Белый Шип
+hd_thorn_des,A bonus that apply Thorns 4 begins to appear on the board.,"На поле начинает появляться бонус, который накладывает Шипы 4."
+hd_eternal_fury_name,Eternal Fury,Вечная Ярость
+hd_eternal_fury_des,Two bonuses start appearing on the board that apply 1 Fury to you.,"На поле начинают появляться 2 бонуса, которые накладывают на вас Ярость 1."
+hd_chaos_name,Chaos,Хаос
+hd_chaos_des,"When you play a tile with a value of %s, deal 4 damage. The value changes each turn.","Когда вы играете кость со значением %s, наносит 4 урона. Значение меняется каждый ход."
+hd_moon_name,Moon,Луна
+hd_moon_des,"Whenever you play every 8th tile, deal %s damage.",При разыгрывании каждой 8-й кости наносит %s урона.
+hd_maw_name,Maw,Пасть
+hd_maw_des,Two bonuses start appearing on the board that double the damage of your next red die. -%s max HP.,"На поле начинают появляться 2 бонуса, которые удваивают урон следующей красной кости. -%s Макс. здоровья."
+hd_corruptor_name,Corruptor,Осквернитель
+hd_corruptor_des,"When you apply Corruption, you additionally apply 2 more Corruption.",При наложении Скверны накладывается дополнительно 2 Скверны.
+hd_druid_name,Druid,Друид
+hd_druid_des,"When you restore health, applies 2 Fury. -%s max HP.","Когда вы восстанавливаете здоровье, накладывает Ярость 2. -%s Макс. здоровья."
+hd_brick_name,Construct,Конструкт
+hd_brick_des,Gаin %s block at the start of each turn.,В начале каждого хода дает %s брони.
+hd_octopus_name,Apostle,Апостол
+hd_octopus_des,"When you play a green tile, apply Corruption %s  to the enemy. -%s max HP.","Когда вы играете зеленую кость, накладывает Скверна %s на врага. -%s Макс. здоровья."
+hd_phantom_name,Phantom,Фантом
+hd_phantom_des,"Every time you activate the green bonus, it deals %s damage","Каждый раз когда вы активируете зеленый бонус, наносит %s урона."
+hd_plant_name,Warden,Хранитель
+hd_plant_des,Two bonuses start appearing on the board that restores %s HP. +%s max HP.,"На поле начинают появляться 2 бонуса, которые восстанавливают %s здоровья. +%s Макс. здоровья."
+,,
+,,
+,,
+TUTORIAL,,
+tutorial_1,"Welcome to Headkeeper! Here, you will play dominoes to defeat enemies. This is your game board.","Добро пожаловать в Headkeeper! Здесь тебе предстоит разыгрывать домино, чтобы одолеть врагов. Это твое игровое поле."
+tutorial_2,"Each tile has its own symbols. The basic symbols are: swords - deal damage, shields - grant armor.
+","У каждой кости есть свои символы. Базовые символы: мечи - наносят урон, щиты - дают броню."
+tutorial_3,"The first tile is placed automatically. To play the next tile, the number on its side must match the number at the end of the chain.","Первая кость ставится автоматически. Чтобы выложить следующую кость, число на её стороне должно совпадать с числом на краю цепочки."
+tutorial_4,Drag a tile to the slot to play it.,"Перетащи кость в слот, чтобы разыграть её."
+tutorial_5,"Bonuses will also appear on the board. Green bonuses are positive, red bonuses are negative.","На доске также будут появлятся бонусы. Зеленые бонусы - положительные, красные - отрицательные."
+tutorial_6,"To collect them, you need to place a tile on them. Place a tile on the green bonus.",Чтобы их собрать нужно поставить на них кость. Поставь кость на зеленый бонус.
+tutorial_7,"The enemy's intention is displayed above them. Right now, it's preparing to attack.",Над врагом отображается его намерение. Сейчас он собирается атаковать.
+tutorial_8,"When you run out of playable tiles in your hand or can't play any more, click the 'End Turn' button.",Когда кости в руке кончатся или их уже не разыграть - нажми на кнопку 'Завершить ход'.
+tutorial_9,Certain special tiles can be activated by other tiles.,Некоторые особые кости могут акивироваться от других костей.
+tutorial_10,"Hover over a tile to see its effect, then play it.","Наведись на кость, чтобы узнать её эффект, и разыграй её."
+tutorial_11,Play the remaining tiles to finish off the enemy.,"Разыграй оставшиеся кости, чтобы добить врага."
+tutorial_12,Excellent! You know the basics. Now the real battle begins.,Отлично! Ты знаешь основы. Дальше начинается реальный бой.

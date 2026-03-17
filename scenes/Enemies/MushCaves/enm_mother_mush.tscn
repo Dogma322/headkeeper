@@ -57,6 +57,9 @@ animations = [{
 [node name="enm_mother_mush" unique_id=1770774892 instance=ExtResource("1_1ngdp")]
 script = ExtResource("2_sn8vn")
 
+[node name="AimMarker" parent="." index="1" unique_id=1904937536]
+position = Vector2(-4, -10)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1125429608]
 position = Vector2(0, -38)
 sprite_frames = SubResource("SpriteFrames_7vqgx")

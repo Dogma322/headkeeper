@@ -4,6 +4,7 @@ signal play_btn_pressed
 signal play_dominoes
 signal projectile_hit
 signal enemy_dead
+signal hero_dead
 
 signal player_turn_begin
 signal player_turn_end
@@ -48,3 +49,16 @@ signal reset_run_data
 signal fight_started
 
 signal hero_healed
+
+signal stage_changed
+
+signal play_domino_added_to_slot_sound
+signal play_domino_draged_sound
+signal play_domino_play_sound
+signal play_discard_all_dominoes_sound
+signal play_action_card_sound
+
+signal play_block_sound
+signal play_damage_sound
+signal play_heal_sound
+signal play_status_sound

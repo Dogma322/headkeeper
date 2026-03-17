@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://dqyxam6mhw2pp"]
+
+[ext_resource type="FontFile" uid="uid://cdr1gk3kbvdd4" path="res://assets/Fonts/Vollda-Bold.otf" id="1_riryl"]
+
+[resource]
+default_font = ExtResource("1_riryl")
+default_font_size = 12

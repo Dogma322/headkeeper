@@ -2,7 +2,8 @@ extends ActionCard
 
 func _ready() -> void:
 	description = tr("end_run") 
+	bonus_card = true
 	super()
 	
 func effect():
-	pass
+	CombatManager.return_to_main_menu()

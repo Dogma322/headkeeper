@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cs7y2wp3ykjsq"]
+
+[ext_resource type="Theme" uid="uid://qmr6x180d788" path="res://scenes/TextThemes/Monocraft9.tres" id="1_hj8x2"]
+[ext_resource type="Script" uid="uid://drqoubq418c57" path="res://scenes/GeneratedLabels/timer_label.gd" id="2_4nyty"]
+
+[node name="TimerLabel" type="Label" unique_id=68907037]
+offset_right = 48.0
+offset_bottom = 9.0
+theme = ExtResource("1_hj8x2")
+text = "00:12:33"
+script = ExtResource("2_4nyty")

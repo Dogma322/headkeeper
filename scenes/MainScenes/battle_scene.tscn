@@ -11,9 +11,45 @@
 [ext_resource type="PackedScene" uid="uid://cagbtkvoqcjjb" path="res://scenes/DeckBags/discard_bag.tscn" id="9_lhbvr"]
 [ext_resource type="PackedScene" uid="uid://drlsgry4o0pof" path="res://scenes/BoardBonusContainer/board_bonus_container.tscn" id="10_lhbvr"]
 [ext_resource type="PackedScene" uid="uid://bbvfro8a5geyx" path="res://scenes/HeadHolder/head_holder.tscn" id="11_aonfs"]
+[ext_resource type="PackedScene" uid="uid://cdx24mq4bbdgo" path="res://scenes/GeneratedLabels/stage_label.tscn" id="11_vranq"]
+[ext_resource type="PackedScene" uid="uid://cs7y2wp3ykjsq" path="res://scenes/GeneratedLabels/timer_label.tscn" id="12_qc22i"]
 [ext_resource type="PackedScene" uid="uid://dr7wx1mkxpyl7" path="res://scenes/ActionCardContainer/action_card_container.tscn" id="13_4d2li"]
 [ext_resource type="PackedScene" uid="uid://caovgfyajqfdl" path="res://scenes/HeadChoiceScene/head_choice_scene.tscn" id="14_36n0a"]
 [ext_resource type="PackedScene" uid="uid://bmdtecafi1ta3" path="res://scenes/RemoveDominoScene/remove_domino_scene.tscn" id="15_36n0a"]
+[ext_resource type="PackedScene" uid="uid://csbo55doneg6b" path="res://scenes/OptionsPanel/options_panel.tscn" id="15_42igk"]
+[ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="18_qc22i"]
+[ext_resource type="PackedScene" uid="uid://bjosapo8novm3" path="res://scenes/Camera/camera.tscn" id="19_mjddb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjddb"]
+shader = ExtResource("18_qc22i")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0400000019
+shader_parameter/scanlines_width = 0.0800000038
+shader_parameter/grille_opacity = 0.030000001425
+shader_parameter/resolution = Vector2(640, 360)
+shader_parameter/pixelate = false
+shader_parameter/roll = false
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 0.10000000149012
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 3.0
+shader_parameter/static_noise_intensity = 0.02000000095
+shader_parameter/aberration = 0.00300004764250005
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.3
+shader_parameter/vignette_opacity = 0.30000001425
+shader_parameter/cg_saturation = 0.850000040375
+shader_parameter/cg_exposure = 0.0
+shader_parameter/cg_contrast = 1.0
+shader_parameter/cg_temperature = 0.0
+shader_parameter/cg_tint = 0.0
+shader_parameter/cg_highlights = 1.0
+shader_parameter/cg_shadows = 1.0
 
 [node name="BattleScene" type="Node2D" unique_id=563303012]
 script = ExtResource("1_ydxg7")
@@ -30,7 +66,7 @@ position = Vector2(320, -145)
 [node name="Characters" type="Node2D" parent="." unique_id=585567734]
 
 [node name="Hero" parent="Characters" unique_id=534144501 instance=ExtResource("4_j2os4")]
-position = Vector2(103, 170)
+position = Vector2(111, 168)
 
 [node name="EnmArmoredMush" parent="Characters" unique_id=1770774892 instance=ExtResource("5_vun5q")]
 position = Vector2(535, 170)
@@ -46,10 +82,16 @@ offset_bottom = -25.0
 [node name="Bags" type="Node2D" parent="UI" unique_id=1548184174]
 
 [node name="DeckBag" parent="UI/Bags" unique_id=2145809580 instance=ExtResource("8_qxp17")]
-position = Vector2(22, 331)
+offset_left = 3.0
+offset_top = 302.0
+offset_right = 48.0
+offset_bottom = 357.0
 
 [node name="DiscardBag" parent="UI/Bags" unique_id=571906125 instance=ExtResource("9_lhbvr")]
-position = Vector2(608, 329)
+offset_left = 592.0
+offset_top = 302.0
+offset_right = 637.0
+offset_bottom = 357.0
 
 [node name="Node2D" type="Node2D" parent="UI" unique_id=1574174789]
 
@@ -59,7 +101,21 @@ offset_top = 49.0
 offset_right = 194.0
 offset_bottom = 77.0
 
+[node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=591768417]
+offset_left = 545.0
+offset_top = 7.0
+offset_right = 599.0
+offset_bottom = 32.0
+theme_override_constants/separation = 0
+
+[node name="StageLabel" parent="UI/VBoxContainer" unique_id=725999995 instance=ExtResource("11_vranq")]
+layout_mode = 2
+
+[node name="TimerLabel" parent="UI/VBoxContainer" unique_id=68907037 instance=ExtResource("12_qc22i")]
+layout_mode = 2
+
 [node name="HeadHolder" parent="." unique_id=2074985017 instance=ExtResource("11_aonfs")]
+center_position = Vector2(111, 116)
 
 [node name="ActionCardContainer" parent="." unique_id=1117680451 instance=ExtResource("13_4d2li")]
 offset_top = -240.0
@@ -69,3 +125,23 @@ offset_bottom = -82.0
 spacing = 100
 
 [node name="RemoveDominoScene" parent="." unique_id=1801682247 instance=ExtResource("15_36n0a")]
+
+[node name="OptionsPanel" parent="." unique_id=1496924105 instance=ExtResource("15_42igk")]
+
+[node name="Shader" type="Control" parent="." unique_id=2017409977]
+z_index = 999
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="VhsShader" type="ColorRect" parent="Shader" unique_id=832302268]
+material = SubResource("ShaderMaterial_mjddb")
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+
+[node name="Camera" parent="." unique_id=888122831 instance=ExtResource("19_mjddb")]
+position = Vector2(320, 180)

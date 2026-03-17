@@ -103,7 +103,7 @@ func play_actions():
 				action.source.play_anim()
 				
 				if action is not NothingAction:
-					AnimationManager.spawn_proj(action.source.aim_marker.global_position, action.target.aim_marker.global_position)
+					AnimationManager.spawn_proj(action.source.aim_marker.global_position, action.target.aim_marker.global_position, action)
 					await Signals.projectile_hit
 				
 		action.execute()
@@ -113,6 +113,10 @@ func play_actions():
 		await get_tree().create_timer(0.35).timeout
 		
 		if Global.enemy.is_dead:
+			running = false
+			queue.clear()
+			
+		if Global.hero.is_dead:
 			running = false
 			queue.clear()
 

@@ -20,5 +20,10 @@ var head_pool: = {
 
 var temp_head_pool = head_pool.duplicate()
 
+func _ready() -> void:
+	Signals.reset_run_data.connect(reset_head_pool)
+
 func reset_head_pool():
 	temp_head_pool = head_pool.duplicate()
+	for head in Global.head_holder.get_children():
+		head.remove_passive_effect()

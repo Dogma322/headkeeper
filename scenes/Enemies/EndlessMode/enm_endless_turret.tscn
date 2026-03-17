@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://lhs0ashgcoi3"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_rxhvx"]
+[ext_resource type="Script" uid="uid://bgah7ciw7s3n7" path="res://scenes/Enemies/EndlessMode/enm_endless_turret.gd" id="2_bjmpa"]
+[ext_resource type="Texture2D" uid="uid://s40dnv6dxtip" path="res://assets/Enemies/MushCaves/MushroomTurretWithShadow-Sheet.png" id="3_i6bpb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1eui"]
+atlas = ExtResource("3_i6bpb")
+region = Rect2(0, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pd14"]
+atlas = ExtResource("3_i6bpb")
+region = Rect2(192, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncien"]
+atlas = ExtResource("3_i6bpb")
+region = Rect2(384, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0sbq"]
+atlas = ExtResource("3_i6bpb")
+region = Rect2(576, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj0rg"]
+atlas = ExtResource("3_i6bpb")
+region = Rect2(768, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnagt"]
+atlas = ExtResource("3_i6bpb")
+region = Rect2(960, 0, 192, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hco6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1eui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pd14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncien")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0sbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj0rg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnagt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enm_endless_turret" unique_id=1770774892 instance=ExtResource("1_rxhvx")]
+script = ExtResource("2_bjmpa")
+
+[node name="AimMarker" parent="." index="1" unique_id=1904937536]
+position = Vector2(-9, -31)
+
+[node name="IntentIcon" parent="." index="3" unique_id=354376541]
+offset_top = -105.0
+offset_bottom = -73.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=2073974423]
+position = Vector2(-3, -39)
+sprite_frames = SubResource("SpriteFrames_2hco6")
+autoplay = "default"

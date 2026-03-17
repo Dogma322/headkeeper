@@ -2,7 +2,7 @@ extends Enemy
 
 
 func _ready():
-	location = "MutatingForest"
+	location = "MushroomCaves"
 	max_health = 60
 	health = max_health
 	

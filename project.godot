@@ -15,6 +15,10 @@ run/main_scene="uid://dks3x17ep5x0n"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://65d4462qb0xp"
+
 [autoload]
 
 BoardManager="*uid://h5bj6gegd8b2"
@@ -31,13 +35,15 @@ HeadManager="*uid://c1bjs00du5xti"
 EnemyManager="*uid://cqdvayo0fp5c6"
 ActionCardManager="*uid://bmpktw6r0gusn"
 Transition="*uid://c21vchucx2ll6"
+SoundManager="*uid://2gvh11rpmgge"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/window_width_override=1280
-window/size/window_height_override=720
+window/size/mode=3
+window/size/window_width_override=1920
+window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
 
 [global_group]
@@ -47,7 +53,7 @@ Dominoes=""
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://translation/Translation - Лист1(48).en.translation", "res://translation/Translation - Лист1(48).ru.translation")
+locale/translations=PackedStringArray("res://translation/Translation - Лист1(49).en.translation", "res://translation/Translation - Лист1(49).ru.translation")
 
 [physics]
 

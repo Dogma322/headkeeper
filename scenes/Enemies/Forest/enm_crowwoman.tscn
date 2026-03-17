@@ -43,6 +43,9 @@ animations = [{
 [node name="enm_crowwoman" unique_id=1770774892 instance=ExtResource("1_7qtys")]
 script = ExtResource("2_hg7ul")
 
+[node name="AimMarker" parent="." index="1" unique_id=1904937536]
+position = Vector2(6, -55)
+
 [node name="IntentIcon" parent="." index="3" unique_id=354376541]
 offset_top = -130.0
 offset_bottom = -98.0

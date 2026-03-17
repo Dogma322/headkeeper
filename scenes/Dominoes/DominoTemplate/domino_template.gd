@@ -4,6 +4,8 @@ extends Node2D
 @export var a:int
 @export var b:int
 
+
+
 var target_position:Vector2
 
 var slot:DominoSlot = null
@@ -178,6 +180,26 @@ func reset_rotation():
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 func _on_area_2d_input_event(_viewport, event, _shape):
 
 	if event is InputEventMouseButton:
@@ -317,6 +339,7 @@ func move_to_hand(pos:Vector2):
 	returning_to_hand = false
 	
 func play_anim():
+	Signals.play_domino_play_sound.emit()
 	z_index = 100
 	var tween = create_tween()
 	tween.parallel()
@@ -330,6 +353,10 @@ func play_anim():
 func _on_area_2d_mouse_entered() -> void:
 	if slot:
 		return
+		
+	if !DominoManager.dm_dragging:
+		Signals.play_domino_draged_sound.emit()
+		
 	BoardManager.highlight_avaiable_slots([a,b])
 	mouse_over_des = true
 	show_des()

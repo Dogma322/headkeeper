@@ -43,6 +43,9 @@ animations = [{
 [node name="enm_dark_witch1" unique_id=1770774892 instance=ExtResource("1_7ooaq")]
 script = ExtResource("2_43atx")
 
+[node name="AimMarker" parent="." index="1" unique_id=1904937536]
+position = Vector2(-2, -51)
+
 [node name="IntentIcon" parent="." index="3" unique_id=354376541]
 offset_top = -121.0
 offset_bottom = -89.0

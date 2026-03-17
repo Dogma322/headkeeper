@@ -17,4 +17,4 @@ texture = SubResource("AtlasTexture_52gs3")
 
 [node name="ValueLabel" parent="." index="2" unique_id=1340414324]
 offset_left = 5.0
-text = "5"
+text = "4"

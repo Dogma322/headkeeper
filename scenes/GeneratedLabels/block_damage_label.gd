@@ -2,7 +2,7 @@ extends Node2D
 
 
 func _ready() -> void:
-	$Label.text = "BLOCK"
+	$Label.text = tr("block_damage")
 
 func animate():
 	var tween = get_tree().create_tween()

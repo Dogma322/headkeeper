@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://cgim5w6855c1o"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_p5c5c"]
+[ext_resource type="Script" uid="uid://dt0lmgg7tyiwm" path="res://scenes/Enemies/EndlessMode/enm_void_wisp_1.gd" id="2_e5ihs"]
+[ext_resource type="Texture2D" uid="uid://c5u5ko1jsn02o" path="res://assets/Enemies/Voiders/VoidWisp1-Sheet.png" id="3_21a44"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhvdf"]
+atlas = ExtResource("3_21a44")
+region = Rect2(0, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ih6n"]
+atlas = ExtResource("3_21a44")
+region = Rect2(192, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ju0w"]
+atlas = ExtResource("3_21a44")
+region = Rect2(384, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wsij"]
+atlas = ExtResource("3_21a44")
+region = Rect2(576, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l571i"]
+atlas = ExtResource("3_21a44")
+region = Rect2(768, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78nfi"]
+atlas = ExtResource("3_21a44")
+region = Rect2(960, 0, 192, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jgllq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhvdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ih6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ju0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wsij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l571i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78nfi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="enm_void_wisp1" unique_id=1770774892 instance=ExtResource("1_p5c5c")]
+script = ExtResource("2_e5ihs")
+
+[node name="AimMarker" parent="." index="1" unique_id=1904937536]
+position = Vector2(-1, -25)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=427179724]
+position = Vector2(0, -36)
+sprite_frames = SubResource("SpriteFrames_jgllq")
+autoplay = "default"
+frame_progress = 0.9613921

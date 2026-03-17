@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://qgmnadm5qmxi" path="res://scenes/Heroes/hero.gd" id="1_ddi63"]
 [ext_resource type="Texture2D" uid="uid://b3xp13akpqd23" path="res://assets/Heroes/Hero1Anim/HeroNewAnimation4.png" id="2_f6wkj"]
+[ext_resource type="PackedScene" uid="uid://cqx21jp2erd6f" path="res://scenes/DynamicShadow/dynamic_shadow.tscn" id="2_pyxpm"]
 [ext_resource type="Texture2D" uid="uid://b1kh07hg3pi8b" path="res://assets/UI/HPBar/Under2.png" id="3_kto8s"]
 [ext_resource type="Texture2D" uid="uid://bb45ada0y8mxj" path="res://assets/UI/HPBar/Over2.png" id="4_i5btq"]
 [ext_resource type="Texture2D" uid="uid://hlb83quv0ufa" path="res://assets/UI/HPBar/Progress2.png" id="5_pyxpm"]
@@ -75,6 +76,9 @@ animations = [{
 
 [node name="Hero" type="Node2D" unique_id=534144501]
 script = ExtResource("1_ddi63")
+
+[node name="DynamicShadow" parent="." unique_id=2067416328 instance=ExtResource("2_pyxpm")]
+position = Vector2(0, 34)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1799847895]
 position = Vector2(-12, -1)

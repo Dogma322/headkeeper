@@ -57,6 +57,9 @@ animations = [{
 [node name="enm_mother_mus2" unique_id=1770774892 instance=ExtResource("1_ews6m")]
 script = ExtResource("2_lcmu4")
 
+[node name="AimMarker" parent="." index="1" unique_id=1904937536]
+position = Vector2(-5, -9)
+
 [node name="IntentIcon" parent="." index="3" unique_id=354376541]
 offset_top = -134.0
 offset_bottom = -102.0

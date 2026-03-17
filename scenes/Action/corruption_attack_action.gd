@@ -12,3 +12,4 @@ func execute():
 	target.take_damage(damage)
 	AnimationManager.spawn_damage_label(damage, target)
 	AnimationManager.spawn_anim(AnimationManager.corruption_attack, target, damage)
+	Signals.play_damage_sound.emit()

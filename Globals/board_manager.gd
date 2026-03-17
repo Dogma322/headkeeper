@@ -31,6 +31,7 @@ var green_bonuses_activated = 0
 @onready var e_2thorns = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_2_thorns.tscn")
 @onready var e_decrease_5_max_hp = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_decrease_5_max_hp.tscn")
 @onready var e_1evasion = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_1_evasion.tscn")
+@onready var e_void = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_void.tscn")
 
 @onready var n_remove_invincible = preload("res://scenes/BoardBonuses/NeutralBonuses/bb_e_remove_invincible.tscn")
 @onready var n_larva = preload("res://scenes/BoardBonuses/NeutralBonuses/bb_n_larva.tscn")
@@ -55,6 +56,7 @@ var target_slot
 
 func _ready():
 	slots = get_tree().get_nodes_in_group("domino_slots")
+	Signals.reset_run_data.connect(reset_run)
 
 func reset_run():
 	bonus_pool = [h_5dmg_bonus, h_5def_bonus]

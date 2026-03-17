@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cqx21jp2erd6f"]
+
+[ext_resource type="Texture2D" uid="uid://bc6lc1cqhr4a" path="res://assets/Heroes/HeroShadow/HeroShadow.png" id="1_2v0kp"]
+[ext_resource type="Script" uid="uid://240t1j27ih71" path="res://scenes/DynamicShadow/dynamic_shadow.gd" id="1_r0suo"]
+
+[node name="DynamicShadow" type="Node2D" unique_id=2067416328]
+script = ExtResource("1_r0suo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1505095550]
+texture = ExtResource("1_2v0kp")

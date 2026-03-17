@@ -55,6 +55,9 @@ func update_hp_bar():
 		block_label.text = str(block)
 	else:
 		block_icon.visible = false
+		
+	if max_health <= 0:
+		dead()
 	
 func take_damage(damage):
 	take_damage_anim()
@@ -93,7 +96,10 @@ func take_damage(damage):
 		block = 0
 	health -= damage
 	
-	AnimationManager.spawn_damage_label(damage, self)
+	if damage == 0:
+		AnimationManager.spawn_block_label(self)
+	else:
+		AnimationManager.spawn_damage_label(damage, self)
 
 	if health <= 0:
 		dead()
@@ -130,5 +136,11 @@ func take_block(armor):
 		
 		
 func dead():
-	pass
+	if is_dead:
+		return
+	is_dead = true
+	
+	Signals.hero_dead.emit()
+	var tween = get_tree().create_tween()
+	tween.tween_property(self,"modulate", Color(0,0,0,0), 1)
 	

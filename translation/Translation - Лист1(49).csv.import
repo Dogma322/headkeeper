@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bc1okmlevgs6g"
+
+[deps]
+
+files=["res://translation/Translation - Лист1(49).en.translation", "res://translation/Translation - Лист1(49).ru.translation"]
+
+source_file="res://translation/Translation - Лист1(49).csv"
+dest_files=["res://translation/Translation - Лист1(49).en.translation", "res://translation/Translation - Лист1(49).ru.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

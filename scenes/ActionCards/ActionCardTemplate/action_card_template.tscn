@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://qdpkraimbkv6" path="res://assets/ActionCards/Sprite/ActionCardSprite.png" id="1_vxx7n"]
 [ext_resource type="Texture2D" uid="uid://babnnfm5efohd" path="res://assets/ActionCards/Icons/ArmorBonusIcon.png" id="2_7eo55"]
 [ext_resource type="Script" uid="uid://beyhtbnplk3tf" path="res://scenes/ActionCards/ActionCardTemplate/action_card_template.gd" id="2_p6wmb"]
-[ext_resource type="Theme" uid="uid://dwkbewublf2da" path="res://scenes/ActionCards/ActionCardTemplate/volda8.tres" id="3_p6wmb"]
+[ext_resource type="Theme" uid="uid://dwkbewublf2da" path="res://scenes/TextThemes/volda8.tres" id="3_p6wmb"]
 
 [node name="ActionCardTemplate" type="TextureButton" unique_id=1280652209]
 offset_right = 40.0

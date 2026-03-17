@@ -1,6 +1,6 @@
 extends Node
 
-var pos = Vector2(535,170)
+var pos = Vector2(530,168)
 
 @onready var wolf1 = preload("res://scenes/Enemies/Forest/enm_wolf_1.tscn")
 @onready var high_druid = preload("res://scenes/Enemies/Forest/enm_high_druid.tscn")
@@ -38,7 +38,7 @@ var pos = Vector2(535,170)
 	"wolf2": preload("res://scenes/Enemies/Forest/enm_wolf_2.tscn"),
 	"shadow_goat": preload("res://scenes/Enemies/Swamp/enm_shadow_goat.tscn"),
 	"bear": preload("res://scenes/Enemies/Forest/enm_bear.tscn"),
-	"king": preload("res://scenes/Heads/hd_false_king.tscn")
+	"king": preload("res://scenes/Enemies/MushCaves/enm_king.tscn")
 	
 	
 
@@ -46,22 +46,22 @@ var pos = Vector2(535,170)
 
 	
 @onready var endless_mode_pool: = {
-	"armored_mush": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
-	"armored_mush1": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
-	"armored_mush2": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
-
+	"void_warriror": preload("res://scenes/Enemies/EndlessMode/enm_void_warrior_1.tscn"),
+	"void_wisp1": preload("res://scenes/Enemies/EndlessMode/enm_void_wisp_1.tscn"),
+	"void_wisp2": preload("res://scenes/Enemies/EndlessMode/enm_void_wisp_2.tscn"),
+	"endless_wolf": preload("res://scenes/Enemies/EndlessMode/enm_endless_wolf.tscn"),
+	"endless_turret": preload("res://scenes/Enemies/EndlessMode/enm_endless_turret.tscn"),
+	"endless_young_witch": preload("res://scenes/Enemies/EndlessMode/enm_endless_young_witch.tscn")
 	
-	#"void_warrior": preload("res://scenes/Enemies/EndlessMode/enm_void_warrior_1.tscn"),
-	#"void_wisp1": preload("res://scenes/Enemies/EndlessMode/enm_void_wisp_1.tscn"),
-	#"void_wisp2": preload("res://scenes/Enemies/EndlessMode/enm_void_wisp_2.tscn"),
-	#"endless_wolf": preload("res://scenes/Enemies/EndlessMode/enm_endless_wolf.tscn"),
-	#"endless_turret": preload("res://scenes/Enemies/EndlessMode/enm_endless_turret.tscn"),
-	#"endless_young_witch": preload("res://scenes/Enemies/EndlessMode/endless_young_witch.tscn")
 }
 
 @onready var temp_early_enemy_pool = early_enemy_pool.duplicate()
 @onready var temp_mid_enemy_pool = mid_enemy_pool.duplicate()
 @onready var temp_late_enemy_pool = late_enemy_pool.duplicate()
+
+func _ready():
+	Signals.reset_run_data.connect(reset_enemy_pools)
+
 
 func reset_enemy_pools():
 	temp_early_enemy_pool = early_enemy_pool.duplicate()

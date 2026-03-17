@@ -43,6 +43,9 @@ animations = [{
 [node name="enm_cultist2" unique_id=1770774892 instance=ExtResource("1_nnxao")]
 script = ExtResource("2_iyb8q")
 
+[node name="AimMarker" parent="." index="1" unique_id=1904937536]
+position = Vector2(-1, -24)
+
 [node name="IntentIcon" parent="." index="3" unique_id=354376541]
 offset_top = -115.0
 offset_bottom = -83.0

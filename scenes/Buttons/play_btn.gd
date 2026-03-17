@@ -1,6 +1,7 @@
 extends Control
 
 func _ready() -> void:
+	$Label.text = tr("play")
 	Global.play_btn = self
 
 

@@ -16,6 +16,8 @@ func execute():
 		
 	target.take_damage(final_damage)
 	AnimationManager.spawn_anim(AnimationManager.attack_anim, target, final_damage)
+	Signals.play_damage_sound.emit()
+
 	
 	if source is Domino:
 		Signals.deal_hero_thorn_damage.emit()

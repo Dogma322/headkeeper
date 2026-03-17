@@ -1,6 +1,7 @@
 extends Node
 
 var player_turn = true
+var stage_changing := false
 
 var turn = 0
 var stage = 1
@@ -8,19 +9,21 @@ var stage = 1
 
 
 func _ready() -> void:
-	
-	await get_tree().process_frame
-	EnemyManager.set_enemy()
-	Global.fight_background.set_background()
-	
-	
-	Transition.blackout_off()
-	
 	Signals.play_btn_pressed.connect(play_dominoes)
 	Signals.enemy_dead.connect(enemy_dead)
+	Signals.hero_dead.connect(hero_dead)
 	
 	
 
+	
+func start():
+	await get_tree().process_frame
+	EnemyManager.set_enemy()
+	SoundManager.set_music()
+	Global.fight_background.set_background()
+	
+	Transition.blackout_off()
+	
 	await get_tree().create_timer(0.5).timeout
 	
 	BoardManager.generate_board()
@@ -209,16 +212,26 @@ func show_delete_domino_menu():
 	
 	
 func change_stage():
+	if stage_changing:
+		return # уже меняется стадия, игнорируем повторный вызов
+	stage_changing = true
+	
+	
 	reset_fight_data()
 	stage += 1
+	print("STAGE")
+	print(stage)
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
 	reset_turn_data()
 	BoardManager.generate_board()
 	EnemyManager.set_enemy()
+	SoundManager.set_music()
 	Global.fight_background.set_background()
+	Signals.stage_changed.emit()
 	Transition.blackout_off()
 	await get_tree().create_timer(1).timeout
+	stage_changing = false
 	player_turn_begin()
 	
 
@@ -245,6 +258,13 @@ func clear_statuses():
 	for icon in Global.hero.status_container.get_children():
 		icon.status.stacks = 0
 	
+func hero_dead():
+	return_to_main_menu()
 	
+func return_to_main_menu():
+	Transition.blackout_on()
+	await get_tree().create_timer(1).timeout
+	reset_run_data()
+	get_tree().change_scene_to_file("res://scenes/MainScenes/main_menu.tscn")
 	
 	

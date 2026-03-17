@@ -43,6 +43,9 @@ animations = [{
 [node name="enm_cultist1" unique_id=1770774892 instance=ExtResource("1_2l7n2")]
 script = ExtResource("2_jl1u6")
 
+[node name="AimMarker" parent="." index="1" unique_id=1904937536]
+position = Vector2(-4, -25)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=814103889]
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_glrco")

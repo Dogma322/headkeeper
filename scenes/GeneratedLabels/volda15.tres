@@ -1,7 +1,0 @@
-[gd_resource type="Theme" format=3 uid="uid://cprf3ls2l5ilt"]
-
-[ext_resource type="FontFile" uid="uid://cdr1gk3kbvdd4" path="res://assets/Fonts/Vollda-Bold.otf" id="1_do7lp"]
-
-[resource]
-default_font = ExtResource("1_do7lp")
-default_font_size = 15

@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dsha2jqe7m11q"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_j6vl6"]
+[ext_resource type="Script" uid="uid://cit0httojf04s" path="res://scenes/Enemies/EndlessMode/enm_endless_young_witch.gd" id="2_pl5dt"]
+[ext_resource type="Texture2D" uid="uid://cthql2ae2d4dh" path="res://assets/Enemies/Swamp/YoungWitch2WithShadow-Sheet.png" id="3_aqjcw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdg47"]
+atlas = ExtResource("3_aqjcw")
+region = Rect2(0, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa336"]
+atlas = ExtResource("3_aqjcw")
+region = Rect2(192, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7t7ej"]
+atlas = ExtResource("3_aqjcw")
+region = Rect2(384, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o4hv"]
+atlas = ExtResource("3_aqjcw")
+region = Rect2(576, 0, 192, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ly8vs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdg47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa336")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7t7ej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2o4hv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enm_endless_young_witch" unique_id=1770774892 instance=ExtResource("1_j6vl6")]
+script = ExtResource("2_pl5dt")
+
+[node name="AimMarker" parent="." index="1" unique_id=1904937536]
+position = Vector2(-2, -26)
+
+[node name="IntentIcon" parent="." index="3" unique_id=354376541]
+offset_top = -115.0
+offset_bottom = -83.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=2016797777]
+position = Vector2(-1, -34)
+sprite_frames = SubResource("SpriteFrames_ly8vs")
+autoplay = "default"

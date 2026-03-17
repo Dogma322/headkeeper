@@ -2,18 +2,60 @@
 
 [ext_resource type="Script" uid="uid://0dpt80ohnf2c" path="res://scenes/DeckBags/deck_bag.gd" id="1_dj1gj"]
 [ext_resource type="Texture2D" uid="uid://c1dukcnhc68ht" path="res://assets/DeckBags/DeckBag.png" id="1_sv76t"]
-[ext_resource type="Theme" uid="uid://df5t7rctr0cta" path="res://scenes/TextThemes/Monocraft8.tres" id="3_gj06o"]
+[ext_resource type="Theme" uid="uid://r5h8i48sghj8" path="res://scenes/AdditionalDescriptionPanel/Press8.tres" id="3_dj1gj"]
+[ext_resource type="Texture2D" uid="uid://btaxaokybm6bs" path="res://assets/NinePatchTexture/9patch.png" id="4_h4qnl"]
+[ext_resource type="Theme" uid="uid://mh7q61dm1im4" path="res://scenes/TextThemes/volda10.tres" id="5_s58bb"]
+[ext_resource type="Theme" uid="uid://u6ptbmerxst5" path="res://scenes/TextThemes/volda7.tres" id="6_bpky7"]
 
-[node name="DeckBag" type="Node2D" unique_id=2145809580]
+[node name="DeckBag" type="TextureButton" unique_id=649749056]
+texture_normal = ExtResource("1_sv76t")
 script = ExtResource("1_dj1gj")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1978618198]
-texture = ExtResource("1_sv76t")
-
-[node name="Label" type="Label" parent="." unique_id=1543378354]
-offset_left = 18.0
-offset_top = 15.0
-offset_right = 58.0
-offset_bottom = 24.0
-theme = ExtResource("3_gj06o")
+[node name="DeckLabel" type="Label" parent="." unique_id=1543378354]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 45.0
+offset_right = 82.0
+offset_bottom = 54.0
+theme = ExtResource("3_dj1gj")
 text = "25"
+
+[node name="DesPanel" type="Control" parent="." unique_id=557465664]
+anchors_preset = 0
+offset_left = 9.0
+offset_top = -39.0
+offset_right = 130.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="DesPanel" unique_id=354715623]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -23.0
+offset_right = 139.0
+offset_bottom = 39.0
+texture = ExtResource("4_h4qnl")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="NameLabel" type="Label" parent="DesPanel" unique_id=1570133969]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -20.0
+offset_right = 133.0
+theme = ExtResource("5_s58bb")
+theme_override_colors/font_color = Color(1, 0.6862745, 0.3019608, 1)
+text = "Берсерк"
+
+[node name="DesLabel" type="RichTextLabel" parent="DesPanel" unique_id=28924313]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -5.0
+offset_right = 134.0
+offset_bottom = 35.0
+theme = ExtResource("6_bpky7")
+bbcode_enabled = true
+text = "Когда играется кость со значением 3, наносит 2 урона"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

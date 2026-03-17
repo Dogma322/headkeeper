@@ -8,7 +8,7 @@ func _ready() -> void:
 	
 	super()
 	
-func play(domino):
+func play():
 	add_action()
 	
 func add_action():

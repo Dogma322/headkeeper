@@ -18,7 +18,7 @@ region = Rect2(185, 359, 15, 20)
 
 [node name="dm_2_1_defense_draw" unique_id=1771172059 instance=ExtResource("1_qkdc1")]
 script = ExtResource("2_btmt1")
-b = 0
+b = 1
 
 [node name="Back" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="0" unique_id=1409418696]
 texture = SubResource("AtlasTexture_eglbs")

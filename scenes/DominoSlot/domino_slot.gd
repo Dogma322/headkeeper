@@ -8,14 +8,17 @@ enum Direction {
 	LEFT,
 	RIGHT
 }
+@export var direction: Direction
+
+enum SlotDistance { START, NEAR, MIDDLE, FAR }
+@export var slot_distance: SlotDistance
 
 @export var start_slot: bool = false
 @export var parent_slot: DominoSlot
-@export var direction: Direction
 @export var orientation:Orientation
-@export var slot_distance: SlotDistance
 
-enum SlotDistance { START, NEAR, MIDDLE, FAR }
+
+
 
 
 var domino:Domino = null
@@ -113,7 +116,7 @@ func can_place(new_domino:Domino):
 
 
 func place_domino(new_domino:Domino):
-
+	Signals.play_domino_added_to_slot_sound.emit()
 	var needed = get_required_value()
 
 	if needed != null:

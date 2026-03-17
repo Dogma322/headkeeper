@@ -14,4 +14,5 @@ func execute():
 	
 	StatusManager.apply_status(status, stacks, target)
 	AnimationManager.spawn_anim(AnimationManager.debuff_anim, target, 0)
+	status.update_text()
 	AnimationManager.spawn_status_label(target, status.name, stacks)

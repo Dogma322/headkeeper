@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://biexctc7dm53"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_4n3o0"]
+[ext_resource type="Script" uid="uid://dxv7boelt7d7s" path="res://scenes/Enemies/EndlessMode/enm_void_warrior_1.gd" id="2_yfgjn"]
+[ext_resource type="Texture2D" uid="uid://6ofapt0x4uwm" path="res://assets/Enemies/Voiders/VoidWarrior1-Sheet.png" id="3_w1vyq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bbu4"]
+atlas = ExtResource("3_w1vyq")
+region = Rect2(0, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1eskq"]
+atlas = ExtResource("3_w1vyq")
+region = Rect2(192, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfako"]
+atlas = ExtResource("3_w1vyq")
+region = Rect2(384, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2eax"]
+atlas = ExtResource("3_w1vyq")
+region = Rect2(576, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74s3p"]
+atlas = ExtResource("3_w1vyq")
+region = Rect2(768, 0, 192, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbd87"]
+atlas = ExtResource("3_w1vyq")
+region = Rect2(960, 0, 192, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2dst0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bbu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1eskq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfako")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2eax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74s3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbd87")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="enm_void_warrior1" unique_id=1770774892 instance=ExtResource("1_4n3o0")]
+script = ExtResource("2_yfgjn")
+
+[node name="AimMarker" parent="." index="1" unique_id=1904937536]
+position = Vector2(-1, -45)
+
+[node name="IntentIcon" parent="." index="3" unique_id=354376541]
+offset_top = -118.0
+offset_bottom = -86.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=412744051]
+position = Vector2(-1, -36)
+sprite_frames = SubResource("SpriteFrames_2dst0")
+autoplay = "default"
+frame_progress = 0.053679034

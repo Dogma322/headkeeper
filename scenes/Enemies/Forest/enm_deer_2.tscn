@@ -43,6 +43,9 @@ animations = [{
 [node name="enm_deer2" unique_id=1770774892 instance=ExtResource("1_clwt7")]
 script = ExtResource("2_bux3x")
 
+[node name="AimMarker" parent="." index="1" unique_id=1904937536]
+position = Vector2(-14, -49)
+
 [node name="IntentIcon" parent="." index="3" unique_id=354376541]
 offset_top = -138.0
 offset_bottom = -106.0

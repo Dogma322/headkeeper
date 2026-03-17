@@ -43,6 +43,9 @@ animations = [{
 [node name="enm_young_witch1" unique_id=1770774892 instance=ExtResource("1_jigem")]
 script = ExtResource("2_buo56")
 
+[node name="AimMarker" parent="." index="1" unique_id=1904937536]
+position = Vector2(-5, -26)
+
 [node name="IntentIcon" parent="." index="3" unique_id=354376541]
 offset_top = -108.0
 offset_bottom = -76.0

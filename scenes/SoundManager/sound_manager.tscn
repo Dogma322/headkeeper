@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://2gvh11rpmgge"]
+
+[ext_resource type="Script" uid="uid://cvanbtj4oxt7a" path="res://scenes/SoundManager/sound_manager.gd" id="1_yr1ov"]
+
+[node name="SoundManager" type="Node2D" unique_id=1573611069]
+script = ExtResource("1_yr1ov")
+
+[node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="." unique_id=52866679]
+autoplay = true
+bus = &"Music"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1458721322]
+autoplay = true
+bus = &"Music"
+
+[node name="Sounds" type="Node" parent="." unique_id=1215338238]

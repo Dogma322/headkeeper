@@ -6,7 +6,7 @@ func _ready():
 	max_health = 100
 	health = max_health
 	
-	bonus_pool = [BoardManager.e_decrease_5_max_hp, BoardManager.e_decrease_5_max_hp,]
+	bonus_pool = [BoardManager.e_decrease_5_max_hp, BoardManager.e_decrease_5_max_hp, BoardManager.n_remove_invincible]
 
 	behavior_mode = BehaviorMode.SEQUENTIAL
 	first_action_index = 0
