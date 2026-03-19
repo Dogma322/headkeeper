@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b1chh2f22orbs"]
 
 [ext_resource type="Script" uid="uid://cfgikhcq4mvl5" path="res://scenes/Animations/attack_anim.gd" id="1_y4kt1"]
-[ext_resource type="Texture2D" uid="uid://cudbdpf7fq7q4" path="res://assets/ActioAnimations/Attack.png" id="2_wwlaj"]
+[ext_resource type="Texture2D" uid="uid://cudbdpf7fq7q4" path="res://assets/ActionAnimations/Attack.png" id="2_wwlaj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hafi3"]
 atlas = ExtResource("2_wwlaj")

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c63tsp6yujri6" path="res://scenes/Enemies/MushCaves/enm_armored_mush.tscn" id="5_vun5q"]
 [ext_resource type="PackedScene" uid="uid://ddsii7pus841p" path="res://scenes/Buttons/play_btn.tscn" id="6_cbqmc"]
 [ext_resource type="PackedScene" uid="uid://fvbwyoeuebsq" path="res://scenes/DeckBags/deck_bag.tscn" id="8_qxp17"]
+[ext_resource type="Script" uid="uid://dwpk36y7pnpsa" path="res://scripts/combat_ui.gd" id="8_uk3cr"]
 [ext_resource type="PackedScene" uid="uid://cagbtkvoqcjjb" path="res://scenes/DeckBags/discard_bag.tscn" id="9_lhbvr"]
 [ext_resource type="PackedScene" uid="uid://drlsgry4o0pof" path="res://scenes/BoardBonusContainer/board_bonus_container.tscn" id="10_lhbvr"]
 [ext_resource type="PackedScene" uid="uid://bbvfro8a5geyx" path="res://scenes/HeadHolder/head_holder.tscn" id="11_aonfs"]
@@ -77,7 +78,9 @@ offset_top = -50.0
 offset_right = 510.0
 offset_bottom = -25.0
 
-[node name="UI" type="Node2D" parent="." unique_id=494084482]
+[node name="UI" type="Node2D" parent="." unique_id=494084482 node_paths=PackedStringArray("money_label")]
+script = ExtResource("8_uk3cr")
+money_label = NodePath("../MoneyLabel")
 
 [node name="Bags" type="Node2D" parent="UI" unique_id=1548184174]
 
@@ -117,6 +120,13 @@ layout_mode = 2
 [node name="HeadHolder" parent="." unique_id=2074985017 instance=ExtResource("11_aonfs")]
 center_position = Vector2(111, 116)
 
+[node name="MoneyLabel" type="RichTextLabel" parent="." unique_id=1876316434]
+offset_right = 42.0
+offset_bottom = 23.0
+bbcode_enabled = true
+text = "0"
+fit_content = true
+
 [node name="ActionCardContainer" parent="." unique_id=1117680451 instance=ExtResource("13_4d2li")]
 offset_top = -240.0
 offset_bottom = -82.0
@@ -142,6 +152,7 @@ layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="Camera" parent="." unique_id=888122831 instance=ExtResource("19_mjddb")]
 position = Vector2(320, 180)

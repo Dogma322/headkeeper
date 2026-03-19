@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://kccl5hunua8v"]
 
 [ext_resource type="Script" uid="uid://8kuesygjwgde" path="res://scenes/Animations/armor_anim.gd" id="1_ak8lk"]
-[ext_resource type="Texture2D" uid="uid://drnffe37a3h0n" path="res://assets/ActioAnimations/Armor-sprite-sheet.png" id="2_g41r0"]
+[ext_resource type="Texture2D" uid="uid://drnffe37a3h0n" path="res://assets/ActionAnimations/Armor-sprite-sheet.png" id="2_g41r0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uvr5f"]
 atlas = ExtResource("2_g41r0")

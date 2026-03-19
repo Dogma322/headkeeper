@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dscbv3dvx754m"
-path="res://.godot/imported/Corruption.png-c06db3635bf63e5d30478961af48c42a.ctex"
+uid="uid://drnffe37a3h0n"
+path="res://.godot/imported/Armor-sprite-sheet.png-c6fabd2e8d054fa8834214b34f559bac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ActioAnimations/Corruption.png"
-dest_files=["res://.godot/imported/Corruption.png-c06db3635bf63e5d30478961af48c42a.ctex"]
+source_file="res://assets/ActionAnimations/Armor-sprite-sheet.png"
+dest_files=["res://.godot/imported/Armor-sprite-sheet.png-c6fabd2e8d054fa8834214b34f559bac.ctex"]
 
 [params]
 

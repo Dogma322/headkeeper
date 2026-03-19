@@ -21,6 +21,7 @@ buses/default_bus_layout="uid://65d4462qb0xp"
 
 [autoload]
 
+MetaManager="*uid://om6x1gnfc45s"
 BoardManager="*uid://h5bj6gegd8b2"
 Global="*uid://bvh7rsw62i480"
 Signals="*uid://deeasqn7l3e3b"
@@ -34,6 +35,7 @@ Hand="*uid://bnr8o6y2c8n08"
 HeadManager="*uid://c1bjs00du5xti"
 EnemyManager="*uid://cqdvayo0fp5c6"
 ActionCardManager="*uid://bmpktw6r0gusn"
+MoneyManager="*uid://btc8nsqyek1ur"
 Transition="*uid://c21vchucx2ll6"
 SoundManager="*uid://2gvh11rpmgge"
 

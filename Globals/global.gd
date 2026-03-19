@@ -4,7 +4,7 @@ func _ready() -> void:
 	TranslationServer.set_locale("ru")
 
 @onready var hero
-@onready var enemy
+@onready var enemy: Enemy
 @onready var fight_scene
 @onready var board
 @onready var board_bonus_container

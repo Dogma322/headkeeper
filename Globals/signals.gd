@@ -52,6 +52,9 @@ signal hero_healed
 
 signal stage_changed
 
+signal money_changed(money: int)
+signal meta_money_changed(money: int)
+
 signal play_domino_added_to_slot_sound
 signal play_domino_draged_sound
 signal play_domino_play_sound

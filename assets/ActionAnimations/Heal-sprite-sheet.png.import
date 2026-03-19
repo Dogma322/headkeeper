@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drnffe37a3h0n"
-path="res://.godot/imported/Armor-sprite-sheet.png-9a5cc5c211ef839621c1c82dc4140120.ctex"
+uid="uid://bsy3xq6quless"
+path="res://.godot/imported/Heal-sprite-sheet.png-f1556e2c5c1e32c476d6f652e34e71ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ActioAnimations/Armor-sprite-sheet.png"
-dest_files=["res://.godot/imported/Armor-sprite-sheet.png-9a5cc5c211ef839621c1c82dc4140120.ctex"]
+source_file="res://assets/ActionAnimations/Heal-sprite-sheet.png"
+dest_files=["res://.godot/imported/Heal-sprite-sheet.png-f1556e2c5c1e32c476d6f652e34e71ef.ctex"]
 
 [params]
 
