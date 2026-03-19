@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://80uj2wk21qiq"
-path="res://.godot/imported/Buff2.png-d5324368257b75934324797c0a226a26.ctex"
+uid="uid://cudbdpf7fq7q4"
+path="res://.godot/imported/Attack.png-e2a55780788136d891ebb84aa68bda0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ActioAnimations/Buff2.png"
-dest_files=["res://.godot/imported/Buff2.png-d5324368257b75934324797c0a226a26.ctex"]
+source_file="res://assets/ActionAnimations/Attack.png"
+dest_files=["res://.godot/imported/Attack.png-e2a55780788136d891ebb84aa68bda0f.ctex"]
 
 [params]
 

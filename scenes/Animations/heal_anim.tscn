@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://54qaey4xowj1"]
 
 [ext_resource type="Script" uid="uid://cr4yjp76h3gx1" path="res://scenes/Animations/heal_anim.gd" id="1_dmbqj"]
-[ext_resource type="Texture2D" uid="uid://bsy3xq6quless" path="res://assets/ActioAnimations/Heal-sprite-sheet.png" id="2_022uf"]
+[ext_resource type="Texture2D" uid="uid://bsy3xq6quless" path="res://assets/ActionAnimations/Heal-sprite-sheet.png" id="2_022uf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1axgi"]
 atlas = ExtResource("2_022uf")

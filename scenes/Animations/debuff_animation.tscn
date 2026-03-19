@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b436xblu41vbq"]
 
 [ext_resource type="Script" uid="uid://fkfnrdeliwaa" path="res://scenes/Animations/debuff_animation.gd" id="1_yon1r"]
-[ext_resource type="Texture2D" uid="uid://btibr1j4re8s8" path="res://assets/ActioAnimations/Debuff.png" id="2_7cogk"]
+[ext_resource type="Texture2D" uid="uid://btibr1j4re8s8" path="res://assets/ActionAnimations/Debuff.png" id="2_7cogk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_615lo"]
 atlas = ExtResource("2_7cogk")

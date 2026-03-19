@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsy3xq6quless"
-path="res://.godot/imported/Heal-sprite-sheet.png-37d2d07b32b5825b316b118cd2ded732.ctex"
+uid="uid://80uj2wk21qiq"
+path="res://.godot/imported/Buff2.png-5873d7bfe507ab17ea4b8197c7a1152e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ActioAnimations/Heal-sprite-sheet.png"
-dest_files=["res://.godot/imported/Heal-sprite-sheet.png-37d2d07b32b5825b316b118cd2ded732.ctex"]
+source_file="res://assets/ActionAnimations/Buff2.png"
+dest_files=["res://.godot/imported/Buff2.png-5873d7bfe507ab17ea4b8197c7a1152e.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bx5cr0kyfn16u"]
 
 [ext_resource type="Script" uid="uid://by5gg5b4nthsp" path="res://scenes/Animations/buff_animation.gd" id="1_cv1o5"]
-[ext_resource type="Texture2D" uid="uid://80uj2wk21qiq" path="res://assets/ActioAnimations/Buff2.png" id="2_gknkw"]
+[ext_resource type="Texture2D" uid="uid://80uj2wk21qiq" path="res://assets/ActionAnimations/Buff2.png" id="2_gknkw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yon1r"]
 atlas = ExtResource("2_gknkw")

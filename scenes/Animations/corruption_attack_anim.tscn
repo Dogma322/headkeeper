@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://j7udv63v22rf"]
 
 [ext_resource type="Script" uid="uid://dqmxymow2m5xf" path="res://scenes/Animations/corruption_attack_anim.gd" id="1_a8aat"]
-[ext_resource type="Texture2D" uid="uid://dscbv3dvx754m" path="res://assets/ActioAnimations/Corruption.png" id="2_y8qtp"]
+[ext_resource type="Texture2D" uid="uid://dscbv3dvx754m" path="res://assets/ActionAnimations/Corruption.png" id="2_y8qtp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fbn8a"]
 atlas = ExtResource("2_y8qtp")

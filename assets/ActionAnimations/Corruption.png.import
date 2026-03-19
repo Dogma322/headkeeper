@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cudbdpf7fq7q4"
-path="res://.godot/imported/Attack.png-43b05b00a7c9ec1c122f3b825a0cbb28.ctex"
+uid="uid://dscbv3dvx754m"
+path="res://.godot/imported/Corruption.png-350a68033b76e2041cf3dd5ce55551fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ActioAnimations/Attack.png"
-dest_files=["res://.godot/imported/Attack.png-43b05b00a7c9ec1c122f3b825a0cbb28.ctex"]
+source_file="res://assets/ActionAnimations/Corruption.png"
+dest_files=["res://.godot/imported/Corruption.png-350a68033b76e2041cf3dd5ce55551fb.ctex"]
 
 [params]
 
