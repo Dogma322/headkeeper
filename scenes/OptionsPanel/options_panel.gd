@@ -2,6 +2,12 @@ extends Node2D
 
 @onready var options_panel = $OptionsPanel
 
+@export var stage_label: Label
+@export var sfx_label: Label
+@export var music_label: Label
+@export var end_run_btn: TextureButton
+@export var end_run_btn_label: Label
+@export var win_btn: TextureButton
 
 func _ready() -> void:
 	options_panel.visible = false
@@ -31,20 +37,28 @@ func _on_options_button_mouse_exited() -> void:
 
 
 func update_labels():
-	$OptionsPanel/VBoxContainer/StageLabel.text = tr("stage") % CombatManager.stage
-	$OptionsPanel/VBoxContainer/SfxLabel.text = tr("sfx_volume")
-	$OptionsPanel/VBoxContainer/MusicLabel.text = tr("music_volume")
-	$OptionsPanel/VBoxContainer/EndRunBtn/EndRunBtnLabel.text = tr("give_up")
-	
-
+	stage_label.text = tr("stage") % CombatManager.stage
+	sfx_label.text = tr("sfx_volume")
+	music_label.text = tr("music_volume")
+	end_run_btn_label.text = tr("give_up")
 
 
 func _on_end_run_btn_pressed() -> void:
 	CombatManager.return_to_main_menu()
-	
 
 func _on_end_run_btn_mouse_entered() -> void:
-	$OptionsPanel/VBoxContainer/EndRunBtn.modulate = Color(1.3,1.3,1.3)
+	end_run_btn.modulate = Color(1.3,1.3,1.3)
 
 func _on_end_run_btn_mouse_exited() -> void:
-	$OptionsPanel/VBoxContainer/EndRunBtn.modulate = Color(1,1,1)
+	end_run_btn.modulate = Color(1,1,1)
+
+
+func _on_win_btn_pressed() -> void:
+	if Global.enemy != null:
+		Global.enemy.take_damage(Global.enemy.health)
+
+func _on_win_btn_mouse_entered() -> void:
+	win_btn.modulate = Color(1.3,1.3,1.3)
+
+func _on_win_btn_mouse_exited() -> void:
+	win_btn.modulate = Color(1,1,1)

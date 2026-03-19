@@ -176,10 +176,14 @@ func enemy_dead():
 	DominoManager.reshuffle_discard_into_deck()
 	await get_tree().create_timer(1).timeout
 	show_rewards()
-	
+
 func show_rewards():
 	DominoManager.block_domino_input = false
 	show_domino_choice()
+	
+	if MoneyManager.money_rewards.round_rewards.has(stage):
+		MoneyManager.money += MoneyManager.money_rewards.round_rewards[stage]
+	
 	await Signals.domino_selected
 	await get_tree().create_timer(1).timeout
 	

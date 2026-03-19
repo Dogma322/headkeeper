@@ -36,8 +36,9 @@ shader_parameter/cg_tint = 0.0
 shader_parameter/cg_highlights = 1.0
 shader_parameter/cg_shadows = 1.0
 
-[node name="MainMenu" type="Node2D" unique_id=643041956]
+[node name="MainMenu" type="Node2D" unique_id=643041956 node_paths=PackedStringArray("money_label")]
 script = ExtResource("1_biks6")
+money_label = NodePath("MoneyLabel")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2133518222]
 position = Vector2(320, 180)
@@ -51,6 +52,10 @@ offset_bottom = 220.0
 
 [node name="MenuPlayPtn" parent="VBoxContainer" unique_id=1791264381 instance=ExtResource("2_biks6")]
 layout_mode = 2
+
+[node name="ResetProgressButton" type="Button" parent="VBoxContainer" unique_id=1404690823]
+layout_mode = 2
+text = "Reset Progress"
 
 [node name="Shader" type="Control" parent="." unique_id=1575948723]
 z_index = 999
@@ -66,3 +71,11 @@ layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 2
+
+[node name="MoneyLabel" type="RichTextLabel" parent="." unique_id=1248291232]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "0"
+fit_content = true
+
+[connection signal="pressed" from="VBoxContainer/ResetProgressButton" to="." method="_on_reset_progress_button_pressed"]

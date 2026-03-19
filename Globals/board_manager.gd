@@ -39,7 +39,6 @@ var green_bonuses_activated = 0
 @onready var n_remove_5fury = preload("res://scenes/BoardBonuses/NeutralBonuses/bb_n_remove_5_fury.tscn")
 @onready var n_remove_10fury = preload("res://scenes/BoardBonuses/NeutralBonuses/bb_n_remove_10_fury.tscn")
 
-
 @onready var bonus_pool = [h_5dmg_bonus, h_5def_bonus]
 
 @onready var board1 = preload("res://scenes/Boards/BoardTemplate/board_1.tscn")
@@ -48,11 +47,8 @@ var green_bonuses_activated = 0
 
 @onready var board_pool = [board1]
 
-
 var slots = []
 var target_slot
-
-
 
 func _ready():
 	slots = get_tree().get_nodes_in_group("domino_slots")
