@@ -43,7 +43,7 @@ var deleted = false
 
 
 func _ready() -> void:
-	update_labels()
+	#update_labels()
 	hide_des_fast()
 	
 
@@ -184,6 +184,35 @@ func reset_rotation():
 
 
 
+
+
+
+func rotate_by_slot(connect_from:int, flow:int, connected_side:int):
+
+	var angle := 0
+
+	# 🔥 откуда подключились
+	match connect_from:
+		0: angle = 0        # TOP
+		1: angle = 180      # BOTTOM
+		2: angle = -90      # LEFT
+		3: angle = 90       # RIGHT
+
+	# 🔥 куда идёт цепь
+	match flow:
+		1: angle -= 90      # LEFT
+		2: angle += 90      # RIGHT
+
+	# 🔥 переворот домино
+	if connected_side == 1:
+		angle += 180
+
+	rotation_degrees = angle % 360
+
+	# 🔥 фикс иконок
+	if top_icons and bot_icons:
+		top_icons.rotation_degrees = -rotation_degrees
+		bot_icons.rotation_degrees = -rotation_degrees
 
 
 

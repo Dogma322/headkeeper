@@ -13,6 +13,13 @@ var crit = preload("res://resources/statuses/crit.tres")
 var devour = preload("res://resources/statuses/devour.tres")
 
 
+#func apply_status(status, stacks, target):
+#
+	#var new_status = status.duplicate(true)
+	#new_status.stacks = stacks
+	#target.status_container.add_status(new_status, stacks)
+
+
 
 
 func apply_status(status,stacks,target):

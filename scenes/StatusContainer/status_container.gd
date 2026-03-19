@@ -2,7 +2,7 @@ extends HBoxContainer
 
 @export var status_owner: Node
 
-var status_ui = preload("res://scenes/StatusIconUI/status_icon_ui.tscn")
+@onready var status_ui = preload("res://scenes/StatusIconUi/status_icon_ui.tscn")
 
 func add_status(status, stacks):
 	

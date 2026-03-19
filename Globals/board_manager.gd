@@ -1,5 +1,7 @@
 extends Node2D
 
+var random_boards = true
+
 var green_bonuses_activated = 0
 
 
@@ -43,10 +45,18 @@ var green_bonuses_activated = 0
 @onready var bonus_pool = [h_5dmg_bonus, h_5def_bonus]
 
 @onready var board1 = preload("res://scenes/Boards/BoardTemplate/board_1.tscn")
+
 @onready var board2 = preload("res://scenes/Boards/board_2.tscn")
 @onready var board3 = preload("res://scenes/Boards/board_3.tscn")
+@onready var board4 = preload("res://scenes/Boards/board_4.tscn")
 
-@onready var board_pool = [board1]
+@onready var board5 = preload("res://scenes/Boards/board_5.tscn")
+@onready var board6 = preload("res://scenes/Boards/board_6.tscn")
+@onready var board7 = preload("res://scenes/Boards/board_7.tscn")
+@onready var board8 = preload("res://scenes/Boards/board_8.tscn")
+@onready var board9 = preload("res://scenes/Boards/board_9.tscn")
+
+@onready var board_pool 
 
 
 var slots = []
@@ -55,18 +65,36 @@ var target_slot
 
 
 func _ready():
+	if random_boards == true:
+		board_pool = [board1, board5, board6, board7, board8, board9]
+	else:
+		board_pool = [board1]
+	
+	
 	slots = get_tree().get_nodes_in_group("domino_slots")
 	Signals.reset_run_data.connect(reset_run)
 
 func reset_run():
 	bonus_pool = [h_5dmg_bonus, h_5def_bonus]
-	board_pool = [board1]
+	if random_boards == true:
+		board_pool = [board1, board5, board6, board7, board8, board9]
+	else:
+		board_pool = [board1]
 	
 func generate_board():
 	var pos = Global.board.global_position
+
 	if board_pool.size() == 0:
-		board_pool = [board1, board2, board3]
-	var new_board = board_pool.pick_random().instantiate()
+		if random_boards:
+			board_pool = [board1, board5, board6, board7, board8, board9]
+		else:
+			board_pool = [board1]
+
+	var board_scene = board_pool.pick_random() # ← берём сцену
+	board_pool.erase(board_scene)              # ← удаляем сцену
+
+	var new_board = board_scene.instantiate() # ← создаём объект
+
 	Global.board.queue_free()
 	Global.board = new_board
 	Global.fight_scene.add_child(new_board)

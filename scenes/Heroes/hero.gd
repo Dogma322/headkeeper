@@ -38,6 +38,7 @@ func _ready() -> void:
 	Global.hero = self
 	update_hp_bar()
 	Signals.player_turn_begin.connect(remove_block)
+	Signals.enemy_dead.connect(remove_block)
 	
 	base_sprite_position = sprite.position
 
@@ -139,8 +140,9 @@ func dead():
 	if is_dead:
 		return
 	is_dead = true
-	
-	Signals.hero_dead.emit()
 	var tween = get_tree().create_tween()
 	tween.tween_property(self,"modulate", Color(0,0,0,0), 1)
+	await get_tree().create_timer(1.5).timeout
+	Signals.hero_dead.emit()
+
 	

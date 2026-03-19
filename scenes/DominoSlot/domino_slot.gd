@@ -13,13 +13,13 @@ enum Direction {
 enum SlotDistance { START, NEAR, MIDDLE, FAR }
 @export var slot_distance: SlotDistance
 
+
+
+
+
 @export var start_slot: bool = false
 @export var parent_slot: DominoSlot
 @export var orientation:Orientation
-
-
-
-
 
 var domino:Domino = null
 var child_slots:Array[DominoSlot] = []
@@ -35,6 +35,9 @@ func _ready():
 
 	if parent_slot:
 		parent_slot.child_slots.append(self)
+		
+	if start_slot:
+		$Sprite2D.texture = load("res://assets/UI/DominoSlot/DominoStartSlot.png")
 
 	disable_highlight()
 

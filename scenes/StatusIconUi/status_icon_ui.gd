@@ -30,15 +30,22 @@ func set_status(new_status: StatusResource):
 	_on_status_changed()
 	
 func _on_status_changed():
+
 	if not status:
 		return
 		
 	if !status.stackable:
 		stacks_label.visible = false
 		
-	if status.stacks <= 0 and !status.can_go_negative:
-		status.remove_status_effect()
-		queue_free()
+	# 🔥 ВАЖНАЯ ЧАСТЬ
+	if status.can_go_negative:
+		if status.stacks == 0:
+			status.remove_status_effect()
+			queue_free()
+	else:
+		if status.stacks <= 0:
+			status.remove_status_effect()
+			queue_free()
 		
 	stacks_label.text = str(status.stacks)
 	

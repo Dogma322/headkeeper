@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://loinrayff0pb"]
+
+[ext_resource type="Texture2D" uid="uid://2w7c0afjt20f" path="res://assets/UI/Buttons/BigMenuButton.png" id="1_s7wjb"]
+[ext_resource type="Script" uid="uid://b7adf1exetiuu" path="res://scenes/Buttons/change_board_generation_btn.gd" id="2_gmmn4"]
+[ext_resource type="Theme" uid="uid://mh7q61dm1im4" path="res://scenes/TextThemes/volda10.tres" id="2_mmd32"]
+
+[node name="ChnaheBoardGenerationBtn" type="TextureButton" unique_id=758375805]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_s7wjb")
+script = ExtResource("2_gmmn4")
+
+[node name="Label" type="Label" parent="." unique_id=1214048522]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 16.0
+offset_right = 127.0
+offset_bottom = 31.0
+theme = ExtResource("2_mmd32")
+text = "Рандомные поля: вкл"
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

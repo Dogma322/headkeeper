@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dfm53ekuvdv5w" path="res://assets/Backgrounds/VoidBackground.png" id="1_icbvd"]
 [ext_resource type="PackedScene" uid="uid://bsrdnool06g4h" path="res://scenes/Buttons/menu_play_ptn.tscn" id="2_biks6"]
 [ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="4_i2cg2"]
+[ext_resource type="PackedScene" uid="uid://loinrayff0pb" path="res://scenes/Buttons/ChangeBoardGenerationBtn.tscn" id="4_lrjex"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lrjex"]
 shader = ExtResource("4_i2cg2")
@@ -50,6 +51,9 @@ offset_right = 384.0
 offset_bottom = 220.0
 
 [node name="MenuPlayPtn" parent="VBoxContainer" unique_id=1791264381 instance=ExtResource("2_biks6")]
+layout_mode = 2
+
+[node name="ChnaheBoardGenerationBtn" parent="VBoxContainer" unique_id=758375805 instance=ExtResource("4_lrjex")]
 layout_mode = 2
 
 [node name="Shader" type="Control" parent="." unique_id=1575948723]

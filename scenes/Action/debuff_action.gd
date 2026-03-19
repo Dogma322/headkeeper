@@ -11,6 +11,7 @@ func _init(_source,_target,_status,_stacks):
 	stacks = _stacks
 
 func execute():
+	print("EXECUTE ACTION:", status.id, " stacks:", stacks)
 	StatusManager.apply_status(status, stacks, target)
 	AnimationManager.spawn_anim(AnimationManager.debuff_anim, target, 0)
 	status.update_text()

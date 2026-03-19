@@ -9,7 +9,6 @@ func _ready() -> void:
 	Signals.play_dominoes.connect(play_actions)
 
 func calculate_damage(source, target, damage):
-
 	
 	var final_damage
 

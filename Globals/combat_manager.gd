@@ -19,7 +19,7 @@ func _ready() -> void:
 func start():
 	await get_tree().process_frame
 	EnemyManager.set_enemy()
-	SoundManager.set_music()
+	SoundManager.set_music(Global.enemy.location)
 	Global.fight_background.set_background()
 	
 	Transition.blackout_off()
@@ -226,7 +226,7 @@ func change_stage():
 	reset_turn_data()
 	BoardManager.generate_board()
 	EnemyManager.set_enemy()
-	SoundManager.set_music()
+	SoundManager.set_music(Global.enemy.location)
 	Global.fight_background.set_background()
 	Signals.stage_changed.emit()
 	Transition.blackout_off()

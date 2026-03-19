@@ -42,17 +42,10 @@ func _ready():
 	Signals.play_heal_sound.connect(play_heal_sound)
 	
 
-func set_music(fade_time := 3):
-	var theme
-	
-	if CombatManager.stage == 0:
-		theme = "MainMenu"
-	
+func set_music(theme,fade_time := 3):
 	
 	if CombatManager.stage == 10:
 		theme = "Boss"
-	else:
-		theme = Global.enemy.location
 	
 	
 	var stream

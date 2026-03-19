@@ -19,4 +19,4 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_F:
 			if enemy:
-				enemy.dead()
+				Global.enemy.dead()

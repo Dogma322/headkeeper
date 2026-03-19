@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b8dm1atam3suj" path="res://scenes/Buttons/play_btn.gd" id="1_1red2"]
 [ext_resource type="Texture2D" uid="uid://c3nf5vy1bp8ga" path="res://assets/UI/Buttons/EndTurnButton3.png" id="1_s60lv"]
-[ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="2_1red2"]
+[ext_resource type="Theme" uid="uid://dqyxam6mhw2pp" path="res://scenes/TextThemes/Volda12.tres" id="3_1red2"]
 
 [node name="PlayBtn" type="Control" unique_id=870213553]
 layout_mode = 3
@@ -22,8 +22,7 @@ layout_mode = 0
 offset_top = 1.0
 offset_right = 96.0
 offset_bottom = 24.0
-theme_override_fonts/font = ExtResource("2_1red2")
-theme_override_font_sizes/font_size = 10
+theme = ExtResource("3_1red2")
 text = "PLAY"
 horizontal_alignment = 1
 vertical_alignment = 1
