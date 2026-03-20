@@ -69,6 +69,12 @@ layout_mode = 2
 text = "Рандомные поля: вкл"
 font_size = 2
 
+[node name="ExitButton" parent="VBoxContainer" unique_id=1705888084 instance=ExtResource("3_4s641")]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "Выход"
+font_size = 4
+
 [node name="Shader" type="Control" parent="." unique_id=1575948723]
 z_index = 999
 layout_mode = 3
@@ -87,3 +93,4 @@ mouse_filter = 2
 [connection signal="pressed" from="VBoxContainer/PlayBtn" to="." method="_on_play_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/ShopBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/ChangeBoardGenerationBtn" to="." method="_on_change_board_generation_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

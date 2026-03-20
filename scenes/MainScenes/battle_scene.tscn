@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bmdtecafi1ta3" path="res://scenes/RemoveDominoScene/remove_domino_scene.tscn" id="15_36n0a"]
 [ext_resource type="PackedScene" uid="uid://csbo55doneg6b" path="res://scenes/OptionsPanel/options_panel.tscn" id="15_42igk"]
 [ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="18_qc22i"]
+[ext_resource type="Script" uid="uid://cnhlqgjn6nf78" path="res://scenes/Camera/fs_shader.gd" id="19_76b4e"]
 [ext_resource type="PackedScene" uid="uid://bjosapo8novm3" path="res://scenes/Camera/camera.tscn" id="19_mjddb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mjddb"]
@@ -52,7 +53,7 @@ shader_parameter/cg_tint = 0.0
 shader_parameter/cg_highlights = 1.0
 shader_parameter/cg_shadows = 1.0
 
-[node name="BattleScene" type="Node2D" unique_id=563303012]
+[node name="BattleScene" type="Node2D" unique_id=169254087]
 script = ExtResource("1_ydxg7")
 
 [node name="BattleBackground" parent="." unique_id=631565350 instance=ExtResource("1_dyrcu")]
@@ -82,7 +83,7 @@ text = "ИГРАТЬ"
 font_size = 3
 use_darkened = true
 
-[node name="UI" type="Node2D" parent="." unique_id=494084482 node_paths=PackedStringArray("money_label")]
+[node name="UI" type="Node2D" parent="." unique_id=539959544 node_paths=PackedStringArray("money_label")]
 script = ExtResource("8_uk3cr")
 money_label = NodePath("../MoneyLabel")
 
@@ -141,20 +142,24 @@ spacing = 100
 [node name="RemoveDominoScene" parent="." unique_id=1801682247 instance=ExtResource("15_36n0a")]
 
 [node name="OptionsPanel" parent="." unique_id=1496924105 instance=ExtResource("15_42igk")]
+offset_right = 640.0
+offset_bottom = 360.0
 
 [node name="Shader" type="Control" parent="." unique_id=2017409977]
 z_index = 999
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 mouse_filter = 2
+script = ExtResource("19_76b4e")
 
 [node name="VhsShader" type="ColorRect" parent="Shader" unique_id=832302268]
 material = SubResource("ShaderMaterial_mjddb")
-layout_mode = 0
-offset_right = 640.0
-offset_bottom = 360.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_lock_ = true
 

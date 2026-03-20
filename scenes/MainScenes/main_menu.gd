@@ -38,3 +38,7 @@ func _on_change_board_generation_btn_pressed() -> void:
 		BoardManager.random_boards = true
 		change_board_generation_btn.text = "Рандомные поля: вкл"
 		BoardManager.reset_run()
+
+
+func _on_exit_button_pressed() -> void:
+	get_tree().quit()
