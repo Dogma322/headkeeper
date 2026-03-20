@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://tjlemd064dk4" path="res://scenes/MainScenes/main_menu.gd" id="1_biks6"]
 [ext_resource type="Texture2D" uid="uid://dfm53ekuvdv5w" path="res://assets/Backgrounds/VoidBackground.png" id="1_icbvd"]
-[ext_resource type="PackedScene" uid="uid://bsrdnool06g4h" path="res://scenes/Buttons/menu_play_ptn.tscn" id="2_biks6"]
+[ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="3_4s641"]
 [ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="4_i2cg2"]
-[ext_resource type="PackedScene" uid="uid://loinrayff0pb" path="res://scenes/Buttons/ChangeBoardGenerationBtn.tscn" id="4_lrjex"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lrjex"]
 shader = ExtResource("4_i2cg2")
@@ -50,11 +49,19 @@ offset_top = 61.0
 offset_right = 384.0
 offset_bottom = 220.0
 
-[node name="MenuPlayPtn" parent="VBoxContainer" unique_id=1791264381 instance=ExtResource("2_biks6")]
+[node name="PlayBtn" parent="VBoxContainer" unique_id=885226573 instance=ExtResource("3_4s641")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+text = "ИГРАТЬ"
+font_size = 4
 
-[node name="ChnaheBoardGenerationBtn" parent="VBoxContainer" unique_id=758375805 instance=ExtResource("4_lrjex")]
+[node name="ChangeBoardGenerationBtn" parent="VBoxContainer" unique_id=12153377 instance=ExtResource("3_4s641")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(134, 48)
 layout_mode = 2
+text = "Рандомные поля: вкл"
+font_size = 2
 
 [node name="Shader" type="Control" parent="." unique_id=1575948723]
 z_index = 999
@@ -70,3 +77,6 @@ layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 2
+
+[connection signal="pressed" from="VBoxContainer/PlayBtn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/ChangeBoardGenerationBtn" to="." method="_on_change_board_generation_btn_pressed"]
