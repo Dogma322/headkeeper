@@ -56,6 +56,12 @@ layout_mode = 2
 text = "ИГРАТЬ"
 font_size = 4
 
+[node name="ShopBtn" parent="VBoxContainer" unique_id=1138529411 instance=ExtResource("3_4s641")]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+text = "Магазин"
+font_size = 4
+
 [node name="ChangeBoardGenerationBtn" parent="VBoxContainer" unique_id=12153377 instance=ExtResource("3_4s641")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(134, 48)
@@ -79,4 +85,5 @@ offset_bottom = 360.0
 mouse_filter = 2
 
 [connection signal="pressed" from="VBoxContainer/PlayBtn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/ShopBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/ChangeBoardGenerationBtn" to="." method="_on_change_board_generation_btn_pressed"]

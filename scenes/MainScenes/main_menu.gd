@@ -11,7 +11,6 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		Transition.blackout_off()
 		SoundManager.set_music("MainMenu")
-	
 
 
 ## Происходит при нажатии кнопки 'Играть'.
@@ -19,6 +18,13 @@ func _on_play_btn_pressed() -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
 	get_tree().change_scene_to_file("res://scenes/MainScenes/battle_scene.tscn")
+
+
+## Происходит при нажатии кнопки 'Магазин'.
+func _on_shop_btn_pressed() -> void:
+	Transition.blackout_on()
+	await get_tree().create_timer(1).timeout
+	get_tree().change_scene_to_file("res://scenes/MainScenes/shop_scene.tscn")
 
 
 ## Происходит при нажатии кнопки 'Рандомные поля'.

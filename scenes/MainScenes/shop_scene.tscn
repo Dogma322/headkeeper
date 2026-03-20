@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bgwmg1s66s6f1"]
+
+[ext_resource type="Script" uid="uid://fywqvqeqsdxm" path="res://scenes/MainScenes/shop_scene.gd" id="1_1nxvb"]
+[ext_resource type="PackedScene" uid="uid://bn0602p7re11e" path="res://scenes/Backgrounds/battle_background.tscn" id="1_ad24l"]
+
+[node name="ShopScene" type="Control" unique_id=476688822]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1nxvb")
+
+[node name="BattleBackground" parent="." unique_id=631565350 instance=ExtResource("1_ad24l")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2001529918]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="HBoxContainer" unique_id=983205073]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=328143685]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HFlowContainer2" type="HFlowContainer" parent="HBoxContainer" unique_id=758524485]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="." unique_id=327250196]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Деньги: 0"

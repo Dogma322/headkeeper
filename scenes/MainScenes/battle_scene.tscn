@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c63tsp6yujri6" path="res://scenes/Enemies/MushCaves/enm_armored_mush.tscn" id="5_vun5q"]
 [ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="7_76b4e"]
 [ext_resource type="PackedScene" uid="uid://fvbwyoeuebsq" path="res://scenes/DeckBags/deck_bag.tscn" id="8_qxp17"]
-[ext_resource type="Script" uid="uid://dwpk36y7pnpsa" path="res://scripts/combat_ui.gd" id="8_uk3cr"]
+[ext_resource type="Script" uid="uid://dwpk36y7pnpsa" path="res://scenes/MainScenes/combat_ui.gd" id="8_uk3cr"]
 [ext_resource type="PackedScene" uid="uid://cagbtkvoqcjjb" path="res://scenes/DeckBags/discard_bag.tscn" id="9_lhbvr"]
 [ext_resource type="PackedScene" uid="uid://drlsgry4o0pof" path="res://scenes/BoardBonusContainer/board_bonus_container.tscn" id="10_lhbvr"]
 [ext_resource type="PackedScene" uid="uid://bbvfro8a5geyx" path="res://scenes/HeadHolder/head_holder.tscn" id="11_aonfs"]

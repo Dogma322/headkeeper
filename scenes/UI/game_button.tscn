@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ddpmj3a51u373"]
 
 [ext_resource type="Texture2D" uid="uid://bndl8c1s1fhsc" path="res://assets/NinePatchTexture/ButtonLayout.png" id="1_x1gdt"]
-[ext_resource type="Script" uid="uid://c4pql8c835fgc" path="res://scripts/game_button.gd" id="2_2w8b1"]
+[ext_resource type="Script" uid="uid://c4pql8c835fgc" path="res://scenes/UI/game_button.gd" id="2_2w8b1"]
 [ext_resource type="Theme" uid="uid://u6ptbmerxst5" path="res://scenes/TextThemes/volda7.tres" id="3_bq1d8"]
 
 [node name="GameButton" type="MarginContainer" unique_id=885226573]
