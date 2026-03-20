@@ -81,7 +81,7 @@ var corruption_bonus = 0
 func _ready() -> void:
 	reset()
 	Signals.reset_run_data.connect(reset)
-	
+
 func reset():
 	#temp_domino_pool = domino_pool.duplicate()
 	
@@ -96,21 +96,19 @@ func reset():
 	
 	set_deck()
 
-	
-	
 func set_deck():
-
-
 	for i in range(1): 
 		for key in start_deck.keys():
 			var scene = start_deck[key]     
 			 # достаём PackedScene
 			var bone = scene.instantiate()   
+			bone.global_position.y = -100000 # HACK: чтобы не было краша игры при наведении на край экрана.
 			add_child(bone)
 			deck.append(bone)
 		
 	temp_deck = deck.duplicate()
-		
+
+
 func reshuffle_discard_into_deck():
 	# Добавляем все кости из discard в deck
 	for bone in discard:
@@ -121,7 +119,6 @@ func reshuffle_discard_into_deck():
 	
 	# Перемешиваем колоду
 	temp_deck.shuffle()
-	
 
 
 func reset_turn_data():

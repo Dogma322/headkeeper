@@ -128,6 +128,7 @@ center_position = Vector2(111, 116)
 [node name="MoneyLabel" type="RichTextLabel" parent="." unique_id=1876316434]
 offset_right = 42.0
 offset_bottom = 23.0
+mouse_filter = 2
 bbcode_enabled = true
 text = "0"
 fit_content = true
@@ -142,8 +143,6 @@ spacing = 100
 [node name="RemoveDominoScene" parent="." unique_id=1801682247 instance=ExtResource("15_36n0a")]
 
 [node name="OptionsPanel" parent="." unique_id=1496924105 instance=ExtResource("15_42igk")]
-offset_right = 640.0
-offset_bottom = 360.0
 
 [node name="Shader" type="Control" parent="." unique_id=2017409977]
 z_index = 999

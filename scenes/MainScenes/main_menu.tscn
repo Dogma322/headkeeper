@@ -70,7 +70,7 @@ text = "Рандомные поля: вкл"
 font_size = 2
 
 [node name="ExitButton" parent="VBoxContainer" unique_id=1705888084 instance=ExtResource("3_4s641")]
-custom_minimum_size = Vector2(0, 32)
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 text = "Выход"
 font_size = 4
