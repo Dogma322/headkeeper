@@ -1,19 +1,23 @@
 extends Node2D
 class_name Head
 
-@onready var head_sprite = $Sprite2D
+@onready var head_sprite: Sprite2D = $Sprite2D
 @onready var des_panel = $DesPanel
 @onready var name_label = $DesPanel/NameLabel
 @onready var des_label = $DesPanel/DesLabel
 @onready var aim_marker = $AimMarker
 @onready var label = $Label
 
+@export var template: HeadTemplate
+
 @onready var hd_name: String
 @onready var description: String
 
-@onready var damage = 0
-@onready var armor = 0
-@onready var heal = 0
+@onready var damage := 0
+@onready var armor := 0
+@onready var heal := 0
+@onready var value := 1
+@onready var corruption := 0
 
 #@onready var final_damage
 #@onready var final_armor
@@ -24,6 +28,16 @@ var head_choice = false
 func _ready() -> void:
 	des_panel.modulate.a = 0
 	label.visible = false
+	
+	if template:
+		hd_name = template.get_translated_name()
+		description = template.get_translated_desc()
+		damage = template.damage
+		armor = template.armor
+		heal = template.heal
+		value = template.value
+		corruption = template.corruption
+		head_sprite.texture = template.texture
 	
 	update_labels()
 

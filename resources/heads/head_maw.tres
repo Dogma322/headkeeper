@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://btu01js484cvy"]
+
+[ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_6gjos"]
+[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_xhp4j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6ht4"]
+atlas = ExtResource("2_xhp4j")
+region = Rect2(128, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_6gjos")
+hname = "hd_maw_name"
+desc = "hd_maw_des"
+value = 35
+texture = SubResource("AtlasTexture_g6ht4")
+metadata/_custom_type_script = "uid://m5esxthxmlub"

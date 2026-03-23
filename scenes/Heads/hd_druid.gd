@@ -2,9 +2,8 @@ extends Head
 
 func _ready() -> void:
 	Signals.hero_healed.connect(add_action)
-	hd_name = tr("hd_druid_name") 
-	description = TextFormatter.highlight_keywords(tr("hd_druid_des") % 20)
 	super()
+	description = TextFormatter.highlight_keywords(tr("hd_druid_des") % 20)
 	
 func apply_passive_effect():
 	ActionManager.add(DecreaseMaxHpAction.new(self, Global.hero, 20))

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://dd7ws1h0n2x7i"]
+
+[ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_5fx7b"]
+[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_40olb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2tbw"]
+atlas = ExtResource("2_40olb")
+region = Rect2(449, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_5fx7b")
+hname = "hd_plant_name"
+desc = "hd_plant_des"
+min_value = 3
+max_value = 20
+texture = SubResource("AtlasTexture_k2tbw")
+metadata/_custom_type_script = "uid://m5esxthxmlub"

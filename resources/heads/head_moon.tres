@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://cn7ucsk881nd4"]
+
+[ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_72xjw"]
+[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_b7hfa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24xyx"]
+atlas = ExtResource("2_b7hfa")
+region = Rect2(256, 1, 32, 32)
+
+[resource]
+script = ExtResource("1_72xjw")
+hname = "hd_moon_name"
+desc = "hd_moon_des"
+damage = 15
+texture = SubResource("AtlasTexture_24xyx")
+metadata/_custom_type_script = "uid://m5esxthxmlub"

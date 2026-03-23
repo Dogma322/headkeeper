@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cbpouqrfw2p2t"]
+
+[ext_resource type="Script" uid="uid://0gdm61xwrd77" path="res://scenes/UI/tooltip_panel.gd" id="1_buoy1"]
+[ext_resource type="Texture2D" uid="uid://btaxaokybm6bs" path="res://assets/NinePatchTexture/9patch.png" id="2_ip1om"]
+[ext_resource type="Theme" uid="uid://mh7q61dm1im4" path="res://scenes/TextThemes/volda10.tres" id="3_8oksv"]
+[ext_resource type="Theme" uid="uid://u6ptbmerxst5" path="res://scenes/TextThemes/volda7.tres" id="4_okodk"]
+
+[node name="TooltipPanel" type="MarginContainer" unique_id=54216942]
+z_index = 1
+custom_minimum_size = Vector2(121, 0)
+anchors_preset = -1
+anchor_right = 0.1890625
+anchor_bottom = 0.13333334
+offset_bottom = -18.000004
+mouse_filter = 2
+script = ExtResource("1_buoy1")
+metadata/_edit_use_anchors_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=47235920]
+layout_mode = 2
+texture = ExtResource("2_ip1om")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1010771700]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=492999984]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CaptionLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=165282364]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme = ExtResource("3_8oksv")
+theme_override_colors/font_color = Color(1, 0.6862745, 0.3019608, 1)
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=463947924]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme = ExtResource("4_okodk")
+bbcode_enabled = true
+fit_content = true

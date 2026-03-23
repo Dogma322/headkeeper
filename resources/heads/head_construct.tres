@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://ctcao6h8mhtnf"]
+
+[ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_0lftk"]
+[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_cad7h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubfn8"]
+atlas = ExtResource("2_cad7h")
+region = Rect2(417, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_0lftk")
+hname = "hd_brick_name"
+desc = "hd_brick_des"
+armor = 5
+texture = SubResource("AtlasTexture_ubfn8")
+metadata/_custom_type_script = "uid://m5esxthxmlub"

@@ -18,6 +18,24 @@ var head_pool: = {
 	"maw": preload("res://scenes/Heads/hd_maw.tscn")
 }
 
+var head_templates = {
+	"berserk": preload("res://resources/heads/head_berserk.tres"),
+	"squid": preload("res://resources/heads/head_squid.tres"),
+	"white_thorn": preload("res://resources/heads/head_white_thorn.tres"),
+	"eternal_fury": preload("res://resources/heads/head_eternal_fury.tres"),
+	#"moon": preload("res://resources/heads/head_moon.tres"),
+	"chaos": preload("res://resources/heads/head_chaos.tres"),
+	"corruptor": preload("res://resources/heads/head_corruptor.tres"),
+	"druid": preload("res://resources/heads/head_druid.tres"),
+	"phantom": preload("res://resources/heads/head_phantom.tres"),
+	"apostle": preload("res://resources/heads/head_apostle.tres"),
+	"construct": preload("res://resources/heads/head_construct.tres"),
+	"plant": preload("res://resources/heads/head_plant.tres"),
+	"rock": preload("res://resources/heads/head_rock.tres"),
+	"false_king": preload("res://resources/heads/head_false_king.tres"),
+	"maw": preload("res://resources/heads/head_maw.tres"),
+}
+
 var temp_head_pool = head_pool.duplicate()
 
 func _ready() -> void:

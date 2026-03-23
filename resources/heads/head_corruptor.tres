@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://b5iucmi55vm7d"]
+
+[ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_34pwq"]
+[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_adp0h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2w5p"]
+atlas = ExtResource("2_adp0h")
+region = Rect2(384, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_34pwq")
+hname = "hd_corruptor_name"
+desc = "hd_corruptor_des"
+texture = SubResource("AtlasTexture_p2w5p")
+metadata/_custom_type_script = "uid://m5esxthxmlub"

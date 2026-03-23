@@ -17,4 +17,4 @@ func add_action():
 	
 func update_labels():
 	await get_tree().process_frame
-	des_label.text = TextFormatter.insert_colored_value(tr("dm_spear_des"), final_damage(damage), damage)
+	tooltip_panel.description = TextFormatter.insert_colored_value(tr("dm_spear_des"), final_damage(damage), damage)

@@ -1,12 +1,10 @@
 extends Head
 
 func _ready() -> void:
-	hd_name = tr("hd_false_king_name")
-	description = tr("hd_false_king_des") % 45
 	super()
 	
 func apply_passive_effect():
-	ActionManager.add(DecreaseMaxHpAction.new(self, Global.hero, 45))
+	ActionManager.add(DecreaseMaxHpAction.new(self, Global.hero, value))
 	ActionManager.play_one_action()
 	
 func turn_begin_add_action():

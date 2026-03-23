@@ -11,4 +11,4 @@ func add_action():
 	
 func update_labels():
 	await get_tree().process_frame
-	des_label.text = TextFormatter.insert_colored_value(tr("heal_des"), final_heal(heal), heal)
+	tooltip_panel.description = TextFormatter.insert_colored_value(tr("heal_des"), final_heal(heal), heal)

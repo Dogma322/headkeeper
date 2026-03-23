@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://wnn8ykfdaka3" path="res://scenes/Heads/HeadTemplate/head_template.tscn" id="1_joxfh"]
 [ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_d06p4"]
 [ext_resource type="Script" uid="uid://7jtt8rdiat1u" path="res://scenes/Heads/hd_eternal_fury.gd" id="2_f8f1w"]
+[ext_resource type="Resource" uid="uid://c5ds2qbv1lmn4" path="res://resources/heads/head_eternal_fury.tres" id="3_w1o4v"]
 [ext_resource type="PackedScene" uid="uid://bm8hl0h6ybgvr" path="res://scenes/AdditionalDescriptionPanel/additional_description.tscn" id="4_f8f1w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f8f1w"]
@@ -11,6 +12,7 @@ region = Rect2(160, 0, 32, 32)
 
 [node name="hd_eternal_fury" unique_id=1378211630 instance=ExtResource("1_joxfh")]
 script = ExtResource("2_f8f1w")
+template = ExtResource("3_w1o4v")
 
 [node name="Sprite2D" parent="." index="0" unique_id=1248791630]
 texture = SubResource("AtlasTexture_f8f1w")

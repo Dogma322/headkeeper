@@ -1,7 +1,6 @@
 extends Head
 
 
-var value = 1
 var activated = false
 var last_domino = null
 
@@ -11,11 +10,6 @@ func _ready() -> void:
 	Signals._3dm_played.connect(chaos)
 	Signals._4dm_played.connect(chaos)
 	Signals.player_turn_begin.connect(reroll_value)
-	
-	
-	hd_name = tr("hd_chaos_name")
-	description = tr("hd_chaos_des") % value
-	
 	super()
 
 func apply_passive_effect():

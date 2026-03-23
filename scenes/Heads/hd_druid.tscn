@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://wnn8ykfdaka3" path="res://scenes/Heads/HeadTemplate/head_template.tscn" id="1_g7db1"]
 [ext_resource type="Script" uid="uid://c1fpibldlb2la" path="res://scenes/Heads/hd_druid.gd" id="2_r2qu0"]
 [ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="3_ph3k2"]
+[ext_resource type="Resource" uid="uid://cudrdtyou6ptb" path="res://resources/heads/head_druid.tres" id="3_uf02n"]
 [ext_resource type="PackedScene" uid="uid://bm8hl0h6ybgvr" path="res://scenes/AdditionalDescriptionPanel/additional_description.tscn" id="4_fbd4k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fbd4k"]
@@ -11,6 +12,7 @@ region = Rect2(224, 0, 32, 32)
 
 [node name="hd_druid" unique_id=1378211630 instance=ExtResource("1_g7db1")]
 script = ExtResource("2_r2qu0")
+template = ExtResource("3_uf02n")
 
 [node name="Sprite2D" parent="." index="0" unique_id=1248791630]
 texture = SubResource("AtlasTexture_fbd4k")

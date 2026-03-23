@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://d003re24s0oh1"]
+
+[ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_lsxpb"]
+[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_ak72v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wq4ba"]
+atlas = ExtResource("2_ak72v")
+region = Rect2(320, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_lsxpb")
+hname = "hd_chaos_name"
+desc = "hd_chaos_des"
+value = 1
+texture = SubResource("AtlasTexture_wq4ba")
+metadata/_custom_type_script = "uid://m5esxthxmlub"

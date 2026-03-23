@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://7ubq0yprya8k"]
+
+[ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_pp0gp"]
+[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_aufk1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6u8xd"]
+atlas = ExtResource("2_aufk1")
+region = Rect2(95, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_pp0gp")
+hname = "hd_squid_name"
+desc = "hd_squid_des"
+cost = 100
+texture = SubResource("AtlasTexture_6u8xd")
+metadata/_custom_type_script = "uid://m5esxthxmlub"

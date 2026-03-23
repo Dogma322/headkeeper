@@ -12,4 +12,4 @@ func add_action():
 	
 func update_labels():
 	await get_tree().process_frame
-	des_label.text = TextFormatter.insert_colored_value(tr("corruption_des"), final_corruption(corruption), corruption) + " " + TextFormatter.highlight_keywords(tr("weak_des") % 2)
+	tooltip_panel.description = TextFormatter.insert_colored_value(tr("corruption_des"), final_corruption(corruption), corruption) + " " + TextFormatter.highlight_keywords(tr("weak_des") % 2)

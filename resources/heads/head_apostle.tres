@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://b183epmn8waqs"]
+
+[ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_dufl6"]
+[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_if7s8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu4rg"]
+atlas = ExtResource("2_if7s8")
+region = Rect2(192, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_dufl6")
+hname = "hd_octopus_name"
+desc = "hd_octopus_des"
+corruption = 2
+value = 20
+texture = SubResource("AtlasTexture_iu4rg")
+metadata/_custom_type_script = "uid://m5esxthxmlub"

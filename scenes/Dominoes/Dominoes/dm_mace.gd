@@ -10,4 +10,4 @@ func add_action():
 func update_labels():
 	await get_tree().process_frame
 	damage = DominoManager.dominoes_on_board.size() * 3 + 3
-	des_label.text = TextFormatter.insert_colored_value(tr("dm_mace_des"), final_damage(damage), damage + 3)
+	tooltip_panel.description = TextFormatter.insert_colored_value(tr("dm_mace_des"), final_damage(damage), damage + 3)

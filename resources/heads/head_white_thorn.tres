@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://cg6ig5qcso1re"]
+
+[ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_xpa38"]
+[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_oqsfl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_px25g"]
+atlas = ExtResource("2_oqsfl")
+region = Rect2(352, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_xpa38")
+hname = "hd_thorn_name"
+desc = "hd_thorn_des"
+texture = SubResource("AtlasTexture_px25g")
+metadata/_custom_type_script = "uid://m5esxthxmlub"

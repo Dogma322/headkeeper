@@ -4,8 +4,6 @@ extends Node2D
 @export var a:int
 @export var b:int
 
-
-
 var target_position:Vector2
 
 var slot:DominoSlot = null
@@ -17,7 +15,6 @@ var drag_offset := Vector2.ZERO
 
 var domino_types = ["Attack"]
 
-
 var damage
 var block
 var heal
@@ -26,7 +23,6 @@ var corruption
 var doubled = false
 
 var mouse_over_des = false
-var des_tween: Tween
 
 var domino_choice = false
 var deleted = false
@@ -37,15 +33,13 @@ var deleted = false
 
 @onready var dm_name: String
 @onready var description: String = ""
-@onready var des_panel = $DesPanel
-@onready var des_label = $DesPanel/DesLabel
-
+@onready var tooltip_stack: HBoxContainer = %TooltipStack
+@onready var tooltip_panel: TooltipPanel = %TooltipPanel
 
 
 func _ready() -> void:
 	#update_labels()
 	hide_des_fast()
-	
 
 
 func add_actions():
@@ -58,7 +52,6 @@ func add_actions():
 	
 	add_action()
 	domino_played()
-	
 
 
 func get_status(target, status_id:String):
@@ -74,7 +67,8 @@ func add_action():
 	ActionManager.add(AttackDebuffAction.new(self, Global.enemy, 5, StatusManager.vulnerable, 2))
 	#ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.corruption, 5))
 	#ActionManager.add(BlockAction.new(self, Global.hero,5))
-	
+
+
 func domino_played():
 	
 	Signals.domino_played.emit()
@@ -86,7 +80,6 @@ func domino_played():
 			Signals.defense_dm_played.emit(self)
 		if type == "Skill":
 			Signals.skill_dm_played.emit(self)
-			
 
 	if a == 1:
 		Signals._1dm_played.emit(self)
@@ -100,8 +93,6 @@ func domino_played():
 	if a == 4:
 		Signals._4dm_played.emit(self)
 		DominoManager.value4_played_dominoes += 1
-
-		
 
 	if b == 1:
 		Signals._1dm_played.emit(self)
@@ -119,16 +110,20 @@ func domino_played():
 		Signals._4dm_played.emit(self)
 		if b != a:
 			DominoManager.value4_played_dominoes += 1
-	
+
+
 func final_damage(_damage: int):
 	var new_damage = ActionManager.calculate_damage(self, Global.enemy,_damage)
 	return new_damage
-	
+
+
 func final_heal(heal):
 	return heal
-	
+
+
 func final_corruption(corruption):
 	return corruption
+
 
 func get_open_value():
 
@@ -139,10 +134,10 @@ func get_open_value():
 		return a
 
 	return null
-	
+
+
 func final_block(block):
 	return ActionManager.calculate_block(block)
-
 
 
 func rotate_to_match(required_value:int, dir:int):
@@ -167,7 +162,8 @@ func rotate_to_match(required_value:int, dir:int):
 	if top_icons and bot_icons:
 		top_icons.rotation_degrees = -rotation_degrees
 		bot_icons.rotation_degrees = -rotation_degrees
-		
+
+
 func reset_rotation():
 	# Сбрасываем основное вращение домино
 	rotation_degrees = 0
@@ -176,15 +172,6 @@ func reset_rotation():
 		top_icons.rotation_degrees = 0
 	if bot_icons:
 		bot_icons.rotation_degrees = 0
-
-
-
-
-
-
-
-
-
 
 
 func rotate_by_slot(connect_from:int, flow:int, connected_side:int):
@@ -215,32 +202,12 @@ func rotate_by_slot(connect_from:int, flow:int, connected_side:int):
 		bot_icons.rotation_degrees = -rotation_degrees
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 func _on_area_2d_input_event(_viewport, event, _shape):
-
 	if event is InputEventMouseButton:
-
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			hide_des_fast()
 		
 			if event.pressed:
-				
-				
-				
-				
 				if DominoManager.block_domino_input:
 					return
 				
@@ -252,10 +219,6 @@ func _on_area_2d_input_event(_viewport, event, _shape):
 					else:
 						return
 				
-				
-				
-				
-				
 				if domino_choice:
 					if Global.choice_scene.choice_locked:
 						return
@@ -264,15 +227,10 @@ func _on_area_2d_input_event(_viewport, event, _shape):
 					Signals.domino_selected.emit()
 					return
 					
-					
 				if slot:
 					slot.remove_chain()
 					#Hand.add_domino(self)
-
-
-					
 				start_drag()
-
 			else:
 				stop_drag()
 
@@ -284,6 +242,7 @@ func add_domino_to_deck():
 	tween.tween_property(self, "scale", Vector2(0,0), 0.5)
 	DominoManager.temp_deck.append(self)
 	domino_choice = false
+
 
 func remove_from_deck():
 	Signals.domino_deleted_from_deck.emit()
@@ -297,29 +256,18 @@ func remove_from_deck():
 	queue_free()
 
 
-
 func start_drag():
 	DominoManager.dm_dragging = true
 	if returning_to_hand:
 		return
 
-
-
 	dragging = true
-
 	Hand.remove_domino(self)
-
 	drag_offset = global_position - get_global_mouse_position()
-
 	z_index = 100
-
+	
 	if slot:
 		slot.remove_chain()
-		
-
-
-
-
 
 
 func _process(_delta):
@@ -346,7 +294,6 @@ func stop_drag():
 	z_index = 0
 
 
-
 func move_to_hand(pos:Vector2):
 	returning_to_hand = true
 	reset_rotation()
@@ -366,7 +313,8 @@ func move_to_hand(pos:Vector2):
 	
 	await tween.finished
 	returning_to_hand = false
-	
+
+
 func play_anim():
 	Signals.play_domino_play_sound.emit()
 	z_index = 100
@@ -378,6 +326,7 @@ func play_anim():
 	tween.tween_property(self, "scale", Vector2(1, 1), 0.1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	await tween.finished
 	z_index = 0
+
 
 func _on_area_2d_mouse_entered() -> void:
 	if slot:
@@ -395,34 +344,32 @@ func _on_area_2d_mouse_exited() -> void:
 	BoardManager.disable_highlight()
 	mouse_over_des = false
 	hide_des()
-	
+
+
 func show_des():
 	if DominoManager.dm_dragging:
 		return
 	if dragging:
 		return
 	update_labels()
-	des_panel.visible = true
-	
-	if des_tween and des_tween.is_running():
-		des_tween.kill()
-	
-	des_tween = get_tree().create_tween()
-	des_tween.tween_property(des_panel, "modulate:a", 1, 0.15)
+	tooltip_stack.show()
+	for panel in tooltip_stack.get_children():
+		if panel is TooltipPanel:
+			panel.show_tooltip()
+
 
 func hide_des():
-	if not mouse_over_des: # не скрываем, если курсор снова вернулся
-		if des_tween and des_tween.is_running():
-			des_tween.kill()
-		
-		des_tween = get_tree().create_tween()
-		des_tween.tween_property(des_panel, "modulate:a", 0, 0.15)
-		await des_tween.finished
-		if not mouse_over_des:
-			des_panel.visible = false
-			
+	for panel in tooltip_stack.get_children():
+		if panel is TooltipPanel:
+			panel.hide_tooltip()
+
+
 func hide_des_fast():
-	des_panel.visible = false
-			
+	tooltip_stack.hide()
+	for panel in tooltip_stack.get_children():
+		if panel is TooltipPanel:
+			panel.hide()
+
+
 func update_labels():
-	des_label.text = ""
+	tooltip_panel.description = ""

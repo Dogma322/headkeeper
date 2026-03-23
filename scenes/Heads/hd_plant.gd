@@ -1,9 +1,6 @@
 extends Head
 
 func _ready() -> void:
-	hd_name = tr("hd_plant_name")
-	description = tr("hd_plant_des") % [3, 20]
-	
 	super()
 	
 func apply_passive_effect():

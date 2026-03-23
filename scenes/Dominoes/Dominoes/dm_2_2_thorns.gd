@@ -10,4 +10,4 @@ func add_action():
 	
 func update_labels():
 	await get_tree().process_frame
-	des_label.text = TextFormatter.highlight_keywords(tr("thorns_des") % 4) 
+	tooltip_panel.description = TextFormatter.highlight_keywords(tr("thorns_des") % 4) 

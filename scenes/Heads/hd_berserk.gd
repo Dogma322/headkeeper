@@ -2,9 +2,6 @@ extends Head
 
 func _ready() -> void:
 	Signals._3dm_played.connect(play)
-	hd_name = tr("hd_warrior_name")
-	description = tr("hd_warrior_des") 
-	
 	super()
 	
 func play(domino):
