@@ -23,7 +23,7 @@ var head_templates = {
 	"squid": preload("res://resources/heads/head_squid.tres"),
 	"white_thorn": preload("res://resources/heads/head_white_thorn.tres"),
 	"eternal_fury": preload("res://resources/heads/head_eternal_fury.tres"),
-	#"moon": preload("res://resources/heads/head_moon.tres"),
+	"moon": preload("res://resources/heads/head_moon.tres"),
 	"chaos": preload("res://resources/heads/head_chaos.tres"),
 	"corruptor": preload("res://resources/heads/head_corruptor.tres"),
 	"druid": preload("res://resources/heads/head_druid.tres"),

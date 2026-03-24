@@ -4,9 +4,119 @@
 [ext_resource type="Texture2D" uid="uid://pdmhcyleifgk" path="res://assets/Backgrounds/shop.png" id="2_j7sys"]
 [ext_resource type="Texture2D" uid="uid://mjo560ccfs37" path="res://assets/UI/OptionsMenu/ExitButton.png" id="3_j7sys"]
 [ext_resource type="PackedScene" uid="uid://bjs0uqv1cm63v" path="res://scenes/OptionsPanel/shop_options_panel.tscn" id="4_pmqfv"]
+[ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="5_5w8ji"]
 [ext_resource type="PackedScene" uid="uid://bdk7hhppmx7sg" path="res://scenes/ShopSlot/shop_slot.tscn" id="5_aob4o"]
 [ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="6_pmqfv"]
 [ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="7_c7faw"]
+[ext_resource type="Texture2D" uid="uid://b3xp13akpqd23" path="res://assets/Heroes/Hero1Anim/HeroNewAnimation4.png" id="8_6dlqe"]
+[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="10_3oa0m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6xcm"]
+atlas = ExtResource("8_6dlqe")
+region = Rect2(0, 0, 128, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqjwg"]
+atlas = ExtResource("8_6dlqe")
+region = Rect2(128, 0, 128, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra811"]
+atlas = ExtResource("8_6dlqe")
+region = Rect2(256, 0, 128, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ty24"]
+atlas = ExtResource("8_6dlqe")
+region = Rect2(384, 0, 128, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiq3a"]
+atlas = ExtResource("8_6dlqe")
+region = Rect2(512, 0, 128, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqi7g"]
+atlas = ExtResource("8_6dlqe")
+region = Rect2(640, 0, 128, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5772"]
+atlas = ExtResource("8_6dlqe")
+region = Rect2(768, 0, 128, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cn0s"]
+atlas = ExtResource("8_6dlqe")
+region = Rect2(896, 0, 128, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5w8ji"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6xcm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqjwg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra811")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ty24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiq3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqi7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5772")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cn0s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3oa0m"]
+atlas = ExtResource("10_3oa0m")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="Animation" id="Animation_t6thj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(9, -55)]
+}
+
+[sub_resource type="Animation" id="Animation_kwkn5"]
+resource_name = "head_anim"
+length = 4.0
+loop_mode = 1
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(9, -55), Vector2(0, -60.357), Vector2(9, -65), Vector2(18, -59.052), Vector2(9, -55)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2hh6u"]
+_data = {
+&"RESET": SubResource("Animation_t6thj"),
+&"head_anim": SubResource("Animation_kwkn5")
+}
 
 [node name="ShopScene" type="Control" unique_id=476688822]
 layout_mode = 3
@@ -118,6 +228,74 @@ tooltip_offset = 2
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Control" unique_id=1099740604]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Control/MarginContainer" unique_id=2092977305]
+layout_mode = 2
+
+[node name="TitleLabel" type="RichTextLabel" parent="HBoxContainer/Control/MarginContainer/VBoxContainer" unique_id=440386354]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("6_pmqfv")
+theme_override_font_sizes/normal_font_size = 24
+text = "HEADKEEPER"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="HBoxContainer/Control/MarginContainer/VBoxContainer" unique_id=173593234]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Control/MarginContainer/VBoxContainer/Control" unique_id=218886965]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="HBoxContainer/Control/MarginContainer/VBoxContainer/Control/VBoxContainer" unique_id=1719473395]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="MoneyLabel" type="RichTextLabel" parent="HBoxContainer/Control/MarginContainer/VBoxContainer/Control/VBoxContainer" unique_id=1796468730]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/normal_font = ExtResource("6_pmqfv")
+bbcode_enabled = true
+text = "[img]res://assets/Icons/CommonSkull.png[/img]0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Control2" type="Control" parent="HBoxContainer/Control/MarginContainer/VBoxContainer/Control/VBoxContainer" unique_id=578452103]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Control3" type="Control" parent="HBoxContainer/Control/MarginContainer/VBoxContainer/Control/VBoxContainer" unique_id=1055403581]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="PlayButton" parent="HBoxContainer/Control/MarginContainer/VBoxContainer" unique_id=885226573 instance=ExtResource("5_5w8ji")]
+layout_mode = 2
+text = "Играть"
+font_size = 4
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer" unique_id=413958035]
 layout_mode = 2
@@ -202,23 +380,6 @@ tooltip_offset = 5
 layout_mode = 2
 tooltip_offset = 5
 
-[node name="MoneyLabel" type="RichTextLabel" parent="." unique_id=1796468730]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("6_pmqfv")
-text = "0"
-fit_content = true
-
 [node name="Layout" type="MarginContainer" parent="." unique_id=1147023437]
 layout_mode = 1
 anchors_preset = 15
@@ -241,9 +402,11 @@ size_flags_vertical = 0
 texture_normal = ExtResource("3_j7sys")
 
 [node name="ShopOptionsPanel" parent="Layout" unique_id=1538752388 instance=ExtResource("4_pmqfv")]
+unique_name_in_owner = true
 
 [node name="TooltipPanel" parent="." unique_id=54216942 instance=ExtResource("7_c7faw")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchor_left = 0.40546876
 anchor_top = 0.48333332
@@ -253,6 +416,22 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=477858779]
+position = Vector2(305, 260)
+sprite_frames = SubResource("SpriteFrames_5w8ji")
+autoplay = "default"
+
+[node name="HeadSprite" type="Sprite2D" parent="AnimatedSprite2D" unique_id=2101714938]
+unique_name_in_owner = true
+position = Vector2(9, -55)
+texture = SubResource("AtlasTexture_3oa0m")
+
+[node name="HeadAnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D" unique_id=782736843]
+unique_name_in_owner = true
+root_node = NodePath("../HeadSprite")
+libraries/ = SubResource("AnimationLibrary_2hh6u")
+
+[connection signal="pressed" from="HBoxContainer/Control/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="mouse_entered" from="Layout/ExitButton" to="." method="_on_exit_button_mouse_entered"]
 [connection signal="mouse_exited" from="Layout/ExitButton" to="." method="_on_exit_button_mouse_exited"]
 [connection signal="pressed" from="Layout/ExitButton" to="." method="_on_exit_button_pressed"]

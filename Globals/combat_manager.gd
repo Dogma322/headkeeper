@@ -68,6 +68,11 @@ func player_turn_begin():
 	
 	apply_hero_turn_begin_status_effects()
 	await ActionManager.play_actions()
+	if stage == 1:
+		if not MetaManager.selected_head_key.is_empty():
+			var head = HeadManager.head_pool[MetaManager.selected_head_key].instantiate()
+			head.add_head_to_head_holder()
+	
 	add_heads_turn_begin_actions()
 	await ActionManager.play_actions()
 	

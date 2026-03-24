@@ -7,12 +7,18 @@ extends Node2D
 @onready var music_label: Label = %MusicLabel
 @onready var options_button: TextureButton = %OptionsButton
 
+@export var visible_by_default := false:
+	set(value):
+		visible_by_default = value
+		if is_instance_valid(options_panel):
+			options_panel.visible = value
+		if is_instance_valid(color_rect):
+			color_rect.visible = value
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if not Engine.is_editor_hint():
-		options_panel.visible = false
-		color_rect.visible = false
+	options_panel.visible = visible_by_default
+	color_rect.visible = visible_by_default
 	update_labels()
 
 func update_labels():

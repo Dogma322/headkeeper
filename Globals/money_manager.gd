@@ -14,4 +14,5 @@ func _ready() -> void:
 
 func reset_run():
 	MetaManager.money += money
+	MetaManager.save_data()
 	money = 0

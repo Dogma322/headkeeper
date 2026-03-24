@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dnco2xl6pi07y" path="res://scenes/Dominoes/DominoTemplate/domino_template.tscn" id="1_k65j5"]
 [ext_resource type="Script" uid="uid://ctvx3dqi07bvo" path="res://scenes/Dominoes/Dominoes/dm_3_2_corruption_weak.gd" id="2_6fy0f"]
 [ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_b7kr3"]
-[ext_resource type="PackedScene" uid="uid://bm8hl0h6ybgvr" path="res://scenes/AdditionalDescriptionPanel/additional_description.tscn" id="4_b7kr3"]
+[ext_resource type="PackedScene" uid="uid://dnje7ugtetwov" path="res://scenes/UI/additional_tooltip_panel.tscn" id="4_b7kr3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_si8tp"]
 atlas = ExtResource("3_b7kr3")
@@ -31,17 +31,13 @@ texture = SubResource("AtlasTexture_ir3wt")
 [node name="BotIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="2" unique_id=189273046]
 texture = SubResource("AtlasTexture_convo")
 
-[node name="AdditionalDescription" parent="DesPanel" parent_id_path=PackedInt32Array(1446575058) index="3" unique_id=1979256086 instance=ExtResource("4_b7kr3")]
-layout_mode = 1
-offset_left = 112.0
-offset_top = -23.0
-offset_right = -9.0
-offset_bottom = -62.0
+[node name="AdditionalTooltipPanel" parent="TooltipStack" parent_id_path=PackedInt32Array(1929530369) index="1" unique_id=54216942 instance=ExtResource("4_b7kr3")]
+layout_mode = 2
 type = "Corruption"
+caption = "Слабость"
+description = "Цель наносит на 25% меньше урона от атак."
 
-[node name="AdditionalDescription2" parent="DesPanel" parent_id_path=PackedInt32Array(1446575058) index="4" unique_id=852940374 instance=ExtResource("4_b7kr3")]
-layout_mode = 1
-offset_left = 112.0
-offset_top = 29.0
-offset_right = -9.0
-offset_bottom = -10.0
+[node name="AdditionalTooltipPanel2" parent="TooltipStack" parent_id_path=PackedInt32Array(1929530369) index="2" unique_id=1605231705 instance=ExtResource("4_b7kr3")]
+layout_mode = 2
+caption = "Слабость"
+description = "Цель наносит на 25% меньше урона от атак."

@@ -355,7 +355,7 @@ func show_des():
 	tooltip_stack.show()
 	for panel in tooltip_stack.get_children():
 		if panel is TooltipPanel:
-			panel.show_tooltip()
+			panel.show_tooltip(null, TooltipPanel.ShowOffset.NONE, true)
 
 
 func hide_des():

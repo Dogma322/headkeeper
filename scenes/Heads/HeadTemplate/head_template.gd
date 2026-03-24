@@ -2,9 +2,7 @@ extends Node2D
 class_name Head
 
 @onready var head_sprite: Sprite2D = $Sprite2D
-@onready var des_panel = $DesPanel
-@onready var name_label = $DesPanel/NameLabel
-@onready var des_label = $DesPanel/DesLabel
+@onready var tooltip_panel: TooltipPanel = $TooltipPanel
 @onready var aim_marker = $AimMarker
 @onready var label = $Label
 
@@ -26,7 +24,7 @@ class_name Head
 var head_choice = false
 
 func _ready() -> void:
-	des_panel.modulate.a = 0
+	tooltip_panel.hide()
 	label.visible = false
 	
 	if template:
@@ -79,7 +77,8 @@ func _input(event: InputEvent) -> void:
 			
 func add_head_to_head_holder():
 	apply_passive_effect()
-	get_parent().remove_child(self)
+	if get_parent() != null:
+		get_parent().remove_child(self)
 	Global.head_holder.add_child(self)
 			
 	
@@ -113,22 +112,17 @@ func _on_des_area_mouse_exited() -> void:
 func show_des():
 	if DominoManager.dm_dragging:
 		return
-	z_index = 100
 	update_labels()
-	var tween = get_tree().create_tween()
-	tween.tween_property(des_panel, "modulate:a", 1, 0.3)
+	tooltip_panel.show_tooltip()
 	
 func hide_des():
 	update_labels()
-	var tween = get_tree().create_tween()
-	tween.tween_property(des_panel, "modulate:a", 0, 0.3)
-	await tween.finished
-	z_index = 0
+	tooltip_panel.hide_tooltip()
 
 func update_labels():
 	#final_damage = (damage + Global.hero_strength) * Global.hero_damage_multiplier
 	#final_armor = (armor + Global.hero_dexterity) * Global.hero_armor_multiplier
 	#final_heal = heal
 	
-	name_label.text = hd_name
-	des_label.text = description
+	tooltip_panel.caption = hd_name
+	tooltip_panel.description = description

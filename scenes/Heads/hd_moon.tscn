@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://wnn8ykfdaka3" path="res://scenes/Heads/HeadTemplate/head_template.tscn" id="1_3i5rv"]
 [ext_resource type="Script" uid="uid://42kyegyns741" path="res://scenes/Heads/hd_moon.gd" id="2_lhf00"]
+[ext_resource type="Resource" uid="uid://cn7ucsk881nd4" path="res://resources/heads/head_moon.tres" id="3_24xyx"]
 [ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="3_ck836"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_24xyx"]
@@ -10,6 +11,7 @@ region = Rect2(256, 1, 32, 32)
 
 [node name="hd_moon" unique_id=1378211630 instance=ExtResource("1_3i5rv")]
 script = ExtResource("2_lhf00")
+template = ExtResource("3_24xyx")
 
 [node name="Sprite2D" parent="." index="0" unique_id=1248791630]
 texture = SubResource("AtlasTexture_24xyx")
