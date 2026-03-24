@@ -41,4 +41,5 @@ func _on_change_board_generation_btn_pressed() -> void:
 
 
 func _on_exit_button_pressed() -> void:
+	Global.save_settings()
 	get_tree().quit()
