@@ -11,5 +11,6 @@ region = Rect2(384, 0, 32, 32)
 script = ExtResource("1_34pwq")
 hname = "hd_corruptor_name"
 desc = "hd_corruptor_des"
+cost = 5
 texture = SubResource("AtlasTexture_p2w5p")
 metadata/_custom_type_script = "uid://m5esxthxmlub"

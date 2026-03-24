@@ -11,6 +11,7 @@ region = Rect2(64, 0, 32, 32)
 script = ExtResource("1_d5y15")
 hname = "hd_false_king_name"
 desc = "hd_false_king_des"
+cost = 20
 value = 45
 texture = SubResource("AtlasTexture_fb3yo")
 metadata/_custom_type_script = "uid://m5esxthxmlub"

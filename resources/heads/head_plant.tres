@@ -11,6 +11,7 @@ region = Rect2(449, 0, 32, 32)
 script = ExtResource("1_5fx7b")
 hname = "hd_plant_name"
 desc = "hd_plant_des"
+cost = 15
 min_value = 3
 max_value = 20
 texture = SubResource("AtlasTexture_k2tbw")

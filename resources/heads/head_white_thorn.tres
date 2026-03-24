@@ -11,5 +11,6 @@ region = Rect2(352, 0, 32, 32)
 script = ExtResource("1_xpa38")
 hname = "hd_thorn_name"
 desc = "hd_thorn_des"
+cost = 5
 texture = SubResource("AtlasTexture_px25g")
 metadata/_custom_type_script = "uid://m5esxthxmlub"

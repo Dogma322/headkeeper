@@ -11,6 +11,6 @@ region = Rect2(95, 0, 32, 32)
 script = ExtResource("1_pp0gp")
 hname = "hd_squid_name"
 desc = "hd_squid_des"
-cost = 100
+cost = 12
 texture = SubResource("AtlasTexture_6u8xd")
 metadata/_custom_type_script = "uid://m5esxthxmlub"
