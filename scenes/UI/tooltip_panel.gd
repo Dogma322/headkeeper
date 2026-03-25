@@ -86,9 +86,9 @@ func show_tooltip(ui_element: Control = null, offset = ShowOffset.NONE, immediat
 	tween.tween_property(self, "modulate:a", 1, 0.15)
 
 
-func hide_tooltip() -> void:
+func hide_tooltip() -> bool:
 	if not is_visible_in_tree():
-		return
+		return false
 	
 	if not mouse_over: # не скрываем, если курсор снова вернулся
 		if tween and tween.is_running():
@@ -99,3 +99,5 @@ func hide_tooltip() -> void:
 		await tween.finished
 		if not mouse_over:
 			visible = false
+		return true
+	return false

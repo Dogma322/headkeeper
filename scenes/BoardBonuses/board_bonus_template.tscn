@@ -3,9 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="1_exe40"]
 [ext_resource type="Script" uid="uid://cka0aiwmd0jwc" path="res://scenes/BoardBonuses/board_bonus_template.gd" id="1_tjdc5"]
 [ext_resource type="Theme" uid="uid://r5h8i48sghj8" path="res://scenes/AdditionalDescriptionPanel/Press8.tres" id="3_uv2fs"]
-[ext_resource type="Texture2D" uid="uid://btaxaokybm6bs" path="res://assets/NinePatchTexture/9patch.png" id="4_h5mbg"]
-[ext_resource type="Theme" uid="uid://mh7q61dm1im4" path="res://scenes/TextThemes/volda10.tres" id="5_rg0mt"]
-[ext_resource type="Theme" uid="uid://u6ptbmerxst5" path="res://scenes/TextThemes/volda7.tres" id="6_nuuv0"]
+[ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="4_bdrln"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h5mbg"]
 atlas = ExtResource("1_exe40")
@@ -38,44 +36,15 @@ offset_bottom = 18.0
 theme = ExtResource("3_uv2fs")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 
-[node name="DesPanel" type="Control" parent="." unique_id=210097607]
-anchors_preset = 0
-offset_left = 34.0
-offset_top = 23.0
-offset_right = 155.0
-offset_bottom = 62.0
-mouse_filter = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="DesPanel" unique_id=647936882]
-layout_mode = 0
-offset_left = -3.0
-offset_top = -23.0
-offset_right = 139.0
-offset_bottom = 39.0
-texture = ExtResource("4_h5mbg")
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-
-[node name="NameLabel" type="Label" parent="DesPanel" unique_id=1266213551]
-layout_mode = 0
-offset_left = 2.0
-offset_top = -20.0
-offset_right = 133.0
-theme = ExtResource("5_rg0mt")
-theme_override_colors/font_color = Color(1, 0.6862745, 0.3019608, 1)
-text = "Берсерк"
-
-[node name="DesLabel" type="RichTextLabel" parent="DesPanel" unique_id=1726395761]
-layout_mode = 0
-offset_left = 2.0
-offset_top = -5.0
-offset_right = 134.0
-offset_bottom = 35.0
-theme = ExtResource("6_nuuv0")
-bbcode_enabled = true
-text = "Когда играется кость со значением 3, наносит 2 урона"
+[node name="TooltipPanel" parent="." unique_id=54216942 instance=ExtResource("4_bdrln")]
+layout_mode = 1
+anchor_left = 1.1071428
+anchor_right = 2.0462053
+anchor_bottom = 1.9190476
+offset_right = 115.70625
+offset_bottom = 8.266666
+caption = "Берсерк"
+description = "Когда играется кость со значением 3, наносит 2 урона"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

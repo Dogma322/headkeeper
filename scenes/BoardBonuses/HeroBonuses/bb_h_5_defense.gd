@@ -5,5 +5,5 @@ func add_action():
 	ActionManager.add(BlockAction.new(self, Global.hero, 4))
 	
 func update_labels():
-	name_label.text = tr("bn_defense_name")
-	des_label.text = TextFormatter.highlight_keywords(tr("defense_des") % 4)
+	tooltip_panel.caption = tr("bn_defense_name")
+	tooltip_panel.description = TextFormatter.highlight_keywords(tr("defense_des") % 4)

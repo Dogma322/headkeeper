@@ -6,5 +6,5 @@ func add_action():
 	Global.enemy.block = 0
 	
 func update_labels():
-	name_label.text = tr("bn_remove_enemy_armor_name")
-	des_label.text = TextFormatter.highlight_keywords(tr("bn_remove_enemy_armor_des"))
+	tooltip_panel.caption = tr("bn_remove_enemy_armor_name")
+	tooltip_panel.description = TextFormatter.highlight_keywords(tr("bn_remove_enemy_armor_des"))
