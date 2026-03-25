@@ -355,20 +355,19 @@ func show_des():
 	tooltip_stack.show()
 	for panel in tooltip_stack.get_children():
 		if panel is TooltipPanel:
-			panel.show_tooltip(null, TooltipPanel.ShowOffset.NONE, true)
+			panel.show_tooltip()
 
 
 func hide_des():
 	for panel in tooltip_stack.get_children():
 		if panel is TooltipPanel:
 			panel.hide_tooltip()
+	await get_tree().create_timer(0.15).timeout
+	tooltip_stack.hide()
 
 
 func hide_des_fast():
 	tooltip_stack.hide()
-	for panel in tooltip_stack.get_children():
-		if panel is TooltipPanel:
-			panel.hide()
 
 
 func update_labels():

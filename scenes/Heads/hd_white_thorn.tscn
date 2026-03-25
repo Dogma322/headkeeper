@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bjpwjx1iwmp0p" path="res://scenes/Heads/hd_white_thorn.gd" id="2_px25g"]
 [ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_uxd1t"]
 [ext_resource type="Resource" uid="uid://cg6ig5qcso1re" path="res://resources/heads/head_white_thorn.tres" id="3_olyt1"]
-[ext_resource type="PackedScene" uid="uid://bm8hl0h6ybgvr" path="res://scenes/AdditionalDescriptionPanel/additional_description.tscn" id="4_6evwc"]
+[ext_resource type="PackedScene" uid="uid://dnje7ugtetwov" path="res://scenes/UI/additional_tooltip_panel.tscn" id="5_ldp8d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_px25g"]
 atlas = ExtResource("2_uxd1t")
@@ -17,10 +17,8 @@ template = ExtResource("3_olyt1")
 [node name="Sprite2D" parent="." index="0" unique_id=1248791630]
 texture = SubResource("AtlasTexture_px25g")
 
-[node name="AdditionalDescription" parent="DesPanel" parent_id_path=PackedInt32Array(1042038706) index="3" unique_id=1979256086 instance=ExtResource("4_6evwc")]
-layout_mode = 1
-offset_left = 141.0
-offset_top = -23.0
-offset_right = 20.0
-offset_bottom = -62.0
+[node name="AdditionalTooltipPanel" parent="TooltipStack" parent_id_path=PackedInt32Array(1268114038) index="1" unique_id=54216942 instance=ExtResource("5_ldp8d")]
+layout_mode = 2
 type = "Thorns"
+caption = "Шипы"
+description = "Наносит урон в ответ на каждую атаку."

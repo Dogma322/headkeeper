@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_d06p4"]
 [ext_resource type="Script" uid="uid://7jtt8rdiat1u" path="res://scenes/Heads/hd_eternal_fury.gd" id="2_f8f1w"]
 [ext_resource type="Resource" uid="uid://c5ds2qbv1lmn4" path="res://resources/heads/head_eternal_fury.tres" id="3_w1o4v"]
-[ext_resource type="PackedScene" uid="uid://bm8hl0h6ybgvr" path="res://scenes/AdditionalDescriptionPanel/additional_description.tscn" id="4_f8f1w"]
+[ext_resource type="PackedScene" uid="uid://dnje7ugtetwov" path="res://scenes/UI/additional_tooltip_panel.tscn" id="5_27rfd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f8f1w"]
 atlas = ExtResource("2_d06p4")
@@ -17,10 +17,8 @@ template = ExtResource("3_w1o4v")
 [node name="Sprite2D" parent="." index="0" unique_id=1248791630]
 texture = SubResource("AtlasTexture_f8f1w")
 
-[node name="AdditionalDescription" parent="DesPanel" parent_id_path=PackedInt32Array(1042038706) index="3" unique_id=1979256086 instance=ExtResource("4_f8f1w")]
-layout_mode = 1
-offset_left = 141.0
-offset_top = -23.0
-offset_right = 20.0
-offset_bottom = -62.0
+[node name="AdditionalTooltipPanel" parent="TooltipStack" parent_id_path=PackedInt32Array(1268114038) index="1" unique_id=54216942 instance=ExtResource("5_27rfd")]
+layout_mode = 2
 type = "Fury"
+caption = "Ярость"
+description = "Добавляет дополнительный урон к атакам."

@@ -70,6 +70,8 @@ func player_turn_begin(is_start: bool):
 	await ActionManager.play_actions()
 	if is_start and stage == 1:
 		if not MetaManager.selected_head_key.is_empty():
+			HeadManager.temp_head_pool.erase(MetaManager.selected_head_key)
+			
 			var head = HeadManager.head_pool[MetaManager.selected_head_key].instantiate()
 			head.add_head_to_head_holder()
 	

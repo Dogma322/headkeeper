@@ -2,7 +2,8 @@ extends Node2D
 class_name Head
 
 @onready var head_sprite: Sprite2D = $Sprite2D
-@onready var tooltip_panel: TooltipPanel = $TooltipPanel
+@onready var tooltip_stack: HBoxContainer = %TooltipStack
+@onready var tooltip_panel: TooltipPanel = %TooltipPanel
 @onready var aim_marker = $AimMarker
 @onready var label = $Label
 
@@ -40,49 +41,49 @@ func _ready() -> void:
 	update_labels()
 
 
-
 #func play(_domino):
 	##await get_tree().create_timer(0.5).timeout
 	#play_animation()
 	#play_effect()
+
 
 func play_anim():
 	var tween = create_tween()
 	tween.tween_property(head_sprite, "scale", Vector2(1.6, 1.6), 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(head_sprite, "scale", Vector2(0.8, 0.8), 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(head_sprite, "scale", Vector2(1, 1), 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
-	
+
+
 func add_action():
 	pass
-	
+
+
 func turn_begin_add_action():
 	pass
-	
+
+
 func apply_passive_effect():
 	pass
-	
+
+
 func remove_passive_effect():
 	pass
 
-
-
 func _input(event: InputEvent) -> void:
-	
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and head_choice:
 		if _is_mouse_over(event.position):
 			head_choice = false
 			get_parent().choice_selected(self)
 			add_head_to_head_holder()
 			Signals.head_selected.emit()
-			
+
 func add_head_to_head_holder():
 	if get_parent() != null:
 		get_parent().remove_child(self)
 	Global.head_holder.add_child(self)
 	apply_passive_effect()
-			
-	
-			
+
+
 func _is_mouse_over(mouse_global: Vector2) -> bool:
 	if head_sprite.texture == null:
 		return false
@@ -104,20 +105,28 @@ func _on_des_area_mouse_entered() -> void:
 	show_des()
 
 
-
 func _on_des_area_mouse_exited() -> void:
 	hide_des()
 
-		
+
 func show_des():
 	if DominoManager.dm_dragging:
 		return
 	update_labels()
-	tooltip_panel.show_tooltip()
-	
+	tooltip_stack.show()
+	for panel in tooltip_stack.get_children():
+		if panel is TooltipPanel:
+			panel.show_tooltip()
+
+
 func hide_des():
 	update_labels()
-	tooltip_panel.hide_tooltip()
+	for panel in tooltip_stack.get_children():
+		if panel is TooltipPanel:
+			panel.hide_tooltip()
+	await get_tree().create_timer(0.15).timeout
+	tooltip_stack.hide()
+
 
 func update_labels():
 	#final_damage = (damage + Global.hero_strength) * Global.hero_damage_multiplier

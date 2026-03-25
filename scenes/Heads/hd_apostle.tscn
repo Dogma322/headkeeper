@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cce82dmwk0yr1" path="res://scenes/Heads/hd_apostle.gd" id="2_gqsk3"]
 [ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="3_a2bnp"]
 [ext_resource type="Resource" uid="uid://b183epmn8waqs" path="res://resources/heads/head_apostle.tres" id="3_tjlea"]
-[ext_resource type="PackedScene" uid="uid://bm8hl0h6ybgvr" path="res://scenes/AdditionalDescriptionPanel/additional_description.tscn" id="4_iu4rg"]
+[ext_resource type="PackedScene" uid="uid://dnje7ugtetwov" path="res://scenes/UI/additional_tooltip_panel.tscn" id="5_tjlea"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iu4rg"]
 atlas = ExtResource("3_a2bnp")
@@ -17,10 +17,8 @@ template = ExtResource("3_tjlea")
 [node name="Sprite2D" parent="." index="0" unique_id=1248791630]
 texture = SubResource("AtlasTexture_iu4rg")
 
-[node name="AdditionalDescription" parent="DesPanel" parent_id_path=PackedInt32Array(1042038706) index="3" unique_id=1979256086 instance=ExtResource("4_iu4rg")]
-layout_mode = 1
-offset_left = 141.0
-offset_top = -23.0
-offset_right = 20.0
-offset_bottom = -62.0
+[node name="AdditionalTooltipPanel" parent="TooltipStack" parent_id_path=PackedInt32Array(1268114038) index="1" unique_id=54216942 instance=ExtResource("5_tjlea")]
+layout_mode = 2
 type = "Corruption"
+caption = "Скверна"
+description = "В начале хода наносит урон и уменьшается на 1."
