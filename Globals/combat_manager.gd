@@ -28,7 +28,7 @@ func start():
 	
 	BoardManager.generate_board()
 	
-	player_turn_begin()
+	player_turn_begin(true)
 
 
 
@@ -62,13 +62,13 @@ func play_dominoes():
 	player_turn_end()
 	
 	
-func player_turn_begin():
+func player_turn_begin(is_start: bool):
 	print("P_BEGIN")
 	Signals.player_turn_begin.emit()
 	
 	apply_hero_turn_begin_status_effects()
 	await ActionManager.play_actions()
-	if stage == 1:
+	if is_start and stage == 1:
 		if not MetaManager.selected_head_key.is_empty():
 			var head = HeadManager.head_pool[MetaManager.selected_head_key].instantiate()
 			head.add_head_to_head_holder()
@@ -172,7 +172,7 @@ func enemy_turn_end():
 	for status_icon in Global.enemy.status_container.get_children():
 		status_icon.status.end_turn_reduce()
 	
-	player_turn_begin()
+	player_turn_begin(false)
 	
 	
 func enemy_dead():
@@ -241,7 +241,7 @@ func change_stage():
 	Transition.blackout_off()
 	await get_tree().create_timer(1).timeout
 	stage_changing = false
-	player_turn_begin()
+	player_turn_begin(false)
 	
 
 	
