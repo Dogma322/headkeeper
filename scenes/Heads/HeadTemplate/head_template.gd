@@ -76,10 +76,10 @@ func _input(event: InputEvent) -> void:
 			Signals.head_selected.emit()
 			
 func add_head_to_head_holder():
-	apply_passive_effect()
 	if get_parent() != null:
 		get_parent().remove_child(self)
 	Global.head_holder.add_child(self)
+	apply_passive_effect()
 			
 	
 			
