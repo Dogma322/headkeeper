@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="7_76b4e"]
 [ext_resource type="PackedScene" uid="uid://fvbwyoeuebsq" path="res://scenes/DeckBags/deck_bag.tscn" id="8_qxp17"]
 [ext_resource type="Script" uid="uid://dwpk36y7pnpsa" path="res://scenes/MainScenes/combat_ui.gd" id="8_uk3cr"]
+[ext_resource type="PackedScene" uid="uid://23ui6010migp" path="res://scenes/DominoListScene/domino_list_scene.tscn" id="9_d56r7"]
 [ext_resource type="PackedScene" uid="uid://cagbtkvoqcjjb" path="res://scenes/DeckBags/discard_bag.tscn" id="9_lhbvr"]
 [ext_resource type="PackedScene" uid="uid://drlsgry4o0pof" path="res://scenes/BoardBonusContainer/board_bonus_container.tscn" id="10_lhbvr"]
 [ext_resource type="PackedScene" uid="uid://bbvfro8a5geyx" path="res://scenes/HeadHolder/head_holder.tscn" id="11_aonfs"]
@@ -73,19 +74,30 @@ position = Vector2(111, 168)
 [node name="EnmArmoredMush" parent="Characters" unique_id=1770774892 instance=ExtResource("5_vun5q")]
 position = Vector2(535, 170)
 
-[node name="PlayBtn" parent="." unique_id=885226573 instance=ExtResource("7_76b4e")]
-unique_name_in_owner = true
+[node name="MainButtonsBox" type="VBoxContainer" parent="." unique_id=1625423660]
 offset_left = 414.0
 offset_top = -50.0
 offset_right = 510.0
-offset_bottom = -25.0
+offset_bottom = -10.0
+
+[node name="PlayBtn" parent="MainButtonsBox" unique_id=885226573 instance=ExtResource("7_76b4e")]
+unique_name_in_owner = true
+layout_mode = 2
 text = "ИГРАТЬ"
 font_size = 3
 use_darkened = true
 
-[node name="UI" type="Node2D" parent="." unique_id=539959544 node_paths=PackedStringArray("money_label")]
+[node name="ShowAllDominoesBtn" parent="MainButtonsBox" unique_id=580660027 instance=ExtResource("7_76b4e")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "ВСЕ ДОМИНО"
+font_size = 2
+use_darkened = true
+
+[node name="UI" type="Node2D" parent="." unique_id=539959544 node_paths=PackedStringArray("money_label", "domino_list_scene")]
 script = ExtResource("8_uk3cr")
 money_label = NodePath("../MoneyLabel")
+domino_list_scene = NodePath("../DominoListScene")
 
 [node name="Bags" type="Node2D" parent="UI" unique_id=1548184174]
 
@@ -140,7 +152,7 @@ offset_bottom = -82.0
 [node name="ChoiceScene" parent="." unique_id=598777679 instance=ExtResource("14_36n0a")]
 spacing = 100
 
-[node name="RemoveDominoScene" parent="." unique_id=1801682247 instance=ExtResource("15_36n0a")]
+[node name="RemoveDominoScene" parent="." unique_id=671397883 instance=ExtResource("15_36n0a")]
 
 [node name="OptionsPanel" parent="." unique_id=1496924105 instance=ExtResource("15_42igk")]
 
@@ -165,4 +177,13 @@ metadata/_edit_lock_ = true
 [node name="Camera" parent="." unique_id=888122831 instance=ExtResource("19_mjddb")]
 position = Vector2(320, 180)
 
-[connection signal="pressed" from="PlayBtn" to="." method="_on_play_btn_pressed"]
+[node name="DominoListScene" parent="." unique_id=1801682247 instance=ExtResource("9_d56r7")]
+unique_name_in_owner = true
+visible = false
+offset_right = 640.0
+offset_bottom = 360.0
+
+[connection signal="pressed" from="MainButtonsBox/PlayBtn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="MainButtonsBox/ShowAllDominoesBtn" to="UI" method="_on_show_all_dominoes_btn_pressed"]
+[connection signal="pressed" from="UI/Bags/DeckBag" to="UI" method="_on_deck_bag_pressed"]
+[connection signal="pressed" from="UI/Bags/DiscardBag" to="UI" method="_on_discard_bag_pressed"]

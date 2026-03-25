@@ -67,7 +67,7 @@ func show_des():
 		return
 	update_labels()
 	z_index = 10
-	tooltip_panel.show_tooltip()
+	tooltip_panel.show_tooltip(true)
 
 
 func hide_des():

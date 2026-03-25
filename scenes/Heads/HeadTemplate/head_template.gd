@@ -121,11 +121,11 @@ func show_des():
 
 func hide_des():
 	update_labels()
+	tooltip_stack.hide()
 	for panel in tooltip_stack.get_children():
 		if panel is TooltipPanel:
 			panel.hide_tooltip()
 	await get_tree().create_timer(0.15).timeout
-	tooltip_stack.hide()
 
 
 func update_labels():

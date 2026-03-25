@@ -11,12 +11,14 @@
 script = ExtResource("1_bv8q3")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=883642749]
+visible = false
 modulate = Color(1, 1, 1, 0.5411765)
 offset_right = 640.0
 offset_bottom = 360.0
 color = Color(0, 0, 0, 1)
 
 [node name="OptionsPanel" type="Control" parent="." unique_id=738634320]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 486.0

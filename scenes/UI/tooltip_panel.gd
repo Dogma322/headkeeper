@@ -47,9 +47,10 @@ func _ready() -> void:
 	origin_pos = position
 	origin_size = size
 
-func show_tooltip(ui_element: Control = null, offset := ShowOffset.NONE) -> void:
+func show_tooltip(await_frame: bool = false, ui_element: Control = null, offset := ShowOffset.NONE) -> void:
 	visible = true
-	await get_tree().create_timer(0.01).timeout
+	if await_frame:
+		await get_tree().create_timer(0.01).timeout
 	match offset:
 		ShowOffset.NONE:
 			position = origin_pos

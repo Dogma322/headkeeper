@@ -88,7 +88,7 @@ func _on_item_mouse_entered(item: ShopSlot) -> void:
 		return
 	tooltip_panel.caption = item.head.get_translated_name()
 	tooltip_panel.description = item.head.get_translated_desc()
-	tooltip_panel.show_tooltip(item, item.tooltip_offset)
+	tooltip_panel.show_tooltip(true, item, item.tooltip_offset)
 
 
 func _on_item_mouse_exited() -> void:

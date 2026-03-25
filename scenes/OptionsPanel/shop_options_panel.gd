@@ -17,8 +17,12 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	options_panel.visible = visible_by_default
-	color_rect.visible = visible_by_default
+	if not Engine.is_editor_hint():
+		options_panel.visible = false
+		color_rect.visible = false
+	else:
+		options_panel.visible = visible_by_default
+		color_rect.visible = visible_by_default
 	update_labels()
 
 func update_labels():

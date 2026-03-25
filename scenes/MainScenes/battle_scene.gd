@@ -4,6 +4,22 @@ class_name BattleScene
 
 @onready var characters = $Characters
 @onready var play_btn: GameButton = %PlayBtn
+@onready var main_buttons_box: VBoxContainer = $MainButtonsBox
+@onready var always_show = [
+	$BattleBackground, %DominoListScene, $Shader
+]
+
+
+func hide_ui() -> void:
+	for child in get_children():
+		if not child in always_show:
+			child.hide()
+
+
+func show_ui() -> void:
+	for child in get_children():
+		if not child in always_show:
+			child.show()
 
 
 func _ready() -> void:
@@ -26,17 +42,17 @@ func show_play_btn() -> void:
 	var pos1 = Vector2(414, 15) # сначала вниз на 20
 	var pos2 = Vector2(414, 10)
 
-	var tween = play_btn.create_tween()
-	tween.tween_property(play_btn, "global_position", pos1, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.tween_property(play_btn, "global_position", pos2, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	var tween = main_buttons_box.create_tween()
+	tween.tween_property(main_buttons_box, "global_position", pos1, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(main_buttons_box, "global_position", pos2, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 
 func hide_play_btn() -> void:
-	var start_pos = play_btn.global_position
+	var start_pos = main_buttons_box.global_position
 	var pos1 = start_pos + Vector2(0, 5) # небольшое смещение вниз
 	var pos2 = Vector2(414, -50)
 	#var pos2 = Vector2(320, -145)
 
-	var tween = play_btn.create_tween()
-	tween.tween_property(play_btn, "global_position", pos1, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.tween_property(play_btn, "global_position", pos2, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	var tween = main_buttons_box.create_tween()
+	tween.tween_property(main_buttons_box, "global_position", pos1, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(main_buttons_box, "global_position", pos2, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)

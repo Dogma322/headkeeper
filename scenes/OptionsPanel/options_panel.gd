@@ -10,10 +10,21 @@ extends Node2D
 @onready var win_btn: GameButton = %WinBtn
 @onready var end_run_btn: GameButton = %EndRunBtn
 
+@export var visible_by_default := false:
+	set(value):
+		visible_by_default = value
+		if is_instance_valid(options_panel):
+			options_panel.visible = value
+		if is_instance_valid(color_rect):
+			color_rect.visible = value
+
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		options_panel.visible = false
 		color_rect.visible = false
+	else:
+		options_panel.visible = visible_by_default
+		color_rect.visible = visible_by_default
 	update_labels()
 
 

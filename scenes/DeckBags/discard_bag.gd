@@ -29,7 +29,9 @@ func update_labels():
 
 func _on_mouse_entered() -> void:
 	show_des()
+	self_modulate = Color.WHITE.darkened(0.25)
 
 
 func _on_mouse_exited() -> void:
 	hide_des()
+	self_modulate = Color.WHITE

@@ -33,8 +33,10 @@ func update_labels():
 func _on_mouse_entered() -> void:
 	mouse_over_des = true
 	show_des()
+	self_modulate = Color.WHITE.darkened(0.25)
 
 
 func _on_mouse_exited() -> void:
 	mouse_over_des = false
 	hide_des()
+	self_modulate = Color.WHITE
