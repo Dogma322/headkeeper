@@ -27,7 +27,6 @@ func _ready() -> void:
 	load_heads()
 	started_money = MetaManager.money
 	showed_money = MetaManager.money
-	shop_options_panel.hide()
 	head_animation_player.play("head_anim")
 
 
