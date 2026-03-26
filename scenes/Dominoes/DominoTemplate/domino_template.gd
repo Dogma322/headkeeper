@@ -8,6 +8,7 @@ var target_position:Vector2
 
 var slot:DominoSlot = null
 var connected_side := 1
+var initial_connected_side := 1
 
 var dragging := false
 var returning_to_hand = false
@@ -36,11 +37,9 @@ var deleted = false
 @onready var tooltip_stack: HBoxContainer = %TooltipStack
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
 
-
 func _ready() -> void:
 	#update_labels()
 	hide_des_fast()
-
 
 func add_actions():
 	if DominoManager.double_next_dm > 0:
@@ -140,6 +139,25 @@ func final_block(block):
 	return ActionManager.calculate_block(block)
 
 
+func rotate_in_hand() -> void:
+	var angle = 0
+	if connected_side == 0:
+		connected_side = 1
+		initial_connected_side = 1
+	else:
+		connected_side = 0
+		initial_connected_side = 0
+		angle = 180
+	
+	rotation_degrees = angle % 360
+	tooltip_stack.global_position = global_position - Vector2(61, 81)
+
+	if top_icons and bot_icons:
+		top_icons.rotation_degrees = -rotation_degrees
+		bot_icons.rotation_degrees = -rotation_degrees
+		
+	
+
 func rotate_to_match(required_value:int, dir:int):
 
 	var angle = 0
@@ -165,13 +183,16 @@ func rotate_to_match(required_value:int, dir:int):
 
 
 func reset_rotation():
+	var angle = 0
+	if connected_side == 0:
+		angle = 180
 	# Сбрасываем основное вращение домино
-	rotation_degrees = 0
+	rotation_degrees = angle
 	# Сбрасываем вращение иконок
 	if top_icons:
-		top_icons.rotation_degrees = 0
+		top_icons.rotation_degrees = angle
 	if bot_icons:
-		bot_icons.rotation_degrees = 0
+		bot_icons.rotation_degrees = angle
 
 
 func rotate_by_slot(connect_from:int, flow:int, connected_side:int):
@@ -204,7 +225,14 @@ func rotate_by_slot(connect_from:int, flow:int, connected_side:int):
 
 func _on_area_2d_input_event(_viewport, event, _shape):
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			if DominoManager.block_domino_input:
+				return
+			if slot:
+				return
+			if event.pressed:
+				rotate_in_hand()
+		elif event.button_index == MOUSE_BUTTON_LEFT:
 			if not DominoManager.block_domino_input:
 				hide_des_fast()
 		
@@ -354,6 +382,7 @@ func show_des():
 		return
 	update_labels()
 	tooltip_stack.show()
+	tooltip_stack.global_position = global_position - Vector2(61, 81)
 	for panel in tooltip_stack.get_children():
 		if panel is TooltipPanel:
 			panel.show_tooltip()

@@ -25,7 +25,7 @@ class_name Head
 var head_choice = false
 
 func _ready() -> void:
-	tooltip_panel.hide()
+	tooltip_stack.hide()
 	label.visible = false
 	
 	if template:

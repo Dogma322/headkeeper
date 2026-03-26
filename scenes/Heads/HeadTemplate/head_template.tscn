@@ -20,7 +20,6 @@ shape = SubResource("RectangleShape2D_ajw7s")
 
 [node name="TooltipStack" type="HBoxContainer" parent="." unique_id=1268114038]
 unique_name_in_owner = true
-visible = false
 offset_left = -59.0
 offset_top = -85.0
 offset_right = 62.0

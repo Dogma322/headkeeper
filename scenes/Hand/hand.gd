@@ -23,7 +23,7 @@ func adding_dm():
 	for i in range(5):
 		add_domino(domino_scene.instantiate())
 
-func move_to_hand(domino, pos:Vector2):
+func move_to_hand(domino: Domino, pos: Vector2) -> void:
 
 	domino.returning_to_hand = true
 	domino.reset_rotation()
@@ -54,7 +54,7 @@ func move_to_hand(domino, pos:Vector2):
 func add_domino(domino:Domino):
 
 	domino.slot = null
-	domino.connected_side = 1 
+	domino.connected_side = domino.initial_connected_side
 	
 	if domino not in dominoes:
 		dominoes.append(domino)
