@@ -1,7 +1,10 @@
 @tool
 extends TooltipPanel
 
-@export_enum("Weak", "Fury", "Corruption", "Thorns", "Vulnerable", "Evasion") var type: String = "Weak"
+@export_enum("Weak", "Fury", "Corruption", "Thorns", "Vulnerable", "Evasion") var type: String = "Weak":
+	set(value):
+		type = value
+		set_text()
 
 func _ready() -> void:
 	super()

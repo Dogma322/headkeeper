@@ -9,7 +9,7 @@
 [ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="6_pmqfv"]
 [ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="7_c7faw"]
 [ext_resource type="Texture2D" uid="uid://b3xp13akpqd23" path="res://assets/Heroes/Hero1Anim/HeroNewAnimation4.png" id="8_6dlqe"]
-[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="10_3oa0m"]
+[ext_resource type="PackedScene" uid="uid://dnje7ugtetwov" path="res://scenes/UI/additional_tooltip_panel.tscn" id="9_t6thj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y6xcm"]
 atlas = ExtResource("8_6dlqe")
@@ -75,41 +75,37 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3oa0m"]
-atlas = ExtResource("10_3oa0m")
-region = Rect2(0, 0, 32, 32)
-
 [sub_resource type="Animation" id="Animation_t6thj"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Marker2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(9, -55)]
+"values": [Vector2(10, -55)]
 }
 
 [sub_resource type="Animation" id="Animation_kwkn5"]
 resource_name = "head_anim"
-length = 4.0
+length = 2.0
 loop_mode = 1
 step = 0.0333333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Marker2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2, 3, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(9, -55), Vector2(0, -60.357), Vector2(9, -65), Vector2(18, -59.052), Vector2(9, -55)]
+"values": [Vector2(10, -55), Vector2(10, -65), Vector2(10, -55)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2hh6u"]
@@ -296,6 +292,7 @@ mouse_filter = 2
 layout_mode = 2
 text = "Играть"
 font_size = 4
+disabled = false
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer" unique_id=413958035]
 layout_mode = 2
@@ -404,31 +401,36 @@ texture_normal = ExtResource("3_j7sys")
 [node name="ShopOptionsPanel" parent="Layout" unique_id=1538752388 instance=ExtResource("4_pmqfv")]
 unique_name_in_owner = true
 
-[node name="TooltipPanel" parent="." unique_id=54216942 instance=ExtResource("7_c7faw")]
+[node name="TooltipStack" type="HBoxContainer" parent="." unique_id=673166618]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="TooltipPanel" parent="TooltipStack" unique_id=54216942 instance=ExtResource("7_c7faw")]
 unique_name_in_owner = true
 visible = false
-layout_mode = 1
-anchor_left = 0.40546876
-anchor_top = 0.48333332
-anchor_right = 0.59453124
-anchor_bottom = 0.51666665
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+
+[node name="AdditionalTooltipPanel" parent="TooltipStack" unique_id=1029277614 instance=ExtResource("9_t6thj")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+caption = "Слабость"
+description = "Цель наносит на 25% меньше урона от атак."
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=477858779]
-position = Vector2(305, 260)
+position = Vector2(311, 261)
 sprite_frames = SubResource("SpriteFrames_5w8ji")
 autoplay = "default"
 
-[node name="HeadSprite" type="Sprite2D" parent="AnimatedSprite2D" unique_id=2101714938]
+[node name="Marker2D" type="Marker2D" parent="AnimatedSprite2D" unique_id=1681168925]
 unique_name_in_owner = true
-position = Vector2(9, -55)
-texture = SubResource("AtlasTexture_3oa0m")
+position = Vector2(10, -55)
 
 [node name="HeadAnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D" unique_id=782736843]
 unique_name_in_owner = true
-root_node = NodePath("../HeadSprite")
 libraries/ = SubResource("AnimationLibrary_2hh6u")
 
 [connection signal="pressed" from="HBoxContainer/Control/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

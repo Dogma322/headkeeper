@@ -50,7 +50,7 @@ func _ready() -> void:
 func show_tooltip(await_frame: bool = false, ui_element: Control = null, offset := ShowOffset.NONE) -> void:
 	visible = true
 	if await_frame:
-		await get_tree().create_timer(0.01).timeout
+		await get_tree().create_timer(0.001).timeout
 	match offset:
 		ShowOffset.NONE:
 			position = origin_pos

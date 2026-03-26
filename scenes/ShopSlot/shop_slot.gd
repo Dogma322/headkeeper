@@ -76,17 +76,17 @@ func _ready() -> void:
 	cost_label.modulate = Color.TRANSPARENT
 
 
-func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
-			selected.emit()
-
-
-func _on_mouse_entered() -> void:
+func _on_icon_rect_mouse_entered() -> void:
 	if head and not not_enough_money and not is_selected:
 		icon_rect.modulate = Color.WEB_GRAY
 
 
-func _on_mouse_exited() -> void:
+func _on_icon_rect_mouse_exited() -> void:
 	if head and not not_enough_money and not is_selected:
 		icon_rect.modulate = Color.WHITE
+
+
+func _on_icon_rect_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.pressed and event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
+			selected.emit()

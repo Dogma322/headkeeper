@@ -12,6 +12,7 @@ class_name HeadTemplate
 @export var min_value = 0
 @export var max_value = 0
 @export var texture: Texture2D
+@export var extra_tags: PackedStringArray
 
 func get_translated_name() -> String:
 	return tr(hname)

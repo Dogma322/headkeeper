@@ -2,14 +2,17 @@ extends Control
 
 @onready var exit_button: TextureButton = %ExitButton
 @onready var slot_containers = [%HFlowContainer, %HFlowContainer2]
+@onready var tooltip_stack: HBoxContainer = %TooltipStack
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
 @onready var money_label: RichTextLabel = %MoneyLabel
 @onready var shop_options_panel: Node2D = %ShopOptionsPanel
-@onready var head_sprite: Sprite2D = %HeadSprite
 @onready var head_animation_player: AnimationPlayer = %HeadAnimationPlayer
+@onready var additional_tooltip_panel: MarginContainer = %AdditionalTooltipPanel
+@onready var head_marker_2d: Marker2D = %Marker2D
 
 var slots: Array[ShopSlot] = []
 var shop_cache = []
+var head: Head = null
 
 var started_money := 0
 var showed_money := 0:
@@ -21,7 +24,6 @@ var money_tween: Tween
 var selected_slot: ShopSlot = null
 
 func _ready() -> void:
-	head_sprite.texture = null
 	Transition.blackout_off()
 	load_slots()
 	load_heads()
@@ -69,7 +71,11 @@ func _on_item_selected(item: ShopSlot) -> void:
 			selected_slot.unselect()
 		item.select()
 		MetaManager.selected_head_key = item.key
-		head_sprite.texture = item.head.texture
+		if head:
+			head.queue_free()
+		head = HeadManager.head_pool[item.key].instantiate()
+		head.block_input = true
+		head_marker_2d.add_child(head)
 		selected_slot = item
 	else:
 		if item.try_buy(MetaManager.money):
@@ -84,12 +90,12 @@ func _on_item_selected(item: ShopSlot) -> void:
 
 
 func _on_item_mouse_entered(item: ShopSlot) -> void:
-	if not item.head:
+	if not item.head or item.is_selected:
 		return
 	tooltip_panel.caption = item.head.get_translated_name()
 	tooltip_panel.description = item.head.get_translated_desc()
 	tooltip_panel.show_tooltip(true, item, item.tooltip_offset)
-
+	
 
 func _on_item_mouse_exited() -> void:
 	tooltip_panel.hide_tooltip()
@@ -111,7 +117,9 @@ func load_heads() -> void:
 			if key == MetaManager.selected_head_key:
 				slots[i].is_selected = true
 				selected_slot = slots[i]
-				head_sprite.texture = slots[i].head.texture
+				head = HeadManager.head_pool[key].instantiate()
+				head.block_input = true
+				head_marker_2d.add_child(head)
 		else:
 			slots[i].update_availability(MetaManager.money)
 		i += 1

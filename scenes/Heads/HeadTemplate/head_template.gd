@@ -7,7 +7,19 @@ class_name Head
 @onready var aim_marker = $AimMarker
 @onready var label = $Label
 
-@export var template: HeadTemplate
+@export var template: HeadTemplate:
+	set(value):
+		template = value
+		if value:
+			if is_instance_valid(head_sprite):
+				head_sprite.texture = template.texture
+			hd_name = template.get_translated_name()
+			description = template.get_translated_desc()
+		else:
+			if is_instance_valid(head_sprite):
+				head_sprite.texture = null
+			
+@export var block_input := false
 
 @onready var hd_name: String
 @onready var description: String
@@ -22,7 +34,7 @@ class_name Head
 #@onready var final_armor
 #@onready var final_heal
 
-var head_choice = false
+var head_choice := false
 
 func _ready() -> void:
 	tooltip_stack.hide()
@@ -70,6 +82,8 @@ func remove_passive_effect():
 	pass
 
 func _input(event: InputEvent) -> void:
+	if block_input:
+		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and head_choice:
 		if _is_mouse_over(event.position):
 			head_choice = false
