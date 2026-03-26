@@ -205,7 +205,8 @@ func rotate_by_slot(connect_from:int, flow:int, connected_side:int):
 func _on_area_2d_input_event(_viewport, event, _shape):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			hide_des_fast()
+			if not DominoManager.block_domino_input:
+				hide_des_fast()
 		
 			if event.pressed:
 				if DominoManager.block_domino_input:

@@ -27,6 +27,7 @@ signal head_selected
 signal action_card_selected
 signal domino_deleted_from_deck
 signal domino_delete_completed
+signal domino_added_to_board
 
 signal _1dm_played(domino)
 signal _2dm_played(domino)

@@ -71,7 +71,7 @@ func show_des():
 	else:
 		tooltip_panel.position = Vector2.ZERO
 	
-	tooltip_panel.show_tooltip()
+	tooltip_panel.show_tooltip(true)
 
 
 func hide_des():

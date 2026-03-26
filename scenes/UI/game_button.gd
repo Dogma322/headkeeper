@@ -26,6 +26,14 @@ signal pressed
 
 @export var use_darkened := false
 
+@export var disabled: bool:
+	set(value):
+		disabled = value
+		if value:
+			modulate = Color.DIM_GRAY
+		else:
+			modulate = Color.WHITE
+
 func _update_font_size():
 	match font_size:
 		0:
@@ -44,16 +52,23 @@ func _ready() -> void:
 	_update_font_size()
 	pass
 
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_MOUSE_ENTER:
-		if use_darkened:
-			nine_patch_rect.modulate = Color(0.7, 0.7, 0.7)
-		else:
-			nine_patch_rect.modulate = Color(1.3, 1.3, 1.3)
-	if what == NOTIFICATION_MOUSE_EXIT:
-		nine_patch_rect.modulate = Color(1, 1, 1)
-	
+
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
+		if event.pressed and event.button_index == MouseButton.MOUSE_BUTTON_LEFT and not disabled:
 			pressed.emit()
+
+
+func _on_mouse_entered() -> void:
+	if disabled:
+		return
+	if use_darkened:
+		nine_patch_rect.modulate = Color(0.7, 0.7, 0.7)
+	else:
+		nine_patch_rect.modulate = Color(1.3, 1.3, 1.3)
+
+
+func _on_mouse_exited() -> void:
+	if disabled:
+		return
+	nine_patch_rect.modulate = Color(1, 1, 1)

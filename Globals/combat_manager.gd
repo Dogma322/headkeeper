@@ -35,7 +35,7 @@ func start():
 func play_dominoes():
 	print("PLAY_D")
 	
-	Global.fight_scene.hide_play_btn()
+	Global.fight_scene.hide_menu()
 	
 	if DominoManager.dominoes_on_board.size() == 0:
 		return
@@ -95,7 +95,7 @@ func player_turn_begin(is_start: bool):
 	BoardManager.generate_bonuses()
 	await get_tree().create_timer(0.2).timeout
 	Global.board.show_board()
-	Global.fight_scene.show_play_btn()
+	Global.fight_scene.show_menu()
 	await get_tree().create_timer(0.6).timeout
 	Hand.draw_dominoes()
 	player_turn = true

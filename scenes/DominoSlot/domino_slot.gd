@@ -118,7 +118,7 @@ func can_place(new_domino:Domino):
 
 
 
-func place_domino(new_domino:Domino):
+func place_domino(new_domino: Domino):
 	Signals.play_domino_added_to_slot_sound.emit()
 	var needed = get_required_value()
 
@@ -139,6 +139,7 @@ func place_domino(new_domino:Domino):
 	DominoManager.dominoes_on_board.append(new_domino)
 
 	add_bonuses_to_bb_cont()
+	Signals.domino_added_to_board.emit()
 
 
 
