@@ -24,10 +24,25 @@ var showed_money := 0:
 var money_tween: Tween
 var selected_slot: ShopSlot = null
 
+
+func save_changes() -> void:
+	for item in shop_cache:
+		MetaManager.buyed_head_keys.push_back(item.key)
+	MetaManager.save_data()
+
+
 func play() -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
+	save_changes()
 	get_tree().change_scene_to_file("res://scenes/MainScenes/battle_scene.tscn")
+
+
+func exit() -> void:
+	Transition.blackout_on()
+	await get_tree().create_timer(1).timeout
+	save_changes()
+	get_tree().change_scene_to_file("res://scenes/MainScenes/main_menu.tscn")
 
 
 func cancel() -> void:
@@ -58,14 +73,9 @@ func _ready() -> void:
 	head_animation_player.play("head_anim")
 	cancel_button.disabled = true
 
-func update_money_label():
-	money_label.text = "[img]res://assets/Icons/CommonSkull.png[/img]%s" % str(MetaManager.money)
-
 
 func _on_exit_button_pressed() -> void:
-	Transition.blackout_on()
-	await get_tree().create_timer(1).timeout
-	get_tree().change_scene_to_file("res://scenes/MainScenes/main_menu.tscn")
+	exit()
 
 
 func _on_exit_button_mouse_entered() -> void:
@@ -73,9 +83,6 @@ func _on_exit_button_mouse_entered() -> void:
 
 
 func _on_exit_button_mouse_exited() -> void:
-	for item in shop_cache:
-		MetaManager.buyed_head_keys.push_back(item.key)
-	MetaManager.save_data()
 	exit_button.modulate = Color(1, 1, 1)
 
 
@@ -87,6 +94,7 @@ func load_slots() -> void:
 				child.icon_rect.mouse_exited.connect(_on_item_mouse_exited)
 				child.selected.connect(_on_item_selected.bind(child))
 				slots.push_back(child)
+
 
 func select_head(slot: ShopSlot) -> void:
 	if current_head:
@@ -102,6 +110,7 @@ func select_head(slot: ShopSlot) -> void:
 		current_head.block_input = true
 		head_marker_2d.add_child(current_head)
 	selected_slot = slot
+
 
 func _on_item_selected(item: ShopSlot) -> void:
 	if not item.head:

@@ -8,10 +8,11 @@ class_name CombatUI
 
 ## Устанавливает деньги в текстовую метку денег.
 func set_money(amount: int) -> void:
-	money_label.text = str(amount)
+	money_label.text = "[img]res://assets/Icons/CommonSkull.png[/img]%s" % str(amount)
 
 
 func _ready() -> void:
+	set_money(0)
 	Signals.money_changed.connect(set_money)
 	pass
 
