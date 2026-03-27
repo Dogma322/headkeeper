@@ -282,6 +282,13 @@ scroll_active = false
 autowrap_mode = 0
 vertical_alignment = 1
 
+[node name="CancelButton" parent="HBoxContainer/Control/MarginContainer/VBoxContainer" unique_id=885226573 instance=ExtResource("5_5w8ji")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Сбросить"
+font_size = 4
+disabled = false
+
 [node name="Control" type="Control" parent="HBoxContainer/Control/MarginContainer/VBoxContainer" unique_id=173593234]
 layout_mode = 2
 size_flags_vertical = 3
@@ -321,7 +328,7 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="PlayButton" parent="HBoxContainer/Control/MarginContainer/VBoxContainer" unique_id=885226573 instance=ExtResource("5_5w8ji")]
+[node name="PlayButton" parent="HBoxContainer/Control/MarginContainer/VBoxContainer" unique_id=220107067 instance=ExtResource("5_5w8ji")]
 layout_mode = 2
 text = "Играть"
 font_size = 4
@@ -479,6 +486,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("11_kwkn5")
+metadata/_edit_lock_ = true
 
 [node name="VhsShader" type="ColorRect" parent="Shader" unique_id=568404944]
 material = SubResource("ShaderMaterial_d4oof")
@@ -491,6 +499,7 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
+[connection signal="pressed" from="HBoxContainer/Control/MarginContainer/VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Control/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="mouse_entered" from="Layout/ExitButton" to="." method="_on_exit_button_mouse_entered"]
 [connection signal="mouse_exited" from="Layout/ExitButton" to="." method="_on_exit_button_mouse_exited"]

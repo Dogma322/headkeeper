@@ -8,10 +8,12 @@ extends Control
 @onready var shop_options_panel: Node2D = %ShopOptionsPanel
 @onready var head_animation_player: AnimationPlayer = %HeadAnimationPlayer
 @onready var head_marker_2d: Marker2D = %Marker2D
+@onready var cancel_button: GameButton = %CancelButton
 
 var slots: Array[ShopSlot] = []
-var shop_cache = []
-var head: Head = null
+var shop_cache: Array[ShopSlot] = []
+var current_head: Head = null
+var origin_head_slot: ShopSlot = null
 
 var started_money := 0
 var showed_money := 0:
@@ -22,6 +24,31 @@ var showed_money := 0:
 var money_tween: Tween
 var selected_slot: ShopSlot = null
 
+func play() -> void:
+	Transition.blackout_on()
+	await get_tree().create_timer(1).timeout
+	get_tree().change_scene_to_file("res://scenes/MainScenes/battle_scene.tscn")
+
+
+func cancel() -> void:
+	var cost := 0
+	for slot in shop_cache:
+		slot.is_selected = false
+		slot.buyed = false
+		cost += HeadManager.head_templates[slot.key].cost
+		
+	if cost != 0:
+		if money_tween and money_tween.is_running():
+			money_tween.kill()
+		money_tween = create_tween()
+		money_tween.tween_property(self, "showed_money", MetaManager.money + cost, 0.5)
+		MetaManager.money += cost
+	
+	select_head(origin_head_slot)
+	shop_cache.clear()
+	cancel_button.disabled = true
+
+
 func _ready() -> void:
 	Transition.blackout_off()
 	load_slots()
@@ -29,7 +56,7 @@ func _ready() -> void:
 	started_money = MetaManager.money
 	showed_money = MetaManager.money
 	head_animation_player.play("head_anim")
-
+	cancel_button.disabled = true
 
 func update_money_label():
 	money_label.text = "[img]res://assets/Icons/CommonSkull.png[/img]%s" % str(MetaManager.money)
@@ -61,6 +88,20 @@ func load_slots() -> void:
 				child.selected.connect(_on_item_selected.bind(child))
 				slots.push_back(child)
 
+func select_head(slot: ShopSlot) -> void:
+	if current_head:
+		current_head.queue_free()
+	if slot == null:
+		MetaManager.selected_head_key = ""
+	else:
+		slot.select()
+		var key = slot.key
+		MetaManager.selected_head_key = key
+		
+		current_head = HeadManager.head_pool[key].instantiate()
+		current_head.block_input = true
+		head_marker_2d.add_child(current_head)
+	selected_slot = slot
 
 func _on_item_selected(item: ShopSlot) -> void:
 	if not item.head:
@@ -68,14 +109,16 @@ func _on_item_selected(item: ShopSlot) -> void:
 	if item.buyed:
 		if selected_slot != null and selected_slot != item:
 			selected_slot.unselect()
-		item.select()
-		MetaManager.selected_head_key = item.key
-		if head:
-			head.queue_free()
-		head = HeadManager.head_pool[item.key].instantiate()
-		head.block_input = true
-		head_marker_2d.add_child(head)
-		selected_slot = item
+		select_head(item)
+		
+		var found := false
+		for slot in shop_cache:
+			if slot.key == item.key:
+				found = true
+				break
+		if not found:
+			origin_head_slot = item
+		
 		hide_tooltips()
 	else:
 		if item.try_buy(MetaManager.money):
@@ -86,7 +129,9 @@ func _on_item_selected(item: ShopSlot) -> void:
 				money_tween = create_tween()
 				money_tween.tween_property(self, "showed_money", MetaManager.money - item.head.cost, 0.5)
 				MetaManager.money -= item.head.cost
+				
 				update_availability()
+				cancel_button.disabled = false
 
 
 func _on_item_mouse_entered(item: ShopSlot) -> void:
@@ -127,15 +172,18 @@ func load_heads() -> void:
 			if key == MetaManager.selected_head_key:
 				slots[i].is_selected = true
 				selected_slot = slots[i]
-				head = HeadManager.head_pool[key].instantiate()
-				head.block_input = true
-				head_marker_2d.add_child(head)
+				origin_head_slot = selected_slot
+				current_head = HeadManager.head_pool[key].instantiate()
+				current_head.block_input = true
+				head_marker_2d.add_child(current_head)
 		else:
 			slots[i].update_availability(MetaManager.money)
 		i += 1
 
 
 func _on_play_button_pressed() -> void:
-	Transition.blackout_on()
-	await get_tree().create_timer(1).timeout
-	get_tree().change_scene_to_file("res://scenes/MainScenes/battle_scene.tscn")
+	play()
+
+
+func _on_cancel_button_pressed() -> void:
+	cancel()
