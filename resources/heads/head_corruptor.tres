@@ -13,4 +13,5 @@ hname = "hd_corruptor_name"
 desc = "hd_corruptor_des"
 cost = 5
 texture = SubResource("AtlasTexture_p2w5p")
+extra_tags = Array[String](["Corruption"])
 metadata/_custom_type_script = "uid://m5esxthxmlub"

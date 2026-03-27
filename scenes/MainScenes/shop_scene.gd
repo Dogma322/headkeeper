@@ -2,12 +2,11 @@ extends Control
 
 @onready var exit_button: TextureButton = %ExitButton
 @onready var slot_containers = [%HFlowContainer, %HFlowContainer2]
-@onready var tooltip_stack: HBoxContainer = %TooltipStack
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
+@onready var additional_tooltip_panel: MarginContainer = %AdditionalTooltipPanel
 @onready var money_label: RichTextLabel = %MoneyLabel
 @onready var shop_options_panel: Node2D = %ShopOptionsPanel
 @onready var head_animation_player: AnimationPlayer = %HeadAnimationPlayer
-@onready var additional_tooltip_panel: MarginContainer = %AdditionalTooltipPanel
 @onready var head_marker_2d: Marker2D = %Marker2D
 
 var slots: Array[ShopSlot] = []
@@ -77,6 +76,7 @@ func _on_item_selected(item: ShopSlot) -> void:
 		head.block_input = true
 		head_marker_2d.add_child(head)
 		selected_slot = item
+		hide_tooltips()
 	else:
 		if item.try_buy(MetaManager.money):
 			shop_cache.push_back(item)
@@ -95,10 +95,20 @@ func _on_item_mouse_entered(item: ShopSlot) -> void:
 	tooltip_panel.caption = item.head.get_translated_name()
 	tooltip_panel.description = item.head.get_translated_desc()
 	tooltip_panel.show_tooltip(true, item, item.tooltip_offset)
-	
+	if not item.head.extra_tags.is_empty():
+		await get_tree().create_timer(0.01).timeout
+		additional_tooltip_panel.type = item.head.extra_tags[0]
+		additional_tooltip_panel.show_tooltip(true, tooltip_panel, item.tooltip_offset)
+
 
 func _on_item_mouse_exited() -> void:
+	hide_tooltips()
+
+
+func hide_tooltips():
 	tooltip_panel.hide_tooltip()
+	if additional_tooltip_panel.visible:
+		additional_tooltip_panel.hide_tooltip()
 
 
 func update_availability() -> void:

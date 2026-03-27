@@ -15,4 +15,5 @@ cost = 15
 corruption = 2
 value = 20
 texture = SubResource("AtlasTexture_iu4rg")
+extra_tags = Array[String](["Corruption"])
 metadata/_custom_type_script = "uid://m5esxthxmlub"

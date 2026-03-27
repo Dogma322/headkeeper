@@ -14,4 +14,5 @@ desc = "hd_druid_des"
 cost = 12
 value = 20
 texture = SubResource("AtlasTexture_fbd4k")
+extra_tags = Array[String](["Fury"])
 metadata/_custom_type_script = "uid://m5esxthxmlub"
