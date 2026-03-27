@@ -56,7 +56,10 @@ func update_domino_list(source: Source):
 		
 		domino.scale = Vector2(1,1)
 		domino.visible = true
-		domino.rotation_degrees = 0
+		if domino.initial_connected_side == 1:
+			domino.rotation_degrees = 0
+		else:
+			domino.rotation_degrees = 180
 
 		domino.scale = Vector2(0,0)
 

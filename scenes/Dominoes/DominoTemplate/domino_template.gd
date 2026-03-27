@@ -381,23 +381,21 @@ func show_des():
 	if dragging:
 		return
 	update_labels()
-	tooltip_stack.show()
 	tooltip_stack.global_position = global_position - Vector2(61, 81)
 	for panel in tooltip_stack.get_children():
 		if panel is TooltipPanel:
-			panel.show_tooltip()
+			panel.show_tooltip(true)
 
 
 func hide_des():
 	for panel in tooltip_stack.get_children():
 		if panel is TooltipPanel:
 			panel.hide_tooltip()
-	await get_tree().create_timer(0.15).timeout
-	tooltip_stack.hide()
 
 
 func hide_des_fast():
-	tooltip_stack.hide()
+	for panel in tooltip_stack.get_children():
+		panel.hide()
 
 
 func update_labels():

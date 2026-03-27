@@ -53,7 +53,6 @@ func show_tooltip(await_frame: bool = false, ui_element: Control = null, offset 
 		await get_tree().create_timer(0.001).timeout
 	match offset:
 		ShowOffset.NONE:
-			position = origin_pos
 			pass
 		ShowOffset.RIGHT_TOP:
 			assert(ui_element)
@@ -77,7 +76,6 @@ func show_tooltip(await_frame: bool = false, ui_element: Control = null, offset 
 		ShowOffset.LEFT_BOTTOM:
 			assert(ui_element)
 			pass
-	reset_size()
 	
 	if tween and tween.is_running():
 		tween.kill()
