@@ -28,16 +28,22 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		Signals.player_turn_end.connect(_on_player_turn_end)
 		Signals.domino_added_to_board.connect(_on_domino_added_to_board)
+		Signals.domino_chain_removed.connect(_on_domino_chain_removed)
 		Global.play_btn = self
 		Global.fight_scene = self
 		CombatManager.start()
 
 
-func _on_player_turn_end():
+func _on_domino_chain_removed() -> void:
+	if DominoManager.dominoes_on_board.is_empty():
+		play_btn.disabled = true
+
+
+func _on_player_turn_end() -> void:
 	play_btn.disabled = true
 
 
-func _on_domino_added_to_board():
+func _on_domino_added_to_board() -> void:
 	play_btn.disabled = false
 
 

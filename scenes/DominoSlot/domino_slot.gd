@@ -151,20 +151,21 @@ func add_bonuses_to_bb_cont():
 
 
 
-func remove_chain():
+func remove_chain(depth: int = 0):
 
 	if domino == null:
 		return
 
 	for child in child_slots:
-		child.remove_chain()
+		child.remove_chain(depth + 1)
 
 	var d = domino
 
 	remove_domino()
 
 	Hand.add_domino(d)
-
+	if depth == 0:
+		Signals.domino_chain_removed.emit()
 
 
 func remove_domino():
