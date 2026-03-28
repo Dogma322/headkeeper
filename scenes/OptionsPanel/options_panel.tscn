@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://co3n6566yjfoi" path="res://scenes/OptionsPanel/options_panel.gd" id="1_6b8f5"]
 [ext_resource type="Texture2D" uid="uid://c5vqfl3gisqxr" path="res://assets/UI/OptionsMenu/OptionsBack.png" id="1_hmfqu"]
 [ext_resource type="Theme" uid="uid://cprf3ls2l5ilt" path="res://scenes/TextThemes/volda15.tres" id="2_1qmy7"]
-[ext_resource type="Theme" uid="uid://dqyxam6mhw2pp" path="res://scenes/TextThemes/Volda12.tres" id="3_6b8f5"]
+[ext_resource type="Theme" uid="uid://dqyxam6mhw2pp" path="res://scenes/TextThemes/volda12.tres" id="3_6b8f5"]
 [ext_resource type="PackedScene" uid="uid://b6kg1e5g2wvsm" path="res://scenes/VolumeSlider/volume_slider.tscn" id="4_2427u"]
 [ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="6_2427u"]
 [ext_resource type="Texture2D" uid="uid://bpuept8cxfcoo" path="res://assets/UI/OptionsMenu/OptionsButton.png" id="7_2427u"]
