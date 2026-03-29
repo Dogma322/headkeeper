@@ -27,6 +27,12 @@ func _on_shop_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/MainScenes/shop_scene.tscn")
 
 
+func _on_craft_btn_pressed() -> void:
+	Transition.blackout_on()
+	await get_tree().create_timer(1).timeout
+	get_tree().change_scene_to_file("res://scenes/MainScenes/craft_scene.tscn")
+
+
 ## Происходит при нажатии кнопки 'Рандомные поля'.
 func _on_change_board_generation_btn_pressed() -> void:
 	if BoardManager.random_boards == true:

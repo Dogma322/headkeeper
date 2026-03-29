@@ -112,7 +112,9 @@ func domino_played():
 
 
 func final_damage(_damage: int):
-	var new_damage = ActionManager.calculate_damage(self, Global.enemy,_damage)
+	if Global.enemy == null:
+		return _damage
+	var new_damage = ActionManager.calculate_damage(self, Global.enemy, _damage)
 	return new_damage
 
 

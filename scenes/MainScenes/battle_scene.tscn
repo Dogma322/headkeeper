@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://caovgfyajqfdl" path="res://scenes/HeadChoiceScene/head_choice_scene.tscn" id="14_36n0a"]
 [ext_resource type="PackedScene" uid="uid://bmdtecafi1ta3" path="res://scenes/RemoveDominoScene/remove_domino_scene.tscn" id="15_36n0a"]
 [ext_resource type="PackedScene" uid="uid://csbo55doneg6b" path="res://scenes/OptionsPanel/options_panel.tscn" id="15_42igk"]
+[ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="15_csryg"]
 [ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="18_qc22i"]
 [ext_resource type="Script" uid="uid://cnhlqgjn6nf78" path="res://scenes/Camera/fs_shader.gd" id="19_76b4e"]
 [ext_resource type="PackedScene" uid="uid://bjosapo8novm3" path="res://scenes/Camera/camera.tscn" id="19_mjddb"]
@@ -58,6 +59,7 @@ shader_parameter/cg_shadows = 1.0
 script = ExtResource("1_ydxg7")
 
 [node name="BattleBackground" parent="." unique_id=631565350 instance=ExtResource("1_dyrcu")]
+metadata/_edit_lock_ = true
 
 [node name="Board" type="Node2D" parent="." unique_id=848168304]
 
@@ -141,12 +143,14 @@ layout_mode = 2
 center_position = Vector2(111, 116)
 
 [node name="MoneyLabel" type="RichTextLabel" parent="." unique_id=1876316434]
-offset_right = 42.0
-offset_bottom = 23.0
+offset_right = 48.0
+offset_bottom = 32.0
 mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("15_csryg")
 bbcode_enabled = true
-text = "0"
+text = "[img]res://assets/Icons/CommonSkull.png[/img]0"
 fit_content = true
+autowrap_mode = 0
 
 [node name="ActionCardContainer" parent="." unique_id=1117680451 instance=ExtResource("13_4d2li")]
 offset_top = -240.0

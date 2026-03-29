@@ -1,5 +1,7 @@
 extends Node
 
+@warning_ignore_start("unused_signal")
+
 signal play_btn_pressed
 signal play_dominoes
 signal projectile_hit
@@ -27,7 +29,7 @@ signal head_selected
 signal action_card_selected
 signal domino_deleted_from_deck
 signal domino_delete_completed
-signal domino_added_to_board
+signal domino_added_to_board(domino: Domino)
 signal domino_chain_removed
 
 signal _1dm_played(domino)

@@ -139,7 +139,7 @@ func place_domino(new_domino: Domino):
 	DominoManager.dominoes_on_board.append(new_domino)
 
 	add_bonuses_to_bb_cont()
-	Signals.domino_added_to_board.emit()
+	Signals.domino_added_to_board.emit(new_domino)
 
 
 

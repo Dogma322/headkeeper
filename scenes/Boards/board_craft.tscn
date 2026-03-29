@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://by7sdoxj5u7k4"]
+
+[ext_resource type="PackedScene" uid="uid://dx2yty7752sow" path="res://scenes/Boards/BoardTemplate/board_template.tscn" id="1_hoax4"]
+[ext_resource type="Texture2D" uid="uid://ctitm0xa3nsjk" path="res://assets/UI/Board/CraftBoard.png" id="2_esdot"]
+[ext_resource type="PackedScene" uid="uid://b024032pallcd" path="res://scenes/DominoSlot/domino_slot.tscn" id="3_esdot"]
+
+[node name="BoardCraft" unique_id=183639370 instance=ExtResource("1_hoax4")]
+
+[node name="BoardSprite" parent="." index="0" unique_id=224441976]
+texture = ExtResource("2_esdot")
+
+[node name="DominoSlot" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="0" unique_id=1301988008 instance=ExtResource("3_esdot")]
+position = Vector2(0, -32)
+slot_distance = 0
+start_slot = true

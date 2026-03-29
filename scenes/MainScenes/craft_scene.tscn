@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://dywi02s7uin3f"]
+
+[ext_resource type="PackedScene" uid="uid://bn0602p7re11e" path="res://scenes/Backgrounds/battle_background.tscn" id="1_dwva5"]
+[ext_resource type="Script" uid="uid://b2pehnv8tdhth" path="res://scenes/MainScenes/craft_scene.gd" id="1_gu0aw"]
+[ext_resource type="Script" uid="uid://cnhlqgjn6nf78" path="res://scenes/Camera/fs_shader.gd" id="2_nb1n5"]
+[ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="3_gu0aw"]
+[ext_resource type="Texture2D" uid="uid://mjo560ccfs37" path="res://assets/UI/OptionsMenu/ExitButton.png" id="5_a8qar"]
+[ext_resource type="PackedScene" uid="uid://cpolkxs6npnhc" path="res://scenes/Heroes/hero.tscn" id="7_a8qar"]
+[ext_resource type="PackedScene" uid="uid://by7sdoxj5u7k4" path="res://scenes/Boards/board_craft.tscn" id="8_il8bo"]
+[ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="8_ioiea"]
+[ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="9_il8bo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w8mvb"]
+shader = ExtResource("3_gu0aw")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0400000019
+shader_parameter/scanlines_width = 0.0800000038
+shader_parameter/grille_opacity = 0.030000001425
+shader_parameter/resolution = Vector2(640, 360)
+shader_parameter/pixelate = false
+shader_parameter/roll = false
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 0.10000000149012
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 3.0
+shader_parameter/static_noise_intensity = 0.02000000095
+shader_parameter/aberration = 0.00300004764250005
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.3
+shader_parameter/vignette_opacity = 0.30000001425
+shader_parameter/cg_saturation = 0.850000040375
+shader_parameter/cg_exposure = 0.0
+shader_parameter/cg_contrast = 1.0
+shader_parameter/cg_temperature = 0.0
+shader_parameter/cg_tint = 0.0
+shader_parameter/cg_highlights = 1.0
+shader_parameter/cg_shadows = 1.0
+
+[node name="CraftScene" type="Control" unique_id=1900912832]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_gu0aw")
+
+[node name="BattleBackground" parent="." unique_id=631565350 instance=ExtResource("1_dwva5")]
+
+[node name="Layout" type="MarginContainer" parent="." unique_id=1795268268]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+metadata/_edit_lock_ = true
+
+[node name="ExitButton" type="TextureButton" parent="Layout" unique_id=1637908275]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = ExtResource("5_a8qar")
+
+[node name="MoneyLabel" type="RichTextLabel" parent="." unique_id=1893411284]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 36.0
+offset_right = 48.0
+offset_bottom = 68.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("8_ioiea")
+bbcode_enabled = true
+text = "[img]res://assets/Icons/CommonSkull.png[/img]0"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Characters" type="Node2D" parent="." unique_id=514215204]
+
+[node name="Hero" parent="Characters" unique_id=534144501 instance=ExtResource("7_a8qar")]
+position = Vector2(75, 161)
+
+[node name="BoardCraft" parent="." unique_id=183639370 instance=ExtResource("8_il8bo")]
+position = Vector2(318, 149)
+
+[node name="AcceptButton" parent="." unique_id=885226573 instance=ExtResource("9_il8bo")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 415.0
+offset_top = 12.0
+offset_right = 515.0
+offset_bottom = 38.875
+text = "Подтвердить"
+font_size = 3
+disabled = false
+
+[node name="RerollButton" parent="." unique_id=1519040811 instance=ExtResource("9_il8bo")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 415.0
+offset_top = 41.0
+offset_right = 515.0
+offset_bottom = 67.875
+text = "Reroll"
+font_size = 3
+disabled = false
+
+[node name="CostLabel" type="RichTextLabel" parent="." unique_id=923779472]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 441.0
+offset_top = 68.0
+offset_right = 489.0
+offset_bottom = 100.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("8_ioiea")
+bbcode_enabled = true
+text = "[img]res://assets/Icons/CommonSkull.png[/img]0"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Shader" type="Control" parent="." unique_id=1451027368]
+z_index = 999
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("2_nb1n5")
+
+[node name="VhsShader" type="ColorRect" parent="Shader" unique_id=1747598542]
+material = SubResource("ShaderMaterial_w8mvb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[connection signal="mouse_entered" from="Layout/ExitButton" to="." method="_on_exit_button_mouse_entered"]
+[connection signal="mouse_exited" from="Layout/ExitButton" to="." method="_on_exit_button_mouse_exited"]
+[connection signal="pressed" from="Layout/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="AcceptButton" to="." method="_on_accept_button_pressed"]
+[connection signal="pressed" from="RerollButton" to="." method="_on_reroll_button_pressed"]

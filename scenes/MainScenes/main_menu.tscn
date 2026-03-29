@@ -43,6 +43,17 @@ script = ExtResource("1_biks6")
 position = Vector2(320, 180)
 texture = ExtResource("1_icbvd")
 
+[node name="ChangeBoardGenerationBtn" parent="." unique_id=12153377 instance=ExtResource("3_4s641")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(134, 48)
+offset_left = 503.0
+offset_top = 3.0
+offset_right = 637.0
+offset_bottom = 51.0
+text = "Рандомные поля: вкл"
+font_size = 2
+disabled = false
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1926393881]
 offset_left = 256.0
 offset_top = 61.0
@@ -53,27 +64,30 @@ offset_bottom = 220.0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-text = "play"
+text = "ИГРАТЬ"
 font_size = 4
+disabled = false
 
 [node name="ShopBtn" parent="VBoxContainer" unique_id=1138529411 instance=ExtResource("3_4s641")]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 text = "Магазин"
 font_size = 4
+disabled = false
 
-[node name="ChangeBoardGenerationBtn" parent="VBoxContainer" unique_id=12153377 instance=ExtResource("3_4s641")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(134, 48)
+[node name="CraftBtn" parent="VBoxContainer" unique_id=810574825 instance=ExtResource("3_4s641")]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-text = "Рандомные поля: вкл"
-font_size = 2
+text = "Крафт"
+font_size = 4
+disabled = false
 
 [node name="ExitButton" parent="VBoxContainer" unique_id=1705888084 instance=ExtResource("3_4s641")]
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 text = "Выход"
 font_size = 4
+disabled = false
 
 [node name="Shader" type="Control" parent="." unique_id=1575948723]
 z_index = 999
@@ -89,8 +103,10 @@ layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
+[connection signal="pressed" from="ChangeBoardGenerationBtn" to="." method="_on_change_board_generation_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/PlayBtn" to="." method="_on_play_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/ShopBtn" to="." method="_on_shop_btn_pressed"]
-[connection signal="pressed" from="VBoxContainer/ChangeBoardGenerationBtn" to="." method="_on_change_board_generation_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/CraftBtn" to="." method="_on_craft_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

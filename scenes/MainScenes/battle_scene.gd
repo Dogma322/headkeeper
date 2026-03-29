@@ -43,7 +43,7 @@ func _on_player_turn_end() -> void:
 	play_btn.disabled = true
 
 
-func _on_domino_added_to_board() -> void:
+func _on_domino_added_to_board(_domino: Domino) -> void:
 	play_btn.disabled = false
 
 
