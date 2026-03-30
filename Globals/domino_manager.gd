@@ -25,18 +25,14 @@ var double_next_dm = 0
 var corruption_bonus = 0
 
 @onready var start_deck := {
-	
-	"3_2_atk": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_atck.tscn"),
-	"3_2_def": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_2_def.tscn"),
-	"2_1_atk": preload("res://scenes/Dominoes/StartDominoes/dm_start_2_1_attack.tscn"),
-	"2_1_atk2": preload("res://scenes/Dominoes/StartDominoes/dm_start_2_1_attack.tscn"),
-	"2_1_def": preload("res://scenes/Dominoes/StartDominoes/dm_start_2_1_defense.tscn"),
-	"3_1_atk": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_1_attack.tscn"),
-	"3_1_def": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_1_defense.tscn"),
-	"3_1_def2": preload("res://scenes/Dominoes/StartDominoes/dm_start_3_1_defense.tscn"),
-	"4_2_def_vulnerable": preload("res://scenes/Dominoes/StartDominoes/dm_start_4_2_vulnerable_attack.tscn"),
-	"4_2_def_heal": preload("res://scenes/Dominoes/StartDominoes/dm_start_4_2_heal_defense.tscn"),
-	
+	"2_1_atk" : preload("res://resources/dominoes/start/dm_start_2_1_attack.tres"),
+	"2_1_def" : preload("res://resources/dominoes/start/dm_start_2_1_defense.tres"),
+	"3_1_atk" : preload("res://resources/dominoes/start/dm_start_3_1_attack.tres"),
+	"3_1_def" : preload("res://resources/dominoes/start/dm_start_3_1_defense.tres"),
+	"3_2_atk" : preload("res://resources/dominoes/start/dm_start_3_2_attack.tres"),
+	"3_2_def" : preload("res://resources/dominoes/start/dm_start_3_2_defense.tres"),
+	"4_2_atk_vulnerable": preload("res://resources/dominoes/start/dm_start_4_2_attack_vulnerable.tres"),
+	"4_2_def_heal" : preload("res://resources/dominoes/start/dm_start_4_2_defense_heal.tres"),
 }
 
 @onready var domino_pool:= {
@@ -75,6 +71,8 @@ var corruption_bonus = 0
 
 }
 
+@onready var domino_scene = preload("res://scenes/Dominoes/DominoTemplate/domino_template.tscn")
+
 #var temp_domino_pool 
 
 
@@ -98,13 +96,13 @@ func reset():
 
 func set_deck():
 	for i in range(1): 
-		for key in start_deck.keys():
-			var scene = start_deck[key]     
+		for key in start_deck.keys(): 
 			 # достаём PackedScene
-			var bone = scene.instantiate()   
-			bone.global_position.y = -100000 # HACK: чтобы не было краша игры при наведении на край экрана.
-			add_child(bone)
-			deck.append(bone)
+			var domino: Domino = domino_scene.instantiate()
+			domino.global_position.y = -100000 # HACK: чтобы не было краша игры при наведении на край экрана.
+			domino.template = start_deck[key]
+			add_child(domino)
+			deck.append(domino)
 		
 	temp_deck = deck.duplicate()
 

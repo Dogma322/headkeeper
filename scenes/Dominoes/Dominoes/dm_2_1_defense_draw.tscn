@@ -3,18 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://dnco2xl6pi07y" path="res://scenes/Dominoes/DominoTemplate/domino_template.tscn" id="1_qkdc1"]
 [ext_resource type="Script" uid="uid://cdb8uv4n554cs" path="res://scenes/Dominoes/Dominoes/dm_2_1_defense_draw.gd" id="2_btmt1"]
 [ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_jfok8"]
+[ext_resource type="Texture2D" uid="uid://c5qqjxov4wk5h" path="res://assets/Dominoes/Components/defense_2.atlastex" id="4_eglbs"]
+[ext_resource type="Texture2D" uid="uid://cwbyotnl16ea0" path="res://assets/Dominoes/Components/dice_1.atlastex" id="5_j8b65"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eglbs"]
 atlas = ExtResource("3_jfok8")
 region = Rect2(263, 16, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j8b65"]
-atlas = ExtResource("3_jfok8")
-region = Rect2(146, 138, 28, 13)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7tm17"]
-atlas = ExtResource("3_jfok8")
-region = Rect2(185, 359, 15, 20)
 
 [node name="dm_2_1_defense_draw" unique_id=1771172059 instance=ExtResource("1_qkdc1")]
 script = ExtResource("2_btmt1")
@@ -24,7 +18,7 @@ b = 1
 texture = SubResource("AtlasTexture_eglbs")
 
 [node name="TopIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="1" unique_id=1407603542]
-texture = SubResource("AtlasTexture_j8b65")
+texture = ExtResource("4_eglbs")
 
 [node name="BotIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="2" unique_id=189273046]
-texture = SubResource("AtlasTexture_7tm17")
+texture = ExtResource("5_j8b65")

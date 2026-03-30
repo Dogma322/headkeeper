@@ -3,18 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://dnco2xl6pi07y" path="res://scenes/Dominoes/DominoTemplate/domino_template.tscn" id="1_eowve"]
 [ext_resource type="Script" uid="uid://cvtrwslsvti7p" path="res://scenes/Dominoes/Dominoes/dm_dagger.gd" id="2_7r0wd"]
 [ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_uf7h3"]
+[ext_resource type="Texture2D" uid="uid://dnnoul45o2d0l" path="res://assets/Dominoes/Special/dagger.atlastex" id="4_g5ccl"]
+[ext_resource type="Texture2D" uid="uid://cded6g0600obd" path="res://assets/Dominoes/Components/dots_red_4.atlastex" id="5_8f665"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5ccl"]
 atlas = ExtResource("3_uf7h3")
 region = Rect2(16, 16, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8f665"]
-atlas = ExtResource("3_uf7h3")
-region = Rect2(86, 482, 21, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cv0r0"]
-atlas = ExtResource("3_uf7h3")
-region = Rect2(114, 578, 28, 29)
 
 [node name="dm_dagger" unique_id=1771172059 instance=ExtResource("1_eowve")]
 script = ExtResource("2_7r0wd")
@@ -25,7 +19,7 @@ b = 4
 texture = SubResource("AtlasTexture_g5ccl")
 
 [node name="TopIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="1" unique_id=1407603542]
-texture = SubResource("AtlasTexture_8f665")
+texture = ExtResource("4_g5ccl")
 
 [node name="BotIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="2" unique_id=189273046]
-texture = SubResource("AtlasTexture_cv0r0")
+texture = ExtResource("5_8f665")

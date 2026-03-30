@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DominoTemplate" format=3 uid="uid://ch1anwxdp4x5f"]
+
+[ext_resource type="Script" uid="uid://25lu10tiiq0q" path="res://resources/domino_template.gd" id="1_6dh61"]
+
+[resource]
+script = ExtResource("1_6dh61")
+a = 3
+b = 2
+a_type = 3
+b_type = 3
+metadata/_custom_type_script = "uid://25lu10tiiq0q"

@@ -3,19 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://dnco2xl6pi07y" path="res://scenes/Dominoes/DominoTemplate/domino_template.tscn" id="1_q0l6v"]
 [ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="2_5my58"]
 [ext_resource type="Script" uid="uid://djtelajnix4dw" path="res://scenes/Dominoes/Dominoes/dm_2_2_thorns.gd" id="2_xpopq"]
+[ext_resource type="Texture2D" uid="uid://hei07rh0rnlm" path="res://assets/Dominoes/Components/thorns_2.atlastex" id="4_1m7hh"]
 [ext_resource type="PackedScene" uid="uid://dnje7ugtetwov" path="res://scenes/UI/additional_tooltip_panel.tscn" id="4_5ucxo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpopq"]
 atlas = ExtResource("2_5my58")
 region = Rect2(87, 16, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ucxo"]
-atlas = ExtResource("2_5my58")
-region = Rect2(82, 330, 28, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1m7hh"]
-atlas = ExtResource("2_5my58")
-region = Rect2(82, 330, 28, 12)
 
 [node name="dm_2_2_thorns" unique_id=1771172059 instance=ExtResource("1_q0l6v")]
 script = ExtResource("2_xpopq")
@@ -25,13 +18,13 @@ b = 2
 texture = SubResource("AtlasTexture_xpopq")
 
 [node name="TopIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="1" unique_id=1407603542]
-texture = SubResource("AtlasTexture_5ucxo")
+texture = ExtResource("4_1m7hh")
 
 [node name="BotIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="2" unique_id=189273046]
-texture = SubResource("AtlasTexture_1m7hh")
+texture = ExtResource("4_1m7hh")
 
 [node name="AdditionalTooltipPanel" parent="TooltipStack" parent_id_path=PackedInt32Array(1929530369) index="1" unique_id=54216942 instance=ExtResource("4_5ucxo")]
 layout_mode = 2
 type = "Thorns"
-caption = "Слабость"
-description = "Цель наносит на 25% меньше урона от атак."
+caption = "Шипы"
+description = "Наносит урон в ответ на каждую атаку."

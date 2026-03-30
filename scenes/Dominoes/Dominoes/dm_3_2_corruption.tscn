@@ -3,19 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://dnco2xl6pi07y" path="res://scenes/Dominoes/DominoTemplate/domino_template.tscn" id="1_646ef"]
 [ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="2_oq5p5"]
 [ext_resource type="Script" uid="uid://bpriwipasylyt" path="res://scenes/Dominoes/Dominoes/dm_3_2_corruption.gd" id="2_qb8ry"]
+[ext_resource type="Texture2D" uid="uid://cvwoh43f83qg0" path="res://assets/Dominoes/Components/corruption_3.atlastex" id="4_kfcev"]
 [ext_resource type="PackedScene" uid="uid://dnje7ugtetwov" path="res://scenes/UI/additional_tooltip_panel.tscn" id="5_khlf7"]
+[ext_resource type="Texture2D" uid="uid://cbcptfyufqwgi" path="res://assets/Dominoes/Components/corruption_2.atlastex" id="5_nimg7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qb8ry"]
 atlas = ExtResource("2_oq5p5")
 region = Rect2(87, 16, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eoixj"]
-atlas = ExtResource("2_oq5p5")
-region = Rect2(81, 225, 30, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_khlf7"]
-atlas = ExtResource("2_oq5p5")
-region = Rect2(115, 231, 26, 16)
 
 [node name="dm_3_2_corruption" unique_id=1771172059 instance=ExtResource("1_646ef")]
 script = ExtResource("2_qb8ry")
@@ -26,13 +20,13 @@ b = 2
 texture = SubResource("AtlasTexture_qb8ry")
 
 [node name="TopIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="1" unique_id=1407603542]
-texture = SubResource("AtlasTexture_eoixj")
+texture = ExtResource("4_kfcev")
 
 [node name="BotIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="2" unique_id=189273046]
-texture = SubResource("AtlasTexture_khlf7")
+texture = ExtResource("5_nimg7")
 
 [node name="AdditionalTooltipPanel" parent="TooltipStack" parent_id_path=PackedInt32Array(1929530369) index="1" unique_id=54216942 instance=ExtResource("5_khlf7")]
 layout_mode = 2
 type = "Corruption"
-caption = "Слабость"
-description = "Цель наносит на 25% меньше урона от атак."
+caption = "Скверна"
+description = "В начале хода наносит урон и уменьшается на 1."

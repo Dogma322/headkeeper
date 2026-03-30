@@ -1,8 +1,10 @@
 class_name Domino
 extends Node2D
 #SSS
-@export var a:int
-@export var b:int
+@export_range(1, 4) var a:int
+@export_range(1, 4) var b:int
+
+@export var template: DominoTemplate = null
 
 var target_position:Vector2
 
@@ -16,10 +18,11 @@ var drag_offset := Vector2.ZERO
 
 var domino_types = ["Attack"]
 
-var damage
-var block
-var heal
-var corruption
+var damage := 0
+var block := 0
+var heal := 0
+var corruption := 0
+var vulnerable := 0
 
 var doubled = false
 
@@ -30,16 +33,57 @@ var deleted = false
 
 @onready var top_icons = $Visual/TopIcons
 @onready var bot_icons = $Visual/BotIcons
+@onready var icons: Array[Sprite2D] = [top_icons, bot_icons]
 @onready var aim_marker = $AimMarker
+@onready var top: Sprite2D = $Visual/Top
+@onready var bottom: Sprite2D = $Visual/Bottom
 
 @onready var dm_name: String
 @onready var description: String = ""
 @onready var tooltip_stack: HBoxContainer = %TooltipStack
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
 
+func parse_template_type(index: int, type: DominoTemplate.DominoType, value: int):
+	match type:
+		DominoTemplate.DominoType.ATTACK:
+			damage += value
+		DominoTemplate.DominoType.ATTACK2:
+			damage += value
+		DominoTemplate.DominoType.DEFENSE:
+			block += value
+		DominoTemplate.DominoType.HEAL:
+			heal += value
+		DominoTemplate.DominoType.VULNERABLE:
+			vulnerable += value
+	if DominoTemplate.type_to_tex.has(type):
+		var textures = DominoTemplate.type_to_tex[type]
+		if textures.has(value):
+			icons[index].texture = textures[value]
+
 func _ready() -> void:
+	if template != null:
+		a = template.a
+		b = template.b
+		
+		domino_types.clear()
+		if DominoTemplate.type_to_string.has(template.a_type):
+			if not domino_types.has(DominoTemplate.type_to_string[template.a_type]):
+				domino_types.push_back(DominoTemplate.type_to_string[template.a_type])
+		if DominoTemplate.type_to_string.has(template.b_type):
+			if not domino_types.has(DominoTemplate.type_to_string[template.b_type]):
+				domino_types.push_back(DominoTemplate.type_to_string[template.b_type])
+				
+		top.texture = DominoTemplate.color_to_block_top_tex[DominoTemplate.type_to_color[template.a_type]]
+		bottom.texture = DominoTemplate.color_to_block_bot_tex[DominoTemplate.type_to_color[template.b_type]]
+		
+		parse_template_type(0, template.a_type, template.a)
+		parse_template_type(1, template.b_type, template.b)
+		
+		pass
+	
 	#update_labels()
 	hide_des_fast()
+
 
 func add_actions():
 	if DominoManager.double_next_dm > 0:
@@ -53,19 +97,22 @@ func add_actions():
 	domino_played()
 
 
+func add_action() -> void:
+	if template != null:
+		if damage > 0:
+			ActionManager.add(AttackAction.new(self, Global.enemy, damage))
+		if block > 0:
+			ActionManager.add(BlockAction.new(self, Global.hero, block))
+		if heal > 0:
+			ActionManager.add(HealAction.new(self, Global.hero, heal))
+		if vulnerable > 0:
+			ActionManager.add(AttackDebuffAction.new(self, Global.enemy, 5, StatusManager.vulnerable, vulnerable))
+
 func get_status(target, status_id:String):
 	for icon in target.status_container.get_children():
 		if icon.status.id == status_id:
 			return icon.status
 	return null
-
-
-func add_action():
-	#ActionManager.add(AttackAction.new(self, Global.enemy, 5))
-	#ActionManager.add(AttackDebuffAction.new(self, Global.enemy, 5, StatusManager.weak, 2))
-	ActionManager.add(AttackDebuffAction.new(self, Global.enemy, 5, StatusManager.vulnerable, 2))
-	#ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.corruption, 5))
-	#ActionManager.add(BlockAction.new(self, Global.hero,5))
 
 
 func domino_played():
@@ -400,5 +447,28 @@ func hide_des_fast():
 		panel.hide()
 
 
+func get_tooltip_for_type(type: DominoTemplate.DominoType) -> String:
+	match type:
+		DominoTemplate.DominoType.ATTACK:
+			return TextFormatter.insert_colored_value(tr("attack_des"), final_damage(damage), damage)
+		DominoTemplate.DominoType.ATTACK2:
+			return TextFormatter.insert_colored_value(tr("attack_des"), final_damage(damage), damage)
+		DominoTemplate.DominoType.DEFENSE:
+			return TextFormatter.insert_colored_value(tr("defense_des"), final_block(block), block)
+		DominoTemplate.DominoType.HEAL:
+			return TextFormatter.highlight_keywords(tr("heal_des") % heal)
+		DominoTemplate.DominoType.VULNERABLE:
+			return TextFormatter.highlight_keywords(tr("vulnerable_des") % vulnerable)
+	return ""
+
+
 func update_labels():
-	tooltip_panel.description = ""
+	if template != null:
+		var tooltip = get_tooltip_for_type(template.a_type)
+		if template.a_type != template.b_type:
+			tooltip += " "
+			tooltip += get_tooltip_for_type(template.b_type)
+		tooltip_panel.description = tooltip
+		pass
+	else:
+		tooltip_panel.description = ""

@@ -15,11 +15,17 @@ b = 3
 
 [node name="Back" type="Sprite2D" parent="Visual" unique_id=1409418696]
 
+[node name="Top" type="Sprite2D" parent="Visual" unique_id=1447953728]
+position = Vector2(0, -16)
+
+[node name="Bottom" type="Sprite2D" parent="Visual" unique_id=801232644]
+position = Vector2(0, 16)
+
 [node name="TopIcons" type="Sprite2D" parent="Visual" unique_id=1407603542]
-position = Vector2(0, -17)
+position = Vector2(0, -16)
 
 [node name="BotIcons" type="Sprite2D" parent="Visual" unique_id=189273046]
-position = Vector2(0, 17)
+position = Vector2(0, 16)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1733465482]
 
