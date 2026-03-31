@@ -26,15 +26,14 @@ var double_next_dm = 0
 var corruption_bonus = 0
 
 @onready var start_deck := {
-	"dm_4_1_attack_weak": preload("res://resources/dominoes/dm_4_1_attack_weak.tres"),
-	#"2_1_atk" : preload("res://resources/dominoes/start/dm_start_2_1_attack.tres"),
-	#"2_1_def" : preload("res://resources/dominoes/start/dm_start_2_1_defense.tres"),
-	#"3_1_atk" : preload("res://resources/dominoes/start/dm_start_3_1_attack.tres"),
-	#"3_1_def" : preload("res://resources/dominoes/start/dm_start_3_1_defense.tres"),
-	#"3_2_atk" : preload("res://resources/dominoes/start/dm_start_3_2_attack.tres"),
-	#"3_2_def" : preload("res://resources/dominoes/start/dm_start_3_2_defense.tres"),
-	#"4_2_atk_vulnerable": preload("res://resources/dominoes/start/dm_start_4_2_attack_vulnerable.tres"),
-	#"4_2_def_heal" : preload("res://resources/dominoes/start/dm_start_4_2_defense_heal.tres"),
+	"2_1_atk" : preload("res://resources/dominoes/start/dm_start_2_1_attack.tres"),
+	"2_1_def" : preload("res://resources/dominoes/start/dm_start_2_1_defense.tres"),
+	"3_1_atk" : preload("res://resources/dominoes/start/dm_start_3_1_attack.tres"),
+	"3_1_def" : preload("res://resources/dominoes/start/dm_start_3_1_defense.tres"),
+	"3_2_atk" : preload("res://resources/dominoes/start/dm_start_3_2_attack.tres"),
+	"3_2_def" : preload("res://resources/dominoes/start/dm_start_3_2_defense.tres"),
+	"4_2_atk_vulnerable": preload("res://resources/dominoes/start/dm_start_4_2_attack_vulnerable.tres"),
+	"4_2_def_heal" : preload("res://resources/dominoes/start/dm_start_4_2_defense_heal.tres"),
 }
 
 @onready var domino_pool:= {
@@ -88,11 +87,11 @@ func reset():
 	set_deck()
 
 func set_deck():
-	var domino_template_scene = load("res://scenes/Dominoes/DominoTemplate/domino_template.tscn")
+	var domino_scene = load("res://scenes/Dominoes/DominoTemplate/domino.tscn")
 	for i in range(1): 
 		for key in start_deck.keys(): 
 			 # достаём PackedScene
-			var domino: Domino = domino_template_scene.instantiate()
+			var domino: Domino = domino_scene.instantiate()
 			domino.global_position.y = -100000 # HACK: чтобы не было краша игры при наведении на край экрана.
 			domino.template = start_deck[key]
 			add_child(domino)

@@ -16,7 +16,7 @@ var choosing := false
 var spawning := false
 var choice_locked := false
 
-@onready var domino_template_scene = preload("res://scenes/Dominoes/DominoTemplate/domino_template.tscn")
+@onready var domino_template_scene = preload("res://scenes/Dominoes/DominoTemplate/domino.tscn")
 
 func _ready() -> void:
 	Global.choice_scene = self

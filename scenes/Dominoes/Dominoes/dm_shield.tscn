@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://rjax3oo2s3pw"]
 
-[ext_resource type="PackedScene" uid="uid://dnco2xl6pi07y" path="res://scenes/Dominoes/DominoTemplate/domino_template.tscn" id="1_lhco6"]
+[ext_resource type="PackedScene" uid="uid://dnco2xl6pi07y" path="res://scenes/Dominoes/DominoTemplate/domino.tscn" id="1_lhco6"]
 [ext_resource type="Script" uid="uid://dci2f4r7gxab2" path="res://scenes/Dominoes/Dominoes/dm_shield.gd" id="2_iile6"]
 [ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="2_v4hf7"]
 [ext_resource type="Texture2D" uid="uid://bta5885tvt6pq" path="res://assets/Dominoes/Special/shield.atlastex" id="4_dqgwn"]

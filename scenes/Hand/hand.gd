@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var domino_scene = preload("res://scenes/Dominoes/DominoTemplate/domino_template.tscn")
+@export var domino_scene = preload("res://scenes/Dominoes/DominoTemplate/domino.tscn")
 
 @export var hand_height := 320
 @export var hand_width = 320
