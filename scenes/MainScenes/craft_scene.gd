@@ -39,7 +39,15 @@ func _on_accept_button_pressed() -> void:
 
 func _on_reroll_button_pressed() -> void:
 	assert(current_domino != null)
-	
+	var value = 0
+	if current_domino.initial_connected_side == 1:
+		while value == 0 or current_domino.a == value:
+			value = 1 + randi() % 4
+		current_domino.setup(Domino.SideSettings.new(value, current_domino.a_type))
+	else:
+		while value == 0 or current_domino.b == value:
+			value = 1 + randi() % 4
+		current_domino.setup(null, Domino.SideSettings.new(value, current_domino.b_type))
 
 
 func _on_domino_added_to_board(domino) -> void:

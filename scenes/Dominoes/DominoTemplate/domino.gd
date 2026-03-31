@@ -4,6 +4,9 @@ extends Node2D
 @export_range(1, 4) var a:int
 @export_range(1, 4) var b:int
 
+var a_type: DominoTemplate.DominoType
+var b_type: DominoTemplate.DominoType
+
 @export var template: DominoTemplate = null
 
 var target_position:Vector2
@@ -58,26 +61,47 @@ func set_additional_tooltip(type: String) -> void:
 	else:
 		extra_tooltip_panel.type = type
 
+class SideSettings:
+	var value: int
+	var type: DominoTemplate.DominoType
+	
+	func _init(_value, _type):
+		value = _value
+		type = _type
+
+
+func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> void:
+	if a_settings != null:
+		a = a_settings.value
+		a_type = a_settings.type
+	if b_settings != null:
+		b = b_settings.value
+		b_type = b_settings.type
+	
+	if a_settings != null:
+		if DominoTemplate.type_to_string.has(a_settings.type):
+			if not domino_types.has(DominoTemplate.type_to_string[a_settings.type]):
+				domino_types.push_back(DominoTemplate.type_to_string[a_settings.type])
+	if b_settings != null:
+		if DominoTemplate.type_to_string.has(b_settings.type):
+			if not domino_types.has(DominoTemplate.type_to_string[b_settings.type]):
+				domino_types.push_back(DominoTemplate.type_to_string[b_settings.type])
+	
+	if a_settings != null:
+		top.texture = DominoTemplate.color_to_block_top_tex[DominoTemplate.type_to_color[a_settings.type]]
+	if b_settings != null:
+		bottom.texture = DominoTemplate.color_to_block_bot_tex[DominoTemplate.type_to_color[b_settings.type]]
+	
+	if a_settings != null:
+		parse_template_type(0, a_settings.type, a_settings.value)
+	if b_settings != null:
+		parse_template_type(1, b_settings.type, b_settings.value)
+	
+
 func _ready() -> void:
 	if template != null:
-		a = template.a
-		b = template.b
-		
 		domino_types.clear()
-		if DominoTemplate.type_to_string.has(template.a_type):
-			if not domino_types.has(DominoTemplate.type_to_string[template.a_type]):
-				domino_types.push_back(DominoTemplate.type_to_string[template.a_type])
-		if DominoTemplate.type_to_string.has(template.b_type):
-			if not domino_types.has(DominoTemplate.type_to_string[template.b_type]):
-				domino_types.push_back(DominoTemplate.type_to_string[template.b_type])
-				
-		top.texture = DominoTemplate.color_to_block_top_tex[DominoTemplate.type_to_color[template.a_type]]
-		bottom.texture = DominoTemplate.color_to_block_bot_tex[DominoTemplate.type_to_color[template.b_type]]
-		
-		parse_template_type(0, template.a_type, template.a)
-		parse_template_type(1, template.b_type, template.b)
-		
-		pass
+		setup(SideSettings.new(template.a, template.a_type), SideSettings.new(template.b, template.b_type))
 	
 	#update_labels()
 	hide_des_fast()
