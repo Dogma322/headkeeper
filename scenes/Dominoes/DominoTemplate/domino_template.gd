@@ -23,6 +23,10 @@ var block := 0
 var heal := 0
 var corruption := 0
 var vulnerable := 0
+var weak := 0
+var draw_param := 0
+var fury := 0
+var thorns := 0
 
 var doubled = false
 
@@ -43,22 +47,16 @@ var deleted = false
 @onready var tooltip_stack: HBoxContainer = %TooltipStack
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
 
-func parse_template_type(index: int, type: DominoTemplate.DominoType, value: int):
-	match type:
-		DominoTemplate.DominoType.ATTACK:
-			damage += value
-		DominoTemplate.DominoType.ATTACK2:
-			damage += value
-		DominoTemplate.DominoType.DEFENSE:
-			block += value
-		DominoTemplate.DominoType.HEAL:
-			heal += value
-		DominoTemplate.DominoType.VULNERABLE:
-			vulnerable += value
-	if DominoTemplate.type_to_tex.has(type):
-		var textures = DominoTemplate.type_to_tex[type]
-		if textures.has(value):
-			icons[index].texture = textures[value]
+const ADDITIONAL_TOOLTIP_PANEL = preload("uid://dnje7ugtetwov")
+var extra_tooltip_panel: AdditionalTooltipPanel = null
+
+func set_additional_tooltip(type: String) -> void:
+	if extra_tooltip_panel == null:
+		extra_tooltip_panel = ADDITIONAL_TOOLTIP_PANEL.instantiate()
+		extra_tooltip_panel.type = type
+		tooltip_stack.add_child(extra_tooltip_panel)
+	else:
+		extra_tooltip_panel.type = type
 
 func _ready() -> void:
 	if template != null:
@@ -96,17 +94,6 @@ func add_actions():
 	add_action()
 	domino_played()
 
-
-func add_action() -> void:
-	if template != null:
-		if damage > 0:
-			ActionManager.add(AttackAction.new(self, Global.enemy, damage))
-		if block > 0:
-			ActionManager.add(BlockAction.new(self, Global.hero, block))
-		if heal > 0:
-			ActionManager.add(HealAction.new(self, Global.hero, heal))
-		if vulnerable > 0:
-			ActionManager.add(AttackDebuffAction.new(self, Global.enemy, 5, StatusManager.vulnerable, vulnerable))
 
 func get_status(target, status_id:String):
 	for icon in target.status_container.get_children():
@@ -447,21 +434,6 @@ func hide_des_fast():
 		panel.hide()
 
 
-func get_tooltip_for_type(type: DominoTemplate.DominoType) -> String:
-	match type:
-		DominoTemplate.DominoType.ATTACK:
-			return TextFormatter.insert_colored_value(tr("attack_des"), final_damage(damage), damage)
-		DominoTemplate.DominoType.ATTACK2:
-			return TextFormatter.insert_colored_value(tr("attack_des"), final_damage(damage), damage)
-		DominoTemplate.DominoType.DEFENSE:
-			return TextFormatter.insert_colored_value(tr("defense_des"), final_block(block), block)
-		DominoTemplate.DominoType.HEAL:
-			return TextFormatter.highlight_keywords(tr("heal_des") % heal)
-		DominoTemplate.DominoType.VULNERABLE:
-			return TextFormatter.highlight_keywords(tr("vulnerable_des") % vulnerable)
-	return ""
-
-
 func update_labels():
 	if template != null:
 		var tooltip = get_tooltip_for_type(template.a_type)
@@ -472,3 +444,85 @@ func update_labels():
 		pass
 	else:
 		tooltip_panel.description = ""
+
+
+func parse_template_type(index: int, type: DominoTemplate.DominoType, value: int):
+	match type:
+		DominoTemplate.DominoType.ATTACK:
+			damage += value
+		DominoTemplate.DominoType.ATTACK2:
+			damage += value * 2
+		DominoTemplate.DominoType.DEFENSE:
+			block += value
+		DominoTemplate.DominoType.HEAL:
+			heal += value
+		DominoTemplate.DominoType.DRAW:
+			draw_param += value
+		DominoTemplate.DominoType.CORRUPTION:
+			corruption += value
+			set_additional_tooltip("Corruption")
+		DominoTemplate.DominoType.VULNERABLE:
+			vulnerable += value
+			set_additional_tooltip("Vulnerable")
+		DominoTemplate.DominoType.WEAK:
+			weak += value
+			set_additional_tooltip("Weak")
+		DominoTemplate.DominoType.FURY:
+			fury += value
+			set_additional_tooltip("Fury")
+		DominoTemplate.DominoType.THORNS:
+			thorns += value
+			set_additional_tooltip("Thorns")
+	if DominoTemplate.type_to_tex.has(type):
+		var textures = DominoTemplate.type_to_tex[type]
+		if textures.has(value):
+			icons[index].texture = textures[value]
+
+
+func add_action() -> void:
+	if template != null:
+		if damage > 0:
+			ActionManager.add(AttackAction.new(self, Global.enemy, damage))
+		if block > 0:
+			ActionManager.add(BlockAction.new(self, Global.hero, block))
+		if heal > 0:
+			ActionManager.add(HealAction.new(self, Global.hero, heal))
+		if fury > 0:
+			ActionManager.add(BuffAction.new(self, Global.hero, preload("res://resources/statuses/fury.tres"), fury))
+		if thorns > 0:
+			ActionManager.add(BuffAction.new(self, Global.hero, preload("res://resources/statuses/thorns.tres"), thorns))
+		if draw_param > 0:
+			ActionManager.add(BuffAction.new(self, Global.hero, preload("res://resources/statuses/draw.tres"), draw_param))
+		if corruption > 0:
+			ActionManager.add(DebuffAction.new(self, Global.enemy, preload("res://resources/statuses/corruption.tres"), corruption))
+		if vulnerable > 0:
+			ActionManager.add(DebuffAction.new(self, Global.enemy, preload("res://resources/statuses/vulnerable.tres"), vulnerable))
+		if weak > 0:
+			ActionManager.add(DebuffAction.new(self, Global.enemy, preload("res://resources/statuses/weak.tres"), weak))
+
+
+func get_tooltip_for_type(type: DominoTemplate.DominoType) -> String:
+	match type:
+		DominoTemplate.DominoType.ATTACK:
+			return TextFormatter.insert_colored_value(tr("attack_des"), final_damage(damage), damage)
+		DominoTemplate.DominoType.ATTACK2:
+			return TextFormatter.insert_colored_value(tr("attack_des"), final_damage(damage), damage)
+		DominoTemplate.DominoType.DEFENSE:
+			return TextFormatter.insert_colored_value(tr("defense_des"), final_block(block), block)
+		DominoTemplate.DominoType.HEAL:
+			return TextFormatter.highlight_keywords(tr("heal_des") % heal)
+		DominoTemplate.DominoType.CORRUPTION:
+			return TextFormatter.insert_colored_value(tr("corruption_des"), corruption, corruption) 
+		DominoTemplate.DominoType.VULNERABLE:
+			return TextFormatter.highlight_keywords(tr("vulnerable_des") % vulnerable)
+		DominoTemplate.DominoType.WEAK:
+			return TextFormatter.highlight_keywords(tr("weak_des") % weak)
+		DominoTemplate.DominoType.DRAW:
+			match draw_param:
+				1:
+					return tr("draw_1_des")
+		DominoTemplate.DominoType.FURY:
+			return TextFormatter.highlight_keywords(tr("strength_des") % fury)
+		DominoTemplate.DominoType.THORNS:
+			return TextFormatter.highlight_keywords(tr("thorns_des") % thorns)
+	return ""

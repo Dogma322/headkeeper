@@ -1,5 +1,6 @@
 @tool
 extends TooltipPanel
+class_name AdditionalTooltipPanel
 
 @export_enum("Weak", "Fury", "Corruption", "Thorns", "Vulnerable", "Evasion") var type: String = "Weak":
 	set(value):
