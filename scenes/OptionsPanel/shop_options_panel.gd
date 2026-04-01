@@ -40,11 +40,3 @@ func _on_options_button_pressed() -> void:
 		color_rect.visible = false
 		options_panel.visible = false
 		options_button.texture_normal = load("res://assets/UI/OptionsMenu/OptionsButton.png")
-
-
-func _on_options_button_mouse_entered() -> void:
-	options_button.modulate = Color(1.3,1.3,1.3)
-
-
-func _on_options_button_mouse_exited() -> void:
-	options_button.modulate = Color(1,1,1)

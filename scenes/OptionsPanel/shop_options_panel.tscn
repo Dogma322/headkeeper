@@ -5,6 +5,7 @@
 [ext_resource type="Theme" uid="uid://cprf3ls2l5ilt" path="res://scenes/TextThemes/volda15.tres" id="3_o8gb3"]
 [ext_resource type="Theme" uid="uid://dqyxam6mhw2pp" path="res://scenes/TextThemes/volda12.tres" id="4_lqrs1"]
 [ext_resource type="PackedScene" uid="uid://b6kg1e5g2wvsm" path="res://scenes/VolumeSlider/volume_slider.tscn" id="5_00ysp"]
+[ext_resource type="PackedScene" uid="uid://bo8xaqmke5324" path="res://scenes/UI/icon_button.tscn" id="6_toxxd"]
 [ext_resource type="Texture2D" uid="uid://bpuept8cxfcoo" path="res://assets/UI/OptionsMenu/OptionsButton.png" id="7_ka7m1"]
 
 [node name="ShopOptionsPanel" type="Node2D" unique_id=1502576298]
@@ -77,16 +78,13 @@ text = "Громкость музыки"
 layout_mode = 2
 bus_name = "Music"
 
-[node name="OptionsButton" type="TextureButton" parent="." unique_id=771565013]
+[node name="OptionsButton" parent="." unique_id=1254142979 instance=ExtResource("6_toxxd")]
 unique_name_in_owner = true
 offset_left = 610.0
 offset_top = 5.0
 offset_right = 635.0
 offset_bottom = 30.0
 size_flags_horizontal = 8
-size_flags_vertical = 0
 texture_normal = ExtResource("7_ka7m1")
 
-[connection signal="mouse_entered" from="OptionsButton" to="." method="_on_options_button_mouse_entered"]
-[connection signal="mouse_exited" from="OptionsButton" to="." method="_on_options_button_mouse_exited"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]

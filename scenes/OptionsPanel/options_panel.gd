@@ -42,14 +42,6 @@ func _on_options_button_pressed() -> void:
 		options_button.texture_normal = load("res://assets/UI/OptionsMenu/OptionsButton.png")
 
 
-func _on_options_button_mouse_entered() -> void:
-	options_button.modulate = Color(1.3,1.3,1.3)
-
-
-func _on_options_button_mouse_exited() -> void:
-	options_button.modulate = Color(1,1,1)
-
-
 func update_labels():
 	if not Engine.is_editor_hint():
 		stage_label.text = tr("stage") % CombatManager.stage

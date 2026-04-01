@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bjs0uqv1cm63v" path="res://scenes/OptionsPanel/shop_options_panel.tscn" id="4_pmqfv"]
 [ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="5_5w8ji"]
 [ext_resource type="PackedScene" uid="uid://bdk7hhppmx7sg" path="res://scenes/ShopSlot/shop_slot.tscn" id="5_aob4o"]
+[ext_resource type="PackedScene" uid="uid://bo8xaqmke5324" path="res://scenes/UI/icon_button.tscn" id="6_kwkn5"]
 [ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="6_pmqfv"]
 [ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="7_c7faw"]
 [ext_resource type="Texture2D" uid="uid://b3xp13akpqd23" path="res://assets/Heroes/Hero1Anim/HeroNewAnimation4.png" id="8_6dlqe"]
@@ -431,11 +432,9 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 metadata/_edit_lock_ = true
 
-[node name="ExitButton" type="TextureButton" parent="Layout" unique_id=210784925]
+[node name="ExitButton" parent="Layout" unique_id=1254142979 instance=ExtResource("6_kwkn5")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
 texture_normal = ExtResource("3_j7sys")
 
 [node name="ShopOptionsPanel" parent="Layout" unique_id=1538752388 instance=ExtResource("4_pmqfv")]
@@ -501,6 +500,4 @@ metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="HBoxContainer/Control/MarginContainer/VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Control/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="mouse_entered" from="Layout/ExitButton" to="." method="_on_exit_button_mouse_entered"]
-[connection signal="mouse_exited" from="Layout/ExitButton" to="." method="_on_exit_button_mouse_exited"]
 [connection signal="pressed" from="Layout/ExitButton" to="." method="_on_exit_button_pressed"]

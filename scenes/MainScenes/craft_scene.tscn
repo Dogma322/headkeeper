@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b2pehnv8tdhth" path="res://scenes/MainScenes/craft_scene.gd" id="1_gu0aw"]
 [ext_resource type="Script" uid="uid://cnhlqgjn6nf78" path="res://scenes/Camera/fs_shader.gd" id="2_nb1n5"]
 [ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="3_gu0aw"]
+[ext_resource type="PackedScene" uid="uid://bo8xaqmke5324" path="res://scenes/UI/icon_button.tscn" id="3_jg3uq"]
 [ext_resource type="Texture2D" uid="uid://mjo560ccfs37" path="res://assets/UI/OptionsMenu/ExitButton.png" id="5_a8qar"]
 [ext_resource type="PackedScene" uid="uid://cpolkxs6npnhc" path="res://scenes/Heroes/hero.tscn" id="7_a8qar"]
 [ext_resource type="PackedScene" uid="uid://by7sdoxj5u7k4" path="res://scenes/Boards/board_craft.tscn" id="8_il8bo"]
@@ -67,11 +68,9 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 metadata/_edit_lock_ = true
 
-[node name="ExitButton" type="TextureButton" parent="Layout" unique_id=1637908275]
+[node name="ExitButton" parent="Layout" unique_id=1254142979 instance=ExtResource("3_jg3uq")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
 texture_normal = ExtResource("5_a8qar")
 
 [node name="MoneyLabel" type="RichTextLabel" parent="." unique_id=1893411284]
@@ -148,8 +147,6 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
-[connection signal="mouse_entered" from="Layout/ExitButton" to="." method="_on_exit_button_mouse_entered"]
-[connection signal="mouse_exited" from="Layout/ExitButton" to="." method="_on_exit_button_mouse_exited"]
 [connection signal="pressed" from="Layout/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="RerollButton" to="." method="_on_reroll_button_pressed"]

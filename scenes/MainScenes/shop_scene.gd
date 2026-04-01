@@ -78,14 +78,6 @@ func _on_exit_button_pressed() -> void:
 	exit()
 
 
-func _on_exit_button_mouse_entered() -> void:
-	exit_button.modulate = Color(1.3, 1.3, 1.3)
-
-
-func _on_exit_button_mouse_exited() -> void:
-	exit_button.modulate = Color(1, 1, 1)
-
-
 func load_slots() -> void:
 	for container in slot_containers:
 		for child in container.get_children():

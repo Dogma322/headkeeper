@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bo8xaqmke5324"]
+
+[ext_resource type="Script" uid="uid://dvec871ipwp7k" path="res://scenes/UI/icon_button.gd" id="1_jw7ho"]
+
+[node name="IconButton" type="TextureButton" unique_id=1254142979]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_jw7ho")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

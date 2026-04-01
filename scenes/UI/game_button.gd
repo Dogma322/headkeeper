@@ -26,7 +26,7 @@ signal pressed
 
 @export var use_darkened := false
 
-@export var disabled: bool:
+@export var disabled: bool = false:
 	set(value):
 		disabled = value
 		if value:

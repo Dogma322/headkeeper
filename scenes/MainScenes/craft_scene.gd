@@ -18,13 +18,6 @@ func _ready() -> void:
 	Signals.domino_added_to_board.connect(_on_domino_added_to_board)
 	Signals.domino_chain_removed.connect(_on_domino_chain_removed)
 
-func _on_exit_button_mouse_entered() -> void:
-	exit_button.modulate = Color(1.3, 1.3, 1.3)
-
-
-func _on_exit_button_mouse_exited() -> void:
-	exit_button.modulate = Color(1, 1, 1)
-
 
 func _on_exit_button_pressed() -> void:
 	Transition.blackout_on()
