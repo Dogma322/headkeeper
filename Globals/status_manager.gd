@@ -20,7 +20,58 @@ var devour = preload("res://resources/statuses/devour.tres")
 	#target.status_container.add_status(new_status, stacks)
 
 
-
-
 func apply_status(status,stacks,target):
 	target.status_container.add_status(status.duplicate(true), stacks)
+
+
+func initialize_status(status: StatusResource):
+	status.status_changed.connect(_on_status_changed.bind(status))
+	_on_status_changed(status)
+	
+	if status == thorns:
+		if status.owner == Global.hero:
+			Signals.deal_enemy_thorn_damage.connect(add_action)
+		elif status.owner == Global.enemy:
+			Signals.deal_hero_thorn_damage.connect(add_action)
+	
+	pass
+
+func apply_status_effect(status: StatusResource):
+	match status:
+		corruption:
+			ActionManager.add(CorruptionAttackAction.new(Global.enemy, status.stacks))
+		draw:
+			DominoManager.bonus_draw_counter += status.stacks
+			status.stacks = 0
+
+
+func _on_status_changed(status: StatusResource):
+	match status:
+		vulnerable:
+			status.owner.incoming_damage_mult = 1.5
+		fury:
+			status.owner.bonus_damage = status.stacks
+		weak:
+			status.owner.damage_mult = 0.75
+
+
+func remove_status_effect(status: StatusResource):
+	match status:
+		vulnerable:
+			status.owner.incoming_damage_mult = 1
+		weak:
+			status.owner.damage_mult = 1
+		fury:
+			status.owner.bonus_damage = 0
+
+
+func add_action(status):
+	match status:
+		thorns:
+			var target
+			if owner == Global.hero:
+				target = Global.enemy
+				
+			if owner == Global.enemy:
+				target = Global.hero
+			ActionManager.insert_next(AttackWithoutAnim.new(target, status.stacks))

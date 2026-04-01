@@ -27,26 +27,17 @@ var des
 var stacks: int: set = set_stacks
 var owner
 
-	
-func initialize_status():
-	pass
-	
-	
+
 func set_stacks(value):
 	stacks = value
 	status_changed.emit()
-	
-	
-func apply_status_effect():
-	pass
-	
-func remove_status_effect():
-	pass
-	
+
+
 func end_turn_reduce():
 	if reducible:
 		stacks -= 1
-	
+
+
 func update_text():
 	name = ""
 	des = ""

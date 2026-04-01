@@ -512,17 +512,17 @@ func add_action() -> void:
 		if heal > 0:
 			ActionManager.add(HealAction.new(self, Global.hero, heal))
 		if fury > 0:
-			ActionManager.add(BuffAction.new(self, Global.hero, preload("res://resources/statuses/fury.tres"), fury))
+			ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.fury, fury))
 		if thorns > 0:
-			ActionManager.add(BuffAction.new(self, Global.hero, preload("res://resources/statuses/thorns.tres"), thorns))
+			ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.thorns, thorns))
 		if draw_param > 0:
-			ActionManager.add(BuffAction.new(self, Global.hero, preload("res://resources/statuses/draw.tres"), draw_param))
+			ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.draw, draw_param))
 		if corruption > 0:
-			ActionManager.add(DebuffAction.new(self, Global.enemy, preload("res://resources/statuses/corruption.tres"), corruption))
+			ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.corruption, corruption))
 		if vulnerable > 0:
-			ActionManager.add(DebuffAction.new(self, Global.enemy, preload("res://resources/statuses/vulnerable.tres"), vulnerable))
+			ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.vulnerable, vulnerable))
 		if weak > 0:
-			ActionManager.add(DebuffAction.new(self, Global.enemy, preload("res://resources/statuses/weak.tres"), weak))
+			ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.weak, weak))
 
 
 func get_tooltip_for_type(type: DominoTemplate.DominoType) -> String:

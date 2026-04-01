@@ -36,11 +36,11 @@ func _on_status_changed():
 	# 🔥 ВАЖНАЯ ЧАСТЬ
 	if status.can_go_negative:
 		if status.stacks == 0:
-			status.remove_status_effect()
+			StatusManager.remove_status_effect(status)
 			queue_free()
 	else:
 		if status.stacks <= 0:
-			status.remove_status_effect()
+			StatusManager.remove_status_effect(status)
 			queue_free()
 		
 	stacks_label.text = str(status.stacks)

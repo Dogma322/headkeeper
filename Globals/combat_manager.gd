@@ -154,12 +154,12 @@ func enemy_turn_begin():
 func apply_enemy_turn_begin_status_effects():
 	for icon in Global.enemy.status_container.get_children():
 		if icon.status.turn_begin_effect:
-			icon.status.apply_status_effect()
+			StatusManager.apply_status_effect(icon.status)
 			
 func apply_hero_turn_begin_status_effects():
 	for icon in Global.hero.status_container.get_children():
 		if icon.status.turn_begin_effect:
-			icon.status.apply_status_effect()
+			StatusManager.apply_status_effect(icon.status)
 
 func add_heads_turn_begin_actions():
 	for head in Global.head_holder.get_children():
