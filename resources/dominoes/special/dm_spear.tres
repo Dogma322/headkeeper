@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpecialDominoTemplate" format=3 uid="uid://va6r4ldudyeq"]
+
+[ext_resource type="Script" uid="uid://d0g2w1g36wj4g" path="res://resources/special_domino_template.gd" id="1_2uq61"]
+
+[resource]
+script = ExtResource("1_2uq61")
+a_special_key = "spear"
+a_take_value_from_second = true
+b = 3
+a_type = 14
+b_type = 11
+metadata/_custom_type_script = "uid://25lu10tiiq0q"

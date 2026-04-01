@@ -16,6 +16,10 @@ enum DominoType {
 	CORRUPTION,
 	FURY,
 	THORNS,
+	DUMMY_RED,
+	DUMMY_GREEN,
+	DUMMY_BLUE,
+	SPECIAL,
 }
 
 @export var a_type: DominoType
@@ -37,17 +41,20 @@ static var type_to_color = {
 	DominoType.DRAW: DominoColor.GREEN,
 	DominoType.CORRUPTION: DominoColor.GREEN,
 	DominoType.FURY: DominoColor.GREEN,
-	DominoType.THORNS: DominoColor.GREEN
+	DominoType.THORNS: DominoColor.GREEN,
+	DominoType.DUMMY_RED: DominoColor.RED,
+	DominoType.DUMMY_GREEN: DominoColor.GREEN,
+	DominoType.DUMMY_BLUE: DominoColor.BLUE,
 }
 
 static var type_to_string = {
-	DominoType.ATTACK: "Attack",
-	DominoType.ATTACK2: "Attack",
-	DominoType.DEFENSE: "Defense",
-	DominoType.HEAL: "Skill",
-	DominoType.VULNERABLE: "Skill",
-	DominoType.WEAK: "Skill",
-	DominoType.DRAW: "Skill",
+	DominoType.ATTACK: ["Attack"],
+	DominoType.ATTACK2: ["Attack"],
+	DominoType.DEFENSE: ["Defense"],
+	DominoType.HEAL: ["Skill"],
+	DominoType.VULNERABLE: ["Skill"],
+	DominoType.WEAK: ["Skill"],
+	DominoType.DRAW: ["Skill"],
 }
 
 static var color_to_block_top_tex = {
@@ -103,5 +110,17 @@ static var type_to_tex = {
 	},
 	DominoType.THORNS: {
 		2: preload("res://assets/Dominoes/Components/thorns_2.atlastex"),
-	}
+	},
+	DominoType.DUMMY_GREEN: {
+		2: preload("res://assets/Dominoes/Components/dots_green_2.atlastex"),
+		3: preload("res://assets/Dominoes/Components/dots_green_3.atlastex"),
+	},
+	DominoType.DUMMY_RED: {
+		2: preload("res://assets/Dominoes/Components/dots_red_2.atlastex"),
+		3: preload("res://assets/Dominoes/Components/dots_red_3.atlastex"),
+		4: preload("res://assets/Dominoes/Components/dots_red_4.atlastex"),
+	},
+	DominoType.DUMMY_BLUE: {
+		2: preload("res://assets/Dominoes/Components/dots_blue_2.tres"),
+	},
 }

@@ -49,7 +49,7 @@ var corruption_bonus = 0
 	"dm_3_2_corruption_weak": preload("res://resources/dominoes/dm_3_2_corruption_weak.tres"),
 	"dm_4_1_attack_draw": preload("res://resources/dominoes/dm_4_1_attack_draw.tres"),
 	
-	"dm_spear": preload("res://scenes/Dominoes/Dominoes/dm_spear.tscn"),
+	"dm_spear": preload("res://resources/dominoes/special/dm_spear.tres"),
 	"dm_steel_shield": preload("res://scenes/Dominoes/Dominoes/dm_shield.tscn"),
 	"dm_corrupted_sphere": preload("res://scenes/Dominoes/Dominoes/dm_corrupted_sphere.tscn"),
 	"dm_claws": preload("res://scenes/Dominoes/Dominoes/dm_claws.tscn"),
@@ -61,7 +61,7 @@ var corruption_bonus = 0
 	"dm_4skulls": preload("res://scenes/Dominoes/Dominoes/dm_4_skulls.tscn"),
 	"dm_repeat": preload("res://scenes/Dominoes/Dominoes/dm_repeat.tscn"),
 	"dm_defense_crit": preload("res://scenes/Dominoes/Dominoes/dm_defense_crit.tscn"),
-	"dm_thorned_shield": preload("res://scenes/Dominoes/Dominoes/dm_thorned_shield.tscn"),
+	"dm_thorned_shield": preload("res://resources/dominoes/special/dm_thorned_shield.tres"),
 	"dm_horn": preload("res://scenes/Dominoes/Dominoes/dm_horn.tscn"),
 }
 
@@ -89,11 +89,14 @@ func reset():
 func set_deck():
 	var domino_scene = load("res://scenes/Dominoes/DominoTemplate/domino.tscn")
 	for i in range(1): 
-		for key in start_deck.keys(): 
-			 # достаём PackedScene
-			var domino: Domino = domino_scene.instantiate()
+		for key in start_deck.keys():
+			var domino: Domino 
+			if start_deck[key] is DominoTemplate:
+				domino = domino_scene.instantiate()
+				domino.template = start_deck[key]
+			else:
+				domino = start_deck[key].instantiate()
 			domino.global_position.y = -100000 # HACK: чтобы не было краша игры при наведении на край экрана.
-			domino.template = start_deck[key]
 			add_child(domino)
 			deck.append(domino)
 		
@@ -117,4 +120,3 @@ func reset_turn_data():
 	
 func reset_run_data():
 	pass
-	

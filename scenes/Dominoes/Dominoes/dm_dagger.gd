@@ -3,10 +3,10 @@ extends Domino
 func _ready() -> void:
 	domino_types = ["Attack"]
 	damage = 8
-	Signals.hero_healed.connect(play)
+	Signals.hero_healed.connect(_play)
 	super()
 
-func play():
+func _play():
 	if slot:
 		add_action()
 

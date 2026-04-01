@@ -19,10 +19,10 @@ b = 2
 [node name="Back" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="0" unique_id=1409418696]
 texture = SubResource("AtlasTexture_raj7b")
 
-[node name="TopIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="1" unique_id=1407603542]
+[node name="TopIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="3" unique_id=1407603542]
 texture = ExtResource("4_kixxh")
 
-[node name="BotIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="2" unique_id=189273046]
+[node name="BotIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="4" unique_id=189273046]
 texture = ExtResource("5_vm1bd")
 
 [node name="AdditionalTooltipPanel" parent="TooltipStack" parent_id_path=PackedInt32Array(1929530369) index="1" unique_id=54216942 instance=ExtResource("4_raj7b")]
