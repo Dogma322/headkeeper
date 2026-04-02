@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="SpecialDominoTemplate" format=3 uid="uid://cv7k8lmpukew0"]
+[gd_resource type="Resource" script_class="DominoTemplate" format=3 uid="uid://cv7k8lmpukew0"]
 
-[ext_resource type="Script" uid="uid://d0g2w1g36wj4g" path="res://resources/special_domino_template.gd" id="1_7qk8u"]
+[ext_resource type="Script" uid="uid://25lu10tiiq0q" path="res://resources/domino_template.gd" id="1_7qk8u"]
 
 [resource]
 script = ExtResource("1_7qk8u")
-a_special_key = "thorned_shield"
-a_take_value_from_second = true
 b = 2
-a_type = 14
+a_type = 15
 b_type = 12
 metadata/_custom_type_script = "uid://d0g2w1g36wj4g"

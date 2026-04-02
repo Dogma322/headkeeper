@@ -16,10 +16,12 @@ enum DominoType {
 	CORRUPTION,
 	FURY,
 	THORNS,
-	DUMMY_RED,
-	DUMMY_GREEN,
-	DUMMY_BLUE,
-	SPECIAL,
+	EMPTY_GREEN,
+	EMPTY_BLUE,
+	
+	SPEAR,
+	THORNED_SHIELD,
+	SHIELD_STRIKE
 }
 
 @export var a_type: DominoType
@@ -42,9 +44,12 @@ static var type_to_color = {
 	DominoType.CORRUPTION: DominoColor.GREEN,
 	DominoType.FURY: DominoColor.GREEN,
 	DominoType.THORNS: DominoColor.GREEN,
-	DominoType.DUMMY_RED: DominoColor.RED,
-	DominoType.DUMMY_GREEN: DominoColor.GREEN,
-	DominoType.DUMMY_BLUE: DominoColor.BLUE,
+	#DominoType.EMPTY_RED: DominoColor.RED,
+	DominoType.EMPTY_GREEN: DominoColor.GREEN,
+	DominoType.EMPTY_BLUE: DominoColor.BLUE,
+	DominoType.SPEAR: DominoColor.RED,
+	DominoType.THORNED_SHIELD: DominoColor.BLUE,
+	DominoType.SHIELD_STRIKE: DominoColor.RED,
 }
 
 static var type_to_string = {
@@ -55,6 +60,9 @@ static var type_to_string = {
 	DominoType.VULNERABLE: ["Skill"],
 	DominoType.WEAK: ["Skill"],
 	DominoType.DRAW: ["Skill"],
+	DominoType.SPEAR: ["Attack"],
+	DominoType.THORNED_SHIELD: ["Skill", "Defense"],
+	DominoType.SHIELD_STRIKE: ["Attack", "Defense"],
 }
 
 static var color_to_block_top_tex = {
@@ -111,16 +119,25 @@ static var type_to_tex = {
 	DominoType.THORNS: {
 		2: preload("res://assets/Dominoes/Components/thorns_2.atlastex"),
 	},
-	DominoType.DUMMY_GREEN: {
-		2: preload("res://assets/Dominoes/Components/dots_green_2.atlastex"),
-		3: preload("res://assets/Dominoes/Components/dots_green_3.atlastex"),
+	DominoType.EMPTY_GREEN: {
+		2: preload("res://assets/Dominoes/Components/empty_green_2.atlastex"),
+		3: preload("res://assets/Dominoes/Components/empty_green_3.atlastex"),
 	},
-	DominoType.DUMMY_RED: {
-		2: preload("res://assets/Dominoes/Components/dots_red_2.atlastex"),
-		3: preload("res://assets/Dominoes/Components/dots_red_3.atlastex"),
-		4: preload("res://assets/Dominoes/Components/dots_red_4.atlastex"),
+	#DominoType.EMPTY_RED: {
+		#2: preload("res://assets/Dominoes/Components/empty_red_2.atlastex"),
+		#3: preload("res://assets/Dominoes/Components/empty_red_3.atlastex"),
+		#4: preload("res://assets/Dominoes/Components/empty_red_4.atlastex"),
+	#},
+	DominoType.EMPTY_BLUE: {
+		2: preload("res://assets/Dominoes/Components/empty_blue_2.tres"),
 	},
-	DominoType.DUMMY_BLUE: {
-		2: preload("res://assets/Dominoes/Components/dots_blue_2.tres"),
+	DominoType.SPEAR: {
+		1: preload("res://assets/Dominoes/Special/spear.atlastex"),
 	},
+	DominoType.THORNED_SHIELD: {
+		1: preload("res://assets/Dominoes/Special/thorned_shield.atlastex"),
+	},
+	DominoType.SHIELD_STRIKE: {
+		1: preload("res://assets/Dominoes/Special/shield_strike.atlastex"),
+	}
 }

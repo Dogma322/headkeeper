@@ -7,9 +7,6 @@ extends Node2D
 var a_type: DominoTemplate.DominoType
 var b_type: DominoTemplate.DominoType
 
-var a_special_key := ""
-var b_special_key := ""
-
 @export var template: DominoTemplate = null
 
 var target_position:Vector2
@@ -69,31 +66,27 @@ class SideSettings:
 	var value: int
 	var type: DominoTemplate.DominoType
 	var special_key = ""
-	var take_value_from_second := false
 	
-	func _init(_value, _type, _special_key = "", _take_value_from_second = false):
+	func _init(_value, _type, _special_key = ""):
 		value = _value
 		type = _type
 		special_key = _special_key
-		take_value_from_second = _take_value_from_second
 
 
 func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> void:
 	if a_settings != null:
 		a = a_settings.value
 		a_type = a_settings.type
-		a_special_key = a_settings.special_key
 	
 	if b_settings != null:
 		b = b_settings.value
 		b_type = b_settings.type
-		b_special_key = b_settings.special_key
 	
 	
 	if a_settings != null:
-		var types = SpecialDominoTemplate.special_type_to_string if a_settings.type == DominoTemplate.DominoType.SPECIAL else DominoTemplate.type_to_string
+		var types = DominoTemplate.type_to_string
 		@warning_ignore("incompatible_ternary")
-		var key = a_settings.special_key if a_settings.type == DominoTemplate.DominoType.SPECIAL else a_settings.type
+		var key = a_settings.type
 		if types.has(key):
 			for domino_type in types[key]:
 				if domino_type in domino_types:
@@ -101,9 +94,9 @@ func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> 
 				domino_types.push_back(domino_type)
 	
 	if b_settings != null:
-		var types = SpecialDominoTemplate.special_type_to_string if b_settings.type == DominoTemplate.DominoType.SPECIAL else DominoTemplate.type_to_string
+		var types = DominoTemplate.type_to_string
 		@warning_ignore("incompatible_ternary")
-		var key = b_settings.special_key if b_settings.type == DominoTemplate.DominoType.SPECIAL else b_settings.type
+		var key = b_settings.type
 		if types.has(key):
 			for domino_type in types[key]:
 				if domino_type in domino_types:
@@ -111,27 +104,21 @@ func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> 
 				domino_types.push_back(domino_type)
 	
 	if a_settings != null:
-		if a_settings.type == DominoTemplate.DominoType.SPECIAL:
-			top.texture = DominoTemplate.color_to_block_top_tex[SpecialDominoTemplate.special_type_to_color[a_settings.special_key]]
-		else:
-			top.texture = DominoTemplate.color_to_block_top_tex[DominoTemplate.type_to_color[a_settings.type]]
+		top.texture = DominoTemplate.color_to_block_top_tex[DominoTemplate.type_to_color[a_settings.type]]
 	if b_settings != null:
-		if b_settings.type == DominoTemplate.DominoType.SPECIAL:
-			bottom.texture = DominoTemplate.color_to_block_bot_tex[SpecialDominoTemplate.special_type_to_color[b_settings.special_key]]
-		else:	
-			bottom.texture = DominoTemplate.color_to_block_bot_tex[DominoTemplate.type_to_color[b_settings.type]]
+		bottom.texture = DominoTemplate.color_to_block_bot_tex[DominoTemplate.type_to_color[b_settings.type]]
 	
 	if a_settings != null:
-		parse_template_type(0, a_settings.type, b_settings.value if a_settings.take_value_from_second else a_settings.value)
+		parse_template_type(0, a_settings.type, a_settings.value)
 	if b_settings != null:
-		parse_template_type(1, b_settings.type, a_settings.value if b_settings.take_value_from_second else b_settings.value)
+		parse_template_type(1, b_settings.type, b_settings.value)
 	
 
 func _ready() -> void:
 	if template != null:
 		domino_types.clear()
 		if template is SpecialDominoTemplate:
-			setup(SideSettings.new(template.a, template.a_type, template.a_special_key, template.a_take_value_from_second), SideSettings.new(template.b, template.b_type, template.b_special_key, template.b_take_value_from_second))
+			setup(SideSettings.new(template.a, template.a_type, template.a_special_key), SideSettings.new(template.b, template.b_type, template.b_special_key))
 		else:
 			setup(SideSettings.new(template.a, template.a_type), SideSettings.new(template.b, template.b_type))
 	
@@ -493,9 +480,9 @@ func hide_des_fast():
 func update_labels():
 	await get_tree().process_frame
 	if template != null:
-		var tooltip = get_tooltip_for_type(template.a_type, a_special_key)
+		var tooltip = get_tooltip_for_type(template.a_type)
 		if template.a_type != template.b_type:
-			var tooltip2 = get_tooltip_for_type(template.b_type, b_special_key)
+			var tooltip2 = get_tooltip_for_type(template.b_type)
 			if not tooltip2.is_empty():
 				tooltip += " "
 				tooltip += tooltip2
@@ -504,9 +491,13 @@ func update_labels():
 	else:
 		tooltip_panel.description = ""
 
+func add_to_special_val(key, value):
+	if special_val.has(key):
+		special_val[key] += value
+	else:
+		special_val[key] = value
 
 func parse_template_type(index: int, type: DominoTemplate.DominoType, value: int):
-	var key = a_special_key if index == 0 else b_special_key
 	match type:
 		DominoTemplate.DominoType.ATTACK:
 			damage += value
@@ -533,26 +524,20 @@ func parse_template_type(index: int, type: DominoTemplate.DominoType, value: int
 		DominoTemplate.DominoType.THORNS:
 			thorns += value
 			set_additional_tooltip("Thorns")
-		DominoTemplate.DominoType.SPECIAL:
-			if not key.is_empty():
-				if special_val.has(key):
-					special_val[key] += value
-				else:
-					special_val[key] = value
-			# Специальное поведение.
-			match key:
-				"spear":
-					Signals.attack_dm_played.connect(play)
-				"thorned_shield":
-					Signals._2dm_played.connect(play)
+		DominoTemplate.DominoType.SPEAR:
+			damage += value * 3
+			if not Signals.attack_dm_played.is_connected(play):
+				Signals.attack_dm_played.connect(play)
+		DominoTemplate.DominoType.THORNED_SHIELD:
+			block += value * 2
+			if not Signals._2dm_played.is_connected(play):
+				Signals._2dm_played.connect(play)
+		DominoTemplate.DominoType.SHIELD_STRIKE:
+			block += value * 2
 	if DominoTemplate.type_to_tex.has(type):
 		var textures = DominoTemplate.type_to_tex[type]
 		if textures.has(value):
 			icons[index].texture = textures[value]
-	
-	if SpecialDominoTemplate.special_type_to_tex.has(key):
-		var textures = SpecialDominoTemplate.special_type_to_tex[key]
-		icons[index].texture = textures[value]
 
 func play(domino: Domino):
 	if domino == self:
@@ -581,20 +566,14 @@ func add_action() -> void:
 		if weak > 0:
 			ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.weak, weak))
 		
-		add_special_action(a_special_key)
-		add_special_action(b_special_key)
+		for key in special_val:
+			match key:
+				DominoTemplate.DominoType.THORNED_SHIELD:
+					ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.thorns, block))
+				DominoTemplate.DominoType.SHIELD_STRIKE:
+					ActionManager.add(ShieldStrikeAction.new(self, Global.enemy))
 
-func add_special_action(key: String):
-	if key.is_empty():
-		return
-	match key:
-		"spear":
-			ActionManager.add(AttackAction.new(self, Global.enemy, special_val[key]))
-		"thorned_shield":
-			ActionManager.add(BlockAction.new(self, Global.hero, special_val[key]))
-			ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.thorns, special_val[key]))
-
-func get_tooltip_for_type(type: DominoTemplate.DominoType, key: String) -> String:
+func get_tooltip_for_type(type: DominoTemplate.DominoType) -> String:
 	match type:
 		DominoTemplate.DominoType.ATTACK:
 			return TextFormatter.insert_colored_value(tr("attack_des"), final_damage(damage), damage)
@@ -618,10 +597,8 @@ func get_tooltip_for_type(type: DominoTemplate.DominoType, key: String) -> Strin
 			return TextFormatter.highlight_keywords(tr("strength_des") % fury)
 		DominoTemplate.DominoType.THORNS:
 			return TextFormatter.highlight_keywords(tr("thorns_des") % thorns)
-		DominoTemplate.DominoType.SPECIAL:
-			match key:
-				"spear":
-					return TextFormatter.insert_colored_value(tr("dm_spear_des"), final_damage(special_val[key]), special_val[key])
-				"thorned_shield":
-					return TextFormatter.insert_colored_value(tr("dm_thorned_shield_des"), final_block(special_val[key]), special_val[key])
+		DominoTemplate.DominoType.SPEAR:
+			return TextFormatter.insert_colored_value(tr("dm_spear_des"), final_damage(special_val[type]), special_val[type])
+		DominoTemplate.DominoType.THORNED_SHIELD:
+			return TextFormatter.insert_colored_value(tr("dm_thorned_shield_des"), final_block(special_val[type]), special_val[type])
 	return ""

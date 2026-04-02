@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cf3croltgjgvr" path="res://scenes/Dominoes/Dominoes/dm_repeat.gd" id="2_xal3h"]
 [ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_grxdu"]
 [ext_resource type="Texture2D" uid="uid://djluwln3vonus" path="res://assets/Dominoes/Special/repeat.atlastex" id="4_m33so"]
-[ext_resource type="Texture2D" uid="uid://cqbskfh13ljn7" path="res://assets/Dominoes/Components/dots_green_2.atlastex" id="5_2jn3o"]
+[ext_resource type="Texture2D" uid="uid://cqbskfh13ljn7" path="res://assets/Dominoes/Components/empty_green_2.atlastex" id="5_2jn3o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m33so"]
 atlas = ExtResource("3_grxdu")
@@ -18,8 +18,8 @@ b = 2
 [node name="Back" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="0" unique_id=1409418696]
 texture = SubResource("AtlasTexture_m33so")
 
-[node name="TopIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="1" unique_id=1407603542]
+[node name="TopIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="3" unique_id=1407603542]
 texture = ExtResource("4_m33so")
 
-[node name="BotIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="2" unique_id=189273046]
+[node name="BotIcons" parent="Visual" parent_id_path=PackedInt32Array(2092962026) index="4" unique_id=189273046]
 texture = ExtResource("5_2jn3o")

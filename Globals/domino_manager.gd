@@ -26,14 +26,16 @@ var double_next_dm = 0
 var corruption_bonus = 0
 
 @onready var start_deck := {
+	"dm_spear": preload("res://resources/dominoes/special/dm_spear.tres"),
+	"dm_thorned_shield": preload("res://resources/dominoes/special/dm_thorned_shield.tres"),
 	"2_1_atk" : preload("res://resources/dominoes/start/dm_start_2_1_attack.tres"),
-	"2_1_def" : preload("res://resources/dominoes/start/dm_start_2_1_defense.tres"),
-	"3_1_atk" : preload("res://resources/dominoes/start/dm_start_3_1_attack.tres"),
-	"3_1_def" : preload("res://resources/dominoes/start/dm_start_3_1_defense.tres"),
-	"3_2_atk" : preload("res://resources/dominoes/start/dm_start_3_2_attack.tres"),
-	"3_2_def" : preload("res://resources/dominoes/start/dm_start_3_2_defense.tres"),
-	"4_2_atk_vulnerable": preload("res://resources/dominoes/start/dm_start_4_2_attack_vulnerable.tres"),
-	"4_2_def_heal" : preload("res://resources/dominoes/start/dm_start_4_2_defense_heal.tres"),
+	#"2_1_def" : preload("res://resources/dominoes/start/dm_start_2_1_defense.tres"),
+	#"3_1_atk" : preload("res://resources/dominoes/start/dm_start_3_1_attack.tres"),
+	#"3_1_def" : preload("res://resources/dominoes/start/dm_start_3_1_defense.tres"),
+	#"3_2_atk" : preload("res://resources/dominoes/start/dm_start_3_2_attack.tres"),
+	#"3_2_def" : preload("res://resources/dominoes/start/dm_start_3_2_defense.tres"),
+	#"4_2_atk_vulnerable": preload("res://resources/dominoes/start/dm_start_4_2_attack_vulnerable.tres"),
+	#"4_2_def_heal" : preload("res://resources/dominoes/start/dm_start_4_2_defense_heal.tres"),
 }
 
 @onready var domino_pool:= {
@@ -54,7 +56,7 @@ var corruption_bonus = 0
 	"dm_corrupted_sphere": preload("res://scenes/Dominoes/Dominoes/dm_corrupted_sphere.tscn"),
 	"dm_claws": preload("res://scenes/Dominoes/Dominoes/dm_claws.tscn"),
 	"dm_dagger": preload("res://scenes/Dominoes/Dominoes/dm_dagger.tscn"),
-	"dm_shield_strike": preload("res://scenes/Dominoes/Dominoes/dm_shield_strike.tscn"),
+	"dm_shield_strike": preload("res://resources/dominoes/special/dm_shield_strike.tres"),
 	"dm_hammer": preload("res://scenes/Dominoes/Dominoes/dm_hammer.tscn"),
 	"dm_mace": preload("res://scenes/Dominoes/Dominoes/dm_mace.tscn"),
 	"dm_corrupted_staff": preload("res://scenes/Dominoes/Dominoes/dm_corrupted_stuff.tscn"),

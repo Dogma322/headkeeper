@@ -1,6 +1,6 @@
 [gd_resource type="Resource" format=3 uid="uid://iifq43vh2vmj"]
 
-[ext_resource type="Script" path="res://resources/statuses/crit.gd" id="1_ouimu"]
+[ext_resource type="Script" uid="uid://c35lttg20sn15" path="res://resources/statuses/crit.gd" id="1_ouimu"]
 [ext_resource type="Texture2D" uid="uid://f4nkkac62hic" path="res://assets/Statuses/StatusAtlas.png" id="2_ouimu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dingf"]

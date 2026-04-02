@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://4f5p4srpso6x" path="res://scenes/Dominoes/Dominoes/dm_horn.gd" id="2_gko46"]
 [ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_i38yj"]
 [ext_resource type="Texture2D" uid="uid://dpp2usdalkr4c" path="res://assets/Dominoes/Special/horn.atlastex" id="4_q3rpc"]
-[ext_resource type="Texture2D" uid="uid://ckxiubydn2son" path="res://assets/Dominoes/Components/dots_green_3.atlastex" id="5_htvgs"]
+[ext_resource type="Texture2D" uid="uid://ckxiubydn2son" path="res://assets/Dominoes/Components/empty_green_3.atlastex" id="5_htvgs"]
 [ext_resource type="PackedScene" uid="uid://dnje7ugtetwov" path="res://scenes/UI/additional_tooltip_panel.tscn" id="5_q3rpc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xqxne"]

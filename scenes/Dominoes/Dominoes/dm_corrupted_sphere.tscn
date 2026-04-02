@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_oydd2"]
 [ext_resource type="PackedScene" uid="uid://dnje7ugtetwov" path="res://scenes/UI/additional_tooltip_panel.tscn" id="4_oydd2"]
 [ext_resource type="Texture2D" uid="uid://2huu4ttuncly" path="res://assets/Dominoes/Special/corrupted_sphere.atlastex" id="4_qndp8"]
-[ext_resource type="Texture2D" uid="uid://btexxcu0fqwms" path="res://assets/Dominoes/Components/dots_dark_2.atlastex" id="5_6dsfa"]
+[ext_resource type="Texture2D" uid="uid://btexxcu0fqwms" path="res://assets/Dominoes/Components/empty_dark_2.atlastex" id="5_6dsfa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_msmek"]
 atlas = ExtResource("3_oydd2")

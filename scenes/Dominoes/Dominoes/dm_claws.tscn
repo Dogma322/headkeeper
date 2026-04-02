@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c17pwovxbj6qt" path="res://scenes/Dominoes/Dominoes/dm_claws.gd" id="2_5hvx0"]
 [ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_u4g7v"]
 [ext_resource type="Texture2D" uid="uid://c07uh1cqafns2" path="res://assets/Dominoes/Components/claws_2.atlastex" id="4_h5q8k"]
-[ext_resource type="Texture2D" uid="uid://4y7txshgna8k" path="res://assets/Dominoes/Components/dots_red_3.atlastex" id="5_uc4jf"]
+[ext_resource type="Texture2D" uid="uid://4y7txshgna8k" path="res://assets/Dominoes/Components/empty_red_3.atlastex" id="5_uc4jf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h5q8k"]
 atlas = ExtResource("3_u4g7v")
