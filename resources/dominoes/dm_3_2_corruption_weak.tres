@@ -6,6 +6,6 @@
 script = ExtResource("1_jm2ng")
 a = 3
 b = 2
-a_type = 8
-b_type = 6
+a_type = "corruption"
+b_type = "weak"
 metadata/_custom_type_script = "uid://25lu10tiiq0q"

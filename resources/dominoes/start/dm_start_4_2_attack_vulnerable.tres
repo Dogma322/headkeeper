@@ -6,6 +6,6 @@
 script = ExtResource("1_2i4jf")
 a = 4
 b = 2
-a_type = 1
-b_type = 5
+a_type = "attack"
+b_type = "vulnerable"
 metadata/_custom_type_script = "uid://25lu10tiiq0q"

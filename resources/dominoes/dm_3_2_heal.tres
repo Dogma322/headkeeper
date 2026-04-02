@@ -6,6 +6,6 @@
 script = ExtResource("1_41ubp")
 a = 3
 b = 2
-a_type = 4
-b_type = 4
+a_type = "heal"
+b_type = "heal"
 metadata/_custom_type_script = "uid://25lu10tiiq0q"

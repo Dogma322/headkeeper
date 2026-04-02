@@ -6,6 +6,6 @@
 script = ExtResource("1_yr2se")
 a = 2
 b = 2
-a_type = 10
-b_type = 10
+a_type = "thorns"
+b_type = "thorns"
 metadata/_custom_type_script = "uid://25lu10tiiq0q"

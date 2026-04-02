@@ -4,28 +4,8 @@ class_name DominoTemplate
 @export_range(1, 4) var a: int = 1
 @export_range(1, 4) var b: int = 1
 
-enum DominoType {
-	NONE,
-	ATTACK,
-	ATTACK2,
-	DEFENSE,
-	HEAL,
-	VULNERABLE,
-	WEAK,
-	DRAW,
-	CORRUPTION,
-	FURY,
-	THORNS,
-	EMPTY_GREEN,
-	EMPTY_BLUE,
-	
-	SPEAR,
-	THORNED_SHIELD,
-	SHIELD_STRIKE
-}
-
-@export var a_type: DominoType
-@export var b_type: DominoType
+@export var a_type: String
+@export var b_type: String
 
 enum DominoColor {
 	RED,
@@ -34,35 +14,35 @@ enum DominoColor {
 }
 
 static var type_to_color = {
-	DominoType.ATTACK: DominoColor.RED,
-	DominoType.ATTACK2: DominoColor.RED,
-	DominoType.DEFENSE: DominoColor.BLUE,
-	DominoType.HEAL: DominoColor.GREEN,
-	DominoType.VULNERABLE: DominoColor.GREEN,
-	DominoType.WEAK: DominoColor.GREEN,
-	DominoType.DRAW: DominoColor.GREEN,
-	DominoType.CORRUPTION: DominoColor.GREEN,
-	DominoType.FURY: DominoColor.GREEN,
-	DominoType.THORNS: DominoColor.GREEN,
-	#DominoType.EMPTY_RED: DominoColor.RED,
-	DominoType.EMPTY_GREEN: DominoColor.GREEN,
-	DominoType.EMPTY_BLUE: DominoColor.BLUE,
-	DominoType.SPEAR: DominoColor.RED,
-	DominoType.THORNED_SHIELD: DominoColor.BLUE,
-	DominoType.SHIELD_STRIKE: DominoColor.RED,
+	"attack": DominoColor.RED,
+	"attack2": DominoColor.RED,
+	"defense": DominoColor.BLUE,
+	"heal": DominoColor.GREEN,
+	"vulnerable": DominoColor.GREEN,
+	"weak": DominoColor.GREEN,
+	"draw": DominoColor.GREEN,
+	"corruption": DominoColor.GREEN,
+	"fury": DominoColor.GREEN,
+	"thorns": DominoColor.GREEN,
+	"empty_red": DominoColor.RED,
+	"empty_green": DominoColor.GREEN,
+	"empty_blue": DominoColor.BLUE,
+	"spear": DominoColor.RED,
+	"thorned_shield": DominoColor.BLUE,
+	"shield_strike": DominoColor.RED,
 }
 
 static var type_to_string = {
-	DominoType.ATTACK: ["Attack"],
-	DominoType.ATTACK2: ["Attack"],
-	DominoType.DEFENSE: ["Defense"],
-	DominoType.HEAL: ["Skill"],
-	DominoType.VULNERABLE: ["Skill"],
-	DominoType.WEAK: ["Skill"],
-	DominoType.DRAW: ["Skill"],
-	DominoType.SPEAR: ["Attack"],
-	DominoType.THORNED_SHIELD: ["Skill", "Defense"],
-	DominoType.SHIELD_STRIKE: ["Attack", "Defense"],
+	"attack": ["Attack"],
+	"attack2": ["Attack"],
+	"defense": ["Defense"],
+	"heal": ["Skill"],
+	"vulnerable": ["Skill"],
+	"weak": ["Skill"],
+	"draw": ["Skill"],
+	"spear": ["Attack"],
+	"thorned_shield": ["Skill", "Defense"],
+	"shield_strike": ["Attack", "Defense"],
 }
 
 static var color_to_block_top_tex = {
@@ -78,66 +58,66 @@ static var color_to_block_bot_tex = {
 }
 
 static var type_to_tex = {
-	DominoType.ATTACK: {
+	"attack": {
 		1: preload("res://assets/Dominoes/Components/attack_1.atlastex"),
 		2: preload("res://assets/Dominoes/Components/attack_2.atlastex"),
 		3: preload("res://assets/Dominoes/Components/attack_3.atlastex"),
 		4: preload("res://assets/Dominoes/Components/attack_4.atlastex"),
 	},
-	DominoType.ATTACK2: {
+	"attack2": {
 		3: preload("res://assets/Dominoes/Components/attack2_3.atlastex"),
 		4: preload("res://assets/Dominoes/Components/attack2_4.atlastex"),
 	},
-	DominoType.DEFENSE: {
+	"defense": {
 		1: preload("res://assets/Dominoes/Components/defense_1.atlastex"),
 		2: preload("res://assets/Dominoes/Components/defense_2.atlastex"),
 		3: preload("res://assets/Dominoes/Components/defense_3.atlastex"),
 		4: preload("res://assets/Dominoes/Components/defense_4.atlastex"),
 	},
-	DominoType.HEAL: {
+	"heal": {
 		2: preload("res://assets/Dominoes/Components/heal_2.atlastex"),
 		3: preload("res://assets/Dominoes/Components/heal_3.atlastex"),
 	},
-	DominoType.VULNERABLE: {
+	"vulnerable": {
 		2: preload("res://assets/Dominoes/Components/vulnerable_2.atlastex"),
 	},
-	DominoType.WEAK: {
+	"weak": {
 		1: preload("res://assets/Dominoes/Components/weak_1.atlastex"),
 		2: preload("res://assets/Dominoes/Components/weak_2.atlastex"),
 	},
-	DominoType.DRAW: {
+	"draw": {
 		1: preload("res://assets/Dominoes/Components/dice_1.atlastex"),
 	},
-	DominoType.CORRUPTION: {
+	"corruption": {
 		2: preload("res://assets/Dominoes/Components/corruption_2.atlastex"),
 		3: preload("res://assets/Dominoes/Components/corruption_3.atlastex"),
 	},
-	DominoType.FURY: {
+	"fury": {
 		1: preload("res://assets/Dominoes/Components/fury_1.atlastex"),
 		2: preload("res://assets/Dominoes/Components/fury_2.atlastex"),
 	},
-	DominoType.THORNS: {
+	"thorns": {
 		2: preload("res://assets/Dominoes/Components/thorns_2.atlastex"),
 	},
-	DominoType.EMPTY_GREEN: {
+	"empty_green": {
 		2: preload("res://assets/Dominoes/Components/empty_green_2.atlastex"),
 		3: preload("res://assets/Dominoes/Components/empty_green_3.atlastex"),
 	},
-	#DominoType.EMPTY_RED: {
-		#2: preload("res://assets/Dominoes/Components/empty_red_2.atlastex"),
-		#3: preload("res://assets/Dominoes/Components/empty_red_3.atlastex"),
-		#4: preload("res://assets/Dominoes/Components/empty_red_4.atlastex"),
-	#},
-	DominoType.EMPTY_BLUE: {
+	"empty_red": {
+		2: preload("res://assets/Dominoes/Components/empty_red_2.atlastex"),
+		3: preload("res://assets/Dominoes/Components/empty_red_3.atlastex"),
+		4: preload("res://assets/Dominoes/Components/empty_red_4.atlastex"),
+	},
+	"empty_blue": {
 		2: preload("res://assets/Dominoes/Components/empty_blue_2.tres"),
 	},
-	DominoType.SPEAR: {
+	"spear": {
 		1: preload("res://assets/Dominoes/Special/spear.atlastex"),
 	},
-	DominoType.THORNED_SHIELD: {
+	"thorned_shield": {
 		1: preload("res://assets/Dominoes/Special/thorned_shield.atlastex"),
 	},
-	DominoType.SHIELD_STRIKE: {
+	"shield_strike": {
 		1: preload("res://assets/Dominoes/Special/shield_strike.atlastex"),
 	}
 }

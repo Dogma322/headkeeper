@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_fhggw")
 a = 4
-a_type = 1
-b_type = 7
+a_type = "attack"
+b_type = "draw"
 metadata/_custom_type_script = "uid://25lu10tiiq0q"

@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_hk7u1")
 a = 2
-a_type = 3
-b_type = 16
+a_type = "defense"
+b_type = "shield_strike"
 metadata/_custom_type_script = "uid://25lu10tiiq0q"

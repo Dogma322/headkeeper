@@ -4,8 +4,8 @@ extends Node2D
 @export_range(1, 4) var a:int
 @export_range(1, 4) var b:int
 
-var a_type: DominoTemplate.DominoType
-var b_type: DominoTemplate.DominoType
+var a_type: String
+var b_type: String
 
 @export var template: DominoTemplate = null
 
@@ -64,7 +64,7 @@ func set_additional_tooltip(type: String) -> void:
 
 class SideSettings:
 	var value: int
-	var type: DominoTemplate.DominoType
+	var type: String
 	var special_key = ""
 	
 	func _init(_value, _type, _special_key = ""):
@@ -117,10 +117,7 @@ func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> 
 func _ready() -> void:
 	if template != null:
 		domino_types.clear()
-		if template is SpecialDominoTemplate:
-			setup(SideSettings.new(template.a, template.a_type, template.a_special_key), SideSettings.new(template.b, template.b_type, template.b_special_key))
-		else:
-			setup(SideSettings.new(template.a, template.a_type), SideSettings.new(template.b, template.b_type))
+		setup(SideSettings.new(template.a, template.a_type), SideSettings.new(template.b, template.b_type))
 	
 	#update_labels()
 	hide_des_fast()
@@ -497,42 +494,42 @@ func add_to_special_val(key, value):
 	else:
 		special_val[key] = value
 
-func parse_template_type(index: int, type: DominoTemplate.DominoType, value: int):
+func parse_template_type(index: int, type: String, value: int):
 	match type:
-		DominoTemplate.DominoType.ATTACK:
+		"attack":
 			damage += value
-		DominoTemplate.DominoType.ATTACK2:
+		"attack2":
 			damage += value * 2
-		DominoTemplate.DominoType.DEFENSE:
+		"defense":
 			block += value
-		DominoTemplate.DominoType.HEAL:
+		"heal":
 			heal += value
-		DominoTemplate.DominoType.DRAW:
+		"draw":
 			draw_param += value
-		DominoTemplate.DominoType.CORRUPTION:
+		"corruption":
 			corruption += value
 			set_additional_tooltip("Corruption")
-		DominoTemplate.DominoType.VULNERABLE:
+		"vulnerable":
 			vulnerable += value
 			set_additional_tooltip("Vulnerable")
-		DominoTemplate.DominoType.WEAK:
+		"weak":
 			weak += value
 			set_additional_tooltip("Weak")
-		DominoTemplate.DominoType.FURY:
+		"fury":
 			fury += value
 			set_additional_tooltip("Fury")
-		DominoTemplate.DominoType.THORNS:
+		"thorns":
 			thorns += value
 			set_additional_tooltip("Thorns")
-		DominoTemplate.DominoType.SPEAR:
+		"spear":
 			damage += value * 3
 			if not Signals.attack_dm_played.is_connected(play):
 				Signals.attack_dm_played.connect(play)
-		DominoTemplate.DominoType.THORNED_SHIELD:
+		"thorned_shield":
 			block += value * 2
 			if not Signals._2dm_played.is_connected(play):
 				Signals._2dm_played.connect(play)
-		DominoTemplate.DominoType.SHIELD_STRIKE:
+		"shield_strike":
 			block += value * 2
 	if DominoTemplate.type_to_tex.has(type):
 		var textures = DominoTemplate.type_to_tex[type]
@@ -568,37 +565,35 @@ func add_action() -> void:
 		
 		for key in special_val:
 			match key:
-				DominoTemplate.DominoType.THORNED_SHIELD:
+				"thorned_shield":
 					ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.thorns, block))
-				DominoTemplate.DominoType.SHIELD_STRIKE:
+				"shield_strike":
 					ActionManager.add(ShieldStrikeAction.new(self, Global.enemy))
 
-func get_tooltip_for_type(type: DominoTemplate.DominoType) -> String:
+func get_tooltip_for_type(type: String) -> String:
 	match type:
-		DominoTemplate.DominoType.ATTACK:
+		"attack", "attack2":
 			return TextFormatter.insert_colored_value(tr("attack_des"), final_damage(damage), damage)
-		DominoTemplate.DominoType.ATTACK2:
-			return TextFormatter.insert_colored_value(tr("attack_des"), final_damage(damage), damage)
-		DominoTemplate.DominoType.DEFENSE:
+		"defense":
 			return TextFormatter.insert_colored_value(tr("defense_des"), final_block(block), block)
-		DominoTemplate.DominoType.HEAL:
+		"heal":
 			return TextFormatter.highlight_keywords(tr("heal_des") % heal)
-		DominoTemplate.DominoType.CORRUPTION:
+		"corruption":
 			return TextFormatter.insert_colored_value(tr("corruption_des"), corruption, corruption) 
-		DominoTemplate.DominoType.VULNERABLE:
+		"vulnerable":
 			return TextFormatter.highlight_keywords(tr("vulnerable_des") % vulnerable)
-		DominoTemplate.DominoType.WEAK:
+		"weak":
 			return TextFormatter.highlight_keywords(tr("weak_des") % weak)
-		DominoTemplate.DominoType.DRAW:
+		"draw":
 			match draw_param:
 				1:
 					return tr("draw_1_des")
-		DominoTemplate.DominoType.FURY:
+		"fury":
 			return TextFormatter.highlight_keywords(tr("strength_des") % fury)
-		DominoTemplate.DominoType.THORNS:
+		"thorns":
 			return TextFormatter.highlight_keywords(tr("thorns_des") % thorns)
-		DominoTemplate.DominoType.SPEAR:
-			return TextFormatter.insert_colored_value(tr("dm_spear_des"), final_damage(special_val[type]), special_val[type])
-		DominoTemplate.DominoType.THORNED_SHIELD:
-			return TextFormatter.insert_colored_value(tr("dm_thorned_shield_des"), final_block(special_val[type]), special_val[type])
+		"spear":
+			return TextFormatter.insert_colored_value(tr("dm_spear_des"), final_damage(damage), damage)
+		"thorned_shield":
+			return TextFormatter.insert_colored_value(tr("dm_thorned_shield_des"), final_block(block), block)
 	return ""

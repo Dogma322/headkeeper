@@ -6,6 +6,6 @@
 script = ExtResource("1_dpfp8")
 a = 4
 b = 3
-a_type = 2
-b_type = 4
+a_type = "attack2"
+b_type = "heal"
 metadata/_custom_type_script = "uid://25lu10tiiq0q"

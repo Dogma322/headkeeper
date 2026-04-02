@@ -5,6 +5,5 @@
 [resource]
 script = ExtResource("1_7qk8u")
 b = 2
-a_type = 15
-b_type = 12
-metadata/_custom_type_script = "uid://d0g2w1g36wj4g"
+a_type = "thorned_shield"
+b_type = "empty_green"
