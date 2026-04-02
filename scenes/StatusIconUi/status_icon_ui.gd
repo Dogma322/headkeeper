@@ -71,6 +71,7 @@ func show_des():
 	else:
 		tooltip_panel.position = Vector2.ZERO
 	
+	tooltip_panel.reset_size()
 	tooltip_panel.show_tooltip(true)
 
 

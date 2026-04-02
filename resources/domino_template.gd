@@ -30,6 +30,16 @@ static var type_to_color = {
 	"spear": DominoColor.RED,
 	"thorned_shield": DominoColor.BLUE,
 	"shield_strike": DominoColor.RED,
+	"shield": DominoColor.BLUE,
+	"repeat": DominoColor.GREEN,
+	"mace": DominoColor.RED,
+	"horn": DominoColor.GREEN,
+	"hammer": DominoColor.RED,
+	"crit": DominoColor.GREEN,
+	"corrupted_stuff": DominoColor.GREEN,
+	"corrupted_sphere": DominoColor.GREEN,
+	"claws": DominoColor.RED,
+	"skull_4x": DominoColor.RED,
 }
 
 static var type_to_string = {
@@ -43,6 +53,16 @@ static var type_to_string = {
 	"spear": ["Attack"],
 	"thorned_shield": ["Skill", "Defense"],
 	"shield_strike": ["Attack", "Defense"],
+	"shield": ["Defense"],
+	"repeat": ["Skill"],
+	"mace": ["Attack"],
+	"horn": ["Skill"],
+	"hammer": ["Attack"],
+	"crit": ["Skill"],
+	"corrupted_stuff": ["Skill"],
+	"corrupted_sphere": ["Skill"],
+	"claws": ["Attack"],
+	"skull_4x": ["Attack"],
 }
 
 static var color_to_block_top_tex = {
@@ -119,5 +139,35 @@ static var type_to_tex = {
 	},
 	"shield_strike": {
 		1: preload("res://assets/Dominoes/Special/shield_strike.atlastex"),
+	},
+	"shield": {
+		1: preload("res://assets/Dominoes/Special/shield.atlastex"),
+	},
+	"repeat": {
+		1: preload("res://assets/Dominoes/Special/repeat.atlastex"),
+	},
+	"mace": {
+		1: preload("res://assets/Dominoes/Special/mace.atlastex"),
+	},
+	"horn": {
+		1: preload("res://assets/Dominoes/Special/horn.atlastex"),
+	},
+	"hammer": {
+		1: preload("res://assets/Dominoes/Special/hammer.atlastex"),
+	}, 
+	"crit": {
+		1: preload("res://assets/Dominoes/Special/crit.atlastex"),
+	},
+	"corrupted_stuff": {
+		1: preload("res://assets/Dominoes/Special/corrupted_stuff.atlastex"),
+	},
+	"corrupted_sphere": {
+		1: preload("res://assets/Dominoes/Special/corrupted_sphere.atlastex"),
+	},
+	"claws": {
+		2: preload("res://assets/Dominoes/Components/claws_2.atlastex")
+	},
+	"skull_4x": {
+		4: preload("res://assets/Dominoes/Components/skull_4.atlastex"),
 	}
 }

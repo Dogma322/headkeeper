@@ -30,7 +30,11 @@ var weak := 0
 var draw_param := 0
 var fury := 0
 var thorns := 0
-var special_val := {}
+var val := {}
+var tags := []
+
+var vals := [{}, {}]
+var buffered_values := [0, 0]
 
 var doubled = false
 
@@ -488,14 +492,16 @@ func update_labels():
 	else:
 		tooltip_panel.description = ""
 
-func add_to_special_val(key, value):
-	if special_val.has(key):
-		special_val[key] += value
+func add_to_special_val(type: String, value: int):
+	if val.has(type):
+		val[type] += value
 	else:
-		special_val[key] = value
+		val[type] = value
 
-func parse_template_type(index: int, type: String, value: int):
-	match type:
+func parse_template_type(index: int, key: String, value: int):
+	if not tags.has(key):
+		tags.push_back(key)
+	match key:
 		"attack":
 			damage += value
 		"attack2":
@@ -531,10 +537,47 @@ func parse_template_type(index: int, type: String, value: int):
 				Signals._2dm_played.connect(play)
 		"shield_strike":
 			block += value * 2
-	if DominoTemplate.type_to_tex.has(type):
-		var textures = DominoTemplate.type_to_tex[type]
+		"shield":
+			block += value * 3
+			if not Signals.defense_dm_played.is_connected(play):
+				Signals.defense_dm_played.connect(play)
+		"repeat":
+			add_to_special_val(key, value)
+		"mace":
+			add_to_special_val(key, value * 3)
+		"horn":
+			add_to_special_val(key, value)
+			if not Signals._3dm_played.is_connected(play):
+				Signals._3dm_played.connect(play)
+		"crit":
+			add_to_special_val(key, value)
+		"dagger":
+			add_to_special_val(key, value * 8)
+			if not Signals.hero_healed.is_connected(play):
+				Signals.hero_healed.connect(play.bind(null))
+		"corrupted_stuff":
+			pass
+		"corrupted_sphere":
+			corruption += value * 2
+			if not Signals.skill_dm_played.is_connected(play):
+				Signals.skill_dm_played.connect(play)
+		"claws":
+			buffered_values[index] = value * 4
+			add_to_special_val(key, value * 4)
+			if not Signals.fight_started.is_connected(on_fight_started):
+				Signals.fight_started.connect(on_fight_started.bind(key))
+		
+	if DominoTemplate.type_to_tex.has(key):
+		var textures = DominoTemplate.type_to_tex[key]
 		if textures.has(value):
 			icons[index].texture = textures[value]
+
+
+func on_fight_started(key: String):
+	if a_type == "claws":
+		vals[0][key] = buffered_values[0]
+	if b_type == "claws":
+		vals[1][key] = buffered_values[1]
 
 func play(domino: Domino):
 	if domino == self:
@@ -563,15 +606,41 @@ func add_action() -> void:
 		if weak > 0:
 			ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.weak, weak))
 		
-		for key in special_val:
+		for key in tags:
 			match key:
 				"thorned_shield":
 					ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.thorns, block))
 				"shield_strike":
 					ActionManager.add(ShieldStrikeAction.new(self, Global.enemy))
+				"repeat":
+					ActionManager.add(BuffAction.new(self, Global.hero,StatusManager.repeat, val[key]))
+					DominoManager.double_next_dm += val[key]
+				"mace":
+					ActionManager.add(AttackAction.new(self, Global.enemy, DominoManager.dominoes_on_board.size() * val[key]))
+				"horn":
+					ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.fury, val[key]))
+				"hammer":
+					ActionManager.add(HammerAction.new(self, Global.enemy))
+				"crit":
+					ActionManager.add(BuffAction.new(self, Global.hero,StatusManager.crit, val[key]))
+				"dagger":
+					ActionManager.add(AttackAction.new(self, Global.enemy, val[key]))
+				"corrupted_stuff":
+					ActionManager.add(CorruptedStuffAction.new(self, Global.enemy))
+				"skull_4x":
+					ActionManager.add(SkullsAction.new(self, Global.enemy))
+		
+		if a_type == "claws":
+			ActionManager.add(AttackAction.new(self, Global.enemy, vals[0]["claws"]))
+			vals[0]["claws"] += 4
+		if b_type == "claws":
+			ActionManager.add(AttackAction.new(self, Global.enemy, vals[1]["claws"]))
+			vals[1]["claws"] += 4
 
-func get_tooltip_for_type(type: String) -> String:
-	match type:
+func get_tooltip_for_type(key: String) -> String:
+	
+	
+	match key:
 		"attack", "attack2":
 			return TextFormatter.insert_colored_value(tr("attack_des"), final_damage(damage), damage)
 		"defense":
@@ -596,4 +665,39 @@ func get_tooltip_for_type(type: String) -> String:
 			return TextFormatter.insert_colored_value(tr("dm_spear_des"), final_damage(damage), damage)
 		"thorned_shield":
 			return TextFormatter.insert_colored_value(tr("dm_thorned_shield_des"), final_block(block), block)
+		"shield_strike":
+			return TextFormatter.highlight_keywords(tr("dm_shield_strike_des"))
+		"shield":
+			return TextFormatter.insert_colored_value(tr("dm_steel_shield_des"), final_block(block), block)
+		"repeat":
+			return TextFormatter.highlight_keywords(tr("dm_repeat_des"))
+		"mace":
+			var mace_damage = DominoManager.dominoes_on_board.size() * val[key] + val[key]
+			return TextFormatter.insert_colored_value(tr("dm_mace_des"), final_damage(mace_damage), mace_damage + val[key])
+		"horn":
+			return TextFormatter.highlight_keywords(tr("dm_horn_des") % val[key])
+		"hammer":
+			var hammer_damage = BoardManager.green_bonuses_activated * 2
+			return TextFormatter.insert_colored_value(tr("dm_hammer_des"), final_damage(hammer_damage), hammer_damage)
+		"crit":
+			return TextFormatter.highlight_keywords(tr("dm_crit_des"))
+		"dagger":
+			return TextFormatter.insert_colored_value(tr("dm_dagger_des"), final_damage(val[key]), val[key])
+		"corrupted_stuff":
+			return TextFormatter.insert_colored_value(tr("dm_dark_staff_des"), final_corruption(corruption), corruption)
+		"corrupted_sphere":
+			return TextFormatter.insert_colored_value(tr("dm_dark_sphere_des"), final_corruption(corruption), corruption)
+		"claws":
+			var v := 0
+			if a_type == key:
+				if vals[0].has(key):
+					v += vals[0][key]
+			if b_type == key:
+				if vals[1].has(key):
+					v += vals[1][key]
+			
+			return TextFormatter.insert_colored_value(tr("dm_claws_des"), final_damage(v), v)
+		"skull_4x":
+			var damage_4d = DominoManager.value4_played_dominoes * 2
+			return TextFormatter.insert_colored_value(tr("4value_attack_des"), final_damage(damage_4d), damage_4d)
 	return ""
