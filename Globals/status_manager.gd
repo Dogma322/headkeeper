@@ -30,9 +30,9 @@ func initialize_status(status: StatusResource):
 	
 	if status.id == "thorns":
 		if status.owner == Global.hero:
-			Signals.deal_enemy_thorn_damage.connect(add_action)
+			Signals.deal_enemy_thorn_damage.connect(add_action.bind(status))
 		elif status.owner == Global.enemy:
-			Signals.deal_hero_thorn_damage.connect(add_action)
+			Signals.deal_hero_thorn_damage.connect(add_action.bind(status))
 	
 	pass
 
@@ -69,9 +69,9 @@ func add_action(status):
 	match status.id:
 		"thorns":
 			var target
-			if owner == Global.hero:
+			if status.owner == Global.hero:
 				target = Global.enemy
 				
-			if owner == Global.enemy:
+			if status.owner == Global.enemy:
 				target = Global.hero
 			ActionManager.insert_next(AttackWithoutAnim.new(target, status.stacks))
