@@ -20,7 +20,7 @@ var devour = preload("res://resources/statuses/devour.tres")
 	#target.status_container.add_status(new_status, stacks)
 
 
-func apply_status(status,stacks,target):
+func apply_status(status: StatusResource, stacks, target):
 	target.status_container.add_status(status.duplicate(true), stacks)
 
 
@@ -33,8 +33,7 @@ func initialize_status(status: StatusResource):
 			Signals.deal_enemy_thorn_damage.connect(add_action.bind(status))
 		elif status.owner == Global.enemy:
 			Signals.deal_hero_thorn_damage.connect(add_action.bind(status))
-	
-	pass
+
 
 func apply_status_effect(status: StatusResource):
 	match status.id:
@@ -65,7 +64,7 @@ func remove_status_effect(status: StatusResource):
 			status.owner.bonus_damage = 0
 
 
-func add_action(status):
+func add_action(status: StatusResource):
 	match status.id:
 		"thorns":
 			var target

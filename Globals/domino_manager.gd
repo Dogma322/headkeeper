@@ -87,12 +87,11 @@ func reset():
 	set_deck()
 
 func set_deck():
-	var domino_scene = load("res://scenes/Dominoes/DominoTemplate/domino.tscn")
 	for i in range(1): 
 		for key in start_deck.keys():
 			var domino: Domino 
 			if start_deck[key] is DominoTemplate:
-				domino = domino_scene.instantiate()
+				domino = Global.domino_scene.instantiate()
 				domino.template = start_deck[key]
 			else:
 				domino = start_deck[key].instantiate()

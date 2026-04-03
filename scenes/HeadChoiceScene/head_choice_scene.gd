@@ -16,8 +16,6 @@ var choosing := false
 var spawning := false
 var choice_locked := false
 
-@onready var domino_template_scene = preload("res://scenes/Dominoes/DominoTemplate/domino.tscn")
-
 func _ready() -> void:
 	Global.choice_scene = self
 
@@ -77,17 +75,10 @@ func spawn_dominoes():
 
 	for i in range(3):
 
-		var domino_scene = temp_dominoes.pick_random()
-		temp_dominoes.erase(domino_scene) # чтобы не выбрать ту же карту дважды
-		
-		var template: DominoTemplate = null
-		if domino_scene is DominoTemplate:
-			template = domino_scene
-			domino_scene = domino_template_scene
-			pass
-		
+		var template = temp_dominoes.pick_random()
+		temp_dominoes.erase(template) # чтобы не выбрать ту же карту дважды
 
-		var domino: Domino = domino_scene.instantiate()
+		var domino: Domino = Global.domino_scene.instantiate()
 		domino.template = template
 
 		#var scene = DominoManager.temp_domino_pool.values().pick_random()

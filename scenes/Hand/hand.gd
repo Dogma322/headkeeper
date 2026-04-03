@@ -1,6 +1,5 @@
 extends Node2D
 
-@export var domino_scene = preload("res://scenes/Dominoes/DominoTemplate/domino.tscn")
 
 @export var hand_height := 320
 @export var hand_width = 320
@@ -21,7 +20,7 @@ func _ready():
 		
 func adding_dm():
 	for i in range(5):
-		add_domino(domino_scene.instantiate())
+		add_domino(Global.domino_scene.instantiate())
 
 func move_to_hand(domino: Domino, pos: Vector2) -> void:
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnco2xl6pi07y"]
 
-[ext_resource type="Script" uid="uid://cojc613kiq7f1" path="res://scenes/Dominoes/DominoTemplate/domino.gd" id="1_flni0"]
+[ext_resource type="Script" uid="uid://cojc613kiq7f1" path="res://scenes/Domino/domino.gd" id="1_flni0"]
 [ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="2_fjr85"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2aomr"]
@@ -12,8 +12,6 @@ a = 2
 b = 3
 
 [node name="Visual" type="Node2D" parent="." unique_id=2092962026]
-
-[node name="Back" type="Sprite2D" parent="Visual" unique_id=1409418696]
 
 [node name="Top" type="Sprite2D" parent="Visual" unique_id=1447953728]
 position = Vector2(0, -16)

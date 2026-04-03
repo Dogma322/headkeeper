@@ -14,7 +14,9 @@ func _ready() -> void:
 @onready var choice_scene
 @onready var fight_background
 @onready var remove_domino_scene
-@onready var play_btn 
+@onready var play_btn
+
+@export var domino_scene = preload("res://scenes/Domino/domino.tscn")
 
 func _input(event):
 	if event is InputEventKey:
