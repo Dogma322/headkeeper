@@ -13,6 +13,24 @@ static var color_storage = {
 	"GREEN": "green"
 }
 
+static var color_to_modulate = {
+	color_storage.RED : Color.html("#9A2743"),
+	color_storage.BLUE : Color.html("#3E6D9E"),
+	color_storage.GREEN : Color.html("#378D47"),
+}
+
+static var color_to_block_top_tex = {
+	color_storage.RED: preload("res://assets/Dominoes/Blocks/top_red_block.atlastex"),
+	color_storage.BLUE: preload("res://assets/Dominoes/Blocks/top_blue_block.atlastex"),
+	color_storage.GREEN: preload("res://assets/Dominoes/Blocks/top_green_block.atlastex"),
+}
+
+static var color_to_block_bot_tex = {
+	color_storage.RED: preload("res://assets/Dominoes/Blocks/bot_red_block.atlastex"),
+	color_storage.BLUE: preload("res://assets/Dominoes/Blocks/bot_blue_block.atlastex"),
+	color_storage.GREEN: preload("res://assets/Dominoes/Blocks/bot_green_block.atlastex"),
+}
+
 static var type_to_color = {
 	"attack": color_storage.RED,
 	"attack2": color_storage.RED,
@@ -65,12 +83,6 @@ static var type_to_string = {
 	"corrupted_sphere": ["Skill"],
 	"claws": ["Attack"],
 	"skull_4x": ["Attack"],
-}
-
-static var color_to_modulate = {
-	color_storage.RED : Color.html("#9A2743"),
-	color_storage.BLUE : Color.html("#3E6D9E"),
-	color_storage.GREEN : Color.html("#378D47"),
 }
 
 static var slot_to_tex = {

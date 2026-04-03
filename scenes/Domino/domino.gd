@@ -7,17 +7,19 @@ extends Node2D
 var a_type: String
 var b_type: String
 
-@export_range(1, 4) var a_empty_slots := 1
-@export_range(1, 4) var b_empty_slots := 1
+@export_range(1, 4) var a_empty_slots := 4
+@export_range(1, 4) var b_empty_slots := 4
 
 var a_color: String:
 	set(value):
 		a_color = value
-		top.modulate = DominoTemplate.color_to_modulate[a_color]
+		top.texture = DominoTemplate.color_to_block_top_tex[a_color]
+		top_empty_slots.modulate = DominoTemplate.color_to_modulate[a_color]
 var b_color: String:
 	set(value):
 		b_color = value
-		bottom.modulate = DominoTemplate.color_to_modulate[b_color]
+		bottom.texture = DominoTemplate.color_to_block_bot_tex[b_color]
+		bot_empty_slots.modulate = DominoTemplate.color_to_modulate[b_color]
 
 @export var template: DominoTemplate = null
 
@@ -126,6 +128,7 @@ func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> 
 				if domino_type in domino_types:
 					continue
 				domino_types.push_back(domino_type)
+		parse_template_type(0, a_settings.type, a_settings.value)
 	
 	if b_settings != null:
 		var types = DominoTemplate.type_to_string
@@ -136,12 +139,8 @@ func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> 
 				if domino_type in domino_types:
 					continue
 				domino_types.push_back(domino_type)
-	
-	if a_settings != null:
-		parse_template_type(0, a_settings.type, a_settings.value)
-	if b_settings != null:
 		parse_template_type(1, b_settings.type, b_settings.value)
-	
+
 
 func _ready() -> void:
 	if template != null:
