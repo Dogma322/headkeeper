@@ -36,6 +36,7 @@ static var type_to_color = {
 	"horn": DominoColor.GREEN,
 	"hammer": DominoColor.RED,
 	"crit": DominoColor.GREEN,
+	"dagger": DominoColor.RED,
 	"corrupted_stuff": DominoColor.GREEN,
 	"corrupted_sphere": DominoColor.GREEN,
 	"claws": DominoColor.RED,
@@ -59,6 +60,7 @@ static var type_to_string = {
 	"horn": ["Skill"],
 	"hammer": ["Attack"],
 	"crit": ["Skill"],
+	"dagger": ["Attack"],
 	"corrupted_stuff": ["Skill"],
 	"corrupted_sphere": ["Skill"],
 	"claws": ["Attack"],
@@ -157,6 +159,9 @@ static var type_to_tex = {
 	}, 
 	"crit": {
 		1: preload("res://assets/Dominoes/Special/crit.atlastex"),
+	},
+	"dagger": {
+		1: preload("res://assets/Dominoes/Special/dagger.atlastex"),
 	},
 	"corrupted_stuff": {
 		1: preload("res://assets/Dominoes/Special/corrupted_stuff.atlastex"),
