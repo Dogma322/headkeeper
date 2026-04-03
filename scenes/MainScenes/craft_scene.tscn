@@ -94,35 +94,51 @@ position = Vector2(75, 161)
 [node name="BoardCraft" parent="." unique_id=183639370 instance=ExtResource("8_il8bo")]
 position = Vector2(318, 149)
 
-[node name="AcceptButton" parent="." unique_id=885226573 instance=ExtResource("9_il8bo")]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1712827494]
 layout_mode = 0
-offset_left = 415.0
-offset_top = 12.0
-offset_right = 515.0
-offset_bottom = 38.875
+offset_left = 414.0
+offset_top = 14.0
+offset_right = 514.0
+offset_bottom = 100.0
+
+[node name="AcceptButton" parent="VBoxContainer" unique_id=885226573 instance=ExtResource("9_il8bo")]
+unique_name_in_owner = true
+layout_mode = 2
 text = "Подтвердить"
 font_size = 3
 disabled = false
 
-[node name="RerollButton" parent="." unique_id=1519040811 instance=ExtResource("9_il8bo")]
+[node name="ChangeNumberButton" parent="VBoxContainer" unique_id=1643412505 instance=ExtResource("9_il8bo")]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 415.0
-offset_top = 41.0
-offset_right = 515.0
-offset_bottom = 67.875
+layout_mode = 2
+text = "Change Number"
+font_size = 3
+disabled = false
+
+[node name="ChangeSignButton" parent="VBoxContainer" unique_id=228914351 instance=ExtResource("9_il8bo")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Change Sign"
+font_size = 3
+disabled = false
+
+[node name="ChangeColorButton" parent="VBoxContainer" unique_id=908886882 instance=ExtResource("9_il8bo")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Change Color"
+font_size = 3
+disabled = false
+
+[node name="RerollButton" parent="VBoxContainer" unique_id=1519040811 instance=ExtResource("9_il8bo")]
+unique_name_in_owner = true
+layout_mode = 2
 text = "Reroll"
 font_size = 3
 disabled = false
 
-[node name="CostLabel" type="RichTextLabel" parent="." unique_id=923779472]
+[node name="CostLabel" type="RichTextLabel" parent="VBoxContainer" unique_id=923779472]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 441.0
-offset_top = 68.0
-offset_right = 489.0
-offset_bottom = 100.0
+layout_mode = 2
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("8_ioiea")
 bbcode_enabled = true
@@ -148,5 +164,8 @@ mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="Layout/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="AcceptButton" to="." method="_on_accept_button_pressed"]
-[connection signal="pressed" from="RerollButton" to="." method="_on_reroll_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/AcceptButton" to="." method="_on_accept_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ChangeNumberButton" to="." method="_on_change_number_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ChangeSignButton" to="." method="_on_change_sign_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ChangeColorButton" to="." method="_on_change_color_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/RerollButton" to="." method="_on_reroll_button_pressed"]

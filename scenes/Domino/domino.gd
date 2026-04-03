@@ -7,6 +7,18 @@ extends Node2D
 var a_type: String
 var b_type: String
 
+@export_range(1, 4) var a_empty_slots := 1
+@export_range(1, 4) var b_empty_slots := 1
+
+var a_color: String:
+	set(value):
+		a_color = value
+		top.modulate = DominoTemplate.color_to_modulate[a_color]
+var b_color: String:
+	set(value):
+		b_color = value
+		bottom.modulate = DominoTemplate.color_to_modulate[b_color]
+
 @export var template: DominoTemplate = null
 
 var target_position:Vector2
@@ -43,8 +55,11 @@ var mouse_over_des = false
 var domino_choice = false
 var deleted = false
 
-@onready var top_icons = $Visual/TopIcons
-@onready var bot_icons = $Visual/BotIcons
+@onready var top_empty_slots: Sprite2D = $Visual/TopEmptySlots
+@onready var top_icons: Sprite2D  = $Visual/TopIcons
+@onready var bot_empty_slots: Sprite2D = $Visual/BotEmptySlots
+@onready var bot_icons: Sprite2D  = $Visual/BotIcons
+@onready var empty_slots_icons: Array[Sprite2D] = [top_empty_slots, bot_empty_slots]
 @onready var icons: Array[Sprite2D] = [top_icons, bot_icons]
 @onready var aim_marker = $AimMarker
 @onready var top: Sprite2D = $Visual/Top
@@ -69,23 +84,38 @@ func set_additional_tooltip(type: String) -> void:
 class SideSettings:
 	var value: int
 	var type: String
-	var special_key = ""
+	var color: String
+	var empty_slots: int
 	
-	func _init(_value, _type, _special_key = ""):
+	func _init(_value, _type = "", _empty_slots = 0, _color = ""):
 		value = _value
 		type = _type
-		special_key = _special_key
+		empty_slots = _empty_slots
+		color = _color
 
 
 func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> void:
 	if a_settings != null:
-		a = a_settings.value
-		a_type = a_settings.type
+		if a_settings.value != 0:
+			a = a_settings.value
+		if a_settings.type != "":
+			a_type = a_settings.type
+		a_empty_slots = a_settings.empty_slots
+		if a_settings.color == "":
+			a_color = DominoTemplate.type_to_color[a_type]
+		else:
+			a_color = a_settings.color
 	
 	if b_settings != null:
-		b = b_settings.value
-		b_type = b_settings.type
-	
+		if b_settings.value != 0:
+			b = b_settings.value
+		if b_settings.type != "":
+			b_type = b_settings.type
+		b_empty_slots = b_settings.empty_slots
+		if b_settings.color == "":
+			b_color = DominoTemplate.type_to_color[b_type]
+		else:
+			b_color = b_settings.color
 	
 	if a_settings != null:
 		var types = DominoTemplate.type_to_string
@@ -106,11 +136,6 @@ func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> 
 				if domino_type in domino_types:
 					continue
 				domino_types.push_back(domino_type)
-	
-	if a_settings != null:
-		top.texture = DominoTemplate.color_to_block_top_tex[DominoTemplate.type_to_color[a_settings.type]]
-	if b_settings != null:
-		bottom.texture = DominoTemplate.color_to_block_bot_tex[DominoTemplate.type_to_color[b_settings.type]]
 	
 	if a_settings != null:
 		parse_template_type(0, a_settings.type, a_settings.value)
@@ -571,7 +596,12 @@ func parse_template_type(index: int, key: String, value: int):
 		var textures = DominoTemplate.type_to_tex[key]
 		if textures.has(value):
 			icons[index].texture = textures[value]
-
+	
+	var empty_slots = a_empty_slots if index == 0 else b_empty_slots
+	if empty_slots > 0 and empty_slots <= 4:
+		empty_slots_icons[index].texture = DominoTemplate.slot_to_tex[empty_slots]
+	else:
+		empty_slots_icons[index].texture = null
 
 func on_fight_started(key: String):
 	if a_type == "claws":

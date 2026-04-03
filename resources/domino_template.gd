@@ -7,40 +7,40 @@ class_name DominoTemplate
 @export var a_type: String
 @export var b_type: String
 
-enum DominoColor {
-	RED,
-	BLUE,
-	GREEN,
+static var color_storage = {
+	"RED": "red",
+	"BLUE": "blue",
+	"GREEN": "green"
 }
 
 static var type_to_color = {
-	"attack": DominoColor.RED,
-	"attack2": DominoColor.RED,
-	"defense": DominoColor.BLUE,
-	"heal": DominoColor.GREEN,
-	"vulnerable": DominoColor.GREEN,
-	"weak": DominoColor.GREEN,
-	"draw": DominoColor.GREEN,
-	"corruption": DominoColor.GREEN,
-	"fury": DominoColor.GREEN,
-	"thorns": DominoColor.GREEN,
-	"empty_red": DominoColor.RED,
-	"empty_green": DominoColor.GREEN,
-	"empty_blue": DominoColor.BLUE,
-	"spear": DominoColor.RED,
-	"thorned_shield": DominoColor.BLUE,
-	"shield_strike": DominoColor.RED,
-	"shield": DominoColor.BLUE,
-	"repeat": DominoColor.GREEN,
-	"mace": DominoColor.RED,
-	"horn": DominoColor.GREEN,
-	"hammer": DominoColor.RED,
-	"crit": DominoColor.GREEN,
-	"dagger": DominoColor.RED,
-	"corrupted_stuff": DominoColor.GREEN,
-	"corrupted_sphere": DominoColor.GREEN,
-	"claws": DominoColor.RED,
-	"skull_4x": DominoColor.RED,
+	"attack": color_storage.RED,
+	"attack2": color_storage.RED,
+	"defense": color_storage.BLUE,
+	"heal": color_storage.GREEN,
+	"vulnerable": color_storage.GREEN,
+	"weak": color_storage.GREEN,
+	"draw": color_storage.GREEN,
+	"corruption": color_storage.GREEN,
+	"fury": color_storage.GREEN,
+	"thorns": color_storage.GREEN,
+	"empty_red": color_storage.RED,
+	"empty_green": color_storage.GREEN,
+	"empty_blue": color_storage.BLUE,
+	"spear": color_storage.RED,
+	"thorned_shield": color_storage.BLUE,
+	"shield_strike": color_storage.RED,
+	"shield": color_storage.BLUE,
+	"repeat": color_storage.GREEN,
+	"mace": color_storage.RED,
+	"horn": color_storage.GREEN,
+	"hammer": color_storage.RED,
+	"crit": color_storage.GREEN,
+	"dagger": color_storage.RED,
+	"corrupted_stuff": color_storage.GREEN,
+	"corrupted_sphere": color_storage.GREEN,
+	"claws": color_storage.RED,
+	"skull_4x": color_storage.RED,
 }
 
 static var type_to_string = {
@@ -67,16 +67,17 @@ static var type_to_string = {
 	"skull_4x": ["Attack"],
 }
 
-static var color_to_block_top_tex = {
-	DominoColor.RED: preload("res://assets/Dominoes/Blocks/top_red_block.atlastex"),
-	DominoColor.BLUE: preload("res://assets/Dominoes/Blocks/top_blue_block.atlastex"),
-	DominoColor.GREEN: preload("res://assets/Dominoes/Blocks/top_green_block.atlastex"),
+static var color_to_modulate = {
+	color_storage.RED : Color.html("#9A2743"),
+	color_storage.BLUE : Color.html("#3E6D9E"),
+	color_storage.GREEN : Color.html("#378D47"),
 }
 
-static var color_to_block_bot_tex = {
-	DominoColor.RED: preload("res://assets/Dominoes/Blocks/bot_red_block.atlastex"),
-	DominoColor.BLUE: preload("res://assets/Dominoes/Blocks/bot_blue_block.atlastex"),
-	DominoColor.GREEN: preload("res://assets/Dominoes/Blocks/bot_green_block.atlastex"),
+static var slot_to_tex = {
+	1: preload("res://assets/Dominoes/Components/empty_1.atlastex"),
+	2: preload("res://assets/Dominoes/Components/empty_2.atlastex"),
+	3: preload("res://assets/Dominoes/Components/empty_3.atlastex"),
+	4: preload("res://assets/Dominoes/Components/empty_4.atlastex"),
 }
 
 static var type_to_tex = {
