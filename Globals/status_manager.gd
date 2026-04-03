@@ -28,7 +28,7 @@ func initialize_status(status: StatusResource):
 	status.status_changed.connect(_on_status_changed.bind(status))
 	_on_status_changed(status)
 	
-	if status == thorns:
+	if status.id == "thorns":
 		if status.owner == Global.hero:
 			Signals.deal_enemy_thorn_damage.connect(add_action)
 		elif status.owner == Global.enemy:
@@ -37,37 +37,37 @@ func initialize_status(status: StatusResource):
 	pass
 
 func apply_status_effect(status: StatusResource):
-	match status:
-		corruption:
+	match status.id:
+		"corruption":
 			ActionManager.add(CorruptionAttackAction.new(Global.enemy, status.stacks))
-		draw:
+		"draw":
 			DominoManager.bonus_draw_counter += status.stacks
 			status.stacks = 0
 
 
 func _on_status_changed(status: StatusResource):
-	match status:
-		vulnerable:
+	match status.id:
+		"vulnerable":
 			status.owner.incoming_damage_mult = 1.5
-		fury:
+		"fury":
 			status.owner.bonus_damage = status.stacks
-		weak:
+		"weak":
 			status.owner.damage_mult = 0.75
 
 
 func remove_status_effect(status: StatusResource):
-	match status:
-		vulnerable:
+	match status.id:
+		"vulnerable":
 			status.owner.incoming_damage_mult = 1
-		weak:
+		"weak":
 			status.owner.damage_mult = 1
-		fury:
+		"fury":
 			status.owner.bonus_damage = 0
 
 
 func add_action(status):
-	match status:
-		thorns:
+	match status.id:
+		"thorns":
 			var target
 			if owner == Global.hero:
 				target = Global.enemy
