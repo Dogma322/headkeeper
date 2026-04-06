@@ -1,11 +1,25 @@
 class_name Domino
 extends Node2D
-#SSS
-@export_range(1, 4) var a:int
-@export_range(1, 4) var b:int
 
-var a_type: String
-var b_type: String
+@export_range(1, 4) var a:int:
+	set(value):
+		a = value
+		top.count = a
+		
+@export_range(1, 4) var b:int:
+	set(value):
+		b = value
+		bottom.count = b
+
+var a_type: String:
+	set(value):
+		a_type = value
+		top.type = value
+
+var b_type: String:
+	set(value):
+		b_type = value
+		bottom.type = value
 
 @export_range(1, 4) var a_empty_slots := 4
 @export_range(1, 4) var b_empty_slots := 4
@@ -13,13 +27,11 @@ var b_type: String
 var a_color: String:
 	set(value):
 		a_color = value
-		top.texture = DominoTemplate.color_to_block_top_tex[a_color]
-		top_empty_slots.modulate = DominoTemplate.color_to_modulate[a_color]
+		top.color = a_color
 var b_color: String:
 	set(value):
 		b_color = value
-		bottom.texture = DominoTemplate.color_to_block_bot_tex[b_color]
-		bot_empty_slots.modulate = DominoTemplate.color_to_modulate[b_color]
+		bottom.color = b_color
 
 @export var template: DominoTemplate = null
 
@@ -57,20 +69,30 @@ var mouse_over_des = false
 var domino_choice = false
 var deleted = false
 
-@onready var top_empty_slots: Sprite2D = $Visual/TopEmptySlots
-@onready var top_icons: Sprite2D  = $Visual/TopIcons
-@onready var bot_empty_slots: Sprite2D = $Visual/BotEmptySlots
-@onready var bot_icons: Sprite2D  = $Visual/BotIcons
-@onready var empty_slots_icons: Array[Sprite2D] = [top_empty_slots, bot_empty_slots]
-@onready var icons: Array[Sprite2D] = [top_icons, bot_icons]
 @onready var aim_marker = $AimMarker
-@onready var top: Sprite2D = $Visual/Top
-@onready var bottom: Sprite2D = $Visual/Bottom
+@onready var top: DominoSide = $Visual/Top
+@onready var bottom: DominoSide = $Visual/Bottom
 
 @onready var dm_name: String
 @onready var description: String = ""
 @onready var tooltip_stack: HBoxContainer = %TooltipStack
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
+
+
+static var slot_placement = {
+	1: [[0, 0, 0],
+		[0, 1, 0],
+		[0, 0, 0]],
+	2: [[0, 0, 0],
+		[1, 0, 1],
+		[0, 0, 0]],
+	3: [[0, 0, 1],
+		[0, 1, 0],
+		[1, 0, 0]],
+	4: [[1, 0, 1],
+		[0, 0, 0],
+		[1, 0, 1]],
+}
 
 const ADDITIONAL_TOOLTIP_PANEL = preload("uid://dnje7ugtetwov")
 var extra_tooltip_panel: AdditionalTooltipPanel = null
@@ -255,12 +277,9 @@ func rotate_in_hand() -> void:
 	
 	rotation_degrees = angle % 360
 	tooltip_stack.global_position = global_position - Vector2(61, 81)
-
-	if top_icons and bot_icons:
-		top_icons.rotation_degrees = -rotation_degrees
-		bot_icons.rotation_degrees = -rotation_degrees
-		
 	
+	top.rotated = !connected_side
+	bottom.rotated = !connected_side
 
 func rotate_to_match(required_value:int, dir:int):
 
@@ -281,10 +300,6 @@ func rotate_to_match(required_value:int, dir:int):
 
 	rotation_degrees = angle % 360
 
-	if top_icons and bot_icons:
-		top_icons.rotation_degrees = -rotation_degrees
-		bot_icons.rotation_degrees = -rotation_degrees
-
 
 func reset_rotation():
 	var angle = 0
@@ -292,11 +307,6 @@ func reset_rotation():
 		angle = 180
 	# Сбрасываем основное вращение домино
 	rotation_degrees = angle
-	# Сбрасываем вращение иконок
-	if top_icons:
-		top_icons.rotation_degrees = angle
-	if bot_icons:
-		bot_icons.rotation_degrees = angle
 
 
 func rotate_by_slot(connect_from:int, flow:int, connected_side:int):
@@ -322,9 +332,6 @@ func rotate_by_slot(connect_from:int, flow:int, connected_side:int):
 	rotation_degrees = angle % 360
 
 	# 🔥 фикс иконок
-	if top_icons and bot_icons:
-		top_icons.rotation_degrees = -rotation_degrees
-		bot_icons.rotation_degrees = -rotation_degrees
 
 
 func _on_area_2d_input_event(_viewport, event, _shape):
@@ -590,17 +597,19 @@ func parse_template_type(index: int, key: String, value: int):
 			add_to_special_val(key, value * 4)
 			if not Signals.fight_started.is_connected(on_fight_started):
 				Signals.fight_started.connect(on_fight_started.bind(key))
-		
-	if DominoTemplate.type_to_tex.has(key):
-		var textures = DominoTemplate.type_to_tex[key]
-		if textures.has(value):
-			icons[index].texture = textures[value]
 	
-	var empty_slots = a_empty_slots if index == 0 else b_empty_slots
-	if empty_slots > 0 and empty_slots <= 4:
-		empty_slots_icons[index].texture = DominoTemplate.slot_to_tex[empty_slots]
-	else:
-		empty_slots_icons[index].texture = null
+	
+	
+	#if DominoTemplate.type_to_tex.has(key):
+		#var textures = DominoTemplate.type_to_tex[key]
+		#if textures.has(value):
+			#icons[index].texture = textures[value]
+	
+	#var empty_slots = a_empty_slots if index == 0 else b_empty_slots
+	#if empty_slots > 0 and empty_slots <= 4:
+	#	empty_slots_icons[index].texture = DominoTemplate.slot_to_tex[empty_slots]
+	#else:
+	#	empty_slots_icons[index].texture = null
 
 func on_fight_started(key: String):
 	if a_type == "claws":

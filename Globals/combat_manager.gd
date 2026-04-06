@@ -255,6 +255,7 @@ func reset_turn_data():
 	
 func reset_run_data():
 	Signals.reset_run_data.emit()
+	DominoManager.block_domino_input = false
 	
 	stage = 1
 	
