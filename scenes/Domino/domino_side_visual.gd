@@ -121,12 +121,12 @@ func update_slot_sets():
 			slot_set.rotation_degrees = 180 if rotated else 0
 			if rotated:
 				if side:
-					slot_set.position.y = -2
+					slot_set.position.y = 0
 				else:
 					slot_set.position.y = 2
 			else:
 				if side:
-					slot_set.position.y = 0
+					slot_set.position.y = -2
 				else:
 					slot_set.position.y = 0
 
