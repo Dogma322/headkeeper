@@ -7,4 +7,7 @@ script = ExtResource("1_hk7u1")
 a = 2
 a_type = "defense"
 b_type = "shield_strike"
+a_types = PackedStringArray("defense", "defense")
+b_types = PackedStringArray("shield_strike")
+a_color = "blue"
 metadata/_custom_type_script = "uid://25lu10tiiq0q"

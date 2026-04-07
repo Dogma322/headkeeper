@@ -7,3 +7,7 @@ script = ExtResource("1_7qk8u")
 b = 2
 a_type = "thorned_shield"
 b_type = "empty_green"
+a_types = PackedStringArray("thorned_shield")
+b_types = PackedStringArray("empty", "empty")
+a_color = "blue"
+b_color = "green"

@@ -8,4 +8,7 @@ a = 4
 b = 3
 a_type = "attack2"
 b_type = "heal"
+a_types = PackedStringArray("attack2", "attack2", "attack2", "attack2")
+b_types = PackedStringArray("heal", "heal", "heal")
+b_color = "green"
 metadata/_custom_type_script = "uid://25lu10tiiq0q"

@@ -8,4 +8,6 @@ a = 4
 b = 2
 a_type = "skull_4x"
 b_type = "empty_red"
+a_types = PackedStringArray("skull", "skull", "skull", "skull")
+b_types = PackedStringArray("empty", "empty")
 metadata/_custom_type_script = "uid://25lu10tiiq0q"

@@ -42,11 +42,11 @@ func _on_change_number_button_pressed() -> void:
 	if current_domino.initial_connected_side == 1:
 		while value == 0 or current_domino.a_empty_slots == value:
 			value = 1 + randi() % 4
-		current_domino.setup(Domino.SideSettings.new(0, "", value))
+		current_domino.setup(Domino.SideSettings.new(["empty"]))
 	else:
 		while value == 0 or current_domino.b_empty_slots == value:
 			value = 1 + randi() % 4
-		current_domino.setup(null, Domino.SideSettings.new(0, "", value))
+		current_domino.setup(null, Domino.SideSettings.new(["empty"]))
 	value = 1 + randi() % 4
 
 
@@ -64,11 +64,11 @@ func _on_reroll_button_pressed() -> void:
 	if current_domino.initial_connected_side == 1:
 		while value == 0 or current_domino.a == value:
 			value = 1 + randi() % 4
-		current_domino.setup(Domino.SideSettings.new(value, current_domino.a_type))
+		current_domino.setup(Domino.SideSettings.new([current_domino.a_type]))
 	else:
 		while value == 0 or current_domino.b == value:
 			value = 1 + randi() % 4
-		current_domino.setup(null, Domino.SideSettings.new(value, current_domino.b_type))
+		current_domino.setup(null, Domino.SideSettings.new([current_domino.b_type]))
 
 
 func _on_domino_added_to_board(domino) -> void:

@@ -7,4 +7,6 @@ script = ExtResource("1_wjqf6")
 b = 3
 a_type = "mace"
 b_type = "empty_red"
+a_types = PackedStringArray("mace")
+b_types = PackedStringArray("empty", "empty", "empty")
 metadata/_custom_type_script = "uid://25lu10tiiq0q"

@@ -15,18 +15,16 @@ script = ExtResource("1_flni0")
 [node name="Top" parent="Visual" unique_id=730110398 instance=ExtResource("2_c0hci")]
 unique_name_in_owner = true
 position = Vector2(0, -17)
-slots_rotation = null
 
 [node name="Bottom" parent="Visual" unique_id=1605318519 instance=ExtResource("2_c0hci")]
 unique_name_in_owner = true
 position = Vector2(0, 17)
 side = true
-color = "blue"
-slots_rotation = null
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1733465482]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1296131305]
+visible = false
 shape = SubResource("RectangleShape2D_2aomr")
 
 [node name="AimMarker" type="Marker2D" parent="." unique_id=1837320360]

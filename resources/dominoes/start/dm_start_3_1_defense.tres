@@ -3,8 +3,13 @@
 [ext_resource type="Script" uid="uid://25lu10tiiq0q" path="res://resources/domino_template.gd" id="1_y86jj"]
 
 [resource]
+resource_name = "dm_start_3_1_defense"
 script = ExtResource("1_y86jj")
 a = 3
 a_type = "defense"
 b_type = "defense"
+a_types = PackedStringArray("defense", "defense", "defense")
+b_types = PackedStringArray("defense")
+a_color = "blue"
+b_color = "blue"
 metadata/_custom_type_script = "uid://25lu10tiiq0q"

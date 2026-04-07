@@ -8,4 +8,6 @@ a = 3
 b = 2
 a_type = "attack"
 b_type = "attack"
+a_types = PackedStringArray("attack", "attack", "attack")
+b_types = PackedStringArray("attack", "attack")
 metadata/_custom_type_script = "uid://25lu10tiiq0q"

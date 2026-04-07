@@ -7,4 +7,7 @@ script = ExtResource("1_cyk32")
 a = 4
 a_type = "attack"
 b_type = "weak"
+a_types = PackedStringArray("attack", "attack", "attack", "attack")
+b_types = PackedStringArray("weak")
+b_color = "green"
 metadata/_custom_type_script = "uid://25lu10tiiq0q"

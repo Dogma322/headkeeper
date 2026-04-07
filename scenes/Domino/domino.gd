@@ -11,18 +11,8 @@ extends Node2D
 		b = value
 		bottom.count = b
 
-var a_type: String:
-	set(value):
-		a_type = value
-		top.type = value
-
-var b_type: String:
-	set(value):
-		b_type = value
-		bottom.type = value
-
-@export_range(1, 4) var a_empty_slots := 4
-@export_range(1, 4) var b_empty_slots := 4
+@export var a_types: PackedStringArray
+@export var b_types: PackedStringArray
 
 var a_color: String:
 	set(value):
@@ -78,22 +68,6 @@ var deleted = false
 @onready var tooltip_stack: HBoxContainer = %TooltipStack
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
 
-
-static var slot_placement = {
-	1: [[0, 0, 0],
-		[0, 1, 0],
-		[0, 0, 0]],
-	2: [[0, 0, 0],
-		[1, 0, 1],
-		[0, 0, 0]],
-	3: [[0, 0, 1],
-		[0, 1, 0],
-		[1, 0, 0]],
-	4: [[1, 0, 1],
-		[0, 0, 0],
-		[1, 0, 1]],
-}
-
 const ADDITIONAL_TOOLTIP_PANEL = preload("uid://dnje7ugtetwov")
 var extra_tooltip_panel: AdditionalTooltipPanel = null
 
@@ -106,68 +80,40 @@ func set_additional_tooltip(type: String) -> void:
 		extra_tooltip_panel.type = type
 
 class SideSettings:
-	var value: int
-	var type: String
+	var types: PackedStringArray
 	var color: String
-	var empty_slots: int
 	
-	func _init(_value, _type = "", _empty_slots = 0, _color = ""):
-		value = _value
-		type = _type
-		empty_slots = _empty_slots
+	func _init(_types: PackedStringArray, _color = ""):
+		types = _types
 		color = _color
-
 
 func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> void:
 	if a_settings != null:
-		if a_settings.value != 0:
-			a = a_settings.value
-		if a_settings.type != "":
-			a_type = a_settings.type
-		a_empty_slots = a_settings.empty_slots
-		if a_settings.color == "":
-			a_color = DominoTemplate.type_to_color[a_type]
-		else:
+		a = a_settings.types.size()
+		
+		a_types.clear()
+		for type in a_settings.types:
+			a_types.push_back(type)
+			push_symbol(0, type, 1)
+		
+		if a_settings.color != "":
 			a_color = a_settings.color
 	
 	if b_settings != null:
-		if b_settings.value != 0:
-			b = b_settings.value
-		if b_settings.type != "":
-			b_type = b_settings.type
-		b_empty_slots = b_settings.empty_slots
-		if b_settings.color == "":
-			b_color = DominoTemplate.type_to_color[b_type]
-		else:
+		b = b_settings.types.size()
+		
+		b_types.clear()
+		for type in b_settings.types:
+			b_types.push_back(type)
+			push_symbol(1, type, 1)
+		
+		if b_settings.color != "":
 			b_color = b_settings.color
-	
-	if a_settings != null:
-		var types = DominoTemplate.type_to_string
-		@warning_ignore("incompatible_ternary")
-		var key = a_settings.type
-		if types.has(key):
-			for domino_type in types[key]:
-				if domino_type in domino_types:
-					continue
-				domino_types.push_back(domino_type)
-		parse_template_type(0, a_settings.type, a_settings.value)
-	
-	if b_settings != null:
-		var types = DominoTemplate.type_to_string
-		@warning_ignore("incompatible_ternary")
-		var key = b_settings.type
-		if types.has(key):
-			for domino_type in types[key]:
-				if domino_type in domino_types:
-					continue
-				domino_types.push_back(domino_type)
-		parse_template_type(1, b_settings.type, b_settings.value)
-
 
 func _ready() -> void:
 	if template != null:
 		domino_types.clear()
-		setup(SideSettings.new(template.a, template.a_type), SideSettings.new(template.b, template.b_type))
+		setup(SideSettings.new(template.a_types, template.a_color), SideSettings.new(template.b_types, template.b_color))
 	
 	#update_labels()
 	hide_des_fast()
@@ -242,12 +188,12 @@ func final_damage(_damage: int):
 	return new_damage
 
 
-func final_heal(heal):
-	return heal
+func final_heal(_heal):
+	return _heal
 
 
-func final_corruption(corruption):
-	return corruption
+func final_corruption(_corruption):
+	return _corruption
 
 
 func get_open_value():
@@ -261,8 +207,8 @@ func get_open_value():
 	return null
 
 
-func final_block(block):
-	return ActionManager.calculate_block(block)
+func final_block(_block):
+	return ActionManager.calculate_block(_block)
 
 
 func rotate_in_hand() -> void:
@@ -281,8 +227,7 @@ func rotate_in_hand() -> void:
 	top.slots_rotation = -rotation_degrees
 	bottom.slots_rotation = -rotation_degrees
 
-func rotate_to_match(required_value:int, dir:int):
-
+func rotate_to_match(required_value: int, dir: int):
 	var angle = 0
 
 	match dir:
@@ -315,7 +260,7 @@ func reset_rotation():
 	if bottom:
 		bottom.slots_rotation = angle
 
-func rotate_by_slot(connect_from:int, flow:int, connected_side:int):
+func rotate_by_slot(connect_from: int, flow: int, connected_side: int):
 
 	var angle := 0
 
@@ -518,17 +463,26 @@ func hide_des_fast():
 
 func update_labels():
 	await get_tree().process_frame
+	
 	if template != null:
-		var tooltip = get_tooltip_for_type(template.a_type)
-		if template.a_type != template.b_type:
-			var tooltip2 = get_tooltip_for_type(template.b_type)
-			if not tooltip2.is_empty():
+		var tooltip := ""
+		var unique_types := PackedStringArray()
+		for type: String in a_types:
+			if not unique_types.has(type):
+				unique_types.push_back(type)
+		for type: String in b_types:
+			if not unique_types.has(type):
+				unique_types.push_back(type)
+		var i := 0
+		for type: String in unique_types:
+			if i > 0:
 				tooltip += " "
-				tooltip += tooltip2
+			tooltip += get_tooltip_for_type(type)
+			i += 1
 		tooltip_panel.description = tooltip
-		pass
 	else:
 		tooltip_panel.description = ""
+
 
 func add_to_special_val(type: String, value: int):
 	if val.has(type):
@@ -536,7 +490,14 @@ func add_to_special_val(type: String, value: int):
 	else:
 		val[type] = value
 
-func parse_template_type(index: int, key: String, value: int):
+
+func push_symbol(index: int, key: String, value: int):
+	if DominoTemplate.type_to_string.has(key):
+		for domino_type in DominoTemplate.type_to_string[key]:
+			if domino_type in domino_types:
+				continue
+			domino_types.push_back(domino_type)
+	
 	if not tags.has(key):
 		tags.push_back(key)
 	match key:
@@ -605,24 +566,19 @@ func parse_template_type(index: int, key: String, value: int):
 			if not Signals.fight_started.is_connected(on_fight_started):
 				Signals.fight_started.connect(on_fight_started.bind(key))
 	
-	
-	
-	#if DominoTemplate.type_to_tex.has(key):
-		#var textures = DominoTemplate.type_to_tex[key]
-		#if textures.has(value):
-			#icons[index].texture = textures[value]
-	
-	#var empty_slots = a_empty_slots if index == 0 else b_empty_slots
-	#if empty_slots > 0 and empty_slots <= 4:
-	#	empty_slots_icons[index].texture = DominoTemplate.slot_to_tex[empty_slots]
-	#else:
-	#	empty_slots_icons[index].texture = null
+	if index == 0:
+		top.push_symbol(key)
+	else:
+		bottom.push_symbol(key)
+
 
 func on_fight_started(key: String):
-	if a_type == "claws":
-		vals[0][key] = buffered_values[0]
-	if b_type == "claws":
-		vals[1][key] = buffered_values[1]
+	#if a_type == "claws":
+	#	vals[0][key] = buffered_values[0]
+	#if b_type == "claws":
+	#	vals[1][key] = buffered_values[1]
+	pass
+
 
 func play(domino: Domino):
 	if domino == self:
@@ -672,15 +628,15 @@ func add_action() -> void:
 					ActionManager.add(AttackAction.new(self, Global.enemy, val[key]))
 				"corrupted_stuff":
 					ActionManager.add(CorruptedStuffAction.new(self, Global.enemy))
-				"skull_4x":
+				"skull":
 					ActionManager.add(SkullsAction.new(self, Global.enemy))
 		
-		if a_type == "claws":
-			ActionManager.add(AttackAction.new(self, Global.enemy, vals[0]["claws"]))
-			vals[0]["claws"] += 4
-		if b_type == "claws":
-			ActionManager.add(AttackAction.new(self, Global.enemy, vals[1]["claws"]))
-			vals[1]["claws"] += 4
+		#if a_type == "claws":
+			#ActionManager.add(AttackAction.new(self, Global.enemy, vals[0]["claws"]))
+			#vals[0]["claws"] += 4
+		#if b_type == "claws":
+			#ActionManager.add(AttackAction.new(self, Global.enemy, vals[1]["claws"]))
+			#vals[1]["claws"] += 4
 
 func get_tooltip_for_type(key: String) -> String:
 	
@@ -734,15 +690,15 @@ func get_tooltip_for_type(key: String) -> String:
 			return TextFormatter.insert_colored_value(tr("dm_dark_sphere_des"), final_corruption(corruption), corruption)
 		"claws":
 			var v := 0
-			if a_type == key:
-				if vals[0].has(key):
-					v += vals[0][key]
-			if b_type == key:
-				if vals[1].has(key):
-					v += vals[1][key]
+			#if a_type == key:
+				#if vals[0].has(key):
+					#v += vals[0][key]
+			#if b_type == key:
+				#if vals[1].has(key):
+					#v += vals[1][key]
 			
 			return TextFormatter.insert_colored_value(tr("dm_claws_des"), final_damage(v), v)
-		"skull_4x":
+		"skull":
 			var damage_4d = DominoManager.value4_played_dominoes * 2
 			return TextFormatter.insert_colored_value(tr("4value_attack_des"), final_damage(damage_4d), damage_4d)
 	return ""

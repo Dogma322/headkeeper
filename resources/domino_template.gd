@@ -1,11 +1,11 @@
 extends Resource
 class_name DominoTemplate
 
-@export_range(1, 4) var a: int = 1
-@export_range(1, 4) var b: int = 1
+@export var a_types: PackedStringArray
+@export var b_types: PackedStringArray
 
-@export var a_type: String
-@export var b_type: String
+@export_enum("red", "blue", "green") var a_color: String = "red"
+@export_enum("red", "blue", "green") var b_color: String = "red"
 
 static var color_storage = {
 	"RED": "red",
@@ -18,8 +18,6 @@ static var color_to_modulate = {
 	color_storage.BLUE : Color.html("#3E6D9E"),
 	color_storage.GREEN : Color.html("#378D47"),
 }
-
-
 
 static var type_to_color = {
 	"attack": color_storage.RED,
@@ -48,7 +46,7 @@ static var type_to_color = {
 	"corrupted_stuff": color_storage.GREEN,
 	"corrupted_sphere": color_storage.GREEN,
 	"claws": color_storage.RED,
-	"skull_4x": color_storage.RED,
+	"skull": color_storage.RED,
 }
 
 static var type_to_string = {
@@ -72,7 +70,7 @@ static var type_to_string = {
 	"corrupted_stuff": ["Skill"],
 	"corrupted_sphere": ["Skill"],
 	"claws": ["Attack"],
-	"skull_4x": ["Attack"],
+	"skull": ["Attack"],
 }
 
 static var slot_to_tex = {
@@ -176,7 +174,7 @@ static var type_to_tex = {
 	"claws": {
 		2: preload("res://assets/Dominoes/Components/claws_2.atlastex")
 	},
-	"skull_4x": {
+	"skull": {
 		4: preload("res://assets/Dominoes/Components/skull_4.atlastex"),
 	}
 }

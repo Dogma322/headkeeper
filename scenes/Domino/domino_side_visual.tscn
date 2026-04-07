@@ -2,12 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dp5xe8tpb4qa5" path="res://scenes/Domino/domino_side_visual.gd" id="1_mrbo6"]
 [ext_resource type="Texture2D" uid="uid://mt585p6at0hh" path="res://assets/Dominoes/Blocks/top_red_block.atlastex" id="2_mrbo6"]
-[ext_resource type="Texture2D" uid="uid://468nrb57y3h8" path="res://assets/Dominoes/Symbols/attack_red.atlastex" id="3_mrbo6"]
-[ext_resource type="Texture2D" uid="uid://44b0p5c54vj4" path="res://assets/Dominoes/Symbols/defense_red.atlastex" id="3_teot0"]
+[ext_resource type="Texture2D" uid="uid://5gddgjrtvseu" path="res://assets/Dominoes/Symbols/slot_red.atlastex" id="3_leip2"]
 
 [node name="DominoSideVisual" type="Node2D" unique_id=730110398]
 script = ExtResource("1_mrbo6")
-slots_rotation = null
 
 [node name="SideSprite" type="Sprite2D" parent="." unique_id=1637365802]
 texture = ExtResource("2_mrbo6")
@@ -17,7 +15,7 @@ unique_name_in_owner = true
 
 [node name="SlotSprite" type="Sprite2D" parent="One" unique_id=1477750021]
 position = Vector2(0, 1)
-texture = ExtResource("3_teot0")
+texture = ExtResource("3_leip2")
 
 [node name="Two" type="Node2D" parent="." unique_id=1441494071]
 unique_name_in_owner = true
@@ -25,11 +23,11 @@ visible = false
 
 [node name="SlotSprite" type="Sprite2D" parent="Two" unique_id=1086357118]
 position = Vector2(-7, 1)
-texture = ExtResource("3_teot0")
+texture = ExtResource("3_leip2")
 
 [node name="SlotSprite2" type="Sprite2D" parent="Two" unique_id=1716520183]
 position = Vector2(7, 1)
-texture = ExtResource("3_teot0")
+texture = ExtResource("3_leip2")
 
 [node name="Three" type="Node2D" parent="." unique_id=126633209]
 unique_name_in_owner = true
@@ -37,15 +35,15 @@ visible = false
 
 [node name="SlotSprite" type="Sprite2D" parent="Three" unique_id=1527821758]
 position = Vector2(-7, -6)
-texture = ExtResource("3_mrbo6")
+texture = ExtResource("3_leip2")
 
 [node name="SlotSprite2" type="Sprite2D" parent="Three" unique_id=1011949022]
 position = Vector2(7, -6)
-texture = ExtResource("3_mrbo6")
+texture = ExtResource("3_leip2")
 
 [node name="SlotSprite3" type="Sprite2D" parent="Three" unique_id=1746761724]
 position = Vector2(0, 8)
-texture = ExtResource("3_mrbo6")
+texture = ExtResource("3_leip2")
 
 [node name="Four" type="Node2D" parent="." unique_id=238837483]
 unique_name_in_owner = true
@@ -53,16 +51,16 @@ visible = false
 
 [node name="SlotSprite" type="Sprite2D" parent="Four" unique_id=74678581]
 position = Vector2(-7, -6)
-texture = ExtResource("3_teot0")
+texture = ExtResource("3_leip2")
 
 [node name="SlotSprite2" type="Sprite2D" parent="Four" unique_id=1881741453]
 position = Vector2(7, -6)
-texture = ExtResource("3_teot0")
+texture = ExtResource("3_leip2")
 
 [node name="SlotSprite3" type="Sprite2D" parent="Four" unique_id=1680808551]
 position = Vector2(-7, 8)
-texture = ExtResource("3_teot0")
+texture = ExtResource("3_leip2")
 
 [node name="SlotSprite4" type="Sprite2D" parent="Four" unique_id=149287524]
 position = Vector2(7, 8)
-texture = ExtResource("3_teot0")
+texture = ExtResource("3_leip2")
