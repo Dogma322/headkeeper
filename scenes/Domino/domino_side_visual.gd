@@ -98,11 +98,11 @@ static var special_to_tex = {
 		type = value
 		update_slot_graphics()
 
-@export var rotated: bool = false:
+@export var slots_rotation: int = false:
 	set(value):
-		if rotated == value:
+		if slots_rotation == value:
 			return
-		rotated = value
+		slots_rotation = value
 		update_slot_sets()
 
 func update_side_graphics() -> void:
@@ -117,18 +117,22 @@ func update_side_graphics() -> void:
 func update_slot_sets():
 	for slot_set in slot_sets:
 		if is_instance_valid(slot_set):
+			slot_set.rotation_degrees = slots_rotation
+			#print(slot_set.rotation_degrees)
 			
-			slot_set.rotation_degrees = 180 if rotated else 0
-			if rotated:
-				if side:
-					slot_set.position.y = 0
-				else:
-					slot_set.position.y = 2
-			else:
-				if side:
-					slot_set.position.y = -2
-				else:
-					slot_set.position.y = 0
+			#slot_set.position.x = 0
+			#slot_set.position.y = 0
+			#
+			#match slot_set.rotation_degrees:
+				#0.0:
+					#if side:
+						#slot_set.position.y = -2
+				#-90.0:
+					#slot_set.position.x = -1
+					#slot_set.position.y = 0
+				#-180.0:
+					#if not side:
+						#slot_set.position.y = 2
 
 func update_slot_count() -> void:
 	if slot_sets == null:

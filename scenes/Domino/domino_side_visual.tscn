@@ -7,6 +7,7 @@
 
 [node name="DominoSideVisual" type="Node2D" unique_id=730110398]
 script = ExtResource("1_mrbo6")
+slots_rotation = null
 
 [node name="SideSprite" type="Sprite2D" parent="." unique_id=1637365802]
 texture = ExtResource("2_mrbo6")

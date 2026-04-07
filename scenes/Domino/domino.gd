@@ -278,8 +278,8 @@ func rotate_in_hand() -> void:
 	rotation_degrees = angle % 360
 	tooltip_stack.global_position = global_position - Vector2(61, 81)
 	
-	top.rotated = !connected_side
-	bottom.rotated = !connected_side
+	top.slots_rotation = -rotation_degrees
+	bottom.slots_rotation = -rotation_degrees
 
 func rotate_to_match(required_value:int, dir:int):
 
@@ -299,7 +299,9 @@ func rotate_to_match(required_value:int, dir:int):
 		angle += 180
 
 	rotation_degrees = angle % 360
-
+	
+	top.slots_rotation = -rotation_degrees
+	bottom.slots_rotation = -rotation_degrees
 
 func reset_rotation():
 	var angle = 0
@@ -307,7 +309,11 @@ func reset_rotation():
 		angle = 180
 	# Сбрасываем основное вращение домино
 	rotation_degrees = angle
-
+	# Сбрасываем вращение иконок
+	if top:
+		top.slots_rotation = angle
+	if bottom:
+		bottom.slots_rotation = angle
 
 func rotate_by_slot(connect_from:int, flow:int, connected_side:int):
 
@@ -332,7 +338,8 @@ func rotate_by_slot(connect_from:int, flow:int, connected_side:int):
 	rotation_degrees = angle % 360
 
 	# 🔥 фикс иконок
-
+	top.slots_rotation = -rotation_degrees
+	bottom.slots_rotation = -rotation_degrees
 
 func _on_area_2d_input_event(_viewport, event, _shape):
 	if event is InputEventMouseButton:
