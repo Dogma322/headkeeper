@@ -75,11 +75,31 @@ static var type_to_tex = {
 		"blue": preload("res://assets/Dominoes/Symbols/mace_blue.atlastex"),
 		"green": preload("res://assets/Dominoes/Symbols/mace_green.atlastex"),
 	},
+	"shield": {
+		"red": preload("res://assets/Dominoes/Symbols/shield_red.atlastex"),
+		"blue": preload("res://assets/Dominoes/Symbols/shield_blue.atlastex"),
+		"green": preload("res://assets/Dominoes/Symbols/shield_green.atlastex"),
+	},
+	"shield_strike": {
+		"red": preload("res://assets/Dominoes/Symbols/shield_strike_red.atlastex"),
+		"blue": preload("res://assets/Dominoes/Symbols/shield_strike_blue.atlastex"),
+		"green": preload("res://assets/Dominoes/Symbols/shield_strike_green.atlastex"),
+	},
+	"skull": {
+		"red": preload("res://assets/Dominoes/Symbols/skull_red.atlastex"),
+		"blue": preload("res://assets/Dominoes/Symbols/skull_blue.atlastex"),
+		"green": preload("res://assets/Dominoes/Symbols/skull_green.atlastex"),
+	},
 	"spear": {
 		"red": preload("res://assets/Dominoes/Symbols/spear_red.atlastex"),
 		"blue": preload("res://assets/Dominoes/Symbols/spear_blue.atlastex"),
 		"green": preload("res://assets/Dominoes/Symbols/spear_green.atlastex"),
 	},
+	"thorned_shield": {
+		"red": preload("res://assets/Dominoes/Symbols/thorned_shield_red.atlastex"),
+		"blue": preload("res://assets/Dominoes/Symbols/thorned_shield_blue.atlastex"),
+		"green": preload("res://assets/Dominoes/Symbols/thorned_shield_green.atlastex"),
+	}
 }
 
 static var special_to_tex = {
@@ -100,6 +120,9 @@ static var special_to_tex = {
 			return
 		color = value
 		update_side()
+		if not pending_update:
+			pending_update = true
+			update_slots.call_deferred()
 
 @export_range(1, 4) var count: int = 1:
 	set(value):
@@ -110,7 +133,7 @@ static var special_to_tex = {
 		init_slots()
 		update_slots()
 
-@export var slots_rotation: int = false:
+@export var slots_rotation: float = 0.0:
 	set(value):
 		if slots_rotation == value:
 			return
@@ -148,6 +171,12 @@ func push_symbol(symbol: String) -> void:
 	var slot = get_free_slot()
 	if slot != null:
 		slot.type = symbol
+	if not pending_update:
+		pending_update = true
+		update_slots.call_deferred()
+
+func remove_symbol(index: int) -> void:
+	slots[index].type = "empty"
 	if not pending_update:
 		pending_update = true
 		update_slots.call_deferred()

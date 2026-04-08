@@ -103,6 +103,7 @@ offset_bottom = 100.0
 
 [node name="AcceptButton" parent="VBoxContainer" unique_id=885226573 instance=ExtResource("9_il8bo")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Подтвердить"
 font_size = 3
@@ -115,10 +116,17 @@ text = "Change Number"
 font_size = 3
 disabled = false
 
-[node name="ChangeSignButton" parent="VBoxContainer" unique_id=228914351 instance=ExtResource("9_il8bo")]
+[node name="AddRandomSymbolButton" parent="VBoxContainer" unique_id=228914351 instance=ExtResource("9_il8bo")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Change Sign"
+text = "Add Random Symbol"
+font_size = 3
+disabled = false
+
+[node name="RemoveRandomSymbolButton" parent="VBoxContainer" unique_id=1308246978 instance=ExtResource("9_il8bo")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Remove Random Symbol"
 font_size = 3
 disabled = false
 
@@ -131,6 +139,7 @@ disabled = false
 
 [node name="RerollButton" parent="VBoxContainer" unique_id=1519040811 instance=ExtResource("9_il8bo")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Reroll"
 font_size = 3
@@ -166,6 +175,7 @@ metadata/_edit_lock_ = true
 [connection signal="pressed" from="Layout/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ChangeNumberButton" to="." method="_on_change_number_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ChangeSignButton" to="." method="_on_change_sign_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/AddRandomSymbolButton" to="." method="_on_add_random_symbol_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/RemoveRandomSymbolButton" to="." method="_on_remove_random_symbol_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ChangeColorButton" to="." method="_on_change_color_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/RerollButton" to="." method="_on_reroll_button_pressed"]

@@ -14,6 +14,8 @@ extends Node2D
 @export var a_types: PackedStringArray
 @export var b_types: PackedStringArray
 
+@onready var ab_types = [a_types, b_types]
+
 var a_color: String:
 	set(value):
 		a_color = value
@@ -92,9 +94,11 @@ func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> 
 		a = a_settings.types.size()
 		
 		a_types.clear()
+		for i in range(a):
+			a_types.push_back("empty")
+		
 		for type in a_settings.types:
-			a_types.push_back(type)
-			push_symbol(0, type, 1)
+			push_symbol(0, type)
 		
 		if a_settings.color != "":
 			a_color = a_settings.color
@@ -103,9 +107,11 @@ func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> 
 		b = b_settings.types.size()
 		
 		b_types.clear()
+		for i in range(b):
+			b_types.push_back("empty")
+		
 		for type in b_settings.types:
-			b_types.push_back(type)
-			push_symbol(1, type, 1)
+			push_symbol(1, type)
 		
 		if b_settings.color != "":
 			b_color = b_settings.color
@@ -321,8 +327,9 @@ func _on_area_2d_input_event(_viewport, event, _shape):
 					
 				if slot:
 					slot.remove_chain()
-					#Hand.add_domino(self)
-				start_drag()
+					#Hand.add_domino(self
+				else:
+					start_drag()
 			else:
 				stop_drag()
 
@@ -490,8 +497,101 @@ func add_to_special_val(type: String, value: int):
 	else:
 		val[type] = value
 
+func remove_from_special_val(type: String, value):
+	if val.has(type):
+		val[type] -= value
+		if val[type] == 0:
+			val.erase(type)
 
-func push_symbol(index: int, key: String, value: int):
+func has_empty_slot(side: int):
+	for type in (a_types if side == 0 else b_types):
+		if type == "empty":
+			return true
+	return false
+
+
+func remove_symbol(side: int, index: int):
+	var arr: PackedStringArray = ab_types[side]
+	var key: String = arr[index]
+	arr[index] = "empty"
+	
+	match key:
+		"attack":
+			damage -= 1
+		"attack2":
+			damage -= 2
+		"defense":
+			block -= 1
+		"heal":
+			heal -= 1
+		"draw":
+			draw_param -= 1
+		"corruption":
+			corruption -= 1
+		"vulnerable":
+			vulnerable -= 1
+		"weak":
+			weak -= 1
+		"fury":
+			fury -= 1
+		"thorns":
+			thorns -= 1
+		"spear":
+			damage -= 3
+		"thorned_shield":
+			block -= 2
+		"shield_strike":
+			block -= 2
+		"shield":
+			block -= 3
+		"repeat":
+			remove_from_special_val(key, 1)
+		"mace":
+			remove_from_special_val(key, 3)
+		"horn":
+			remove_from_special_val(key, 1)
+		"crit":
+			remove_from_special_val(key, 1)
+		"dagger":
+			remove_from_special_val(key, 8)
+		"corrupted_sphere":
+			corruption -= 2
+		"claws":
+			pass
+	
+	var found := false
+	for types: PackedStringArray in ab_types:
+		if key in types:
+			found = true
+			break
+	
+	if not found:
+		tags.erase(key)
+		domino_types.clear()
+		for types: PackedStringArray in ab_types:
+			for type: String in types:
+				if DominoTemplate.type_to_string.has(type):
+					for domino_type in DominoTemplate.type_to_string[type]:
+						if domino_type in domino_types:
+							continue
+						domino_types.push_back(domino_type)
+	
+	if side == 0:
+		top.remove_symbol(index)
+	else:
+		bottom.remove_symbol(index)
+	
+
+func push_symbol(side: int, key: String):
+	if not has_empty_slot(side):
+		# Уберем случайный символ.
+		remove_symbol(side, randi_range(0, (a - 1) if side == 0 else (b - 1)))
+	
+	for i in range(ab_types[side].size()):
+		if ab_types[side][i] == "empty":
+			ab_types[side][i] = key
+			break
+	
 	if DominoTemplate.type_to_string.has(key):
 		for domino_type in DominoTemplate.type_to_string[key]:
 			if domino_type in domino_types:
@@ -502,71 +602,71 @@ func push_symbol(index: int, key: String, value: int):
 		tags.push_back(key)
 	match key:
 		"attack":
-			damage += value
+			damage += 1
 		"attack2":
-			damage += value * 2
+			damage += 2
 		"defense":
-			block += value
+			block += 1
 		"heal":
-			heal += value
+			heal += 1
 		"draw":
-			draw_param += value
+			draw_param += 1
 		"corruption":
-			corruption += value
+			corruption += 1
 			set_additional_tooltip("Corruption")
 		"vulnerable":
-			vulnerable += value
+			vulnerable += 1
 			set_additional_tooltip("Vulnerable")
 		"weak":
-			weak += value
+			weak += 1
 			set_additional_tooltip("Weak")
 		"fury":
-			fury += value
+			fury += 1
 			set_additional_tooltip("Fury")
 		"thorns":
-			thorns += value
+			thorns += 1
 			set_additional_tooltip("Thorns")
 		"spear":
-			damage += value * 3
+			damage += 3
 			if not Signals.attack_dm_played.is_connected(play):
 				Signals.attack_dm_played.connect(play)
 		"thorned_shield":
-			block += value * 2
+			block += 2
 			if not Signals._2dm_played.is_connected(play):
 				Signals._2dm_played.connect(play)
 		"shield_strike":
-			block += value * 2
+			block += 2
 		"shield":
-			block += value * 3
+			block += 3
 			if not Signals.defense_dm_played.is_connected(play):
 				Signals.defense_dm_played.connect(play)
 		"repeat":
-			add_to_special_val(key, value)
+			add_to_special_val(key, 1)
 		"mace":
-			add_to_special_val(key, value * 3)
+			add_to_special_val(key, 3)
 		"horn":
-			add_to_special_val(key, value)
+			add_to_special_val(key, 1)
 			if not Signals._3dm_played.is_connected(play):
 				Signals._3dm_played.connect(play)
 		"crit":
-			add_to_special_val(key, value)
+			add_to_special_val(key, 1)
 		"dagger":
-			add_to_special_val(key, value * 8)
+			add_to_special_val(key, 8)
 			if not Signals.hero_healed.is_connected(play):
 				Signals.hero_healed.connect(play.bind(null))
 		"corrupted_stuff":
 			pass
 		"corrupted_sphere":
-			corruption += value * 2
+			corruption += 2
 			if not Signals.skill_dm_played.is_connected(play):
 				Signals.skill_dm_played.connect(play)
 		"claws":
-			buffered_values[index] = value * 4
-			add_to_special_val(key, value * 4)
+			buffered_values[side] = 4
+			add_to_special_val(key, 4)
 			if not Signals.fight_started.is_connected(on_fight_started):
 				Signals.fight_started.connect(on_fight_started.bind(key))
 	
-	if index == 0:
+	if side == 0:
 		top.push_symbol(key)
 	else:
 		bottom.push_symbol(key)
