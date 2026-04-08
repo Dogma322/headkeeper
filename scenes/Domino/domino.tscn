@@ -15,13 +15,11 @@ script = ExtResource("1_flni0")
 [node name="Top" parent="Visual" unique_id=730110398 instance=ExtResource("2_c0hci")]
 unique_name_in_owner = true
 position = Vector2(0, -16)
-slots_rotation = 0
 
 [node name="Bottom" parent="Visual" unique_id=1605318519 instance=ExtResource("2_c0hci")]
 unique_name_in_owner = true
 position = Vector2(0, 16)
 side = true
-slots_rotation = 0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1733465482]
 

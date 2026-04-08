@@ -39,15 +39,6 @@ var drag_offset := Vector2.ZERO
 
 var domino_types = ["Attack"]
 
-var damage := 0
-var block := 0
-var heal := 0
-var corruption := 0
-var vulnerable := 0
-var weak := 0
-var draw_param := 0
-var fury := 0
-var thorns := 0
 var val := {}
 var tags := []
 
@@ -62,8 +53,8 @@ var domino_choice = false
 var deleted = false
 
 @onready var aim_marker = $AimMarker
-@onready var top: DominoSide = $Visual/Top
-@onready var bottom: DominoSide = $Visual/Bottom
+@onready var top: DominoSideVisual = $Visual/Top
+@onready var bottom: DominoSideVisual = $Visual/Bottom
 
 @onready var dm_name: String
 @onready var description: String = ""
@@ -451,11 +442,11 @@ func show_des():
 	if dragging:
 		return
 	update_labels()
-	tooltip_stack.global_position = global_position - Vector2(61, 81)
+	
 	for panel in tooltip_stack.get_children():
 		if panel is TooltipPanel:
-			panel.show_tooltip(true)
-
+			await panel.show_tooltip(true)
+	tooltip_stack.global_position = global_position - Vector2(61, 32) - Vector2(0, tooltip_stack.get_child(0).size.y)
 
 func hide_des():
 	for panel in tooltip_stack.get_children():
@@ -483,8 +474,11 @@ func update_labels():
 		var i := 0
 		for type: String in unique_types:
 			if i > 0:
-				tooltip += " "
-			tooltip += get_tooltip_for_type(type)
+				tooltip += "\n"
+			if DominoSideVisual.type_to_tex.has(type):
+				tooltip += "[img]%s[/img] - %s" % [DominoSideVisual.type_to_tex[type]["red"].resource_path, get_tooltip_for_type(type)]
+			elif DominoSideVisual.special_to_tex.has(type):
+				tooltip += "[img]%s[/img] - %s" % [DominoSideVisual.special_to_tex[type].resource_path, get_tooltip_for_type(type)]
 			i += 1
 		tooltip_panel.description = tooltip
 	else:
@@ -517,33 +511,33 @@ func remove_symbol(side: int, index: int):
 	
 	match key:
 		"attack":
-			damage -= 1
+			remove_from_special_val(key, 1)
 		"attack2":
-			damage -= 2
+			remove_from_special_val(key, 2)
 		"defense":
-			block -= 1
+			remove_from_special_val(key, 1)
 		"heal":
-			heal -= 1
+			remove_from_special_val(key, 1)
 		"draw":
-			draw_param -= 1
+			remove_from_special_val(key, 1)
 		"corruption":
-			corruption -= 1
+			remove_from_special_val(key, 1)
 		"vulnerable":
-			vulnerable -= 1
+			remove_from_special_val(key, 1)
 		"weak":
-			weak -= 1
+			remove_from_special_val(key, 1)
 		"fury":
-			fury -= 1
+			remove_from_special_val(key, 1)
 		"thorns":
-			thorns -= 1
+			remove_from_special_val(key, 1)
 		"spear":
-			damage -= 3
+			remove_from_special_val(key, 3)
 		"thorned_shield":
-			block -= 2
+			remove_from_special_val(key, 2)
 		"shield_strike":
-			block -= 2
+			remove_from_special_val(key, 2)
 		"shield":
-			block -= 3
+			remove_from_special_val(key, 3)
 		"repeat":
 			remove_from_special_val(key, 1)
 		"mace":
@@ -555,7 +549,7 @@ func remove_symbol(side: int, index: int):
 		"dagger":
 			remove_from_special_val(key, 8)
 		"corrupted_sphere":
-			corruption -= 2
+			remove_from_special_val(key, 2)
 		"claws":
 			pass
 	
@@ -565,8 +559,30 @@ func remove_symbol(side: int, index: int):
 			found = true
 			break
 	
-	if not found:
+	if not found: # Полное удаление типа со всех сторон.
 		tags.erase(key)
+		
+		# Отсоединим сигналы.
+		match key:
+			"claws":
+				if Signals.fight_started.is_connected(on_fight_started):
+					Signals.fight_started.disconnect(on_fight_started)
+			"corrupted_sphere":
+				if Signals.skill_dm_played.is_connected(play):
+					Signals.skill_dm_played.disconnect(play)
+			"dagger":
+				if Signals.hero_healed.is_connected(play):
+					Signals.hero_healed.disconnect(play)
+			"shield":
+				if Signals.defense_dm_played.is_connected(play):
+					Signals.defense_dm_played.disconnect(play)
+			"spear":
+				if Signals.attack_dm_played.is_connected(play):
+					Signals.attack_dm_played.disconnect(play)
+			"thorned_shield":
+				if Signals._2dm_played.is_connected(play):
+					Signals._2dm_played.disconnect(play)
+		
 		domino_types.clear()
 		for types: PackedStringArray in ab_types:
 			for type: String in types:
@@ -602,42 +618,42 @@ func push_symbol(side: int, key: String):
 		tags.push_back(key)
 	match key:
 		"attack":
-			damage += 1
+			add_to_special_val(key, 1)
 		"attack2":
-			damage += 2
+			add_to_special_val(key, 2)
 		"defense":
-			block += 1
-		"heal":
-			heal += 1
+			add_to_special_val(key, 1)
 		"draw":
-			draw_param += 1
+			add_to_special_val(key, 1)
+		"heal":
+			add_to_special_val(key, 1)
 		"corruption":
-			corruption += 1
+			add_to_special_val(key, 1)
 			set_additional_tooltip("Corruption")
 		"vulnerable":
-			vulnerable += 1
+			add_to_special_val(key, 1)
 			set_additional_tooltip("Vulnerable")
 		"weak":
-			weak += 1
+			add_to_special_val(key, 1)
 			set_additional_tooltip("Weak")
 		"fury":
-			fury += 1
+			add_to_special_val(key, 1)
 			set_additional_tooltip("Fury")
 		"thorns":
-			thorns += 1
+			add_to_special_val(key, 1)
 			set_additional_tooltip("Thorns")
 		"spear":
-			damage += 3
+			add_to_special_val(key, 3)
 			if not Signals.attack_dm_played.is_connected(play):
 				Signals.attack_dm_played.connect(play)
 		"thorned_shield":
-			block += 2
+			add_to_special_val(key, 2)
 			if not Signals._2dm_played.is_connected(play):
 				Signals._2dm_played.connect(play)
 		"shield_strike":
-			block += 2
+			add_to_special_val(key, 2)
 		"shield":
-			block += 3
+			add_to_special_val(key, 3)
 			if not Signals.defense_dm_played.is_connected(play):
 				Signals.defense_dm_played.connect(play)
 		"repeat":
@@ -654,10 +670,8 @@ func push_symbol(side: int, key: String):
 			add_to_special_val(key, 8)
 			if not Signals.hero_healed.is_connected(play):
 				Signals.hero_healed.connect(play.bind(null))
-		"corrupted_stuff":
-			pass
 		"corrupted_sphere":
-			corruption += 2
+			add_to_special_val(key, 2)
 			if not Signals.skill_dm_played.is_connected(play):
 				Signals.skill_dm_played.connect(play)
 		"claws":
@@ -688,29 +702,24 @@ func play(domino: Domino):
 
 func add_action() -> void:
 	if template != null:
-		if damage > 0:
-			ActionManager.add(AttackAction.new(self, Global.enemy, damage))
-		if block > 0:
-			ActionManager.add(BlockAction.new(self, Global.hero, block))
-		if heal > 0:
-			ActionManager.add(HealAction.new(self, Global.hero, heal))
-		if fury > 0:
-			ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.fury, fury))
-		if thorns > 0:
-			ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.thorns, thorns))
-		if draw_param > 0:
-			ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.draw, draw_param))
-		if corruption > 0:
-			ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.corruption, corruption))
-		if vulnerable > 0:
-			ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.vulnerable, vulnerable))
-		if weak > 0:
-			ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.weak, weak))
-		
 		for key in tags:
 			match key:
+				"attack", "attack2", "dagger", "spear":
+					ActionManager.add(AttackAction.new(self, Global.enemy, val[key]))
+				"corruption", "corrupted_sphere":
+					ActionManager.add(DebuffAction.new(self, Global.enemy, val[key], val[key]))
+				"defense":
+					ActionManager.add(BlockAction.new(self, Global.hero, val[key]))
+				"draw":
+					ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.draw, val[key]))
+				"fury":
+					ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.fury, val[key]))
+				"heal":
+					ActionManager.add(HealAction.new(self, Global.hero, val[key]))
+				"thorns":
+					ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.thorns, val[key]))
 				"thorned_shield":
-					ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.thorns, block))
+					ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.thorns, val[key]))
 				"shield_strike":
 					ActionManager.add(ShieldStrikeAction.new(self, Global.enemy))
 				"repeat":
@@ -724,12 +733,14 @@ func add_action() -> void:
 					ActionManager.add(HammerAction.new(self, Global.enemy))
 				"crit":
 					ActionManager.add(BuffAction.new(self, Global.hero,StatusManager.crit, val[key]))
-				"dagger":
-					ActionManager.add(AttackAction.new(self, Global.enemy, val[key]))
 				"corrupted_stuff":
 					ActionManager.add(CorruptedStuffAction.new(self, Global.enemy))
 				"skull":
 					ActionManager.add(SkullsAction.new(self, Global.enemy))
+				"vulnerable":
+					ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.vulnerable, val[key]))
+				"weak":
+					ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.weak, val[key]))
 		
 		#if a_type == "claws":
 			#ActionManager.add(AttackAction.new(self, Global.enemy, vals[0]["claws"]))
@@ -739,37 +750,33 @@ func add_action() -> void:
 			#vals[1]["claws"] += 4
 
 func get_tooltip_for_type(key: String) -> String:
-	
-	
 	match key:
 		"attack", "attack2":
-			return TextFormatter.insert_colored_value(tr("attack_des"), final_damage(damage), damage)
-		"defense":
-			return TextFormatter.insert_colored_value(tr("defense_des"), final_block(block), block)
-		"heal":
-			return TextFormatter.highlight_keywords(tr("heal_des") % heal)
+			return TextFormatter.insert_colored_value(tr("attack_des"), final_damage(val[key]), val[key])
 		"corruption":
-			return TextFormatter.insert_colored_value(tr("corruption_des"), corruption, corruption) 
-		"vulnerable":
-			return TextFormatter.highlight_keywords(tr("vulnerable_des") % vulnerable)
-		"weak":
-			return TextFormatter.highlight_keywords(tr("weak_des") % weak)
+			return TextFormatter.insert_colored_value(tr("corruption_des"), val[key], val[key])
+		"defense":
+			return TextFormatter.insert_colored_value(tr("defense_des"), final_block(val[key]), val[key])
 		"draw":
-			match draw_param:
-				1:
-					return tr("draw_1_des")
+			return TextFormatter.highlight_keywords(tr("draw_2+_des") % val[key])
 		"fury":
-			return TextFormatter.highlight_keywords(tr("strength_des") % fury)
+			return TextFormatter.highlight_keywords(tr("strength_des") % val[key])
+		"heal":
+			return TextFormatter.highlight_keywords(tr("heal_des") % val[key])
+		"vulnerable":
+			return TextFormatter.highlight_keywords(tr("vulnerable_des") % val[key])
+		"weak":
+			return TextFormatter.highlight_keywords(tr("weak_des") % val[key])
 		"thorns":
-			return TextFormatter.highlight_keywords(tr("thorns_des") % thorns)
+			return TextFormatter.highlight_keywords(tr("thorns_des") % val[key])
 		"spear":
-			return TextFormatter.insert_colored_value(tr("dm_spear_des"), final_damage(damage), damage)
+			return TextFormatter.insert_colored_value(tr("dm_spear_des"), final_damage(val[key]), val[key])
 		"thorned_shield":
-			return TextFormatter.insert_colored_value(tr("dm_thorned_shield_des"), final_block(block), block)
+			return TextFormatter.insert_colored_value(tr("dm_thorned_shield_des"), final_block(val[key]), val[key])
 		"shield_strike":
 			return TextFormatter.highlight_keywords(tr("dm_shield_strike_des"))
 		"shield":
-			return TextFormatter.insert_colored_value(tr("dm_steel_shield_des"), final_block(block), block)
+			return TextFormatter.insert_colored_value(tr("dm_steel_shield_des"), final_block(val[key]), val[key])
 		"repeat":
 			return TextFormatter.highlight_keywords(tr("dm_repeat_des"))
 		"mace":
@@ -785,9 +792,10 @@ func get_tooltip_for_type(key: String) -> String:
 		"dagger":
 			return TextFormatter.insert_colored_value(tr("dm_dagger_des"), final_damage(val[key]), val[key])
 		"corrupted_stuff":
-			return TextFormatter.insert_colored_value(tr("dm_dark_staff_des"), final_corruption(corruption), corruption)
+			var stuff_damage = DominoManager.value1_played_dominoes + DominoManager.corruption_bonus
+			return TextFormatter.insert_colored_value(tr("dm_dark_staff_des"), final_corruption(stuff_damage), stuff_damage)
 		"corrupted_sphere":
-			return TextFormatter.insert_colored_value(tr("dm_dark_sphere_des"), final_corruption(corruption), corruption)
+			return TextFormatter.insert_colored_value(tr("dm_dark_sphere_des"), final_corruption(val[key]), val[key])
 		"claws":
 			var v := 0
 			#if a_type == key:

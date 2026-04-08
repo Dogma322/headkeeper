@@ -1,6 +1,6 @@
 @tool
 extends Node2D
-class_name DominoSide
+class_name DominoSideVisual
 
 @onready var one: Node2D = %One
 @onready var two: Node2D = %Two
@@ -103,7 +103,17 @@ static var type_to_tex = {
 }
 
 static var special_to_tex = {
-	"vulnerable": preload("res://assets/Dominoes/Symbols/vulnerable.atlastex")
+	"corruption": preload("res://assets/Dominoes/Symbols/corruption.atlastex"),
+	"corrupted_sphere": preload("res://assets/Dominoes/Symbols/corrupted_sphere.atlastex"),
+	"corrupted_stuff": preload("res://assets/Dominoes/Symbols/corrupted_stuff.atlastex"),
+	"crit": preload("res://assets/Dominoes/Symbols/crit.atlastex"),
+	"draw": preload("res://assets/Dominoes/Symbols/draw.atlastex"),
+	"fury": preload("res://assets/Dominoes/Symbols/fury.atlastex"),
+	"horn": preload("res://assets/Dominoes/Symbols/horn.atlastex"),
+	"repeat": preload("res://assets/Dominoes/Symbols/repeat.atlastex"),
+	"thorns": preload("res://assets/Dominoes/Symbols/thorns.atlastex"),
+	"vulnerable": preload("res://assets/Dominoes/Symbols/vulnerable.atlastex"),
+	"weak": preload("res://assets/Dominoes/Symbols/weak.atlastex")
 }
 
 ## false is top, true is bottom
