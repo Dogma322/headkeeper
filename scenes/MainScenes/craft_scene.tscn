@@ -6,7 +6,6 @@
 [ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="3_gu0aw"]
 [ext_resource type="PackedScene" uid="uid://bo8xaqmke5324" path="res://scenes/UI/icon_button.tscn" id="3_jg3uq"]
 [ext_resource type="Texture2D" uid="uid://mjo560ccfs37" path="res://assets/UI/OptionsMenu/ExitButton.png" id="5_a8qar"]
-[ext_resource type="PackedScene" uid="uid://cpolkxs6npnhc" path="res://scenes/Heroes/hero.tscn" id="7_a8qar"]
 [ext_resource type="PackedScene" uid="uid://by7sdoxj5u7k4" path="res://scenes/Boards/board_craft.tscn" id="8_il8bo"]
 [ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="8_ioiea"]
 [ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="9_il8bo"]
@@ -53,6 +52,9 @@ mouse_filter = 2
 script = ExtResource("1_gu0aw")
 
 [node name="BattleBackground" parent="." unique_id=631565350 instance=ExtResource("1_dwva5")]
+visible = false
+is_temp = true
+metadata/_edit_lock_ = true
 
 [node name="Layout" type="MarginContainer" parent="." unique_id=1795268268]
 layout_mode = 1
@@ -70,29 +72,16 @@ metadata/_edit_lock_ = true
 
 [node name="ExitButton" parent="Layout" unique_id=1254142979 instance=ExtResource("3_jg3uq")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("5_a8qar")
 
-[node name="MoneyLabel" type="RichTextLabel" parent="." unique_id=1893411284]
-unique_name_in_owner = true
-layout_mode = 0
-offset_top = 36.0
-offset_right = 48.0
-offset_bottom = 68.0
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("8_ioiea")
-bbcode_enabled = true
-text = "[img]res://assets/Icons/CommonSkull.png[/img]0"
-fit_content = true
-autowrap_mode = 0
-
-[node name="Characters" type="Node2D" parent="." unique_id=514215204]
-
-[node name="Hero" parent="Characters" unique_id=534144501 instance=ExtResource("7_a8qar")]
-position = Vector2(75, 161)
-
 [node name="BoardCraft" parent="." unique_id=183639370 instance=ExtResource("8_il8bo")]
 position = Vector2(318, 149)
+is_temp = true
+
+[node name="Dominoes" type="Node2D" parent="." unique_id=1394107174]
+position = Vector2(0, 207)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1712827494]
 layout_mode = 0
@@ -103,7 +92,6 @@ offset_bottom = 100.0
 
 [node name="AcceptButton" parent="VBoxContainer" unique_id=885226573 instance=ExtResource("9_il8bo")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 text = "Подтвердить"
 font_size = 3

@@ -64,13 +64,15 @@ var deleted = false
 const ADDITIONAL_TOOLTIP_PANEL = preload("uid://dnje7ugtetwov")
 var extra_tooltip_panel: AdditionalTooltipPanel = null
 
-func set_additional_tooltip(type: String) -> void:
+func set_additional_tooltip(type: String, key: String) -> void:
 	if extra_tooltip_panel == null:
 		extra_tooltip_panel = ADDITIONAL_TOOLTIP_PANEL.instantiate()
 		extra_tooltip_panel.type = type
+		extra_tooltip_panel.key = key
 		tooltip_stack.add_child(extra_tooltip_panel)
 	else:
 		extra_tooltip_panel.type = type
+		extra_tooltip_panel.key = key
 
 class SideSettings:
 	var types: PackedStringArray
@@ -485,13 +487,13 @@ func update_labels():
 		tooltip_panel.description = ""
 
 
-func add_to_special_val(type: String, value: int):
+func add(type: String, value: int):
 	if val.has(type):
 		val[type] += value
 	else:
 		val[type] = value
 
-func remove_from_special_val(type: String, value):
+func remove(type: String, value):
 	if val.has(type):
 		val[type] -= value
 		if val[type] == 0:
@@ -511,45 +513,45 @@ func remove_symbol(side: int, index: int):
 	
 	match key:
 		"attack":
-			remove_from_special_val(key, 1)
+			remove(key, 1)
 		"attack2":
-			remove_from_special_val(key, 2)
+			remove(key, 2)
 		"defense":
-			remove_from_special_val(key, 1)
+			remove(key, 1)
 		"heal":
-			remove_from_special_val(key, 1)
+			remove(key, 1)
 		"draw":
-			remove_from_special_val(key, 1)
+			remove(key, 1)
 		"corruption":
-			remove_from_special_val(key, 1)
+			remove(key, 1)
 		"vulnerable":
-			remove_from_special_val(key, 1)
+			remove(key, 1)
 		"weak":
-			remove_from_special_val(key, 1)
+			remove(key, 1)
 		"fury":
-			remove_from_special_val(key, 1)
+			remove(key, 1)
 		"thorns":
-			remove_from_special_val(key, 1)
+			remove(key, 1)
 		"spear":
-			remove_from_special_val(key, 3)
+			remove(key, 3)
 		"thorned_shield":
-			remove_from_special_val(key, 2)
+			remove(key, 2)
 		"shield_strike":
-			remove_from_special_val(key, 2)
+			remove(key, 2)
 		"shield":
-			remove_from_special_val(key, 3)
+			remove(key, 3)
 		"repeat":
-			remove_from_special_val(key, 1)
+			remove(key, 1)
 		"mace":
-			remove_from_special_val(key, 3)
+			remove(key, 3)
 		"horn":
-			remove_from_special_val(key, 1)
+			remove(key, 1)
 		"crit":
-			remove_from_special_val(key, 1)
+			remove(key, 1)
 		"dagger":
-			remove_from_special_val(key, 8)
+			remove(key, 8)
 		"corrupted_sphere":
-			remove_from_special_val(key, 2)
+			remove(key, 2)
 		"claws":
 			pass
 	
@@ -561,6 +563,10 @@ func remove_symbol(side: int, index: int):
 	
 	if not found: # Полное удаление типа со всех сторон.
 		tags.erase(key)
+		
+		if extra_tooltip_panel != null and extra_tooltip_panel.key == key:
+			extra_tooltip_panel.queue_free()
+			extra_tooltip_panel = null
 		
 		# Отсоединим сигналы.
 		match key:
@@ -618,65 +624,65 @@ func push_symbol(side: int, key: String):
 		tags.push_back(key)
 	match key:
 		"attack":
-			add_to_special_val(key, 1)
+			add(key, 1)
 		"attack2":
-			add_to_special_val(key, 2)
+			add(key, 2)
 		"defense":
-			add_to_special_val(key, 1)
+			add(key, 1)
 		"draw":
-			add_to_special_val(key, 1)
+			add(key, 1)
 		"heal":
-			add_to_special_val(key, 1)
+			add(key, 1)
 		"corruption":
-			add_to_special_val(key, 1)
-			set_additional_tooltip("Corruption")
+			add(key, 1)
+			set_additional_tooltip("Corruption", key)
 		"vulnerable":
-			add_to_special_val(key, 1)
-			set_additional_tooltip("Vulnerable")
+			add(key, 1)
+			set_additional_tooltip("Vulnerable", key)
 		"weak":
-			add_to_special_val(key, 1)
-			set_additional_tooltip("Weak")
+			add(key, 1)
+			set_additional_tooltip("Weak", key)
 		"fury":
-			add_to_special_val(key, 1)
-			set_additional_tooltip("Fury")
+			add(key, 1)
+			set_additional_tooltip("Fury", key)
 		"thorns":
-			add_to_special_val(key, 1)
-			set_additional_tooltip("Thorns")
+			add(key, 1)
+			set_additional_tooltip("Thorns", key)
 		"spear":
-			add_to_special_val(key, 3)
+			add(key, 3)
 			if not Signals.attack_dm_played.is_connected(play):
 				Signals.attack_dm_played.connect(play)
 		"thorned_shield":
-			add_to_special_val(key, 2)
+			add(key, 2)
 			if not Signals._2dm_played.is_connected(play):
 				Signals._2dm_played.connect(play)
 		"shield_strike":
-			add_to_special_val(key, 2)
+			add(key, 2)
 		"shield":
-			add_to_special_val(key, 3)
+			add(key, 3)
 			if not Signals.defense_dm_played.is_connected(play):
 				Signals.defense_dm_played.connect(play)
 		"repeat":
-			add_to_special_val(key, 1)
+			add(key, 1)
 		"mace":
-			add_to_special_val(key, 3)
+			add(key, 3)
 		"horn":
-			add_to_special_val(key, 1)
+			add(key, 1)
 			if not Signals._3dm_played.is_connected(play):
 				Signals._3dm_played.connect(play)
 		"crit":
-			add_to_special_val(key, 1)
+			add(key, 1)
 		"dagger":
-			add_to_special_val(key, 8)
+			add(key, 8)
 			if not Signals.hero_healed.is_connected(play):
 				Signals.hero_healed.connect(play.bind(null))
 		"corrupted_sphere":
-			add_to_special_val(key, 2)
+			add(key, 2)
 			if not Signals.skill_dm_played.is_connected(play):
 				Signals.skill_dm_played.connect(play)
 		"claws":
 			buffered_values[side] = 4
-			add_to_special_val(key, 4)
+			add(key, 4)
 			if not Signals.fight_started.is_connected(on_fight_started):
 				Signals.fight_started.connect(on_fight_started.bind(key))
 	

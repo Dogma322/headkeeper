@@ -7,6 +7,8 @@ class_name AdditionalTooltipPanel
 		type = value
 		set_text()
 
+var key: String
+
 func _ready() -> void:
 	super()
 	set_text()

@@ -104,14 +104,24 @@ func update_layout():
 		#domino.move_to_hand(pos)
 		move_to_hand(domino, pos)
 
-		
-		
-		
-		
-		
-		
-func draw_dominoes():
 
+func draw_all_dominoes() -> void:
+	await get_tree().create_timer(0.2).timeout
+	for i in range(DominoManager.temp_deck.size()):
+		if DominoManager.temp_deck.size() == 0 and DominoManager.discard.size() == 0:
+			return
+		
+		var domino = DominoManager.temp_deck.pick_random()
+		DominoManager.temp_deck.erase(domino)
+		
+		if domino.get_parent():
+			domino.get_parent().remove_child(domino)
+			
+		draw_domino(domino)
+		await get_tree().create_timer(0.1).timeout
+
+
+func draw_dominoes() -> void:
 	await get_tree().create_timer(0.2).timeout
 	
 	var draw_count = DominoManager.draw_counter + DominoManager.bonus_draw_counter + DominoManager.head_draw_counter

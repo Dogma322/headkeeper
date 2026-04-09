@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dvp40ynjeto4b"]
+
+[ext_resource type="PackedScene" uid="uid://dq5uno2yympg" path="res://scenes/ActionCards/ActionCardTemplate/action_card_template.tscn" id="1_w4vvf"]
+[ext_resource type="Script" uid="uid://c62m1jo86ym31" path="res://scenes/ActionCards/ac_choose_domino.gd" id="2_w4vvf"]
+[ext_resource type="Texture2D" uid="uid://cp8p88yaaojtb" path="res://assets/ActionCards/Icons/EndlessModeIcon.png" id="3_mvtyf"]
+
+[node name="ac_choose_domino" unique_id=1280652209 instance=ExtResource("1_w4vvf")]
+script = ExtResource("2_w4vvf")
+
+[node name="TextureRect" parent="." index="0" unique_id=577427704]
+texture = ExtResource("3_mvtyf")

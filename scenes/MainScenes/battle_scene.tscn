@@ -55,7 +55,14 @@ shader_parameter/cg_tint = 0.0
 shader_parameter/cg_highlights = 1.0
 shader_parameter/cg_shadows = 1.0
 
-[node name="BattleScene" type="Node2D" unique_id=169254087]
+[node name="BattleScene" type="Control" unique_id=662499199]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_ydxg7")
 
 [node name="BattleBackground" parent="." unique_id=631565350 instance=ExtResource("1_dyrcu")]
@@ -77,6 +84,7 @@ position = Vector2(111, 168)
 position = Vector2(535, 170)
 
 [node name="MainButtonsBox" type="VBoxContainer" parent="." unique_id=1625423660]
+layout_mode = 0
 offset_left = 414.0
 offset_top = -60.0
 offset_right = 510.0
@@ -86,7 +94,7 @@ offset_bottom = -6.0
 unique_name_in_owner = true
 modulate = Color(0.4117647, 0.4117647, 0.4117647, 1)
 layout_mode = 2
-text = "ИГРАТЬ"
+text = "play"
 font_size = 3
 use_darkened = true
 disabled = true
@@ -143,6 +151,7 @@ layout_mode = 2
 center_position = Vector2(111, 116)
 
 [node name="MoneyLabel" type="RichTextLabel" parent="." unique_id=1876316434]
+layout_mode = 0
 offset_right = 48.0
 offset_bottom = 32.0
 mouse_filter = 2
@@ -153,6 +162,7 @@ fit_content = true
 autowrap_mode = 0
 
 [node name="ActionCardContainer" parent="." unique_id=1117680451 instance=ExtResource("13_4d2li")]
+layout_mode = 0
 offset_top = -240.0
 offset_bottom = -82.0
 
@@ -165,7 +175,6 @@ spacing = 100
 
 [node name="Shader" type="Control" parent="." unique_id=2017409977]
 z_index = 999
-layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("19_76b4e")
@@ -187,6 +196,7 @@ position = Vector2(320, 180)
 [node name="DominoListScene" parent="." unique_id=1801682247 instance=ExtResource("9_d56r7")]
 unique_name_in_owner = true
 visible = false
+layout_mode = 1
 offset_right = 640.0
 offset_bottom = 360.0
 

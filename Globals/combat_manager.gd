@@ -185,26 +185,26 @@ func enemy_dead():
 	show_rewards()
 
 func show_rewards():
-	DominoManager.block_domino_input = false
-	show_domino_choice()
+#	DominoManager.block_domino_input = false
+#	show_domino_choice()
 	
 	if MoneyManager.money_rewards.round_rewards.has(stage):
 		MoneyManager.money += MoneyManager.money_rewards.round_rewards[stage]
 	
-	await Signals.domino_selected
-	await get_tree().create_timer(1).timeout
+#	await Signals.domino_selected
+#	await get_tree().create_timer(1).timeout
 	
-	if stage == 1 or stage == 4 or stage == 7:
-		show_head_choice()
-		await Signals.head_selected
-	else:
-		show_action_cards()
-		await Signals.action_card_selected
+	show_common_cards()
+	
+	#if stage == 1 or stage == 4 or stage == 7:
+		#show_head_choice()
+		#await Signals.head_selected
+	#else:
+		#show_action_cards()
+		#await Signals.action_card_selected
 		
-	await get_tree().create_timer(1).timeout
-	
-	
-	change_stage()
+	#await get_tree().create_timer(1).timeout
+	#change_stage()
 	
 	
 func show_domino_choice():
@@ -215,7 +215,10 @@ func show_head_choice():
 	
 func show_action_cards():
 	ActionCardManager.show_action_cards()
-	
+
+func show_common_cards():
+	ActionCardManager.show_action_cards(true)
+
 func show_delete_domino_menu():
 	await get_tree().create_timer(1).timeout
 	Global.remove_domino_scene.update_domino_list()
@@ -227,10 +230,9 @@ func change_stage():
 		return # уже меняется стадия, игнорируем повторный вызов
 	stage_changing = true
 	
-	
 	reset_fight_data()
 	stage += 1
-	print("STAGE")
+	print("STAGE %d" % stage)
 	print(stage)
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout

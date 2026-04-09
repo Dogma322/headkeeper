@@ -1,5 +1,5 @@
 @tool
-extends Node2D
+extends Control
 class_name BattleScene
 
 @onready var characters = $Characters
@@ -8,6 +8,7 @@ class_name BattleScene
 @onready var always_show = [
 	$BattleBackground, %DominoListScene, $Shader
 ]
+@onready var board_1: Board = $Board/Board1
 
 
 func hide_ui() -> void:

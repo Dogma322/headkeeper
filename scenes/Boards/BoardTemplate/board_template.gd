@@ -1,9 +1,11 @@
 extends Node2D
 class_name Board
 
+@export var is_temp := false
 
 func _ready() -> void:
-	Global.board = self
+	if not is_temp:
+		Global.board = self
 
 
 func show_board():

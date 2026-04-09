@@ -1,6 +1,11 @@
 extends Control
 
-@onready var money_label: RichTextLabel = %MoneyLabel
+const COLUMNS := 8
+const SPACING := Vector2(40, 70)  # расстояние между домино
+
+# НАСТРОЙКА ВЫСОТЫ СЕТКИ
+@export var CENTER_Y := 120
+
 @onready var exit_button: TextureButton = %ExitButton
 @onready var accept_button: GameButton = %AcceptButton
 @onready var reroll_button: GameButton = %RerollButton
@@ -10,6 +15,8 @@ extends Control
 @onready var add_random_symbol_button: GameButton = %AddRandomSymbolButton
 @onready var remove_random_symbol_button: GameButton = %RemoveRandomSymbolButton
 @onready var change_color_button: GameButton = %ChangeColorButton
+@onready var dominoes = $Dominoes
+@onready var battle_background: Node2D = $BattleBackground
 
 @onready var symbol_pool = [
 	"attack",
@@ -42,6 +49,10 @@ var colors = ["red", "blue", "green"]
 
 var current_domino: Domino = null
 
+var domino_parents = []
+var domino_buffer = []
+var domino_prev_transforms = []
+
 func get_current_side() -> int:
 	if current_domino:
 		return 1 if current_domino.initial_connected_side == 0 else 0
@@ -49,8 +60,12 @@ func get_current_side() -> int:
 
 func _ready() -> void:
 	Transition.blackout_off()
-	money_label.text = "[img]res://assets/Icons/CommonSkull.png[/img]%s" % [str(MetaManager.money)]
-	Hand.draw_dominoes()
+	if not is_instance_valid(Global.fight_scene):
+		exit_button.show()
+		battle_background.show()
+		accept_button.hide()
+	
+	Hand.draw_all_dominoes()
 	accept_button.disabled = true
 	reroll_button.disabled = true
 	change_number_button.disabled = true
@@ -69,7 +84,9 @@ func _on_exit_button_pressed() -> void:
 
 
 func _on_accept_button_pressed() -> void:
-	pass # Replace with function body.
+	if current_domino != null:
+		Hand.discard_all_dominoes()
+		Signals.domino_selected.emit()
 
 
 func _on_change_number_button_pressed() -> void:
@@ -144,10 +161,12 @@ func _on_domino_added_to_board(domino) -> void:
 	add_random_symbol_button.disabled = false
 	remove_random_symbol_button.disabled = false
 	change_color_button.disabled = false
+	accept_button.disabled = false
 	current_domino = domino
 
 
 func _on_domino_chain_removed() -> void:
+	accept_button.disabled = true
 	reroll_button.disabled = true
 	change_number_button.disabled = true
 	add_random_symbol_button.disabled = true

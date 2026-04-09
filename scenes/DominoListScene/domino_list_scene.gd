@@ -106,14 +106,6 @@ func clear_domino_list():
 	DominoManager.block_domino_input = false
 
 
-func _on_exit_button_mouse_entered() -> void:
-	exit_button.modulate = Color(1.3, 1.3, 1.3)
-
-
-func _on_exit_button_mouse_exited() -> void:
-	exit_button.modulate = Color(1.0, 1.0, 1.0)
-
-
 func _on_exit_button_pressed() -> void:
 	clear_domino_list()
 	Transition.blackout_on()

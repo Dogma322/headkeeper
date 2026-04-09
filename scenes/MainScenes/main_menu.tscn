@@ -64,7 +64,7 @@ offset_bottom = 220.0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-text = "ИГРАТЬ"
+text = "play"
 font_size = 4
 disabled = false
 

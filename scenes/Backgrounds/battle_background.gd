@@ -1,7 +1,10 @@
 extends Node2D
 
+@export var is_temp := false
+
 func _ready() -> void:
-	Global.fight_background = self
+	if not is_temp:
+		Global.fight_background = self
 
 func set_background():
 	if Global.enemy.location == "MushroomCaves":
