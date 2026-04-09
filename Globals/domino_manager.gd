@@ -26,6 +26,7 @@ var double_next_dm = 0
 var corruption_bonus = 0
 
 @onready var start_deck := {
+	"dm_claws": preload("res://resources/dominoes/special/dm_claws_2.tres"),
 	"2_1_atk" : preload("res://resources/dominoes/start/dm_start_2_1_attack.tres"),
 	"2_1_def" : preload("res://resources/dominoes/start/dm_start_2_1_defense.tres"),
 	"3_1_atk" : preload("res://resources/dominoes/start/dm_start_3_1_attack.tres"),

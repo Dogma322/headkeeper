@@ -4,10 +4,6 @@
 
 [resource]
 script = ExtResource("1_j26n6")
-a = 2
-b = 3
-a_type = "claws"
-b_type = "empty_red"
 a_types = PackedStringArray("claws", "claws")
 b_types = PackedStringArray("empty", "empty", "empty")
 metadata/_custom_type_script = "uid://25lu10tiiq0q"

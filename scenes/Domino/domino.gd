@@ -43,7 +43,7 @@ var val := {}
 var tags := []
 
 var vals := [{}, {}]
-var buffered_values := [0, 0]
+var accums := {}
 
 var doubled = false
 
@@ -475,6 +475,8 @@ func update_labels():
 				unique_types.push_back(type)
 		var i := 0
 		for type: String in unique_types:
+			if type == "empty":
+				continue
 			if i > 0:
 				tooltip += "\n"
 			if DominoSideVisual.type_to_tex.has(type):
@@ -553,6 +555,7 @@ func remove_symbol(side: int, index: int):
 		"corrupted_sphere":
 			remove(key, 2)
 		"claws":
+			remove(key, 4)
 			pass
 	
 	var found := false
@@ -571,6 +574,7 @@ func remove_symbol(side: int, index: int):
 		# Отсоединим сигналы.
 		match key:
 			"claws":
+				accums[key] = 0
 				if Signals.fight_started.is_connected(on_fight_started):
 					Signals.fight_started.disconnect(on_fight_started)
 			"corrupted_sphere":
@@ -681,7 +685,6 @@ func push_symbol(side: int, key: String):
 			if not Signals.skill_dm_played.is_connected(play):
 				Signals.skill_dm_played.connect(play)
 		"claws":
-			buffered_values[side] = 4
 			add(key, 4)
 			if not Signals.fight_started.is_connected(on_fight_started):
 				Signals.fight_started.connect(on_fight_started.bind(key))
@@ -693,11 +696,8 @@ func push_symbol(side: int, key: String):
 
 
 func on_fight_started(key: String):
-	#if a_type == "claws":
-	#	vals[0][key] = buffered_values[0]
-	#if b_type == "claws":
-	#	vals[1][key] = buffered_values[1]
-	pass
+	if key == "claws":
+		accums[key] = 0
 
 
 func play(domino: Domino):
@@ -712,6 +712,9 @@ func add_action() -> void:
 			match key:
 				"attack", "attack2", "dagger", "spear":
 					ActionManager.add(AttackAction.new(self, Global.enemy, val[key]))
+				"claws":
+					ActionManager.add(AttackAction.new(self, Global.enemy, val[key] + accums[key]))
+					accums[key] += 4
 				"corruption", "corrupted_sphere":
 					ActionManager.add(DebuffAction.new(self, Global.enemy, val[key], val[key]))
 				"defense":
@@ -747,6 +750,7 @@ func add_action() -> void:
 					ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.vulnerable, val[key]))
 				"weak":
 					ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.weak, val[key]))
+		
 		
 		#if a_type == "claws":
 			#ActionManager.add(AttackAction.new(self, Global.enemy, vals[0]["claws"]))
@@ -803,15 +807,7 @@ func get_tooltip_for_type(key: String) -> String:
 		"corrupted_sphere":
 			return TextFormatter.insert_colored_value(tr("dm_dark_sphere_des"), final_corruption(val[key]), val[key])
 		"claws":
-			var v := 0
-			#if a_type == key:
-				#if vals[0].has(key):
-					#v += vals[0][key]
-			#if b_type == key:
-				#if vals[1].has(key):
-					#v += vals[1][key]
-			
-			return TextFormatter.insert_colored_value(tr("dm_claws_des"), final_damage(v), v)
+			return TextFormatter.insert_colored_value(tr("dm_claws_des"), final_damage(val[key] + accums[key]), val[key] + accums[key])
 		"skull":
 			var damage_4d = DominoManager.value4_played_dominoes * 2
 			return TextFormatter.insert_colored_value(tr("4value_attack_des"), final_damage(damage_4d), damage_4d)
