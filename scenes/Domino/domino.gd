@@ -466,23 +466,18 @@ func update_labels():
 	
 	if template != null:
 		var tooltip := ""
-		var unique_types := PackedStringArray()
-		for type: String in a_types:
-			if not unique_types.has(type):
-				unique_types.push_back(type)
-		for type: String in b_types:
-			if not unique_types.has(type):
-				unique_types.push_back(type)
 		var i := 0
-		for type: String in unique_types:
-			if type == "empty":
+		for tag: String in tags:
+			if tag == "empty":
 				continue
 			if i > 0:
 				tooltip += "\n"
-			if DominoSideVisual.type_to_tex.has(type):
-				tooltip += "[img]%s[/img] - %s" % [DominoSideVisual.type_to_tex[type]["red"].resource_path, get_tooltip_for_type(type)]
-			elif DominoSideVisual.special_to_tex.has(type):
-				tooltip += "[img]%s[/img] - %s" % [DominoSideVisual.special_to_tex[type].resource_path, get_tooltip_for_type(type)]
+			var count = a_types.count(tag) + b_types.count(tag)
+			var count_string = "" if count == 1 else "(%s)" % str(count)
+			if DominoSideVisual.type_to_tex.has(tag):
+				tooltip += "[img]%s[/img]%s - %s" % [DominoSideVisual.type_to_tex[tag]["red"].resource_path, count_string, get_tooltip_for_type(tag)]
+			elif DominoSideVisual.special_to_tex.has(tag):
+				tooltip += "[img]%s[/img]%s - %s" % [DominoSideVisual.special_to_tex[tag].resource_path, count_string, get_tooltip_for_type(tag)]
 			i += 1
 		tooltip_panel.description = tooltip
 	else:
