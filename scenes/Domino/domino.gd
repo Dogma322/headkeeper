@@ -101,7 +101,7 @@ func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> 
 	
 	if b_settings != null:
 		for i in range(b_types.size()):
-			remove_symbol(0, i)
+			remove_symbol(1, i)
 		
 		b = b_settings.types.size()
 		
@@ -429,9 +429,6 @@ func play_anim():
 
 
 func _on_area_2d_mouse_entered() -> void:
-	if slot:
-		return
-		
 	if !DominoManager.dm_dragging:
 		Signals.play_domino_draged_sound.emit()
 		

@@ -45,6 +45,9 @@ inscrease_max_hp_card_des,Increase max HP by %s.,Увеличить максим
 add_board_bonus_des,Add a bonus to the board.,Добавить бонус на поле.
 ,,
 ,,
+craft_change_number,Changes amount of dots to %d. Affects top-side only.,Изменяет число точек на %d. Действует только на верхнюю половину кости.
+craft_change_symbols,Changes %d of symbols to %s. Affects top-side only.,Заменяет %d значков на %s. Действует только на верхнюю половину кости.
+craft_change_color,Changes current side color to %s. Affects top-side only.,Заменяет текущий цвет половинки на %s. Действует только на верхнюю половину кости.
 ,,
 ,,
 DOMINOES,,

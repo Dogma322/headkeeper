@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="3_gu0aw"]
 [ext_resource type="PackedScene" uid="uid://bo8xaqmke5324" path="res://scenes/UI/icon_button.tscn" id="3_jg3uq"]
 [ext_resource type="Texture2D" uid="uid://mjo560ccfs37" path="res://assets/UI/OptionsMenu/ExitButton.png" id="5_a8qar"]
+[ext_resource type="PackedScene" uid="uid://bnkuyqcb3iadw" path="res://scenes/UI/text_panel.tscn" id="6_jg3uq"]
 [ext_resource type="PackedScene" uid="uid://by7sdoxj5u7k4" path="res://scenes/Boards/board_craft.tscn" id="8_il8bo"]
 [ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="8_ioiea"]
 [ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="9_il8bo"]
@@ -83,6 +84,28 @@ is_temp = true
 [node name="Dominoes" type="Node2D" parent="." unique_id=1394107174]
 position = Vector2(0, 207)
 
+[node name="TextPanel" parent="." unique_id=54216942 instance=ExtResource("6_jg3uq")]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.3625
+anchor_top = 0.03888889
+anchor_right = 0.6328125
+anchor_bottom = 0.12777779
+grow_horizontal = 1
+grow_vertical = 1
+text = "Test"
+
+[node name="AcceptButton" parent="." unique_id=885226573 instance=ExtResource("9_il8bo")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 238.0
+offset_top = 207.0
+offset_right = 399.0
+offset_bottom = 233.875
+text = "Upgrade"
+font_size = 3
+disabled = false
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1712827494]
 layout_mode = 0
 offset_left = 414.0
@@ -90,17 +113,10 @@ offset_top = 14.0
 offset_right = 514.0
 offset_bottom = 100.0
 
-[node name="AcceptButton" parent="VBoxContainer" unique_id=885226573 instance=ExtResource("9_il8bo")]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Подтвердить"
-font_size = 3
-disabled = false
-
 [node name="ChangeNumberButton" parent="VBoxContainer" unique_id=1643412505 instance=ExtResource("9_il8bo")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Change Number"
+text = "Change Number to X"
 font_size = 3
 disabled = false
 
@@ -127,7 +143,6 @@ disabled = false
 
 [node name="RerollButton" parent="VBoxContainer" unique_id=1519040811 instance=ExtResource("9_il8bo")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 text = "Reroll"
 font_size = 3
@@ -161,7 +176,7 @@ mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="Layout/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/AcceptButton" to="." method="_on_accept_button_pressed"]
+[connection signal="pressed" from="AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ChangeNumberButton" to="." method="_on_change_number_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/AddRandomSymbolButton" to="." method="_on_add_random_symbol_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/RemoveRandomSymbolButton" to="." method="_on_remove_random_symbol_button_pressed"]

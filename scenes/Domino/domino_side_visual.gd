@@ -116,6 +116,14 @@ static var special_to_tex = {
 	"weak": preload("res://assets/Dominoes/Symbols/weak.atlastex")
 }
 
+static func get_type_texture(type: String, color: String) -> Texture2D:
+	if special_to_tex.has(type):
+		return special_to_tex[type]
+	var data = type_to_tex.get(type, null)
+	if data:
+		return data.get(color, null)
+	return null
+
 ## false is top, true is bottom
 @export var side: bool:
 	set(value):

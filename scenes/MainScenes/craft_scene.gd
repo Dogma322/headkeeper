@@ -17,6 +17,7 @@ const SPACING := Vector2(40, 70)  # расстояние между домино
 @onready var change_color_button: GameButton = %ChangeColorButton
 @onready var dominoes = $Dominoes
 @onready var battle_background: Node2D = $BattleBackground
+@onready var text_panel: TextPanel = %TextPanel
 
 @onready var symbol_pool = [
 	"attack",
@@ -45,7 +46,8 @@ const SPACING := Vector2(40, 70)  # расстояние между домино
 	"weak",
 ]
 
-var colors = ["red", "blue", "green"]
+var color_pool = ["red", "blue", "green"]
+var color_pool_loc = { "red": "Красный", "blue": "Синий", "green": "Зеленый"}
 
 var current_domino: Domino = null
 
@@ -53,10 +55,24 @@ var domino_parents = []
 var domino_buffer = []
 var domino_prev_transforms = []
 
+enum CraftType {
+	UNKNOWN,
+	NUMBER,
+	SYMBOL,
+	COLOR,
+	MAX
+}
+
+var current_craft_type := CraftType.UNKNOWN
+var current_amount := 0
+var current_type := ""
+
+
 func get_current_side() -> int:
 	if current_domino:
 		return 1 if current_domino.initial_connected_side == 0 else 0
 	return 0
+
 
 func _ready() -> void:
 	Transition.blackout_off()
@@ -74,6 +90,26 @@ func _ready() -> void:
 	change_color_button.disabled = true
 	Signals.domino_added_to_board.connect(_on_domino_added_to_board)
 	Signals.domino_chain_removed.connect(_on_domino_chain_removed)
+	
+	reroll()
+
+
+func reroll() -> void:
+	current_craft_type = randi_range(1, CraftType.MAX - 1) as CraftType
+	match current_craft_type:
+		CraftType.NUMBER:
+			current_amount = randi_range(1, 4)
+			current_type = ""
+			text_panel.text = tr("craft_change_number") % current_amount
+		CraftType.SYMBOL:
+			current_amount = randi_range(1, 4)
+			symbol_pool.shuffle()
+			current_type = symbol_pool[0]
+			text_panel.text = tr("craft_change_symbols") % [current_amount, DominoSideVisual.get_type_texture(current_type, "red").resource_path]
+		CraftType.COLOR:
+			color_pool.shuffle()
+			current_type = color_pool[0]
+			text_panel.text = tr("craft_change_color") % color_pool_loc[current_type]
 
 
 func _on_exit_button_pressed() -> void:
@@ -83,37 +119,41 @@ func _on_exit_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/MainScenes/main_menu.tscn")
 
 
+func apply(craft_type : CraftType, type: String, amount: int) -> void:
+	var side := get_current_side()
+	match craft_type:
+		CraftType.NUMBER:
+			var slots = PackedStringArray()
+			for i in range(amount):
+				slots.push_back("empty")
+			if current_domino.initial_connected_side == 1:
+				current_domino.setup(Domino.SideSettings.new(slots), null)
+			else:
+				current_domino.setup(null, Domino.SideSettings.new(slots))
+		CraftType.SYMBOL:
+			for i in range(amount):
+				current_domino.push_symbol(side, type)
+		CraftType.COLOR:
+			if side == 0:
+				current_domino.a_color = type
+			else:
+				current_domino.b_color = type
+
 func _on_accept_button_pressed() -> void:
 	if current_domino != null:
+		apply(current_craft_type, current_type, current_amount)
+		await get_tree().create_timer(2.0).timeout
 		Hand.discard_all_dominoes()
 		Signals.domino_selected.emit()
 
 
 func _on_change_number_button_pressed() -> void:
-	assert(current_domino != null)
-	var value := 0
-	var count = current_domino.a if current_domino.initial_connected_side == 1 else current_domino.b
-	while value == 0 or count == value:
-		value = 1 + randi() % 4
-	var slots = PackedStringArray()
-	for i in range(value):
-		slots.push_back("empty")
-	if current_domino.initial_connected_side == 1:
-		current_domino.setup(Domino.SideSettings.new(slots), null)
-	else:
-		current_domino.setup(null, Domino.SideSettings.new(slots))
-
+	apply(CraftType.NUMBER, "", randi_range(1, 4))
 
 
 func _on_add_random_symbol_button_pressed() -> void:
 	symbol_pool.shuffle()
-	
-	var side = get_current_side()
-	if not current_domino.has_empty_slot(side):
-		while symbol_pool[0] in current_domino.ab_types[side]:
-			symbol_pool.shuffle()
-		
-	current_domino.push_symbol(side, symbol_pool[0])
+	apply(CraftType.SYMBOL, symbol_pool[0], 1)
 
 
 func _on_remove_random_symbol_button_pressed() -> void:
@@ -132,27 +172,11 @@ func _on_remove_random_symbol_button_pressed() -> void:
 
 
 func _on_change_color_button_pressed() -> void:
-	var side := get_current_side()
-	if colors.size() > 1:
-		while colors[0] == (current_domino.a_color if side == 0 else current_domino.b_color): 
-			colors.shuffle()
-	if side == 0:
-		current_domino.a_color = colors[0]
-	else:
-		current_domino.b_color = colors[0]
+	apply(CraftType.COLOR, color_pool[0], 0)
 
 
 func _on_reroll_button_pressed() -> void:
-	assert(current_domino != null)
-	var value = 0
-	if current_domino.initial_connected_side == 1:
-		while value == 0 or current_domino.a == value:
-			value = 1 + randi() % 4
-		current_domino.setup(Domino.SideSettings.new([current_domino.a_type]))
-	else:
-		while value == 0 or current_domino.b == value:
-			value = 1 + randi() % 4
-		current_domino.setup(null, Domino.SideSettings.new([current_domino.b_type]))
+	reroll()
 
 
 func _on_domino_added_to_board(domino) -> void:
