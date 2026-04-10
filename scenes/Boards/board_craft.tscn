@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://b024032pallcd" path="res://scenes/DominoSlot/domino_slot.tscn" id="3_esdot"]
 
 [node name="BoardCraft" unique_id=183639370 instance=ExtResource("1_hoax4")]
-is_temp_board = true
 
 [node name="BoardSprite" parent="." index="0" unique_id=224441976]
 texture = ExtResource("2_esdot")
@@ -14,3 +13,4 @@ texture = ExtResource("2_esdot")
 position = Vector2(0, -32)
 slot_distance = 0
 start_slot = true
+allow_replace = true

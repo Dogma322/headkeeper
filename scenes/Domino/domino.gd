@@ -84,6 +84,9 @@ class SideSettings:
 
 func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> void:
 	if a_settings != null:
+		for i in range(a_types.size()):
+			remove_symbol(0, i)
+		
 		a = a_settings.types.size()
 		
 		a_types.clear()
@@ -97,6 +100,9 @@ func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> 
 			a_color = a_settings.color
 	
 	if b_settings != null:
+		for i in range(b_types.size()):
+			remove_symbol(0, i)
+		
 		b = b_settings.types.size()
 		
 		b_types.clear()
@@ -377,6 +383,8 @@ func stop_drag():
   # Отключаем drag первым делом
 
 	if target_slot and target_slot.can_place(self):
+		if target_slot.domino:
+			Hand.add_domino(target_slot.domino)
 		target_slot.place_domino(self)
 	else:
 		Hand.add_domino(self)
@@ -497,7 +505,11 @@ func remove(type: String, value):
 			val.erase(type)
 
 func has_empty_slot(side: int):
-	for type in (a_types if side == 0 else b_types):
+	var arr = a_types if side == 0 else b_types
+	if arr.is_empty():
+		return true
+	
+	for type in arr:
 		if type == "empty":
 			return true
 	return false

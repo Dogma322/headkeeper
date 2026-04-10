@@ -20,6 +20,7 @@ enum SlotDistance { START, NEAR, MIDDLE, FAR }
 @export var start_slot: bool = false
 @export var parent_slot: DominoSlot
 @export var orientation:Orientation
+@export var allow_replace: bool = false
 
 var domino:Domino = null
 var child_slots:Array[DominoSlot] = []
@@ -97,7 +98,7 @@ func opposite_direction(dir):
 
 func can_place(new_domino:Domino):
 
-	if domino != null:
+	if domino != null and not allow_replace:
 		return false
 
 	if start_slot:
