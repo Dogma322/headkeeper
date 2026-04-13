@@ -10,9 +10,8 @@ const SPACING := Vector2(40, 70)  # расстояние между домино
 @onready var dominoes = $Dominoes
 @onready var exit_button: TextureButton = %ExitButton
 
-var domino_parents = []
-var domino_buffer = []
-var domino_prev_transforms = []
+var domino_parents = {}
+var domino_prev_transforms = {}
 
 enum Source {
 	ALL,
@@ -52,7 +51,7 @@ func update_domino_list(source: Source):
 
 	for i in total:
 		var domino: Domino = pool[i]
-		domino_prev_transforms.push_back(domino.global_transform)
+		domino_prev_transforms[domino] = domino.global_transform
 		
 		domino.scale = Vector2(1,1)
 		domino.visible = true
@@ -80,10 +79,8 @@ func update_domino_list(source: Source):
 		domino.position = center + Vector2(x, y)
 
 		if domino.get_parent():
-			domino_parents.push_back(domino.get_parent())
+			domino_parents[domino] = domino.get_parent()
 			domino.get_parent().remove_child(domino)
-		else:
-			domino_parents.push_back(null)
 
 		dominoes.add_child(domino)
 
@@ -91,33 +88,30 @@ func update_domino_list(source: Source):
 func clear_domino_list():
 	var i := 0
 	for domino in dominoes.get_children():
-		domino_buffer.push_back(domino)
-	
-	for domino in dominoes.get_children():
 		var tween = get_tree().create_tween()
 		tween.tween_property(domino, "scale", Vector2(0,0), 0.2)
+		tween.finished.connect(on_tween_finished.bind(domino))
 		
 		await get_tree().create_timer(0.05).timeout
-		
-		dominoes.remove_child(domino)
-		if domino_parents[i] != null:
-			domino_parents[i].add_child(domino)
 		i += 1
 	DominoManager.block_domino_input = false
 
+func on_tween_finished(domino) -> void:
+	dominoes.remove_child(domino)
+	domino_parents[domino].add_child(domino)
+	domino_parents.erase(domino)
+	
+	domino.position = domino_prev_transforms[domino].origin
+	var tween = get_tree().create_tween()
+	tween.tween_property(domino, "scale", Vector2(1,1), 0.2)
+	
+	domino_prev_transforms.erase(domino)
 
 func _on_exit_button_pressed() -> void:
 	clear_domino_list()
-	Transition.blackout_on()
-	await get_tree().create_timer(1).timeout
-	Transition.blackout_off()
+	#Transition.blackout_on()
+	#await get_tree().create_timer(0.5).timeout
+	#Transition.blackout_off()
+	
 	hide()
 	Global.fight_scene.show_ui()
-	
-	var i := 0
-	for domino: Domino in domino_buffer:
-		domino.global_transform = domino_prev_transforms[i]
-		i += 1
-	domino_parents.clear()
-	domino_prev_transforms.clear()
-	domino_buffer.clear()

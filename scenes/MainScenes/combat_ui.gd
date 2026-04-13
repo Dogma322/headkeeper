@@ -18,9 +18,9 @@ func _ready() -> void:
 
 
 func _show_dominoes(mode: DominoListScene.Source) -> void:
-	Transition.blackout_on()
-	await get_tree().create_timer(1).timeout
-	Transition.blackout_off()
+	#Transition.blackout_on()
+	#await get_tree().create_timer(0.5).timeout
+	#Transition.blackout_off()
 	Global.fight_scene.hide_ui()
 	domino_list_scene.show()
 	domino_list_scene.update_domino_list(mode)

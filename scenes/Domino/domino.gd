@@ -252,7 +252,7 @@ func rotate_in_hand() -> void:
 		angle = 180
 	
 	rotation_degrees = angle % 360
-	tooltip_stack.global_position = global_position - Vector2(61, 81)
+	tooltip_stack.global_position = global_position - Vector2(61, 32) - Vector2(0, tooltip_stack.get_child(0).size.y)
 	
 	top.slots_rotation = -rotation_degrees
 	bottom.slots_rotation = -rotation_degrees

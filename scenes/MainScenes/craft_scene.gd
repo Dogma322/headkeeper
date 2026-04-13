@@ -91,7 +91,7 @@ func _ready() -> void:
 	Signals.domino_added_to_board.connect(_on_domino_added_to_board)
 	Signals.domino_chain_removed.connect(_on_domino_chain_removed)
 	
-	reroll_specified(CraftType.NUMBER)
+	reroll()
 
 
 func reroll_specified(craft_type):

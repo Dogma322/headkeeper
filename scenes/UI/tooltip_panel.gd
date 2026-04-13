@@ -47,6 +47,7 @@ func _ready() -> void:
 	origin_pos = position
 	origin_size = size
 
+
 func show_tooltip(await_frame: bool = false, ui_element: Control = null, offset := ShowOffset.NONE) -> void:
 	visible = true
 	if await_frame:
