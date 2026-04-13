@@ -82,6 +82,31 @@ class SideSettings:
 		types = _types
 		color = _color
 
+
+static var type_to_string = {
+	"attack": ["Attack"],
+	"attack2": ["Attack"],
+	"defense": ["Defense"],
+	"heal": ["Skill"],
+	"vulnerable": ["Skill"],
+	"weak": ["Skill"],
+	"draw": ["Skill"],
+	"spear": ["Attack"],
+	"thorned_shield": ["Skill", "Defense"],
+	"shield_strike": ["Attack", "Defense"],
+	"shield": ["Defense"],
+	"repeat": ["Skill"],
+	"mace": ["Attack"],
+	"horn": ["Skill"],
+	"hammer": ["Attack"],
+	"crit": ["Skill"],
+	"dagger": ["Attack"],
+	"corrupted_stuff": ["Skill"],
+	"corrupted_sphere": ["Skill"],
+	"claws": ["Attack"],
+	"skull": ["Attack"],
+}
+
 func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> void:
 	if a_settings != null:
 		for i in range(a_types.size()):
@@ -600,8 +625,8 @@ func remove_symbol(side: int, index: int):
 		domino_types.clear()
 		for types: PackedStringArray in ab_types:
 			for type: String in types:
-				if DominoTemplate.type_to_string.has(type):
-					for domino_type in DominoTemplate.type_to_string[type]:
+				if type_to_string.has(type):
+					for domino_type in type_to_string[type]:
 						if domino_type in domino_types:
 							continue
 						domino_types.push_back(domino_type)
@@ -612,18 +637,21 @@ func remove_symbol(side: int, index: int):
 		bottom.remove_symbol(index)
 	
 
-func push_symbol(side: int, key: String):
+func push_symbol(side: int, key: String, index := -1):
 	if not has_empty_slot(side):
-		# Уберем случайный символ.
-		remove_symbol(side, randi_range(0, (a - 1) if side == 0 else (b - 1)))
+		if index == -1:
+			# Уберем случайный символ.
+			remove_symbol(side, randi_range(0, (a - 1) if side == 0 else (b - 1)))
+		else:
+			remove_symbol(side, index)
 	
 	for i in range(ab_types[side].size()):
 		if ab_types[side][i] == "empty":
 			ab_types[side][i] = key
 			break
 	
-	if DominoTemplate.type_to_string.has(key):
-		for domino_type in DominoTemplate.type_to_string[key]:
+	if type_to_string.has(key):
+		for domino_type in type_to_string[key]:
 			if domino_type in domino_types:
 				continue
 			domino_types.push_back(domino_type)

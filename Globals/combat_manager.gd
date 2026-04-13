@@ -185,7 +185,7 @@ func enemy_dead():
 	show_rewards()
 
 func show_rewards():
-#	DominoManager.block_domino_input = false
+	DominoManager.block_domino_input = false
 #	show_domino_choice()
 	
 	if MoneyManager.money_rewards.round_rewards.has(stage):
@@ -193,7 +193,8 @@ func show_rewards():
 	
 #	await Signals.domino_selected
 #	await get_tree().create_timer(1).timeout
-	
+
+	Global.fight_scene.hide_menu()
 	show_common_cards()
 	
 	#if stage == 1 or stage == 4 or stage == 7:

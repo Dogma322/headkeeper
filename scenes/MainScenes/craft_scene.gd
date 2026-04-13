@@ -91,12 +91,12 @@ func _ready() -> void:
 	Signals.domino_added_to_board.connect(_on_domino_added_to_board)
 	Signals.domino_chain_removed.connect(_on_domino_chain_removed)
 	
-	reroll()
+	reroll_specified(CraftType.NUMBER)
 
 
-func reroll() -> void:
-	current_craft_type = randi_range(1, CraftType.MAX - 1) as CraftType
-	match current_craft_type:
+func reroll_specified(craft_type):
+	current_craft_type = craft_type
+	match craft_type:
 		CraftType.NUMBER:
 			current_amount = randi_range(1, 4)
 			current_type = ""
@@ -112,6 +112,10 @@ func reroll() -> void:
 			text_panel.text = tr("craft_change_color") % color_pool_loc[current_type]
 
 
+func reroll() -> void:
+	reroll_specified(randi_range(1, CraftType.MAX - 1) as CraftType)
+
+
 func _on_exit_button_pressed() -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
@@ -124,15 +128,20 @@ func apply(craft_type : CraftType, type: String, amount: int) -> void:
 	match craft_type:
 		CraftType.NUMBER:
 			var slots = PackedStringArray()
+			var symbols: PackedStringArray = current_domino.ab_types[side]
 			for i in range(amount):
-				slots.push_back("empty")
-			if current_domino.initial_connected_side == 1:
+				if i < symbols.size():
+					slots.push_back(symbols[i])
+				else:
+					slots.push_back("empty")
+			if side == 0:
 				current_domino.setup(Domino.SideSettings.new(slots), null)
 			else:
 				current_domino.setup(null, Domino.SideSettings.new(slots))
 		CraftType.SYMBOL:
-			for i in range(amount):
-				current_domino.push_symbol(side, type)
+			var max_count = current_domino.ab_types[side].size()
+			for i in range(min(amount, max_count)):
+				current_domino.push_symbol(side, type, i)
 		CraftType.COLOR:
 			if side == 0:
 				current_domino.a_color = type
@@ -141,8 +150,10 @@ func apply(craft_type : CraftType, type: String, amount: int) -> void:
 
 func _on_accept_button_pressed() -> void:
 	if current_domino != null:
+		disable_buttons(true)
+		DominoManager.block_domino_input = true
 		apply(current_craft_type, current_type, current_amount)
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(1.0).timeout
 		Hand.discard_all_dominoes()
 		Signals.domino_selected.emit()
 
@@ -179,21 +190,19 @@ func _on_reroll_button_pressed() -> void:
 	reroll()
 
 
+func disable_buttons(disable: bool) -> void:
+	reroll_button.disabled = disable
+	change_number_button.disabled = disable
+	add_random_symbol_button.disabled = disable
+	remove_random_symbol_button.disabled = disable
+	change_color_button.disabled = disable
+	accept_button.disabled = disable
+
 func _on_domino_added_to_board(domino) -> void:
-	reroll_button.disabled = false
-	change_number_button.disabled = false
-	add_random_symbol_button.disabled = false
-	remove_random_symbol_button.disabled = false
-	change_color_button.disabled = false
-	accept_button.disabled = false
+	disable_buttons(false)
 	current_domino = domino
 
 
 func _on_domino_chain_removed() -> void:
-	accept_button.disabled = true
-	reroll_button.disabled = true
-	change_number_button.disabled = true
-	add_random_symbol_button.disabled = true
-	remove_random_symbol_button.disabled = true
-	change_color_button.disabled = true
+	disable_buttons(true)
 	current_domino = null
