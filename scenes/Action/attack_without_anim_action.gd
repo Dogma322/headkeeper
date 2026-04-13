@@ -4,6 +4,8 @@ extends Action
 var damage:int
 
 func _init(_target,_damage):
+	if not is_instance_valid(_target):
+		breakpoint
 	#source = _source
 	target = _target
 	damage = _damage

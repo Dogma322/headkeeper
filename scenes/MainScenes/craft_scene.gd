@@ -8,13 +8,11 @@ const SPACING := Vector2(40, 70)  # расстояние между домино
 
 @onready var exit_button: TextureButton = %ExitButton
 @onready var accept_button: GameButton = %AcceptButton
+@onready var skip_button: GameButton = %SkipButton
+
 @onready var reroll_button: GameButton = %RerollButton
 @onready var cost_label: RichTextLabel = %CostLabel
 @onready var board_craft: Board = $BoardCraft
-@onready var change_number_button: GameButton = %ChangeNumberButton
-@onready var add_random_symbol_button: GameButton = %AddRandomSymbolButton
-@onready var remove_random_symbol_button: GameButton = %RemoveRandomSymbolButton
-@onready var change_color_button: GameButton = %ChangeColorButton
 @onready var dominoes = $Dominoes
 @onready var battle_background: Node2D = $BattleBackground
 @onready var text_panel: TextPanel = %TextPanel
@@ -83,11 +81,6 @@ func _ready() -> void:
 	
 	Hand.draw_all_dominoes()
 	accept_button.disabled = true
-	reroll_button.disabled = true
-	change_number_button.disabled = true
-	add_random_symbol_button.disabled = true
-	remove_random_symbol_button.disabled = true
-	change_color_button.disabled = true
 	Signals.domino_added_to_board.connect(_on_domino_added_to_board)
 	Signals.domino_chain_removed.connect(_on_domino_chain_removed)
 	
@@ -148,14 +141,21 @@ func apply(craft_type : CraftType, type: String, amount: int) -> void:
 			else:
 				current_domino.b_color = type
 
+
+func finish():
+	disable_buttons(true)
+	reroll_button.disabled = true
+	skip_button.disabled = true
+	DominoManager.block_domino_input = true
+	await get_tree().create_timer(1.0).timeout
+	Hand.discard_all_dominoes()
+	Signals.domino_selected.emit()
+
+
 func _on_accept_button_pressed() -> void:
 	if current_domino != null:
-		disable_buttons(true)
-		DominoManager.block_domino_input = true
 		apply(current_craft_type, current_type, current_amount)
-		await get_tree().create_timer(1.0).timeout
-		Hand.discard_all_dominoes()
-		Signals.domino_selected.emit()
+		finish()
 
 
 func _on_change_number_button_pressed() -> void:
@@ -190,13 +190,13 @@ func _on_reroll_button_pressed() -> void:
 	reroll()
 
 
+func _on_skip_button_pressed() -> void:
+	finish()
+
+
 func disable_buttons(disable: bool) -> void:
-	reroll_button.disabled = disable
-	change_number_button.disabled = disable
-	add_random_symbol_button.disabled = disable
-	remove_random_symbol_button.disabled = disable
-	change_color_button.disabled = disable
 	accept_button.disabled = disable
+
 
 func _on_domino_added_to_board(domino) -> void:
 	disable_buttons(false)

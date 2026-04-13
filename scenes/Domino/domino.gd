@@ -718,6 +718,7 @@ func push_symbol(side: int, key: String, index := -1):
 				Signals.skill_dm_played.connect(play)
 		"claws":
 			add(key, 4)
+			accums[key] = 0
 			if not Signals.fight_started.is_connected(on_fight_started):
 				Signals.fight_started.connect(on_fight_started.bind(key))
 	
@@ -748,7 +749,7 @@ func add_action() -> void:
 					ActionManager.add(AttackAction.new(self, Global.enemy, val[key] + accums[key]))
 					accums[key] += 4
 				"corruption", "corrupted_sphere":
-					ActionManager.add(DebuffAction.new(self, Global.enemy, val[key], val[key]))
+					ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.corruption, val[key]))
 				"defense":
 					ActionManager.add(BlockAction.new(self, Global.hero, val[key]))
 				"draw":
