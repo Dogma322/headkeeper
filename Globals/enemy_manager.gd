@@ -2,7 +2,7 @@ extends Node
 
 var pos = Vector2(530,168)
 
-@onready var wolf1 = preload("res://scenes/Enemies/Forest/enm_wolf_1.tscn")
+@onready var wolf1 = preload("res://scenes/Enemies/Swamp/enm_shadow.tscn")#, preload("res://scenes/Enemies/Forest/enm_wolf_1.tscn")
 @onready var high_druid = preload("res://scenes/Enemies/Forest/enm_high_druid.tscn")
 
 #@onready var tutorial_mushman = preload("res://scenes/Enemies/MushroomCaves/enm_tutorial_mushman.tscn")

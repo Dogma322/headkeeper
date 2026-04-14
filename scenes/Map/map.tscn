@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c4t765oqy66fj"]
+
+[ext_resource type="Script" uid="uid://cv74pol5ol003" path="res://scenes/Map/map.gd" id="1_4rr3d"]
+[ext_resource type="PackedScene" uid="uid://dbqo0kwfj4bpt" path="res://scenes/Map/map_node.tscn" id="2_d6mms"]
+
+[node name="Map" type="Control" unique_id=1312997953]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4rr3d")
+grid_node_scene = ExtResource("2_d6mms")
+
+[node name="Start" type="Marker2D" parent="." unique_id=233173522]
+position = Vector2(320, 340)

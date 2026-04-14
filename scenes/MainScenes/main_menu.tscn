@@ -60,7 +60,14 @@ offset_top = 61.0
 offset_right = 384.0
 offset_bottom = 220.0
 
-[node name="PlayBtn" parent="VBoxContainer" unique_id=885226573 instance=ExtResource("3_4s641")]
+[node name="MapBtn" parent="VBoxContainer" unique_id=885226573 instance=ExtResource("3_4s641")]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+text = "Карта"
+font_size = 4
+disabled = false
+
+[node name="PlayBtn" parent="VBoxContainer" unique_id=325350531 instance=ExtResource("3_4s641")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
@@ -76,6 +83,7 @@ font_size = 4
 disabled = false
 
 [node name="CraftBtn" parent="VBoxContainer" unique_id=810574825 instance=ExtResource("3_4s641")]
+visible = false
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 text = "Крафт"
@@ -106,6 +114,7 @@ mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="ChangeBoardGenerationBtn" to="." method="_on_change_board_generation_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/MapBtn" to="." method="_on_map_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/PlayBtn" to="." method="_on_play_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/ShopBtn" to="." method="_on_shop_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/CraftBtn" to="." method="_on_craft_btn_pressed"]

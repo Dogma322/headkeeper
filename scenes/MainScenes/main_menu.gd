@@ -13,6 +13,12 @@ func _ready() -> void:
 		SoundManager.set_music("MainMenu")
 
 
+func _on_map_btn_pressed() -> void:
+	Transition.blackout_on()
+	await get_tree().create_timer(1).timeout
+	get_tree().change_scene_to_file("res://scenes/MainScenes/map_scene.tscn")
+
+
 ## Происходит при нажатии кнопки 'Играть'.
 func _on_play_btn_pressed() -> void:
 	Transition.blackout_on()
