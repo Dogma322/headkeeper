@@ -79,7 +79,7 @@ func _ready() -> void:
 		battle_background.show()
 		accept_button.hide()
 	
-	Hand.draw_all_dominoes()
+	Global.hand.draw_all_dominoes()
 	accept_button.disabled = true
 	Signals.domino_added_to_board.connect(_on_domino_added_to_board)
 	Signals.domino_chain_removed.connect(_on_domino_chain_removed)
@@ -148,7 +148,7 @@ func finish():
 	skip_button.disabled = true
 	DominoManager.block_domino_input = true
 	await get_tree().create_timer(1.0).timeout
-	Hand.discard_all_dominoes()
+	Global.hand.discard_all_dominoes()
 	Signals.domino_selected.emit()
 
 

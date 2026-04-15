@@ -12,9 +12,9 @@ var dominoes:Array[Domino] = []
 
 
 func _ready():
+	Global.hand = self
 
-
-	position.y = hand_height
+	global_position.y = hand_height
 	#draw_dominoes()
 	#adding_dm()
 		
@@ -63,7 +63,7 @@ func add_domino(domino:Domino):
 		domino.get_parent().remove_child(domino)
 
 		
-	var root = get_tree().get_current_scene()
+	var root = get_parent()
 	root.add_child(domino)
 
 	update_layout()

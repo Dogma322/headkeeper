@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bwvtdw455owql"]
+
+[ext_resource type="PackedScene" uid="uid://cp0e26n3nl6rm" path="res://scenes/MainScenes/map_scene.tscn" id="1_5xbpf"]
+[ext_resource type="Script" uid="uid://dikeh7fck30r2" path="res://scenes/MainScenes/scene_manager.gd" id="1_ack50"]
+[ext_resource type="PackedScene" uid="uid://dks3x17ep5x0n" path="res://scenes/MainScenes/battle_scene.tscn" id="3_1y7cv"]
+
+[node name="SceneManager" type="MarginContainer" unique_id=2134074927]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("1_ack50")
+
+[node name="MapScene" parent="." unique_id=1058918205 instance=ExtResource("1_5xbpf")]
+visible = false
+layout_mode = 2
+
+[node name="BattleScene" parent="." unique_id=662499199 instance=ExtResource("3_1y7cv")]
+visible = false
+layout_mode = 2

@@ -16,6 +16,7 @@ func _ready() -> void:
 @onready var remove_domino_scene
 @onready var play_btn
 @onready var craft_scene_instance
+@onready var hand
 
 @export var domino_scene = preload("res://scenes/Domino/domino.tscn")
 @export var craft_scene = preload("res://scenes/MainScenes/craft_scene.tscn")

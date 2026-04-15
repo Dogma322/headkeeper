@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Headkeeper"
-run/main_scene="uid://cp0e26n3nl6rm"
+run/main_scene="uid://ehieixsy6e6l"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -28,22 +28,21 @@ Signals="*uid://deeasqn7l3e3b"
 CombatManager="*uid://ccoqet5nfosap"
 ActionManager="*uid://dxn6s5lbn5mm0"
 AnimationManager="*uid://b70whaam1fg5q"
+Transition="*uid://c21vchucx2ll6"
+SceneManager="*uid://bwvtdw455owql"
 DominoManager="*uid://coyhjvcswrj2u"
 TextFormatter="*uid://cmg8og8huhp86"
 StatusManager="*uid://dpqq3wbxa1lnn"
-Hand="*uid://bnr8o6y2c8n08"
 HeadManager="*uid://c1bjs00du5xti"
 EnemyManager="*uid://cqdvayo0fp5c6"
 ActionCardManager="*uid://bmpktw6r0gusn"
 MoneyManager="*uid://btc8nsqyek1ur"
-Transition="*uid://c21vchucx2ll6"
 SoundManager="*uid://2gvh11rpmgge"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=3
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"

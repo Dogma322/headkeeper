@@ -15,4 +15,4 @@ script = ExtResource("1_4rr3d")
 grid_node_scene = ExtResource("2_d6mms")
 
 [node name="Start" type="Marker2D" parent="." unique_id=233173522]
-position = Vector2(320, 340)
+position = Vector2(320, 320)

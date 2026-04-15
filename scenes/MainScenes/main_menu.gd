@@ -16,7 +16,8 @@ func _ready() -> void:
 func _on_map_btn_pressed() -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
-	get_tree().change_scene_to_file("res://scenes/MainScenes/map_scene.tscn")
+	hide()
+	SceneManager.new_run()
 
 
 ## Происходит при нажатии кнопки 'Играть'.
@@ -24,7 +25,7 @@ func _on_play_btn_pressed() -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
 	get_tree().change_scene_to_file("res://scenes/MainScenes/battle_scene.tscn")
-
+	Global.fight_scene.start()
 
 ## Происходит при нажатии кнопки 'Магазин'.
 func _on_shop_btn_pressed() -> void:

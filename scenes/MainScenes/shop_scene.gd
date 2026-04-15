@@ -36,6 +36,7 @@ func play() -> void:
 	await get_tree().create_timer(1).timeout
 	save_changes()
 	get_tree().change_scene_to_file("res://scenes/MainScenes/battle_scene.tscn")
+	Global.fight_scene.start()
 
 
 func exit() -> void:

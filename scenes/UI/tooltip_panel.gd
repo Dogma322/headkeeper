@@ -87,6 +87,7 @@ func show_tooltip(await_frame: bool = false, ui_element: Control = null, offset 
 
 func hide_tooltip() -> bool:
 	if not is_visible_in_tree():
+		hide()
 		return false
 	
 	if not mouse_over: # не скрываем, если курсор снова вернулся

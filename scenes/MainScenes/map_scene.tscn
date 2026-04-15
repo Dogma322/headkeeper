@@ -23,12 +23,9 @@ script = ExtResource("1_kb5l8")
 position = Vector2(320, 180)
 texture = ExtResource("2_6p00c")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=587667879]
-position = Vector2(320, 180)
-
 [node name="Player" type="Sprite2D" parent="." unique_id=2018903195]
-visible = false
-scale = Vector2(0.25, 0.25)
+position = Vector2(320, 340)
+scale = Vector2(0.125, 0.125)
 texture = ExtResource("3_oq6vs")
 
 [node name="Map" parent="." unique_id=1312997953 instance=ExtResource("3_kd8hc")]
@@ -46,32 +43,45 @@ offset_right = 121.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1586919023]
-
-[node name="Layout" type="MarginContainer" parent="CanvasLayer" unique_id=1562952262]
+[node name="Layout" type="MarginContainer" parent="." unique_id=1562952262]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="ExitButton" parent="CanvasLayer/Layout" unique_id=1254142979 instance=ExtResource("4_kd8hc")]
+[node name="ExitButton" parent="Layout" unique_id=1254142979 instance=ExtResource("4_kd8hc")]
 unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("5_dqmp7")
 
-[node name="GenButton" parent="CanvasLayer/Layout" unique_id=885226573 instance=ExtResource("6_dqmp7")]
+[node name="VBoxContainer" type="VBoxContainer" parent="Layout" unique_id=1236843891]
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="GenButton" parent="Layout/VBoxContainer" unique_id=885226573 instance=ExtResource("6_dqmp7")]
+layout_mode = 2
 size_flags_vertical = 0
 text = "Generate"
 disabled = false
 
+[node name="AllDominoesButton" parent="Layout/VBoxContainer" unique_id=622861341 instance=ExtResource("6_dqmp7")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Все домино"
+disabled = false
+
 [connection signal="node_mouse_entered" from="Map" to="." method="_on_map_node_mouse_entered"]
 [connection signal="node_mouse_exited" from="Map" to="." method="_on_map_node_mouse_exited"]
-[connection signal="pressed" from="CanvasLayer/Layout/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Layout/GenButton" to="." method="_on_gen_button_pressed"]
+[connection signal="node_pressed" from="Map" to="." method="_on_map_node_pressed"]
+[connection signal="pressed" from="Layout/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Layout/VBoxContainer/GenButton" to="." method="_on_gen_button_pressed"]
+[connection signal="pressed" from="Layout/VBoxContainer/AllDominoesButton" to="." method="_on_all_dominoes_button_pressed"]

@@ -9,6 +9,7 @@ class_name BattleScene
 	$BattleBackground, %DominoListScene, $Shader
 ]
 @onready var board_1: Board = $Board/Board1
+@onready var hand: Node2D = $Hand
 
 
 func hide_ui() -> void:
@@ -32,7 +33,11 @@ func _ready() -> void:
 		Signals.domino_chain_removed.connect(_on_domino_chain_removed)
 		Global.play_btn = self
 		Global.fight_scene = self
-		CombatManager.start()
+ 
+
+func start():
+	CombatManager.start()
+	
 
 
 func _on_domino_chain_removed() -> void:

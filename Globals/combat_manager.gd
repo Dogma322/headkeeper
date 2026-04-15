@@ -97,7 +97,7 @@ func player_turn_begin(is_start: bool):
 	Global.board.show_board()
 	Global.fight_scene.show_menu()
 	await get_tree().create_timer(0.6).timeout
-	Hand.draw_dominoes()
+	Global.hand.draw_dominoes()
 	player_turn = true
 	DominoManager.block_domino_input = false
 	
@@ -111,7 +111,7 @@ func player_turn_end():
 		status_icon.status.end_turn_reduce()
 	
 	
-	Hand.discard_all_dominoes()
+	Global.hand.discard_all_dominoes()
 	Global.board.hide_board()
 	await get_tree().create_timer(0.6).timeout
 	

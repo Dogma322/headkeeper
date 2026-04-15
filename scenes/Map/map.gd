@@ -10,6 +10,7 @@ class_name Map
 
 signal node_mouse_entered(node: MapNode)
 signal node_mouse_exited
+signal node_pressed(node: MapNode)
 
 var nodes = []
 var floors = []
@@ -26,7 +27,7 @@ class MapPath:
 
 
 func _ready() -> void:
-	generate()
+	pass
 
 
 func add_to_path_rec(node: MapNode, paths):
@@ -174,6 +175,7 @@ func add_node(coord: Vector2i) -> MapNode:
 	instance.position = pos
 	instance.mouse_entered.connect(func(): node_mouse_entered.emit(instance))
 	instance.mouse_exited.connect(func(): node_mouse_exited.emit())
+	instance.pressed.connect(func(): node_pressed.emit(instance))
 	nodes.push_back(instance)
 	return instance
 

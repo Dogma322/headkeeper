@@ -80,8 +80,8 @@ func reset():
 	deck.clear()
 	discard.clear()
 	
-	Hand.dominoes.clear()
-	for dm in Hand.get_children():
+	Global.hand.dominoes.clear()
+	for dm in Global.hand.get_children():
 		dm.queue_free()
 	
 	set_deck()

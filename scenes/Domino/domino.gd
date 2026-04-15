@@ -351,7 +351,7 @@ func _on_area_2d_input_event(_viewport, event, _shape):
 					
 				if slot:
 					slot.remove_chain()
-					#Hand.add_domino(self
+					#Global.hand.add_domino(self
 				else:
 					start_drag()
 			else:
@@ -385,7 +385,7 @@ func start_drag():
 		return
 
 	dragging = true
-	Hand.remove_domino(self)
+	Global.hand.remove_domino(self)
 	drag_offset = global_position - get_global_mouse_position()
 	z_index = 100
 	
@@ -409,10 +409,10 @@ func stop_drag():
 
 	if target_slot and target_slot.can_place(self):
 		if target_slot.domino:
-			Hand.add_domino(target_slot.domino)
+			Global.hand.add_domino(target_slot.domino)
 		target_slot.place_domino(self)
 	else:
-		Hand.add_domino(self)
+		Global.hand.add_domino(self)
 		
 	dragging = false
 
@@ -431,7 +431,7 @@ func move_to_hand(pos:Vector2):
 	tween.tween_property(
 		self,
 		"global_position",
-		Hand.global_position + pos,
+		Global.hand.global_position + pos,
 		0.3
 	).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 

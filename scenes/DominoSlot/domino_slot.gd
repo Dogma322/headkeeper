@@ -164,7 +164,7 @@ func remove_chain(depth: int = 0):
 
 	remove_domino()
 
-	Hand.add_domino(d)
+	Global.hand.add_domino(d)
 	if depth == 0:
 		Signals.domino_chain_removed.emit()
 
