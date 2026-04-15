@@ -3,9 +3,17 @@
 [ext_resource type="Script" uid="uid://du0rnu08j8qbv" path="res://scenes/Map/map_node.gd" id="1_8b3p7"]
 [ext_resource type="Texture2D" uid="uid://bdc8xw1rrynlw" path="res://icon.svg" id="1_sli7o"]
 
-[node name="MapNode" type="Node2D" unique_id=671773173]
+[sub_resource type="CircleShape2D" id="CircleShape2D_8b3p7"]
+radius = 5.0
+
+[node name="MapNode" type="Area2D" unique_id=911958075]
 script = ExtResource("1_8b3p7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1349538349]
 scale = Vector2(0.063, 0.063)
 texture = ExtResource("1_sli7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=263609728]
+shape = SubResource("CircleShape2D_8b3p7")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
