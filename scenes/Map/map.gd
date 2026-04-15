@@ -7,9 +7,8 @@ class_name Map
 @export var grid_node_scene: PackedScene
 @onready var start: Marker2D = $Start
 
-
+var nodes = []
 var floors = []
-var links = []
 var current_paths = {}
 
 class MapPath:
@@ -41,7 +40,15 @@ func add_to_path_rec(node: MapNode, paths):
 	
 	add_to_path_rec(arr[0], paths)
 
+func clear():
+	for node in nodes:
+		node.queue_free()
+	nodes.clear()
+	floors.clear()
+	current_paths.clear()
+
 func generate() -> void:
+	clear()
 	
 	#region Сгенерируем граф.
 	
@@ -63,22 +70,17 @@ func generate() -> void:
 	
 	#endregion
 	
-	#region Случайно выберем и удалим точки.
-	
-	for y in range(1):
-		var floor_nodes = []
-		while floor_nodes.size() < 2:
-			floor_nodes = floors[y].filter(func(_node): return randi_range(0, 1))
-		var x = 0
-		for node: MapNode in floors[y]:
-			if node not in floor_nodes:
-				node.erased = true
-			else:
-				var random_color = Color(randf(), randf(), randf())
-				if Vector3(random_color.r, random_color.g, random_color.b).length() < 0.5:
-					random_color = random_color.lightened(0.25)
-				current_paths[x] = MapPath.new([node], random_color)
-			x += 1
+	var floor_nodes = []
+	while floor_nodes.size() < 2:
+		floor_nodes = floors[0].filter(func(_node): return randi_range(0, 1))
+	var path_id = 0
+	for node: MapNode in floors[0]:
+		if node in floor_nodes:
+			var random_color = Color(randf(), randf(), randf())
+			if Vector3(random_color.r, random_color.g, random_color.b).length() < 0.5:
+				random_color = random_color.lightened(0.25)
+			current_paths[path_id] = MapPath.new([node], random_color)
+		path_id += 1
 	
 	for y in range(grid_height):
 		for x in range(grid_width):
@@ -88,7 +90,6 @@ func generate() -> void:
 				
 				for next in path.nodes[-1].next:
 					arr.push_back(next)
-				arr.shuffle()
 					
 				for other_path in current_paths.values():
 					if other_path == path:
@@ -96,11 +97,14 @@ func generate() -> void:
 					if arr.is_empty():
 						break
 					if y < other_path.nodes.size():
-						for node in other_path.nodes[y].next:
-							if node == arr[0]:
-								arr[0].erased = true
-								arr.erase(arr[0])
-								break
+						for element in arr:
+							if other_path.nodes[y].coord.x == element.coord.x:
+								arr.erase(element)
+						
+						#for node in other_path.nodes[y].next:
+							#if node.coord.x == arr[0].coord.x:
+								#arr.erase(arr[0])
+								#break
 				
 				if not arr.is_empty():
 					if arr.size() > 1:
@@ -108,16 +112,6 @@ func generate() -> void:
 					path.nodes.push_back(arr[0])
 				
 	
-	#endregion
-	
-	## Создадим пути.
-	#for x in range(grid_width):
-		#var path = []
-		#add_to_path_rec(floors[x][0], current_paths)
-		#current_paths.push_back(path)
-	#
-	#
-	## Удалим ненужные ноды.
 	for arr in floors:
 		for node in arr:
 			var found = false
@@ -128,16 +122,7 @@ func generate() -> void:
 			if not found:
 				node.erased = true
 	
-	for arr in floors:
-		for node in arr:
-			if node.erased:
-				for prev in node.prev:
-					prev.next.erase(node)
-				arr.erase(node)
-				node.queue_free()
-	
 	#region Создадим ноду с боссом.
-	
 	
 	var boss_node = add_node(Vector2i(3, (grid_height + 1)))
 	for path: MapPath in current_paths.values():
@@ -145,6 +130,18 @@ func generate() -> void:
 		path.nodes[-1].next.push_back(boss_node)
 		boss_node.prev.push_back(path.nodes[-1])
 	floors.push_back([boss_node])
+	
+	#endregion
+	
+	#region Удалим ноды.
+	
+	for arr in floors:
+		for node in arr:
+			if node.erased:
+				for prev in node.prev:
+					prev.next.erase(node)
+				node.queue_free()
+				nodes.erase(node)
 	
 	#endregion
 	
@@ -159,13 +156,11 @@ func add_node(coord: Vector2i) -> MapNode:
 	pos.y = -pos.y
 	instance.coord = coord
 	instance.position = pos
+	nodes.push_back(instance)
 	return instance
 
-func add_link(from: MapNode, to: MapNode):
-	pass
-
 func draw_links():
-	for key in current_paths.keys():
+	for key in current_paths:
 		var path = current_paths[key]
 		var i = 0
 		for node in path.nodes:
