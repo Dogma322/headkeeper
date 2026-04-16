@@ -1,12 +1,23 @@
 extends Area2D
 class_name MapNode
 
-var links: Array[MapNode] = []
 var next: Array[MapNode] = []
-var prev: Array[MapNode] = []
-var paths: Array[Map.MapPath] = []
 var to_erase: bool = false
 var coord: Vector2i
+
+var stage: int:
+	get:
+		return coord.y
+
+enum Type {
+	UNKNOWN = -1,
+	BATTLE,
+	MAX
+}
+
+var type = Type.UNKNOWN
+var string_hint: String = ""
+var number_hint: int = 0
 
 signal pressed
 

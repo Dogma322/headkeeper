@@ -6,7 +6,13 @@ func _ready() -> void:
 	Signals.stage_changed.connect(update_text)
 
 func update_text():
-	if CombatManager.stage <= 10:
-		text = tr("stage") % CombatManager.stage + "/10"
+	var stage = 0
+	if CombatManager.map_node != null:
+		stage = CombatManager.map_node.stage
 	else:
-		text = tr("stage") % CombatManager.stage
+		stage = CombatManager.stage
+	
+	if CombatManager.stage <= 10:
+		text = tr("stage") % stage + "/10"
+	else:
+		text = tr("stage") % stage

@@ -16,6 +16,15 @@ var nodes = []
 var floors = []
 var current_paths = {}
 
+@onready var temp_early_enemy_pool = EnemyManager.early_enemy_pool.duplicate()
+@onready var temp_mid_enemy_pool = EnemyManager.mid_enemy_pool.duplicate()
+@onready var temp_late_enemy_pool = EnemyManager.late_enemy_pool.duplicate()
+
+var early_enemy_pool_keys = []
+var mid_enemy_pool_keys = []
+var late_enemy_pool_keys = []
+	
+@onready var rng := RandomNumberGenerator.new()
 
 class MapPath:
 	var nodes
@@ -26,9 +35,6 @@ class MapPath:
 		color = _color
 
 
-func _ready() -> void:
-	pass
-
 func clear():
 	for node in nodes:
 		node.queue_free()
@@ -37,8 +43,28 @@ func clear():
 	current_paths.clear()
 
 
+func _ready() -> void:
+	seed(1010)
+	rng.randomize()
+
+func reset_enemy_pools():
+	temp_early_enemy_pool = EnemyManager.early_enemy_pool.duplicate()
+	temp_mid_enemy_pool = EnemyManager.mid_enemy_pool.duplicate()
+	temp_late_enemy_pool = EnemyManager.late_enemy_pool.duplicate()
+
+	for element in temp_early_enemy_pool.keys():
+		early_enemy_pool_keys.push_back(element)
+	early_enemy_pool_keys.shuffle()
+	for element in temp_mid_enemy_pool.keys():
+		mid_enemy_pool_keys.push_back(element)
+	mid_enemy_pool_keys.shuffle()
+	for element in temp_late_enemy_pool.keys():
+		late_enemy_pool_keys.push_back(element)
+	late_enemy_pool_keys.shuffle()
+
 func generate() -> void:
 	clear()
+	reset_enemy_pools()
 	
 	#region Сгенерируем граф.
 	
@@ -49,12 +75,9 @@ func generate() -> void:
 			if y > 0:
 				if x - 1 >= 0:
 					floors[y - 1][x - 1].next.push_back(node)
-					node.prev.push_back(floors[y - 1][x - 1])
 				floors[y - 1][x].next.push_back(node)
-				node.prev.push_back(floors[y - 1][x])
 				if x + 1 < grid_width:
 					floors[y - 1][x + 1].next.push_back(node)
-					node.prev.push_back(floors[y - 1][x + 1])
 			arr.push_back(node)
 		floors.push_back(arr)
 	
@@ -72,7 +95,6 @@ func generate() -> void:
 			if Vector3(random_color.r, random_color.g, random_color.b).length() < 0.5:
 				random_color = random_color.lightened(0.25)
 			current_paths[path_id] = MapPath.new([node], random_color)
-			node.paths.push_back(current_paths[path_id])
 		path_id += 1
 		
 	#endregion
@@ -108,7 +130,6 @@ func generate() -> void:
 							continue
 						current.next.erase(node)
 					path.nodes.push_back(arr[0])
-					arr[0].paths.push_back(path)
 	
 	#endregion
 	
@@ -128,11 +149,10 @@ func generate() -> void:
 	
 	#region Создадим ноду с боссом.
 	
-	var boss_node = add_node(Vector2i(3, (grid_height + 1)))
+	var boss_node = add_node(Vector2i(3, grid_height))
 	for path: MapPath in current_paths.values():
-		path.nodes.push_back(boss_node)
 		path.nodes[-1].next.push_back(boss_node)
-		boss_node.prev.push_back(path.nodes[-1])
+		path.nodes.push_back(boss_node)
 	floors.push_back([boss_node])
 	
 	#endregion
@@ -142,10 +162,6 @@ func generate() -> void:
 	for arr in floors:
 		for node in arr:
 			if node.to_erase:
-				for next in node.next:
-					next.prev.erase(node)
-				for prev in node.prev:
-					prev.next.erase(node)
 				node.queue_free()
 				nodes.erase(node)
 	
@@ -160,6 +176,36 @@ func add_node(coord: Vector2i) -> MapNode:
 	
 	var instance: MapNode = grid_node_scene.instantiate()
 	start.add_child(instance)
+	
+	var progress = coord.y
+	
+	var arr = [MapNode.Type.BATTLE]
+	var arr_index = rng.rand_weighted([1.0])
+	
+	instance.type = arr[arr_index]
+	if instance.type == MapNode.Type.BATTLE:
+		if progress == 0:
+			instance.string_hint = "wolf1"
+		elif progress >= 1 and progress < 5:
+			instance.string_hint = early_enemy_pool_keys.pop_back()
+			if early_enemy_pool_keys.is_empty():
+				for element in temp_early_enemy_pool.keys():
+					early_enemy_pool_keys.push_back(element)
+				early_enemy_pool_keys.shuffle()
+		elif progress >= 5 and progress < 10:
+			instance.string_hint = mid_enemy_pool_keys.pop_back()
+			if mid_enemy_pool_keys.is_empty():
+				for element in temp_mid_enemy_pool.keys():
+					mid_enemy_pool_keys.push_back(element)
+				mid_enemy_pool_keys.shuffle()
+		elif progress >= 10 and progress < 15:
+			instance.string_hint = late_enemy_pool_keys.pop_back()
+			if late_enemy_pool_keys.is_empty():
+				for element in temp_late_enemy_pool.keys():
+					late_enemy_pool_keys.push_back(element)
+				late_enemy_pool_keys.shuffle()
+		elif progress == 15:
+			instance.string_hint = "high_druid"
 	
 	instance.coord = coord
 	instance.position = pos

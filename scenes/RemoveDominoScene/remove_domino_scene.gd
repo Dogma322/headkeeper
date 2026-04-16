@@ -89,4 +89,4 @@ func clear_domino_list():
 		
 		Signals.domino_delete_completed.emit()
 		await get_tree().create_timer(1).timeout
-		CombatManager.change_stage()
+		SceneManager.show_map_scene()

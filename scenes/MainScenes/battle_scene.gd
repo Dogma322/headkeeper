@@ -35,8 +35,8 @@ func _ready() -> void:
 		Global.fight_scene = self
  
 
-func start():
-	CombatManager.start()
+func start(map_node: MapNode):
+	CombatManager.start(map_node)
 	
 
 

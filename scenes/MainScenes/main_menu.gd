@@ -1,5 +1,5 @@
 @tool
-extends Node2D
+extends Control
 
 @onready var play_btn: GameButton = %PlayBtn
 @onready var change_board_generation_btn: GameButton = %ChangeBoardGenerationBtn

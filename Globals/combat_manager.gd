@@ -5,7 +5,7 @@ var stage_changing := false
 
 var turn = 0
 var stage = 1
-
+var map_node: MapNode
 
 
 func _ready() -> void:
@@ -16,21 +16,43 @@ func _ready() -> void:
 	
 
 	
-func start():
+func start(_map_node: MapNode):
+	map_node = _map_node
+	
 	await get_tree().process_frame
-	EnemyManager.set_enemy()
+	EnemyManager.set_enemy(map_node)
 	SoundManager.set_music(Global.enemy.location)
 	Global.fight_background.set_background()
 	
 	Transition.blackout_off()
-	
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(1).timeout
 	
 	BoardManager.generate_board()
 	
 	player_turn_begin(true)
 
-
+func change_stage(_map_node):
+	map_node = _map_node
+	
+	if stage_changing:
+		return # уже меняется стадия, игнорируем повторный вызов
+	stage_changing = true
+	
+	reset_fight_data()
+	stage += 1
+	print("STAGE %d" % stage)
+	print(stage)
+	reset_turn_data()
+	BoardManager.generate_board()
+	EnemyManager.set_enemy(map_node)
+	SoundManager.set_music(Global.enemy.location)
+	Global.fight_background.set_background()
+	Signals.stage_changed.emit()
+	Transition.blackout_off()
+	await get_tree().create_timer(1).timeout
+	stage_changing = false
+	player_turn_begin(false)
+	
 
 func play_dominoes():
 	print("PLAY_D")
@@ -228,30 +250,7 @@ func show_delete_domino_menu():
 	await get_tree().create_timer(1).timeout
 	Global.remove_domino_scene.update_domino_list()
 	#change_stage() вызывается внутри Global.remove_domino_scene
-	
-	
-func change_stage():
-	if stage_changing:
-		return # уже меняется стадия, игнорируем повторный вызов
-	stage_changing = true
-	
-	reset_fight_data()
-	stage += 1
-	print("STAGE %d" % stage)
-	print(stage)
-	Transition.blackout_on()
-	await get_tree().create_timer(1).timeout
-	reset_turn_data()
-	BoardManager.generate_board()
-	EnemyManager.set_enemy()
-	SoundManager.set_music(Global.enemy.location)
-	Global.fight_background.set_background()
-	Signals.stage_changed.emit()
-	Transition.blackout_off()
-	await get_tree().create_timer(1).timeout
-	stage_changing = false
-	player_turn_begin(false)
-	
+
 
 	
 func reset_turn_data():

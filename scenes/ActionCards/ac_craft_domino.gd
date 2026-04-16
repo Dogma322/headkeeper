@@ -11,4 +11,4 @@ func effect():
 	Global.fight_scene.add_child(craft_scene_instance)
 	await Signals.domino_selected
 	craft_scene_instance.queue_free()
-	CombatManager.change_stage()
+	SceneManager.show_map_scene()

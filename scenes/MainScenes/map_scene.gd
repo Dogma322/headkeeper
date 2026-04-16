@@ -35,10 +35,9 @@ func _on_gen_button_pressed() -> void:
 
 
 func _on_map_node_mouse_entered(node: MapNode) -> void:
-	tooltip_panel.description = "[center]Битва[/center]"
+	tooltip_panel.description = "[center]Битва с \"(%s)\"[/center]" % node.string_hint
 	tooltip_panel.show_tooltip()
 	tooltip_panel.position = node.global_position - Vector2(tooltip_panel.size.x / 2.0, tooltip_panel.size.y + 10)
-
 
 func _on_map_node_mouse_exited() -> void:
 	tooltip_panel.hide_tooltip()
@@ -61,14 +60,13 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			return
 		selected_node = node
 	current_progress += 1
-		
-	#moving = true
+	moving = true
 	
 	var tween = create_tween()
 	tween.tween_property(player, "position", node.global_position, 0.5)
 	await tween.finished
 	
-	#SceneManager.show_battle_scene()
+	SceneManager.show_battle_scene(node)
 
 
 func _on_all_dominoes_button_pressed() -> void:

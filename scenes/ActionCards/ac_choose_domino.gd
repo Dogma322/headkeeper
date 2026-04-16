@@ -8,4 +8,4 @@ func effect():
 	Global.choice_scene.spawn_dominoes()
 	await Signals.domino_selected
 	await get_tree().create_timer(1).timeout
-	CombatManager.change_stage()
+	SceneManager.show_map_scene()

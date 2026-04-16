@@ -25,8 +25,12 @@ func show_map_scene():
 	map_scene.moving = false
 
 
-func show_battle_scene():
+func show_battle_scene(map_node: MapNode):
 	Transition.blackout_on()
 	await get_tree().create_timer(1.0).timeout
+	
 	show_scene(battle_scene)
-	battle_scene.start()
+	if map_node.coord.y == 0:
+		CombatManager.start(map_node)
+	else:
+		CombatManager.change_stage(map_node)

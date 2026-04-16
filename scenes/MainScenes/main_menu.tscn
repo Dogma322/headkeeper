@@ -36,7 +36,14 @@ shader_parameter/cg_tint = 0.0
 shader_parameter/cg_highlights = 1.0
 shader_parameter/cg_shadows = 1.0
 
-[node name="MainMenu" type="Node2D" unique_id=643041956]
+[node name="MainMenu" type="Control" unique_id=1847202913]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_biks6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2133518222]
@@ -46,29 +53,42 @@ texture = ExtResource("1_icbvd")
 [node name="ChangeBoardGenerationBtn" parent="." unique_id=12153377 instance=ExtResource("3_4s641")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(134, 48)
-offset_left = 503.0
-offset_top = 3.0
-offset_right = 637.0
-offset_bottom = 51.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -134.0
+offset_right = 0.0
+offset_bottom = 48.0
+grow_horizontal = 0
 text = "Рандомные поля: вкл"
 font_size = 2
 disabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1926393881]
-offset_left = 256.0
-offset_top = 61.0
-offset_right = 384.0
-offset_bottom = 220.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -100.0
+offset_right = 64.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MapBtn" parent="VBoxContainer" unique_id=885226573 instance=ExtResource("3_4s641")]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-text = "Карта"
+text = "Играть"
 font_size = 4
 disabled = false
 
 [node name="PlayBtn" parent="VBoxContainer" unique_id=325350531 instance=ExtResource("3_4s641")]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 text = "play"
@@ -99,7 +119,6 @@ disabled = false
 
 [node name="Shader" type="Control" parent="." unique_id=1575948723]
 z_index = 999
-layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
