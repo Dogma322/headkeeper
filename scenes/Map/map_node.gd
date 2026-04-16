@@ -4,6 +4,7 @@ class_name MapNode
 var links: Array[MapNode] = []
 var next: Array[MapNode] = []
 var prev: Array[MapNode] = []
+var paths: Array[Map.MapPath] = []
 var to_erase: bool = false
 var coord: Vector2i
 

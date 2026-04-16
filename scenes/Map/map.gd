@@ -29,26 +29,6 @@ class MapPath:
 func _ready() -> void:
 	pass
 
-
-func add_to_path_rec(node: MapNode, paths):
-	if node.next.is_empty():
-		return
-	
-	var arr = node.next.duplicate()
-	arr.shuffle()
-	
-	for n in node.prev:
-		if n != arr[0]:
-			n.next.erase(node)
-			node.prev.erase(n) 
-	
-	for path in paths:
-		if arr[0] in path:
-			return
-	
-	add_to_path_rec(arr[0], paths)
-
-
 func clear():
 	for node in nodes:
 		node.queue_free()
@@ -92,6 +72,7 @@ func generate() -> void:
 			if Vector3(random_color.r, random_color.g, random_color.b).length() < 0.5:
 				random_color = random_color.lightened(0.25)
 			current_paths[path_id] = MapPath.new([node], random_color)
+			node.paths.push_back(current_paths[path_id])
 		path_id += 1
 		
 	#endregion
@@ -103,8 +84,9 @@ func generate() -> void:
 			if current_paths.has(x):
 				var path = current_paths[x]
 				var arr = []
+				var current = path.nodes[-1]
 				
-				for next in path.nodes[-1].next:
+				for next in current.next:
 					arr.push_back(next)
 				
 				for other_path in current_paths.values():
@@ -115,12 +97,18 @@ func generate() -> void:
 					if y < other_path.nodes.size():
 						for element in arr:
 							if other_path.nodes[y].coord.x == element.coord.x:
+								current.next.erase(element)
 								arr.erase(element)
 				
 				if not arr.is_empty():
 					if arr.size() > 1:
 						arr.shuffle()
+					for node in arr:
+						if node == arr[0]:
+							continue
+						current.next.erase(node)
 					path.nodes.push_back(arr[0])
+					arr[0].paths.push_back(path)
 	
 	#endregion
 	
@@ -154,6 +142,8 @@ func generate() -> void:
 	for arr in floors:
 		for node in arr:
 			if node.to_erase:
+				for next in node.next:
+					next.prev.erase(node)
 				for prev in node.prev:
 					prev.next.erase(node)
 				node.queue_free()
@@ -181,6 +171,10 @@ func add_node(coord: Vector2i) -> MapNode:
 
 
 func _draw() -> void:
+	#for node in nodes:
+	#	for next_node in node.next:
+	#		draw_line(node.global_position, next_node.global_position, Color.GRAY)
+	
 	for key in current_paths:
 		var path = current_paths[key]
 		var i = 0

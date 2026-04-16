@@ -195,7 +195,11 @@ func show_rewards():
 #	await get_tree().create_timer(1).timeout
 
 	Global.fight_scene.hide_menu()
-	show_common_cards()
+	
+	Transition.blackout_on()
+	await get_tree().create_timer(1.0).timeout
+	Transition.blackout_off()
+	SceneManager.show_map_scene()
 	
 	#if stage == 1 or stage == 4 or stage == 7:
 		#show_head_choice()

@@ -5,11 +5,21 @@ class_name MapScene
 @onready var player: Sprite2D = $Player
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
 
-var move_tween: Tween
 var moving = false
+var selected_node: MapNode = null
+var current_progress := 0
+var player_origin : Vector2
+
+func reset():
+	moving = false
+	selected_node = null
+	current_progress = 0
+	player.position = player_origin
 
 
 func _ready() -> void:
+	player_origin = player.position
+	Global.map_scene = self
 	Transition.blackout_off()
 
 
@@ -20,6 +30,7 @@ func _on_exit_button_pressed() -> void:
 
 
 func _on_gen_button_pressed() -> void:
+	reset()
 	map.generate()
 
 
@@ -36,13 +47,28 @@ func _on_map_node_mouse_exited() -> void:
 func _on_map_node_pressed(node: MapNode) -> void:
 	if moving:
 		return
-	moving = true
+	if selected_node == null:
+		if node.coord.y != 0:
+			return
+		selected_node = node
+	else:
+		var found := false
+		for node2 in selected_node.next:
+			if node == node2:
+				found = true
+				break
+		if not found:
+			return
+		selected_node = node
+	current_progress += 1
+		
+	#moving = true
 	
-	move_tween = create_tween()
-	move_tween.tween_property(player, "position", node.global_position, 0.5)
-	await move_tween.finished
+	var tween = create_tween()
+	tween.tween_property(player, "position", node.global_position, 0.5)
+	await tween.finished
 	
-	SceneManager.show_battle_scene()
+	#SceneManager.show_battle_scene()
 
 
 func _on_all_dominoes_button_pressed() -> void:
