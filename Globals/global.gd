@@ -12,7 +12,7 @@ func _ready() -> void:
 @onready var head_holder
 @onready var action_card_container
 @onready var choice_scene
-@onready var fight_background
+@onready var background
 @onready var remove_domino_scene
 @onready var play_btn
 @onready var craft_scene_instance

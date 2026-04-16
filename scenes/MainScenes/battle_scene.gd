@@ -5,23 +5,8 @@ class_name BattleScene
 @onready var characters = $Characters
 @onready var play_btn: GameButton = %PlayBtn
 @onready var main_buttons_box: VBoxContainer = $MainButtonsBox
-@onready var always_show = [
-	$BattleBackground, %DominoListScene, $Shader
-]
 @onready var board_1: Board = $Board/Board1
 @onready var hand: Node2D = $Hand
-
-
-func hide_ui() -> void:
-	for child in get_children():
-		if not child in always_show:
-			child.hide()
-
-
-func show_ui() -> void:
-	for child in get_children():
-		if not child in always_show:
-			child.show()
 
 
 func _ready() -> void:

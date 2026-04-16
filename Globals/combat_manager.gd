@@ -22,7 +22,7 @@ func start(_map_node: MapNode):
 	await get_tree().process_frame
 	EnemyManager.set_enemy(map_node)
 	SoundManager.set_music(Global.enemy.location)
-	Global.fight_background.set_background()
+	Global.background.set_battle_background()
 	
 	Transition.blackout_off()
 	await get_tree().create_timer(1).timeout
@@ -46,7 +46,7 @@ func change_stage(_map_node):
 	BoardManager.generate_board()
 	EnemyManager.set_enemy(map_node)
 	SoundManager.set_music(Global.enemy.location)
-	Global.fight_background.set_background()
+	Global.background.set_battle_background()
 	Signals.stage_changed.emit()
 	Transition.blackout_off()
 	await get_tree().create_timer(1).timeout

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cp0e26n3nl6rm"]
 
 [ext_resource type="Script" uid="uid://cd08ro0cafp6e" path="res://scenes/MainScenes/map_scene.gd" id="1_kb5l8"]
-[ext_resource type="Texture2D" uid="uid://dfm53ekuvdv5w" path="res://assets/Backgrounds/VoidBackground.png" id="2_6p00c"]
 [ext_resource type="PackedScene" uid="uid://c4t765oqy66fj" path="res://scenes/Map/map.tscn" id="3_kd8hc"]
 [ext_resource type="Texture2D" uid="uid://bdc8xw1rrynlw" path="res://icon.svg" id="3_oq6vs"]
 [ext_resource type="PackedScene" uid="uid://bo8xaqmke5324" path="res://scenes/UI/icon_button.tscn" id="4_kd8hc"]
@@ -18,10 +17,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_kb5l8")
-
-[node name="BackgroundSprite2D" type="Sprite2D" parent="." unique_id=1820526401]
-position = Vector2(320, 180)
-texture = ExtResource("2_6p00c")
 
 [node name="Player" type="Sprite2D" parent="." unique_id=2018903195]
 position = Vector2(320, 340)
@@ -70,6 +65,7 @@ size_flags_vertical = 0
 layout_mode = 2
 size_flags_vertical = 0
 text = "Generate"
+font_size = 3
 disabled = false
 
 [node name="AllDominoesButton" parent="Layout/VBoxContainer" unique_id=622861341 instance=ExtResource("6_dqmp7")]
@@ -77,6 +73,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "Все домино"
+font_size = 3
 disabled = false
 
 [connection signal="node_mouse_entered" from="Map" to="." method="_on_map_node_mouse_entered"]

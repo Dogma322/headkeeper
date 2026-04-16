@@ -2,7 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://cp0e26n3nl6rm" path="res://scenes/MainScenes/map_scene.tscn" id="1_5xbpf"]
 [ext_resource type="Script" uid="uid://dikeh7fck30r2" path="res://scenes/MainScenes/scene_manager.gd" id="1_ack50"]
+[ext_resource type="PackedScene" uid="uid://bn0602p7re11e" path="res://scenes/Backgrounds/battle_background.tscn" id="2_gaf2n"]
 [ext_resource type="PackedScene" uid="uid://dks3x17ep5x0n" path="res://scenes/MainScenes/battle_scene.tscn" id="3_1y7cv"]
+[ext_resource type="PackedScene" uid="uid://23ui6010migp" path="res://scenes/DominoListScene/domino_list_scene.tscn" id="4_dmnrm"]
 
 [node name="SceneManager" type="MarginContainer" unique_id=2134074927]
 anchors_preset = 15
@@ -15,10 +17,18 @@ size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1_ack50")
 
+[node name="Background" parent="." unique_id=631565350 instance=ExtResource("2_gaf2n")]
+metadata/_edit_lock_ = true
+
 [node name="MapScene" parent="." unique_id=1058918205 instance=ExtResource("1_5xbpf")]
 visible = false
 layout_mode = 2
 
 [node name="BattleScene" parent="." unique_id=662499199 instance=ExtResource("3_1y7cv")]
+visible = false
+layout_mode = 2
+
+[node name="DominoListScene" parent="." unique_id=573018855 instance=ExtResource("4_dmnrm")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2

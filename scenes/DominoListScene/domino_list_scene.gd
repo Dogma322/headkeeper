@@ -98,8 +98,9 @@ func clear_domino_list():
 
 func on_tween_finished(domino) -> void:
 	dominoes.remove_child(domino)
-	domino_parents[domino].add_child(domino)
-	domino_parents.erase(domino)
+	if domino_parents.has(domino):
+		domino_parents[domino].add_child(domino)
+		domino_parents.erase(domino)
 	
 	domino.position = domino_prev_transforms[domino].origin
 	var tween = get_tree().create_tween()
@@ -109,9 +110,9 @@ func on_tween_finished(domino) -> void:
 
 func _on_exit_button_pressed() -> void:
 	clear_domino_list()
-	#Transition.blackout_on()
-	#await get_tree().create_timer(0.5).timeout
-	#Transition.blackout_off()
+	
+	Transition.blackout_on()
+	await get_tree().create_timer(1.0).timeout
 	
 	hide()
-	Global.fight_scene.show_ui()
+	SceneManager.show_battle_scene_immediate()

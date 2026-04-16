@@ -2,8 +2,9 @@ extends Control
 
 @onready var map_scene: MapScene = $MapScene
 @onready var battle_scene: BattleScene = $BattleScene
-@onready var scenes = [map_scene, battle_scene]
-
+@onready var domino_list_scene: DominoListScene = %DominoListScene
+@onready var scenes = [map_scene, battle_scene, domino_list_scene]
+@onready var background: Node2D = $Background
 
 func show_scene(scene):
 	for scene2 in scenes:
@@ -21,9 +22,19 @@ func new_run():
 
 
 func show_map_scene():
+	background.set_map_background()
 	show_scene(map_scene)
 	map_scene.moving = false
 
+
+func show_domino_list_scene(mode):
+	Transition.blackout_on()
+	await get_tree().create_timer(1.0).timeout
+	Transition.blackout_off()
+	
+	show_scene(domino_list_scene)
+	domino_list_scene.update_domino_list(mode)
+	
 
 func show_battle_scene(map_node: MapNode):
 	Transition.blackout_on()
@@ -34,3 +45,7 @@ func show_battle_scene(map_node: MapNode):
 		CombatManager.start(map_node)
 	else:
 		CombatManager.change_stage(map_node)
+
+func show_battle_scene_immediate() -> void:
+	Transition.blackout_off()
+	show_scene(battle_scene)

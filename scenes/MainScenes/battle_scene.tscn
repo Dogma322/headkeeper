@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://dks3x17ep5x0n"]
 
-[ext_resource type="PackedScene" uid="uid://bn0602p7re11e" path="res://scenes/Backgrounds/battle_background.tscn" id="1_dyrcu"]
 [ext_resource type="PackedScene" uid="uid://bnr8o6y2c8n08" path="res://scenes/Hand/hand.tscn" id="1_wfsj5"]
 [ext_resource type="Script" uid="uid://kd473y2mdxg0" path="res://scenes/MainScenes/battle_scene.gd" id="1_ydxg7"]
 [ext_resource type="PackedScene" uid="uid://bss08hflnscb3" path="res://scenes/Boards/BoardTemplate/board_1.tscn" id="3_qxp17"]
@@ -9,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="7_76b4e"]
 [ext_resource type="PackedScene" uid="uid://fvbwyoeuebsq" path="res://scenes/DeckBags/deck_bag.tscn" id="8_qxp17"]
 [ext_resource type="Script" uid="uid://dwpk36y7pnpsa" path="res://scenes/MainScenes/combat_ui.gd" id="8_uk3cr"]
-[ext_resource type="PackedScene" uid="uid://23ui6010migp" path="res://scenes/DominoListScene/domino_list_scene.tscn" id="9_d56r7"]
 [ext_resource type="PackedScene" uid="uid://cagbtkvoqcjjb" path="res://scenes/DeckBags/discard_bag.tscn" id="9_lhbvr"]
 [ext_resource type="PackedScene" uid="uid://drlsgry4o0pof" path="res://scenes/BoardBonusContainer/board_bonus_container.tscn" id="10_lhbvr"]
 [ext_resource type="PackedScene" uid="uid://bbvfro8a5geyx" path="res://scenes/HeadHolder/head_holder.tscn" id="11_aonfs"]
@@ -65,9 +63,6 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ydxg7")
 
-[node name="BattleBackground" parent="." unique_id=631565350 instance=ExtResource("1_dyrcu")]
-metadata/_edit_lock_ = true
-
 [node name="Board" type="Node2D" parent="." unique_id=848168304]
 
 [node name="Board1" parent="Board" unique_id=183639370 instance=ExtResource("3_qxp17")]
@@ -110,7 +105,7 @@ disabled = false
 [node name="UI" type="Node2D" parent="." unique_id=539959544 node_paths=PackedStringArray("money_label", "domino_list_scene")]
 script = ExtResource("8_uk3cr")
 money_label = NodePath("../MoneyLabel")
-domino_list_scene = NodePath("../DominoListScene")
+domino_list_scene = NodePath("")
 
 [node name="Bags" type="Node2D" parent="UI" unique_id=1548184174]
 
@@ -192,13 +187,6 @@ metadata/_edit_lock_ = true
 
 [node name="Camera" parent="." unique_id=888122831 instance=ExtResource("19_mjddb")]
 position = Vector2(320, 180)
-
-[node name="DominoListScene" parent="." unique_id=1801682247 instance=ExtResource("9_d56r7")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-offset_right = 640.0
-offset_bottom = 360.0
 
 [connection signal="pressed" from="MainButtonsBox/PlayBtn" to="." method="_on_play_btn_pressed"]
 [connection signal="pressed" from="MainButtonsBox/ShowAllDominoesBtn" to="UI" method="_on_show_all_dominoes_btn_pressed"]

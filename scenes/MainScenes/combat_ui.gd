@@ -18,12 +18,7 @@ func _ready() -> void:
 
 
 func _show_dominoes(mode: DominoListScene.Source) -> void:
-	#Transition.blackout_on()
-	#await get_tree().create_timer(0.5).timeout
-	#Transition.blackout_off()
-	Global.fight_scene.hide_ui()
-	domino_list_scene.show()
-	domino_list_scene.update_domino_list(mode)
+	SceneManager.show_domino_list_scene(mode)
 
 
 func _on_deck_bag_pressed() -> void:
