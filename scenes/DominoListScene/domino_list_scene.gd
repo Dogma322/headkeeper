@@ -7,7 +7,7 @@ const SPACING := Vector2(40, 70)  # расстояние между домино
 # НАСТРОЙКА ВЫСОТЫ СЕТКИ
 @export var CENTER_Y := 120
 
-@onready var dominoes = $Dominoes
+@onready var dominoes = %Dominoes
 @onready var exit_button: TextureButton = %ExitButton
 
 var domino_parents = {}
@@ -19,10 +19,6 @@ enum Source {
 	DISCARD_BAG,
 }
 
-func _ready():
-	pass
-	
-	
 func update_domino_list(source: Source):
 	var pool := []
 	match source:
@@ -93,6 +89,7 @@ func clear_domino_list():
 		await get_tree().create_timer(0.05).timeout
 	DominoManager.block_domino_input = false
 
+
 func on_tween_finished(domino) -> void:
 	dominoes.remove_child(domino)
 	if domino_parents.has(domino):
@@ -105,11 +102,7 @@ func on_tween_finished(domino) -> void:
 	
 	domino_prev_transforms.erase(domino)
 
+
 func _on_exit_button_pressed() -> void:
 	clear_domino_list()
-	
-	Transition.blackout_on()
-	await get_tree().create_timer(1.0).timeout
-	
-	hide()
-	SceneManager.show_battle_scene_immediate()
+	SceneManager.show_previous_scene()

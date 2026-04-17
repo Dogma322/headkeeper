@@ -63,7 +63,7 @@ func add_domino(domino:Domino):
 		domino.get_parent().remove_child(domino)
 
 		
-	var root = get_parent()
+	var root = SceneManager.current_scene
 	root.add_child(domino)
 
 	update_layout()

@@ -1,9 +1,65 @@
 [gd_scene format=3 uid="uid://caovgfyajqfdl"]
 
 [ext_resource type="Script" uid="uid://eww4rgt3mp0s" path="res://scenes/HeadChoiceScene/head_choice_scene.gd" id="1_d26a6"]
+[ext_resource type="Script" uid="uid://cnhlqgjn6nf78" path="res://scenes/Camera/fs_shader.gd" id="2_8lrcy"]
+[ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="3_5xudc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aw72v"]
+shader = ExtResource("3_5xudc")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0400000019
+shader_parameter/scanlines_width = 0.0800000038
+shader_parameter/grille_opacity = 0.030000001425
+shader_parameter/resolution = Vector2(640, 360)
+shader_parameter/pixelate = false
+shader_parameter/roll = false
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 0.10000000149012
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 3.0
+shader_parameter/static_noise_intensity = 0.02000000095
+shader_parameter/aberration = 0.00300004764250005
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.3
+shader_parameter/vignette_opacity = 0.30000001425
+shader_parameter/cg_saturation = 0.850000040375
+shader_parameter/cg_exposure = 0.0
+shader_parameter/cg_contrast = 1.0
+shader_parameter/cg_temperature = 0.0
+shader_parameter/cg_tint = 0.0
+shader_parameter/cg_highlights = 1.0
+shader_parameter/cg_shadows = 1.0
 
 [node name="ChoiceScene" type="Node2D" unique_id=598777679]
 script = ExtResource("1_d26a6")
 spacing = 50
 y_position = 140
 float_amplitude = 4
+
+[node name="Shader" type="Control" parent="." unique_id=1317144473]
+z_index = 999
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_8lrcy")
+metadata/_edit_lock_ = true
+
+[node name="VhsShader" type="ColorRect" parent="Shader" unique_id=1044601547]
+material = SubResource("ShaderMaterial_aw72v")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true

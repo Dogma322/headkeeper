@@ -54,7 +54,6 @@ script = ExtResource("1_gu0aw")
 
 [node name="BattleBackground" parent="." unique_id=631565350 instance=ExtResource("1_dwva5")]
 visible = false
-is_temp = true
 metadata/_edit_lock_ = true
 
 [node name="Layout" type="MarginContainer" parent="." unique_id=1795268268]

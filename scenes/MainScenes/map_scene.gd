@@ -74,8 +74,31 @@ func _on_map_node_pressed(node: MapNode) -> void:
 	tween.tween_property(player, "position", node.global_position, 0.5)
 	await tween.finished
 	
-	SceneManager.show_battle_scene(node)
-
+	match node.type:
+		MapNode.Type.BATTLE:
+			SceneManager.show_battle_scene(node)
+		MapNode.Type.BONUS:
+			SceneManager.show_action_card_scene()
+			
+			ActionCardManager.show_action_cards(node.stage)
+			await Signals.action_card_selected
+			
+			Transition.blackout_on()
+			await get_tree().create_timer(1.0).timeout
+			Transition.blackout_off()
+			
+			SceneManager.show_map_scene()
+		MapNode.Type.CAMPFIRE:
+			SceneManager.show_action_card_scene()
+			
+			ActionCardManager.show_campfire_cards()
+			await Signals.action_card_selected
+			
+			Transition.blackout_on()
+			await get_tree().create_timer(1.0).timeout
+			Transition.blackout_off()
+			
+			SceneManager.show_map_scene()
 
 func _on_all_dominoes_button_pressed() -> void:
-	pass # Replace with function body.
+	SceneManager.show_domino_list_scene(DominoListScene.Source.ALL)

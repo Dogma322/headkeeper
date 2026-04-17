@@ -217,11 +217,10 @@ func show_rewards():
 #	await get_tree().create_timer(1).timeout
 
 	Global.fight_scene.hide_menu()
-	
-	Transition.blackout_on()
 	await get_tree().create_timer(1.0).timeout
-	Transition.blackout_off()
-	SceneManager.show_map_scene()
+	
+	SceneManager.show_action_card_scene()
+	ActionCardManager.show_battle_cards()
 	
 	#if stage == 1 or stage == 4 or stage == 7:
 		#show_head_choice()
@@ -239,16 +238,9 @@ func show_domino_choice():
 	
 func show_head_choice():
 	Global.choice_scene.spawn_heads()
-	
-func show_action_cards():
-	ActionCardManager.show_action_cards()
-
-func show_common_cards():
-	ActionCardManager.show_action_cards(true)
 
 func show_delete_domino_menu():
-	await get_tree().create_timer(1).timeout
-	Global.remove_domino_scene.update_domino_list()
+	SceneManager.show_remove_domino_scene()
 	#change_stage() вызывается внутри Global.remove_domino_scene
 
 

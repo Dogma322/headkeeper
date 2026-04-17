@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://bmdtecafi1ta3"]
+[gd_scene format=3 uid="uid://df1cvd1jqx3is"]
 
-[ext_resource type="Script" uid="uid://hqt0mpox6uhq" path="res://scenes/RemoveDominoScene/remove_domino_scene.gd" id="1_7yrws"]
-[ext_resource type="Script" uid="uid://cnhlqgjn6nf78" path="res://scenes/Camera/fs_shader.gd" id="2_sb4qs"]
-[ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="3_v3c88"]
+[ext_resource type="PackedScene" uid="uid://dr7wx1mkxpyl7" path="res://scenes/ActionCardContainer/action_card_container.tscn" id="1_8a2cy"]
+[ext_resource type="Script" uid="uid://cnhlqgjn6nf78" path="res://scenes/Camera/fs_shader.gd" id="2_4qbyg"]
+[ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="3_khy7p"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k0hsw"]
-shader = ExtResource("3_v3c88")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3kv3a"]
+shader = ExtResource("3_khy7p")
 shader_parameter/overlay = true
 shader_parameter/scanlines_opacity = 0.0400000019
 shader_parameter/scanlines_width = 0.0800000038
@@ -35,20 +35,25 @@ shader_parameter/cg_tint = 0.0
 shader_parameter/cg_highlights = 1.0
 shader_parameter/cg_shadows = 1.0
 
-[node name="RemoveDominoScene" type="Node2D" unique_id=1801682247]
-script = ExtResource("1_7yrws")
-
-[node name="Dominoes" type="Node2D" parent="." unique_id=1604696314]
-
-[node name="Shader" type="Control" parent="." unique_id=73600525]
-z_index = 999
+[node name="ActionCardScene" type="Control" unique_id=370993708]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ActionCardContainer" parent="." unique_id=1117680451 instance=ExtResource("1_8a2cy")]
+layout_mode = 0
+
+[node name="Shader" type="Control" parent="." unique_id=20583175]
+z_index = 999
 anchors_preset = 0
 mouse_filter = 2
-script = ExtResource("2_sb4qs")
+script = ExtResource("2_4qbyg")
 
-[node name="VhsShader" type="ColorRect" parent="Shader" unique_id=1468150563]
-material = SubResource("ShaderMaterial_k0hsw")
+[node name="VhsShader" type="ColorRect" parent="Shader" unique_id=1386014306]
+material = SubResource("ShaderMaterial_3kv3a")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

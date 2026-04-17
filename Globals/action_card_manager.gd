@@ -20,7 +20,7 @@ var weak_bonus = preload("res://scenes/ActionCards/ac_weak_bonus.tscn")
 var end_run = preload("res://scenes/ActionCards/ac_end_run.tscn")
 var endless_mode = preload("res://scenes/ActionCards/ac_endless_mode.tscn")
 
-var common_stage_pool = [choose_domino, craft_domino]
+var battle_stage_pool = [choose_domino, craft_domino]
 var stage5_pool = [crit_bonus, draw_bonus]
 var stage36_pool = [heal, bonuses]
 var stage28_pool = [max_hp, delete_dominoes]
@@ -32,6 +32,9 @@ var endless_mode_pool_without_bonus = [heal, max_hp, delete_dominoes]
 var action_card_is_pressed = false
 var bonus_action_cards_pool = [heal_bonus, attack_bonus, defense_bonus, draw_bonus, 
 vulnerable_bonus, weak_bonus]
+
+
+var campfire_pool = [heal, max_hp]
 
 func _ready() -> void:
 	Signals.action_card_selected.connect(hide_cont)
@@ -46,55 +49,63 @@ func clear_cont():
 	Global.action_card_container.clear_cont()
 
 
-func show_action_cards(show_common_cards := false):
+func show_action_cards(stage: int) -> void:
 	clear_cont()
-	add_action_cards(show_common_cards)
+	add_action_cards(stage)
+	show_cont()
+	action_card_is_pressed = false
+
+func show_battle_cards():
+	show_action_cards_pool(battle_stage_pool)
+
+func show_campfire_cards() -> void:
+	show_action_cards_pool(campfire_pool)
+
+func show_action_cards_pool(pool):
+	clear_cont()
+	Global.action_card_container.show()
+	for card in pool:
+		Global.action_card_container.add_child(card.instantiate())
 	show_cont()
 	action_card_is_pressed = false
 
 
-func add_action_cards(show_common_cards: bool):
-	var temp_pool
-	if show_common_cards:
-		temp_pool = common_stage_pool.duplicate()
-		for i in range(2):
-			var card = temp_pool[i]
-			Global.action_card_container.add_child(card.instantiate())
-	else:
-		if CombatManager.stage == 2:
-			temp_pool = stage28_pool.duplicate()
-			
-		if CombatManager.stage == 3:
-			temp_pool = stage36_pool.duplicate()
-			
-		if CombatManager.stage == 5:
-			temp_pool = stage5_pool.duplicate()
+func add_action_cards(stage: int):
+	var temp_pool = stage28_pool.duplicate()
+	#if stage == 2:
+	#	temp_pool = stage28_pool.duplicate()
 		
-		if CombatManager.stage == 6:
-			temp_pool = stage36_pool.duplicate()
-			
-		if CombatManager.stage == 8:
-			temp_pool = stage28_pool.duplicate()
-			
-		if CombatManager.stage == 9:
-			temp_pool = stage9_pool.duplicate()
-			
-		if CombatManager.stage == 10:
-			temp_pool = stage10_pool.duplicate()
-			
-		if CombatManager.stage > 10:
-			if BoardManager.bonus_pool.size() < 12:
-				temp_pool = ActionCardManager.endless_mode_pool_with_bonus.duplicate()
-			else:
-				temp_pool = ActionCardManager.endless_mode_pool_without_bonus.duplicate()
+	if stage == 3:
+		temp_pool = stage36_pool.duplicate()
+		
+	if stage == 5:
+		temp_pool = stage5_pool.duplicate()
+	
+	if stage == 6:
+		temp_pool = stage36_pool.duplicate()
+		
+	if stage == 8:
+		temp_pool = stage28_pool.duplicate()
+		
+	if stage == 9:
+		temp_pool = stage9_pool.duplicate()
+		
+	if stage == 10:
+		temp_pool = stage10_pool.duplicate()
+		
+	if stage > 10:
+		if BoardManager.bonus_pool.size() < 12:
+			temp_pool = ActionCardManager.endless_mode_pool_with_bonus.duplicate()
+		else:
+			temp_pool = ActionCardManager.endless_mode_pool_without_bonus.duplicate()
 	
 	#for card in temp_pool:
 		#Global.action_card_container.add_child(card.instantiate())
 		
-		for i in range(2):
-			var card = temp_pool.pick_random()
-			temp_pool.erase(card)
-			Global.action_card_container.add_child(card.instantiate())
+	for i in range(temp_pool.size()):
+		var card = temp_pool.pick_random()
+		temp_pool.erase(card)
+		Global.action_card_container.add_child(card.instantiate())
 		
 
 func show_bonus_action_cards():

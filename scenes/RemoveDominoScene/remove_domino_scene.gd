@@ -88,5 +88,4 @@ func clear_domino_list():
 		DominoManager.block_domino_input = false
 		
 		Signals.domino_delete_completed.emit()
-		await get_tree().create_timer(1).timeout
-		SceneManager.show_map_scene()
+		Signals.action_card_selected.emit()

@@ -73,7 +73,9 @@ func get_current_side() -> int:
 
 
 func _ready() -> void:
-	Transition.blackout_off()
+	pass
+
+func start():
 	if not is_instance_valid(Global.fight_scene):
 		exit_button.show()
 		battle_background.show()

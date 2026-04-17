@@ -36,6 +36,7 @@ offset_left = -61.0
 offset_top = -81.0
 offset_right = 60.0
 offset_bottom = -41.0
+mouse_filter = 2
 
 [node name="TooltipPanel" parent="TooltipStack" unique_id=54216942 instance=ExtResource("2_fjr85")]
 unique_name_in_owner = true

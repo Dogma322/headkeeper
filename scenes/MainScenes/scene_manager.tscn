@@ -5,6 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://bn0602p7re11e" path="res://scenes/Backgrounds/battle_background.tscn" id="2_gaf2n"]
 [ext_resource type="PackedScene" uid="uid://dks3x17ep5x0n" path="res://scenes/MainScenes/battle_scene.tscn" id="3_1y7cv"]
 [ext_resource type="PackedScene" uid="uid://23ui6010migp" path="res://scenes/DominoListScene/domino_list_scene.tscn" id="4_dmnrm"]
+[ext_resource type="PackedScene" uid="uid://df1cvd1jqx3is" path="res://scenes/MainScenes/action_card_scene.tscn" id="6_ty5rh"]
+[ext_resource type="PackedScene" uid="uid://dywi02s7uin3f" path="res://scenes/MainScenes/craft_scene.tscn" id="7_4wbje"]
+[ext_resource type="PackedScene" uid="uid://caovgfyajqfdl" path="res://scenes/HeadChoiceScene/head_choice_scene.tscn" id="7_cb6jg"]
+[ext_resource type="PackedScene" uid="uid://bmdtecafi1ta3" path="res://scenes/RemoveDominoScene/remove_domino_scene.tscn" id="9_wrdhs"]
 
 [node name="SceneManager" type="MarginContainer" unique_id=2134074927]
 anchors_preset = 15
@@ -29,6 +33,20 @@ visible = false
 layout_mode = 2
 
 [node name="DominoListScene" parent="." unique_id=573018855 instance=ExtResource("4_dmnrm")]
-unique_name_in_owner = true
 visible = false
 layout_mode = 2
+
+[node name="ActionCardScene" parent="." unique_id=370993708 instance=ExtResource("6_ty5rh")]
+visible = false
+layout_mode = 2
+
+[node name="CraftScene" parent="." unique_id=1900912832 instance=ExtResource("7_4wbje")]
+visible = false
+layout_mode = 2
+
+[node name="ChoiceScene" parent="." unique_id=598777679 instance=ExtResource("7_cb6jg")]
+visible = false
+spacing = 100
+
+[node name="RemoveDominoScene" parent="." unique_id=1801682247 instance=ExtResource("9_wrdhs")]
+visible = false

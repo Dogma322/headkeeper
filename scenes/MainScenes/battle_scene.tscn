@@ -13,9 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://bbvfro8a5geyx" path="res://scenes/HeadHolder/head_holder.tscn" id="11_aonfs"]
 [ext_resource type="PackedScene" uid="uid://cdx24mq4bbdgo" path="res://scenes/GeneratedLabels/stage_label.tscn" id="11_vranq"]
 [ext_resource type="PackedScene" uid="uid://cs7y2wp3ykjsq" path="res://scenes/GeneratedLabels/timer_label.tscn" id="12_qc22i"]
-[ext_resource type="PackedScene" uid="uid://dr7wx1mkxpyl7" path="res://scenes/ActionCardContainer/action_card_container.tscn" id="13_4d2li"]
-[ext_resource type="PackedScene" uid="uid://caovgfyajqfdl" path="res://scenes/HeadChoiceScene/head_choice_scene.tscn" id="14_36n0a"]
-[ext_resource type="PackedScene" uid="uid://bmdtecafi1ta3" path="res://scenes/RemoveDominoScene/remove_domino_scene.tscn" id="15_36n0a"]
 [ext_resource type="PackedScene" uid="uid://csbo55doneg6b" path="res://scenes/OptionsPanel/options_panel.tscn" id="15_42igk"]
 [ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="15_csryg"]
 [ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="18_qc22i"]
@@ -102,10 +99,9 @@ font_size = 2
 use_darkened = true
 disabled = false
 
-[node name="UI" type="Node2D" parent="." unique_id=539959544 node_paths=PackedStringArray("money_label", "domino_list_scene")]
+[node name="UI" type="Node2D" parent="." unique_id=539959544 node_paths=PackedStringArray("money_label")]
 script = ExtResource("8_uk3cr")
 money_label = NodePath("../MoneyLabel")
-domino_list_scene = NodePath("")
 
 [node name="Bags" type="Node2D" parent="UI" unique_id=1548184174]
 
@@ -155,16 +151,6 @@ bbcode_enabled = true
 text = "[img]res://assets/Icons/CommonSkull.png[/img]0"
 fit_content = true
 autowrap_mode = 0
-
-[node name="ActionCardContainer" parent="." unique_id=1117680451 instance=ExtResource("13_4d2li")]
-layout_mode = 0
-offset_top = -240.0
-offset_bottom = -82.0
-
-[node name="ChoiceScene" parent="." unique_id=598777679 instance=ExtResource("14_36n0a")]
-spacing = 100
-
-[node name="RemoveDominoScene" parent="." unique_id=671397883 instance=ExtResource("15_36n0a")]
 
 [node name="OptionsPanel" parent="." unique_id=1496924105 instance=ExtResource("15_42igk")]
 
