@@ -15,6 +15,7 @@ func reset():
 	selected_node = null
 	current_progress = 0
 	player.position = player_origin
+	map.generate()
 
 
 func _ready() -> void:
@@ -31,11 +32,18 @@ func _on_exit_button_pressed() -> void:
 
 func _on_gen_button_pressed() -> void:
 	reset()
-	map.generate()
 
 
 func _on_map_node_mouse_entered(node: MapNode) -> void:
-	tooltip_panel.description = "[center]Битва с \"(%s)\"[/center]" % node.string_hint
+	match node.type:
+		MapNode.Type.BATTLE:
+			tooltip_panel.description = "[center]Битва с \"(%s)\"[/center]" % node.string_hint
+		MapNode.Type.SHOP:
+			tooltip_panel.description = "[center]Магазин[/center]"
+		MapNode.Type.BONUS:
+			tooltip_panel.description = "[center]Бонус[/center]"
+		MapNode.Type.CAMPFIRE:
+			tooltip_panel.description = "[center]Костер[/center]"
 	tooltip_panel.show_tooltip()
 	tooltip_panel.position = node.global_position - Vector2(tooltip_panel.size.x / 2.0, tooltip_panel.size.y + 10)
 

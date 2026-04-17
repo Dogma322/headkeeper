@@ -262,6 +262,7 @@ func reset_turn_data():
 func reset_run_data():
 	Signals.reset_run_data.emit()
 	DominoManager.block_domino_input = false
+	Global.map_scene.reset()
 	
 	stage = 1
 	
@@ -283,6 +284,7 @@ func return_to_main_menu():
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
 	reset_run_data()
+	
 	get_tree().change_scene_to_file("res://scenes/MainScenes/main_menu.tscn")
 	
 	

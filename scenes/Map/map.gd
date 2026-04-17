@@ -5,7 +5,15 @@ class_name Map
 @export var grid_height := 15
 @export var path_count := 4
 
-@export var grid_node_scene: PackedScene
+@export_group("Probabilities", "probability")
+@export var probability_battle_weight: float = 8.0
+@export var probability_shop_weight: float = 1.0
+@export var probability_bonus_weight: float = 3.0
+@export var probability_campfire_weight: float = 2.0
+
+func probability_sum() -> float:
+	return probability_battle_weight + probability_shop_weight + probability_bonus_weight + probability_campfire_weight
+
 @onready var start: Marker2D = $Start
 
 signal node_mouse_entered(node: MapNode)
@@ -16,14 +24,15 @@ var nodes = []
 var floors = []
 var current_paths = {}
 
-@onready var temp_early_enemy_pool = EnemyManager.early_enemy_pool.duplicate()
-@onready var temp_mid_enemy_pool = EnemyManager.mid_enemy_pool.duplicate()
-@onready var temp_late_enemy_pool = EnemyManager.late_enemy_pool.duplicate()
+@onready var temp_early_enemy_keys = EnemyManager.early_enemy_keys.duplicate()
+@onready var temp_mid_enemy_keys = EnemyManager.mid_enemy_keys.duplicate()
+@onready var temp_late_enemy_keys = EnemyManager.late_enemy_keys.duplicate()
 
 var early_enemy_pool_keys = []
 var mid_enemy_pool_keys = []
 var late_enemy_pool_keys = []
-	
+
+@onready var grid_node_scene = preload("res://scenes/Map/map_node.tscn")
 @onready var rng := RandomNumberGenerator.new()
 
 class MapPath:
@@ -44,21 +53,21 @@ func clear():
 
 
 func _ready() -> void:
-	seed(1010)
+	randomize()
 	rng.randomize()
 
 func reset_enemy_pools():
-	temp_early_enemy_pool = EnemyManager.early_enemy_pool.duplicate()
-	temp_mid_enemy_pool = EnemyManager.mid_enemy_pool.duplicate()
-	temp_late_enemy_pool = EnemyManager.late_enemy_pool.duplicate()
+	temp_early_enemy_keys = EnemyManager.early_enemy_keys.duplicate()
+	temp_mid_enemy_keys = EnemyManager.mid_enemy_keys.duplicate()
+	temp_late_enemy_keys = EnemyManager.late_enemy_keys.duplicate()
 
-	for element in temp_early_enemy_pool.keys():
+	for element in temp_early_enemy_keys:
 		early_enemy_pool_keys.push_back(element)
 	early_enemy_pool_keys.shuffle()
-	for element in temp_mid_enemy_pool.keys():
+	for element in temp_mid_enemy_keys:
 		mid_enemy_pool_keys.push_back(element)
 	mid_enemy_pool_keys.shuffle()
-	for element in temp_late_enemy_pool.keys():
+	for element in temp_late_enemy_keys:
 		late_enemy_pool_keys.push_back(element)
 	late_enemy_pool_keys.shuffle()
 
@@ -179,33 +188,47 @@ func add_node(coord: Vector2i) -> MapNode:
 	
 	var progress = coord.y
 	
-	var arr = [MapNode.Type.BATTLE]
-	var arr_index = rng.rand_weighted([1.0])
+	# --------------
+	# MapNode.Type
+	# --------------
+	# BATTLE,
+	# SHOP,
+	# BONUS,
+	# CAMPFIRE
+	# --------------
+	
+	var arr = [MapNode.Type.BATTLE, MapNode.Type.SHOP, MapNode.Type.BONUS, MapNode.Type.CAMPFIRE]
+	var sum = probability_sum()
+	var arr_index = rng.rand_weighted([probability_battle_weight / sum, probability_shop_weight / sum, probability_bonus_weight / sum, probability_campfire_weight / sum])
+	
+	if progress == 0:
+		arr_index = 0
 	
 	instance.type = arr[arr_index]
-	if instance.type == MapNode.Type.BATTLE:
-		if progress == 0:
-			instance.string_hint = "wolf1"
-		elif progress >= 1 and progress < 5:
-			instance.string_hint = early_enemy_pool_keys.pop_back()
-			if early_enemy_pool_keys.is_empty():
-				for element in temp_early_enemy_pool.keys():
-					early_enemy_pool_keys.push_back(element)
-				early_enemy_pool_keys.shuffle()
-		elif progress >= 5 and progress < 10:
-			instance.string_hint = mid_enemy_pool_keys.pop_back()
-			if mid_enemy_pool_keys.is_empty():
-				for element in temp_mid_enemy_pool.keys():
-					mid_enemy_pool_keys.push_back(element)
-				mid_enemy_pool_keys.shuffle()
-		elif progress >= 10 and progress < 15:
-			instance.string_hint = late_enemy_pool_keys.pop_back()
-			if late_enemy_pool_keys.is_empty():
-				for element in temp_late_enemy_pool.keys():
-					late_enemy_pool_keys.push_back(element)
-				late_enemy_pool_keys.shuffle()
-		elif progress == 15:
-			instance.string_hint = "high_druid"
+	match instance.type:
+		MapNode.Type.BATTLE:
+			if progress == 0:
+				instance.string_hint = "wolf1"
+			elif progress >= 1 and progress < 5:
+				instance.string_hint = early_enemy_pool_keys.pop_back()
+				if early_enemy_pool_keys.is_empty():
+					for element in temp_early_enemy_keys:
+						early_enemy_pool_keys.push_back(element)
+					early_enemy_pool_keys.shuffle()
+			elif progress >= 5 and progress < 10:
+				instance.string_hint = mid_enemy_pool_keys.pop_back()
+				if mid_enemy_pool_keys.is_empty():
+					for element in temp_mid_enemy_keys:
+						mid_enemy_pool_keys.push_back(element)
+					mid_enemy_pool_keys.shuffle()
+			elif progress >= 10 and progress < 15:
+				instance.string_hint = late_enemy_pool_keys.pop_back()
+				if late_enemy_pool_keys.is_empty():
+					for element in temp_late_enemy_keys:
+						late_enemy_pool_keys.push_back(element)
+					late_enemy_pool_keys.shuffle()
+			elif progress == 15:
+				instance.string_hint = "high_druid"
 	
 	instance.coord = coord
 	instance.position = pos

@@ -27,9 +27,8 @@ func _ready() -> void:
 		color_rect.visible = visible_by_default
 	update_labels()
 
-
-func _on_options_button_pressed() -> void:
-	if options_panel.visible == false:
+func show_panel(enabled: bool) -> void:
+	if enabled:
 		update_labels()
 		color_rect.visible = true
 		options_panel.visible = true
@@ -42,6 +41,13 @@ func _on_options_button_pressed() -> void:
 		options_button.texture_normal = load("res://assets/UI/OptionsMenu/OptionsButton.png")
 
 
+func _on_options_button_pressed() -> void:
+	if options_panel.visible == false:
+		show_panel(true)
+	else:
+		show_panel(false)
+
+
 func update_labels():
 	if not Engine.is_editor_hint():
 		stage_label.text = tr("stage") % CombatManager.stage
@@ -52,8 +58,9 @@ func update_labels():
 
 func _on_end_run_btn_pressed() -> void:
 	CombatManager.return_to_main_menu()
-
+	show_panel(false)
 
 func _on_win_btn_pressed() -> void:
 	if Global.enemy != null:
-		Global.enemy.take_damage(Global.enemy.health)
+		Global.enemy.kill()
+		show_panel(false)

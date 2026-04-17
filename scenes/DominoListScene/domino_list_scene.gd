@@ -86,14 +86,11 @@ func update_domino_list(source: Source):
 
 
 func clear_domino_list():
-	var i := 0
 	for domino in dominoes.get_children():
 		var tween = get_tree().create_tween()
 		tween.tween_property(domino, "scale", Vector2(0,0), 0.2)
 		tween.finished.connect(on_tween_finished.bind(domino))
-		
 		await get_tree().create_timer(0.05).timeout
-		i += 1
 	DominoManager.block_domino_input = false
 
 func on_tween_finished(domino) -> void:

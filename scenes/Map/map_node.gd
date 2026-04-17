@@ -2,7 +2,7 @@ extends Area2D
 class_name MapNode
 
 var next: Array[MapNode] = []
-var to_erase: bool = false
+var to_erase := false
 var coord: Vector2i
 
 var stage: int:
@@ -12,10 +12,13 @@ var stage: int:
 enum Type {
 	UNKNOWN = -1,
 	BATTLE,
+	SHOP,
+	BONUS,
+	CAMPFIRE,
 	MAX
 }
 
-var type = Type.UNKNOWN
+var type := Type.UNKNOWN
 var string_hint: String = ""
 var number_hint: int = 0
 
