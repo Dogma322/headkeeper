@@ -34,16 +34,18 @@ func save_changes() -> void:
 func play() -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
+	Transition.blackout_off()
 	save_changes()
-	get_tree().change_scene_to_file("res://scenes/MainScenes/battle_scene.tscn")
-	Global.fight_scene.start()
+	SceneManager.show_map_scene()
 
 
 func exit() -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
+	Transition.blackout_off()
 	save_changes()
-	get_tree().change_scene_to_file("res://scenes/MainScenes/main_menu.tscn")
+	hide()
+	Global.main_menu.show()
 
 
 func cancel() -> void:

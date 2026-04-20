@@ -5,6 +5,7 @@ extends Control
 @onready var change_board_generation_btn: GameButton = %ChangeBoardGenerationBtn
 
 func _ready() -> void:
+	Global.main_menu = self
 	play_btn.text = tr("play")
 	change_board_generation_btn.text = "Рандомные поля: вкл"
 
@@ -13,31 +14,32 @@ func _ready() -> void:
 		SoundManager.set_music("MainMenu")
 
 
-func _on_map_btn_pressed() -> void:
-	Transition.blackout_on()
-	await get_tree().create_timer(1).timeout
-	hide()
-	SceneManager.new_run()
-
-
 ## Происходит при нажатии кнопки 'Играть'.
 func _on_play_btn_pressed() -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
-	get_tree().change_scene_to_file("res://scenes/MainScenes/battle_scene.tscn")
-	Global.fight_scene.start()
+	Transition.blackout_off()
+	hide()
+	SceneManager.new_run()
+
 
 ## Происходит при нажатии кнопки 'Магазин'.
 func _on_shop_btn_pressed() -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
-	get_tree().change_scene_to_file("res://scenes/MainScenes/shop_scene.tscn")
+	Transition.blackout_off()
+	
+	hide()
+	SceneManager.show_shop_scene()
 
 
+## Происходит при нажатии кнопки 'Крафт'.
 func _on_craft_btn_pressed() -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
-	get_tree().change_scene_to_file("res://scenes/MainScenes/craft_scene.tscn")
+	
+	hide()
+	SceneManager.show_craft_scene(true)
 
 
 ## Происходит при нажатии кнопки 'Рандомные поля'.

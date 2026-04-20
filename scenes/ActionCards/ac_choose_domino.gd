@@ -9,4 +9,9 @@ func effect():
 	Global.choice_scene.spawn_dominoes()
 	await Signals.domino_selected
 	await get_tree().create_timer(1.0).timeout
-	SceneManager.show_map_scene(true)
+	
+	Transition.blackout_on()
+	await get_tree().create_timer(1.0).timeout
+	Transition.blackout_off()
+	
+	SceneManager.show_map_scene()

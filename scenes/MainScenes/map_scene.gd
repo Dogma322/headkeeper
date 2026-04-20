@@ -27,7 +27,9 @@ func _ready() -> void:
 func _on_exit_button_pressed() -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
-	get_tree().change_scene_to_file("res://scenes/MainScenes/main_menu.tscn")
+	Transition.blackout_off()
+	hide()
+	Global.main_menu.show()
 
 
 func _on_gen_button_pressed() -> void:
@@ -77,6 +79,12 @@ func _on_map_node_pressed(node: MapNode) -> void:
 	match node.type:
 		MapNode.Type.BATTLE:
 			SceneManager.show_battle_scene(node)
+		MapNode.Type.SHOP:
+			Transition.blackout_on()
+			await get_tree().create_timer(1.0).timeout
+			Transition.blackout_off()
+			
+			SceneManager.show_shop_scene()
 		MapNode.Type.BONUS:
 			SceneManager.show_action_card_scene()
 			

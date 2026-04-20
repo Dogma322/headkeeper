@@ -5,8 +5,9 @@ extends Control
 @onready var domino_list_scene: DominoListScene = $DominoListScene
 @onready var action_card_scene: Control = $ActionCardScene
 @onready var choice_scene: Node2D = $ChoiceScene
-@onready var craft_scene: Control = $CraftScene
+@onready var craft_scene: CraftScene = $CraftScene
 @onready var remove_domino_scene: Node2D = $RemoveDominoScene
+@onready var shop_scene: Control = $ShopScene
 @onready var scenes = [
 	map_scene,
 	battle_scene,
@@ -14,7 +15,8 @@ extends Control
 	action_card_scene,
 	choice_scene,
 	craft_scene,
-	remove_domino_scene
+	remove_domino_scene,
+	shop_scene,
 ]
 
 @onready var background: Node2D = $Background
@@ -44,17 +46,11 @@ func show_previous_scene() -> void:
 
 func new_run():
 	#show_battle_scene()
-	Transition.blackout_off()
 	show_map_scene()
 	map_scene.map.generate()
 
 
-func show_map_scene(use_transition_anim := false):
-	if use_transition_anim:
-		Transition.blackout_on()
-		await get_tree().create_timer(1.0).timeout
-		Transition.blackout_off()
-	
+func show_map_scene():
 	background.set_map_background()
 	show_scene(map_scene)
 	map_scene.moving = false
@@ -96,13 +92,9 @@ func show_choice_scene():
 	show_scene(choice_scene)
 
 
-func show_craft_scene():
-	Transition.blackout_on()
-	await get_tree().create_timer(1.0).timeout
-	Transition.blackout_off()
-	
+func show_craft_scene(demo_mode: bool = false):
 	show_scene(craft_scene)
-	craft_scene.start()
+	craft_scene.start(demo_mode)
 
 
 func show_remove_domino_scene() -> void:
@@ -112,4 +104,7 @@ func show_remove_domino_scene() -> void:
 	
 	show_scene(remove_domino_scene)
 	remove_domino_scene.update_domino_list()
-	
+
+
+func show_shop_scene() -> void:
+	show_scene(shop_scene)

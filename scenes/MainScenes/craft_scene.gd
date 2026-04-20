@@ -1,4 +1,5 @@
 extends Control
+class_name CraftScene
 
 const COLUMNS := 8
 const SPACING := Vector2(40, 70)  # расстояние между домино
@@ -64,7 +65,7 @@ enum CraftType {
 var current_craft_type := CraftType.UNKNOWN
 var current_amount := 0
 var current_type := ""
-
+var demo_mode := false
 
 func get_current_side() -> int:
 	if current_domino:
@@ -73,9 +74,16 @@ func get_current_side() -> int:
 
 
 func _ready() -> void:
-	pass
+	Signals.domino_added_to_board.connect(_on_domino_added_to_board)
+	Signals.domino_chain_removed.connect(_on_domino_chain_removed)
 
-func start():
+func start(_demo_mode: bool):
+	demo_mode = _demo_mode
+	if _demo_mode:
+		exit_button.show()
+	else:
+		exit_button.hide()
+	
 	if not is_instance_valid(Global.fight_scene):
 		exit_button.show()
 		battle_background.show()
@@ -83,8 +91,6 @@ func start():
 	
 	Global.hand.draw_all_dominoes()
 	accept_button.disabled = true
-	Signals.domino_added_to_board.connect(_on_domino_added_to_board)
-	Signals.domino_chain_removed.connect(_on_domino_chain_removed)
 	
 	reroll()
 
@@ -112,10 +118,13 @@ func reroll() -> void:
 
 
 func _on_exit_button_pressed() -> void:
+	Global.hand.discard_all_dominoes()
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
+	Transition.blackout_off()
 	DominoManager.reset()
-	get_tree().change_scene_to_file("res://scenes/MainScenes/main_menu.tscn")
+	hide()
+	Global.main_menu.show()
 
 
 func apply(craft_type : CraftType, type: String, amount: int) -> void:
@@ -151,7 +160,17 @@ func finish():
 	DominoManager.block_domino_input = true
 	await get_tree().create_timer(1.0).timeout
 	Global.hand.discard_all_dominoes()
-	Signals.domino_selected.emit()
+	if demo_mode:
+		DominoManager.reshuffle_discard_into_deck()
+		
+		Transition.blackout_on()
+		await get_tree().create_timer(1.0).timeout
+		Transition.blackout_off()
+		
+		SceneManager.show_map_scene()
+		SceneManager.map_scene.reset()
+	else:
+		Signals.domino_selected.emit()
 
 
 func _on_accept_button_pressed() -> void:

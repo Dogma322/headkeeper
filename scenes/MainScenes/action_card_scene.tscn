@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://df1cvd1jqx3is"]
 
+[ext_resource type="Script" uid="uid://b8ct4ylla1s7x" path="res://scenes/MainScenes/action_card_scene.gd" id="1_3kv3a"]
 [ext_resource type="PackedScene" uid="uid://dr7wx1mkxpyl7" path="res://scenes/ActionCardContainer/action_card_container.tscn" id="1_8a2cy"]
 [ext_resource type="Script" uid="uid://cnhlqgjn6nf78" path="res://scenes/Camera/fs_shader.gd" id="2_4qbyg"]
 [ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="3_khy7p"]
@@ -42,9 +43,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3kv3a")
 
 [node name="ActionCardContainer" parent="." unique_id=1117680451 instance=ExtResource("1_8a2cy")]
 layout_mode = 0
+offset_top = 0.0
+offset_bottom = 144.0
 
 [node name="Shader" type="Control" parent="." unique_id=20583175]
 z_index = 999

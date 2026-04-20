@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name Hand
 
 @export var hand_height := 320
 @export var hand_width = 320

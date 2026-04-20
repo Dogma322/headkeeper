@@ -275,8 +275,9 @@ func hero_dead():
 func return_to_main_menu():
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
+	Transition.blackout_off()
 	reset_run_data()
-	
-	get_tree().change_scene_to_file("res://scenes/MainScenes/main_menu.tscn")
+	Global.fight_scene.hide()
+	Global.main_menu.show()
 	
 	
