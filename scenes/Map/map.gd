@@ -250,5 +250,5 @@ func _draw() -> void:
 		var i = 0
 		for node in path.nodes:
 			if i > 0:
-				draw_line(path.nodes[i - 1].global_position, node.global_position, path.color)
+				draw_line(path.nodes[i - 1].global_position, node.global_position, Color.WHITE)
 			i += 1
