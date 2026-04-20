@@ -201,7 +201,7 @@ func add_node(coord: Vector2i) -> MapNode:
 	var sum = probability_sum()
 	var arr_index = rng.rand_weighted([probability_battle_weight / sum, probability_shop_weight / sum, probability_bonus_weight / sum, probability_campfire_weight / sum])
 	
-	if progress == 0:
+	if progress == 0 or progress == 15:
 		instance.type = MapNode.Type.BATTLE
 	else:
 		instance.type = arr[arr_index]
