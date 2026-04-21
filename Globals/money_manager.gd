@@ -23,7 +23,6 @@ func _ready() -> void:
 
 func reset_run():
 	MetaManager.skulls += skulls
-	MetaManager.gold += gold
 	MetaManager.save_data()
 	skulls = 0
 	gold = 0
