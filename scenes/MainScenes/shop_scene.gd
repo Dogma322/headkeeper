@@ -4,7 +4,7 @@ extends Control
 @onready var slot_containers = [%HFlowContainer, %HFlowContainer2]
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
 @onready var additional_tooltip_panel: MarginContainer = %AdditionalTooltipPanel
-@onready var money_label: RichTextLabel = %MoneyLabel
+@onready var skulls_label: RichTextLabel = %SkullsLabel
 @onready var shop_options_panel: Node2D = %ShopOptionsPanel
 @onready var head_animation_player: AnimationPlayer = %HeadAnimationPlayer
 @onready var head_marker_2d: Marker2D = %Marker2D
@@ -15,13 +15,13 @@ var shop_cache: Array[ShopSlot] = []
 var current_head: Head = null
 var origin_head_slot: ShopSlot = null
 
-var started_money := 0
-var showed_money := 0:
+var started_skulls := 0
+var showed_skulls := 0:
 	set(value):
-		showed_money = value
-		money_label.text = "[img]res://assets/Icons/CommonSkull.png[/img]%s/%s" % [str(value), str(started_money)]
+		showed_skulls = value
+		skulls_label.text = "[img]res://assets/Icons/CommonSkull.png[/img]%s/%s" % [str(value), str(started_skulls)]
 
-var money_tween: Tween
+var skulls_tween: Tween
 var selected_slot: ShopSlot = null
 
 
@@ -56,11 +56,11 @@ func cancel() -> void:
 		cost += HeadManager.head_templates[slot.key].cost
 		
 	if cost != 0:
-		if money_tween and money_tween.is_running():
-			money_tween.kill()
-		money_tween = create_tween()
-		money_tween.tween_property(self, "showed_money", MetaManager.money + cost, 0.5)
-		MetaManager.money += cost
+		if skulls_tween and skulls_tween.is_running():
+			skulls_tween.kill()
+		skulls_tween = create_tween()
+		skulls_tween.tween_property(self, "showed_skulls", MetaManager.skulls + cost, 0.5)
+		MetaManager.skulls += cost
 	
 	select_head(origin_head_slot)
 	shop_cache.clear()
@@ -71,8 +71,8 @@ func _ready() -> void:
 	Transition.blackout_off()
 	load_slots()
 	load_heads()
-	started_money = MetaManager.money
-	showed_money = MetaManager.money
+	started_skulls = MetaManager.skulls
+	showed_skulls = MetaManager.skulls
 	head_animation_player.play("head_anim")
 	cancel_button.disabled = true
 
@@ -125,14 +125,14 @@ func _on_item_selected(item: ShopSlot) -> void:
 		
 		hide_tooltips()
 	else:
-		if item.try_buy(MetaManager.money):
+		if item.try_buy(MetaManager.skulls):
 			shop_cache.push_back(item)
 			if item.head.cost > 0:
-				if money_tween and money_tween.is_running():
-					money_tween.kill()
-				money_tween = create_tween()
-				money_tween.tween_property(self, "showed_money", MetaManager.money - item.head.cost, 0.5)
-				MetaManager.money -= item.head.cost
+				if skulls_tween and skulls_tween.is_running():
+					skulls_tween.kill()
+				skulls_tween = create_tween()
+				skulls_tween.tween_property(self, "showed_skulls", MetaManager.skulls - item.head.cost, 0.5)
+				MetaManager.skulls -= item.head.cost
 				
 				update_availability()
 				cancel_button.disabled = false
@@ -162,7 +162,7 @@ func hide_tooltips():
 
 func update_availability() -> void:
 	for slot in slots:
-		slot.update_availability(MetaManager.money)
+		slot.update_availability(MetaManager.skulls)
 
 
 func load_heads() -> void:
@@ -181,7 +181,7 @@ func load_heads() -> void:
 				current_head.block_input = true
 				head_marker_2d.add_child(current_head)
 		else:
-			slots[i].update_availability(MetaManager.money)
+			slots[i].update_availability(MetaManager.skulls)
 		i += 1
 
 

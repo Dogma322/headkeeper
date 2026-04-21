@@ -22,7 +22,7 @@ signal selected
 			cost_label.text = str(0)
 			cost_label.modulate = Color.TRANSPARENT
 
-var not_enough_money := false
+var not_enough_skulls := false
 
 var buyed := false:
 	set(value):
@@ -48,26 +48,26 @@ func unselect() -> void:
 	is_selected = false
 
 
-func try_buy(money: int) -> bool:
+func try_buy(skulls: int) -> bool:
 	if not head or buyed:
 		return false
-	if money < head.cost:
+	if skulls < head.cost:
 		return false
 	buyed = true 
 	return true
 
 
-func update_availability(money: int) -> void:
+func update_availability(skulls: int) -> void:
 	if not head or buyed:
 		return
-	if head.cost > money:
+	if head.cost > skulls:
 		icon_rect.modulate = Color.DIM_GRAY
 		cost_label.modulate = Color.DIM_GRAY
-		not_enough_money = true
+		not_enough_skulls = true
 	else:
 		icon_rect.modulate = Color.WHITE
 		cost_label.modulate = Color.WHITE
-		not_enough_money = false
+		not_enough_skulls = false
 
 
 func _ready() -> void:
@@ -77,12 +77,12 @@ func _ready() -> void:
 
 
 func _on_icon_rect_mouse_entered() -> void:
-	if head and not not_enough_money and not is_selected:
+	if head and not not_enough_skulls and not is_selected:
 		icon_rect.modulate = Color.WEB_GRAY
 
 
 func _on_icon_rect_mouse_exited() -> void:
-	if head and not not_enough_money and not is_selected:
+	if head and not not_enough_skulls and not is_selected:
 		icon_rect.modulate = Color.WHITE
 
 

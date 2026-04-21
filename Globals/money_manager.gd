@@ -1,18 +1,29 @@
 extends Node
 
-@onready var money_rewards = preload("res://resources/rewards/money_rewards.tres")
+@onready var skulls_rewards = preload("res://resources/rewards/skulls_rewards.tres")
 
-var money := 0:
+var skulls := 0:
 	set(value):
-		if money == value:
+		if skulls == value:
 			return
-		money = value
-		Signals.money_changed.emit(money)
+		skulls = value
+		Signals.skulls_changed.emit(skulls)
+
+var gold := 0:
+	set(value):
+		if gold == value:
+			return
+		gold = value
+		Signals.gold_changed.emit(gold)
+
 
 func _ready() -> void:
 	Signals.reset_run_data.connect(reset_run)
 
+
 func reset_run():
-	MetaManager.money += money
+	MetaManager.skulls += skulls
+	MetaManager.gold += gold
 	MetaManager.save_data()
-	money = 0
+	skulls = 0
+	gold = 0

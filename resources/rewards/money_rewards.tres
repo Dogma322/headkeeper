@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="Rewards" format=3 uid="uid://crsl6tty62rdp"]
-
-[ext_resource type="Script" uid="uid://bofmnk74el5et" path="res://resources/rewards/round_rewards.gd" id="1_rmgdt"]
-
-[resource]
-script = ExtResource("1_rmgdt")
-metadata/_custom_type_script = "uid://bofmnk74el5et"

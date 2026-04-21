@@ -95,9 +95,10 @@ font_size = 2
 use_darkened = true
 disabled = false
 
-[node name="UI" type="Node2D" parent="." unique_id=539959544 node_paths=PackedStringArray("money_label")]
+[node name="UI" type="Node2D" parent="." unique_id=539959544 node_paths=PackedStringArray("skulls_label", "gold_label")]
 script = ExtResource("8_uk3cr")
-money_label = NodePath("../MoneyLabel")
+skulls_label = NodePath("../VBoxContainer/SkullsLabel")
+gold_label = NodePath("../VBoxContainer/GoldLabel")
 
 [node name="Bags" type="Node2D" parent="UI" unique_id=1548184174]
 
@@ -137,10 +138,24 @@ layout_mode = 2
 [node name="HeadHolder" parent="." unique_id=2074985017 instance=ExtResource("11_aonfs")]
 center_position = Vector2(111, 116)
 
-[node name="MoneyLabel" type="RichTextLabel" parent="." unique_id=1876316434]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=604220652]
 layout_mode = 0
-offset_right = 48.0
-offset_bottom = 32.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SkullsLabel" type="RichTextLabel" parent="VBoxContainer" unique_id=1876316434]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("15_csryg")
+bbcode_enabled = true
+text = "[img]res://assets/Icons/CommonSkull.png[/img]0"
+fit_content = true
+autowrap_mode = 0
+
+[node name="GoldLabel" type="RichTextLabel" parent="VBoxContainer" unique_id=2112619489]
+unique_name_in_owner = true
+layout_mode = 2
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("15_csryg")
 bbcode_enabled = true

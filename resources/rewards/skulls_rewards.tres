@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Rewards" format=3 uid="uid://crsl6tty62rdp"]
+
+[ext_resource type="Script" uid="uid://bofmnk74el5et" path="res://resources/rewards/round_rewards.gd" id="1_kdxvf"]
+
+[resource]
+script = ExtResource("1_kdxvf")
+round_rewards = Dictionary[int, int]({
+0: 0,
+1: 1,
+2: 1,
+3: 1,
+4: 1,
+5: 1,
+6: 2,
+7: 2,
+8: 2,
+9: 2,
+10: 5,
+11: 5,
+12: 5,
+13: 5,
+14: 5,
+15: 10
+})
+metadata/_custom_type_script = "uid://bofmnk74el5et"
