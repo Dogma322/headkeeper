@@ -8,6 +8,9 @@ extends Control
 @onready var craft_scene: CraftScene = $CraftScene
 @onready var remove_domino_scene: Node2D = $RemoveDominoScene
 @onready var shop_scene: Control = $ShopScene
+@onready var campfire_scene: CampfireScene = $CampfireScene
+
+
 @onready var scenes = [
 	map_scene,
 	battle_scene,
@@ -17,9 +20,10 @@ extends Control
 	craft_scene,
 	remove_domino_scene,
 	shop_scene,
+	campfire_scene
 ]
 
-@onready var background: Node2D = $Background
+@onready var background: Background = $Background
 
 var previous_scene = null
 var current_scene = null
@@ -108,3 +112,8 @@ func show_remove_domino_scene() -> void:
 
 func show_shop_scene() -> void:
 	show_scene(shop_scene)
+
+
+func show_campfire_scene() -> void:
+	show_scene(campfire_scene)
+	campfire_scene.start()

@@ -53,6 +53,7 @@ signal reset_run_data
 signal fight_started
 
 signal hero_healed
+signal hero_health_changed
 
 signal stage_changed
 

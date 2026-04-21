@@ -15,6 +15,8 @@ func add_status(status, stacks):
 	add_child(st_ui)
 	status.stacks = stacks
 	status.owner = status_owner
+	if status.owner == null:
+		breakpoint
 	
 	if not status.status_changed.is_connected(st_ui._on_status_changed):
 		status.status_changed.connect(st_ui._on_status_changed)

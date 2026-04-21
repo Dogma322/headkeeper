@@ -62,11 +62,14 @@ func show_campfire_cards() -> void:
 	show_action_cards_pool(campfire_pool)
 
 func show_action_cards_pool(pool):
-	clear_cont()
-	Global.action_card_container.show()
+	var box = Global.action_card_container
+	if pool == campfire_pool:
+		return
+	box.clear_cont()
+	box.show()
 	for card in pool:
-		Global.action_card_container.add_child(card.instantiate())
-	show_cont()
+		box.add_child(card.instantiate())
+	box.show_cont()
 	action_card_is_pressed = false
 
 

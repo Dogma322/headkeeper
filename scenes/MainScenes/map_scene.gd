@@ -4,6 +4,7 @@ class_name MapScene
 @onready var map: Map = $Map
 @onready var player: Sprite2D = $Player
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
+@onready var act_label: Label = %ActLabel
 
 var moving = false
 var selected_node: MapNode = null
@@ -97,13 +98,15 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			
 			SceneManager.show_map_scene()
 		MapNode.Type.CAMPFIRE:
-			SceneManager.show_action_card_scene()
+			SceneManager.show_campfire_scene()
 			
 			ActionCardManager.show_campfire_cards()
 			await Signals.action_card_selected
+			await get_tree().create_timer(0.5).timeout
 			
 			Transition.blackout_on()
 			await get_tree().create_timer(1.0).timeout
+			SceneManager.campfire_scene.end()
 			Transition.blackout_off()
 			
 			SceneManager.show_map_scene()

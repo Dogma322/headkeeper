@@ -8,3 +8,4 @@ func effect():
 	Global.hero.max_health += 10
 	ActionManager.add(HealAction.new(self, Global.hero, 10))
 	ActionManager.play_one_action()
+	Signals.hero_health_changed.emit()

@@ -1,4 +1,5 @@
 extends Node2D
+class_name Hero
 
 var max_health = 100:
 	set(value):

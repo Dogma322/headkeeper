@@ -27,7 +27,7 @@ offset_right = 87.0
 offset_bottom = 137.0
 theme = ExtResource("3_p6wmb")
 theme_override_constants/line_spacing = -2
-text = "FSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
+text = "Description"
 horizontal_alignment = 1
 autowrap_mode = 3
 

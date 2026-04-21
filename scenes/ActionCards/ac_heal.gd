@@ -7,3 +7,4 @@ func _ready() -> void:
 func effect():
 	ActionManager.add(HealAction.new(self, Global.hero, 30))
 	ActionManager.play_one_action()
+	Signals.hero_health_changed.emit()

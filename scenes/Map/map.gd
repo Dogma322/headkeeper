@@ -3,7 +3,9 @@ class_name Map
 
 @export var grid_width := 7
 @export var grid_height := 15
-@export var path_count := 4
+@export var min_path_count := 4
+@export var max_path_count := 4
+@export var branch_count := 3
 
 @export_group("Probabilities", "probability")
 @export var probability_battle_weight: float = 8.0
@@ -95,7 +97,12 @@ func generate() -> void:
 	#region Создадим начальные точки путей.
 	
 	var floor_nodes = []
-	while floor_nodes.size() != min(path_count, grid_width):
+	var path_count = 0
+	if min_path_count == max_path_count:
+		path_count = min(max_path_count, grid_width)
+	else:
+		path_count = randi_range(min(min_path_count, grid_width), min(max_path_count, grid_width))
+	while floor_nodes.size() != path_count:
 		floor_nodes = floors[0].filter(func(_node): return randi_range(0, 1))
 	var path_id = 0
 	for node: MapNode in floors[0]:
