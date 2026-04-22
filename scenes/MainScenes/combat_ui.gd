@@ -15,7 +15,7 @@ func set_skulls(skulls: int) -> void:
 
 ## Устанавливает золото в текстовую метку золота.
 func set_gold(gold: int) -> void:
-	gold_label.text = "%s" % str(gold)
+	gold_label.text = "[img]res://assets/Icons/Coin.png[/img]%s" % str(gold)
 
 
 func _ready() -> void:

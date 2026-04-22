@@ -5,11 +5,13 @@ class_name MapScene
 @onready var player: Sprite2D = $Player
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
 @onready var act_label: Label = %ActLabel
+@onready var free_choice_button: GameButton = %FreeChoiceButton
 
 var moving = false
 var selected_node: MapNode = null
 var current_progress := 0
 var player_origin : Vector2
+var free_choice_mode := false
 
 func reset():
 	moving = false
@@ -57,18 +59,21 @@ func _on_map_node_mouse_exited() -> void:
 func _on_map_node_pressed(node: MapNode) -> void:
 	if moving:
 		return
-	if selected_node == null:
-		if node.coord.y != 0:
-			return
-		selected_node = node
+	if not free_choice_mode:
+		if selected_node == null:
+			if node.coord.y != 0:
+				return
+			selected_node = node
+		else:
+			var found := false
+			for node2 in selected_node.next:
+				if node == node2:
+					found = true
+					break
+			if not found:
+				return
+			selected_node = node
 	else:
-		var found := false
-		for node2 in selected_node.next:
-			if node == node2:
-				found = true
-				break
-		if not found:
-			return
 		selected_node = node
 	current_progress += 1
 	moving = true
@@ -85,7 +90,7 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			await get_tree().create_timer(1.0).timeout
 			Transition.blackout_off()
 			
-			SceneManager.show_shop_scene()
+			SceneManager.show_meta_scene()
 		MapNode.Type.BONUS:
 			SceneManager.show_action_card_scene()
 			
@@ -100,7 +105,6 @@ func _on_map_node_pressed(node: MapNode) -> void:
 		MapNode.Type.CAMPFIRE:
 			SceneManager.show_campfire_scene()
 			
-			ActionCardManager.show_campfire_cards()
 			await Signals.action_card_selected
 			await get_tree().create_timer(0.5).timeout
 			
@@ -113,3 +117,11 @@ func _on_map_node_pressed(node: MapNode) -> void:
 
 func _on_all_dominoes_button_pressed() -> void:
 	SceneManager.show_domino_list_scene(DominoListScene.Source.ALL)
+
+
+func _on_free_choice_button_pressed() -> void:
+	free_choice_mode = !free_choice_mode
+	if free_choice_mode:
+		free_choice_button.text = "Свободный выбор: вкл"
+	else:
+		free_choice_button.text = "Свободный выбор: выкл"

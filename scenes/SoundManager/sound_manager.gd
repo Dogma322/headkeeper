@@ -44,7 +44,7 @@ func _ready():
 
 func set_music(theme,fade_time := 3):
 	
-	if CombatManager.stage == 10:
+	if CombatManager.stage == 15:
 		theme = "Boss"
 	
 	

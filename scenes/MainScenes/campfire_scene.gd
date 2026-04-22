@@ -14,6 +14,7 @@ func start() -> void:
 
 func end():
 	SceneManager.background.set_map_background()
+	ActionCardManager.action_card_is_pressed = false
 	
 
 func _update_hp_bar():
@@ -35,6 +36,6 @@ func update_hp_bar(health, max_health):
 	hp_bar.value = health
 
 func update_hp_bar_smooth(health, max_health):
-	var tween = create_tween().set_parallel()
+	var tween = create_tween()
 	tween.tween_property(self, "max_hp", max_health, 0.25)
 	tween.tween_property(self, "hp", health, 0.25)

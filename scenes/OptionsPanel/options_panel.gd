@@ -25,7 +25,7 @@ func _ready() -> void:
 	else:
 		options_panel.visible = visible_by_default
 		color_rect.visible = visible_by_default
-	update_labels()
+	update_labels.call_deferred()
 
 func show_panel(enabled: bool) -> void:
 	if enabled:

@@ -4,9 +4,12 @@ var player_turn = true
 var stage_changing := false
 
 var turn = 0
-var stage = 1
 var map_node: MapNode
-
+var stage:
+	get:
+		if map_node == null:
+			return 0
+		return map_node.stage
 
 func _ready() -> void:
 	Signals.play_btn_pressed.connect(play_dominoes)
@@ -39,9 +42,7 @@ func change_stage(_map_node):
 	stage_changing = true
 	
 	reset_fight_data()
-	stage += 1
 	print("STAGE %d" % stage)
-	print(stage)
 	reset_turn_data()
 	BoardManager.generate_board()
 	EnemyManager.set_enemy(map_node)
@@ -90,7 +91,7 @@ func player_turn_begin(is_start: bool):
 	
 	apply_hero_turn_begin_status_effects()
 	await ActionManager.play_actions()
-	if is_start and stage == 1:
+	if is_start and stage == 0:
 		if not MetaManager.selected_head_key.is_empty():
 			HeadManager.temp_head_pool.erase(MetaManager.selected_head_key)
 			
@@ -212,6 +213,9 @@ func show_rewards():
 	
 	if MoneyManager.skulls_rewards.round_rewards.has(stage):
 		MoneyManager.skulls += MoneyManager.skulls_rewards.round_rewards[stage]
+	
+	if map_node.type == MapNode.Type.BATTLE:
+		create_tween().tween_property(MoneyManager, "gold", randi_range(10, 20), 0.5)
 	
 #	await Signals.domino_selected
 #	await get_tree().create_timer(1).timeout

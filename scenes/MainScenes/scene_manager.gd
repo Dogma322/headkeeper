@@ -7,7 +7,7 @@ extends Control
 @onready var choice_scene: Node2D = $ChoiceScene
 @onready var craft_scene: CraftScene = $CraftScene
 @onready var remove_domino_scene: Node2D = $RemoveDominoScene
-@onready var shop_scene: Control = $ShopScene
+@onready var meta_scene: Control = $MetaScene
 @onready var campfire_scene: CampfireScene = $CampfireScene
 
 
@@ -19,7 +19,7 @@ extends Control
 	choice_scene,
 	craft_scene,
 	remove_domino_scene,
-	shop_scene,
+	meta_scene,
 	campfire_scene
 ]
 
@@ -110,8 +110,8 @@ func show_remove_domino_scene() -> void:
 	remove_domino_scene.update_domino_list()
 
 
-func show_shop_scene() -> void:
-	show_scene(shop_scene)
+func show_meta_scene() -> void:
+	show_scene(meta_scene)
 
 
 func show_campfire_scene() -> void:

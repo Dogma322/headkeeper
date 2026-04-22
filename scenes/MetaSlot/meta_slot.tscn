@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bdk7hhppmx7sg"]
 
-[ext_resource type="Script" uid="uid://cvkapgho48qmd" path="res://scenes/ShopSlot/shop_slot.gd" id="1_ms52r"]
+[ext_resource type="Script" uid="uid://cvkapgho48qmd" path="res://scenes/MetaSlot/meta_slot.gd" id="1_ms52r"]
 [ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="2_nuw1x"]
 
-[node name="ShopSlot" type="VBoxContainer" unique_id=2072601406]
+[node name="MetaSlot" type="VBoxContainer" unique_id=2072601406]
 custom_minimum_size = Vector2(40, 64)
 offset_right = 55.0
 offset_bottom = 62.0

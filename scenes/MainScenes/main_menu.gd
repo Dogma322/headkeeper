@@ -23,20 +23,21 @@ func _on_play_btn_pressed() -> void:
 	SceneManager.new_run()
 
 
-## Происходит при нажатии кнопки 'Магазин'.
-func _on_shop_btn_pressed() -> void:
+## Происходит при нажатии кнопки 'Мета'.
+func _on_meta_btn_pressed() -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
 	Transition.blackout_off()
 	
 	hide()
-	SceneManager.show_shop_scene()
+	SceneManager.show_meta_scene()
 
 
 ## Происходит при нажатии кнопки 'Крафт'.
 func _on_craft_btn_pressed() -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
+	Transition.blackout_off()
 	
 	hide()
 	SceneManager.show_craft_scene(true)

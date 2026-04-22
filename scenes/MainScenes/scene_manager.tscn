@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dywi02s7uin3f" path="res://scenes/MainScenes/craft_scene.tscn" id="7_4wbje"]
 [ext_resource type="PackedScene" uid="uid://caovgfyajqfdl" path="res://scenes/HeadChoiceScene/head_choice_scene.tscn" id="7_cb6jg"]
 [ext_resource type="PackedScene" uid="uid://bmdtecafi1ta3" path="res://scenes/RemoveDominoScene/remove_domino_scene.tscn" id="9_wrdhs"]
-[ext_resource type="PackedScene" uid="uid://bgwmg1s66s6f1" path="res://scenes/MainScenes/shop_scene.tscn" id="10_ui8fk"]
+[ext_resource type="PackedScene" uid="uid://bgwmg1s66s6f1" path="res://scenes/MainScenes/meta_scene.tscn" id="10_ui8fk"]
 [ext_resource type="PackedScene" uid="uid://cw35tfda0j6qi" path="res://scenes/MainScenes/campfire_scene.tscn" id="12_dhv03"]
 
 [node name="SceneManager" type="MarginContainer" unique_id=2134074927]
@@ -53,7 +53,7 @@ spacing = 100
 [node name="RemoveDominoScene" parent="." unique_id=1801682247 instance=ExtResource("9_wrdhs")]
 visible = false
 
-[node name="ShopScene" parent="." unique_id=476688822 instance=ExtResource("10_ui8fk")]
+[node name="MetaScene" parent="." unique_id=476688822 instance=ExtResource("10_ui8fk")]
 visible = false
 layout_mode = 2
 

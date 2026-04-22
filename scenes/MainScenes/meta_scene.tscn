@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bgwmg1s66s6f1"]
 
-[ext_resource type="Script" uid="uid://fywqvqeqsdxm" path="res://scenes/MainScenes/shop_scene.gd" id="1_1nxvb"]
-[ext_resource type="Texture2D" uid="uid://pdmhcyleifgk" path="res://assets/Backgrounds/shop.png" id="2_j7sys"]
+[ext_resource type="Script" uid="uid://fywqvqeqsdxm" path="res://scenes/MainScenes/meta_scene.gd" id="1_1nxvb"]
+[ext_resource type="Texture2D" uid="uid://pdmhcyleifgk" path="res://assets/Backgrounds/meta.png" id="2_j7sys"]
 [ext_resource type="Texture2D" uid="uid://mjo560ccfs37" path="res://assets/UI/OptionsMenu/ExitButton.png" id="3_j7sys"]
-[ext_resource type="PackedScene" uid="uid://bjs0uqv1cm63v" path="res://scenes/OptionsPanel/shop_options_panel.tscn" id="4_pmqfv"]
+[ext_resource type="PackedScene" uid="uid://bjs0uqv1cm63v" path="res://scenes/OptionsPanel/meta_options_panel.tscn" id="4_pmqfv"]
 [ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="5_5w8ji"]
-[ext_resource type="PackedScene" uid="uid://bdk7hhppmx7sg" path="res://scenes/ShopSlot/shop_slot.tscn" id="5_aob4o"]
+[ext_resource type="PackedScene" uid="uid://bdk7hhppmx7sg" path="res://scenes/MetaSlot/meta_slot.tscn" id="5_aob4o"]
 [ext_resource type="PackedScene" uid="uid://bo8xaqmke5324" path="res://scenes/UI/icon_button.tscn" id="6_kwkn5"]
 [ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="6_pmqfv"]
 [ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="7_c7faw"]
@@ -148,7 +148,7 @@ shader_parameter/cg_tint = 0.0
 shader_parameter/cg_highlights = 1.0
 shader_parameter/cg_shadows = 1.0
 
-[node name="ShopScene" type="Control" unique_id=476688822]
+[node name="MetaScene" type="Control" unique_id=476688822]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -198,59 +198,59 @@ size_flags_horizontal = 3
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
-[node name="ShopSlot" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=2072601406 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=2072601406 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 2
 
-[node name="ShopSlot2" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=66463186 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot2" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=66463186 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 2
 
-[node name="ShopSlot3" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=243394340 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot3" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=243394340 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 2
 
-[node name="ShopSlot4" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=2045764805 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot4" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=2045764805 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 2
 
-[node name="ShopSlot5" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=1635599561 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot5" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=1635599561 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 2
 
-[node name="ShopSlot6" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=1794052842 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot6" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=1794052842 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 2
 
-[node name="ShopSlot7" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=253187586 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot7" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=253187586 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 2
 
-[node name="ShopSlot8" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=1372406757 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot8" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=1372406757 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 2
 
-[node name="ShopSlot9" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=2030770811 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot9" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=2030770811 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 2
 
-[node name="ShopSlot10" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=476859287 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot10" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=476859287 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 2
 
-[node name="ShopSlot11" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=784314586 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot11" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=784314586 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 2
 
-[node name="ShopSlot12" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=469899367 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot12" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=469899367 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 2
 
-[node name="ShopSlot13" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=1319705031 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot13" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=1319705031 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 2
 
-[node name="ShopSlot14" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=1417709151 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot14" parent="HBoxContainer/MarginContainer/HFlowContainer" unique_id=1417709151 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 2
 
@@ -352,11 +352,11 @@ theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 0
 metadata/_edit_lock_ = true
 
-[node name="ShopSlot" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=688079810 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=688079810 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 5
 
-[node name="ShopSlot2" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=1659655384 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot2" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=1659655384 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 5
 
@@ -367,11 +367,11 @@ size_flags_horizontal = 3
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
-[node name="ShopSlot3" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=1792384781 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot3" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=1792384781 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 5
 
-[node name="ShopSlot4" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=1185052738 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot4" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=1185052738 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 5
 
@@ -382,39 +382,39 @@ size_flags_horizontal = 3
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
-[node name="ShopSlot5" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=507750312 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot5" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=507750312 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 5
 
-[node name="ShopSlot6" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=1780436608 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot6" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=1780436608 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 5
 
-[node name="ShopSlot7" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=74408481 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot7" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=74408481 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 5
 
-[node name="ShopSlot8" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=863840580 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot8" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=863840580 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 5
 
-[node name="ShopSlot9" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=432411678 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot9" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=432411678 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 5
 
-[node name="ShopSlot10" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=1378035011 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot10" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=1378035011 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 5
 
-[node name="ShopSlot11" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=1930027506 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot11" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=1930027506 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 5
 
-[node name="ShopSlot12" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=528024700 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot12" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=528024700 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 5
 
-[node name="ShopSlot13" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=1737000928 instance=ExtResource("5_aob4o")]
+[node name="MetaSlot13" parent="HBoxContainer/MarginContainer2/HFlowContainer2" unique_id=1737000928 instance=ExtResource("5_aob4o")]
 layout_mode = 2
 tooltip_offset = 5
 
@@ -437,7 +437,7 @@ unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("3_j7sys")
 
-[node name="ShopOptionsPanel" parent="Layout" unique_id=1538752388 instance=ExtResource("4_pmqfv")]
+[node name="MetaOptionsPanel" parent="Layout" unique_id=1538752388 instance=ExtResource("4_pmqfv")]
 unique_name_in_owner = true
 
 [node name="TooltipPanel" parent="." unique_id=54216942 instance=ExtResource("7_c7faw")]
