@@ -12,5 +12,6 @@ script = ExtResource("1_rgwjr")
 hname = "hd_warrior_name"
 desc = "hd_warrior_des"
 cost = 3
+skulls_cost = 3
 texture = SubResource("AtlasTexture_5lvl2")
 metadata/_custom_type_script = "uid://m5esxthxmlub"

@@ -12,6 +12,7 @@ script = ExtResource("1_xpa38")
 hname = "hd_thorn_name"
 desc = "hd_thorn_des"
 cost = 5
+skulls_cost = 5
 texture = SubResource("AtlasTexture_px25g")
 extra_tags = Array[String](["Thorns"])
 metadata/_custom_type_script = "uid://m5esxthxmlub"

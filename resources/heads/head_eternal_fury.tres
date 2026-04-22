@@ -12,6 +12,7 @@ script = ExtResource("1_bedue")
 hname = "hd_eternal_fury_name"
 desc = "hd_eternal_fury_des"
 cost = 10
+skulls_cost = 10
 texture = SubResource("AtlasTexture_f8f1w")
 extra_tags = Array[String](["Fury"])
 metadata/_custom_type_script = "uid://m5esxthxmlub"

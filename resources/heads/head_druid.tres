@@ -12,6 +12,7 @@ script = ExtResource("1_ba2ml")
 hname = "hd_druid_name"
 desc = "hd_druid_des"
 cost = 12
+skulls_cost = 12
 value = 20
 texture = SubResource("AtlasTexture_fbd4k")
 extra_tags = Array[String](["Fury"])

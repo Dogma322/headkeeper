@@ -19,3 +19,6 @@ func set_battle_background():
 
 func set_campfire_background():
 	sprite_2d.texture = preload("res://assets/Backgrounds/Pond.png")
+
+func set_shop_background():
+	sprite_2d.texture = preload("res://assets/Backgrounds/Shop_Background.png")

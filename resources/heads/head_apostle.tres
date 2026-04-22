@@ -12,6 +12,7 @@ script = ExtResource("1_dufl6")
 hname = "hd_octopus_name"
 desc = "hd_octopus_des"
 cost = 15
+skulls_cost = 15
 corruption = 2
 value = 20
 texture = SubResource("AtlasTexture_iu4rg")

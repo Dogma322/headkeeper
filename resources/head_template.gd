@@ -3,7 +3,8 @@ class_name HeadTemplate
 
 @export var hname: String
 @export var desc: String
-@export var cost: int
+@export var skulls_cost: int
+@export var gold_cost: int = 150
 @export var damage = 0
 @export var armor = 0
 @export var heal = 0

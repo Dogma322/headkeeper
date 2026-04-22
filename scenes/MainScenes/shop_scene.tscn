@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://bb8bufwutf1xg"]
+
+[ext_resource type="Script" uid="uid://i4dac4hnyd7q" path="res://scenes/MainScenes/shop_scene.gd" id="1_1nxvb"]
+[ext_resource type="Texture2D" uid="uid://bb68jbil7py6a" path="res://assets/Shop/Shop_Content.png" id="2_m2knv"]
+[ext_resource type="PackedScene" uid="uid://ccl8epoohkfaq" path="res://scenes/ShopSlot/shop_slot.tscn" id="5_aob4o"]
+
+[node name="ShopScene" type="Control" unique_id=653709099]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1nxvb")
+
+[node name="Content" type="TextureRect" parent="." unique_id=326281503]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_m2knv")
+
+[node name="HeadSlot" parent="Content" unique_id=2072601406 instance=ExtResource("5_aob4o")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 208.0
+offset_top = 80.0
+offset_right = 240.0
+offset_bottom = 128.0
+item_type = 1
+
+[node name="HeadSlot2" parent="Content" unique_id=2019236607 instance=ExtResource("5_aob4o")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 256.0
+offset_top = 80.0
+offset_right = 288.0
+offset_bottom = 128.0
+item_type = 1
+
+[node name="HeadSlot3" parent="Content" unique_id=86981125 instance=ExtResource("5_aob4o")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 304.0
+offset_top = 80.0
+offset_right = 336.0
+offset_bottom = 128.0
+item_type = 1
+
+[node name="BonusSlot" parent="Content" unique_id=1615437798 instance=ExtResource("5_aob4o")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 208.0
+offset_top = 144.0
+offset_right = 240.0
+offset_bottom = 192.0
+item_type = 2
+
+[node name="BonusSlot2" parent="Content" unique_id=648100307 instance=ExtResource("5_aob4o")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 256.0
+offset_top = 144.0
+offset_right = 288.0
+offset_bottom = 192.0
+item_type = 2
+
+[node name="BonusSlot3" parent="Content" unique_id=2122507874 instance=ExtResource("5_aob4o")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 304.0
+offset_top = 144.0
+offset_right = 336.0
+offset_bottom = 192.0
+item_type = 2
+
+[node name="DominoSlot" parent="Content" unique_id=1098560316 instance=ExtResource("5_aob4o")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 208.0
+offset_top = 208.0
+offset_right = 240.0
+offset_bottom = 288.0
+item_type = 3
+
+[node name="DominoSlot2" parent="Content" unique_id=1881451190 instance=ExtResource("5_aob4o")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 256.0
+offset_top = 208.0
+offset_right = 288.0
+offset_bottom = 288.0
+item_type = 3
+
+[node name="DominoSlot3" parent="Content" unique_id=424591549 instance=ExtResource("5_aob4o")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 304.0
+offset_top = 208.0
+offset_right = 336.0
+offset_bottom = 288.0
+item_type = 3
+
+[node name="DominoSlot4" parent="Content" unique_id=1320670083 instance=ExtResource("5_aob4o")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 352.0
+offset_top = 208.0
+offset_right = 384.0
+offset_bottom = 288.0
+item_type = 3
+
+[node name="DominoSlot5" parent="Content" unique_id=901942916 instance=ExtResource("5_aob4o")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 400.0
+offset_top = 208.0
+offset_right = 432.0
+offset_bottom = 288.0
+item_type = 3
+
+[node name="RemoveDominoSlot" parent="Content" unique_id=1934902200 instance=ExtResource("5_aob4o")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 352.0
+offset_top = 80.0
+offset_right = 432.0
+offset_bottom = 192.0
+item_type = 4
+item_cost = 75

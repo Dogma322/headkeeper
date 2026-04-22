@@ -1,5 +1,5 @@
 extends VBoxContainer
-class_name ShopSlot
+class_name MetaSlot
 
 @onready var icon_rect: TextureRect = %IconRect
 @onready var cost_label: Label = %CostLabel
@@ -15,7 +15,7 @@ signal selected
 		head = value
 		if head:
 			icon_rect.texture = head.texture
-			cost_label.text = str(head.cost)
+			cost_label.text = str(head.skulls_cost)
 			cost_label.modulate = Color.WHITE
 		else:
 			icon_rect.texture = null
@@ -51,7 +51,7 @@ func unselect() -> void:
 func try_buy(skulls: int) -> bool:
 	if not head or buyed:
 		return false
-	if skulls < head.cost:
+	if skulls < head.skulls_cost:
 		return false
 	buyed = true 
 	return true
@@ -60,7 +60,7 @@ func try_buy(skulls: int) -> bool:
 func update_availability(skulls: int) -> void:
 	if not head or buyed:
 		return
-	if head.cost > skulls:
+	if head.skulls_cost > skulls:
 		icon_rect.modulate = Color.DIM_GRAY
 		cost_label.modulate = Color.DIM_GRAY
 		not_enough_skulls = true

@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bmdtecafi1ta3" path="res://scenes/RemoveDominoScene/remove_domino_scene.tscn" id="9_wrdhs"]
 [ext_resource type="PackedScene" uid="uid://bgwmg1s66s6f1" path="res://scenes/MainScenes/meta_scene.tscn" id="10_ui8fk"]
 [ext_resource type="PackedScene" uid="uid://cw35tfda0j6qi" path="res://scenes/MainScenes/campfire_scene.tscn" id="12_dhv03"]
+[ext_resource type="PackedScene" uid="uid://bb8bufwutf1xg" path="res://scenes/MainScenes/shop_scene.tscn" id="12_reosh"]
 
 [node name="SceneManager" type="MarginContainer" unique_id=2134074927]
 anchors_preset = 15
@@ -59,4 +60,7 @@ layout_mode = 2
 
 [node name="CampfireScene" parent="." unique_id=23089478 instance=ExtResource("12_dhv03")]
 visible = false
+layout_mode = 2
+
+[node name="ShopScene" parent="." unique_id=653709099 instance=ExtResource("12_reosh")]
 layout_mode = 2

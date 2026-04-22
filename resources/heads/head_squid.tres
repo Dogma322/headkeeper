@@ -12,5 +12,6 @@ script = ExtResource("1_pp0gp")
 hname = "hd_squid_name"
 desc = "hd_squid_des"
 cost = 12
+skulls_cost = 12
 texture = SubResource("AtlasTexture_6u8xd")
 metadata/_custom_type_script = "uid://m5esxthxmlub"

@@ -11,10 +11,10 @@ class_name MetaScene
 @onready var head_marker_2d: Marker2D = %Marker2D
 @onready var cancel_button: GameButton = %CancelButton
 
-var slots: Array[ShopSlot] = []
-var shop_cache: Array[ShopSlot] = []
+var slots: Array[MetaSlot] = []
+var shop_cache: Array[MetaSlot] = []
 var current_head: Head = null
-var origin_head_slot: ShopSlot = null
+var origin_head_slot: MetaSlot = null
 
 var started_skulls := 0
 var showed_skulls := 0:
@@ -23,7 +23,7 @@ var showed_skulls := 0:
 		skulls_label.text = "[img]res://assets/Icons/CommonSkull.png[/img]%s/%s" % [str(value), str(started_skulls)]
 
 var skulls_tween: Tween
-var selected_slot: ShopSlot = null
+var selected_slot: MetaSlot = null
 
 
 func save_changes() -> void:
@@ -54,7 +54,7 @@ func cancel() -> void:
 	for slot in shop_cache:
 		slot.is_selected = false
 		slot.buyed = false
-		cost += HeadManager.head_templates[slot.key].cost
+		cost += HeadManager.head_templates[slot.key].skulls_cost
 		
 	if cost != 0:
 		if skulls_tween and skulls_tween.is_running():
@@ -85,14 +85,14 @@ func _on_exit_button_pressed() -> void:
 func load_slots() -> void:
 	for container in slot_containers:
 		for child in container.get_children():
-			if child is ShopSlot:
+			if child is MetaSlot:
 				child.icon_rect.mouse_entered.connect(_on_item_mouse_entered.bind(child))
 				child.icon_rect.mouse_exited.connect(_on_item_mouse_exited)
 				child.selected.connect(_on_item_selected.bind(child))
 				slots.push_back(child)
 
 
-func select_head(slot: ShopSlot) -> void:
+func select_head(slot: MetaSlot) -> void:
 	if current_head:
 		current_head.queue_free()
 	if slot == null:
@@ -108,7 +108,7 @@ func select_head(slot: ShopSlot) -> void:
 	selected_slot = slot
 
 
-func _on_item_selected(item: ShopSlot) -> void:
+func _on_item_selected(item: MetaSlot) -> void:
 	if not item.head:
 		return
 	if item.buyed:
@@ -128,18 +128,18 @@ func _on_item_selected(item: ShopSlot) -> void:
 	else:
 		if item.try_buy(MetaManager.skulls):
 			shop_cache.push_back(item)
-			if item.head.cost > 0:
+			if item.head.skulls_cost > 0:
 				if skulls_tween and skulls_tween.is_running():
 					skulls_tween.kill()
 				skulls_tween = create_tween()
-				skulls_tween.tween_property(self, "showed_skulls", MetaManager.skulls - item.head.cost, 0.5)
-				MetaManager.skulls -= item.head.cost
+				skulls_tween.tween_property(self, "showed_skulls", MetaManager.skulls - item.head.skulls_cost, 0.5)
+				MetaManager.skulls -= item.head.skulls_cost
 				
 				update_availability()
 				cancel_button.disabled = false
 
 
-func _on_item_mouse_entered(item: ShopSlot) -> void:
+func _on_item_mouse_entered(item: MetaSlot) -> void:
 	if not item.head or item.is_selected:
 		return
 	tooltip_panel.caption = item.head.get_translated_name()

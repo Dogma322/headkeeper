@@ -90,7 +90,7 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			await get_tree().create_timer(1.0).timeout
 			Transition.blackout_off()
 			
-			SceneManager.show_meta_scene()
+			SceneManager.show_shop_scene()
 		MapNode.Type.BONUS:
 			SceneManager.show_action_card_scene()
 			
