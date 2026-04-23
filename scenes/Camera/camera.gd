@@ -6,6 +6,8 @@ extends Node2D
 func _ready() -> void:
 	Signals.play_damage_sound.connect(camera_shake)
 
+func make_current() -> void:
+	camera.enabled = true
 
 func camera_shake():
 	var tween = get_tree().create_tween()

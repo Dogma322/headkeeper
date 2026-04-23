@@ -9,20 +9,22 @@
 [ext_resource type="PackedScene" uid="uid://bo8xaqmke5324" path="res://scenes/UI/icon_button.tscn" id="7_2427u"]
 [ext_resource type="Texture2D" uid="uid://bpuept8cxfcoo" path="res://assets/UI/OptionsMenu/OptionsButton.png" id="8_04qni"]
 
-[node name="OptionsPanel" type="Node2D" unique_id=178146901]
+[node name="OptionsPanel" type="Control" unique_id=117387146]
 z_index = 100
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_6b8f5")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=883642749]
 visible = false
 modulate = Color(1, 1, 1, 0.5411765)
+layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 color = Color(0, 0, 0, 1)
 
 [node name="OptionsPanel" type="Control" parent="." unique_id=1186480129]
 visible = false
-layout_mode = 3
 anchors_preset = 0
 offset_left = 486.0
 offset_right = 640.0
@@ -97,6 +99,7 @@ disabled = false
 
 [node name="OptionsButton" parent="." unique_id=1254142979 instance=ExtResource("7_2427u")]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 610.0
 offset_top = 5.0
 offset_right = 635.0

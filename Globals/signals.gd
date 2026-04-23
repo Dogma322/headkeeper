@@ -70,3 +70,5 @@ signal play_block_sound
 signal play_damage_sound
 signal play_heal_sound
 signal play_status_sound
+
+signal scene_changed

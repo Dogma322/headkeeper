@@ -7,7 +7,11 @@ class_name BattleScene
 @onready var main_buttons_box: VBoxContainer = $MainButtonsBox
 @onready var board_1: Board = $Board/Board1
 @onready var hand: Node2D = $Hand
+@onready var camera: Node2D = $Camera
 
+var offset:
+	get:
+		return global_position
 
 func _ready() -> void:
 	play_btn.text = tr("play")
@@ -20,9 +24,8 @@ func _ready() -> void:
 		Global.fight_scene = self
  
 
-func start(map_node: MapNode):
-	CombatManager.start(map_node)
-	
+func start():
+	camera.make_current()
 
 
 func _on_domino_chain_removed() -> void:
@@ -46,8 +49,8 @@ func _on_play_btn_pressed() -> void:
 
 
 func show_menu() -> void:
-	var pos1 = Vector2(414, 15) # сначала вниз на 20
-	var pos2 = Vector2(414, 10)
+	var pos1 = Vector2(414, 15 + 25) + offset # сначала вниз на 20
+	var pos2 = Vector2(414, 10 + 25) + offset
 
 	var tween = main_buttons_box.create_tween()
 	tween.tween_property(main_buttons_box, "global_position", pos1, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
@@ -57,7 +60,7 @@ func show_menu() -> void:
 func hide_menu() -> void:
 	var start_pos = main_buttons_box.global_position
 	var pos1 = start_pos + Vector2(0, 5) # небольшое смещение вниз
-	var pos2 = Vector2(414, -60)
+	var pos2 = Vector2(414, -60) - offset
 	#var pos2 = Vector2(320, -145)
 
 	var tween = main_buttons_box.create_tween()

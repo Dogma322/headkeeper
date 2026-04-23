@@ -1,5 +1,5 @@
 @tool
-extends Node2D
+extends Control
 
 @onready var options_panel = $OptionsPanel
 @onready var color_rect: ColorRect = $ColorRect

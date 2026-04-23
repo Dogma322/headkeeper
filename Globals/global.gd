@@ -25,6 +25,8 @@ func _ready() -> void:
 @export var domino_scene = preload("res://scenes/Domino/domino.tscn")
 @export var craft_scene = preload("res://scenes/MainScenes/craft_scene.tscn")
 
+const TOP_HEADER_OFFSET = 0.0
+
 func _input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_F:

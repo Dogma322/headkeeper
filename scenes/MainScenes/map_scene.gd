@@ -59,6 +59,8 @@ func _on_map_node_mouse_exited() -> void:
 func _on_map_node_pressed(node: MapNode) -> void:
 	if moving:
 		return
+	if SceneManager.main_scene != SceneManager.map_scene:
+		return
 	if not free_choice_mode:
 		if selected_node == null:
 			if node.coord.y != 0:
@@ -84,14 +86,17 @@ func _on_map_node_pressed(node: MapNode) -> void:
 	
 	match node.type:
 		MapNode.Type.BATTLE:
+			SceneManager.main_scene = SceneManager.battle_scene
 			SceneManager.show_battle_scene(node)
 		MapNode.Type.SHOP:
 			Transition.blackout_on()
 			await get_tree().create_timer(1.0).timeout
 			Transition.blackout_off()
 			
+			SceneManager.main_scene = SceneManager.shop_scene
 			SceneManager.show_shop_scene()
 		MapNode.Type.BONUS:
+			SceneManager.main_scene = SceneManager.action_card_scene
 			SceneManager.show_action_card_scene()
 			
 			ActionCardManager.show_action_cards(node.stage)
@@ -101,8 +106,10 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			await get_tree().create_timer(1.0).timeout
 			Transition.blackout_off()
 			
+			SceneManager.main_scene = SceneManager.map_scene
 			SceneManager.show_map_scene()
 		MapNode.Type.CAMPFIRE:
+			SceneManager.main_scene = SceneManager.campfire_scene
 			SceneManager.show_campfire_scene()
 			
 			await Signals.action_card_selected
@@ -113,7 +120,9 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			SceneManager.campfire_scene.end()
 			Transition.blackout_off()
 			
+			SceneManager.main_scene = SceneManager.map_scene
 			SceneManager.show_map_scene()
+
 
 func _on_all_dominoes_button_pressed() -> void:
 	SceneManager.show_domino_list_scene(DominoListScene.Source.ALL)

@@ -13,8 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://bbvfro8a5geyx" path="res://scenes/HeadHolder/head_holder.tscn" id="11_aonfs"]
 [ext_resource type="PackedScene" uid="uid://cdx24mq4bbdgo" path="res://scenes/GeneratedLabels/stage_label.tscn" id="11_vranq"]
 [ext_resource type="PackedScene" uid="uid://cs7y2wp3ykjsq" path="res://scenes/GeneratedLabels/timer_label.tscn" id="12_qc22i"]
-[ext_resource type="PackedScene" uid="uid://csbo55doneg6b" path="res://scenes/OptionsPanel/options_panel.tscn" id="15_42igk"]
-[ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="15_csryg"]
 [ext_resource type="PackedScene" uid="uid://bjosapo8novm3" path="res://scenes/Camera/camera.tscn" id="19_mjddb"]
 
 [node name="BattleScene" type="Control" unique_id=662499199]
@@ -24,6 +22,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1_ydxg7")
 
@@ -45,7 +45,7 @@ position = Vector2(535, 170)
 [node name="MainButtonsBox" type="VBoxContainer" parent="." unique_id=1625423660]
 layout_mode = 0
 offset_left = 414.0
-offset_top = -60.0
+offset_top = -32.0
 offset_right = 510.0
 offset_bottom = -6.0
 
@@ -58,18 +58,12 @@ font_size = 3
 use_darkened = true
 disabled = true
 
-[node name="ShowAllDominoesBtn" parent="MainButtonsBox" unique_id=580660027 instance=ExtResource("7_76b4e")]
-unique_name_in_owner = true
-layout_mode = 2
-text = "ВСЕ ДОМИНО"
-font_size = 2
-use_darkened = true
-disabled = false
-
-[node name="UI" type="Node2D" parent="." unique_id=539959544 node_paths=PackedStringArray("skulls_label", "gold_label")]
+[node name="UI" type="Node2D" parent="." unique_id=539959544]
 script = ExtResource("8_uk3cr")
-skulls_label = NodePath("../VBoxContainer/SkullsLabel")
-gold_label = NodePath("../VBoxContainer/GoldLabel")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=139201397]
+offset_right = 94.0
+offset_bottom = 55.0
 
 [node name="Bags" type="Node2D" parent="UI" unique_id=1548184174]
 
@@ -94,6 +88,7 @@ offset_right = 194.0
 offset_bottom = 77.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=591768417]
+visible = false
 offset_left = 545.0
 offset_top = 7.0
 offset_right = 599.0
@@ -109,38 +104,9 @@ layout_mode = 2
 [node name="HeadHolder" parent="." unique_id=2074985017 instance=ExtResource("11_aonfs")]
 center_position = Vector2(111, 116)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=604220652]
-layout_mode = 0
-offset_right = 48.0
-offset_bottom = 64.0
-theme_override_constants/separation = 0
-
-[node name="SkullsLabel" type="RichTextLabel" parent="VBoxContainer" unique_id=1876316434]
-unique_name_in_owner = true
-layout_mode = 2
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("15_csryg")
-bbcode_enabled = true
-text = "[img]res://assets/Icons/CommonSkull.png[/img]0"
-fit_content = true
-autowrap_mode = 0
-
-[node name="GoldLabel" type="RichTextLabel" parent="VBoxContainer" unique_id=2112619489]
-unique_name_in_owner = true
-layout_mode = 2
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("15_csryg")
-bbcode_enabled = true
-text = "[img]res://assets/Icons/Coin.png[/img]0"
-fit_content = true
-autowrap_mode = 0
-
-[node name="OptionsPanel" parent="." unique_id=1496924105 instance=ExtResource("15_42igk")]
-
 [node name="Camera" parent="." unique_id=888122831 instance=ExtResource("19_mjddb")]
 position = Vector2(320, 180)
 
 [connection signal="pressed" from="MainButtonsBox/PlayBtn" to="." method="_on_play_btn_pressed"]
-[connection signal="pressed" from="MainButtonsBox/ShowAllDominoesBtn" to="UI" method="_on_show_all_dominoes_btn_pressed"]
 [connection signal="pressed" from="UI/Bags/DeckBag" to="UI" method="_on_deck_bag_pressed"]
 [connection signal="pressed" from="UI/Bags/DiscardBag" to="UI" method="_on_discard_bag_pressed"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dmk50eqkjc6hi" path="res://scenes/ShopSlot/shop_slot.gd" id="1_ms52r"]
 [ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="2_gyxac"]
-[ext_resource type="Texture2D" uid="uid://bcs0021y4xdc3" path="res://assets/Icons/Coin2.png" id="3_nuw1x"]
+[ext_resource type="Texture2D" uid="uid://bcs0021y4xdc3" path="res://assets/Icons/Coin.png" id="3_nuw1x"]
 
 [node name="ShopSlot" type="VBoxContainer" unique_id=2072601406]
 offset_right = 39.0

@@ -1,7 +1,7 @@
 extends Node2D
 class_name Hand
 
-@export var hand_height := 320
+@export var hand_height := 320-Global.TOP_HEADER_OFFSET
 @export var hand_width = 320
 @export var spacing := 36
 @export var curve := 0

@@ -1,70 +1,220 @@
 [gd_scene format=3 uid="uid://dqqa4aqr54880"]
 
 [ext_resource type="Script" uid="uid://cygsq8vir5lgg" path="res://scenes/TopPanel/top_panel.gd" id="1_kf5qq"]
-[ext_resource type="Texture2D" uid="uid://b1kh07hg3pi8b" path="res://assets/UI/HPBar/Under2.png" id="2_5o54w"]
-[ext_resource type="Texture2D" uid="uid://bb45ada0y8mxj" path="res://assets/UI/HPBar/Over2.png" id="3_hnbga"]
-[ext_resource type="Texture2D" uid="uid://hlb83quv0ufa" path="res://assets/UI/HPBar/Progress2.png" id="4_rgd6t"]
+[ext_resource type="Texture2D" uid="uid://hw77mle8g4uc" path="res://assets/Icons/TopPanelIcons/health_icon.atlastex" id="2_kf5qq"]
+[ext_resource type="Texture2D" uid="uid://ct3ak0ohnuyfp" path="res://assets/Icons/TopPanelIcons/coin_icon.atlastex" id="4_kf5qq"]
+[ext_resource type="Texture2D" uid="uid://cvu5gcwvrg6gk" path="res://assets/Icons/TopPanelIcons/skull_icon.atlastex" id="5_kf5qq"]
 [ext_resource type="Theme" uid="uid://df5t7rctr0cta" path="res://scenes/TextThemes/Monocraft8.tres" id="5_qkk5r"]
+[ext_resource type="Texture2D" uid="uid://ci74iiqinxbs5" path="res://assets/Icons/TopPanelIcons/consumables.atlastex" id="6_gkv6x"]
+[ext_resource type="PackedScene" uid="uid://bo8xaqmke5324" path="res://scenes/UI/icon_button.tscn" id="6_hnbga"]
+[ext_resource type="Texture2D" uid="uid://7i411m8dqct1" path="res://assets/Icons/TopPanelIcons/head_deck_icon.atlastex" id="7_0k1ga"]
+[ext_resource type="Texture2D" uid="uid://cw87ws8io6qyy" path="res://assets/Icons/TopPanelIcons/map_icon.atlastex" id="7_gkv6x"]
+[ext_resource type="FontFile" uid="uid://e47c4g1girqd" path="res://assets/Fonts/Monocraft.otf" id="7_mn5tw"]
+[ext_resource type="Texture2D" uid="uid://83k0is8v8c8p" path="res://assets/Icons/TopPanelIcons/domino_deck_icon.atlastex" id="7_qkk5r"]
+[ext_resource type="Texture2D" uid="uid://1s64mba1kg7e" path="res://assets/Icons/TopPanelIcons/bonus_deck_icon.atlastex" id="7_vphw7"]
+[ext_resource type="ButtonGroup" uid="uid://hp8lbr0vkeyu" path="res://scenes/TopPanel/top_panel_button_group.tres" id="9_my7ya"]
+[ext_resource type="FontFile" uid="uid://bg2a4wo64yqve" path="res://assets/Fonts/shadowpixelF1.ttf" id="11_my7ya"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2t2vr"]
-bg_color = Color(0, 0, 0, 1)
-border_width_bottom = 1
-border_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ttnmq"]
+content_margin_left = 3.0
+content_margin_top = 0.0
+content_margin_right = 3.0
+content_margin_bottom = 0.0
 
 [node name="TopPanel" type="PanelContainer" unique_id=1235060547]
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.05
+offset_bottom = 7.0
 grow_horizontal = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_2t2vr")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ttnmq")
 script = ExtResource("1_kf5qq")
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1240008367]
 layout_mode = 2
-
-[node name="Control" type="Control" parent="HBoxContainer" unique_id=1539385374]
-layout_mode = 2
+size_flags_vertical = 0
 
 [node name="ProfileNameLabel" type="Label" parent="HBoxContainer" unique_id=1332506890]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Player"
 
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer" unique_id=1091880328]
-layout_mode = 2
-
 [node name="CharacterNameLabel" type="Label" parent="HBoxContainer" unique_id=1587127763]
+visible = false
 modulate = Color(0.58, 0.58, 0.58, 1)
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "The headless"
 
-[node name="VSeparator2" type="VSeparator" parent="HBoxContainer" unique_id=432959392]
+[node name="HpBar" type="HBoxContainer" parent="HBoxContainer" unique_id=460609349]
 layout_mode = 2
 
-[node name="HpBar" type="TextureProgressBar" parent="HBoxContainer" unique_id=276869725]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/HpBar" unique_id=329048130]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture = ExtResource("2_kf5qq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HpLabel" type="Label" parent="HBoxContainer/HpBar" unique_id=1021886696]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 4
-value = 50.0
-texture_under = ExtResource("2_5o54w")
-texture_over = ExtResource("3_hnbga")
-texture_progress = ExtResource("4_rgd6t")
-
-[node name="HpBarLabel" type="Label" parent="HBoxContainer/HpBar" unique_id=1021886696]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 1.0
-offset_top = 4.0
-offset_right = 95.0
-offset_bottom = 13.0
 theme = ExtResource("5_qkk5r")
+theme_override_font_sizes/font_size = 10
 text = "100/100"
 horizontal_alignment = 1
 
-[node name="VSeparator3" type="VSeparator" parent="HBoxContainer" unique_id=100036740]
+[node name="GoldBar" type="HBoxContainer" parent="HBoxContainer" unique_id=1293337902]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/GoldBar" unique_id=364501474]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture = ExtResource("4_kf5qq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GoldLabel" type="Label" parent="HBoxContainer/GoldBar" unique_id=1320800845]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(21, 0)
+layout_mode = 2
+theme = ExtResource("5_qkk5r")
+theme_override_font_sizes/font_size = 10
+text = "999"
+
+[node name="SkullsBar" type="HBoxContainer" parent="HBoxContainer" unique_id=1433503691]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/SkullsBar" unique_id=434580515]
+custom_minimum_size = Vector2(13, 13)
+layout_mode = 2
+texture = ExtResource("5_kf5qq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SkullsLabel" type="Label" parent="HBoxContainer/SkullsBar" unique_id=1967267748]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+theme = ExtResource("5_qkk5r")
+theme_override_font_sizes/font_size = 10
+text = "99"
+
+[node name="ConsumablesTextureRect" type="TextureRect" parent="HBoxContainer" unique_id=2049212053]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("6_gkv6x")
+stretch_mode = 3
+
+[node name="Offset2" type="Control" parent="HBoxContainer" unique_id=1638833857]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ActLabel" type="Label" parent="HBoxContainer" unique_id=553534010]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_mn5tw")
+text = "Stage 1"
+
+[node name="MapButton" parent="HBoxContainer" unique_id=1254142979 instance=ExtResource("6_hnbga")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+toggle_mode = true
+button_group = ExtResource("9_my7ya")
+texture_normal = ExtResource("7_gkv6x")
+
+[node name="HeadDeckButton" parent="HBoxContainer" unique_id=386037324 instance=ExtResource("6_hnbga")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+toggle_mode = true
+button_group = ExtResource("9_my7ya")
+texture_normal = ExtResource("7_0k1ga")
+
+[node name="HeadAmountLabel" type="Label" parent="HBoxContainer/HeadDeckButton" unique_id=1020687423]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("11_my7ya")
+theme_override_font_sizes/font_size = 6
+text = "12"
+horizontal_alignment = 2
+
+[node name="BonusDeckButton" parent="HBoxContainer" unique_id=1283611821 instance=ExtResource("6_hnbga")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+toggle_mode = true
+button_group = ExtResource("9_my7ya")
+texture_normal = ExtResource("7_vphw7")
+
+[node name="BonusAmountLabel" type="Label" parent="HBoxContainer/BonusDeckButton" unique_id=1614137116]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("11_my7ya")
+theme_override_font_sizes/font_size = 6
+text = "12"
+horizontal_alignment = 2
+
+[node name="DominoDeckButton" parent="HBoxContainer" unique_id=672487379 instance=ExtResource("6_hnbga")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+toggle_mode = true
+button_group = ExtResource("9_my7ya")
+texture_normal = ExtResource("7_qkk5r")
+
+[node name="DominoAmountLabel" type="Label" parent="HBoxContainer/DominoDeckButton" unique_id=1103629639]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("11_my7ya")
+theme_override_font_sizes/font_size = 6
+text = "12"
+horizontal_alignment = 2
+
+[node name="SettingsOffset" type="Control" parent="HBoxContainer" unique_id=97861153]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[connection signal="pressed" from="HBoxContainer/MapButton" to="." method="_on_map_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/DominoDeckButton" to="." method="_on_domino_deck_button_pressed"]
