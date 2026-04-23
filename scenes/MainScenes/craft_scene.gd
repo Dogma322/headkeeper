@@ -15,7 +15,7 @@ const SPACING := Vector2(40, 70)  # расстояние между домино
 @onready var cost_label: RichTextLabel = %CostLabel
 @onready var board_craft: Board = $BoardCraft
 @onready var dominoes = $Dominoes
-@onready var battle_background: Node2D = $BattleBackground
+@onready var battle_background: TextureRect = $BattleBackground
 @onready var text_panel: TextPanel = %TextPanel
 
 @onready var symbol_pool = [

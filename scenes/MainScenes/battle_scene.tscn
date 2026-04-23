@@ -15,40 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cs7y2wp3ykjsq" path="res://scenes/GeneratedLabels/timer_label.tscn" id="12_qc22i"]
 [ext_resource type="PackedScene" uid="uid://csbo55doneg6b" path="res://scenes/OptionsPanel/options_panel.tscn" id="15_42igk"]
 [ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="15_csryg"]
-[ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="18_qc22i"]
-[ext_resource type="Script" uid="uid://cnhlqgjn6nf78" path="res://scenes/Camera/fs_shader.gd" id="19_76b4e"]
 [ext_resource type="PackedScene" uid="uid://bjosapo8novm3" path="res://scenes/Camera/camera.tscn" id="19_mjddb"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjddb"]
-shader = ExtResource("18_qc22i")
-shader_parameter/overlay = true
-shader_parameter/scanlines_opacity = 0.0400000019
-shader_parameter/scanlines_width = 0.0800000038
-shader_parameter/grille_opacity = 0.030000001425
-shader_parameter/resolution = Vector2(640, 360)
-shader_parameter/pixelate = false
-shader_parameter/roll = false
-shader_parameter/roll_speed = 8.0
-shader_parameter/roll_size = 0.0
-shader_parameter/roll_variation = 0.10000000149012
-shader_parameter/distort_intensity = 0.05
-shader_parameter/noise_opacity = 0.4
-shader_parameter/noise_speed = 3.0
-shader_parameter/static_noise_intensity = 0.02000000095
-shader_parameter/aberration = 0.00300004764250005
-shader_parameter/brightness = 1.0
-shader_parameter/discolor = false
-shader_parameter/warp_amount = 0.0
-shader_parameter/clip_warp = false
-shader_parameter/vignette_intensity = 0.3
-shader_parameter/vignette_opacity = 0.30000001425
-shader_parameter/cg_saturation = 0.850000040375
-shader_parameter/cg_exposure = 0.0
-shader_parameter/cg_contrast = 1.0
-shader_parameter/cg_temperature = 0.0
-shader_parameter/cg_tint = 0.0
-shader_parameter/cg_highlights = 1.0
-shader_parameter/cg_shadows = 1.0
 
 [node name="BattleScene" type="Control" unique_id=662499199]
 layout_mode = 3
@@ -169,23 +136,6 @@ fit_content = true
 autowrap_mode = 0
 
 [node name="OptionsPanel" parent="." unique_id=1496924105 instance=ExtResource("15_42igk")]
-
-[node name="Shader" type="Control" parent="." unique_id=2017409977]
-z_index = 999
-anchors_preset = 0
-mouse_filter = 2
-script = ExtResource("19_76b4e")
-
-[node name="VhsShader" type="ColorRect" parent="Shader" unique_id=832302268]
-material = SubResource("ShaderMaterial_mjddb")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-metadata/_edit_lock_ = true
 
 [node name="Camera" parent="." unique_id=888122831 instance=ExtResource("19_mjddb")]
 position = Vector2(320, 180)

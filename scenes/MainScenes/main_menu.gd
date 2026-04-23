@@ -1,15 +1,16 @@
 @tool
 extends Control
+class_name MainMenu
 
 @onready var play_btn: GameButton = %PlayBtn
 @onready var change_board_generation_btn: GameButton = %ChangeBoardGenerationBtn
 
 func _ready() -> void:
-	Global.main_menu = self
 	play_btn.text = tr("play")
 	change_board_generation_btn.text = "Рандомные поля: вкл"
 
 	if not Engine.is_editor_hint():
+		Global.main_menu = self
 		Transition.blackout_off()
 		SoundManager.set_music("MainMenu")
 

@@ -1,15 +1,15 @@
 extends Control
 
-@onready var map_scene: MapScene = $MapScene
-@onready var battle_scene: BattleScene = $BattleScene
-@onready var domino_list_scene: DominoListScene = $DominoListScene
-@onready var action_card_scene: Control = $ActionCardScene
-@onready var choice_scene: Node2D = $ChoiceScene
-@onready var craft_scene: CraftScene = $CraftScene
-@onready var remove_domino_scene: Node2D = $RemoveDominoScene
-@onready var meta_scene: Control = $MetaScene
-@onready var campfire_scene: CampfireScene = $CampfireScene
-@onready var shop_scene: ShopScene = $ShopScene
+@onready var map_scene: MapScene = %MapScene
+@onready var battle_scene: BattleScene = %BattleScene
+@onready var domino_list_scene: DominoListScene = %DominoListScene
+@onready var action_card_scene: Control = %ActionCardScene
+@onready var choice_scene: Node2D = %ChoiceScene
+@onready var craft_scene: CraftScene = %CraftScene
+@onready var remove_domino_scene: Node2D = %RemoveDominoScene
+@onready var meta_scene: Control = %MetaScene
+@onready var campfire_scene: CampfireScene = %CampfireScene
+@onready var shop_scene: ShopScene = %ShopScene
 
 
 @onready var scenes = [
@@ -25,7 +25,7 @@ extends Control
 	shop_scene,
 ]
 
-@onready var background: Background = $Background
+@onready var background: Background = %Background
 
 var previous_scene = null
 var current_scene = null
@@ -51,6 +51,7 @@ func show_previous_scene() -> void:
 
 
 func new_run():
+	Global.vhs_shader.show()
 	#show_battle_scene()
 	show_map_scene()
 	map_scene.map.generate()

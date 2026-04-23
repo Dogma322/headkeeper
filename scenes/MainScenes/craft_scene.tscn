@@ -2,45 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://bn0602p7re11e" path="res://scenes/Backgrounds/battle_background.tscn" id="1_dwva5"]
 [ext_resource type="Script" uid="uid://b2pehnv8tdhth" path="res://scenes/MainScenes/craft_scene.gd" id="1_gu0aw"]
-[ext_resource type="Script" uid="uid://cnhlqgjn6nf78" path="res://scenes/Camera/fs_shader.gd" id="2_nb1n5"]
-[ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="3_gu0aw"]
 [ext_resource type="PackedScene" uid="uid://bo8xaqmke5324" path="res://scenes/UI/icon_button.tscn" id="3_jg3uq"]
 [ext_resource type="Texture2D" uid="uid://mjo560ccfs37" path="res://assets/UI/OptionsMenu/ExitButton.png" id="5_a8qar"]
 [ext_resource type="PackedScene" uid="uid://bnkuyqcb3iadw" path="res://scenes/UI/text_panel.tscn" id="6_jg3uq"]
 [ext_resource type="PackedScene" uid="uid://by7sdoxj5u7k4" path="res://scenes/Boards/board_craft.tscn" id="8_il8bo"]
 [ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="8_ioiea"]
 [ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="9_il8bo"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w8mvb"]
-shader = ExtResource("3_gu0aw")
-shader_parameter/overlay = true
-shader_parameter/scanlines_opacity = 0.0400000019
-shader_parameter/scanlines_width = 0.0800000038
-shader_parameter/grille_opacity = 0.030000001425
-shader_parameter/resolution = Vector2(640, 360)
-shader_parameter/pixelate = false
-shader_parameter/roll = false
-shader_parameter/roll_speed = 8.0
-shader_parameter/roll_size = 0.0
-shader_parameter/roll_variation = 0.10000000149012
-shader_parameter/distort_intensity = 0.05
-shader_parameter/noise_opacity = 0.4
-shader_parameter/noise_speed = 3.0
-shader_parameter/static_noise_intensity = 0.02000000095
-shader_parameter/aberration = 0.00300004764250005
-shader_parameter/brightness = 1.0
-shader_parameter/discolor = false
-shader_parameter/warp_amount = 0.0
-shader_parameter/clip_warp = false
-shader_parameter/vignette_intensity = 0.3
-shader_parameter/vignette_opacity = 0.30000001425
-shader_parameter/cg_saturation = 0.850000040375
-shader_parameter/cg_exposure = 0.0
-shader_parameter/cg_contrast = 1.0
-shader_parameter/cg_temperature = 0.0
-shader_parameter/cg_tint = 0.0
-shader_parameter/cg_highlights = 1.0
-shader_parameter/cg_shadows = 1.0
 
 [node name="CraftScene" type="Control" unique_id=1900912832]
 layout_mode = 3
@@ -54,6 +21,7 @@ script = ExtResource("1_gu0aw")
 
 [node name="BattleBackground" parent="." unique_id=631565350 instance=ExtResource("1_dwva5")]
 visible = false
+layout_mode = 0
 metadata/_edit_lock_ = true
 
 [node name="Layout" type="MarginContainer" parent="." unique_id=1795268268]
@@ -135,23 +103,6 @@ bbcode_enabled = true
 text = "[img]res://assets/Icons/CommonSkull.png[/img]0"
 fit_content = true
 autowrap_mode = 0
-
-[node name="Shader" type="Control" parent="." unique_id=1451027368]
-z_index = 999
-anchors_preset = 0
-mouse_filter = 2
-script = ExtResource("2_nb1n5")
-
-[node name="VhsShader" type="ColorRect" parent="Shader" unique_id=1747598542]
-material = SubResource("ShaderMaterial_w8mvb")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="Layout/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="AcceptButton" to="." method="_on_accept_button_pressed"]

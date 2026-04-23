@@ -11,7 +11,6 @@ region = Rect2(128, 0, 32, 32)
 script = ExtResource("1_6gjos")
 hname = "hd_maw_name"
 desc = "hd_maw_des"
-cost = 20
 skulls_cost = 20
 value = 35
 texture = SubResource("AtlasTexture_g6ht4")

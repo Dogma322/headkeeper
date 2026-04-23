@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dqqa4aqr54880"]
+
+[ext_resource type="Script" uid="uid://cygsq8vir5lgg" path="res://scenes/TopPanel/top_panel.gd" id="1_kf5qq"]
+[ext_resource type="Texture2D" uid="uid://b1kh07hg3pi8b" path="res://assets/UI/HPBar/Under2.png" id="2_5o54w"]
+[ext_resource type="Texture2D" uid="uid://bb45ada0y8mxj" path="res://assets/UI/HPBar/Over2.png" id="3_hnbga"]
+[ext_resource type="Texture2D" uid="uid://hlb83quv0ufa" path="res://assets/UI/HPBar/Progress2.png" id="4_rgd6t"]
+[ext_resource type="Theme" uid="uid://df5t7rctr0cta" path="res://scenes/TextThemes/Monocraft8.tres" id="5_qkk5r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2t2vr"]
+bg_color = Color(0, 0, 0, 1)
+border_width_bottom = 1
+border_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
+
+[node name="TopPanel" type="PanelContainer" unique_id=1235060547]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.05
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2t2vr")
+script = ExtResource("1_kf5qq")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1240008367]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=1539385374]
+layout_mode = 2
+
+[node name="ProfileNameLabel" type="Label" parent="HBoxContainer" unique_id=1332506890]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Player"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer" unique_id=1091880328]
+layout_mode = 2
+
+[node name="CharacterNameLabel" type="Label" parent="HBoxContainer" unique_id=1587127763]
+modulate = Color(0.58, 0.58, 0.58, 1)
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "The headless"
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer" unique_id=432959392]
+layout_mode = 2
+
+[node name="HpBar" type="TextureProgressBar" parent="HBoxContainer" unique_id=276869725]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+value = 50.0
+texture_under = ExtResource("2_5o54w")
+texture_over = ExtResource("3_hnbga")
+texture_progress = ExtResource("4_rgd6t")
+
+[node name="HpBarLabel" type="Label" parent="HBoxContainer/HpBar" unique_id=1021886696]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1.0
+offset_top = 4.0
+offset_right = 95.0
+offset_bottom = 13.0
+theme = ExtResource("5_qkk5r")
+text = "100/100"
+horizontal_alignment = 1
+
+[node name="VSeparator3" type="VSeparator" parent="HBoxContainer" unique_id=100036740]
+layout_mode = 2

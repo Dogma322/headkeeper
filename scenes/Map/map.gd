@@ -7,6 +7,10 @@ class_name Map
 @export var max_path_count := 4
 @export var branch_count := 3
 
+var offset:
+	get:
+		return (get_parent() as Control).global_position
+
 @export_group("Probabilities", "probability")
 @export var probability_battle_weight: float = 8.0
 @export var probability_shop_weight: float = 1.0
@@ -187,8 +191,8 @@ func generate() -> void:
 
 
 func add_node(coord: Vector2i) -> MapNode:
-	var offset := get_viewport_rect().size.x / 10.0
-	var pos = Vector2(coord.x * 20 - offset, -coord.y * 20)
+	var offset2 := get_viewport_rect().size.x / 10.0
+	var pos = Vector2(coord.x * 20 - offset2, -coord.y * 20) - offset
 	
 	var instance: MapNode = grid_node_scene.instantiate()
 	start.add_child(instance)
@@ -257,5 +261,5 @@ func _draw() -> void:
 		var i = 0
 		for node in path.nodes:
 			if i > 0:
-				draw_line(path.nodes[i - 1].global_position, node.global_position, Color.WHITE)
+				draw_line(path.nodes[i - 1].global_position - offset, node.global_position - offset, Color.WHITE)
 			i += 1

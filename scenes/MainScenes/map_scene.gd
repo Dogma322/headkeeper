@@ -50,7 +50,7 @@ func _on_map_node_mouse_entered(node: MapNode) -> void:
 		MapNode.Type.CAMPFIRE:
 			tooltip_panel.description = "[center]Костер[/center]"
 	tooltip_panel.show_tooltip()
-	tooltip_panel.position = node.global_position - Vector2(tooltip_panel.size.x / 2.0, tooltip_panel.size.y + 10)
+	tooltip_panel.position = node.global_position - Vector2(tooltip_panel.size.x / 2.0, tooltip_panel.size.y + 10 + 18)
 
 func _on_map_node_mouse_exited() -> void:
 	tooltip_panel.hide_tooltip()

@@ -8,39 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="5_oq6vs"]
 [ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="6_dqmp7"]
 [ext_resource type="FontFile" uid="uid://cdr1gk3kbvdd4" path="res://assets/Fonts/Vollda-Bold.otf" id="7_3vrjx"]
-[ext_resource type="Script" uid="uid://cnhlqgjn6nf78" path="res://scenes/Camera/fs_shader.gd" id="8_au24j"]
-[ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="9_3vrjx"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_10hnt"]
-shader = ExtResource("9_3vrjx")
-shader_parameter/overlay = true
-shader_parameter/scanlines_opacity = 0.0400000019
-shader_parameter/scanlines_width = 0.0800000038
-shader_parameter/grille_opacity = 0.030000001425
-shader_parameter/resolution = Vector2(640, 360)
-shader_parameter/pixelate = false
-shader_parameter/roll = false
-shader_parameter/roll_speed = 8.0
-shader_parameter/roll_size = 0.0
-shader_parameter/roll_variation = 0.10000000149012
-shader_parameter/distort_intensity = 0.05
-shader_parameter/noise_opacity = 0.4
-shader_parameter/noise_speed = 3.0
-shader_parameter/static_noise_intensity = 0.02000000095
-shader_parameter/aberration = 0.00300004764250005
-shader_parameter/brightness = 1.0
-shader_parameter/discolor = false
-shader_parameter/warp_amount = 0.0
-shader_parameter/clip_warp = false
-shader_parameter/vignette_intensity = 0.3
-shader_parameter/vignette_opacity = 0.30000001425
-shader_parameter/cg_saturation = 0.850000040375
-shader_parameter/cg_exposure = 0.0
-shader_parameter/cg_contrast = 1.0
-shader_parameter/cg_temperature = 0.0
-shader_parameter/cg_tint = 0.0
-shader_parameter/cg_highlights = 1.0
-shader_parameter/cg_shadows = 1.0
 
 [node name="MapScene" type="Control" unique_id=1058918205]
 layout_mode = 3
@@ -53,7 +20,7 @@ mouse_filter = 2
 script = ExtResource("1_kb5l8")
 
 [node name="Player" type="Sprite2D" parent="." unique_id=2018903195]
-position = Vector2(320, 340)
+position = Vector2(320, 348)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("3_oq6vs")
 
@@ -124,23 +91,6 @@ layout_mode = 2
 text = "Свободный выбор: выкл"
 font_size = 3
 disabled = false
-
-[node name="Shader" type="Control" parent="." unique_id=1576840326]
-z_index = 999
-anchors_preset = 0
-mouse_filter = 2
-script = ExtResource("8_au24j")
-
-[node name="VhsShader" type="ColorRect" parent="Shader" unique_id=214434987]
-material = SubResource("ShaderMaterial_10hnt")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-metadata/_edit_lock_ = true
 
 [connection signal="node_mouse_entered" from="Map" to="." method="_on_map_node_mouse_entered"]
 [connection signal="node_mouse_exited" from="Map" to="." method="_on_map_node_mouse_exited"]

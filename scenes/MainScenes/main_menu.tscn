@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dfm53ekuvdv5w" path="res://assets/Backgrounds/VoidBackground.png" id="1_icbvd"]
 [ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="3_4s641"]
 [ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="4_i2cg2"]
+[ext_resource type="Script" uid="uid://cnhlqgjn6nf78" path="res://scenes/Camera/fs_shader.gd" id="4_lrjex"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lrjex"]
 shader = ExtResource("4_i2cg2")
@@ -43,6 +44,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1_biks6")
 
@@ -114,6 +117,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+script = ExtResource("4_lrjex")
 
 [node name="VhsShader" type="ColorRect" parent="Shader" unique_id=1230696641]
 material = SubResource("ShaderMaterial_lrjex")

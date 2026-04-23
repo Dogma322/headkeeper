@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dikeh7fck30r2" path="res://scenes/MainScenes/scene_manager.gd" id="1_ack50"]
 [ext_resource type="PackedScene" uid="uid://bn0602p7re11e" path="res://scenes/Backgrounds/battle_background.tscn" id="2_gaf2n"]
 [ext_resource type="PackedScene" uid="uid://dks3x17ep5x0n" path="res://scenes/MainScenes/battle_scene.tscn" id="3_1y7cv"]
+[ext_resource type="PackedScene" uid="uid://dqqa4aqr54880" path="res://scenes/TopPanel/top_panel.tscn" id="3_reosh"]
 [ext_resource type="PackedScene" uid="uid://23ui6010migp" path="res://scenes/DominoListScene/domino_list_scene.tscn" id="4_dmnrm"]
 [ext_resource type="PackedScene" uid="uid://df1cvd1jqx3is" path="res://scenes/MainScenes/action_card_scene.tscn" id="6_ty5rh"]
 [ext_resource type="PackedScene" uid="uid://dywi02s7uin3f" path="res://scenes/MainScenes/craft_scene.tscn" id="7_4wbje"]
@@ -12,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bgwmg1s66s6f1" path="res://scenes/MainScenes/meta_scene.tscn" id="10_ui8fk"]
 [ext_resource type="PackedScene" uid="uid://cw35tfda0j6qi" path="res://scenes/MainScenes/campfire_scene.tscn" id="12_dhv03"]
 [ext_resource type="PackedScene" uid="uid://bb8bufwutf1xg" path="res://scenes/MainScenes/shop_scene.tscn" id="12_reosh"]
+[ext_resource type="PackedScene" uid="uid://dve4apve17rh4" path="res://scenes/VhsShader/vhs_shader.tscn" id="14_5a81w"]
 
 [node name="SceneManager" type="MarginContainer" unique_id=2134074927]
 anchors_preset = 15
@@ -25,42 +27,77 @@ mouse_filter = 2
 script = ExtResource("1_ack50")
 
 [node name="Background" parent="." unique_id=631565350 instance=ExtResource("2_gaf2n")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+expand_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="MapScene" parent="." unique_id=1058918205 instance=ExtResource("1_5xbpf")]
-visible = false
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1600330735]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TopPanel" parent="VBoxContainer" unique_id=1235060547 instance=ExtResource("3_reosh")]
 layout_mode = 2
 
-[node name="BattleScene" parent="." unique_id=662499199 instance=ExtResource("3_1y7cv")]
+[node name="MapScene" parent="VBoxContainer" unique_id=1058918205 instance=ExtResource("1_5xbpf")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BattleScene" parent="VBoxContainer" unique_id=662499199 instance=ExtResource("3_1y7cv")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="DominoListScene" parent="." unique_id=573018855 instance=ExtResource("4_dmnrm")]
+[node name="DominoListScene" parent="VBoxContainer" unique_id=573018855 instance=ExtResource("4_dmnrm")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="ActionCardScene" parent="." unique_id=370993708 instance=ExtResource("6_ty5rh")]
+[node name="ActionCardScene" parent="VBoxContainer" unique_id=370993708 instance=ExtResource("6_ty5rh")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="CraftScene" parent="." unique_id=1900912832 instance=ExtResource("7_4wbje")]
+[node name="CraftScene" parent="VBoxContainer" unique_id=1900912832 instance=ExtResource("7_4wbje")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="ChoiceScene" parent="." unique_id=598777679 instance=ExtResource("7_cb6jg")]
+[node name="ChoiceScene" parent="VBoxContainer" unique_id=598777679 instance=ExtResource("7_cb6jg")]
+unique_name_in_owner = true
 visible = false
+position = Vector2(0, -14)
 spacing = 100
 
-[node name="RemoveDominoScene" parent="." unique_id=1801682247 instance=ExtResource("9_wrdhs")]
+[node name="RemoveDominoScene" parent="VBoxContainer" unique_id=1801682247 instance=ExtResource("9_wrdhs")]
+unique_name_in_owner = true
 visible = false
+position = Vector2(0, -14)
 
-[node name="MetaScene" parent="." unique_id=476688822 instance=ExtResource("10_ui8fk")]
+[node name="MetaScene" parent="VBoxContainer" unique_id=476688822 instance=ExtResource("10_ui8fk")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="CampfireScene" parent="." unique_id=23089478 instance=ExtResource("12_dhv03")]
+[node name="CampfireScene" parent="VBoxContainer" unique_id=23089478 instance=ExtResource("12_dhv03")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="ShopScene" parent="." unique_id=653709099 instance=ExtResource("12_reosh")]
+[node name="ShopScene" parent="VBoxContainer" unique_id=653709099 instance=ExtResource("12_reosh")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Shader" parent="." unique_id=1404344698 instance=ExtResource("14_5a81w")]
+top_level = true
 layout_mode = 2

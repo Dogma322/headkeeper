@@ -19,7 +19,8 @@ func _ready() -> void:
 @onready var craft_scene_instance
 @onready var hand: Hand
 @onready var map_scene
-@onready var main_menu
+@onready var main_menu: MainMenu
+@onready var vhs_shader
 
 @export var domino_scene = preload("res://scenes/Domino/domino.tscn")
 @export var craft_scene = preload("res://scenes/MainScenes/craft_scene.tscn")

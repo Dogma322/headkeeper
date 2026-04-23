@@ -11,8 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="7_c7faw"]
 [ext_resource type="Texture2D" uid="uid://b3xp13akpqd23" path="res://assets/Heroes/Hero1Anim/HeroNewAnimation4.png" id="8_6dlqe"]
 [ext_resource type="PackedScene" uid="uid://dnje7ugtetwov" path="res://scenes/UI/additional_tooltip_panel.tscn" id="9_t6thj"]
-[ext_resource type="Script" uid="uid://cnhlqgjn6nf78" path="res://scenes/Camera/fs_shader.gd" id="11_kwkn5"]
-[ext_resource type="Shader" uid="uid://b70smtmc0lk3o" path="res://scenes/VhsShader/VhsShader.gdshader" id="12_2hh6u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y6xcm"]
 atlas = ExtResource("8_6dlqe")
@@ -116,37 +114,6 @@ _data = {
 &"RESET": SubResource("Animation_t6thj"),
 &"head_anim": SubResource("Animation_kwkn5")
 }
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d4oof"]
-shader = ExtResource("12_2hh6u")
-shader_parameter/overlay = true
-shader_parameter/scanlines_opacity = 0.0400000019
-shader_parameter/scanlines_width = 0.0800000038
-shader_parameter/grille_opacity = 0.030000001425
-shader_parameter/resolution = Vector2(640, 360)
-shader_parameter/pixelate = false
-shader_parameter/roll = false
-shader_parameter/roll_speed = 8.0
-shader_parameter/roll_size = 0.0
-shader_parameter/roll_variation = 0.10000000149012
-shader_parameter/distort_intensity = 0.05
-shader_parameter/noise_opacity = 0.4
-shader_parameter/noise_speed = 3.0
-shader_parameter/static_noise_intensity = 0.02000000095
-shader_parameter/aberration = 0.00300004764250005
-shader_parameter/brightness = 1.0
-shader_parameter/discolor = false
-shader_parameter/warp_amount = 0.0
-shader_parameter/clip_warp = false
-shader_parameter/vignette_intensity = 0.3
-shader_parameter/vignette_opacity = 0.30000001425
-shader_parameter/cg_saturation = 0.850000040375
-shader_parameter/cg_exposure = 0.0
-shader_parameter/cg_contrast = 1.0
-shader_parameter/cg_temperature = 0.0
-shader_parameter/cg_tint = 0.0
-shader_parameter/cg_highlights = 1.0
-shader_parameter/cg_shadows = 1.0
 
 [node name="MetaScene" type="Control" unique_id=476688822]
 layout_mode = 3
@@ -474,29 +441,6 @@ position = Vector2(10, -55)
 [node name="HeadAnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D" unique_id=782736843]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_2hh6u")
-
-[node name="Shader" type="Control" parent="." unique_id=745581878]
-z_index = 999
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("11_kwkn5")
-metadata/_edit_lock_ = true
-
-[node name="VhsShader" type="ColorRect" parent="Shader" unique_id=568404944]
-material = SubResource("ShaderMaterial_d4oof")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="HBoxContainer/Control/MarginContainer/VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Control/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

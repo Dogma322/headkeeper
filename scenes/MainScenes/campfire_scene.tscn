@@ -4,10 +4,6 @@
 [ext_resource type="Script" uid="uid://8ybedqvlcgsy" path="res://scenes/ActionCardContainer/action_card_container.gd" id="1_x8hog"]
 [ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="2_x0nde"]
 [ext_resource type="PackedScene" uid="uid://dpg0xbwifu7ka" path="res://scenes/ActionCards/ac_heal.tscn" id="3_m83bg"]
-[ext_resource type="Texture2D" uid="uid://b1kh07hg3pi8b" path="res://assets/UI/HPBar/Under2.png" id="4_78xue"]
-[ext_resource type="Texture2D" uid="uid://bb45ada0y8mxj" path="res://assets/UI/HPBar/Over2.png" id="5_m83bg"]
-[ext_resource type="Texture2D" uid="uid://hlb83quv0ufa" path="res://assets/UI/HPBar/Progress2.png" id="6_kq7t0"]
-[ext_resource type="Theme" uid="uid://df5t7rctr0cta" path="res://scenes/TextThemes/Monocraft8.tres" id="7_h8vns"]
 [ext_resource type="PackedScene" uid="uid://barj23thfyhwt" path="res://scenes/ActionCards/ac_max_hp.tscn" id="8_kq7t0"]
 
 [node name="CampfireScene" type="Control" unique_id=23089478]
@@ -52,32 +48,6 @@ size_flags_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-
-[node name="HpBar" type="TextureProgressBar" parent="MarginContainer/ActionCardContainer/Control" unique_id=1459664392]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -48.0
-offset_right = 48.0
-offset_bottom = 17.0
-grow_horizontal = 2
-value = 50.0
-texture_under = ExtResource("4_78xue")
-texture_over = ExtResource("5_m83bg")
-texture_progress = ExtResource("6_kq7t0")
-
-[node name="HpBarLabel" type="Label" parent="MarginContainer/ActionCardContainer/Control/HpBar" unique_id=1674697971]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 1.0
-offset_top = 4.0
-offset_right = 95.0
-offset_bottom = 13.0
-theme = ExtResource("7_h8vns")
-text = "100/100"
-horizontal_alignment = 1
 
 [node name="ActionCardTemplate2" parent="MarginContainer/ActionCardContainer" unique_id=2056302426 instance=ExtResource("8_kq7t0")]
 layout_mode = 2

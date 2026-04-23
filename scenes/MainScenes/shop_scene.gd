@@ -7,9 +7,7 @@ class_name ShopScene
 @onready var domino_slots := [%DominoSlot, %DominoSlot2, %DominoSlot3, %DominoSlot4, %DominoSlot5]
 @onready var remove_domino_slot = %RemoveDominoSlot
 
-func start() -> void:
-	SceneManager.background.set_shop_background()
-	
+func fill_heads():
 	var head_pool = []
 	for key in HeadManager.head_templates:
 		head_pool.push_back(key)
@@ -24,6 +22,15 @@ func start() -> void:
 			head_slot.item_key = head_pool[i]
 			head_slot.item_cost = head.gold_cost
 		i += 1
+
+func fill_bonuses() -> void:
+	pass
+
+func start() -> void:
+	SceneManager.background.set_shop_background()
+	fill_heads()
+	
+	
 
 
 func end() -> void:
