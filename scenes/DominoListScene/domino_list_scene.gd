@@ -1,4 +1,4 @@
-extends Control
+extends ScreenBase
 class_name DominoListScene
 
 const COLUMNS := 8
@@ -8,18 +8,22 @@ const SPACING := Vector2(40, 70)  # расстояние между домино
 @export var CENTER_Y := 120
 
 @onready var dominoes = %Dominoes
-@onready var exit_button: TextureButton = %ExitButton
 
 var domino_parents = {}
 var domino_prev_transforms = {}
 
 enum Source {
+	NONE,
 	ALL,
 	DECK_BAG,
 	DISCARD_BAG,
 }
 
-func update_domino_list(source: Source):
+var current_source: Source = Source.NONE
+
+func update_domino_list(source: Source) -> void:
+	current_source = source
+	
 	var pool := []
 	match source:
 		Source.ALL:
@@ -75,7 +79,8 @@ func update_domino_list(source: Source):
 		domino.position = center + Vector2(x, y)
 
 		if domino.get_parent():
-			domino_parents[domino] = domino.get_parent()
+			if domino.get_parent() != dominoes:
+				domino_parents[domino] = domino.get_parent()
 			domino.get_parent().remove_child(domino)
 
 		dominoes.add_child(domino)
@@ -103,6 +108,6 @@ func on_tween_finished(domino) -> void:
 	domino_prev_transforms.erase(domino)
 
 
-func _on_exit_button_pressed() -> void:
+func end() -> void:
 	clear_domino_list()
-	SceneManager.show_previous_scene()
+	current_source = Source.NONE

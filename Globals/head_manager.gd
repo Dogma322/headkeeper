@@ -45,3 +45,4 @@ func reset_head_pool():
 	temp_head_pool = head_pool.duplicate()
 	for head in Global.head_holder.get_children():
 		head.remove_passive_effect()
+		head.queue_free()

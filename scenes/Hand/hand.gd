@@ -13,6 +13,7 @@ var dominoes:Array[Domino] = []
 
 func _ready():
 	Global.hand = self
+	Signals.reset_run_data.connect(reset)
 
 	global_position.y = hand_height
 	#draw_dominoes()
@@ -167,6 +168,18 @@ func draw_domino(domino):
 	add_domino(domino)
 
 
+func reset() -> void:
+	var all_dominoes := []
+	all_dominoes.append_array(dominoes)
+	all_dominoes.append_array(DominoManager.dominoes_on_board)
+	
+	for domino in all_dominoes:
+		domino.queue_free()
+	
+	dominoes.clear()
+	DominoManager.dominoes_on_board.clear()
+
+
 func discard_all_dominoes():
 	# Собираем все домино из руки и из played_domino
 	
@@ -209,10 +222,10 @@ func discard_all_dominoes():
 					domino.get_parent().remove_child(domino)
 					
 				else:
-					DominoManager.discard.append(domino)
+					DominoManager.add_to_discard(domino)
 					
 		)
-		DominoManager.discard.append(domino)
+		DominoManager.add_to_discard(domino)
 
 	
 	# очищаем списки

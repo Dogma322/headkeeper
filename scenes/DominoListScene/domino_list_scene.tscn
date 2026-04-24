@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://23ui6010migp"]
 
 [ext_resource type="Script" uid="uid://eocnyve3775v" path="res://scenes/DominoListScene/domino_list_scene.gd" id="1_8smyp"]
-[ext_resource type="PackedScene" uid="uid://bo8xaqmke5324" path="res://scenes/UI/icon_button.tscn" id="2_8w10s"]
-[ext_resource type="Texture2D" uid="uid://mjo560ccfs37" path="res://assets/UI/OptionsMenu/ExitButton.png" id="2_jbodu"]
 
 [node name="DominoListScene" type="Control" unique_id=960527505]
 layout_mode = 3
@@ -14,25 +12,5 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_8smyp")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=573018855]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="ExitButton" parent="MarginContainer" unique_id=1254142979 instance=ExtResource("2_8w10s")]
+[node name="Dominoes" type="Node2D" parent="." unique_id=1604696314]
 unique_name_in_owner = true
-layout_mode = 2
-texture_normal = ExtResource("2_jbodu")
-
-[node name="Dominoes" type="Node2D" parent="MarginContainer" unique_id=1604696314]
-unique_name_in_owner = true
-
-[connection signal="pressed" from="MarginContainer/ExitButton" to="." method="_on_exit_button_pressed"]

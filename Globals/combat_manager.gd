@@ -259,6 +259,7 @@ func reset_run_data():
 	Signals.reset_run_data.emit()
 	DominoManager.block_domino_input = false
 	Global.map_scene.reset()
+	Global.board.hide_board()
 	
 	stage = 1
 	

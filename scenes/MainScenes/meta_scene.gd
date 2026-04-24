@@ -1,4 +1,4 @@
-extends Control
+extends ScreenBase
 class_name MetaScene
 
 @onready var exit_button: TextureButton = %ExitButton

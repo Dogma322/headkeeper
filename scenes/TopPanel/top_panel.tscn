@@ -127,6 +127,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 toggle_mode = true
+button_pressed = true
 button_group = ExtResource("9_my7ya")
 texture_normal = ExtResource("7_gkv6x")
 

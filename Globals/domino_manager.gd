@@ -19,8 +19,7 @@ var value4_played_dominoes = 0
 var dm_dragging = false
 var block_domino_input = false
 var delete_mode = false
-
-
+	
 
 var double_next_dm = 0
 var corruption_bonus = 0
@@ -68,9 +67,26 @@ var corruption_bonus = 0
 #var temp_domino_pool 
 
 
+
 func _ready() -> void:
 	reset()
 	Signals.reset_run_data.connect(reset)
+
+
+func add_to_discard(domino: Domino) -> void:
+	discard.append(domino)
+	Signals.discard_deck_changed.emit()
+
+
+func remove_from_discard(domino: Domino) -> void:
+	discard.erase(domino)
+	Signals.discard_deck_changed.emit()
+
+
+func clear_discard() -> void:
+	discard.clear()
+	Signals.discard_deck_changed.emit()
+
 
 func reset():
 	#temp_domino_pool = domino_pool.duplicate()
@@ -78,7 +94,7 @@ func reset():
 	dominoes_on_board.clear()
 	temp_deck.clear()
 	deck.clear()
-	discard.clear()
+	clear_discard()
 	
 	Global.hand.dominoes.clear()
 	for dm in Global.hand.get_children():
@@ -108,7 +124,7 @@ func reshuffle_discard_into_deck():
 		temp_deck.append(bone)
 	
 	# Очищаем discard
-	discard.clear()
+	clear_discard()
 	
 	# Перемешиваем колоду
 	temp_deck.shuffle()

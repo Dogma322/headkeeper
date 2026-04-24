@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://hqt0mpox6uhq" path="res://scenes/RemoveDominoScene/remove_domino_scene.gd" id="1_7yrws"]
 
-[node name="RemoveDominoScene" type="Node2D" unique_id=1801682247]
+[node name="RemoveDominoScene" type="Control" unique_id=171613330]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_7yrws")
 
 [node name="Dominoes" type="Node2D" parent="." unique_id=1604696314]

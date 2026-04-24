@@ -1,4 +1,4 @@
-extends Node2D
+extends ScreenBase
 
 @export var spacing = 100
 @export var y_position := 180

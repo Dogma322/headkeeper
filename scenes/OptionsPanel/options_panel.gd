@@ -1,5 +1,6 @@
 @tool
 extends Control
+class_name OptionsPanel
 
 @onready var options_panel = $OptionsPanel
 @onready var color_rect: ColorRect = $ColorRect
@@ -54,7 +55,6 @@ func update_labels():
 	sfx_label.text = tr("sfx_volume")
 	music_label.text = tr("music_volume")
 	end_run_btn.text = tr("give_up")
-
 
 func _on_end_run_btn_pressed() -> void:
 	CombatManager.return_to_main_menu()

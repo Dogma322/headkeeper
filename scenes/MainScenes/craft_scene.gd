@@ -1,4 +1,4 @@
-extends Control
+extends ScreenBase
 class_name CraftScene
 
 const COLUMNS := 8
@@ -77,12 +77,12 @@ func _ready() -> void:
 	Signals.domino_added_to_board.connect(_on_domino_added_to_board)
 	Signals.domino_chain_removed.connect(_on_domino_chain_removed)
 
-func start(_demo_mode: bool):
-	demo_mode = _demo_mode
-	if _demo_mode:
-		exit_button.show()
-	else:
-		exit_button.hide()
+func start():
+	#demo_mode = _demo_mode
+	#if _demo_mode:
+		#exit_button.show()
+	#else:
+	exit_button.hide()
 	
 	if not is_instance_valid(Global.fight_scene):
 		exit_button.show()

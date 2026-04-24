@@ -1,37 +1,35 @@
 extends TextureButton
+class_name DiscardBag
 
+@onready var deck_label: Label = $DeckLabel
 @onready var tooltip_panel: TooltipPanel = $TooltipPanel
-@onready var deck_label = $DeckLabel
 
 func _ready() -> void:
-	Signals.deck_changed.connect(update_labels)
+	Signals.discard_deck_changed.connect(update_labels)
+	
 	update_labels()
-	hide_des()
+	hide_description()
 
 
-func _process(_delta: float) -> void:
-	deck_label.text = str(DominoManager.discard.size())
-
-
-func show_des():
-	update_labels()
+func show_description() -> void:
 	tooltip_panel.show_tooltip()
 
 
-func hide_des():
+func hide_description() -> void:
 	tooltip_panel.hide_tooltip()
 
 
-func update_labels():
+func update_labels() -> void:
+	deck_label.text = str(DominoManager.discard.size())
 	tooltip_panel.caption = tr("discard_bag_name")
 	tooltip_panel.description = tr("bag_des") % DominoManager.discard.size()
 
 
 func _on_mouse_entered() -> void:
-	show_des()
+	show_description()
 	self_modulate = Color.WHITE.darkened(0.25)
 
 
 func _on_mouse_exited() -> void:
-	hide_des()
+	hide_description()
 	self_modulate = Color.WHITE

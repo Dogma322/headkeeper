@@ -37,6 +37,7 @@ expand_mode = 1
 metadata/_edit_lock_ = true
 
 [node name="TopPanel" parent="." unique_id=1235060547 instance=ExtResource("3_reosh")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
 
@@ -73,13 +74,13 @@ size_flags_vertical = 3
 [node name="ChoiceScene" parent="." unique_id=598777679 instance=ExtResource("7_cb6jg")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(0, -14)
+layout_mode = 2
 spacing = 100
 
 [node name="RemoveDominoScene" parent="." unique_id=1801682247 instance=ExtResource("9_wrdhs")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(0, -14)
+layout_mode = 2
 
 [node name="MetaScene" parent="." unique_id=476688822 instance=ExtResource("10_ui8fk")]
 unique_name_in_owner = true

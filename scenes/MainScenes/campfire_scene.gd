@@ -1,4 +1,4 @@
-extends Control
+extends ScreenBase
 class_name CampfireScene
 
 func start() -> void:

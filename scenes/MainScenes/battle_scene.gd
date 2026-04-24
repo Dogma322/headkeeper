@@ -1,5 +1,5 @@
 @tool
-extends Control
+extends ScreenBase
 class_name BattleScene
 
 @onready var characters = $Characters

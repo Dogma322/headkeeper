@@ -17,7 +17,7 @@ signal actions_completed
 signal enemy_attack
 
 signal deck_changed
-signal discard_changed
+signal discard_deck_changed
 
 signal domino_played
 signal green_bonus_played

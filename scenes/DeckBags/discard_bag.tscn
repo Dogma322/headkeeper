@@ -26,7 +26,6 @@ anchor_left = -1.6888889
 anchor_top = -0.7090909
 anchor_right = 1.0
 anchor_bottom = 0.0
-offset_bottom = 0.0
 caption = "discard_bag_name"
 description = "bag_des"
 

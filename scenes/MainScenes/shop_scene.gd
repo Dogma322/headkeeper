@@ -1,5 +1,5 @@
 @tool
-extends Control
+extends ScreenBase
 class_name ShopScene
 
 @onready var head_slots := [%HeadSlot, %HeadSlot2, %HeadSlot3]

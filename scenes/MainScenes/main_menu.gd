@@ -41,7 +41,7 @@ func _on_craft_btn_pressed() -> void:
 	Transition.blackout_off()
 	
 	hide()
-	SceneManager.show_craft_scene(true)
+	SceneManager.show_craft_scene()
 
 
 ## Происходит при нажатии кнопки 'Рандомные поля'.
