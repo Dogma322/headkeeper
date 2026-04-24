@@ -7,7 +7,7 @@ const SPACING := Vector2(40, 70)  # расстояние между домино
 # НАСТРОЙКА ВЫСОТЫ СЕТКИ
 @export var CENTER_Y := 120
 
-@onready var exit_button: TextureButton = %ExitButton
+@onready var exit_button: IconButton = %ExitButton
 @onready var accept_button: GameButton = %AcceptButton
 @onready var skip_button: GameButton = %SkipButton
 

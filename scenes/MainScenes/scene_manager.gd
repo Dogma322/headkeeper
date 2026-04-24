@@ -81,10 +81,6 @@ func show_map_scene() -> void:
 
 
 func show_domino_list_scene(mode: DominoListScene.Source) -> void:
-	Transition.blackout_on()
-	await get_tree().create_timer(1.0).timeout
-	Transition.blackout_off()
-	
 	show_scene(domino_list_scene)
 	domino_list_scene.update_domino_list(mode)
 

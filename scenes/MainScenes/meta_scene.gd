@@ -1,7 +1,7 @@
 extends ScreenBase
 class_name MetaScene
 
-@onready var exit_button: TextureButton = %ExitButton
+@onready var exit_button: IconButton = %ExitButton
 @onready var slot_containers = [%HFlowContainer, %HFlowContainer2]
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
 @onready var additional_tooltip_panel: MarginContainer = %AdditionalTooltipPanel

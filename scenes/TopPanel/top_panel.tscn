@@ -12,7 +12,6 @@
 [ext_resource type="FontFile" uid="uid://e47c4g1girqd" path="res://assets/Fonts/Monocraft.otf" id="7_mn5tw"]
 [ext_resource type="Texture2D" uid="uid://83k0is8v8c8p" path="res://assets/Icons/TopPanelIcons/domino_deck_icon.atlastex" id="7_qkk5r"]
 [ext_resource type="Texture2D" uid="uid://1s64mba1kg7e" path="res://assets/Icons/TopPanelIcons/bonus_deck_icon.atlastex" id="7_vphw7"]
-[ext_resource type="ButtonGroup" uid="uid://hp8lbr0vkeyu" path="res://scenes/TopPanel/top_panel_button_group.tres" id="9_my7ya"]
 [ext_resource type="FontFile" uid="uid://bg2a4wo64yqve" path="res://assets/Fonts/shadowpixelF1.ttf" id="11_my7ya"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ttnmq"]
@@ -124,20 +123,21 @@ text = "Stage 1"
 
 [node name="MapButton" parent="HBoxContainer" unique_id=1254142979 instance=ExtResource("6_hnbga")]
 unique_name_in_owner = true
+modulate = Color(1.5, 1.5, 1.5, 1)
 layout_mode = 2
 size_flags_vertical = 4
+texture = ExtResource("7_gkv6x")
 toggle_mode = true
 button_pressed = true
-button_group = ExtResource("9_my7ya")
-texture_normal = ExtResource("7_gkv6x")
+button_group = "top_panel_buttons"
 
 [node name="HeadDeckButton" parent="HBoxContainer" unique_id=386037324 instance=ExtResource("6_hnbga")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
+texture = ExtResource("7_0k1ga")
 toggle_mode = true
-button_group = ExtResource("9_my7ya")
-texture_normal = ExtResource("7_0k1ga")
+button_group = "top_panel_buttons"
 
 [node name="HeadAmountLabel" type="Label" parent="HBoxContainer/HeadDeckButton" unique_id=1020687423]
 unique_name_in_owner = true
@@ -162,9 +162,9 @@ horizontal_alignment = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
+texture = ExtResource("7_vphw7")
 toggle_mode = true
-button_group = ExtResource("9_my7ya")
-texture_normal = ExtResource("7_vphw7")
+button_group = "top_panel_buttons"
 
 [node name="BonusAmountLabel" type="Label" parent="HBoxContainer/BonusDeckButton" unique_id=1614137116]
 unique_name_in_owner = true
@@ -189,9 +189,9 @@ horizontal_alignment = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
+texture = ExtResource("7_qkk5r")
 toggle_mode = true
-button_group = ExtResource("9_my7ya")
-texture_normal = ExtResource("7_qkk5r")
+button_group = "top_panel_buttons"
 
 [node name="DominoAmountLabel" type="Label" parent="HBoxContainer/DominoDeckButton" unique_id=1103629639]
 unique_name_in_owner = true

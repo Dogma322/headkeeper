@@ -7,6 +7,8 @@ class_name GameButton
 
 signal pressed
 
+static var buttons = []
+
 ## Текст на кнопке.
 @export var text := "":
 	set(value):
@@ -34,6 +36,8 @@ signal pressed
 		else:
 			modulate = Color.WHITE
 
+var active := true
+
 func _update_font_size():
 	match font_size:
 		0:
@@ -48,16 +52,25 @@ func _update_font_size():
 			label.theme = preload("res://scenes/TextThemes/volda15.tres")
 
 func _ready() -> void:
+	buttons.push_back(self)
 	label.text = text
 	_update_font_size()
 	pass
 
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		buttons.erase(self)
 
 func _gui_input(event: InputEvent) -> void:
+	if not active:
+		return
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MouseButton.MOUSE_BUTTON_LEFT and not disabled:
 			pressed.emit()
 
+static func activate_all_buttons(enabled := true) -> void:
+	for button in buttons:
+		button.active = enabled
 
 func _on_mouse_entered() -> void:
 	if disabled:

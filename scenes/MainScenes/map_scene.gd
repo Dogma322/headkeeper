@@ -124,10 +124,6 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			SceneManager.show_map_scene()
 
 
-func _on_all_dominoes_button_pressed() -> void:
-	SceneManager.show_domino_list_scene(DominoListScene.Source.ALL)
-
-
 func _on_free_choice_button_pressed() -> void:
 	free_choice_mode = !free_choice_mode
 	if free_choice_mode:

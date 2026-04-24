@@ -1,30 +1,89 @@
 @tool
 class_name IconButton
-extends TextureButton
+extends TextureRect
+
+@export var toggle_mode := false
+@export var button_pressed := false:
+	set(value):
+		button_pressed = value
+		if value:
+			modulate = Color(1.5, 1.5, 1.5)
+		else:
+			if mouse_over:
+				modulate = Color(1.3, 1.3, 1.3)
+			else:
+				modulate = Color(1, 1, 1)
+@export var button_group: String
+
+var active = true
+var mouse_over := false
+
+static var buttons = []
+static var button_groups = {}
+
+signal toggled(button_pressed)
+signal pressed
+
 
 func _ready() -> void:
-	toggled.connect(_on_toggled)
+	buttons.push_back(self)
+	if button_group != null and !button_group.is_empty():
+		button_groups.get_or_add(button_group, []).push_back(self)
 	if button_pressed:
 		modulate = Color(1.5, 1.5, 1.5)
+	else:
+		modulate = Color(1, 1, 1)
+
+
+static func activate_all_buttons(enabled := true) -> void:
+	for button in buttons:
+		button.active = enabled
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		buttons.erase(self)
 
 
 func _on_mouse_entered() -> void:
+	mouse_over = true
+	
+	if not active:
+		return
+	
 	if toggle_mode and button_pressed:
 		return
 	modulate = Color(1.3, 1.3, 1.3)
 
 
 func _on_mouse_exited() -> void:
+	mouse_over = false
+	
+	if not active:
+		return
+	
 	if toggle_mode and button_pressed:
 		return
 	modulate = Color(1, 1, 1)
 
 
-func _on_toggled(_toggled_on: bool) -> void:
-	if button_group != null:
-		for button: BaseButton in button_group.get_buttons():
-			if button == button_group.get_pressed_button():
-				button.modulate = Color(1.5, 1.5, 1.5)
+func _gui_input(event: InputEvent) -> void:
+	if not active:
+		return
+	if event is InputEventMouseButton:
+		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.pressed:
+			if toggle_mode:
+				if button_group != null and !button_group.is_empty():
+					for button in button_groups[button_group]:
+						if button == self:
+							if button_pressed:
+								continue
+							button_pressed = true
+							pressed.emit()
+						else:
+							button.button_pressed = false
+				else:
+					button_pressed = !button_pressed
+					toggled.emit(button_pressed)
 			else:
-				button.modulate = Color(1, 1, 1)
-		
+				pressed.emit()

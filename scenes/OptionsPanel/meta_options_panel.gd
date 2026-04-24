@@ -5,7 +5,7 @@ extends Node2D
 @onready var color_rect: ColorRect = $ColorRect
 @onready var sfx_label: Label = %SfxLabel
 @onready var music_label: Label = %MusicLabel
-@onready var options_button: TextureButton = %OptionsButton
+@onready var options_button: IconButton = %OptionsButton
 
 @export var visible_by_default := false:
 	set(value):

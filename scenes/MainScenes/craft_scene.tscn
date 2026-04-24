@@ -42,7 +42,7 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-texture_normal = ExtResource("5_a8qar")
+texture = ExtResource("5_a8qar")
 
 [node name="BoardCraft" parent="." unique_id=183639370 instance=ExtResource("8_il8bo")]
 position = Vector2(318, 149)

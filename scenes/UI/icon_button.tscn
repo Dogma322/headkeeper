@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dvec871ipwp7k" path="res://scenes/UI/icon_button.gd" id="1_jw7ho"]
 
-[node name="IconButton" type="TextureButton" unique_id=1254142979]
+[node name="IconButton" type="TextureRect" unique_id=963099234]
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_jw7ho")

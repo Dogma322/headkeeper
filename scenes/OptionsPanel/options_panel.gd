@@ -4,7 +4,7 @@ class_name OptionsPanel
 
 @onready var options_panel = $OptionsPanel
 @onready var color_rect: ColorRect = $ColorRect
-@onready var options_button: TextureButton = %OptionsButton
+@onready var options_button: IconButton = %OptionsButton
 @onready var stage_label: Label = %StageLabel
 @onready var sfx_label: Label = %SfxLabel
 @onready var music_label: Label = %MusicLabel
@@ -34,12 +34,12 @@ func show_panel(enabled: bool) -> void:
 		color_rect.visible = true
 		options_panel.visible = true
 		DominoManager.block_domino_input = true
-		options_button.texture_normal = load("res://assets/UI/OptionsMenu/ExitButton.png")
+		options_button.texture = load("res://assets/UI/OptionsMenu/ExitButton.png")
 	else:
 		color_rect.visible = false
 		options_panel.visible = false
 		DominoManager.block_domino_input = false
-		options_button.texture_normal = load("res://assets/UI/OptionsMenu/OptionsButton.png")
+		options_button.texture = load("res://assets/UI/OptionsMenu/OptionsButton.png")
 
 
 func _on_options_button_pressed() -> void:
