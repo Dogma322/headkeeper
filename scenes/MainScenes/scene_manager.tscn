@@ -65,6 +65,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="CraftScene" parent="." unique_id=1900912832 instance=ExtResource("7_4wbje")]
 unique_name_in_owner = true
@@ -76,12 +77,14 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+mouse_filter = 2
 spacing = 100
 
 [node name="RemoveDominoScene" parent="." unique_id=1801682247 instance=ExtResource("9_wrdhs")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+mouse_filter = 2
 
 [node name="MetaScene" parent="." unique_id=476688822 instance=ExtResource("10_ui8fk")]
 unique_name_in_owner = true
