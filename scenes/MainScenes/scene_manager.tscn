@@ -122,4 +122,6 @@ offset_right = 637.0
 offset_bottom = 25.0
 texture = ExtResource("17_r2ilk")
 
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+
 [editable path="OptionsPanel"]

@@ -5,7 +5,6 @@ class_name MapScene
 @onready var player: Sprite2D = $Player
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
 @onready var act_label: Label = %ActLabel
-@onready var free_choice_button: GameButton = %FreeChoiceButton
 
 var moving = false
 var selected_node: MapNode = null
@@ -25,6 +24,10 @@ func _ready() -> void:
 	player_origin = player.position
 	Global.map_scene = self
 	Transition.blackout_off()
+
+
+func start() -> void:
+	SceneManager.options_panel.show_box(SceneManager.options_panel.map_box)
 
 
 func _on_exit_button_pressed() -> void:
@@ -122,11 +125,3 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			
 			SceneManager.main_scene = SceneManager.map_scene
 			SceneManager.show_map_scene()
-
-
-func _on_free_choice_button_pressed() -> void:
-	free_choice_mode = !free_choice_mode
-	if free_choice_mode:
-		free_choice_button.text = "Свободный выбор: вкл"
-	else:
-		free_choice_button.text = "Свободный выбор: выкл"

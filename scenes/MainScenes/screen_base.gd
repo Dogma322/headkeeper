@@ -3,8 +3,8 @@ class_name ScreenBase
 
 var top_panel_button: IconButton = null
 
-func start():
+func start() -> void:
 	pass
 
-func end():
+func end() -> void:
 	pass

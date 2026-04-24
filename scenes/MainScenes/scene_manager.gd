@@ -52,6 +52,7 @@ func show_scene(scene: Node) -> void:
 		if scene2 == scene:
 			scene2.show()
 			current_scene = scene2
+			current_scene.start()
 		else:
 			scene2.hide()
 	
@@ -90,7 +91,6 @@ func show_battle_scene(map_node: MapNode) -> void:
 	await get_tree().create_timer(1.0).timeout
 	
 	show_scene(battle_scene)
-	battle_scene.start()
 	
 	if map_node.coord.y == 0:
 		CombatManager.start(map_node)
@@ -116,7 +116,6 @@ func show_choice_scene() -> void:
 
 func show_craft_scene() -> void:
 	show_scene(craft_scene)
-	craft_scene.start()
 
 
 func show_remove_domino_scene() -> void:
@@ -134,12 +133,10 @@ func show_meta_scene() -> void:
 
 func show_campfire_scene() -> void:
 	show_scene(campfire_scene)
-	campfire_scene.start()
 
 
 func show_shop_scene() -> void:
 	show_scene(shop_scene)
-	shop_scene.start()
 
 
 func show_back_button(enabled: bool) -> void:

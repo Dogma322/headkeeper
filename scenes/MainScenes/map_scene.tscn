@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://c4t765oqy66fj" path="res://scenes/Map/map.tscn" id="3_kd8hc"]
 [ext_resource type="Texture2D" uid="uid://bdc8xw1rrynlw" path="res://icon.svg" id="3_oq6vs"]
 [ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="5_oq6vs"]
-[ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="6_dqmp7"]
 [ext_resource type="FontFile" uid="uid://cdr1gk3kbvdd4" path="res://assets/Fonts/Vollda-Bold.otf" id="7_3vrjx"]
 
 [node name="MapScene" type="Control" unique_id=1058918205]
@@ -63,32 +62,6 @@ size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("7_3vrjx")
 text = "Акт 1"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Layout/HBoxContainer" unique_id=1236843891]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="GenButton" parent="Layout/HBoxContainer/VBoxContainer" unique_id=885226573 instance=ExtResource("6_dqmp7")]
-layout_mode = 2
-text = "Generate"
-font_size = 3
-disabled = false
-
-[node name="AllDominoesButton" parent="Layout/HBoxContainer/VBoxContainer" unique_id=622861341 instance=ExtResource("6_dqmp7")]
-layout_mode = 2
-text = "Все домино"
-font_size = 3
-disabled = false
-
-[node name="FreeChoiceButton" parent="Layout/HBoxContainer/VBoxContainer" unique_id=1707676909 instance=ExtResource("6_dqmp7")]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Свободный выбор: выкл"
-font_size = 3
-disabled = false
-
 [connection signal="node_mouse_entered" from="Map" to="." method="_on_map_node_mouse_entered"]
 [connection signal="node_mouse_exited" from="Map" to="." method="_on_map_node_mouse_exited"]
 [connection signal="node_pressed" from="Map" to="." method="_on_map_node_pressed"]
-[connection signal="pressed" from="Layout/HBoxContainer/VBoxContainer/GenButton" to="." method="_on_gen_button_pressed"]
-[connection signal="pressed" from="Layout/HBoxContainer/VBoxContainer/AllDominoesButton" to="." method="_on_all_dominoes_button_pressed"]
-[connection signal="pressed" from="Layout/HBoxContainer/VBoxContainer/FreeChoiceButton" to="." method="_on_free_choice_button_pressed"]
