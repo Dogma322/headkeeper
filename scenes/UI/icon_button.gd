@@ -14,6 +14,7 @@ extends TextureRect
 			else:
 				modulate = Color(1, 1, 1)
 @export var button_group: String
+@export var shortcut: Shortcut
 
 var active = true
 var mouse_over := false
@@ -66,24 +67,32 @@ func _on_mouse_exited() -> void:
 		return
 	modulate = Color(1, 1, 1)
 
+func _input(event: InputEvent) -> void:
+	if shortcut and shortcut.matches_event(event) and event.is_pressed() and not event.is_echo():
+		_press()
+
 
 func _gui_input(event: InputEvent) -> void:
 	if not active:
 		return
 	if event is InputEventMouseButton:
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.pressed:
-			if toggle_mode:
-				if button_group != null and !button_group.is_empty():
-					for button in button_groups[button_group]:
-						if button == self:
-							if button_pressed:
-								continue
-							button_pressed = true
-							pressed.emit()
-						else:
-							button.button_pressed = false
+			_press()
+
+
+func _press():
+	if toggle_mode:
+		if button_group != null and !button_group.is_empty():
+			for button in button_groups[button_group]:
+				if button == self:
+					if button_pressed:
+						continue
+					button_pressed = true
+					pressed.emit()
 				else:
-					button_pressed = !button_pressed
-					toggled.emit(button_pressed)
-			else:
-				pressed.emit()
+					button.button_pressed = false
+		else:
+			button_pressed = !button_pressed
+			toggled.emit(button_pressed)
+	else:
+		pressed.emit()

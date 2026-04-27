@@ -7,7 +7,6 @@ const SPACING := Vector2(40, 70)  # расстояние между домино
 # НАСТРОЙКА ВЫСОТЫ СЕТКИ
 @export var CENTER_Y := 120
 
-@onready var exit_button: IconButton = %ExitButton
 @onready var accept_button: GameButton = %AcceptButton
 @onready var skip_button: GameButton = %SkipButton
 
@@ -77,17 +76,15 @@ func _ready() -> void:
 	Signals.domino_added_to_board.connect(_on_domino_added_to_board)
 	Signals.domino_chain_removed.connect(_on_domino_chain_removed)
 
+
+func start_demo():
+	demo_mode = true
+	battle_background.show()
+
+
 func start():
-	#demo_mode = _demo_mode
-	#if _demo_mode:
-		#exit_button.show()
-	#else:
-	exit_button.hide()
-	
-	if not is_instance_valid(Global.fight_scene):
-		exit_button.show()
-		battle_background.show()
-		accept_button.hide()
+	demo_mode = false
+	battle_background.hide()
 	
 	Global.hand.draw_all_dominoes()
 	accept_button.disabled = true

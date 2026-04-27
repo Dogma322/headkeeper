@@ -8,6 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="6_2427u"]
 [ext_resource type="PackedScene" uid="uid://bo8xaqmke5324" path="res://scenes/UI/icon_button.tscn" id="7_2427u"]
 
+[sub_resource type="InputEventAction" id="InputEventAction_2427u"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_04qni"]
+events = [SubResource("InputEventAction_2427u")]
+
 [node name="OptionsPanel" type="Control" unique_id=117387146]
 z_index = 100
 layout_mode = 3
@@ -130,6 +136,7 @@ offset_left = 610.0
 offset_top = 5.0
 offset_right = 635.0
 offset_bottom = 30.0
+shortcut = SubResource("Shortcut_04qni")
 
 [connection signal="pressed" from="OptionsPanel/MarginContainer/VBoxContainer/BattleBox/EndRunBtn" to="." method="_on_end_run_btn_pressed"]
 [connection signal="pressed" from="OptionsPanel/MarginContainer/VBoxContainer/BattleBox/WinBtn" to="." method="_on_win_btn_pressed"]

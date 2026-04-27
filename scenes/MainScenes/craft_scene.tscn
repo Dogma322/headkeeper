@@ -2,8 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bn0602p7re11e" path="res://scenes/Backgrounds/battle_background.tscn" id="1_dwva5"]
 [ext_resource type="Script" uid="uid://b2pehnv8tdhth" path="res://scenes/MainScenes/craft_scene.gd" id="1_gu0aw"]
-[ext_resource type="PackedScene" uid="uid://bo8xaqmke5324" path="res://scenes/UI/icon_button.tscn" id="3_jg3uq"]
-[ext_resource type="Texture2D" uid="uid://mjo560ccfs37" path="res://assets/UI/OptionsMenu/ExitButton.png" id="5_a8qar"]
+[ext_resource type="Texture2D" uid="uid://dfm53ekuvdv5w" path="res://assets/Backgrounds/VoidBackground.png" id="3_a8qar"]
 [ext_resource type="PackedScene" uid="uid://bnkuyqcb3iadw" path="res://scenes/UI/text_panel.tscn" id="6_jg3uq"]
 [ext_resource type="PackedScene" uid="uid://by7sdoxj5u7k4" path="res://scenes/Boards/board_craft.tscn" id="8_il8bo"]
 [ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="8_ioiea"]
@@ -22,27 +21,8 @@ script = ExtResource("1_gu0aw")
 [node name="BattleBackground" parent="." unique_id=631565350 instance=ExtResource("1_dwva5")]
 visible = false
 layout_mode = 0
+texture = ExtResource("3_a8qar")
 metadata/_edit_lock_ = true
-
-[node name="Layout" type="MarginContainer" parent="." unique_id=1795268268]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-metadata/_edit_lock_ = true
-
-[node name="ExitButton" parent="Layout" unique_id=1254142979 instance=ExtResource("3_jg3uq")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-texture = ExtResource("5_a8qar")
 
 [node name="BoardCraft" parent="." unique_id=183639370 instance=ExtResource("8_il8bo")]
 position = Vector2(318, 149)
@@ -104,7 +84,6 @@ text = "[img]res://assets/Icons/CommonSkull.png[/img]0"
 fit_content = true
 autowrap_mode = 0
 
-[connection signal="pressed" from="Layout/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/RerollButton" to="." method="_on_reroll_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SkipButton" to="." method="_on_skip_button_pressed"]

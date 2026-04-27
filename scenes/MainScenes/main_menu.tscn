@@ -53,17 +53,24 @@ script = ExtResource("1_biks6")
 position = Vector2(320, 180)
 texture = ExtResource("1_icbvd")
 
-[node name="ChangeBoardGenerationBtn" parent="." unique_id=12153377 instance=ExtResource("3_4s641")]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1445746143]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ChangeBoardGenerationBtn" parent="MarginContainer" unique_id=12153377 instance=ExtResource("3_4s641")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(134, 48)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -134.0
-offset_right = 0.0
-offset_bottom = 48.0
-grow_horizontal = 0
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
 text = "Рандомные поля: вкл"
 font_size = 2
 disabled = false
@@ -81,6 +88,7 @@ offset_right = 64.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="PlayBtn" parent="VBoxContainer" unique_id=885226573 instance=ExtResource("3_4s641")]
 unique_name_in_owner = true
@@ -91,6 +99,7 @@ font_size = 4
 disabled = false
 
 [node name="MetaBtn" parent="VBoxContainer" unique_id=1138529411 instance=ExtResource("3_4s641")]
+visible = false
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 text = "Мета"
@@ -98,6 +107,7 @@ font_size = 4
 disabled = false
 
 [node name="CraftBtn" parent="VBoxContainer" unique_id=810574825 instance=ExtResource("3_4s641")]
+visible = false
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 text = "Крафт"
@@ -127,7 +137,7 @@ offset_bottom = 360.0
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
-[connection signal="pressed" from="ChangeBoardGenerationBtn" to="." method="_on_change_board_generation_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/ChangeBoardGenerationBtn" to="." method="_on_change_board_generation_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/PlayBtn" to="." method="_on_play_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/MetaBtn" to="." method="_on_meta_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/CraftBtn" to="." method="_on_craft_btn_pressed"]
