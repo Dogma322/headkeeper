@@ -124,6 +124,8 @@ func _on_exit_button_pressed() -> void:
 	Transition.blackout_off()
 	DominoManager.reset()
 	hide()
+	
+	SceneManager.main_scene = null
 	Global.main_menu.show()
 
 

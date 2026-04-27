@@ -9,10 +9,13 @@ func effect():
 	await get_tree().create_timer(1.0).timeout
 	Transition.blackout_off()
 	
+	SceneManager.main_scene = SceneManager.craft_scene
 	SceneManager.show_craft_scene()
 	await Signals.domino_selected
 	
 	Transition.blackout_on()
 	await get_tree().create_timer(1.0).timeout
 	Transition.blackout_off()
+	
+	SceneManager.main_scene = SceneManager.map_scene
 	SceneManager.show_map_scene()

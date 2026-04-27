@@ -223,6 +223,7 @@ func show_rewards():
 	Global.fight_scene.hide_menu()
 	await get_tree().create_timer(1.0).timeout
 	
+	SceneManager.main_scene = SceneManager.action_card_scene
 	SceneManager.show_action_card_scene()
 	ActionCardManager.show_battle_cards()
 	

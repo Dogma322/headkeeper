@@ -52,8 +52,8 @@ func _ready() -> void:
 
 func update_health_points_bar(health, max_health):
 	var tween = create_tween().set_parallel()
-	tween.tween_property(self, "max_hp", max_health, 0.25)
-	tween.tween_property(self, "hp", health, 0.25)
+	tween.tween_property(self, "max_health_points", max_health, 0.25)
+	tween.tween_property(self, "health_points", health, 0.25)
 
 
 func update_hp_bar():
