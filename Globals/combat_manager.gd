@@ -283,6 +283,7 @@ func return_to_main_menu():
 	await get_tree().create_timer(1).timeout
 	Transition.blackout_off()
 	reset_run_data()
+	Global.options_panel.show_box(Global.options_panel.main_menu_box)
 	Global.fight_scene.hide()
 	Global.main_menu.show()
 	

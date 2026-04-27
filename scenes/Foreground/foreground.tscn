@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://da4v2igkcgkbs"]
+
+[ext_resource type="Script" uid="uid://c8x5rbes6oydf" path="res://scenes/Foreground/foreground.gd" id="1_w4nnv"]
+[ext_resource type="PackedScene" uid="uid://csbo55doneg6b" path="res://scenes/OptionsPanel/options_panel.tscn" id="2_v7sxw"]
+[ext_resource type="Texture2D" uid="uid://yqujp8cjjlmf" path="res://assets/Icons/TopPanelIcons/settings_icon.atlastex" id="3_ga7fe"]
+
+[node name="Foreground" type="Control" unique_id=361214007]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_w4nnv")
+
+[node name="OptionsPanel" parent="." unique_id=117387146 instance=ExtResource("2_v7sxw")]
+top_level = true
+layout_mode = 1
+mouse_filter = 2
+
+[node name="OptionsButton" parent="OptionsPanel" index="2" unique_id=1254142979]
+offset_left = 612.0
+offset_top = 0.0
+offset_right = 637.0
+offset_bottom = 25.0
+texture = ExtResource("3_ga7fe")
+
+[editable path="OptionsPanel"]

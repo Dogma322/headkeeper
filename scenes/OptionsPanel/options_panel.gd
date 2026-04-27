@@ -8,12 +8,12 @@ class_name OptionsPanel
 @onready var stage_label: Label = %StageLabel
 @onready var sfx_label: Label = %SfxLabel
 @onready var music_label: Label = %MusicLabel
-@onready var win_btn: GameButton = %WinBtn
-@onready var end_run_btn: GameButton = %EndRunBtn
+@onready var main_menu_box: VBoxContainer = %MainMenuBox
 @onready var map_box: VBoxContainer = %MapBox
 @onready var battle_box: VBoxContainer = %BattleBox
-@onready var boxes = [map_box, battle_box]
+@onready var boxes = [main_menu_box, map_box, battle_box]
 @onready var free_choice_button: GameButton = %FreeChoiceButton
+@onready var change_board_generation_btn: GameButton = %ChangeBoardGenerationBtn
 
 func show_box(other_box = null):
 	for box in boxes:
@@ -32,6 +32,7 @@ func show_box(other_box = null):
 
 
 func _ready() -> void:
+	Global.options_panel = self
 	if not Engine.is_editor_hint():
 		options_panel.visible = false
 		color_rect.visible = false
@@ -39,6 +40,7 @@ func _ready() -> void:
 		options_panel.visible = visible_by_default
 		color_rect.visible = visible_by_default
 	update_labels.call_deferred()
+	change_board_generation_btn.text = "Рандомные поля: вкл"
 
 
 func show_panel(enabled: bool) -> void:
@@ -56,6 +58,11 @@ func show_panel(enabled: bool) -> void:
 
 
 func _on_options_button_pressed() -> void:
+	if Global.top_window != null:
+		Global.top_window.hide()
+		Global.top_window = null
+		return
+	
 	if options_panel.visible == false:
 		show_panel(true)
 	else:
@@ -67,7 +74,6 @@ func update_labels() -> void:
 		stage_label.text = tr("stage") % CombatManager.stage
 	sfx_label.text = tr("sfx_volume")
 	music_label.text = tr("music_volume")
-	end_run_btn.text = tr("give_up")
 
 
 func _on_end_run_btn_pressed() -> void:
@@ -91,3 +97,16 @@ func _on_free_choice_button_pressed() -> void:
 		free_choice_button.text = "Свободный выбор: вкл"
 	else:
 		free_choice_button.text = "Свободный выбор: выкл"
+
+
+## Происходит при нажатии кнопки 'Рандомные поля'.
+func _on_change_board_generation_btn_pressed() -> void:
+	if BoardManager.random_boards == true:
+		BoardManager.random_boards = false
+		BoardManager.reset_run()
+		print("RANDOMBOARDS")
+		change_board_generation_btn.text = "Рандомные поля: выкл"
+	else:
+		BoardManager.random_boards = true
+		change_board_generation_btn.text = "Рандомные поля: вкл"
+		BoardManager.reset_run()

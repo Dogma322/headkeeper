@@ -12,7 +12,6 @@ extends Control
 @onready var meta_scene: ScreenBase = %MetaScene
 @onready var campfire_scene: CampfireScene = %CampfireScene
 @onready var shop_scene: ShopScene = %ShopScene
-@onready var options_panel: OptionsPanel = $OptionsPanel
 
 @onready var scenes = [
 	map_scene,
@@ -76,7 +75,6 @@ func new_run() -> void:
 
 
 func show_map_scene() -> void:
-	background.set_map_background()
 	show_scene(map_scene)
 	map_scene.moving = false
 

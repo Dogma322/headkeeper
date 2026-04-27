@@ -31,6 +31,7 @@ AnimationManager="*uid://b70whaam1fg5q"
 Transition="*uid://c21vchucx2ll6"
 SceneManager="*uid://bwvtdw455owql"
 DominoManager="*uid://coyhjvcswrj2u"
+BonusManager="*uid://dr212uchlucj"
 TextFormatter="*uid://cmg8og8huhp86"
 StatusManager="*uid://dpqq3wbxa1lnn"
 HeadManager="*uid://c1bjs00du5xti"
@@ -38,6 +39,7 @@ EnemyManager="*uid://cqdvayo0fp5c6"
 ActionCardManager="*uid://bmpktw6r0gusn"
 MoneyManager="*uid://btc8nsqyek1ur"
 SoundManager="*uid://2gvh11rpmgge"
+Foreground="*uid://da4v2igkcgkbs"
 
 [display]
 

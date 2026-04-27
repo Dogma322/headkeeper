@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BonusTemplate" format=3 uid="uid://cnrdxiwmadudk"]
+
+[ext_resource type="Script" uid="uid://bp60jca031260" path="res://resources/bonus_template.gd" id="1_uxqik"]
+[ext_resource type="Texture2D" uid="uid://cly4q3s0mnxpy" path="res://assets/ActionCards/Icons/WeakBonusIcon.png" id="2_ff0kv"]
+
+[resource]
+script = ExtResource("1_uxqik")
+desc = "weak_bb_card_des"
+tag = "h_1weak"
+texture = ExtResource("2_ff0kv")
+metadata/_custom_type_script = "uid://bp60jca031260"

@@ -34,6 +34,8 @@ var bonus_action_cards_pool = [heal_bonus, attack_bonus, defense_bonus, draw_bon
 vulnerable_bonus, weak_bonus]
 
 
+
+
 var campfire_pool = [heal, max_hp]
 
 func _ready() -> void:

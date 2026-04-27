@@ -27,7 +27,8 @@ func _ready() -> void:
 
 
 func start() -> void:
-	SceneManager.options_panel.show_box(SceneManager.options_panel.map_box)
+	SceneManager.background.set_map_background()
+	Global.options_panel.show_box(Global.options_panel.map_box)
 
 
 func _on_exit_button_pressed() -> void:

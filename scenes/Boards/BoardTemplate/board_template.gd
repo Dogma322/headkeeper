@@ -9,8 +9,8 @@ func _ready() -> void:
 
 
 func show_board():
-	var pos1 = Vector2(320, 165 + Global.TOP_HEADER_OFFSET) # сначала вниз на 20
-	var pos2 = Vector2(320, 145 + Global.TOP_HEADER_OFFSET)
+	var pos1 = Vector2(320, 165) # сначала вниз на 20
+	var pos2 = Vector2(320, 145)
 
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", pos1, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
@@ -19,7 +19,7 @@ func show_board():
 func hide_board():
 	var start_pos = global_position
 	var pos1 = start_pos + Vector2(0, 20) # небольшое смещение вниз
-	var pos2 = Vector2(320, -180 - Global.TOP_HEADER_OFFSET)
+	var pos2 = Vector2(320, -180)
 	#var pos2 = Vector2(320, -145)
 
 	var tween = create_tween()

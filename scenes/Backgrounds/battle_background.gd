@@ -4,6 +4,9 @@ class_name Background
 func _ready() -> void:
 	Global.background = self
 
+func set_main_menu_background() -> void:
+	texture = load("res://assets/Backgrounds/VoidBackground.png")
+
 func set_map_background():
 	texture = load("res://assets/Backgrounds/VoidBackground.png")
 

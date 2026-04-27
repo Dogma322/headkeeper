@@ -71,7 +71,7 @@ func spawn_dominoes():
 	spawning = true
 	choice_locked = false
 
-	var temp_dominoes = DominoManager.domino_pool.values().duplicate()
+	var temp_dominoes = DominoManager.domino_templates.values().duplicate()
 
 	for i in range(3):
 

@@ -35,7 +35,7 @@ var corruption_bonus = 0
 	"4_2_def_heal" : preload("res://resources/dominoes/start/dm_start_4_2_defense_heal.tres"),
 }
 
-@onready var domino_pool:= {
+@onready var domino_templates := {
 	"dm_4_1_attack_weak": preload("res://resources/dominoes/dm_4_1_attack_weak.tres"),
 	"dm_3_3_attack2_corruption": preload("res://resources/dominoes/dm_3_3_attack2_corruption.tres"),
 	"dm_2_1_fury": preload("res://resources/dominoes/dm_2_1_fury.tres"),
@@ -89,7 +89,7 @@ func clear_discard() -> void:
 
 
 func reset():
-	#temp_domino_pool = domino_pool.duplicate()
+	#temp_domino_pool = domino_templates.duplicate()
 	
 	dominoes_on_board.clear()
 	temp_deck.clear()

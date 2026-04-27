@@ -61,10 +61,6 @@ disabled = true
 [node name="UI" type="Node2D" parent="." unique_id=539959544]
 script = ExtResource("8_uk3cr")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=139201397]
-offset_right = 94.0
-offset_bottom = 55.0
-
 [node name="Bags" type="Node2D" parent="UI" unique_id=1548184174]
 
 [node name="DeckBag" parent="UI/Bags" unique_id=2145809580 instance=ExtResource("8_qxp17")]

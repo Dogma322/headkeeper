@@ -4,9 +4,6 @@
 
 [resource]
 script = ExtResource("1_ffplr")
-b = 2
-a_type = "corrupted_sphere"
-b_type = "empty_green"
 a_types = PackedStringArray("corrupted_sphere")
 b_types = PackedStringArray("empty", "empty")
 a_color = "green"
