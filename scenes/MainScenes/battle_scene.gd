@@ -26,7 +26,7 @@ func _ready() -> void:
 
 func start():
 	camera.make_current()
-	Global.options_panel.show_box(Global.options_panel.battle_box)
+	Foreground.options_panel.show_box(Foreground.options_panel.battle_box)
 
 func _on_domino_chain_removed() -> void:
 	if DominoManager.dominoes_on_board.is_empty():

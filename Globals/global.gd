@@ -23,7 +23,6 @@ func _ready() -> void:
 @onready var map_scene
 @onready var main_menu: MainMenu
 @onready var vhs_shader
-@onready var options_panel
 
 @export var domino_scene = preload("res://scenes/Domino/domino.tscn")
 @export var craft_scene = preload("res://scenes/MainScenes/craft_scene.tscn")

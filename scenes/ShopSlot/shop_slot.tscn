@@ -17,6 +17,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
+expand_mode = 1
 
 [node name="Domino" parent="." unique_id=1771172059 instance=ExtResource("2_bw165")]
 visible = false

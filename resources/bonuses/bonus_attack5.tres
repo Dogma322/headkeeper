@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BonusTemplate" format=3 uid="uid://ce0erk31wlc6d"]
+
+[ext_resource type="Script" uid="uid://bp60jca031260" path="res://resources/bonus_template.gd" id="1_g2235"]
+[ext_resource type="Texture2D" uid="uid://51ylxlwysnpa" path="res://assets/ShopBonuses/shop_bonuses/shop_bonus_attack5.tres" id="2_ymxjy"]
+
+[resource]
+script = ExtResource("1_g2235")
+desc = "attack_bb_card_des"
+tag = "h_5dmg_bonus"
+texture = ExtResource("2_ymxjy")
+metadata/_custom_type_script = "uid://bp60jca031260"

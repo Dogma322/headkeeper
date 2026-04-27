@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BonusTemplate" format=3 uid="uid://c4q1nrk21a8bx"]
+
+[ext_resource type="Script" uid="uid://bp60jca031260" path="res://resources/bonus_template.gd" id="1_jhvw4"]
+[ext_resource type="Texture2D" uid="uid://wxxa1qtawkfu" path="res://assets/ShopBonuses/shop_bonuses/shop_bonus_heal3.tres" id="2_tjp7b"]
+
+[resource]
+script = ExtResource("1_jhvw4")
+desc = "heal_bb_card_des"
+tag = "h_3heal"
+texture = ExtResource("2_tjp7b")
+metadata/_custom_type_script = "uid://bp60jca031260"

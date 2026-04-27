@@ -108,6 +108,10 @@ static var type_to_string = {
 }
 
 func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> void:
+	if extra_tooltip_panel != null:
+		extra_tooltip_panel.queue_free()
+		extra_tooltip_panel = null
+	
 	if a_settings != null:
 		for i in range(a_types.size()):
 			remove_symbol(0, i)
@@ -146,7 +150,7 @@ func _ready() -> void:
 		setup(SideSettings.new(template.a_types, template.a_color), SideSettings.new(template.b_types, template.b_color))
 	
 	#update_labels()
-	hide_des_fast()
+	hide_description_fast()
 
 
 func add_actions():
@@ -327,7 +331,7 @@ func _on_area_2d_input_event(_viewport, event, _shape):
 				rotate_in_hand()
 		elif event.button_index == MOUSE_BUTTON_LEFT:
 			if not DominoManager.block_domino_input:
-				hide_des_fast()
+				hide_description_fast()
 		
 			if event.pressed:
 				if DominoManager.block_domino_input:
@@ -459,16 +463,16 @@ func _on_area_2d_mouse_entered() -> void:
 		
 	BoardManager.highlight_avaiable_slots([a,b])
 	mouse_over_des = true
-	show_des()
+	show_description()
 
 
 func _on_area_2d_mouse_exited() -> void:
 	BoardManager.disable_highlight()
 	mouse_over_des = false
-	hide_des()
+	hide_description()
 
 
-func show_des():
+func show_description():
 	if DominoManager.dm_dragging:
 		return
 	if dragging:
@@ -480,13 +484,14 @@ func show_des():
 			await panel.show_tooltip(true)
 	tooltip_stack.global_position = global_position - Vector2(61, 32) - Vector2(0, tooltip_stack.get_child(0).size.y)
 
-func hide_des():
+
+func hide_description():
 	for panel in tooltip_stack.get_children():
 		if panel is TooltipPanel:
 			panel.hide_tooltip()
+	
 
-
-func hide_des_fast():
+func hide_description_fast():
 	for panel in tooltip_stack.get_children():
 		panel.hide()
 

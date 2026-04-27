@@ -28,7 +28,7 @@ func _ready() -> void:
 
 func start() -> void:
 	SceneManager.background.set_map_background()
-	Global.options_panel.show_box(Global.options_panel.map_box)
+	Foreground.options_panel.show_box(Foreground.options_panel.map_box)
 
 
 func _on_exit_button_pressed() -> void:
@@ -99,6 +99,7 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			
 			SceneManager.main_scene = SceneManager.shop_scene
 			SceneManager.show_shop_scene()
+			SceneManager.shop_scene.refill()
 		MapNode.Type.BONUS:
 			SceneManager.main_scene = SceneManager.action_card_scene
 			SceneManager.show_action_card_scene()

@@ -50,17 +50,6 @@ var item_key := "":
 				domino.show()
 				domino.setup(Domino.SideSettings.new(domino_template.a_types, domino_template.a_color),
 				Domino.SideSettings.new(domino_template.b_types, domino_template.b_color))
-				
-var buyed := false:
-	set(value):
-		buyed = value
-		if value:
-			icon_rect.modulate = Color.TRANSPARENT
-			cost_label.modulate = Color.TRANSPARENT
-		else:
-			icon_rect.modulate = Color.WHITE
-			cost_label.modulate = Color.WHITE
-
 
 func _ready() -> void:
 	match item_type:
@@ -72,11 +61,11 @@ func _ready() -> void:
 
 
 func try_buy(gold: int) -> bool:
-	if item_type == ItemType.NONE or buyed:
+	if item_type == ItemType.NONE:
 		return false
 	if gold < item_cost:
 		return false
-	buyed = true 
+	queue_free()
 	return true
 
 
@@ -93,7 +82,7 @@ func _on_icon_rect_mouse_entered() -> void:
 			screen.tooltip_panel.caption = ""
 			screen.tooltip_panel.description = tr(bonus.desc)
 		ItemType.DOMINO:
-			domino.show_des()
+			domino.show_description()
 			domino.modulate = Color.WEB_GRAY
 		ItemType.REMOVE_DOMINO:
 			screen.tooltip_panel.caption = ""
@@ -108,7 +97,7 @@ func _on_icon_rect_mouse_exited() -> void:
 	icon_rect.modulate = Color.WHITE
 	if item_type == ItemType.DOMINO:
 		domino.modulate = Color.WHITE
-		domino.hide_des()
+		domino.hide_description()
 	else:
 		screen.tooltip_panel.hide_tooltip()
 

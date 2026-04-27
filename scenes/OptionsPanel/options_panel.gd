@@ -11,7 +11,8 @@ class_name OptionsPanel
 @onready var main_menu_box: VBoxContainer = %MainMenuBox
 @onready var map_box: VBoxContainer = %MapBox
 @onready var battle_box: VBoxContainer = %BattleBox
-@onready var boxes = [main_menu_box, map_box, battle_box]
+@onready var shop_box: VBoxContainer = %ShopBox
+@onready var boxes = [main_menu_box, map_box, battle_box, shop_box]
 @onready var free_choice_button: GameButton = %FreeChoiceButton
 @onready var change_board_generation_btn: GameButton = %ChangeBoardGenerationBtn
 
@@ -32,7 +33,6 @@ func show_box(other_box = null):
 
 
 func _ready() -> void:
-	Global.options_panel = self
 	if not Engine.is_editor_hint():
 		options_panel.visible = false
 		color_rect.visible = false
@@ -110,3 +110,7 @@ func _on_change_board_generation_btn_pressed() -> void:
 		BoardManager.random_boards = true
 		change_board_generation_btn.text = "Рандомные поля: вкл"
 		BoardManager.reset_run()
+
+
+func _on_add_money_btn_pressed() -> void:
+	create_tween().tween_property(MoneyManager, "gold", MoneyManager.gold + 100, 0.25)

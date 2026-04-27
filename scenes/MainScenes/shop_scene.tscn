@@ -13,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_1nxvb")
 
 [node name="Content" type="TextureRect" parent="." unique_id=326281503]
@@ -20,6 +21,7 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 texture = ExtResource("2_m2knv")
 
 [node name="HeadSlot" parent="Content" unique_id=2072601406 instance=ExtResource("5_aob4o")]
