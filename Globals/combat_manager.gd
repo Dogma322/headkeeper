@@ -93,10 +93,13 @@ func player_turn_begin(is_start: bool):
 	await ActionManager.play_actions()
 	if is_start and stage == 0:
 		if not MetaManager.selected_head_key.is_empty():
-			Run.current_head_pool.erase(MetaManager.selected_head_key)
+			Run.current_head_pool.push_back(Run.reserved_head_pool[MetaManager.selected_head_key])
+			Run.reserved_head_pool.erase(MetaManager.selected_head_key)
 			
 			var head = HeadManager.head_pool[MetaManager.selected_head_key].instantiate()
 			head.add_head_to_head_holder()
+			
+			Signals.heads_changed.emit()
 	
 	add_heads_turn_begin_actions()
 	await ActionManager.play_actions()
@@ -211,11 +214,11 @@ func show_rewards():
 	DominoManager.block_domino_input = false
 #	show_domino_choice()
 	
-	if MoneyManager.skulls_rewards.round_rewards.has(stage):
-		MoneyManager.skulls += MoneyManager.skulls_rewards.round_rewards[stage]
+	if Global.skulls_rewards.round_rewards.has(stage):
+		Run.skulls += Global.skulls_rewards.round_rewards[stage]
 	
 	if map_node.type == MapNode.Type.BATTLE:
-		create_tween().tween_property(MoneyManager, "gold", randi_range(10, 20), 0.5)
+		create_tween().tween_property(Run, "gold", randi_range(10, 20), 0.5)
 	
 #	await Signals.domino_selected
 #	await get_tree().create_timer(1).timeout

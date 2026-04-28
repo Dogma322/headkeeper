@@ -40,16 +40,16 @@ func spawn_heads():
 	choice_locked = false
 
 	for i in range(3):
-		var keys =  Run.current_head_pool.keys()
+		var keys =  Run.reserved_head_pool.keys()
 		var random_key = keys.pick_random()
 		var head_scene = HeadManager.head_pool[random_key]
 
-		Run.current_head_pool.erase(random_key)
+		Run.reserved_head_pool.erase(random_key)
 
 		var head = head_scene.instantiate()
 
 
-		#var scene = Run.current_head_pool.values().pick_random()
+		#var scene = Run.reserved_head_pool.values().pick_random()
 		#var head = scene.instantiate()
 
 		head.scale = Vector2.ZERO

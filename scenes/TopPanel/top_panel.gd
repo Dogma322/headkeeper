@@ -33,6 +33,10 @@ var skulls := 0:
 		skulls = value
 		skulls_label.text = str(value)
 
+var heads := 0:
+	set(value):
+		heads = value
+		head_amount_label.text = str(heads)
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -42,12 +46,27 @@ func _ready() -> void:
 	max_health_points = Global.hero.max_health
 	
 	Signals.gold_changed.connect(func(_gold: int): create_tween().tween_property(self, "gold", _gold, 0.25))
-	gold = MoneyManager.gold
+	gold = Run.gold
 	
 	Signals.skulls_changed.connect(func(_skulls: int): create_tween().tween_property(self, "skulls", _skulls, 0.25))
-	skulls = MoneyManager.skulls
+	skulls = Run.skulls
 	
 	domino_amount_label.text = str(DominoManager.deck.size())
+	
+	Signals.heads_changed.connect(update_heads_counter)
+	heads = Run.current_head_pool.size()
+	
+	Signals.reset_run_data.connect(reset)
+
+
+## Сбрасывает значения в панели.
+func reset() -> void:
+	heads = Run.current_head_pool.size()
+
+
+## Обновляет кол-во голов.
+func update_heads_counter() -> void:
+	heads = Run.current_head_pool.size()
 
 
 func update_health_points_bar(health, max_health):

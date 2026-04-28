@@ -27,6 +27,7 @@ func _ready() -> void:
 @export var domino_scene = preload("res://scenes/Domino/domino.tscn")
 @export var craft_scene = preload("res://scenes/MainScenes/craft_scene.tscn")
 
+@onready var skulls_rewards = preload("res://resources/rewards/skulls_rewards.tres")
 
 func _input(event):
 	if event is InputEventKey:

@@ -148,6 +148,7 @@ disabled = false
 
 [node name="ShopBox" type="VBoxContainer" parent="OptionsPanel/MarginContainer/VBoxContainer" unique_id=767927855]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="ShopGenButton" parent="OptionsPanel/MarginContainer/VBoxContainer/ShopBox" unique_id=268884363 instance=ExtResource("6_2427u")]

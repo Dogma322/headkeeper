@@ -34,7 +34,6 @@ var previous_scene: ScreenBase = null
 var current_scene: ScreenBase = null
 var main_scene: ScreenBase = null
 
-
 func _ready() -> void:
 	map_scene.top_panel_button = top_panel.map_button
 	domino_list_scene.top_panel_button = top_panel.domino_deck_button
@@ -145,6 +144,8 @@ func _on_back_button_pressed() -> void:
 	if main_scene != null:
 		if current_scene != main_scene:
 			current_scene.end()
+			if current_scene.top_panel_button != null:
+				current_scene.top_panel_button.button_pressed = false
 		
 		if main_scene.top_panel_button != null:
 			main_scene.top_panel_button.button_pressed = true

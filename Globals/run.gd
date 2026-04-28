@@ -2,14 +2,29 @@ extends Node
 
 ## Содержит данные текущего забега.
 
-var current_head_pool := {}
+var reserved_head_pool := {}
+var current_head_pool: Array = []
+
 var current_bonus_pool := {}
 
-var gold := 0
+var skulls := 0:
+	set(value):
+		if skulls == value:
+			return
+		skulls = value
+		Signals.skulls_changed.emit(skulls)
+
+var gold := 0:
+	set(value):
+		if gold == value:
+			return
+		gold = value
+		Signals.gold_changed.emit(gold)
 
 
 func reset_data() -> void:
-	current_head_pool = HeadManager.head_templates.duplicate()
+	reserved_head_pool = HeadManager.head_templates.duplicate()
+	current_head_pool.clear()
 	
 	current_bonus_pool = BonusManager.bonus_templates.duplicate()
 	# current_bonus_pool.erase("attack5")
@@ -23,6 +38,11 @@ func _ready() -> void:
 
 func reset():
 	reset_data()
+	
+	MetaManager.skulls += skulls
+	MetaManager.save_data()
+	skulls = 0
+	gold = 0
 	
 	for head in Global.head_holder.get_children():
 		head.remove_passive_effect()

@@ -48,19 +48,22 @@ func _ready() -> void:
 func buy(slot: ShopSlot) -> bool:
 	if money_tween and money_tween.is_running():
 		return false
-	if slot.try_buy(MoneyManager.gold):
+	if slot.try_buy(Run.gold):
 		money_tween = create_tween()
-		money_tween.tween_property(MoneyManager, "gold", MoneyManager.gold - slot.item_cost, 0.25)
+		money_tween.tween_property(Run, "gold", Run.gold - slot.item_cost, 0.25)
 		return true
 	return false
 
 
 func head_selected(slot: ShopSlot) -> void:
 	if buy(slot):
-		Run.current_head_pool.erase(slot.item_key)
+		Run.current_head_pool.push_back(Run.reserved_head_pool[slot.item_key])
+		Run.reserved_head_pool.erase(slot.item_key)
 		
 		var head: Head = HeadManager.head_pool[slot.item_key].instantiate()
 		head.add_head_to_head_holder()
+		
+		Signals.heads_changed.emit()
 
 
 func bonus_selected(slot: ShopSlot) -> void:
@@ -92,7 +95,7 @@ func show_remove_domino_scene(slot: ShopSlot) -> void:
 
 
 func refill() -> void:
-	fill(ShopSlot.ItemType.HEAD, head_slots, HeadManager.head_templates, Run.current_head_pool, head_selected)
+	fill(ShopSlot.ItemType.HEAD, head_slots, HeadManager.head_templates, Run.reserved_head_pool, head_selected)
 	fill(ShopSlot.ItemType.BONUS, bonus_slots, BonusManager.bonus_templates, Run.current_bonus_pool, bonus_selected)
 	fill(ShopSlot.ItemType.DOMINO, domino_slots, DominoManager.domino_templates, null, domino_selected)
 
