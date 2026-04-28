@@ -40,6 +40,7 @@ ActionCardManager="*uid://bmpktw6r0gusn"
 MoneyManager="*uid://btc8nsqyek1ur"
 SoundManager="*uid://2gvh11rpmgge"
 Foreground="*uid://da4v2igkcgkbs"
+Run="*uid://fglvfx6yqt50"
 
 [display]
 

@@ -35,14 +35,3 @@ var head_templates = {
 	"false_king": preload("res://resources/heads/head_false_king.tres"),
 	"maw": preload("res://resources/heads/head_maw.tres"),
 }
-
-var temp_head_pool = head_pool.duplicate()
-
-func _ready() -> void:
-	Signals.reset_run_data.connect(reset_head_pool)
-
-func reset_head_pool():
-	temp_head_pool = head_pool.duplicate()
-	for head in Global.head_holder.get_children():
-		head.remove_passive_effect()
-		head.queue_free()

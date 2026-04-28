@@ -24,7 +24,6 @@ layout_mode = 1
 anchor_top = -0.7090909
 anchor_right = 2.6888888
 anchor_bottom = 0.0
-offset_bottom = 0.0
 caption = "bone_bag_name"
 description = "bag_des"
 

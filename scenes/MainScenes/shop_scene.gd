@@ -10,17 +10,23 @@ class_name ShopScene
 
 var money_tween: Tween
 
+
 func setup_slot(slot: ShopSlot, type, key, cost, selected: Callable) -> void:
 	slot.screen = self
 	slot.item_type = type
 	slot.item_key = key
 	slot.item_cost = cost
-	slot.selected.connect(selected.bind(slot))
-	
+	if not slot.selected.is_connected(selected):
+		slot.selected.connect(selected.bind(slot))
+	slot.show()
 
-func fill(type: ShopSlot.ItemType, slots: Array[ShopSlot], source: Dictionary, selected: Callable) -> void:
+
+func fill(type: ShopSlot.ItemType, slots: Array[ShopSlot], source: Dictionary, allowed, selected: Callable) -> void:
 	var pool = []
-	for key in source:
+	for key in source.keys():
+		if allowed != null:
+			if key not in allowed.keys():
+				continue
 		pool.push_back(key)
 	pool.shuffle()
 	
@@ -36,39 +42,59 @@ func fill(type: ShopSlot.ItemType, slots: Array[ShopSlot], source: Dictionary, s
 
 
 func _ready() -> void:
-	setup_slot(remove_domino_slot, ShopSlot.ItemType.REMOVE_DOMINO, "", 75, show_remove_domino_scene)
+	setup_slot(remove_domino_slot, ShopSlot.ItemType.REMOVE_DOMINO, "remove_domino", 75, show_remove_domino_scene)
 
 
-func buy(slot: ShopSlot) -> void:
+func buy(slot: ShopSlot) -> bool:
 	if money_tween and money_tween.is_running():
-		return
+		return false
 	if slot.try_buy(MoneyManager.gold):
 		money_tween = create_tween()
 		money_tween.tween_property(MoneyManager, "gold", MoneyManager.gold - slot.item_cost, 0.25)
-		await money_tween.finished
-		
+		return true
+	return false
 
 
 func head_selected(slot: ShopSlot) -> void:
-	buy(slot)
+	if buy(slot):
+		Run.current_head_pool.erase(slot.item_key)
+		
+		var head: Head = HeadManager.head_pool[slot.item_key].instantiate()
+		head.add_head_to_head_holder()
 
 
 func bonus_selected(slot: ShopSlot) -> void:
-	buy(slot)
+	if buy(slot):
+		Run.current_bonus_pool.erase(slot.item_key)
+		
+		var bonus: BonusTemplate = BonusManager.bonus_templates[slot.item_key]
+		var bonus_fx = BonusManager.bonus_effects[bonus.tag]
+		if not BoardManager.bonus_pool.has(bonus_fx):
+			BoardManager.bonus_pool.append(bonus_fx)
 
 
 func domino_selected(slot: ShopSlot) -> void:
-	buy(slot)
+	if buy(slot):
+		slot.domino.add_domino_to_deck()
+		slot.domino.get_parent().remove_child(slot.domino)
+		slot.domino = null
 
 
 func show_remove_domino_scene(slot: ShopSlot) -> void:
-	buy(slot)
+	if buy(slot):
+		SceneManager.main_scene = SceneManager.remove_domino_scene
+		SceneManager.show_remove_domino_scene()
+		await Signals.action_card_selected
+		await Transition.blackout()
+		
+		SceneManager.main_scene = SceneManager.shop_scene
+		SceneManager.show_shop_scene()
 
 
 func refill() -> void:
-	fill(ShopSlot.ItemType.HEAD, head_slots, HeadManager.head_templates, head_selected)
-	fill(ShopSlot.ItemType.BONUS, bonus_slots, BonusManager.bonus_templates, bonus_selected)
-	fill(ShopSlot.ItemType.DOMINO, domino_slots, DominoManager.domino_templates, domino_selected)
+	fill(ShopSlot.ItemType.HEAD, head_slots, HeadManager.head_templates, Run.current_head_pool, head_selected)
+	fill(ShopSlot.ItemType.BONUS, bonus_slots, BonusManager.bonus_templates, Run.current_bonus_pool, bonus_selected)
+	fill(ShopSlot.ItemType.DOMINO, domino_slots, DominoManager.domino_templates, null, domino_selected)
 
 
 func start() -> void:
@@ -81,8 +107,6 @@ func end() -> void:
 
 
 func _on_play_button_pressed() -> void:
-	Transition.blackout_on()
-	await get_tree().create_timer(1.0).timeout
-	Transition.blackout_off()
-	
+	await Transition.blackout()
+	SceneManager.main_scene = SceneManager.map_scene
 	SceneManager.show_map_scene()

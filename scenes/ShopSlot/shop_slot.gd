@@ -4,7 +4,6 @@ class_name ShopSlot
 
 @onready var icon_rect: TextureRect = %IconRect
 @onready var cost_label: Label = %CostLabel
-@onready var domino: Domino = $Domino
 
 signal selected
 
@@ -17,6 +16,7 @@ enum ItemType {
 }
 
 var screen: ShopScene = null
+var domino: Domino = null
 
 @export var item_type := ItemType.NONE:
 	set(value):
@@ -45,9 +45,12 @@ var item_key := "":
 				var bonus: BonusTemplate = BonusManager.bonus_templates[item_key]
 				icon_rect.texture = bonus.texture
 			ItemType.DOMINO:
+				domino = Global.domino_scene.instantiate()
+				add_child(domino)
+				domino.position = Vector2(16, 32)
+				
 				var domino_template: DominoTemplate = DominoManager.domino_templates[item_key]
 				domino.template = domino_template
-				domino.show()
 				domino.setup(Domino.SideSettings.new(domino_template.a_types, domino_template.a_color),
 				Domino.SideSettings.new(domino_template.b_types, domino_template.b_color))
 
@@ -65,13 +68,14 @@ func try_buy(gold: int) -> bool:
 		return false
 	if gold < item_cost:
 		return false
-	queue_free()
+	hide()
 	return true
 
 
 func _on_icon_rect_mouse_entered() -> void:
+	if item_key.is_empty():
+		return
 	icon_rect.modulate = Color.WEB_GRAY
-	
 	match item_type:
 		ItemType.HEAD:
 			var head: HeadTemplate = HeadManager.head_templates[item_key]
@@ -94,6 +98,9 @@ func _on_icon_rect_mouse_entered() -> void:
 
 
 func _on_icon_rect_mouse_exited() -> void:
+	if item_key.is_empty():
+		return
+	
 	icon_rect.modulate = Color.WHITE
 	if item_type == ItemType.DOMINO:
 		domino.modulate = Color.WHITE

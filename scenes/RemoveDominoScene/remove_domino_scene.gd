@@ -6,6 +6,8 @@ const SPACING := Vector2(40, 70)  # расстояние между домино
 # НАСТРОЙКА ВЫСОТЫ СЕТКИ
 @export var CENTER_Y := 120
 
+@export var remove_count := 1
+
 @onready var dominoes = $Dominoes
 
 var removed_domino_counter = 0
@@ -65,7 +67,7 @@ func clear_domino_list():
 	
 	removed_domino_counter += 1
 	
-	if removed_domino_counter < 2:
+	if removed_domino_counter < remove_count:
 		return
 	else:
 		DominoManager.delete_mode = false

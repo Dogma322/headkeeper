@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://wnn8ykfdaka3"]
 
-[ext_resource type="Script" uid="uid://dpcipc4w0t4o8" path="res://scenes/Heads/HeadTemplate/head_template.gd" id="1_qrntt"]
+[ext_resource type="Script" uid="uid://dpcipc4w0t4o8" path="res://scenes/Heads/HeadTemplate/head.gd" id="1_qrntt"]
 [ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="2_jvpof"]
 [ext_resource type="Theme" uid="uid://r5h8i48sghj8" path="res://scenes/AdditionalDescriptionPanel/Press8.tres" id="5_3ojyp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajw7s"]
 size = Vector2(27, 27)
 
-[node name="HeadTemplate" type="Node2D" unique_id=1378211630]
+[node name="Head" type="Node2D" unique_id=1378211630]
 script = ExtResource("1_qrntt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1248791630]

@@ -64,10 +64,7 @@ func _on_map_button_pressed() -> void:
 	if SceneManager.current_scene == SceneManager.map_scene:
 		return
 	
-	Transition.blackout_on()
-	await get_tree().create_timer(1.0).timeout
-	Transition.blackout_off()
-	
+	await Transition.blackout()
 	SceneManager.show_map_scene()
 
 
@@ -75,8 +72,5 @@ func _on_domino_deck_button_pressed() -> void:
 	if SceneManager.current_scene == SceneManager.domino_list_scene and SceneManager.domino_list_scene.current_source == DominoListScene.Source.ALL:
 		return
 	
-	Transition.blackout_on()
-	await get_tree().create_timer(1.0).timeout
-	Transition.blackout_off()
-	
+	await Transition.blackout()
 	SceneManager.show_domino_list_scene(DominoListScene.Source.ALL)

@@ -150,6 +150,12 @@ disabled = false
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="ShopGenButton" parent="OptionsPanel/MarginContainer/VBoxContainer/ShopBox" unique_id=268884363 instance=ExtResource("6_2427u")]
+layout_mode = 2
+text = "Перегенрить ассортимент магазина"
+font_size = 3
+disabled = false
+
 [node name="AddMoneyBtn" parent="OptionsPanel/MarginContainer/VBoxContainer/ShopBox" unique_id=321667550 instance=ExtResource("6_2427u")]
 layout_mode = 2
 text = "Добавить 100 золота"
@@ -171,5 +177,6 @@ shortcut = SubResource("Shortcut_04qni")
 [connection signal="pressed" from="OptionsPanel/MarginContainer/VBoxContainer/MapBox/GenButton" to="." method="_on_gen_button_pressed"]
 [connection signal="pressed" from="OptionsPanel/MarginContainer/VBoxContainer/MapBox/FreeChoiceButton" to="." method="_on_free_choice_button_pressed"]
 [connection signal="pressed" from="OptionsPanel/MarginContainer/VBoxContainer/MapBox/EndRunBtn" to="." method="_on_end_run_btn_pressed"]
+[connection signal="pressed" from="OptionsPanel/MarginContainer/VBoxContainer/ShopBox/ShopGenButton" to="." method="_on_shop_gen_button_pressed"]
 [connection signal="pressed" from="OptionsPanel/MarginContainer/VBoxContainer/ShopBox/AddMoneyBtn" to="." method="_on_add_money_btn_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
