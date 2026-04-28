@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BonusTemplate" format=3 uid="uid://b6y53foehrsrd"]
+
+[ext_resource type="Script" uid="uid://bp60jca031260" path="res://resources/bonus_template.gd" id="1_y4w1c"]
+[ext_resource type="Texture2D" uid="uid://d2adybmlkstwx" path="res://assets/ShopBonuses/shop_bonuses/shop_bonus_vulnerable.tres" id="2_y4w1c"]
+
+[resource]
+script = ExtResource("1_y4w1c")
+desc = "vulnerable_bb_card_des"
+tag = "h_1vulnerable"
+texture = ExtResource("2_y4w1c")
+metadata/_custom_type_script = "uid://bp60jca031260"

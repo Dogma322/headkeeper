@@ -9,10 +9,10 @@ func apply_passive_effect():
 	ActionManager.play_one_action()
 	
 	
-	BoardManager.bonus_pool.append(BoardManager.h_3heal)
-	BoardManager.bonus_pool.append(BoardManager.h_3heal)
+	BoardManager.bonus_pool.append(BonusManager.bonus_effects.h_3heal)
+	BoardManager.bonus_pool.append(BonusManager.bonus_effects.h_3heal)
 	
 	
 func remove_passive_effect():
-	BoardManager.bonus_pool.erase(BoardManager.h_3heal)
-	BoardManager.bonus_pool.erase(BoardManager.h_3heal)
+	BoardManager.bonus_pool.erase(BonusManager.bonus_effects.h_3heal)
+	BoardManager.bonus_pool.erase(BonusManager.bonus_effects.h_3heal)

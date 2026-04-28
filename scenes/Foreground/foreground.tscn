@@ -19,6 +19,12 @@ top_level = true
 layout_mode = 1
 mouse_filter = 2
 
+[node name="GenButton" parent="OptionsPanel/OptionsPanel/MarginContainer/VBoxContainer/MapBox" parent_id_path=PackedInt32Array(117387146, 1366646638) index="0" unique_id=771409310]
+text = "Перегенерить карту"
+
+[node name="ShopGenButton" parent="OptionsPanel/OptionsPanel/MarginContainer/VBoxContainer/ShopBox" parent_id_path=PackedInt32Array(117387146, 767927855) index="0" unique_id=268884363]
+text = "Перегенерить ассортимент"
+
 [node name="OptionsButton" parent="OptionsPanel" index="2" unique_id=1254142979]
 offset_left = 612.0
 offset_top = 0.0

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BonusTemplate" format=3 uid="uid://c3h1vdrcg0y1s"]
+
+[ext_resource type="Script" uid="uid://bp60jca031260" path="res://resources/bonus_template.gd" id="1_mct0c"]
+[ext_resource type="Texture2D" uid="uid://dc55qw6g106re" path="res://assets/ShopBonuses/shop_bonuses/shop_bonus_crit.tres" id="2_xrk1y"]
+
+[resource]
+script = ExtResource("1_mct0c")
+desc = "repeat_bb_card_des"
+tag = "h_1repeat"
+texture = ExtResource("2_xrk1y")
+metadata/_custom_type_script = "uid://bp60jca031260"

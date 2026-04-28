@@ -5,4 +5,4 @@ func _ready() -> void:
 	super()
 	
 func effect():
-	BoardManager.bonus_pool.append(BoardManager.h_1weak)
+	BoardManager.bonus_pool.append(BonusManager.bonus_effects.h_1weak)

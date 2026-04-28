@@ -5,16 +5,8 @@ var random_boards = true
 var green_bonuses_activated = 0
 
 
-@onready var h_5dmg_bonus = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_5_damage.tscn")
-@onready var h_4def_bonus = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_4_defense.tscn")
-@onready var h_3heal = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_heal.tscn")
-@onready var h_draw = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_draw.tscn")
 @onready var h_thorns = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_thorns.tscn")
 @onready var h_1fury = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_fury.tscn")
-@onready var h_1vulnerable = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_vulnerable.tscn")
-@onready var h_1weak = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_weak.tscn")
-@onready var h_1crit = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_crit.tscn")
-@onready var h_1repeat = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_repeat.tscn")
 
 @onready var e_5dmg = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_5_damage.tscn")
 @onready var e_10dmg = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_10_damage.tscn")
@@ -41,7 +33,7 @@ var green_bonuses_activated = 0
 @onready var n_remove_5fury = preload("res://scenes/BoardBonuses/NeutralBonuses/bb_n_remove_5_fury.tscn")
 @onready var n_remove_10fury = preload("res://scenes/BoardBonuses/NeutralBonuses/bb_n_remove_10_fury.tscn")
 
-@onready var bonus_pool = [h_5dmg_bonus, h_4def_bonus]
+@onready var bonus_pool = [BonusManager.bonus_effects.h_5dmg_bonus, BonusManager.bonus_effects.h_4def_bonus]
 
 @onready var board1 = preload("res://scenes/Boards/BoardTemplate/board_1.tscn")
 
@@ -71,7 +63,7 @@ func _ready():
 	Signals.reset_run_data.connect(reset_run)
 
 func reset_run():
-	bonus_pool = [h_5dmg_bonus, h_4def_bonus]
+	bonus_pool = [BonusManager.bonus_effects.h_5dmg_bonus, BonusManager.bonus_effects.h_4def_bonus]
 	if random_boards == true:
 		board_pool = [board1, board5, board6, board7, board8, board9]
 	else:

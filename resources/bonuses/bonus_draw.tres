@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BonusTemplate" format=3 uid="uid://35jjtqwt8a6c"]
+
+[ext_resource type="Script" uid="uid://bp60jca031260" path="res://resources/bonus_template.gd" id="1_h8711"]
+[ext_resource type="Texture2D" uid="uid://cvmxn0n7r6dfe" path="res://assets/ShopBonuses/shop_bonuses/shop_bonus_draw.tres" id="2_h8711"]
+
+[resource]
+script = ExtResource("1_h8711")
+desc = "draw_bb_card_des"
+tag = "h_draw"
+texture = ExtResource("2_h8711")
+metadata/_custom_type_script = "uid://bp60jca031260"
