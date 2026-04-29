@@ -10,6 +10,8 @@ class_name TopPanel
 @onready var domino_amount_label: Label = %DominoAmountLabel
 
 @onready var map_button: IconButton = %MapButton
+@onready var head_deck_button: IconButton = %HeadDeckButton
+@onready var bonus_deck_button: IconButton = %BonusDeckButton
 @onready var domino_deck_button: IconButton = %DominoDeckButton
 
 
@@ -33,6 +35,11 @@ var skulls := 0:
 		skulls = value
 		skulls_label.text = str(value)
 
+var bonuses := 0:
+	set(value):
+		bonuses = value
+		bonus_amount_label.text = str(bonuses)
+
 var heads := 0:
 	set(value):
 		heads = value
@@ -53,8 +60,11 @@ func _ready() -> void:
 	
 	domino_amount_label.text = str(DominoManager.deck.size())
 	
-	Signals.heads_changed.connect(update_heads_counter)
-	heads = Run.current_head_pool.size()
+	Signals.head_amount_changed.connect(update_heads_counter)
+	update_heads_counter()
+	
+	Signals.bonus_amount_changed.connect(update_bonuses_counter)
+	update_bonuses_counter()
 	
 	Signals.reset_run_data.connect(reset)
 
@@ -67,6 +77,11 @@ func reset() -> void:
 ## Обновляет кол-во голов.
 func update_heads_counter() -> void:
 	heads = Run.current_head_pool.size()
+
+
+## Обновляет кол-во бонусов.
+func update_bonuses_counter() -> void:
+	bonuses = BoardManager.bonus_pool.size()
 
 
 func update_health_points_bar(health, max_health):
@@ -88,8 +103,18 @@ func _on_map_button_pressed() -> void:
 
 
 func _on_domino_deck_button_pressed() -> void:
-	if SceneManager.current_scene == SceneManager.domino_list_scene and SceneManager.domino_list_scene.current_source == DominoListScene.Source.ALL:
-		return
-	
-	await Transition.blackout()
-	SceneManager.show_domino_list_scene(DominoListScene.Source.ALL)
+	if SceneManager.current_scene != SceneManager.item_list_scene:
+		await Transition.blackout()
+	SceneManager.show_domino_list_scene(ItemListScene.DominoSource.ALL)
+
+
+func _on_bonus_deck_button_pressed() -> void:
+	if SceneManager.current_scene != SceneManager.item_list_scene:
+		await Transition.blackout()
+	SceneManager.show_bonus_list_scene()
+
+
+func _on_head_deck_button_pressed() -> void:
+	if SceneManager.current_scene != SceneManager.item_list_scene:
+		await Transition.blackout()
+	SceneManager.show_head_list_scene()

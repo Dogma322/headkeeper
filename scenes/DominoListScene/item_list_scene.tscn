@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://23ui6010migp"]
+
+[ext_resource type="Script" uid="uid://eocnyve3775v" path="res://scenes/DominoListScene/item_list_scene.gd" id="1_8smyp"]
+
+[node name="ItemListScene" type="Control" unique_id=960527505]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_8smyp")
+
+[node name="Items" type="Node2D" parent="." unique_id=1604696314]
+unique_name_in_owner = true

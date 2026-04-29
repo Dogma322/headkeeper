@@ -55,13 +55,13 @@ func buy(slot: ShopSlot) -> bool:
 
 func head_selected(slot: ShopSlot) -> void:
 	if buy(slot):
-		Run.current_head_pool.push_back(Run.reserved_head_pool[slot.item_key])
+		Run.current_head_pool.push_back(slot.item_key)
 		Run.reserved_head_pool.erase(slot.item_key)
 		
 		var head: Head = HeadManager.head_pool[slot.item_key].instantiate()
 		head.add_head_to_head_holder()
 		
-		Signals.heads_changed.emit()
+		Signals.head_amount_changed.emit()
 
 
 func bonus_selected(slot: ShopSlot) -> void:
@@ -72,6 +72,7 @@ func bonus_selected(slot: ShopSlot) -> void:
 		var bonus_fx = BonusManager.bonus_effects[bonus.tag]
 		if not BoardManager.bonus_pool.has(bonus_fx):
 			BoardManager.bonus_pool.append(bonus_fx)
+			Signals.bonus_amount_changed.emit()
 
 
 func domino_selected(slot: ShopSlot) -> void:

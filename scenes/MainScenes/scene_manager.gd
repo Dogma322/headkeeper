@@ -4,7 +4,7 @@ extends Control
 
 @onready var map_scene: MapScene = %MapScene
 @onready var battle_scene: BattleScene = %BattleScene
-@onready var domino_list_scene: DominoListScene = %DominoListScene
+@onready var item_list_scene: ItemListScene = %ItemListScene
 @onready var action_card_scene: ScreenBase = %ActionCardScene
 @onready var choice_scene: ScreenBase = %ChoiceScene
 @onready var craft_scene: CraftScene = %CraftScene
@@ -16,7 +16,7 @@ extends Control
 @onready var scenes = [
 	map_scene,
 	battle_scene,
-	domino_list_scene,
+	item_list_scene,
 	action_card_scene,
 	choice_scene,
 	craft_scene,
@@ -36,7 +36,6 @@ var main_scene: ScreenBase = null
 
 func _ready() -> void:
 	map_scene.top_panel_button = top_panel.map_button
-	domino_list_scene.top_panel_button = top_panel.domino_deck_button
 
 
 func show_scene(scene: Node) -> void:
@@ -59,10 +58,7 @@ func show_scene(scene: Node) -> void:
 
 
 func show_previous_scene() -> void:
-	Transition.blackout_on()
-	await get_tree().create_timer(1.0).timeout
-	Transition.blackout_off()
-	
+	await Transition.blackout()
 	show_scene(previous_scene)
 
 
@@ -78,9 +74,22 @@ func show_map_scene() -> void:
 	map_scene.moving = false
 
 
-func show_domino_list_scene(mode: DominoListScene.Source) -> void:
-	show_scene(domino_list_scene)
-	domino_list_scene.update_domino_list(mode)
+func show_head_list_scene() -> void:
+	show_scene(item_list_scene)
+	item_list_scene.top_panel_button = SceneManager.top_panel.head_deck_button
+	item_list_scene.update_head_list()
+
+
+func show_bonus_list_scene() -> void:
+	show_scene(item_list_scene)
+	item_list_scene.top_panel_button = SceneManager.top_panel.bonus_deck_button
+	item_list_scene.update_bonus_list()
+
+
+func show_domino_list_scene(source: ItemListScene.DominoSource) -> void:
+	show_scene(item_list_scene)
+	item_list_scene.top_panel_button = SceneManager.top_panel.domino_deck_button
+	item_list_scene.update_domino_list(source)
 
 
 func show_battle_scene(map_node: MapNode) -> void:
@@ -150,8 +159,8 @@ func _on_back_button_pressed() -> void:
 		if main_scene.top_panel_button != null:
 			main_scene.top_panel_button.button_pressed = true
 		
-		Transition.blackout_on()
-		await get_tree().create_timer(1.0).timeout
-		Transition.blackout_off()
+		if current_scene == item_list_scene:
+			item_list_scene.current_mode = ItemListScene.Mode.NONE
 		
+		await Transition.blackout()
 		show_scene(main_scene)

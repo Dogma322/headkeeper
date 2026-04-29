@@ -107,6 +107,8 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			ActionCardManager.show_action_cards(node.stage)
 			await Signals.action_card_selected
 			
+			Signals.bonus_amount_changed.emit()
+			
 			Transition.blackout_on()
 			await get_tree().create_timer(1.0).timeout
 			Transition.blackout_off()

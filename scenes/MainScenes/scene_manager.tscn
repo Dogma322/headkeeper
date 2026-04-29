@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bn0602p7re11e" path="res://scenes/Backgrounds/battle_background.tscn" id="2_gaf2n"]
 [ext_resource type="PackedScene" uid="uid://dks3x17ep5x0n" path="res://scenes/MainScenes/battle_scene.tscn" id="3_1y7cv"]
 [ext_resource type="PackedScene" uid="uid://dqqa4aqr54880" path="res://scenes/TopPanel/top_panel.tscn" id="3_reosh"]
-[ext_resource type="PackedScene" uid="uid://23ui6010migp" path="res://scenes/DominoListScene/domino_list_scene.tscn" id="4_dmnrm"]
+[ext_resource type="PackedScene" uid="uid://23ui6010migp" path="res://scenes/DominoListScene/item_list_scene.tscn" id="4_dmnrm"]
 [ext_resource type="PackedScene" uid="uid://df1cvd1jqx3is" path="res://scenes/MainScenes/action_card_scene.tscn" id="6_ty5rh"]
 [ext_resource type="PackedScene" uid="uid://dywi02s7uin3f" path="res://scenes/MainScenes/craft_scene.tscn" id="7_4wbje"]
 [ext_resource type="PackedScene" uid="uid://caovgfyajqfdl" path="res://scenes/HeadChoiceScene/head_choice_scene.tscn" id="7_cb6jg"]
@@ -52,11 +52,12 @@ visible = false
 layout_mode = 2
 size_flags_vertical = 1
 
-[node name="DominoListScene" parent="." unique_id=573018855 instance=ExtResource("4_dmnrm")]
+[node name="ItemListScene" parent="." unique_id=573018855 instance=ExtResource("4_dmnrm")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
+CENTER_Y = 120
 
 [node name="ActionCardScene" parent="." unique_id=370993708 instance=ExtResource("6_ty5rh")]
 unique_name_in_owner = true

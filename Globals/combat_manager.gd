@@ -93,13 +93,13 @@ func player_turn_begin(is_start: bool):
 	await ActionManager.play_actions()
 	if is_start and stage == 0:
 		if not MetaManager.selected_head_key.is_empty():
-			Run.current_head_pool.push_back(Run.reserved_head_pool[MetaManager.selected_head_key])
+			Run.current_head_pool.push_back(MetaManager.selected_head_key)
 			Run.reserved_head_pool.erase(MetaManager.selected_head_key)
 			
 			var head = HeadManager.head_pool[MetaManager.selected_head_key].instantiate()
 			head.add_head_to_head_holder()
 			
-			Signals.heads_changed.emit()
+			Signals.head_amount_changed.emit()
 	
 	add_heads_turn_begin_actions()
 	await ActionManager.play_actions()

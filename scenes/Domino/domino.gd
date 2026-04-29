@@ -499,24 +499,21 @@ func hide_description_fast():
 func update_labels():
 	await get_tree().process_frame
 	
-	if template != null:
-		var tooltip := ""
-		var i := 0
-		for tag: String in tags:
-			if tag == "empty":
-				continue
-			if i > 0:
-				tooltip += "\n"
-			var count = a_types.count(tag) + b_types.count(tag)
-			var count_string = "" if count == 1 else "(%s)" % str(count)
-			if DominoSideVisual.type_to_tex.has(tag):
-				tooltip += "[img]%s[/img]%s - %s" % [DominoSideVisual.type_to_tex[tag]["red"].resource_path, count_string, get_tooltip_for_type(tag)]
-			elif DominoSideVisual.special_to_tex.has(tag):
-				tooltip += "[img]%s[/img]%s - %s" % [DominoSideVisual.special_to_tex[tag].resource_path, count_string, get_tooltip_for_type(tag)]
-			i += 1
-		tooltip_panel.description = tooltip
-	else:
-		tooltip_panel.description = ""
+	var tooltip := ""
+	var i := 0
+	for tag: String in tags:
+		if tag == "empty":
+			continue
+		if i > 0:
+			tooltip += "\n"
+		var count = a_types.count(tag) + b_types.count(tag)
+		var count_string = "" if count == 1 else "(%s)" % str(count)
+		if DominoSideVisual.type_to_tex.has(tag):
+			tooltip += "[img]%s[/img]%s - %s" % [DominoSideVisual.type_to_tex[tag]["red"].resource_path, count_string, get_tooltip_for_type(tag)]
+		elif DominoSideVisual.special_to_tex.has(tag):
+			tooltip += "[img]%s[/img]%s - %s" % [DominoSideVisual.special_to_tex[tag].resource_path, count_string, get_tooltip_for_type(tag)]
+		i += 1
+	tooltip_panel.description = tooltip
 
 
 func add(type: String, value: int):
