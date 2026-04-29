@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="2_gyxac"]
 [ext_resource type="Texture2D" uid="uid://bcs0021y4xdc3" path="res://assets/Icons/Coin.png" id="3_nuw1x"]
 
-[node name="ShopSlot" type="VBoxContainer" unique_id=2072601406]
+[node name="ShopSlot" type="VBoxContainer" unique_id=2072601406 groups=["ShopSlots"]]
 offset_right = 39.0
 offset_bottom = 56.0
 mouse_filter = 2

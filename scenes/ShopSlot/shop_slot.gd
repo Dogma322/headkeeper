@@ -17,6 +17,16 @@ enum ItemType {
 
 var screen: ShopScene = null
 var domino: Domino = null
+var disabled := false:
+	set(value):
+		disabled = value
+		var tween = create_tween().set_parallel()
+		if disabled:
+			tween.tween_property(cost_label, "modulate", Color.CRIMSON, 0.25)
+			tween.tween_property(icon_rect, "modulate", Color.WHITE.darkened(0.25), 0.25)
+		else:
+			tween.tween_property(cost_label, "modulate", Color.WHITE, 0.25)
+			tween.tween_property(icon_rect, "modulate", Color.WHITE, 0.25)
 
 @export var item_type := ItemType.NONE:
 	set(value):
@@ -72,10 +82,20 @@ func try_buy(gold: int) -> bool:
 	return true
 
 
+func update(new_gold: int):
+	if new_gold < item_cost:
+		disabled = true
+	else:
+		disabled = false
+
+
 func _on_icon_rect_mouse_entered() -> void:
 	if item_key.is_empty():
 		return
-	icon_rect.modulate = Color.WEB_GRAY
+	if disabled:
+		icon_rect.modulate = Color.WHITE.darkened(0.5)
+	else:
+		icon_rect.modulate = Color.WHITE.darkened(0.25)
 	match item_type:
 		ItemType.HEAD:
 			var head: HeadTemplate = HeadManager.head_templates[item_key]
@@ -100,8 +120,10 @@ func _on_icon_rect_mouse_entered() -> void:
 func _on_icon_rect_mouse_exited() -> void:
 	if item_key.is_empty():
 		return
-	
-	icon_rect.modulate = Color.WHITE
+	if disabled:
+		icon_rect.modulate = Color.WHITE.darkened(0.25)
+	else:
+		icon_rect.modulate = Color.WHITE
 	if item_type == ItemType.DOMINO:
 		domino.modulate = Color.WHITE
 		domino.hide_description()

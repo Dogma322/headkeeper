@@ -19,6 +19,7 @@ func setup_slot(slot: ShopSlot, type, key, cost, selected: Callable) -> void:
 	if not slot.selected.is_connected(selected):
 		slot.selected.connect(selected.bind(slot))
 	slot.show()
+	slot.update(Run.gold)
 
 
 func fill(type: ShopSlot.ItemType, slots: Array[ShopSlot], source: Dictionary, allowed, selected: Callable) -> void:
@@ -41,16 +42,13 @@ func fill(type: ShopSlot.ItemType, slots: Array[ShopSlot], source: Dictionary, a
 		i += 1
 
 
-func _ready() -> void:
-	setup_slot(remove_domino_slot, ShopSlot.ItemType.REMOVE_DOMINO, "remove_domino", 75, show_remove_domino_scene)
-
-
 func buy(slot: ShopSlot) -> bool:
 	if money_tween and money_tween.is_running():
 		return false
 	if slot.try_buy(Run.gold):
 		money_tween = create_tween()
 		money_tween.tween_property(Run, "gold", Run.gold - slot.item_cost, 0.25)
+		get_tree().call_group("ShopSlots", "update", Run.gold - slot.item_cost)
 		return true
 	return false
 
@@ -95,6 +93,7 @@ func show_remove_domino_scene(slot: ShopSlot) -> void:
 
 
 func refill() -> void:
+	setup_slot(remove_domino_slot, ShopSlot.ItemType.REMOVE_DOMINO, "remove_domino", 75, show_remove_domino_scene)
 	fill(ShopSlot.ItemType.HEAD, head_slots, HeadManager.head_templates, Run.reserved_head_pool, head_selected)
 	fill(ShopSlot.ItemType.BONUS, bonus_slots, BonusManager.bonus_templates, Run.current_bonus_pool, bonus_selected)
 	fill(ShopSlot.ItemType.DOMINO, domino_slots, DominoManager.domino_templates, null, domino_selected)

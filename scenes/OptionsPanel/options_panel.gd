@@ -114,7 +114,7 @@ func _on_change_board_generation_btn_pressed() -> void:
 
 func _on_add_money_btn_pressed() -> void:
 	create_tween().tween_property(Run, "gold", Run.gold + 100, 0.25)
-
+	get_tree().call_group("ShopSlots", "update", Run.gold + 100)
 
 func _on_shop_gen_button_pressed() -> void:
 	SceneManager.shop_scene.refill()

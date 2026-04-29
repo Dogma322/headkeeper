@@ -155,7 +155,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("11_my7ya")
 theme_override_font_sizes/font_size = 6
-text = "12"
+text = "0"
 horizontal_alignment = 2
 
 [node name="BonusDeckButton" parent="HBoxContainer" unique_id=1283611821 instance=ExtResource("6_hnbga")]
@@ -182,7 +182,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("11_my7ya")
 theme_override_font_sizes/font_size = 6
-text = "12"
+text = "0"
 horizontal_alignment = 2
 
 [node name="DominoDeckButton" parent="HBoxContainer" unique_id=672487379 instance=ExtResource("6_hnbga")]
@@ -209,7 +209,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("11_my7ya")
 theme_override_font_sizes/font_size = 6
-text = "12"
+text = "0"
 horizontal_alignment = 2
 
 [node name="SettingsOffset" type="Control" parent="HBoxContainer" unique_id=97861153]

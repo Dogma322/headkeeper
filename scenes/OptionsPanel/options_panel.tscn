@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b6kg1e5g2wvsm" path="res://scenes/VolumeSlider/volume_slider.tscn" id="4_2427u"]
 [ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="6_2427u"]
 [ext_resource type="PackedScene" uid="uid://bo8xaqmke5324" path="res://scenes/UI/icon_button.tscn" id="7_2427u"]
+[ext_resource type="Texture2D" uid="uid://yqujp8cjjlmf" path="res://assets/Icons/TopPanelIcons/settings_icon.atlastex" id="8_04qni"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_2427u"]
 action = &"ui_cancel"
@@ -170,6 +171,7 @@ offset_left = 610.0
 offset_top = 5.0
 offset_right = 635.0
 offset_bottom = 30.0
+texture = ExtResource("8_04qni")
 shortcut = SubResource("Shortcut_04qni")
 
 [connection signal="pressed" from="OptionsPanel/MarginContainer/VBoxContainer/MainMenuBox/ChangeBoardGenerationBtn" to="." method="_on_change_board_generation_btn_pressed"]
