@@ -9,6 +9,8 @@ class_name BattleScene
 @onready var hand: Node2D = $Hand
 @onready var camera: Node2D = $Camera
 
+@onready var heads_ui: VBoxContainer = %HeadsUI
+
 var offset:
 	get:
 		return global_position
@@ -24,9 +26,66 @@ func _ready() -> void:
 		Global.fight_scene = self
  
 
+func show_head_ui() -> void:
+
+	var pool := []
+	for key in Run.reserved_head_pool:
+		pool.push_back(key)
+	
+	var final_pool := []
+	for key in Run.current_head_pool:
+		final_pool.push_back(key)
+	
+	var random_head_key = pool.pick_random()
+	final_pool.push_back(random_head_key)
+	
+	var new_head = HeadManager.head_pool[random_head_key].instantiate()
+	if final_pool.size() == 1:
+		Global.enemy_head_holder.add_child(new_head)
+		await get_tree().process_frame
+	else:
+		Global.head_holder.add_child(new_head)
+		
+		var origin = Global.head_holder.center_position
+		heads_ui.show()
+		heads_ui.modulate.a = 0.0
+		
+		var tween = create_tween().set_parallel()
+		tween.tween_property(Global.head_holder, "center_position", get_viewport_rect().size * 0.5, 0.5)
+		tween.tween_property(heads_ui, "modulate:a", 1.0, 0.5)
+		await tween.finished
+		
+		Signals.head_selected.connect(head_selected)
+		
+		for head: Node2D in Global.head_holder.get_children():
+			if head is Head:
+				head.head_choice = true
+				head.invert_logic = true
+			
+		await Signals.head_selected
+		Signals.head_selected.disconnect(head_selected)
+		
+		tween = create_tween().set_parallel()
+		tween.tween_property(Global.head_holder, "center_position", origin, 0.5)
+		tween.tween_property(heads_ui, "modulate:a", 0.0, 0.5)
+		await tween.finished
+		
+		heads_ui.hide()
+	Signals.enemy_head_choosen.emit()
+
+func head_selected(head: Head):
+	head.get_parent().remove_child(head)
+	Global.enemy_head_holder.add_child(head)
+
+
+func hide_head_ui() -> void:
+	heads_ui.hide()
+
+
 func start():
 	camera.make_current()
 	Foreground.options_panel.show_box(Foreground.options_panel.battle_box)
+
 
 func _on_domino_chain_removed() -> void:
 	if DominoManager.dominoes_on_board.is_empty():

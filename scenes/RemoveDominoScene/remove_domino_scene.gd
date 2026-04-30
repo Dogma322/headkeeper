@@ -1,4 +1,5 @@
 extends ScreenBase
+class_name RemoveDominoScene
 
 const COLUMNS := 8
 const SPACING := Vector2(40, 70)  # расстояние между домино

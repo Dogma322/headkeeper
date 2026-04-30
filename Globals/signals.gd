@@ -25,7 +25,7 @@ signal red_bonus_played
 signal yellow_bonus_played
 
 signal domino_selected
-signal head_selected
+signal head_selected(head: Head)
 signal action_card_selected
 signal domino_deleted_from_deck
 signal domino_delete_completed
@@ -50,6 +50,7 @@ signal deal_hero_thorn_damage
 signal reset_turn_data
 signal reset_run_data
 
+signal enemy_head_choosen
 signal fight_started
 
 signal hero_healed

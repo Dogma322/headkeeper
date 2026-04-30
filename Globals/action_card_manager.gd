@@ -80,29 +80,29 @@ func add_action_cards(stage: int):
 	#if stage == 2:
 	#	temp_pool = stage28_pool.duplicate()
 		
-	if stage == 3:
-		temp_pool = stage36_pool.duplicate()
+	#if stage == 3:
+		#temp_pool = stage36_pool.duplicate()
+		#
+	#if stage == 5:
+		#temp_pool = stage5_pool.duplicate()
+	#
+	#if stage == 6:
+		#temp_pool = stage36_pool.duplicate()
+		#
+	#if stage == 8:
+		#temp_pool = stage28_pool.duplicate()
+		#
+	#if stage == 9:
+		#temp_pool = stage9_pool.duplicate()
+		#
+	#if stage == 10:
+		#temp_pool = stage10_pool.duplicate()
 		
-	if stage == 5:
-		temp_pool = stage5_pool.duplicate()
-	
-	if stage == 6:
-		temp_pool = stage36_pool.duplicate()
-		
-	if stage == 8:
-		temp_pool = stage28_pool.duplicate()
-		
-	if stage == 9:
-		temp_pool = stage9_pool.duplicate()
-		
-	if stage == 10:
-		temp_pool = stage10_pool.duplicate()
-		
-	if stage > 10:
-		if BoardManager.bonus_pool.size() < 12:
-			temp_pool = ActionCardManager.endless_mode_pool_with_bonus.duplicate()
-		else:
-			temp_pool = ActionCardManager.endless_mode_pool_without_bonus.duplicate()
+	#if stage > 10:
+		#if BoardManager.bonus_pool.size() < 12:
+			#temp_pool = ActionCardManager.endless_mode_pool_with_bonus.duplicate()
+		#else:
+			#temp_pool = ActionCardManager.endless_mode_pool_without_bonus.duplicate()
 	
 	#for card in temp_pool:
 		#Global.action_card_container.add_child(card.instantiate())

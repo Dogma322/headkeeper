@@ -47,6 +47,8 @@ func _on_map_node_mouse_entered(node: MapNode) -> void:
 	match node.type:
 		MapNode.Type.BATTLE:
 			tooltip_panel.description = "[center]Битва с \"(%s)\"[/center]" % node.string_hint
+		MapNode.Type.BATTLE_ELITE:
+			tooltip_panel.description = "[center]Битва с элитным \"(%s)\"[/center]" % node.string_hint
 		MapNode.Type.SHOP:
 			tooltip_panel.description = "[center]Магазин[/center]"
 		MapNode.Type.BONUS:
@@ -91,7 +93,10 @@ func _on_map_node_pressed(node: MapNode) -> void:
 	match node.type:
 		MapNode.Type.BATTLE:
 			SceneManager.main_scene = SceneManager.battle_scene
-			SceneManager.show_battle_scene(node)
+			SceneManager.show_battle_scene(node, false)
+		MapNode.Type.BATTLE_ELITE:
+			SceneManager.main_scene = SceneManager.battle_scene
+			SceneManager.show_battle_scene(node, true)
 		MapNode.Type.SHOP:
 			Transition.blackout_on()
 			await get_tree().create_timer(1.0).timeout

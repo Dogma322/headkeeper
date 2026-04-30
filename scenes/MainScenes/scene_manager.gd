@@ -8,7 +8,7 @@ extends Control
 @onready var action_card_scene: ScreenBase = %ActionCardScene
 @onready var choice_scene: ScreenBase = %ChoiceScene
 @onready var craft_scene: CraftScene = %CraftScene
-@onready var remove_domino_scene: ScreenBase = %RemoveDominoScene
+@onready var remove_domino_scene: RemoveDominoScene = %RemoveDominoScene
 @onready var meta_scene: ScreenBase = %MetaScene
 @onready var campfire_scene: CampfireScene = %CampfireScene
 @onready var shop_scene: ShopScene = %ShopScene
@@ -92,7 +92,7 @@ func show_domino_list_scene(source: ItemListScene.DominoSource) -> void:
 	item_list_scene.update_domino_list(source)
 
 
-func show_battle_scene(map_node: MapNode) -> void:
+func show_battle_scene(map_node: MapNode, elite: bool) -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1.0).timeout
 	
@@ -101,7 +101,7 @@ func show_battle_scene(map_node: MapNode) -> void:
 	if map_node.coord.y == 0:
 		CombatManager.start(map_node)
 	else:
-		CombatManager.change_stage(map_node)
+		CombatManager.change_stage(map_node, elite)
 
 
 func show_action_card_scene() -> void:
@@ -124,12 +124,13 @@ func show_craft_scene() -> void:
 	show_scene(craft_scene)
 
 
-func show_remove_domino_scene() -> void:
+func show_remove_domino_scene(amount: int) -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1.0).timeout
 	Transition.blackout_off()
 	
 	show_scene(remove_domino_scene)
+	remove_domino_scene.remove_count = amount
 	remove_domino_scene.update_domino_list()
 
 

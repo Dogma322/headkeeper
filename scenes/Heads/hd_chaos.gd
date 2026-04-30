@@ -1,8 +1,8 @@
 extends Head
 
-
 var activated = false
 var last_domino = null
+
 
 func _ready() -> void:
 	Signals._1dm_played.connect(chaos)
@@ -12,20 +12,25 @@ func _ready() -> void:
 	Signals.player_turn_begin.connect(reroll_value)
 	super()
 
+
 func apply_passive_effect():
 	label.visible = true
 	label.text = str(value)
 
 
-
 func reroll_value():
 	value = randi_range(1, 4)
-	description = tr("hd_chaos_des") % value
+	if invert_logic:
+		description = tr("hd_chaos_des2") % value
+	else:
+		description = tr("hd_chaos_des") % value
 	label.text = str(value)
 	#update_labels()
-	
+
+
 func head_selected():
 	label.visible = true
+
 
 func chaos(domino):
 	if activated:
@@ -44,7 +49,16 @@ func chaos(domino):
 	activated = false
 	last_domino = null
 
-	
-	
+
 func add_action():
-	ActionManager.add(AttackAction.new(self, Global.enemy, 4))
+	var target = null
+	var damage := 0
+	
+	if invert_logic:
+		target = Global.hero
+		damage = 2
+	else:
+		target = Global.enemy
+		damage = 4
+	
+	ActionManager.add(AttackAction.new(self, target, damage))

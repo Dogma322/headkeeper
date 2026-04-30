@@ -45,5 +45,6 @@ func reset():
 	gold = 0
 	
 	for head in Global.head_holder.get_children():
-		head.remove_passive_effect()
-		head.queue_free()
+		if head is Head:
+			head.remove_passive_effect()
+			head.queue_free()

@@ -30,9 +30,11 @@ func initialize_status(status: StatusResource):
 	
 	if status.id == "thorns":
 		if status.owner == Global.hero:
-			Signals.deal_enemy_thorn_damage.connect(add_action.bind(status))
+			if not Signals.deal_enemy_thorn_damage.is_connected(add_action):
+				Signals.deal_enemy_thorn_damage.connect(add_action.bind(status))
 		elif status.owner == Global.enemy:
-			Signals.deal_hero_thorn_damage.connect(add_action.bind(status))
+			if not Signals.deal_hero_thorn_damage.is_connected(add_action):
+				Signals.deal_hero_thorn_damage.connect(add_action.bind(status))
 
 
 func apply_status_effect(status: StatusResource):

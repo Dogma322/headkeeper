@@ -85,7 +85,7 @@ func domino_selected(slot: ShopSlot) -> void:
 func show_remove_domino_scene(slot: ShopSlot) -> void:
 	if buy(slot):
 		SceneManager.main_scene = SceneManager.remove_domino_scene
-		SceneManager.show_remove_domino_scene()
+		SceneManager.show_remove_domino_scene(1)
 		await Signals.action_card_selected
 		await Transition.blackout()
 		

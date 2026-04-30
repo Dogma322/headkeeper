@@ -35,6 +35,7 @@ class_name Head
 #@onready var final_heal
 
 var head_choice := false
+var invert_logic := false
 
 func _ready() -> void:
 	tooltip_stack.hide()
@@ -87,9 +88,9 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and head_choice:
 		if _is_mouse_over(event.position):
 			head_choice = false
-			get_parent().choice_selected(self)
-			add_head_to_head_holder()
-			Signals.head_selected.emit()
+			#get_parent().choice_selected(self)
+			#add_head_to_head_holder()
+			Signals.head_selected.emit(self)
 
 func add_head_to_head_holder():
 	if get_parent() != null:
@@ -128,9 +129,11 @@ func show_des():
 		return
 	update_labels()
 	tooltip_stack.show()
+	var size_x = 0
 	for panel in tooltip_stack.get_children():
 		if panel is TooltipPanel:
 			panel.show_tooltip()
+			size_x += panel.size.x
 
 
 func hide_des():

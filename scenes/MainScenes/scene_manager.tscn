@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cp0e26n3nl6rm" path="res://scenes/MainScenes/map_scene.tscn" id="1_5xbpf"]
 [ext_resource type="Script" uid="uid://dikeh7fck30r2" path="res://scenes/MainScenes/scene_manager.gd" id="1_ack50"]
-[ext_resource type="PackedScene" uid="uid://bn0602p7re11e" path="res://scenes/Backgrounds/battle_background.tscn" id="2_gaf2n"]
+[ext_resource type="PackedScene" uid="uid://bn0602p7re11e" path="res://scenes/Background/background.tscn" id="2_gaf2n"]
 [ext_resource type="PackedScene" uid="uid://dks3x17ep5x0n" path="res://scenes/MainScenes/battle_scene.tscn" id="3_1y7cv"]
 [ext_resource type="PackedScene" uid="uid://dqqa4aqr54880" path="res://scenes/TopPanel/top_panel.tscn" id="3_reosh"]
 [ext_resource type="PackedScene" uid="uid://23ui6010migp" path="res://scenes/DominoListScene/item_list_scene.tscn" id="4_dmnrm"]
@@ -57,7 +57,6 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
-CENTER_Y = 120
 
 [node name="ActionCardScene" parent="." unique_id=370993708 instance=ExtResource("6_ty5rh")]
 unique_name_in_owner = true

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dywi02s7uin3f"]
 
-[ext_resource type="PackedScene" uid="uid://bn0602p7re11e" path="res://scenes/Backgrounds/battle_background.tscn" id="1_dwva5"]
+[ext_resource type="PackedScene" uid="uid://bn0602p7re11e" path="res://scenes/Background/background.tscn" id="1_dwva5"]
 [ext_resource type="Script" uid="uid://b2pehnv8tdhth" path="res://scenes/MainScenes/craft_scene.gd" id="1_gu0aw"]
 [ext_resource type="Texture2D" uid="uid://dfm53ekuvdv5w" path="res://assets/Backgrounds/VoidBackground.png" id="3_a8qar"]
 [ext_resource type="PackedScene" uid="uid://bnkuyqcb3iadw" path="res://scenes/UI/text_panel.tscn" id="6_jg3uq"]

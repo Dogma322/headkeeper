@@ -4,3 +4,5 @@
 
 [node name="HeadHolder" type="Node2D" unique_id=2074985017]
 script = ExtResource("1_1vkbp")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1486822953]

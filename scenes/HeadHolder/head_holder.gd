@@ -1,22 +1,36 @@
+@tool
 extends Node2D
 
-@export var center_position: Vector2 = Vector2(100, 116)  # Точка, относительно которой выравниваются головы
+@onready var marker_2d: Marker2D = $Marker2D
+
+@export var center_position: Vector2 = Vector2(100, 116):  # Точка, относительно которой выравниваются головы
+	set(value):
+		center_position = value
+		if is_instance_valid(marker_2d):
+			marker_2d.global_position = center_position
+		
 @export var hand_width: float = 200                   # ширина зоны, в которой будут головы
 @export var amplitude: float = 3                      # амплитуда синусоиды
 @export var spacing: float = 35                       # расстояние между головами
 @export var move_duration: float = 0.4                # время движения твина
+@export var is_enemy_holder: bool = false
 
 var time: float = 0.0
 
 func _ready() -> void:
-	Global.head_holder = self
+	marker_2d.global_position = center_position
+	if not Engine.is_editor_hint():
+		if is_enemy_holder:
+			Global.enemy_head_holder = self
+		else:
+			Global.head_holder = self
 
 func _process(delta: float) -> void:
 	time += delta
 	update_head_positions()
 
 func update_head_positions() -> void:
-	var heads: Array = get_children().filter(func(c): return c is Node2D)
+	var heads: Array = get_children().filter(func(c): return c is Head)
 	var total_heads: int = heads.size()
 	if total_heads == 0:
 		return

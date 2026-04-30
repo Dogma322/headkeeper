@@ -3,10 +3,12 @@ extends Action
 
 var damage:int
 
-func _init(_source,_target,_damage):
+
+func _init(_source, _target, _damage):
 	source = _source
 	target = _target
 	damage = _damage
+
 
 func execute():
 	var final_damage = damage

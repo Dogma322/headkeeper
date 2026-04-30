@@ -9,12 +9,13 @@ class_name Map
 
 @export_group("Probabilities", "probability")
 @export var probability_battle_weight: float = 8.0
+@export var probability_battle_elite_weight: float = 3.0
 @export var probability_shop_weight: float = 1.0
 @export var probability_bonus_weight: float = 3.0
 @export var probability_campfire_weight: float = 2.0
 
 func probability_sum() -> float:
-	return probability_battle_weight + probability_shop_weight + probability_bonus_weight + probability_campfire_weight
+	return probability_battle_weight + probability_battle_elite_weight + probability_shop_weight + probability_bonus_weight + probability_campfire_weight
 
 @onready var start: Marker2D = $Start
 
@@ -204,9 +205,9 @@ func add_node(coord: Vector2i) -> MapNode:
 	# CAMPFIRE
 	# --------------
 	
-	var arr = [MapNode.Type.BATTLE, MapNode.Type.SHOP, MapNode.Type.BONUS, MapNode.Type.CAMPFIRE]
+	var arr = [MapNode.Type.BATTLE, MapNode.Type.BATTLE_ELITE, MapNode.Type.SHOP, MapNode.Type.BONUS, MapNode.Type.CAMPFIRE]
 	var sum = probability_sum()
-	var arr_index = rng.rand_weighted([probability_battle_weight / sum, probability_shop_weight / sum, probability_bonus_weight / sum, probability_campfire_weight / sum])
+	var arr_index = rng.rand_weighted([probability_battle_weight / sum, probability_battle_elite_weight / sum, probability_shop_weight / sum, probability_bonus_weight / sum, probability_campfire_weight / sum])
 	
 	if progress == 0 or progress == 15:
 		instance.type = MapNode.Type.BATTLE
@@ -214,7 +215,7 @@ func add_node(coord: Vector2i) -> MapNode:
 		instance.type = arr[arr_index]
 	
 	match instance.type:
-		MapNode.Type.BATTLE:
+		MapNode.Type.BATTLE, MapNode.Type.BATTLE_ELITE:
 			if progress == 0:
 				instance.string_hint = "wolf1"
 			elif progress >= 1 and progress < 5:

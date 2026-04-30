@@ -11,6 +11,14 @@ var stage:
 			return 0
 		return map_node.stage
 
+enum Mode {
+	NONE,
+	BATTLE,
+	CHOOSE_ELITE_HEAD
+}
+
+var mode = Mode.NONE
+
 func _ready() -> void:
 	Signals.play_btn_pressed.connect(play_dominoes)
 	Signals.enemy_dead.connect(enemy_dead)
@@ -20,12 +28,13 @@ func _ready() -> void:
 
 	
 func start(_map_node: MapNode):
+	mode = Mode.BATTLE
 	map_node = _map_node
 	
 	await get_tree().process_frame
 	EnemyManager.set_enemy(map_node)
 	SoundManager.set_music(Global.enemy.location)
-	Global.background.set_battle_background()
+	SceneManager.background.set_battle_background()
 	
 	Transition.blackout_off()
 	await get_tree().create_timer(1).timeout
@@ -34,8 +43,12 @@ func start(_map_node: MapNode):
 	
 	player_turn_begin(true)
 
-func change_stage(_map_node):
+func change_stage(_map_node, _elite: bool):
 	map_node = _map_node
+	if _elite:
+		mode = Mode.CHOOSE_ELITE_HEAD
+	else:
+		mode = Mode.BATTLE
 	
 	if stage_changing:
 		return # уже меняется стадия, игнорируем повторный вызов
@@ -44,10 +57,11 @@ func change_stage(_map_node):
 	reset_fight_data()
 	print("STAGE %d" % stage)
 	reset_turn_data()
+	
 	BoardManager.generate_board()
 	EnemyManager.set_enemy(map_node)
 	SoundManager.set_music(Global.enemy.location)
-	Global.background.set_battle_background()
+	SceneManager.background.set_battle_background()
 	Signals.stage_changed.emit()
 	Transition.blackout_off()
 	await get_tree().create_timer(1).timeout
@@ -88,6 +102,10 @@ func play_dominoes():
 func player_turn_begin(is_start: bool):
 	print("P_BEGIN")
 	Signals.player_turn_begin.emit()
+	
+	if mode == Mode.CHOOSE_ELITE_HEAD:
+		Global.fight_scene.show_head_ui()
+		await Signals.enemy_head_choosen
 	
 	apply_hero_turn_begin_status_effects()
 	await ActionManager.play_actions()
@@ -189,7 +207,8 @@ func apply_hero_turn_begin_status_effects():
 
 func add_heads_turn_begin_actions():
 	for head in Global.head_holder.get_children():
-		head.turn_begin_add_action()
+		if head is Head:
+			head.turn_begin_add_action()
 
 	
 func enemy_turn_end():
@@ -211,6 +230,7 @@ func enemy_dead():
 	show_rewards()
 
 func show_rewards():
+	mode = Mode.NONE
 	DominoManager.block_domino_input = false
 #	show_domino_choice()
 	
@@ -218,7 +238,7 @@ func show_rewards():
 		Run.skulls += Global.skulls_rewards.round_rewards[stage]
 	
 	if map_node.type == MapNode.Type.BATTLE:
-		create_tween().tween_property(Run, "gold", randi_range(10, 20), 0.5)
+		create_tween().tween_property(Run, "gold", Run.gold + randi_range(10, 20), 0.5)
 	
 #	await Signals.domino_selected
 #	await get_tree().create_timer(1).timeout
@@ -247,8 +267,8 @@ func show_domino_choice():
 func show_head_choice():
 	Global.choice_scene.spawn_heads()
 
-func show_delete_domino_menu():
-	SceneManager.show_remove_domino_scene()
+func show_delete_domino_menu(amount: int):
+	SceneManager.show_remove_domino_scene(amount)
 	#change_stage() вызывается внутри Global.remove_domino_scene
 
 

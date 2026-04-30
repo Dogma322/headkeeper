@@ -6,5 +6,5 @@ func _ready() -> void:
 	super()
 	
 func effect():
-	CombatManager.show_delete_domino_menu()
+	CombatManager.show_delete_domino_menu(2)
 	ActionCardManager.hide_cont()

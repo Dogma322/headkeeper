@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bn0602p7re11e"]
+
+[ext_resource type="Script" uid="uid://bv4mqurwudlwh" path="res://scenes/Background/background.gd" id="1_xma12"]
+
+[node name="Background" type="TextureRect" unique_id=1447473875]
+script = ExtResource("1_xma12")

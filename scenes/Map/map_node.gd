@@ -14,6 +14,7 @@ var stage: int:
 enum Type {
 	UNKNOWN = -1,
 	BATTLE,
+	BATTLE_ELITE,
 	SHOP,
 	BONUS,
 	CAMPFIRE,
@@ -26,6 +27,8 @@ var type := Type.UNKNOWN:
 		match value:
 			Type.BATTLE:
 				sprite_2d.texture = preload("uid://dmowypaa6fxwu")
+			Type.BATTLE_ELITE:
+				sprite_2d.texture = preload("uid://bi1mc3tkrqcsl")
 			Type.SHOP:
 				sprite_2d.texture = preload("uid://cvyl8tia7gs6r")
 			Type.BONUS:

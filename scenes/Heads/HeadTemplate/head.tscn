@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpcipc4w0t4o8" path="res://scenes/Heads/HeadTemplate/head.gd" id="1_qrntt"]
 [ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="2_jvpof"]
+[ext_resource type="Script" uid="uid://bubde0rijkg0k" path="res://scenes/UI/tooltip_stack.gd" id="2_uefjv"]
 [ext_resource type="Theme" uid="uid://r5h8i48sghj8" path="res://scenes/AdditionalDescriptionPanel/Press8.tres" id="5_3ojyp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajw7s"]
@@ -21,10 +22,11 @@ shape = SubResource("RectangleShape2D_ajw7s")
 [node name="TooltipStack" type="HBoxContainer" parent="." unique_id=1268114038]
 unique_name_in_owner = true
 offset_left = -59.0
-offset_top = -85.0
+offset_top = -72.0
 offset_right = 62.0
-offset_bottom = -37.0
+offset_bottom = -24.0
 theme_override_constants/separation = 0
+script = ExtResource("2_uefjv")
 
 [node name="TooltipPanel" parent="TooltipStack" unique_id=54216942 instance=ExtResource("2_jvpof")]
 unique_name_in_owner = true

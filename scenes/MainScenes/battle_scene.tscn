@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bnr8o6y2c8n08" path="res://scenes/Hand/hand.tscn" id="1_wfsj5"]
 [ext_resource type="Script" uid="uid://kd473y2mdxg0" path="res://scenes/MainScenes/battle_scene.gd" id="1_ydxg7"]
+[ext_resource type="FontFile" uid="uid://cdr1gk3kbvdd4" path="res://assets/Fonts/Vollda-Bold.otf" id="2_36n0a"]
 [ext_resource type="PackedScene" uid="uid://bss08hflnscb3" path="res://scenes/Boards/BoardTemplate/board_1.tscn" id="3_qxp17"]
 [ext_resource type="PackedScene" uid="uid://cpolkxs6npnhc" path="res://scenes/Heroes/hero.tscn" id="4_qc22i"]
 [ext_resource type="PackedScene" uid="uid://c63tsp6yujri6" path="res://scenes/Enemies/MushCaves/enm_armored_mush.tscn" id="5_vun5q"]
@@ -13,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://bbvfro8a5geyx" path="res://scenes/HeadHolder/head_holder.tscn" id="11_aonfs"]
 [ext_resource type="PackedScene" uid="uid://cdx24mq4bbdgo" path="res://scenes/GeneratedLabels/stage_label.tscn" id="11_vranq"]
 [ext_resource type="PackedScene" uid="uid://cs7y2wp3ykjsq" path="res://scenes/GeneratedLabels/timer_label.tscn" id="12_qc22i"]
+[ext_resource type="Script" uid="uid://bubde0rijkg0k" path="res://scenes/UI/tooltip_stack.gd" id="16_vranq"]
+[ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="17_qc22i"]
 [ext_resource type="PackedScene" uid="uid://bjosapo8novm3" path="res://scenes/Camera/camera.tscn" id="19_mjddb"]
 
 [node name="BattleScene" type="Control" unique_id=662499199]
@@ -27,6 +30,27 @@ size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1_ydxg7")
 
+[node name="HeadsUI" type="VBoxContainer" parent="." unique_id=960754363]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.0
+offset_top = -69.0
+offset_right = 119.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HeadsUI" unique_id=1791165999]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_36n0a")
+text = "Выберите голову противнику"
+
 [node name="Board" type="Node2D" parent="." unique_id=848168304]
 
 [node name="Board1" parent="Board" unique_id=183639370 instance=ExtResource("3_qxp17")]
@@ -37,10 +61,10 @@ position = Vector2(320, -145)
 [node name="Characters" type="Node2D" parent="." unique_id=585567734]
 
 [node name="Hero" parent="Characters" unique_id=534144501 instance=ExtResource("4_qc22i")]
-position = Vector2(111, 168)
+position = Vector2(111, 220)
 
 [node name="EnmArmoredMush" parent="Characters" unique_id=1770774892 instance=ExtResource("5_vun5q")]
-position = Vector2(535, 170)
+position = Vector2(535, 220)
 
 [node name="MainButtonsBox" type="VBoxContainer" parent="." unique_id=1625423660]
 layout_mode = 0
@@ -98,10 +122,30 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="HeadHolder" parent="." unique_id=2074985017 instance=ExtResource("11_aonfs")]
-center_position = Vector2(111, 116)
+center_position = Vector2(111, 148)
+
+[node name="EnemyHeadHolder" parent="." unique_id=1674420254 instance=ExtResource("11_aonfs")]
+center_position = Vector2(535, 100)
+is_enemy_holder = true
 
 [node name="Camera" parent="." unique_id=888122831 instance=ExtResource("19_mjddb")]
 position = Vector2(320, 180)
+
+[node name="TooltipStack" type="HBoxContainer" parent="." unique_id=687302396]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -59.0
+offset_top = -72.0
+offset_right = 62.0
+offset_bottom = -24.0
+theme_override_constants/separation = 0
+script = ExtResource("16_vranq")
+
+[node name="TooltipPanel" parent="TooltipStack" unique_id=54216942 instance=ExtResource("17_qc22i")]
+unique_name_in_owner = true
+layout_mode = 2
+caption = "Берсерк"
+description = "Когда играется кость со значением 3, наносит 2 урона"
 
 [connection signal="pressed" from="MainButtonsBox/PlayBtn" to="." method="_on_play_btn_pressed"]
 [connection signal="pressed" from="UI/Bags/DeckBag" to="UI" method="_on_deck_bag_pressed"]
