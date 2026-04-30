@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cp0e26n3nl6rm"]
 
 [ext_resource type="Script" uid="uid://cd08ro0cafp6e" path="res://scenes/MainScenes/map_scene.gd" id="1_kb5l8"]
+[ext_resource type="Texture2D" uid="uid://cvu5gcwvrg6gk" path="res://assets/Icons/TopPanelIcons/skull_icon.atlastex" id="2_kd8hc"]
 [ext_resource type="PackedScene" uid="uid://c4t765oqy66fj" path="res://scenes/Map/map.tscn" id="3_kd8hc"]
-[ext_resource type="Texture2D" uid="uid://bdc8xw1rrynlw" path="res://icon.svg" id="3_oq6vs"]
 [ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="5_oq6vs"]
 [ext_resource type="FontFile" uid="uid://cdr1gk3kbvdd4" path="res://assets/Fonts/Vollda-Bold.otf" id="7_3vrjx"]
 
@@ -17,9 +17,9 @@ mouse_filter = 2
 script = ExtResource("1_kb5l8")
 
 [node name="Player" type="Sprite2D" parent="." unique_id=2018903195]
+z_index = 1
 position = Vector2(320, 348)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("3_oq6vs")
+texture = ExtResource("2_kd8hc")
 
 [node name="Map" parent="." unique_id=1312997953 instance=ExtResource("3_kd8hc")]
 layout_mode = 1

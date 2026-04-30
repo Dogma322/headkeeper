@@ -1,4 +1,5 @@
 extends ScreenBase
+class_name ChoiceScene
 
 @export var spacing = 100
 @export var y_position := 180

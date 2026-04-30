@@ -43,6 +43,7 @@ crit_bb_card_des,A bonus starts appearing on the board that doubles the damage o
 ,,
 inscrease_max_hp_card_des,Increase max HP by %s.,Увеличить максимальное здоровье на %s.
 add_board_bonus_des,Add a bonus to the board.,Добавить бонус на поле.
+add_head_des,Add a head to the hero.,Добавить голову герою.
 ,,
 ,,
 craft_change_number,Changes amount of dots to %d. Affects top-side only.,Изменяет число точек на %d. Действует только на верхнюю половину кости.

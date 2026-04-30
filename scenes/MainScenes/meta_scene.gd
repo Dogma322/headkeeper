@@ -186,9 +186,5 @@ func load_heads() -> void:
 		i += 1
 
 
-func _on_play_button_pressed() -> void:
-	play()
-
-
 func _on_cancel_button_pressed() -> void:
 	cancel()

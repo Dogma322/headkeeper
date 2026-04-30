@@ -296,12 +296,6 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="PlayButton" parent="HBoxContainer/Control/MarginContainer/VBoxContainer" unique_id=220107067 instance=ExtResource("5_5w8ji")]
-layout_mode = 2
-text = "Играть"
-font_size = 4
-disabled = false
-
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer" unique_id=413958035]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -443,5 +437,4 @@ unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_2hh6u")
 
 [connection signal="pressed" from="HBoxContainer/Control/MarginContainer/VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/Control/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Layout/ExitButton" to="." method="_on_exit_button_pressed"]
