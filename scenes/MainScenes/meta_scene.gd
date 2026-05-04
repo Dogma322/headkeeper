@@ -6,7 +6,6 @@ class_name MetaScene
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
 @onready var additional_tooltip_panel: MarginContainer = %AdditionalTooltipPanel
 @onready var skulls_label: RichTextLabel = %SkullsLabel
-@onready var meta_options_panel: Node2D = %MetaOptionsPanel
 @onready var head_animation_player: AnimationPlayer = %HeadAnimationPlayer
 @onready var head_marker_2d: Marker2D = %Marker2D
 @onready var cancel_button: GameButton = %CancelButton

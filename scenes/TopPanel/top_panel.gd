@@ -14,6 +14,14 @@ class_name TopPanel
 @onready var bonus_deck_button: IconButton = %BonusDeckButton
 @onready var domino_deck_button: IconButton = %DominoDeckButton
 
+var disabled: bool = false:
+	set(value):
+		disabled = value
+		map_button.disabled = value
+		head_deck_button.disabled = value
+		bonus_deck_button.disabled = value
+		domino_deck_button.disabled = value
+
 
 var health_points := 0:
 	set(value):
@@ -46,6 +54,7 @@ var heads := 0:
 		head_amount_label.text = str(heads)
 
 func _ready() -> void:
+	disabled = true
 	await get_tree().process_frame
 	
 	Signals.hero_health_changed.connect(func(): update_health_points_bar(Global.hero.health, Global.hero.max_health))

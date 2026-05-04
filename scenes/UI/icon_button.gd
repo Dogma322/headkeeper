@@ -16,7 +16,8 @@ extends TextureRect
 @export var button_group: String
 @export var shortcut: Shortcut
 
-var active = true
+var active := true
+var disabled := false
 var mouse_over := false
 
 static var buttons = []
@@ -49,7 +50,7 @@ func _notification(what: int) -> void:
 func _on_mouse_entered() -> void:
 	mouse_over = true
 	
-	if not active:
+	if not active or disabled:
 		return
 	
 	if toggle_mode and button_pressed:
@@ -60,7 +61,7 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	mouse_over = false
 	
-	if not active:
+	if not active or disabled:
 		return
 	
 	if toggle_mode and button_pressed:
@@ -73,7 +74,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _gui_input(event: InputEvent) -> void:
-	if not active:
+	if not active or disabled:
 		return
 	if event is InputEventMouseButton:
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.pressed:
