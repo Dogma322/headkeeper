@@ -18,7 +18,6 @@ func _ready() -> void:
 @onready var choice_scene
 @onready var remove_domino_scene
 @onready var play_btn
-@onready var craft_scene_instance
 @onready var hand: Hand
 @onready var map_scene
 @onready var main_menu: MainMenu

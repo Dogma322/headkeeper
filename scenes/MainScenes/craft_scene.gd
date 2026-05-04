@@ -11,7 +11,6 @@ const SPACING := Vector2(40, 70)  # расстояние между домино
 @onready var skip_button: GameButton = %SkipButton
 
 @onready var reroll_button: GameButton = %RerollButton
-@onready var cost_label: RichTextLabel = %CostLabel
 @onready var board_craft: Board = $BoardCraft
 @onready var dominoes = $Dominoes
 @onready var battle_background: TextureRect = $BattleBackground
@@ -52,6 +51,12 @@ var current_domino: Domino = null
 var domino_parents = []
 var domino_buffer = []
 var domino_prev_transforms = []
+var current_reroll_cost := 0:
+	set(value):
+		current_reroll_cost = value
+		reroll_button.text = "Reroll %s[img]res://assets/Icons/TopPanelIcons/coin_icon.atlastex[/img]" % str(value)
+
+var reroll_tween: Tween
 
 enum CraftType {
 	UNKNOWN,
@@ -65,6 +70,8 @@ var current_craft_type := CraftType.UNKNOWN
 var current_amount := 0
 var current_type := ""
 var demo_mode := false
+
+const REROLL_INC = 5
 
 func get_current_side() -> int:
 	if current_domino:
@@ -80,6 +87,7 @@ func _ready() -> void:
 func start_demo():
 	demo_mode = true
 	battle_background.show()
+	current_reroll_cost = 0
 
 
 func start():
@@ -89,7 +97,11 @@ func start():
 	Global.hand.draw_all_dominoes()
 	accept_button.disabled = true
 	
+	current_reroll_cost = 0
 	reroll()
+	current_reroll_cost = REROLL_INC
+	if Run.gold - current_reroll_cost < 0:
+		reroll_button.disabled = true
 
 
 func reroll_specified(craft_type):
@@ -111,7 +123,19 @@ func reroll_specified(craft_type):
 
 
 func reroll() -> void:
-	reroll_specified(randi_range(1, CraftType.MAX - 1) as CraftType)
+	if reroll_tween and reroll_tween.is_running():
+		return
+	
+	if Run.gold - current_reroll_cost >= 0:
+		reroll_specified(randi_range(1, CraftType.MAX - 1) as CraftType)
+		
+		if Run.gold - current_reroll_cost == 0:
+			reroll_button.disabled = true
+		
+		reroll_tween = create_tween()
+		reroll_tween.tween_property(Run, "gold", Run.gold - current_reroll_cost, 0.25)
+		
+		current_reroll_cost += REROLL_INC
 
 
 func _on_exit_button_pressed() -> void:

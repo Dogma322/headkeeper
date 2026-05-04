@@ -22,6 +22,7 @@ buses/default_bus_layout="uid://65d4462qb0xp"
 [autoload]
 
 MetaManager="*uid://om6x1gnfc45s"
+Run="*uid://fglvfx6yqt50"
 BoardManager="*uid://h5bj6gegd8b2"
 Global="*uid://bvh7rsw62i480"
 Signals="*uid://deeasqn7l3e3b"
@@ -39,7 +40,6 @@ EnemyManager="*uid://cqdvayo0fp5c6"
 ActionCardManager="*uid://bmpktw6r0gusn"
 SoundManager="*uid://2gvh11rpmgge"
 Foreground="*uid://da4v2igkcgkbs"
-Run="*uid://fglvfx6yqt50"
 
 [display]
 

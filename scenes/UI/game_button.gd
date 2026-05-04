@@ -2,7 +2,7 @@
 extends Control
 class_name GameButton
 
-@onready var label: Label = %Label
+@onready var label: RichTextLabel = %Label
 @onready var nine_patch_rect: NinePatchRect = $NinePatchRect
 
 signal pressed
