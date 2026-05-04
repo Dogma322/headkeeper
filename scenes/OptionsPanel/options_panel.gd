@@ -2,7 +2,7 @@
 extends Control
 class_name OptionsPanel
 
-@onready var options_panel = $OptionsPanel
+@onready var options_panel = %OptionsPanel
 @onready var color_rect: ColorRect = $ColorRect
 @onready var options_button: IconButton = %OptionsButton
 @onready var stage_label: Label = %StageLabel

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c8x5rbes6oydf" path="res://scenes/Foreground/foreground.gd" id="1_w4nnv"]
 [ext_resource type="PackedScene" uid="uid://csbo55doneg6b" path="res://scenes/OptionsPanel/options_panel.tscn" id="2_v7sxw"]
-[ext_resource type="Texture2D" uid="uid://yqujp8cjjlmf" path="res://assets/Icons/TopPanelIcons/settings_icon.atlastex" id="3_ga7fe"]
 
 [node name="Foreground" type="Control" unique_id=361214007]
 layout_mode = 3
@@ -24,12 +23,5 @@ text = "Перегенерить карту"
 
 [node name="ShopGenButton" parent="OptionsPanel/OptionsPanel/MarginContainer/VBoxContainer/ShopBox" parent_id_path=PackedInt32Array(117387146, 767927855) index="0" unique_id=268884363]
 text = "Перегенерить ассортимент"
-
-[node name="OptionsButton" parent="OptionsPanel" index="2" unique_id=1254142979]
-offset_left = 612.0
-offset_top = 0.0
-offset_right = 637.0
-offset_bottom = 25.0
-texture = ExtResource("3_ga7fe")
 
 [editable path="OptionsPanel"]

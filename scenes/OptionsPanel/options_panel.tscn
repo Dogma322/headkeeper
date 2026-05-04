@@ -15,9 +15,8 @@ action = &"ui_cancel"
 [sub_resource type="Shortcut" id="Shortcut_04qni"]
 events = [SubResource("InputEventAction_2427u")]
 
-[node name="OptionsPanel" type="Control" unique_id=117387146]
+[node name="OptionsPanel" type="MarginContainer" unique_id=1629231814]
 z_index = 100
-layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -28,20 +27,13 @@ script = ExtResource("1_6b8f5")
 [node name="ColorRect" type="ColorRect" parent="." unique_id=883642749]
 visible = false
 modulate = Color(1, 1, 1, 0.5411765)
-layout_mode = 0
-offset_right = 640.0
-offset_bottom = 360.0
+layout_mode = 2
 color = Color(0, 0, 0, 1)
 
 [node name="OptionsPanel" type="MarginContainer" parent="." unique_id=1586685150]
+unique_name_in_owner = true
 visible = false
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -196.0
-offset_bottom = 139.0
-grow_horizontal = 0
+layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 mouse_filter = 2
@@ -103,7 +95,6 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Рандомные поля: вкл"
 font_size = 2
-disabled = false
 
 [node name="BattleBox" type="VBoxContainer" parent="OptionsPanel/MarginContainer/VBoxContainer" unique_id=1974140398]
 unique_name_in_owner = true
@@ -114,13 +105,11 @@ layout_mode = 2
 layout_mode = 2
 text = "give_up"
 font_size = 3
-disabled = false
 
 [node name="WinBtn" parent="OptionsPanel/MarginContainer/VBoxContainer/BattleBox" unique_id=368155180 instance=ExtResource("6_2427u")]
 layout_mode = 2
 text = "Выиграть"
 font_size = 3
-disabled = false
 
 [node name="MapBox" type="VBoxContainer" parent="OptionsPanel/MarginContainer/VBoxContainer" unique_id=1366646638]
 unique_name_in_owner = true
@@ -132,20 +121,17 @@ size_flags_vertical = 0
 layout_mode = 2
 text = "Generate"
 font_size = 3
-disabled = false
 
 [node name="FreeChoiceButton" parent="OptionsPanel/MarginContainer/VBoxContainer/MapBox" unique_id=1100090417 instance=ExtResource("6_2427u")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Свободный выбор: выкл"
 font_size = 3
-disabled = false
 
 [node name="EndRunBtn" parent="OptionsPanel/MarginContainer/VBoxContainer/MapBox" unique_id=765674577 instance=ExtResource("6_2427u")]
 layout_mode = 2
 text = "give_up"
 font_size = 3
-disabled = false
 
 [node name="ShopBox" type="VBoxContainer" parent="OptionsPanel/MarginContainer/VBoxContainer" unique_id=767927855]
 unique_name_in_owner = true
@@ -156,21 +142,22 @@ layout_mode = 2
 layout_mode = 2
 text = "Перегенрить ассортимент магазина"
 font_size = 3
-disabled = false
 
 [node name="AddMoneyBtn" parent="OptionsPanel/MarginContainer/VBoxContainer/ShopBox" unique_id=321667550 instance=ExtResource("6_2427u")]
 layout_mode = 2
 text = "Добавить 100 золота"
 font_size = 3
-disabled = false
 
-[node name="OptionsButton" parent="." unique_id=1254142979 instance=ExtResource("7_2427u")]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=984113568]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+
+[node name="OptionsButton" parent="MarginContainer" unique_id=1254142979 instance=ExtResource("7_2427u")]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 610.0
-offset_top = 5.0
-offset_right = 635.0
-offset_bottom = 30.0
+layout_mode = 2
+size_flags_horizontal = 8
 texture = ExtResource("8_04qni")
 shortcut = SubResource("Shortcut_04qni")
 
@@ -182,4 +169,4 @@ shortcut = SubResource("Shortcut_04qni")
 [connection signal="pressed" from="OptionsPanel/MarginContainer/VBoxContainer/MapBox/EndRunBtn" to="." method="_on_end_run_btn_pressed"]
 [connection signal="pressed" from="OptionsPanel/MarginContainer/VBoxContainer/ShopBox/ShopGenButton" to="." method="_on_shop_gen_button_pressed"]
 [connection signal="pressed" from="OptionsPanel/MarginContainer/VBoxContainer/ShopBox/AddMoneyBtn" to="." method="_on_add_money_btn_pressed"]
-[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MarginContainer/OptionsButton" to="." method="_on_options_button_pressed"]
