@@ -210,7 +210,7 @@ func add_heads_turn_begin_actions():
 		if head is Head:
 			head.turn_begin_add_action()
 
-	
+
 func enemy_turn_end():
 	print("E_END")
 	
@@ -259,13 +259,15 @@ func show_rewards():
 		
 	#await get_tree().create_timer(1).timeout
 	#change_stage()
-	
-	
+
+
 func show_domino_choice():
 	Global.choice_scene.spawn_dominoes()
-	
+
+
 func show_head_choice():
 	Global.choice_scene.spawn_heads()
+
 
 func show_delete_domino_menu(amount: int):
 	SceneManager.show_remove_domino_scene(amount)
@@ -278,7 +280,8 @@ func reset_turn_data():
 	Signals.reset_turn_data.emit()
 	clear_statuses()
 	turn = 0
-	
+
+
 func reset_run_data():
 	Signals.reset_run_data.emit()
 	DominoManager.block_domino_input = false
@@ -286,21 +289,29 @@ func reset_run_data():
 	Global.board.hide_board()
 	
 	stage = 1
-	
+
+
 func reset_fight_data():
 	BoardManager.green_bonuses_activated = 0
 	DominoManager.value1_played_dominoes = 0
 	DominoManager.value2_played_dominoes = 0
 	DominoManager.value3_played_dominoes = 0
 	DominoManager.value4_played_dominoes = 0
-	
-func clear_statuses():
+
+
+func clear_statuses() -> void:
 	for icon in Global.hero.status_container.get_children():
-		icon.status.stacks = 0
-	
+		StatusManager.remove_status_effect(icon.status)
+		icon.queue_free()
+	for icon in Global.enemy.status_container.get_children():
+		StatusManager.remove_status_effect(icon.status)
+		icon.queue_free()
+
+
 func hero_dead():
 	return_to_main_menu()
-	
+
+
 func return_to_main_menu():
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout

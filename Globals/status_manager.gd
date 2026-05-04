@@ -23,18 +23,15 @@ var devour = preload("res://resources/statuses/devour.tres")
 func apply_status(status: StatusResource, stacks, target):
 	target.status_container.add_status(status.duplicate(true), stacks)
 
-
 func initialize_status(status: StatusResource):
 	status.status_changed.connect(_on_status_changed.bind(status))
 	_on_status_changed(status)
 	
 	if status.id == "thorns":
 		if status.owner == Global.hero:
-			if not Signals.deal_enemy_thorn_damage.is_connected(add_action):
-				Signals.deal_enemy_thorn_damage.connect(add_action.bind(status))
+			Signals.deal_enemy_thorn_damage.connect(add_action.bind(status))
 		elif status.owner == Global.enemy:
-			if not Signals.deal_hero_thorn_damage.is_connected(add_action):
-				Signals.deal_hero_thorn_damage.connect(add_action.bind(status))
+			Signals.deal_hero_thorn_damage.connect(add_action.bind(status))
 
 
 func apply_status_effect(status: StatusResource):
@@ -64,6 +61,12 @@ func remove_status_effect(status: StatusResource):
 			status.owner.damage_mult = 1
 		"fury":
 			status.owner.bonus_damage = 0
+	
+	if status.id == "thorns":
+		if status.owner == Global.hero:
+			Signals.deal_enemy_thorn_damage.disconnect(add_action)
+		elif status.owner == Global.enemy:
+			Signals.deal_hero_thorn_damage.disconnect(add_action)
 
 
 func add_action(status: StatusResource):

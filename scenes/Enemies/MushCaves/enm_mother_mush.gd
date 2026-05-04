@@ -6,7 +6,7 @@ func _ready():
 	max_health = 45
 	health = max_health
 	
-	bonus_pool = [BoardManager.n_remove_armor, BoardManager.e_1thorns, ]
+	bonus_pool = [BoardManager.n_remove_armor, BoardManager.e_1thorns]
 
 	behavior_mode = BehaviorMode.SEQUENTIAL
 	first_action_index = 0
@@ -28,6 +28,7 @@ func _ready():
 
 	plan_next_action()
 
+
 func add_start_fight_action():
 	ActionManager.add(
 		BuffAction.new(self, self,StatusManager.thorns,2)
@@ -37,13 +38,10 @@ func add_start_fight_action():
 	)
 
 
-
 func action_attack():
-
 	ActionManager.add(
 		AttackAction.new(self, Global.hero, final_damage(8))
 	)
-	
 	ActionManager.add(
 		BuffAction.new(self, self,StatusManager.thorns,1)
 	)

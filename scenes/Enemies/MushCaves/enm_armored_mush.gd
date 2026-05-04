@@ -66,6 +66,7 @@ func action_attack():
 		#)
 	#
 	#larvas = 0
+	#larvas = 0
 	
 	
 	#if get_status("invincible") == null:
@@ -80,22 +81,18 @@ func action_attack():
 
 
 func action_buff():
-
 	ActionManager.add(
-		BlockAction.new(self,self,15)
+		BlockAction.new(self, self, 15)
 	)
 	ActionManager.add(
-		BuffAction.new(self, self,StatusManager.thorns,2)
+		BuffAction.new(self, self, StatusManager.thorns, 2)
 	)
-
 
 
 func action_attack_buff():
-
 	ActionManager.add(
-		AttackAction.new(self,Global.hero,final_damage(12))
+		AttackAction.new(self, Global.hero, final_damage(12))
 	)
-	
 	ActionManager.add(
-		BlockAction.new(self,self,10)
+		BlockAction.new(self, self, 10)
 	)
