@@ -460,14 +460,18 @@ func play_anim():
 func _on_area_2d_mouse_entered() -> void:
 	if !DominoManager.dm_dragging:
 		Signals.play_domino_draged_sound.emit()
-		
-	BoardManager.highlight_avaiable_slots([a,b])
+		BoardManager.highlight_avaiable_slots([a,b])
+	else:
+		return
 	mouse_over_des = true
 	show_description()
 
 
 func _on_area_2d_mouse_exited() -> void:
-	BoardManager.disable_highlight()
+	if !DominoManager.dm_dragging:
+		BoardManager.disable_highlight()
+	else:
+		return
 	mouse_over_des = false
 	hide_description()
 

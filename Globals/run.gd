@@ -27,8 +27,8 @@ func reset_data() -> void:
 	current_head_pool.clear()
 	
 	current_bonus_pool = BonusManager.bonus_templates.duplicate()
-	# current_bonus_pool.erase("attack5")
-	# current_bonus_pool.erase("defense5")
+	current_bonus_pool.erase("attack5")
+	current_bonus_pool.erase("defense5")
 
 
 func _ready() -> void:

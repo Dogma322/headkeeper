@@ -122,7 +122,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="HeadHolder" parent="." unique_id=2074985017 instance=ExtResource("11_aonfs")]
-center_position = Vector2(111, 148)
+center_position = Vector2(111, 170)
 
 [node name="EnemyHeadHolder" parent="." unique_id=1674420254 instance=ExtResource("11_aonfs")]
 center_position = Vector2(535, 100)

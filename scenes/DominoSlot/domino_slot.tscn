@@ -72,7 +72,6 @@ shape = SubResource("RectangleShape2D_f5kuw")
 [node name="HighlightAnim" type="AnimatedSprite2D" parent="." unique_id=1459063037]
 sprite_frames = SubResource("SpriteFrames_icnct")
 autoplay = "default"
-frame_progress = 0.11893064
 
 [node name="Container" type="VBoxContainer" parent="." unique_id=1278289245]
 offset_left = -14.0

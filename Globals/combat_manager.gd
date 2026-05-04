@@ -219,7 +219,8 @@ func enemy_turn_end():
 	for status_icon in Global.enemy.status_container.get_children():
 		status_icon.status.end_turn_reduce()
 	
-	player_turn_begin(false)
+	if not Global.hero.is_dead:
+		player_turn_begin(false)
 	
 	
 func enemy_dead():
