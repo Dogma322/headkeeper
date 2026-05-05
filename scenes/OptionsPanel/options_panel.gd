@@ -77,7 +77,7 @@ func update_labels() -> void:
 
 
 func _on_end_run_btn_pressed() -> void:
-	CombatManager.return_to_main_menu()
+	CombatManager.return_to_meta()
 	show_panel(false)
 
 
