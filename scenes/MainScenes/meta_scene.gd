@@ -23,6 +23,7 @@ var showed_skulls := 0:
 
 var skulls_tween: Tween
 var selected_slot: MetaSlot = null
+var head_tween: Tween
 
 
 func save_changes() -> void:
@@ -61,7 +62,8 @@ func cancel() -> void:
 		skulls_tween.tween_property(self, "showed_skulls", MetaManager.skulls + cost, 0.5)
 		MetaManager.skulls += cost
 	
-	select_head(origin_head_slot)
+	if origin_head_slot != null and not origin_head_slot.is_selected:
+		select_head(origin_head_slot)
 	shop_cache.clear()
 	cancel_button.disabled = true
 
@@ -83,7 +85,30 @@ func _ready() -> void:
 	Foreground.options_panel.show_box(Foreground.options_panel.meta_box)
 	Global.meta_scene = self
 	SoundManager.set_music("MainMenu")
+	Signals.head_selected.connect(_on_head_selected)
 
+func deselect_slot(head):
+	if head_tween and head_tween.is_running():
+		return
+	var found := false
+	for slot in shop_cache:
+		if slot.key == selected_slot.key:
+			found = true
+			break
+	if not found:
+		origin_head_slot = null
+	head_tween = create_tween()
+	head_tween.tween_property(head, "global_position", selected_slot.center, 0.25)
+	await head_tween.finished
+	selected_slot.unselect()
+	head.queue_free()
+	MetaManager.selected_head_key = ""
+	
+	selected_slot = null
+	
+
+func _on_head_selected(head: Head):
+	deselect_slot(head)
 
 func _on_exit_button_pressed() -> void:
 	exit()
@@ -100,18 +125,42 @@ func load_slots() -> void:
 
 
 func select_head(slot: MetaSlot) -> void:
-	if current_head:
-		current_head.queue_free()
 	if slot == null:
 		MetaManager.selected_head_key = ""
+		if current_head:
+			current_head.queue_free()
 	else:
+		if slot.is_selected:
+			deselect_slot(current_head)
+			return
+		var found := false
+		for slot2 in shop_cache:
+			if slot2.key == slot.key:
+				found = true
+				break
+		if not found:
+			origin_head_slot = slot
+		head_tween = create_tween().set_parallel()
+		var prev_head = null
+		if current_head:
+			prev_head = current_head
+			head_tween.tween_property(current_head, "global_position", selected_slot.center, 0.25)
 		slot.select()
 		var key = slot.key
 		MetaManager.selected_head_key = key
 		
 		current_head = HeadManager.head_pool[key].instantiate()
-		current_head.block_input = true
+		current_head.head_choice = true
 		head_marker_2d.add_child(current_head)
+		current_head.global_position = slot.center
+		
+		head_tween.tween_property(current_head, "global_position", head_marker_2d.global_position, 0.25)
+		await head_tween.finished
+		if prev_head:
+			prev_head.queue_free()
+		if selected_slot != null and selected_slot != slot:
+			selected_slot.unselect()
+		
 	selected_slot = slot
 
 
@@ -119,18 +168,7 @@ func _on_item_selected(item: MetaSlot) -> void:
 	if not item.head:
 		return
 	if item.buyed:
-		if selected_slot != null and selected_slot != item:
-			selected_slot.unselect()
 		select_head(item)
-		
-		var found := false
-		for slot in shop_cache:
-			if slot.key == item.key:
-				found = true
-				break
-		if not found:
-			origin_head_slot = item
-		
 		hide_tooltips()
 	else:
 		if item.try_buy(MetaManager.skulls):
@@ -185,8 +223,9 @@ func load_heads() -> void:
 				slots[i].is_selected = true
 				selected_slot = slots[i]
 				origin_head_slot = selected_slot
+				
 				current_head = HeadManager.head_pool[key].instantiate()
-				current_head.block_input = true
+				current_head.head_choice = true
 				head_marker_2d.add_child(current_head)
 		else:
 			slots[i].update_availability(MetaManager.skulls)

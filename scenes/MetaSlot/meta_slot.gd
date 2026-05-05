@@ -24,6 +24,10 @@ signal selected
 
 var not_enough_skulls := false
 
+var center: Vector2:
+	get:
+		return icon_rect.global_position + icon_rect.size / 2.0
+
 var buyed := false:
 	set(value):
 		buyed = value
