@@ -19,7 +19,7 @@ var started_skulls := 0
 var showed_skulls := 0:
 	set(value):
 		showed_skulls = value
-		skulls_label.text = "[img]res://assets/Icons/CommonSkull.png[/img]%s/%s" % [str(value), str(started_skulls)]
+		skulls_label.text = "[img]res://assets/Icons/CommonSkull.png[/img]%s" % [str(value)]
 
 var skulls_tween: Tween
 var selected_slot: MetaSlot = null
@@ -36,6 +36,7 @@ func play() -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
 	Transition.blackout_off()
+	end()
 	
 	hide()
 	save_changes()
@@ -94,6 +95,7 @@ func _ready() -> void:
 	Foreground.options_panel.show_box(Foreground.options_panel.meta_box)
 	Global.meta_scene = self
 	SoundManager.set_music("MainMenu")
+	Signals.head_selected.connect(_on_head_selected)
 
 func deselect_slot(head):
 	if head_tween and head_tween.is_running():
