@@ -63,6 +63,10 @@ func show_previous_scene() -> void:
 func new_run() -> void:
 	Global.vhs_shader.show()
 	top_panel.disabled = false
+	
+	SceneManager.top_panel.gold = 100
+	Run.gold = 100
+	
 	main_scene = map_scene
 	show_map_scene()
 	map_scene.map.generate()
