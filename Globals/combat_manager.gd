@@ -310,16 +310,17 @@ func clear_statuses() -> void:
 
 
 func hero_dead():
-	return_to_main_menu()
+	return_to_meta()
 
 
-func return_to_main_menu():
+func return_to_meta():
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
 	Transition.blackout_off()
 	reset_run_data()
-	Foreground.options_panel.show_box(Foreground.options_panel.main_menu_box)
+	Foreground.options_panel.show_box(Foreground.options_panel.meta_box)
+	Global.map_scene.hide()
 	Global.fight_scene.hide()
-	Global.main_menu.show()
 	
-	
+	Global.meta_scene.start()
+	Global.meta_scene.show()

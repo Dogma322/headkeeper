@@ -254,7 +254,6 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Сбросить"
 font_size = 4
-disabled = false
 
 [node name="Control" type="Control" parent="HBoxContainer/Control/MarginContainer/VBoxContainer" unique_id=173593234]
 layout_mode = 2
@@ -294,6 +293,11 @@ mouse_filter = 2
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
+
+[node name="PlayButton" parent="HBoxContainer/Control/MarginContainer/VBoxContainer" unique_id=2111038540 instance=ExtResource("5_5w8ji")]
+layout_mode = 2
+text = "play"
+font_size = 4
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer" unique_id=413958035]
 layout_mode = 2
@@ -379,6 +383,7 @@ layout_mode = 2
 tooltip_offset = 5
 
 [node name="Layout" type="MarginContainer" parent="." unique_id=1147023437]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -433,4 +438,5 @@ unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_2hh6u")
 
 [connection signal="pressed" from="HBoxContainer/Control/MarginContainer/VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Control/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Layout/ExitButton" to="." method="_on_exit_button_pressed"]

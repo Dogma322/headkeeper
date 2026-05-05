@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://dywi02s7uin3f" path="res://scenes/MainScenes/craft_scene.tscn" id="7_4wbje"]
 [ext_resource type="PackedScene" uid="uid://caovgfyajqfdl" path="res://scenes/HeadChoiceScene/head_choice_scene.tscn" id="7_cb6jg"]
 [ext_resource type="PackedScene" uid="uid://bmdtecafi1ta3" path="res://scenes/RemoveDominoScene/remove_domino_scene.tscn" id="9_wrdhs"]
-[ext_resource type="PackedScene" uid="uid://bgwmg1s66s6f1" path="res://scenes/MainScenes/meta_scene.tscn" id="10_ui8fk"]
 [ext_resource type="PackedScene" uid="uid://cw35tfda0j6qi" path="res://scenes/MainScenes/campfire_scene.tscn" id="12_dhv03"]
 [ext_resource type="PackedScene" uid="uid://bb8bufwutf1xg" path="res://scenes/MainScenes/shop_scene.tscn" id="12_reosh"]
 [ext_resource type="PackedScene" uid="uid://dve4apve17rh4" path="res://scenes/VhsShader/vhs_shader.tscn" id="14_5a81w"]
@@ -83,12 +82,6 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 mouse_filter = 2
-
-[node name="MetaScene" parent="." unique_id=476688822 instance=ExtResource("10_ui8fk")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
 
 [node name="CampfireScene" parent="." unique_id=23089478 instance=ExtResource("12_dhv03")]
 unique_name_in_owner = true

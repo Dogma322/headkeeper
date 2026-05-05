@@ -6,4 +6,4 @@ func _ready() -> void:
 	super()
 	
 func effect():
-	CombatManager.return_to_main_menu()
+	CombatManager.return_to_meta()

@@ -20,7 +20,7 @@ func _ready() -> void:
 @onready var play_btn
 @onready var hand: Hand
 @onready var map_scene
-@onready var main_menu: MainMenu
+@onready var meta_scene: MetaScene
 @onready var vhs_shader
 
 @export var domino_scene = preload("res://scenes/Domino/domino.tscn")

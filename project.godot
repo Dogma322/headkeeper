@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Headkeeper"
-run/main_scene="uid://ehieixsy6e6l"
+run/main_scene="uid://bgwmg1s66s6f1"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

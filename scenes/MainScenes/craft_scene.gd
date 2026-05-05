@@ -147,7 +147,7 @@ func _on_exit_button_pressed() -> void:
 	hide()
 	
 	SceneManager.main_scene = null
-	Global.main_menu.show()
+	Global.meta_scene.show()
 
 
 func apply(craft_type : CraftType, type: String, amount: int) -> void:

@@ -9,7 +9,6 @@ extends Control
 @onready var choice_scene: ChoiceScene = %ChoiceScene
 @onready var craft_scene: CraftScene = %CraftScene
 @onready var remove_domino_scene: RemoveDominoScene = %RemoveDominoScene
-@onready var meta_scene: ScreenBase = %MetaScene
 @onready var campfire_scene: CampfireScene = %CampfireScene
 @onready var shop_scene: ShopScene = %ShopScene
 
@@ -21,7 +20,6 @@ extends Control
 	choice_scene,
 	craft_scene,
 	remove_domino_scene,
-	meta_scene,
 	campfire_scene,
 	shop_scene,
 ]
@@ -133,10 +131,6 @@ func show_remove_domino_scene(amount: int) -> void:
 	show_scene(remove_domino_scene)
 	remove_domino_scene.remove_count = amount
 	remove_domino_scene.update_domino_list()
-
-
-func show_meta_scene() -> void:
-	show_scene(meta_scene)
 
 
 func show_campfire_scene() -> void:

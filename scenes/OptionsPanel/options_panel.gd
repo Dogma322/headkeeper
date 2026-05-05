@@ -8,11 +8,11 @@ class_name OptionsPanel
 @onready var stage_label: Label = %StageLabel
 @onready var sfx_label: Label = %SfxLabel
 @onready var music_label: Label = %MusicLabel
-@onready var main_menu_box: VBoxContainer = %MainMenuBox
+@onready var meta_box: VBoxContainer = %MetaBox
 @onready var map_box: VBoxContainer = %MapBox
 @onready var battle_box: VBoxContainer = %BattleBox
 @onready var shop_box: VBoxContainer = %ShopBox
-@onready var boxes = [main_menu_box, map_box, battle_box, shop_box]
+@onready var boxes = [meta_box, map_box, battle_box, shop_box]
 @onready var free_choice_button: GameButton = %FreeChoiceButton
 @onready var change_board_generation_btn: GameButton = %ChangeBoardGenerationBtn
 
@@ -116,5 +116,13 @@ func _on_add_money_btn_pressed() -> void:
 	create_tween().tween_property(Run, "gold", Run.gold + 100, 0.25)
 	get_tree().call_group("ShopSlots", "update", Run.gold + 100)
 
+
 func _on_shop_gen_button_pressed() -> void:
 	SceneManager.shop_scene.refill()
+
+
+func _on_meta_exit_btn_pressed() -> void:
+	Transition.blackout_on()
+	await get_tree().create_timer(1).timeout
+	Transition.blackout_off()
+	Global.meta_scene.exit()

@@ -35,17 +35,16 @@ func play() -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
 	Transition.blackout_off()
+	
+	hide()
 	save_changes()
-	SceneManager.show_map_scene()
+	SceneManager.new_run()
 
 
 func exit() -> void:
-	Transition.blackout_on()
-	await get_tree().create_timer(1).timeout
-	Transition.blackout_off()
 	save_changes()
-	hide()
-	Global.main_menu.show()
+	Global.save_settings()
+	get_tree().quit()
 
 
 func cancel() -> void:
@@ -66,6 +65,11 @@ func cancel() -> void:
 	shop_cache.clear()
 	cancel_button.disabled = true
 
+func start():
+	started_skulls = MetaManager.skulls
+	showed_skulls = MetaManager.skulls
+	for slot in slots:
+		slot.update_availability(MetaManager.skulls)
 
 func _ready() -> void:
 	Transition.blackout_off()
@@ -75,6 +79,10 @@ func _ready() -> void:
 	showed_skulls = MetaManager.skulls
 	head_animation_player.play("head_anim")
 	cancel_button.disabled = true
+	
+	Foreground.options_panel.show_box(Foreground.options_panel.meta_box)
+	Global.meta_scene = self
+	SoundManager.set_music("MainMenu")
 
 
 func _on_exit_button_pressed() -> void:
@@ -187,3 +195,7 @@ func load_heads() -> void:
 
 func _on_cancel_button_pressed() -> void:
 	cancel()
+
+
+func _on_play_button_pressed() -> void:
+	play()

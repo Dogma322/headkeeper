@@ -36,7 +36,7 @@ func _on_exit_button_pressed() -> void:
 	await get_tree().create_timer(1).timeout
 	Transition.blackout_off()
 	hide()
-	Global.main_menu.show()
+	Global.meta_scene.show()
 
 
 func _on_gen_button_pressed() -> void:
