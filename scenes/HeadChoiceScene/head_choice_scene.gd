@@ -21,6 +21,19 @@ func _ready() -> void:
 	Global.choice_scene = self
 
 
+func start():
+	Signals.head_selected.connect(_on_head_selected)
+
+
+func end():
+	Signals.head_selected.disconnect(_on_head_selected)
+
+
+func _on_head_selected(head: Head) -> void:
+	choice_selected(head)
+	head.add_head_to_head_holder()
+
+
 func clear_choices():
 
 	for c in choices:

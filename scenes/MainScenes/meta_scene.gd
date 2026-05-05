@@ -67,11 +67,20 @@ func cancel() -> void:
 	shop_cache.clear()
 	cancel_button.disabled = true
 
-func start():
+
+func start() -> void:
+	Signals.head_selected.connect(_on_head_selected)
+	
 	started_skulls = MetaManager.skulls
 	showed_skulls = MetaManager.skulls
+	
 	for slot in slots:
 		slot.update_availability(MetaManager.skulls)
+
+
+func end() -> void:
+	Signals.head_selected.disconnect(_on_head_selected)
+
 
 func _ready() -> void:
 	Transition.blackout_off()
@@ -85,7 +94,6 @@ func _ready() -> void:
 	Foreground.options_panel.show_box(Foreground.options_panel.meta_box)
 	Global.meta_scene = self
 	SoundManager.set_music("MainMenu")
-	Signals.head_selected.connect(_on_head_selected)
 
 func deselect_slot(head):
 	if head_tween and head_tween.is_running():

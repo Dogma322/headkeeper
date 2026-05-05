@@ -142,6 +142,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1240008367]
+custom_minimum_size = Vector2(0, 21)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -216,6 +217,7 @@ theme_override_font_sizes/font_size = 10
 text = "99"
 
 [node name="ConsumablesTextureRect" type="TextureRect" parent="HBoxContainer" unique_id=2049212053]
+visible = false
 layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("6_gkv6x")
