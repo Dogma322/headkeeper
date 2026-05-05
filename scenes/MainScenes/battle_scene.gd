@@ -11,6 +11,8 @@ class_name BattleScene
 
 @onready var heads_ui: VBoxContainer = %HeadsUI
 
+var head_buffer: Head = null
+
 var offset:
 	get:
 		return global_position
@@ -27,7 +29,6 @@ func _ready() -> void:
  
 
 func show_head_ui() -> void:
-
 	var pool := []
 	for key in Run.reserved_head_pool:
 		pool.push_back(key)
@@ -36,8 +37,15 @@ func show_head_ui() -> void:
 	for key in Run.current_head_pool:
 		final_pool.push_back(key)
 	
-	var random_head_key = pool.pick_random()
-	final_pool.push_back(random_head_key)
+	var random_head_key = ""
+	if not pool.is_empty():
+		random_head_key = pool.pick_random()
+		final_pool.push_back(random_head_key)
+	
+	if final_pool.is_empty():
+		await get_tree().process_frame
+		Signals.enemy_head_choosen.emit(null)
+		return
 	
 	var new_head = HeadManager.head_pool[random_head_key].instantiate()
 	if final_pool.size() == 1:
@@ -50,6 +58,7 @@ func show_head_ui() -> void:
 		heads_ui.show()
 		heads_ui.modulate.a = 0.0
 		
+		# Перемещаем головы в центр экрана.
 		var tween = create_tween().set_parallel()
 		tween.tween_property(Global.head_holder, "center_position", get_viewport_rect().size * 0.5, 0.5)
 		tween.tween_property(heads_ui, "modulate:a", 1.0, 0.5)
@@ -65,24 +74,32 @@ func show_head_ui() -> void:
 		await Signals.head_selected
 		Signals.head_selected.disconnect(head_selected)
 		
+		# Возвращаем головы на прежнее место.
 		tween = create_tween().set_parallel()
 		tween.tween_property(Global.head_holder, "center_position", origin, 0.5)
 		tween.tween_property(heads_ui, "modulate:a", 0.0, 0.5)
 		await tween.finished
 		
 		heads_ui.hide()
-	Signals.enemy_head_choosen.emit()
+	Signals.enemy_head_choosen.emit(head_buffer)
+	head_buffer = null
 
-func head_selected(head: Head):
+
+func head_selected(head: Head) -> void:
 	head.get_parent().remove_child(head)
 	Global.enemy_head_holder.add_child(head)
+	for head2: Node2D in Global.head_holder.get_children():
+		if head2 is Head:
+			head2.head_choice = false
+			head2.invert_logic = false
+	head_buffer = head
 
 
 func hide_head_ui() -> void:
 	heads_ui.hide()
 
 
-func start():
+func start() -> void:
 	camera.make_current()
 	Foreground.options_panel.show_box(Foreground.options_panel.battle_box)
 

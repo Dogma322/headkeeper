@@ -132,7 +132,8 @@ func show_des():
 		if panel is TooltipPanel:
 			panel.show_tooltip()
 			size_x += panel.size.x
-
+	if tooltip_stack.global_position.x + size_x > get_viewport_rect().size.x:
+		tooltip_stack.global_position.x = get_viewport_rect().size.x - size_x
 
 func hide_des():
 	update_labels()

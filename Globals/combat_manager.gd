@@ -14,20 +14,22 @@ var stage:
 enum Mode {
 	NONE,
 	BATTLE,
+	BATTLE_ELITE,
 	CHOOSE_ELITE_HEAD
 }
 
+var prev_mode = Mode.NONE
 var mode = Mode.NONE
+var current_enemy_head: Head = null
 
 func _ready() -> void:
 	Signals.play_btn_pressed.connect(play_dominoes)
 	Signals.enemy_dead.connect(enemy_dead)
 	Signals.hero_dead.connect(hero_dead)
-	
-	
+	Signals.enemy_head_choosen.connect(func(head: Head): current_enemy_head = head)
 
-	
-func start(_map_node: MapNode):
+
+func start(_map_node: MapNode) -> void:
 	mode = Mode.BATTLE
 	map_node = _map_node
 	
@@ -43,7 +45,8 @@ func start(_map_node: MapNode):
 	
 	player_turn_begin(true)
 
-func change_stage(_map_node, _elite: bool):
+
+func change_stage(_map_node, _elite: bool) -> void:
 	map_node = _map_node
 	if _elite:
 		mode = Mode.CHOOSE_ELITE_HEAD
@@ -67,9 +70,9 @@ func change_stage(_map_node, _elite: bool):
 	await get_tree().create_timer(1).timeout
 	stage_changing = false
 	player_turn_begin(false)
-	
 
-func play_dominoes():
+
+func play_dominoes() -> void:
 	print("PLAY_D")
 	
 	Global.fight_scene.hide_menu()
@@ -97,44 +100,40 @@ func play_dominoes():
 	if Global.enemy.is_dead:
 		return
 	player_turn_end()
-	
-	
-func player_turn_begin(is_start: bool):
+
+
+func player_turn_begin(is_start: bool) -> void:
 	print("P_BEGIN")
 	Signals.player_turn_begin.emit()
 	
+	if not MetaManager.selected_head_key.is_empty() and prev_mode == Mode.NONE:
+		Run.current_head_pool.push_back(MetaManager.selected_head_key)
+		Run.reserved_head_pool.erase(MetaManager.selected_head_key)
+		
+		var head = HeadManager.head_pool[MetaManager.selected_head_key].instantiate()
+		head.add_head_to_head_holder()
+		Signals.head_amount_changed.emit()
+		
 	if mode == Mode.CHOOSE_ELITE_HEAD:
 		Global.fight_scene.show_head_ui()
 		await Signals.enemy_head_choosen
+		mode = Mode.BATTLE_ELITE
 	
 	apply_hero_turn_begin_status_effects()
 	await ActionManager.play_actions()
-	if is_start and stage == 0:
-		if not MetaManager.selected_head_key.is_empty():
-			Run.current_head_pool.push_back(MetaManager.selected_head_key)
-			Run.reserved_head_pool.erase(MetaManager.selected_head_key)
-			
-			var head = HeadManager.head_pool[MetaManager.selected_head_key].instantiate()
-			head.add_head_to_head_holder()
-			
-			Signals.head_amount_changed.emit()
 	
 	add_heads_turn_begin_actions()
 	await ActionManager.play_actions()
 	
-	
 	turn += 1
 	if turn == 1:
 		Signals.fight_started.emit()
-		
-
-
+	
 	await get_tree().create_timer(0.5).timeout
 	
 	if ActionManager.queue.size() > 0:
 		ActionManager.play_actions()
 		await Signals.actions_completed
-	
 	
 	BoardManager.generate_bonuses()
 	await get_tree().create_timer(0.2).timeout
@@ -144,9 +143,9 @@ func player_turn_begin(is_start: bool):
 	Global.hand.draw_dominoes()
 	player_turn = true
 	DominoManager.block_domino_input = false
-	
 
-func player_turn_end():
+
+func player_turn_end() -> void:
 	print("P_END")
 	
 	Signals.player_turn_end.emit()
@@ -154,15 +153,15 @@ func player_turn_end():
 	for status_icon in Global.hero.status_container.get_children():
 		status_icon.status.end_turn_reduce()
 	
-	
 	Global.hand.discard_all_dominoes()
 	Global.board.hide_board()
 	await get_tree().create_timer(0.6).timeout
 	
 	if !Global.enemy.is_dead:
 		enemy_turn_begin()
-	
-func enemy_turn_begin():
+
+
+func enemy_turn_begin() -> void:
 	await get_tree().create_timer(0.5).timeout
 	Signals.enemy_turn_begin.emit()
 	
@@ -221,8 +220,8 @@ func enemy_turn_end():
 	
 	if not Global.hero.is_dead:
 		player_turn_begin(false)
-	
-	
+
+
 func enemy_dead():
 	print("E_DEAD")
 	player_turn_end()
@@ -230,16 +229,27 @@ func enemy_dead():
 	await get_tree().create_timer(1).timeout
 	show_rewards()
 
-func show_rewards():
-	mode = Mode.NONE
+
+func show_rewards() -> void:
+	prev_mode = mode
 	DominoManager.block_domino_input = false
 #	show_domino_choice()
 	
 	if Global.skulls_rewards.round_rewards.has(stage):
 		Run.skulls += Global.skulls_rewards.round_rewards[stage]
 	
-	if map_node.type == MapNode.Type.BATTLE:
-		create_tween().tween_property(Run, "gold", Run.gold + randi_range(10, 20), 0.5)
+	match map_node.type:
+		MapNode.Type.BATTLE:
+			Run.gold += randi_range(10, 20)
+		MapNode.Type.BATTLE_ELITE:
+			Run.gold += randi_range(25, 35)
+			
+			if current_enemy_head:
+				current_enemy_head.get_parent().remove_child(current_enemy_head)
+				Global.head_holder.add_child(current_enemy_head)
+				
+				current_enemy_head.invert_logic = false
+				current_enemy_head.apply_passive_effect()
 	
 #	await Signals.domino_selected
 #	await get_tree().create_timer(1).timeout
@@ -262,28 +272,27 @@ func show_rewards():
 	#change_stage()
 
 
-func show_domino_choice():
+func show_domino_choice() -> void:
 	Global.choice_scene.spawn_dominoes()
 
 
-func show_head_choice():
+func show_head_choice() -> void:
 	Global.choice_scene.spawn_heads()
 
 
-func show_delete_domino_menu(amount: int):
+func show_delete_domino_menu(amount: int) -> void:
 	SceneManager.show_remove_domino_scene(amount)
 	#change_stage() вызывается внутри Global.remove_domino_scene
 
 
-	
-func reset_turn_data():
+func reset_turn_data() -> void:
 	ActionManager.queue.clear()
 	Signals.reset_turn_data.emit()
 	clear_statuses()
 	turn = 0
 
 
-func reset_run_data():
+func reset_run_data() -> void:
 	Signals.reset_run_data.emit()
 	DominoManager.block_domino_input = false
 	Global.map_scene.reset()
@@ -292,7 +301,7 @@ func reset_run_data():
 	stage = 1
 
 
-func reset_fight_data():
+func reset_fight_data() -> void:
 	BoardManager.green_bonuses_activated = 0
 	DominoManager.value1_played_dominoes = 0
 	DominoManager.value2_played_dominoes = 0
@@ -309,11 +318,11 @@ func clear_statuses() -> void:
 		icon.queue_free()
 
 
-func hero_dead():
+func hero_dead() -> void:
 	return_to_meta()
 
 
-func return_to_meta():
+func return_to_meta() -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
 	Transition.blackout_off()

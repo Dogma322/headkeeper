@@ -227,7 +227,7 @@ hd_eternal_fury_name,Eternal Fury,Вечная Ярость
 hd_eternal_fury_des,Two bonuses start appearing on the board that apply 1 Fury to you.,"На поле начинают появляться 2 бонуса, которые накладывают на вас Ярость 1."
 hd_chaos_name,Chaos,Хаос
 hd_chaos_des,"When you play a tile with a value of %s, deal 4 damage. The value changes each turn.","Когда вы играете кость со значением %s, наносит 4 урона. Значение меняется каждый ход."
-hd_chaos_des2,"When you play a tile with a value of %s, deal 2 damage to you. The value changes each turn.","Когда вы играете кость со значением %s, вам наносит 2 урона. Значение меняется каждый ход."
+hd_chaos_des_elite,"When you play a tile with a value of %s, deal 2 damage to you. The value changes each turn.","Когда вы играете кость со значением %s, вам наносит 2 урона. Значение меняется каждый ход."
 hd_moon_name,Moon,Луна
 hd_moon_des,"Whenever you play every 8th tile, deal %s damage.",При разыгрывании каждой 8-й кости наносит %s урона.
 hd_maw_name,Maw,Пасть
@@ -236,6 +236,7 @@ hd_corruptor_name,Corruptor,Осквернитель
 hd_corruptor_des,"When you apply Corruption, you additionally apply 2 more Corruption.",При наложении Скверны накладывается дополнительно 2 Скверны.
 hd_druid_name,Druid,Друид
 hd_druid_des,"When you restore health, applies 2 Fury. -%s max HP.","Когда вы восстанавливаете здоровье, накладывает Ярость 2. -%s Макс. здоровья."
+hd_druid_des_elite,"When you restore health, applies 1 Fury to enemy.","Когда вы восстанавливаете здоровье, накладывает Ярость 1 на врага."
 hd_brick_name,Construct,Конструкт
 hd_brick_des,Gаin %s block at the start of each turn.,В начале каждого хода дает %s брони.
 hd_octopus_name,Apostle,Апостол

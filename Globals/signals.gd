@@ -50,7 +50,7 @@ signal deal_hero_thorn_damage
 signal reset_turn_data
 signal reset_run_data
 
-signal enemy_head_choosen
+signal enemy_head_choosen(head: Head)
 signal fight_started
 
 signal hero_healed

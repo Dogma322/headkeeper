@@ -21,7 +21,7 @@ func apply_passive_effect():
 func reroll_value():
 	value = randi_range(1, 4)
 	if invert_logic:
-		description = tr("hd_chaos_des2") % value
+		description = tr("hd_chaos_des_elite") % value
 	else:
 		description = tr("hd_chaos_des") % value
 	label.text = str(value)

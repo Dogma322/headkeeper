@@ -200,6 +200,7 @@ func add_node(coord: Vector2i) -> MapNode:
 	# MapNode.Type
 	# --------------
 	# BATTLE,
+	# BATTLE_ELITE
 	# SHOP,
 	# BONUS,
 	# CAMPFIRE
