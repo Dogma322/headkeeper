@@ -21,6 +21,7 @@ buses/default_bus_layout="uid://65d4462qb0xp"
 
 [autoload]
 
+Constants="*uid://fsj348d6ou6y"
 MetaManager="*uid://om6x1gnfc45s"
 Run="*uid://fglvfx6yqt50"
 BoardManager="*uid://h5bj6gegd8b2"

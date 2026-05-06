@@ -92,7 +92,7 @@ func play_dominoes() -> void:
 	
 	
 	for dm in DominoManager.dominoes_on_board:
-			dm.add_actions()
+		dm.add_actions()
 	Signals.play_dominoes.emit()
 	
 	await Signals.actions_completed
@@ -106,14 +106,6 @@ func player_turn_begin(is_start: bool) -> void:
 	print("P_BEGIN")
 	Signals.player_turn_begin.emit()
 	
-	if is_start and not MetaManager.selected_head_key.is_empty() and prev_mode == Mode.NONE:
-		Run.current_head_pool.push_back(MetaManager.selected_head_key)
-		Run.reserved_head_pool.erase(MetaManager.selected_head_key)
-		
-		var head = HeadManager.head_pool[MetaManager.selected_head_key].instantiate()
-		head.add_head_to_head_holder()
-		Signals.head_amount_changed.emit()
-		
 	if mode == Mode.CHOOSE_ELITE_HEAD:
 		Global.fight_scene.show_head_ui()
 		await Signals.enemy_head_choosen

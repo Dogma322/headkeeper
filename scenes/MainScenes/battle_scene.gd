@@ -11,6 +11,8 @@ class_name BattleScene
 
 @onready var heads_ui: VBoxContainer = %HeadsUI
 
+var head_origin := Vector2.ZERO
+var random_head: Head = null
 var head_buffer: Head = null
 
 var offset:
@@ -26,7 +28,7 @@ func _ready() -> void:
 		Signals.domino_chain_removed.connect(_on_domino_chain_removed)
 		Global.play_btn = self
 		Global.fight_scene = self
- 
+
 
 func show_head_ui() -> void:
 	var pool := []
@@ -40,6 +42,7 @@ func show_head_ui() -> void:
 	var random_head_key = ""
 	if not pool.is_empty():
 		random_head_key = pool.pick_random()
+		random_head_key = "berserk"
 		final_pool.push_back(random_head_key)
 	
 	if final_pool.is_empty():
@@ -48,13 +51,19 @@ func show_head_ui() -> void:
 		return
 	
 	var new_head = HeadManager.head_pool[random_head_key].instantiate()
+	random_head = new_head
+	
 	if final_pool.size() == 1:
+		new_head.invert_logic = true
 		Global.enemy_head_holder.add_child(new_head)
 		await get_tree().process_frame
+		Signals.enemy_head_choosen.emit(head_buffer)
+		head_buffer = null
+		random_head = null
 	else:
 		Global.head_holder.add_child(new_head)
 		
-		var origin = Global.head_holder.center_position
+		head_origin = Global.head_holder.center_position
 		heads_ui.show()
 		heads_ui.modulate.a = 0.0
 		
@@ -74,25 +83,34 @@ func show_head_ui() -> void:
 		await Signals.head_selected
 		Signals.head_selected.disconnect(head_selected)
 		
-		# Возвращаем головы на прежнее место.
-		tween = create_tween().set_parallel()
-		tween.tween_property(Global.head_holder, "center_position", origin, 0.5)
-		tween.tween_property(heads_ui, "modulate:a", 0.0, 0.5)
-		await tween.finished
-		
-		heads_ui.hide()
-	Signals.enemy_head_choosen.emit(head_buffer)
-	head_buffer = null
 
 
 func head_selected(head: Head) -> void:
 	head.get_parent().remove_child(head)
 	Global.enemy_head_holder.add_child(head)
-	for head2: Node2D in Global.head_holder.get_children():
+	head.apply_passive_effect()
+	
+	for head2: Node2D in Global.head_holder.get_children():		
 		if head2 is Head:
 			head2.head_choice = false
 			head2.invert_logic = false
+			if head2 == random_head:
+				var tween = create_tween()
+				tween.tween_property(head2, "modulate:a", 0.0, 0.5)
+				await tween.finished
+				head2.queue_free()
 	head_buffer = head
+	
+	# Возвращаем головы на прежнее место.
+	var tween2 = create_tween().set_parallel()
+	tween2.tween_property(Global.head_holder, "center_position", head_origin, 0.5)
+	tween2.tween_property(heads_ui, "modulate:a", 0.0, 0.5)
+	await tween2.finished
+	
+	heads_ui.hide()
+	Signals.enemy_head_choosen.emit(head_buffer)
+	head_buffer = null
+	random_head = null
 
 
 func hide_head_ui() -> void:

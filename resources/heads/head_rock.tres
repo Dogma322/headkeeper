@@ -12,6 +12,5 @@ script = ExtResource("1_5y7a4")
 hname = "hd_rock_name"
 desc = "hd_rock_des"
 skulls_cost = 8
-value = 15
 texture = SubResource("AtlasTexture_prwl0")
 metadata/_custom_type_script = "uid://m5esxthxmlub"

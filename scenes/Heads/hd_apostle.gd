@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 func apply_passive_effect():
-	ActionManager.add(DecreaseMaxHpAction.new(self, Global.hero, 20))
+	ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, 20))
 	ActionManager.play_one_action()
 
 

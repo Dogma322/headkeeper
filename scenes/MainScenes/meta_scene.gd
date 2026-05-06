@@ -197,8 +197,8 @@ func _on_item_selected(item: MetaSlot) -> void:
 func _on_item_mouse_entered(item: MetaSlot) -> void:
 	if not item.head or item.is_selected:
 		return
-	tooltip_panel.caption = item.head.get_translated_name()
-	tooltip_panel.description = item.head.get_translated_desc()
+	tooltip_panel.caption = item.hname
+	tooltip_panel.description = item.description
 	tooltip_panel.show_tooltip(true, item, item.tooltip_offset)
 	if not item.head.extra_tags.is_empty():
 		await get_tree().create_timer(0.01).timeout

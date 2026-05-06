@@ -20,5 +20,5 @@ texture = SubResource("AtlasTexture_px25g")
 [node name="AdditionalTooltipPanel" parent="TooltipStack" parent_id_path=PackedInt32Array(1268114038) index="1" unique_id=54216942 instance=ExtResource("5_ldp8d")]
 layout_mode = 2
 type = "Thorns"
-caption = "Шипы"
-description = "Наносит урон в ответ на каждую атаку."
+caption = "st_thorns_name"
+description = "st_thorns_des"

@@ -2,7 +2,7 @@ extends BoardBonus
 
 
 func add_action():
-	ActionManager.add(DecreaseMaxHpAction.new(self, Global.hero, 5))
+	ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, 5))
 	
 func update_labels():
 	tooltip_panel.caption = tr("bn_enm_decrease_max_hp_name")

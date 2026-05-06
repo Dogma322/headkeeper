@@ -213,36 +213,55 @@ bn_larva_des,"At the end of its turn, the enemy gains 2 Fury and restores 5 HP f
 ,,
 ,,
 HEADS,,
-hd_warrior_name,Berserk,Берсерк
-hd_warrior_des,"When you play a tile with a value of 3, deal 3 damage.","Когда вы играете кость со значением 3, наносит 3 урона."
+,,
+hd_berserk_name,Berserk,Берсерк
+hd_berserk_des,"When you play a tile with a value of %d, deal %d damage to enemy.","Когда вы играете кость со значением %d, наносит %d урона противнику."
+hd_berserk_des2,"When you play a tile with a value of %d, deal %d damage to enemy and apply 1 Fury to you.","Когда вы играете кость со значением %d, наносит %d урона противнику и накладывает Ярость %d на вас."
+hd_berserk_des3,"When you play a tile with a value of %d, deal %d damage to enemy and apply 2 Fury to you.","Когда вы играете кость со значением %d, наносит %d урона противнику и накладывает Ярость %d на вас."
+hd_berserk_des_elite,"When you play a tile with a value of %d, deal %d damage to you.","Когда вы играете кость со значением %d, вам наносится %d урона."
+,,
 hd_rock_name,Rock,Скала
-hd_rock_des,"When you play a blue tile, gain 2 block. -%s max HP.","Когда вы играете синюю кость, дает 2 брони. -%s Макс. здоровья."
+hd_rock_des,"When you play a blue tile, gain %s block. -%s max HP.","Когда вы играете синюю кость, дает %s брони. -%s Макс. здоровья."
+hd_rock_des_elite,"When you play a blue tile, give %s block to the enemy.","Когда вы играете синюю кость, дает %s брони вашему противнику."
+,,
 hd_squid_name,Brain Eater,Мозгоед
 hd_squid_des,"At the start of your turn, draw 1 additional tile.",В начале хода вы берете на 1 кость больше.
+,,
 hd_false_king_name,False King,Ложный Король
 hd_false_king_des,Your first tile played each turn triggers twice.  -%s max HP.,Ваша первая кость за ход сработает дважды. -%s Макс. здоровья.
+,,
 hd_thorn_name,White Thorn,Белый Шип
 hd_thorn_des,A bonus that apply Thorns 4 begins to appear on the board.,"На поле начинает появляться бонус, который накладывает Шипы 4."
+,,
 hd_eternal_fury_name,Eternal Fury,Вечная Ярость
 hd_eternal_fury_des,Two bonuses start appearing on the board that apply 1 Fury to you.,"На поле начинают появляться 2 бонуса, которые накладывают на вас Ярость 1."
+,,
 hd_chaos_name,Chaos,Хаос
 hd_chaos_des,"When you play a tile with a value of %s, deal 4 damage. The value changes each turn.","Когда вы играете кость со значением %s, наносит 4 урона. Значение меняется каждый ход."
-hd_chaos_des_elite,"When you play a tile with a value of %s, deal 2 damage to you. The value changes each turn.","Когда вы играете кость со значением %s, вам наносит 2 урона. Значение меняется каждый ход."
+hd_chaos_des_elite,"When you play a tile with a value of %s, deal 2 damage to you. The value changes each turn.","Когда вы играете кость со значением %s, вам наносится 2 урона. Значение меняется каждый ход."
+,,
 hd_moon_name,Moon,Луна
 hd_moon_des,"Whenever you play every 8th tile, deal %s damage.",При разыгрывании каждой 8-й кости наносит %s урона.
+,,
 hd_maw_name,Maw,Пасть
 hd_maw_des,Two bonuses start appearing on the board that double the damage of your next red die. -%s max HP.,"На поле начинают появляться 2 бонуса, которые удваивают урон следующей красной кости. -%s Макс. здоровья."
+,,
 hd_corruptor_name,Corruptor,Осквернитель
 hd_corruptor_des,"When you apply Corruption, you additionally apply 2 more Corruption.",При наложении Скверны накладывается дополнительно 2 Скверны.
+,,
 hd_druid_name,Druid,Друид
 hd_druid_des,"When you restore health, applies 2 Fury. -%s max HP.","Когда вы восстанавливаете здоровье, накладывает Ярость 2. -%s Макс. здоровья."
 hd_druid_des_elite,"When you restore health, applies 1 Fury to enemy.","Когда вы восстанавливаете здоровье, накладывает Ярость 1 на врага."
+,,
 hd_brick_name,Construct,Конструкт
 hd_brick_des,Gаin %s block at the start of each turn.,В начале каждого хода дает %s брони.
+,,
 hd_octopus_name,Apostle,Апостол
 hd_octopus_des,"When you play a green tile, apply Corruption %s  to the enemy. -%s max HP.","Когда вы играете зеленую кость, накладывает Скверна %s на врага. -%s Макс. здоровья."
+,,
 hd_phantom_name,Phantom,Фантом
 hd_phantom_des,"Every time you activate the green bonus, it deals %s damage","Каждый раз когда вы активируете зеленый бонус, наносит %s урона."
+,,
 hd_plant_name,Warden,Хранитель
 hd_plant_des,Two bonuses start appearing on the board that restores %s HP. +%s max HP.,"На поле начинают появляться 2 бонуса, которые восстанавливают %s здоровья. +%s Макс. здоровья."
 ,,

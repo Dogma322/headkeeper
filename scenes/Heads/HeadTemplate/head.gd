@@ -21,8 +21,16 @@ class_name Head
 			
 @export var block_input := false
 
-@onready var hd_name: String
-@onready var description: String
+@onready var hd_name: String:
+	set(value):
+		hd_name = value
+		if is_instance_valid(tooltip_panel):
+			tooltip_panel.caption = hd_name
+@onready var description: String:
+	set(value):
+		description = value
+		if is_instance_valid(tooltip_panel):
+			tooltip_panel.description = value
 
 @onready var damage := 0
 @onready var armor := 0
@@ -36,6 +44,7 @@ class_name Head
 
 var head_choice := false
 var invert_logic := false
+var level = 0
 
 func _ready() -> void:
 	tooltip_stack.hide()
@@ -51,8 +60,7 @@ func _ready() -> void:
 		corruption = template.corruption
 		head_sprite.texture = template.texture
 	
-	update_labels()
-
+	_update_desc()
 
 #func play(_domino):
 	##await get_tree().create_timer(0.5).timeout
@@ -82,6 +90,11 @@ func apply_passive_effect():
 func remove_passive_effect():
 	pass
 
+
+func _update_desc() -> void:
+	pass
+
+
 func _input(event: InputEvent) -> void:
 	if block_input:
 		return
@@ -89,6 +102,7 @@ func _input(event: InputEvent) -> void:
 		if _is_mouse_over(event.position):
 			head_choice = false
 			Signals.head_selected.emit(self)
+
 
 func add_head_to_head_holder():
 	if get_parent() != null:
@@ -125,7 +139,6 @@ func _on_des_area_mouse_exited() -> void:
 func show_des():
 	if DominoManager.dm_dragging:
 		return
-	update_labels()
 	tooltip_stack.show()
 	var size_x = 0
 	for panel in tooltip_stack.get_children():
@@ -135,19 +148,10 @@ func show_des():
 	if tooltip_stack.global_position.x + size_x > get_viewport_rect().size.x:
 		tooltip_stack.global_position.x = get_viewport_rect().size.x - size_x
 
+
 func hide_des():
-	update_labels()
 	tooltip_stack.hide()
 	for panel in tooltip_stack.get_children():
 		if panel is TooltipPanel:
 			panel.hide_tooltip()
 	await get_tree().create_timer(0.15).timeout
-
-
-func update_labels():
-	#final_damage = (damage + Global.hero_strength) * Global.hero_damage_multiplier
-	#final_armor = (armor + Global.hero_dexterity) * Global.hero_armor_multiplier
-	#final_heal = heal
-	
-	tooltip_panel.caption = hd_name
-	tooltip_panel.description = description

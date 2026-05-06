@@ -32,10 +32,11 @@ signal domino_delete_completed
 signal domino_added_to_board(domino: Domino)
 signal domino_chain_removed
 
-signal _1dm_played(domino)
-signal _2dm_played(domino)
-signal _3dm_played(domino)
-signal _4dm_played(domino)
+signal _1dm_played(domino: Domino)
+signal _2dm_played(domino: Domino)
+signal _3dm_played(domino: Domino)
+signal _4dm_played(domino: Domino)
+signal _dm_played(count: int, domino: Domino)
 
 signal attack_dm_played(domino: Domino)
 signal defense_dm_played(domino: Domino)

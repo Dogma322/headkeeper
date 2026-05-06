@@ -64,6 +64,14 @@ func new_run() -> void:
 	Global.vhs_shader.show()
 	top_panel.disabled = false
 	
+	if not MetaManager.selected_head_key.is_empty():
+		Run.current_head_pool.push_back(MetaManager.selected_head_key)
+		Run.reserved_head_pool.erase(MetaManager.selected_head_key)
+		
+		var head = HeadManager.head_pool[MetaManager.selected_head_key].instantiate()
+		head.add_head_to_head_holder()
+		Signals.head_amount_changed.emit()
+	
 	SceneManager.top_panel.gold = 100
 	Run.gold = 100
 	

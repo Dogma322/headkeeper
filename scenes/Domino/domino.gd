@@ -184,6 +184,7 @@ func domino_played():
 		if type == "Skill":
 			Signals.skill_dm_played.emit(self)
 
+	Signals._dm_played.emit(a, self)
 	if a == 1:
 		Signals._1dm_played.emit(self)
 		DominoManager.value1_played_dominoes += 1
@@ -197,6 +198,7 @@ func domino_played():
 		Signals._4dm_played.emit(self)
 		DominoManager.value4_played_dominoes += 1
 
+	Signals._dm_played.emit(b, self)
 	if b == 1:
 		Signals._1dm_played.emit(self)
 		if b != a:

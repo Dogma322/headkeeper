@@ -10,14 +10,26 @@ signal selected
 
 @export var key: String
 
+var hname := ""
+var description := ""
+
 @export var head: HeadTemplate:
 	set(value):
 		head = value
 		if head:
+			# HACK: но не придумал ничего лучше
+			var h: Head = HeadManager.head_pool[key].instantiate()
+			h._update_desc()
+			hname = h.hd_name
+			description = h.description
+			h.free()
+			
 			icon_rect.texture = head.texture
 			cost_label.text = str(head.skulls_cost)
 			cost_label.modulate = Color.WHITE
 		else:
+			hname = ""
+			description = ""
 			icon_rect.texture = null
 			cost_label.text = str(0)
 			cost_label.modulate = Color.TRANSPARENT

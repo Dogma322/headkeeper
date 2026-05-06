@@ -1,6 +1,5 @@
 extends Head
 
-var activated = false
 var last_domino = null
 
 
@@ -13,6 +12,13 @@ func _ready() -> void:
 	super()
 
 
+func _update_desc():
+	if invert_logic:
+		description = tr("hd_chaos_des_elite") % value
+	else:
+		description = tr("hd_chaos_des") % value
+
+
 func apply_passive_effect():
 	label.visible = true
 	label.text = str(value)
@@ -20,11 +26,8 @@ func apply_passive_effect():
 
 func reroll_value():
 	value = randi_range(1, 4)
-	if invert_logic:
-		description = tr("hd_chaos_des_elite") % value
-	else:
-		description = tr("hd_chaos_des") % value
 	label.text = str(value)
+	_update_desc()
 	#update_labels()
 
 
@@ -33,20 +36,16 @@ func head_selected():
 
 
 func chaos(domino):
-	if activated:
-		return
 	if last_domino == domino:
 		return
 	
 	last_domino = domino
-	activated = true
 	
 	if domino.a == value or domino.b == value:
 		add_action()
 	
 	# сбросим флаг чуть позже (чтобы один кадр не схватил повторно)
 	await get_tree().process_frame
-	activated = false
 	last_domino = null
 
 

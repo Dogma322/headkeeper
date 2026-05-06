@@ -130,6 +130,7 @@ font_size = 3
 
 [node name="FreeChoiceButton" parent="OptionsPanel/MarginContainer/VBoxContainer/MapBox" unique_id=1100090417 instance=ExtResource("6_2427u")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(166, 0)
 layout_mode = 2
 text = "Свободный выбор: выкл"
 font_size = 3
