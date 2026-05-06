@@ -106,7 +106,7 @@ func player_turn_begin(is_start: bool) -> void:
 	print("P_BEGIN")
 	Signals.player_turn_begin.emit()
 	
-	if not MetaManager.selected_head_key.is_empty() and prev_mode == Mode.NONE:
+	if is_start and not MetaManager.selected_head_key.is_empty() and prev_mode == Mode.NONE:
 		Run.current_head_pool.push_back(MetaManager.selected_head_key)
 		Run.reserved_head_pool.erase(MetaManager.selected_head_key)
 		
