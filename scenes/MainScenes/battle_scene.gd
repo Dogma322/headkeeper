@@ -46,8 +46,6 @@ func show_head_ui() -> void:
 	var random_head_key = ""
 	if not pool.is_empty():
 		random_head_key = pool.pick_random()
-		random_head_key = "berserk"
-		
 		new_head = HeadManager.head_pool[random_head_key].instantiate()
 		final_pool.push_back(new_head)
 	

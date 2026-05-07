@@ -20,3 +20,7 @@ const MAX_POINTS = 4
 @export var hd_rock_armor_level_2 := 15
 @export var hd_rock_armor_level_3 := 45
 @export var hd_rock_health_decrement := 15
+
+@export_subgroup("Thorn", "hd")
+@export var hd_thorn_thorns_to_hero := 4
+@export var hd_thorn_thorns_to_enemy := 2

@@ -125,29 +125,34 @@ func draw_all_dominoes() -> void:
 func draw_dominoes() -> void:
 	await get_tree().create_timer(0.2).timeout
 	
-	var draw_count = DominoManager.draw_counter + DominoManager.bonus_draw_counter + DominoManager.head_draw_counter
+	var draw_count = DominoManager.draw_counter + DominoManager.bonus_draw_counter + DominoManager.head_draw_counter - DominoManager.head_draw_counter_dec
 	DominoManager.bonus_draw_counter = 0
 	
+	if not DominoManager.discard.is_empty():
+		for i in range(DominoManager.head_discard_draw_counter):
+			var domino = DominoManager.discard.pick_random()
+			DominoManager.discard.erase(domino)
+			
+			# Если кость уже где-то, убираем.
+			if domino.get_parent():
+				domino.get_parent().remove_child(domino)
+			
+			draw_domino(domino)
+			await get_tree().create_timer(0.1).timeout
+	
 	for i in range(draw_count):
-		
 		if DominoManager.temp_deck.size() == 0 and DominoManager.discard.size() == 0:
 			return
 		
 		if DominoManager.temp_deck.size() <= 0:
 			DominoManager.reshuffle_discard_into_deck()
 
-
 		var domino = DominoManager.temp_deck.pick_random()
-		
-
-		
 		DominoManager.temp_deck.erase(domino)
 		
-		
-		# Если кость уже где-то, убираем
+		# Если кость уже где-то, убираем.
 		if domino.get_parent():
 			domino.get_parent().remove_child(domino)
-			#await get_tree().process_frame
 			
 		draw_domino(domino)
 		await get_tree().create_timer(0.1).timeout

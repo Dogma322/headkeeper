@@ -8,6 +8,7 @@ var discard = []
 var draw_counter = 5
 var bonus_draw_counter = 0
 var head_draw_counter = 0
+var head_draw_counter_dec = 0
 var head_discard_draw_counter = 0
 
 var value1_played_dominoes = 0
