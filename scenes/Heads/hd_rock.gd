@@ -1,7 +1,5 @@
 extends Head
 
-var last_domino: Domino = null
-
 func _ready() -> void:
 	Signals.defense_dm_played.connect(play)
 	super()
@@ -33,16 +31,8 @@ func apply_passive_effect() -> void:
 				ActionManager.play_one_action()
 
 
-func play(domino: Domino) -> void:
-	if last_domino == domino:
-		return
-	last_domino = domino
-	
+func play(_domino: Domino) -> void:
 	add_action()
-	
-	# сбросим флаг чуть позже (чтобы один кадр не схватил повторно)
-	await get_tree().process_frame
-	last_domino = null
 
 
 func add_action() -> void:
@@ -52,8 +42,6 @@ func add_action() -> void:
 		match level:
 			0:
 				ActionManager.add(BlockAction.new(self, Global.hero, Constants.hd_rock_armor_per_action_to_hero_level_1))
-				print_stack()
-				print("\n")
 			1:
 				ActionManager.add(BlockAction.new(self, Global.hero, Constants.hd_rock_armor_per_action_to_hero_level_2))
 			3:

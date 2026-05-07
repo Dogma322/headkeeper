@@ -19,6 +19,7 @@ var offset:
 	get:
 		return global_position
 
+
 func _ready() -> void:
 	play_btn.text = tr("play")
 	
@@ -82,7 +83,6 @@ func show_head_ui() -> void:
 			
 		await Signals.head_selected
 		Signals.head_selected.disconnect(head_selected)
-		
 
 
 func head_selected(head: Head) -> void:

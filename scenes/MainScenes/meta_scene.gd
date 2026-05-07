@@ -78,9 +78,15 @@ func start() -> void:
 	for slot in slots:
 		slot.update_availability(MetaManager.skulls)
 
+	if not MetaManager.selected_head_key.is_empty():
+		current_head = HeadManager.head_pool[MetaManager.selected_head_key].instantiate()
+		current_head.head_choice = true
+		head_marker_2d.add_child(current_head)
+
 
 func end() -> void:
 	Signals.head_selected.disconnect(_on_head_selected)
+	current_head.queue_free()
 
 
 func _ready() -> void:
@@ -96,6 +102,7 @@ func _ready() -> void:
 	Global.meta_scene = self
 	SoundManager.set_music("MainMenu")
 	Signals.head_selected.connect(_on_head_selected)
+
 
 func deselect_slot(head):
 	if head_tween and head_tween.is_running():
@@ -115,10 +122,11 @@ func deselect_slot(head):
 	MetaManager.selected_head_key = ""
 	
 	selected_slot = null
-	
 
-func _on_head_selected(head: Head):
+
+func _on_head_selected(head: Head) -> void:
 	deselect_slot(head)
+
 
 func _on_exit_button_pressed() -> void:
 	exit()
@@ -210,7 +218,7 @@ func _on_item_mouse_exited() -> void:
 	hide_tooltips()
 
 
-func hide_tooltips():
+func hide_tooltips() -> void:
 	tooltip_panel.hide_tooltip()
 	if additional_tooltip_panel.visible:
 		additional_tooltip_panel.hide_tooltip()
