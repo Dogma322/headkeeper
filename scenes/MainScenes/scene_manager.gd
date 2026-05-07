@@ -65,10 +65,10 @@ func new_run() -> void:
 	top_panel.disabled = false
 	
 	if not MetaManager.selected_head_key.is_empty():
-		Run.current_head_pool.push_back(MetaManager.selected_head_key)
+		var head = HeadManager.head_pool[MetaManager.selected_head_key].instantiate()
+		Run.current_head_pool.push_back(head)
 		Run.reserved_head_pool.erase(MetaManager.selected_head_key)
 		
-		var head = HeadManager.head_pool[MetaManager.selected_head_key].instantiate()
 		head.add_head_to_head_holder()
 		Signals.head_amount_changed.emit()
 	

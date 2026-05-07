@@ -3,7 +3,7 @@ extends Node
 ## Содержит данные текущего забега.
 
 var reserved_head_pool := {}
-var current_head_pool: Array = []
+var current_head_pool: Array[Head] = []
 
 var current_bonus_pool := {}
 

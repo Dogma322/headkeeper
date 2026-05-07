@@ -4,11 +4,11 @@ var dominoes_on_board = []
 var deck = []
 var temp_deck = []
 var discard = []
-var flamed = []
 
 var draw_counter = 5
 var bonus_draw_counter = 0
 var head_draw_counter = 0
+var head_discard_draw_counter = 0
 
 var value1_played_dominoes = 0
 var value2_played_dominoes = 0

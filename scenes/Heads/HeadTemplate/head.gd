@@ -42,6 +42,7 @@ class_name Head
 #@onready var final_armor
 #@onready var final_heal
 
+var key := ""
 var head_choice := false
 var invert_logic := false
 var level = 0
@@ -60,7 +61,7 @@ func _ready() -> void:
 		corruption = template.corruption
 		head_sprite.texture = template.texture
 	
-	_update_desc()
+	update_desc()
 
 #func play(_domino):
 	##await get_tree().create_timer(0.5).timeout
@@ -91,7 +92,7 @@ func remove_passive_effect():
 	pass
 
 
-func _update_desc() -> void:
+func update_desc() -> void:
 	pass
 
 

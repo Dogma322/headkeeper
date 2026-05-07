@@ -124,9 +124,13 @@ layout_mode = 2
 [node name="HeadHolder" parent="." unique_id=2074985017 instance=ExtResource("11_aonfs")]
 center_position = Vector2(111, 170)
 
+[node name="CenterHeadHolder" parent="." unique_id=182073813 instance=ExtResource("11_aonfs")]
+center_position = Vector2(320, 170)
+holder_type = "Center"
+
 [node name="EnemyHeadHolder" parent="." unique_id=1674420254 instance=ExtResource("11_aonfs")]
 center_position = Vector2(535, 100)
-is_enemy_holder = true
+holder_type = "Enemy"
 
 [node name="Camera" parent="." unique_id=888122831 instance=ExtResource("19_mjddb")]
 position = Vector2(320, 180)

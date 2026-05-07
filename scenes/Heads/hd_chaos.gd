@@ -12,7 +12,7 @@ func _ready() -> void:
 	super()
 
 
-func _update_desc():
+func update_desc():
 	if invert_logic:
 		description = tr("hd_chaos_des_elite") % value
 	else:
@@ -27,7 +27,7 @@ func apply_passive_effect():
 func reroll_value():
 	value = randi_range(1, 4)
 	label.text = str(value)
-	_update_desc()
+	update_desc()
 	#update_labels()
 
 

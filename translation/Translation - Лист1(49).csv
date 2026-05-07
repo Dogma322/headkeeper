@@ -216,16 +216,19 @@ HEADS,,
 ,,
 hd_berserk_name,Berserk,Берсерк
 hd_berserk_des,"When you play a tile with a value of %d, deal %d damage to enemy.","Когда вы играете кость со значением %d, наносит %d урона противнику."
-hd_berserk_des2,"When you play a tile with a value of %d, deal %d damage to enemy and apply 1 Fury to you.","Когда вы играете кость со значением %d, наносит %d урона противнику и накладывает Ярость %d на вас."
-hd_berserk_des3,"When you play a tile with a value of %d, deal %d damage to enemy and apply 2 Fury to you.","Когда вы играете кость со значением %d, наносит %d урона противнику и накладывает Ярость %d на вас."
+hd_berserk_des2,"When you play a tile with a value of %d, deal %d damage to enemy and apply %s Fury to you.","Когда вы играете кость со значением %d, наносит %d урона противнику и накладывает Ярость %d на вас."
 hd_berserk_des_elite,"When you play a tile with a value of %d, deal %d damage to you.","Когда вы играете кость со значением %d, вам наносится %d урона."
 ,,
 hd_rock_name,Rock,Скала
 hd_rock_des,"When you play a blue tile, gain %s block. -%s max HP.","Когда вы играете синюю кость, дает %s брони. -%s Макс. здоровья."
+hd_rock_des2,"When you play a blue tile, gain %s block. +%s block at battle start. -%s max HP.","Когда вы играете синюю кость, дает %s брони. +%s брони в начале боя. -%s Макс. здоровья."
 hd_rock_des_elite,"When you play a blue tile, give %s block to the enemy.","Когда вы играете синюю кость, дает %s брони вашему противнику."
 ,,
 hd_squid_name,Brain Eater,Мозгоед
 hd_squid_des,"At the start of your turn, draw 1 additional tile.",В начале хода вы берете на 1 кость больше.
+hd_squid_des2,"At the start of your turn, draw 1 additional tile from deck and 1 extra tile from draw deck.",В начале хода вы берете 1 кость из колоды и 1 кость из сброса.
+hd_squid_des3,"At the start of your turn, draw 1 additional tile from deck, 1 extra tile from draw deck, and 1 random tile","В начале хода вы берете 1 кость из колоды, 1 кость из сброса и 1 случайную кость."
+hd_squid_des_elite,Reduces the draw at the beginning of the turn by 1.,Уменьшает добор в начале хода на 1.
 ,,
 hd_false_king_name,False King,Ложный Король
 hd_false_king_des,Your first tile played each turn triggers twice.  -%s max HP.,Ваша первая кость за ход сработает дважды. -%s Макс. здоровья.

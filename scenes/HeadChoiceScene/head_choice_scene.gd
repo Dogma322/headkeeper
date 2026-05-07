@@ -31,6 +31,10 @@ func end():
 
 func _on_head_selected(head: Head) -> void:
 	choice_selected(head)
+	
+	Run.current_head_pool.push_back(head)
+	Run.reserved_head_pool.erase(head.key)
+	
 	head.add_head_to_head_holder()
 
 
@@ -53,15 +57,15 @@ func spawn_heads():
 	spawning = true
 	choice_locked = false
 
+	var keys = Run.reserved_head_pool.keys().duplicate()
+
 	for i in range(3):
-		var keys =  Run.reserved_head_pool.keys()
 		var random_key = keys.pick_random()
 		var head_scene = HeadManager.head_pool[random_key]
-
-		Run.reserved_head_pool.erase(random_key)
+		keys.erase(random_key)
 
 		var head = head_scene.instantiate()
-
+		head.key = random_key
 
 		#var scene = Run.reserved_head_pool.values().pick_random()
 		#var head = scene.instantiate()

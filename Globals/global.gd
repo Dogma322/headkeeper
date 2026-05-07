@@ -12,6 +12,7 @@ func _ready() -> void:
 @onready var board
 @onready var board_bonus_container
 @onready var head_holder
+@onready var center_head_holder
 @onready var enemy_head_holder
 @onready var action_card_container
 @onready var campfire_card_container

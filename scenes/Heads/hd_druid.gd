@@ -5,7 +5,7 @@ func _ready() -> void:
 	super()
 
 
-func _update_desc() -> void:
+func update_desc() -> void:
 	if invert_logic:
 		description = TextFormatter.highlight_keywords(tr("hd_druid_des_elite"))
 	else:

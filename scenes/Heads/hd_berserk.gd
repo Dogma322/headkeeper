@@ -5,7 +5,7 @@ func _ready() -> void:
 	super()
 
 
-func _update_desc() -> void:
+func update_desc() -> void:
 	if invert_logic:
 		description = tr("hd_berserk_des_elite") % [Constants.hd_berserk_activator_value, Constants.hd_berserk_damage_to_hero]
 	else:
@@ -14,7 +14,7 @@ func _update_desc() -> void:
 			1:
 				description = tr("hd_berserk_des2") % [Constants.hd_berserk_activator_value, Constants.hd_berserk_damage_to_enemy, Constants.hd_berserk_fury_level_2]
 			2:
-				description = tr("hd_berserk_des3") % [Constants.hd_berserk_activator_value, Constants.hd_berserk_damage_to_enemy, Constants.hd_berserk_fury_level_3]
+				description = tr("hd_berserk_des2") % [Constants.hd_berserk_activator_value, Constants.hd_berserk_damage_to_enemy, Constants.hd_berserk_fury_level_3]
 
 
 func play(count: int, _domino: Domino) -> void:

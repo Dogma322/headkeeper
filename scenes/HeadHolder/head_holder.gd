@@ -13,17 +13,20 @@ extends Node2D
 @export var amplitude: float = 3                      # амплитуда синусоиды
 @export var spacing: float = 35                       # расстояние между головами
 @export var move_duration: float = 0.4                # время движения твина
-@export var is_enemy_holder: bool = false
+@export_enum("Hero", "Center", "Enemy") var holder_type := "Hero"
 
 var time: float = 0.0
 
 func _ready() -> void:
 	marker_2d.global_position = center_position
 	if not Engine.is_editor_hint():
-		if is_enemy_holder:
-			Global.enemy_head_holder = self
-		else:
-			Global.head_holder = self
+		match holder_type:
+			"Hero":
+				Global.head_holder = self
+			"Center":
+				Global.center_head_holder = self
+			"Enemy":
+				Global.enemy_head_holder = self
 
 func _process(delta: float) -> void:
 	time += delta

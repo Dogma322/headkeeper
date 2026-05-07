@@ -18,9 +18,9 @@ enum Mode {
 	CHOOSE_ELITE_HEAD
 }
 
-var prev_mode = Mode.NONE
 var mode = Mode.NONE
 var current_enemy_head: Head = null
+var upgrade_head := false
 
 func _ready() -> void:
 	Signals.play_btn_pressed.connect(play_dominoes)
@@ -223,7 +223,6 @@ func enemy_dead():
 
 
 func show_rewards() -> void:
-	prev_mode = mode
 	DominoManager.block_domino_input = false
 #	show_domino_choice()
 	
@@ -238,9 +237,13 @@ func show_rewards() -> void:
 			
 			if current_enemy_head:
 				current_enemy_head.get_parent().remove_child(current_enemy_head)
-				Global.head_holder.add_child(current_enemy_head)
-				
+				if upgrade_head:
+					current_enemy_head.level += 1
+					upgrade_head = false
 				current_enemy_head.invert_logic = false
+				current_enemy_head.update_desc()
+				
+				Global.head_holder.add_child(current_enemy_head)
 				current_enemy_head.apply_passive_effect()
 	
 #	await Signals.domino_selected
