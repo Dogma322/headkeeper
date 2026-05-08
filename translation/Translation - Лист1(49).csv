@@ -248,6 +248,8 @@ hd_eternal_fury_des_elite,"A bonus start appearing on the board that apply 3 Fur
 ,,
 hd_chaos_name,Chaos,Хаос
 hd_chaos_des,"When you play a tile with a value of %s, deal 4 damage. The value changes each turn.","Когда вы играете кость со значением %s, наносит 4 урона. Значение меняется каждый ход."
+hd_chaos_des2,"When you play a tile with a value of %s, deal 5 damage and give you additonal status (Fury 1, Regen 1, Thorns 1, Draw 1). The value changes each turn.","Когда вы играете кость со значением %s, наносит 5 урона и накладывает на вас случайный положительный статус (Ярость 1, Регенерация 1, Шипы 1, Добор 1). Значение меняется каждый ход."
+hd_chaos_des3,"When you play a tile with a value of %s, deal 6 damage and give you additonal status (Fury 2, Regen 2, Thorns 2, Draw 2). The value changes each turn.","Когда вы играете кость со значением %s, наносит 6 урона и накладывает на вас случайный положительный статус (Ярость 2, Регенерация 2, Шипы 2, Добор 2). Значение меняется каждый ход."
 hd_chaos_des_elite,"When you play a tile with a value of %s, deal 2 damage to you. The value changes each turn.","Когда вы играете кость со значением %s, вам наносится 2 урона. Значение меняется каждый ход."
 ,,
 hd_moon_name,Moon,Луна
