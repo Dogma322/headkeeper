@@ -253,7 +253,10 @@ hd_chaos_des3,"When you play a tile with a value of %s, deal 6 damage and give y
 hd_chaos_des_elite,"When you play a tile with a value of %s, deal 2 damage to you. The value changes each turn.","Когда вы играете кость со значением %s, вам наносится 2 урона. Значение меняется каждый ход."
 ,,
 hd_moon_name,Moon,Луна
-hd_moon_des,"Whenever you play every 8th tile, deal %s damage.",При разыгрывании каждой 8-й кости наносит %s урона.
+hd_moon_des,"Whenever you play every %dth tile, deal %s damage.","При разыгрывании каждой %d-й кости наносит %s урона."
+hd_moon_des2,"Whenever you play every %dth tile, deal %s damage and give %s block.","При разыгрывании каждой %d-й кости наносит %s урона и дает %s брони."
+hd_moon_des3,"Whenever you play every %dth tile, deal %s damage, give %s block and gives %s Draw.","При разыгрывании каждой %d-й кости наносит %s урона, дает %s брони и дает Добор %s."
+hd_moon_des_elite,"Whenever you play every %dth tile, deal %s damage to hero.","При разыгрывании каждой %d-й кости наносит %s урона герою."
 ,,
 hd_maw_name,Maw,Пасть
 hd_maw_des,Two bonuses start appearing on the board that double the damage of your next red die. -%s max HP.,"На поле начинают появляться 2 бонуса, которые удваивают урон следующей красной кости. -%s Макс. здоровья."

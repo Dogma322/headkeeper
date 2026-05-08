@@ -14,7 +14,6 @@ class_name Head
 			if is_instance_valid(head_sprite):
 				head_sprite.texture = template.texture
 			hd_name = template.get_translated_name()
-			description = template.get_translated_desc()
 		else:
 			if is_instance_valid(head_sprite):
 				head_sprite.texture = null
@@ -53,7 +52,6 @@ func _ready() -> void:
 	
 	if template:
 		hd_name = template.get_translated_name()
-		description = template.get_translated_desc()
 		damage = template.damage
 		armor = template.armor
 		heal = template.heal

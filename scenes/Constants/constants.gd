@@ -24,3 +24,13 @@ const MAX_POINTS = 4
 @export_subgroup("Thorn", "hd")
 @export var hd_thorn_thorns_to_hero := 4
 @export var hd_thorn_thorns_to_enemy := 2
+
+@export_subgroup("Moon", "hd")
+@export var hd_moon_domino_activator_value := 8
+@export var hd_moon_damage_level_1 := 12
+@export var hd_moon_damage_level_2 := 12
+@export var hd_moon_damage_level_3 := 16
+@export var hd_moon_armor_level_2 := 12
+@export var hd_moon_armor_level_3 := 16
+@export var hd_moon_draw_level_3 := 1
+@export var hd_moon_damage_to_hero := 8
