@@ -29,6 +29,7 @@ func initialize_status(status: StatusResource):
 	
 	if status.id == "thorns":
 		if status.owner == Global.hero:
+			status.mult = Global.hero.thorns_damage_mult
 			Signals.deal_enemy_thorn_damage.connect(add_action.bind(status))
 		elif status.owner == Global.enemy:
 			Signals.deal_hero_thorn_damage.connect(add_action.bind(status))
@@ -72,13 +73,9 @@ func remove_status_effect(status: StatusResource):
 func add_action(status: StatusResource):
 	match status.id:
 		"thorns":
-			var mult = 1.0
-			
-			var target
+			var target = null
 			if status.owner == Global.hero:
 				target = Global.enemy
-				mult = Global.hero.thorns_damage_mult
-				
 			if status.owner == Global.enemy:
 				target = Global.hero
-			ActionManager.insert_next(AttackWithoutAnim.new(target, status.stacks * mult))
+			ActionManager.insert_next(AttackWithoutAnim.new(target, status.stacks * status.mult))

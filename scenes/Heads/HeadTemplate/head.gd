@@ -30,7 +30,7 @@ class_name Head
 	set(value):
 		description = value
 		if is_instance_valid(tooltip_panel):
-			tooltip_panel.description = value
+			tooltip_panel.description = TextFormatter.highlight_keywords(value)
 
 @onready var damage := 0
 @onready var armor := 0
@@ -152,6 +152,8 @@ func show_des():
 		if panel is TooltipPanel:
 			panel.show_tooltip()
 			size_x += panel.size.x
+	if tooltip_stack.global_position.x < 0:
+		tooltip_stack.global_position.x = 0
 	if tooltip_stack.global_position.x + size_x > get_viewport_rect().size.x:
 		tooltip_stack.global_position.x = get_viewport_rect().size.x - size_x
 

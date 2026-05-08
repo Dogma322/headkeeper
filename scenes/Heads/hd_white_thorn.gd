@@ -2,9 +2,6 @@ extends Head
 
 ## Голова: Белый Шип
 
-func _ready() -> void:
-	super()
-
 
 func battle_start_add_action() -> void:
 	if not invert_logic and level == 2:
@@ -31,10 +28,10 @@ func apply_passive_effect() -> void:
 		BoardManager.bonus_pool.append(BoardManager.h_thorns)
 		match level:
 			1:
-				Global.hero.thorns_damage_mult += 1.0
+				Global.hero.thorns_damage_mult = 2
 			2:
-				Global.hero.thorns_damage_mult += 1.0
-
+				Global.hero.thorns_damage_mult = 2
+	pass
 
 func remove_passive_effect() -> void:
 	if invert_logic:
@@ -43,6 +40,7 @@ func remove_passive_effect() -> void:
 		BoardManager.bonus_pool.erase(BoardManager.h_thorns)
 		match level:
 			1:
-				Global.hero.thorns_damage_mult -= 1.0
+				Global.hero.thorns_damage_mult = 1
 			2:
-				Global.hero.thorns_damage_mult -= 1.0
+				Global.hero.thorns_damage_mult = 1
+	pass

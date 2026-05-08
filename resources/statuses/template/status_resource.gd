@@ -25,6 +25,7 @@ var des
 @export_multiline var description: String 
 
 var stacks: int: set = set_stacks
+var mult: int = 1
 var owner
 
 
