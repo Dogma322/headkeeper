@@ -72,10 +72,13 @@ func remove_status_effect(status: StatusResource):
 func add_action(status: StatusResource):
 	match status.id:
 		"thorns":
+			var mult = 1.0
+			
 			var target
 			if status.owner == Global.hero:
 				target = Global.enemy
+				mult = Global.hero.thorns_damage_mult
 				
 			if status.owner == Global.enemy:
 				target = Global.hero
-			ActionManager.insert_next(AttackWithoutAnim.new(target, status.stacks))
+			ActionManager.insert_next(AttackWithoutAnim.new(target, status.stacks * mult))

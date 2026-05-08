@@ -87,6 +87,10 @@ func show_head_ui() -> void:
 
 
 func head_selected(head: Head) -> void:
+	head.invert_logic = false
+	head.remove_passive_effect()
+	head.invert_logic = true
+	
 	head.get_parent().remove_child(head)
 	Global.enemy_head_holder.add_child(head)
 	head.apply_passive_effect()

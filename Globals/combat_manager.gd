@@ -114,12 +114,18 @@ func player_turn_begin(is_start: bool) -> void:
 	apply_hero_turn_begin_status_effects()
 	await ActionManager.play_actions()
 	
-	add_heads_turn_begin_actions()
-	await ActionManager.play_actions()
-	
 	turn += 1
 	if turn == 1:
+		add_hero_heads_battle_begin_actions()
+		await ActionManager.play_actions()
+		
+		add_hero_heads_turn_begin_actions()
+		await ActionManager.play_actions()
+		
 		Signals.fight_started.emit()
+	else:
+		add_hero_heads_turn_begin_actions()
+		await ActionManager.play_actions()
 	
 	await get_tree().create_timer(0.5).timeout
 	
@@ -196,7 +202,14 @@ func apply_hero_turn_begin_status_effects():
 		if icon.status.turn_begin_effect:
 			StatusManager.apply_status_effect(icon.status)
 
-func add_heads_turn_begin_actions():
+
+func add_hero_heads_battle_begin_actions() -> void:
+	for head in Global.head_holder.get_children():
+		if head is Head:
+			head.battle_start_add_action()
+
+
+func add_hero_heads_turn_begin_actions() -> void:
 	for head in Global.head_holder.get_children():
 		if head is Head:
 			head.turn_begin_add_action()
@@ -240,6 +253,8 @@ func show_rewards() -> void:
 				if upgrade_head:
 					current_enemy_head.level += 1
 					upgrade_head = false
+				
+				current_enemy_head.remove_passive_effect()
 				current_enemy_head.invert_logic = false
 				current_enemy_head.update_desc()
 				

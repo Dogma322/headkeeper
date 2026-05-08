@@ -1,24 +1,12 @@
 extends Head
 
-var played = false
-
 
 func _ready() -> void:
 	Signals.defense_dm_played.connect(play)
-	Signals.player_turn_begin.connect(on_player_turn_begin)
-	Signals.stage_changed.connect(reset)
 	super()
 
 
-func reset() -> void:
-	played = false
-
-
-func on_player_turn_begin() -> void:
-	if played:
-		return
-	played = true
-
+func battle_start_add_action() -> void:
 	if not invert_logic:
 		match level:
 			1:

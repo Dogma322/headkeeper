@@ -80,6 +80,12 @@ func add_action():
 	pass
 
 
+## Происходит при начале хода в начале боя.
+func battle_start_add_action() -> void:
+	pass
+
+
+## Происходит при начале хода.
 func turn_begin_add_action():
 	pass
 

@@ -19,6 +19,7 @@ var bonus_block = 0
 var damage_mult = 1
 var bonus_damage = 0
 var incoming_damage_mult = 1
+var thorns_damage_mult := 1.0
 
 var is_dead
 

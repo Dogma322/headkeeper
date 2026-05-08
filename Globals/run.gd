@@ -44,6 +44,11 @@ func reset():
 	skulls = 0
 	gold = 0
 	
+	for head in Global.enemy_head_holder.get_children():
+		if head is Head:
+			head.remove_passive_effect()
+			head.queue_free()
+	
 	for head in Global.head_holder.get_children():
 		if head is Head:
 			head.remove_passive_effect()
