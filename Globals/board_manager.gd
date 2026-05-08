@@ -14,6 +14,7 @@ var green_bonuses_activated = 0
 @onready var e_4def = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_4_defense.tscn")
 @onready var e_10def = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_10_defense.tscn")
 @onready var e_15def = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_15_defense.tscn")
+@onready var e_3fury = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_3_fury.tscn")
 @onready var e_5fury = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_5_fury.tscn")
 @onready var e_10fury = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_10_fury.tscn")
 @onready var e_5heal = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_5_heal.tscn")

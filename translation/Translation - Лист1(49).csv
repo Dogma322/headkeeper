@@ -241,7 +241,10 @@ hd_thorn_des3,"A bonus that apply Thorns 4 to you begins to appear on the board.
 hd_thorn_des_elite,"A bonus that apply Thorns 2 to enemy begins to appear on the board.","На поле начинает появляться бонус, который накладывает Шипы 2 на врага."
 ,,
 hd_eternal_fury_name,Eternal Fury,Вечная Ярость
-hd_eternal_fury_des,Two bonuses start appearing on the board that apply 1 Fury to you.,"На поле начинают появляться 2 бонуса, которые накладывают на вас Ярость 1."
+hd_eternal_fury_des,"Two bonuses start appearing on the board that apply 1 Fury to you.","На поле начинают появляться 2 бонуса, которые накладывают на вас Ярость 1."
+hd_eternal_fury_des2,"Two bonuses start appearing on the board that apply 1 Fury to you. Every time you get a Fury you get additional Fury 1.","На поле начинают появляться 2 бонуса, которые накладывают на вас Ярость 1. Каждый раз когда вы получаете Ярость вы получаете дополнительно Ярость 1."
+hd_eternal_fury_des3,"Two bonuses start appearing on the board that apply 1 Fury to you. Every time you get a Fury you get additional Fury 2.","На поле начинают появляться 2 бонуса, которые накладывают на вас Ярость 1. Каждый раз когда вы получаете Ярость вы получаете дополнительно Ярость 2."
+hd_eternal_fury_des_elite,"A bonus start appearing on the board that apply 3 Fury to enemy.","На поле начинают появляться бонус, который накладывает на врага Ярость 3."
 ,,
 hd_chaos_name,Chaos,Хаос
 hd_chaos_des,"When you play a tile with a value of %s, deal 4 damage. The value changes each turn.","Когда вы играете кость со значением %s, наносит 4 урона. Значение меняется каждый ход."

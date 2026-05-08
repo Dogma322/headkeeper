@@ -11,10 +11,8 @@ func battle_start_add_action() -> void:
 		match level:
 			1:
 				ActionManager.add(BlockAction.new(self, Global.hero, Constants.hd_rock_armor_level_2))
-				ActionManager.play_one_action()
 			2:
 				ActionManager.add(BlockAction.new(self, Global.hero, Constants.hd_rock_armor_level_3))
-				ActionManager.play_one_action()
 
 
 func update_desc() -> void:
@@ -31,7 +29,10 @@ func update_desc() -> void:
 
 
 func apply_passive_effect() -> void:
-	ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, -Constants.hd_rock_health_decrement if invert_logic else Constants.hd_rock_health_decrement))
+	if invert_logic:
+		ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, -Constants.hd_rock_health_decrement))
+	else:
+		ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, Constants.hd_rock_health_decrement))
 	ActionManager.play_one_action()
 
 

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b7wsomsm3auop"]
+
+[ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_70upi"]
+[ext_resource type="Script" uid="uid://che2yovu4tjeg" path="res://scenes/BoardBonuses/EnemyBonuses/bb_e_3_fury.gd" id="2_70upi"]
+[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_1bpsh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mg67c"]
+atlas = ExtResource("3_1bpsh")
+region = Rect2(904, 48, 28, 28)
+
+[node name="bb_e_3fury" unique_id=470544141 instance=ExtResource("1_70upi")]
+script = ExtResource("2_70upi")
+
+[node name="Sprite2D" parent="." index="0" unique_id=790081820]
+texture = SubResource("AtlasTexture_mg67c")
+
+[node name="ValueLabel" parent="." index="2" unique_id=1340414324]
+offset_left = 4.0
+text = "3"
