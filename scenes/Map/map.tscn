@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bsf8plublguny" path="res://scenes/Map/level_settings.gd" id="2_d6mms"]
 
 [sub_resource type="Resource" id="Resource_exngo"]
+resource_name = "Level 0"
 script = ExtResource("2_d6mms")
 probability_battle_weight = 1.0
 probability_battle_elite_weight = 0.0
@@ -13,62 +14,77 @@ probability_campfire_weight = 0.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_2rm8l"]
+resource_name = "Level 1"
 script = ExtResource("2_d6mms")
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_app3p"]
+resource_name = "Level 2"
 script = ExtResource("2_d6mms")
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_ykc5i"]
+resource_name = "Level 3"
 script = ExtResource("2_d6mms")
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_2yrau"]
+resource_name = "Level 4"
 script = ExtResource("2_d6mms")
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_57bgo"]
+resource_name = "Level 5"
 script = ExtResource("2_d6mms")
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_m76i7"]
+resource_name = "Level 6"
 script = ExtResource("2_d6mms")
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_dmbmi"]
+resource_name = "Level 7"
 script = ExtResource("2_d6mms")
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_5ugwt"]
+resource_name = "Level 8"
 script = ExtResource("2_d6mms")
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_xllsm"]
+resource_name = "Level 9"
 script = ExtResource("2_d6mms")
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_eftq7"]
+resource_name = "Level 10"
 script = ExtResource("2_d6mms")
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_1f7lc"]
+resource_name = "Level 11"
 script = ExtResource("2_d6mms")
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_aasa8"]
+resource_name = "Level 12"
 script = ExtResource("2_d6mms")
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_53cjn"]
+resource_name = "Level 13"
 script = ExtResource("2_d6mms")
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_b8hlp"]
+resource_name = "Level 14"
 script = ExtResource("2_d6mms")
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_d6mms"]
+resource_name = "Level 15"
 script = ExtResource("2_d6mms")
 probability_battle_weight = 1.0
 probability_battle_elite_weight = 0.0
