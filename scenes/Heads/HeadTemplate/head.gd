@@ -41,6 +41,7 @@ class_name Head
 #@onready var final_armor
 #@onready var final_heal
 
+var key := ""
 var head_choice := false
 var invert_logic := false
 var level = 0
@@ -112,6 +113,7 @@ func add_head_to_head_holder():
 	if get_parent() != null:
 		get_parent().remove_child(self)
 	Global.head_holder.add_child(self)
+	Signals.head_amount_changed.emit()
 	apply_passive_effect()
 
 

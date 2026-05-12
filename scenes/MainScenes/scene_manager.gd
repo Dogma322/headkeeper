@@ -71,7 +71,6 @@ func new_run() -> void:
 		Run.reserved_head_pool.erase(MetaManager.selected_head_key)
 		
 		head.add_head_to_head_holder()
-		Signals.head_amount_changed.emit()
 	
 	SceneManager.top_panel.gold = 100
 	Run.gold = 100

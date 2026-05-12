@@ -95,6 +95,11 @@ func head_selected(head: Head) -> void:
 	Global.enemy_head_holder.add_child(head)
 	head.apply_passive_effect()
 	
+	Run.last_removed_head_pos = Run.current_head_pool.find(head)
+	Run.current_head_pool.erase(head)
+	Run.current_head_pool_keys.erase(head.key)
+	Signals.head_amount_changed.emit()
+	
 	if head != random_head:
 		CombatManager.upgrade_head = true
 	

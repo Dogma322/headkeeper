@@ -33,7 +33,7 @@ func _on_head_selected(head: Head) -> void:
 	choice_selected(head)
 	
 	Run.current_head_pool.push_back(head)
-	Run.current_head_pool_keys.push_back(MetaManager.selected_head_key)
+	Run.current_head_pool_keys.push_back(head.key)
 	Run.reserved_head_pool.erase(head.key)
 	
 	head.add_head_to_head_holder()

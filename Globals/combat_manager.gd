@@ -251,8 +251,14 @@ func show_rewards() -> void:
 			if current_enemy_head:
 				current_enemy_head.get_parent().remove_child(current_enemy_head)
 				if upgrade_head:
+					Run.current_head_pool.insert(Run.last_removed_head_pos, current_enemy_head)
+					Run.current_head_pool_keys.insert(Run.last_removed_head_pos, current_enemy_head.key)
 					current_enemy_head.level += 1
 					upgrade_head = false
+				else:
+					Run.current_head_pool.push_back(current_enemy_head)
+					Run.current_head_pool_keys.push_back(current_enemy_head.key)
+				Signals.head_amount_changed.emit()
 				
 				current_enemy_head.remove_passive_effect()
 				current_enemy_head.invert_logic = false
@@ -260,6 +266,7 @@ func show_rewards() -> void:
 				
 				Global.head_holder.add_child(current_enemy_head)
 				current_enemy_head.apply_passive_effect()
+				
 	
 #	await Signals.domino_selected
 #	await get_tree().create_timer(1).timeout

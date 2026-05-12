@@ -61,8 +61,6 @@ func head_selected(slot: ShopSlot) -> void:
 		Run.reserved_head_pool.erase(slot.item_key)
 		
 		head.add_head_to_head_holder()
-		
-		Signals.head_amount_changed.emit()
 
 
 func bonus_selected(slot: ShopSlot) -> void:
