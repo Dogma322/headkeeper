@@ -25,7 +25,7 @@ signal green_bonus_played
 signal red_bonus_played
 signal yellow_bonus_played
 
-signal domino_added
+signal domino_amount_changed
 signal domino_selected
 signal head_selected(head: Head)
 signal action_card_selected

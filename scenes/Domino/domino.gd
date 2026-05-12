@@ -341,11 +341,9 @@ func _on_area_2d_input_event(_viewport, event, _shape):
 				
 				if DominoManager.delete_mode:
 					if !deleted:
-							deleted = true
-							remove_from_deck()
-							return
-					else:
-						return
+						deleted = true
+						remove_from_deck()
+					return
 				
 				if domino_choice:
 					if Global.choice_scene.choice_locked:
@@ -371,7 +369,7 @@ func add_domino_to_deck():
 	tween.tween_property(self, "scale", Vector2(0,0), 0.5)
 	DominoManager.temp_deck.append(self)
 	DominoManager.deck.append(self)
-	Signals.domino_added.emit()
+	Signals.domino_amount_changed.emit()
 	domino_choice = false
 
 
@@ -384,6 +382,8 @@ func remove_from_deck():
 	tween.tween_property(self, "rotation_degrees", 180, 0.25)
 	await tween.finished
 	DominoManager.temp_deck.erase(self)
+	DominoManager.deck.erase(self)
+	Signals.domino_amount_changed.emit()
 	queue_free()
 
 
