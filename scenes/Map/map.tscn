@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://cv74pol5ol003" path="res://scenes/Map/map.gd" id="1_4rr3d"]
 [ext_resource type="Script" uid="uid://bsf8plublguny" path="res://scenes/Map/level_settings.gd" id="2_d6mms"]
 
-[sub_resource type="Resource" id="Resource_exngo"]
-resource_name = "Level 0"
+[sub_resource type="Resource" id="Resource_2rm8l"]
+resource_name = "Level 1"
 script = ExtResource("2_d6mms")
 probability_battle_weight = 1.0
 probability_battle_elite_weight = 0.0
@@ -13,81 +13,141 @@ probability_bonus_weight = 0.0
 probability_campfire_weight = 0.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
-[sub_resource type="Resource" id="Resource_2rm8l"]
-resource_name = "Level 1"
-script = ExtResource("2_d6mms")
-metadata/_custom_type_script = "uid://bsf8plublguny"
-
 [sub_resource type="Resource" id="Resource_app3p"]
 resource_name = "Level 2"
 script = ExtResource("2_d6mms")
+probability_battle_weight = 48.0
+probability_battle_elite_weight = 0.0
+probability_shop_weight = 12.0
+probability_bonus_weight = 5.0
+probability_campfire_weight = 12.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_ykc5i"]
 resource_name = "Level 3"
 script = ExtResource("2_d6mms")
+probability_battle_weight = 48.0
+probability_battle_elite_weight = 0.0
+probability_shop_weight = 12.0
+probability_bonus_weight = 5.0
+probability_campfire_weight = 12.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_2yrau"]
 resource_name = "Level 4"
 script = ExtResource("2_d6mms")
+probability_battle_weight = 48.0
+probability_battle_elite_weight = 0.0
+probability_shop_weight = 12.0
+probability_bonus_weight = 5.0
+probability_campfire_weight = 12.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_57bgo"]
 resource_name = "Level 5"
 script = ExtResource("2_d6mms")
+probability_battle_weight = 48.0
+probability_battle_elite_weight = 0.0
+probability_shop_weight = 12.0
+probability_bonus_weight = 5.0
+probability_campfire_weight = 12.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_m76i7"]
 resource_name = "Level 6"
 script = ExtResource("2_d6mms")
+probability_battle_weight = 48.0
+probability_battle_elite_weight = 16.0
+probability_shop_weight = 12.0
+probability_bonus_weight = 5.0
+probability_campfire_weight = 12.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_dmbmi"]
 resource_name = "Level 7"
 script = ExtResource("2_d6mms")
+probability_battle_weight = 48.0
+probability_battle_elite_weight = 16.0
+probability_shop_weight = 12.0
+probability_bonus_weight = 5.0
+probability_campfire_weight = 12.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_5ugwt"]
 resource_name = "Level 8"
 script = ExtResource("2_d6mms")
+probability_battle_weight = 48.0
+probability_battle_elite_weight = 16.0
+probability_shop_weight = 12.0
+probability_bonus_weight = 5.0
+probability_campfire_weight = 12.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_xllsm"]
 resource_name = "Level 9"
 script = ExtResource("2_d6mms")
+probability_battle_weight = 0.0
+probability_battle_elite_weight = 0.0
+probability_shop_weight = 0.0
+probability_bonus_weight = 1.0
+probability_campfire_weight = 0.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_eftq7"]
 resource_name = "Level 10"
 script = ExtResource("2_d6mms")
+probability_battle_weight = 48.0
+probability_battle_elite_weight = 16.0
+probability_shop_weight = 12.0
+probability_bonus_weight = 5.0
+probability_campfire_weight = 12.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_1f7lc"]
 resource_name = "Level 11"
 script = ExtResource("2_d6mms")
+probability_battle_weight = 48.0
+probability_battle_elite_weight = 16.0
+probability_shop_weight = 12.0
+probability_bonus_weight = 5.0
+probability_campfire_weight = 12.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_aasa8"]
 resource_name = "Level 12"
 script = ExtResource("2_d6mms")
+probability_battle_weight = 48.0
+probability_battle_elite_weight = 16.0
+probability_shop_weight = 12.0
+probability_bonus_weight = 5.0
+probability_campfire_weight = 12.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_53cjn"]
 resource_name = "Level 13"
 script = ExtResource("2_d6mms")
-metadata/_custom_type_script = "uid://bsf8plublguny"
-
-[sub_resource type="Resource" id="Resource_b8hlp"]
-resource_name = "Level 14"
-script = ExtResource("2_d6mms")
+probability_battle_weight = 48.0
+probability_battle_elite_weight = 16.0
+probability_shop_weight = 12.0
+probability_bonus_weight = 5.0
+probability_campfire_weight = 12.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_d6mms"]
+resource_name = "Level 14"
+script = ExtResource("2_d6mms")
+probability_battle_weight = 0.0
+probability_battle_elite_weight = 0.0
+probability_shop_weight = 0.0
+probability_bonus_weight = 0.0
+probability_campfire_weight = 1.0
+metadata/_custom_type_script = "uid://bsf8plublguny"
+
+[sub_resource type="Resource" id="Resource_exngo"]
 resource_name = "Level 15"
 script = ExtResource("2_d6mms")
-probability_battle_weight = 1.0
-probability_battle_elite_weight = 0.0
+probability_battle_weight = 0.0
+probability_battle_elite_weight = 1.0
 probability_shop_weight = 0.0
 probability_bonus_weight = 0.0
 probability_campfire_weight = 0.0
@@ -102,7 +162,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_4rr3d")
-level_settings = Array[ExtResource("2_d6mms")]([SubResource("Resource_exngo"), SubResource("Resource_2rm8l"), SubResource("Resource_app3p"), SubResource("Resource_ykc5i"), SubResource("Resource_2yrau"), SubResource("Resource_57bgo"), SubResource("Resource_m76i7"), SubResource("Resource_dmbmi"), SubResource("Resource_5ugwt"), SubResource("Resource_xllsm"), SubResource("Resource_eftq7"), SubResource("Resource_1f7lc"), SubResource("Resource_aasa8"), SubResource("Resource_53cjn"), SubResource("Resource_b8hlp"), SubResource("Resource_d6mms")])
+grid_height = 14
+branch_count = 5
+level_settings = Array[ExtResource("2_d6mms")]([SubResource("Resource_2rm8l"), SubResource("Resource_app3p"), SubResource("Resource_ykc5i"), SubResource("Resource_2yrau"), SubResource("Resource_57bgo"), SubResource("Resource_m76i7"), SubResource("Resource_dmbmi"), SubResource("Resource_5ugwt"), SubResource("Resource_xllsm"), SubResource("Resource_eftq7"), SubResource("Resource_1f7lc"), SubResource("Resource_aasa8"), SubResource("Resource_53cjn"), SubResource("Resource_d6mms"), SubResource("Resource_exngo")])
 
 [node name="Start" type="Marker2D" parent="." unique_id=233173522]
 position = Vector2(320, 338)
