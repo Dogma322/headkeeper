@@ -1,6 +1,81 @@
 [gd_scene format=3 uid="uid://c4t765oqy66fj"]
 
 [ext_resource type="Script" uid="uid://cv74pol5ol003" path="res://scenes/Map/map.gd" id="1_4rr3d"]
+[ext_resource type="Script" uid="uid://bsf8plublguny" path="res://scenes/Map/level_settings.gd" id="2_d6mms"]
+
+[sub_resource type="Resource" id="Resource_exngo"]
+script = ExtResource("2_d6mms")
+probability_battle_weight = 1.0
+probability_battle_elite_weight = 0.0
+probability_shop_weight = 0.0
+probability_bonus_weight = 0.0
+probability_campfire_weight = 0.0
+metadata/_custom_type_script = "uid://bsf8plublguny"
+
+[sub_resource type="Resource" id="Resource_2rm8l"]
+script = ExtResource("2_d6mms")
+metadata/_custom_type_script = "uid://bsf8plublguny"
+
+[sub_resource type="Resource" id="Resource_app3p"]
+script = ExtResource("2_d6mms")
+metadata/_custom_type_script = "uid://bsf8plublguny"
+
+[sub_resource type="Resource" id="Resource_ykc5i"]
+script = ExtResource("2_d6mms")
+metadata/_custom_type_script = "uid://bsf8plublguny"
+
+[sub_resource type="Resource" id="Resource_2yrau"]
+script = ExtResource("2_d6mms")
+metadata/_custom_type_script = "uid://bsf8plublguny"
+
+[sub_resource type="Resource" id="Resource_57bgo"]
+script = ExtResource("2_d6mms")
+metadata/_custom_type_script = "uid://bsf8plublguny"
+
+[sub_resource type="Resource" id="Resource_m76i7"]
+script = ExtResource("2_d6mms")
+metadata/_custom_type_script = "uid://bsf8plublguny"
+
+[sub_resource type="Resource" id="Resource_dmbmi"]
+script = ExtResource("2_d6mms")
+metadata/_custom_type_script = "uid://bsf8plublguny"
+
+[sub_resource type="Resource" id="Resource_5ugwt"]
+script = ExtResource("2_d6mms")
+metadata/_custom_type_script = "uid://bsf8plublguny"
+
+[sub_resource type="Resource" id="Resource_xllsm"]
+script = ExtResource("2_d6mms")
+metadata/_custom_type_script = "uid://bsf8plublguny"
+
+[sub_resource type="Resource" id="Resource_eftq7"]
+script = ExtResource("2_d6mms")
+metadata/_custom_type_script = "uid://bsf8plublguny"
+
+[sub_resource type="Resource" id="Resource_1f7lc"]
+script = ExtResource("2_d6mms")
+metadata/_custom_type_script = "uid://bsf8plublguny"
+
+[sub_resource type="Resource" id="Resource_aasa8"]
+script = ExtResource("2_d6mms")
+metadata/_custom_type_script = "uid://bsf8plublguny"
+
+[sub_resource type="Resource" id="Resource_53cjn"]
+script = ExtResource("2_d6mms")
+metadata/_custom_type_script = "uid://bsf8plublguny"
+
+[sub_resource type="Resource" id="Resource_b8hlp"]
+script = ExtResource("2_d6mms")
+metadata/_custom_type_script = "uid://bsf8plublguny"
+
+[sub_resource type="Resource" id="Resource_d6mms"]
+script = ExtResource("2_d6mms")
+probability_battle_weight = 1.0
+probability_battle_elite_weight = 0.0
+probability_shop_weight = 0.0
+probability_bonus_weight = 0.0
+probability_campfire_weight = 0.0
+metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [node name="Map" type="Control" unique_id=1312997953]
 layout_mode = 3
@@ -11,6 +86,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_4rr3d")
+level_settings = Array[ExtResource("2_d6mms")]([SubResource("Resource_exngo"), SubResource("Resource_2rm8l"), SubResource("Resource_app3p"), SubResource("Resource_ykc5i"), SubResource("Resource_2yrau"), SubResource("Resource_57bgo"), SubResource("Resource_m76i7"), SubResource("Resource_dmbmi"), SubResource("Resource_5ugwt"), SubResource("Resource_xllsm"), SubResource("Resource_eftq7"), SubResource("Resource_1f7lc"), SubResource("Resource_aasa8"), SubResource("Resource_53cjn"), SubResource("Resource_b8hlp"), SubResource("Resource_d6mms")])
 
 [node name="Start" type="Marker2D" parent="." unique_id=233173522]
 position = Vector2(320, 338)
