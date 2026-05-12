@@ -56,6 +56,7 @@ func buy(slot: ShopSlot) -> bool:
 func head_selected(slot: ShopSlot) -> void:
 	if buy(slot):
 		var head: Head = HeadManager.head_pool[slot.item_key].instantiate()
+		head.key = slot.item_key
 		Run.current_head_pool.push_back(head)
 		Run.current_head_pool_keys.push_back(slot.item_key)
 		Run.reserved_head_pool.erase(slot.item_key)

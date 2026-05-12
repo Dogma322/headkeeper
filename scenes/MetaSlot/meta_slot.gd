@@ -19,6 +19,7 @@ var description := ""
 		if head:
 			# HACK: но не придумал ничего лучше
 			var h: Head = HeadManager.head_pool[key].instantiate()
+			h.key = key
 			h.update_desc()
 			hname = h.hd_name
 			description = h.description

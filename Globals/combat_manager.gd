@@ -254,7 +254,6 @@ func show_rewards() -> void:
 					Run.current_head_pool.insert(Run.last_removed_head_pos, current_enemy_head)
 					Run.current_head_pool_keys.insert(Run.last_removed_head_pos, current_enemy_head.key)
 					current_enemy_head.level += 1
-					upgrade_head = false
 				else:
 					Run.current_head_pool.push_back(current_enemy_head)
 					Run.current_head_pool_keys.push_back(current_enemy_head.key)
@@ -265,8 +264,11 @@ func show_rewards() -> void:
 				current_enemy_head.update_desc()
 				
 				Global.head_holder.add_child(current_enemy_head)
+				if upgrade_head:
+					Global.head_holder.move_child(current_enemy_head, Run.last_removed_head_pos + 1)
 				current_enemy_head.apply_passive_effect()
-				
+				upgrade_head = false
+
 	
 #	await Signals.domino_selected
 #	await get_tree().create_timer(1).timeout

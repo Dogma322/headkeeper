@@ -80,6 +80,7 @@ func start() -> void:
 
 	if not MetaManager.selected_head_key.is_empty():
 		current_head = HeadManager.head_pool[MetaManager.selected_head_key].instantiate()
+		current_head.key = MetaManager.selected_head_key
 		current_head.head_choice = true
 		head_marker_2d.add_child(current_head)
 
@@ -169,6 +170,7 @@ func select_head(slot: MetaSlot) -> void:
 		MetaManager.selected_head_key = key
 		
 		current_head = HeadManager.head_pool[key].instantiate()
+		current_head.key = key
 		current_head.head_choice = true
 		head_marker_2d.add_child(current_head)
 		current_head.global_position = slot.center
@@ -244,6 +246,7 @@ func load_heads() -> void:
 				origin_head_slot = selected_slot
 				
 				current_head = HeadManager.head_pool[key].instantiate()
+				current_head.key = key
 				current_head.head_choice = true
 				head_marker_2d.add_child(current_head)
 		else:
