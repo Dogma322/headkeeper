@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bn0602p7re11e" path="res://scenes/Background/background.tscn" id="1_dwva5"]
 [ext_resource type="Script" uid="uid://b2pehnv8tdhth" path="res://scenes/MainScenes/craft_scene.gd" id="1_gu0aw"]
 [ext_resource type="Texture2D" uid="uid://dfm53ekuvdv5w" path="res://assets/Backgrounds/VoidBackground.png" id="3_a8qar"]
+[ext_resource type="Texture2D" uid="uid://beqyhg52tfxto" path="res://assets/Craft/CardsCratHead.png" id="5_a8qar"]
 [ext_resource type="PackedScene" uid="uid://bnkuyqcb3iadw" path="res://scenes/UI/text_panel.tscn" id="6_jg3uq"]
 [ext_resource type="PackedScene" uid="uid://by7sdoxj5u7k4" path="res://scenes/Boards/board_craft.tscn" id="8_il8bo"]
 [ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="9_il8bo"]
@@ -26,6 +27,13 @@ metadata/_edit_lock_ = true
 [node name="BoardCraft" parent="." unique_id=183639370 instance=ExtResource("8_il8bo")]
 position = Vector2(318, 149)
 is_temp = true
+
+[node name="BoardSprite" parent="BoardCraft" index="0" unique_id=224441976]
+z_index = 1
+texture = ExtResource("5_a8qar")
+
+[node name="Slots" parent="BoardCraft" index="1" unique_id=180253986]
+position = Vector2(0, 13)
 
 [node name="Dominoes" type="Node2D" parent="." unique_id=1394107174]
 position = Vector2(0, 207)
@@ -73,3 +81,5 @@ font_size = 3
 [connection signal="pressed" from="AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/RerollButton" to="." method="_on_reroll_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SkipButton" to="." method="_on_skip_button_pressed"]
+
+[editable path="BoardCraft"]

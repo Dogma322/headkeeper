@@ -75,7 +75,7 @@ const REROLL_INC = 5
 
 func get_current_side() -> int:
 	if current_domino:
-		return 1 if current_domino.initial_connected_side == 0 else 0
+		return current_domino.initial_connected_side
 	return 0
 
 
