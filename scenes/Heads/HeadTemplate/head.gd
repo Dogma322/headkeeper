@@ -41,7 +41,6 @@ class_name Head
 #@onready var final_armor
 #@onready var final_heal
 
-var key := ""
 var head_choice := false
 var invert_logic := false
 var level = 0

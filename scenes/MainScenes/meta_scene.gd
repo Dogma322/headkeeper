@@ -86,7 +86,8 @@ func start() -> void:
 
 func end() -> void:
 	Signals.head_selected.disconnect(_on_head_selected)
-	current_head.queue_free()
+	if current_head:
+		current_head.queue_free()
 
 
 func _ready() -> void:

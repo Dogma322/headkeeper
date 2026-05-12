@@ -67,6 +67,7 @@ func new_run() -> void:
 	if not MetaManager.selected_head_key.is_empty():
 		var head = HeadManager.head_pool[MetaManager.selected_head_key].instantiate()
 		Run.current_head_pool.push_back(head)
+		Run.current_head_pool_keys.push_back(MetaManager.selected_head_key)
 		Run.reserved_head_pool.erase(MetaManager.selected_head_key)
 		
 		head.add_head_to_head_holder()

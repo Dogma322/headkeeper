@@ -4,6 +4,7 @@ extends Node
 
 var reserved_head_pool := {}
 var current_head_pool: Array[Head] = []
+var current_head_pool_keys: PackedStringArray
 
 var current_bonus_pool := {}
 
@@ -25,6 +26,7 @@ var gold := 0:
 func reset_data() -> void:
 	reserved_head_pool = HeadManager.head_templates.duplicate()
 	current_head_pool.clear()
+	current_head_pool_keys.clear()
 	
 	current_bonus_pool = BonusManager.bonus_templates.duplicate()
 	current_bonus_pool.erase("attack5")

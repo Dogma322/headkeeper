@@ -40,7 +40,7 @@ func update_head_list() -> void:
 	current_mode = Mode.HEADS
 	
 	var pool := []
-	for key in Run.current_head_pool:
+	for key in Run.current_head_pool_keys:
 		pool.push_back(HeadManager.head_pool[key].instantiate())
 
 	var total = pool.size()
