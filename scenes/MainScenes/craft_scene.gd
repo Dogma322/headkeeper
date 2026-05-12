@@ -102,6 +102,9 @@ func start():
 	current_reroll_cost = REROLL_INC
 	if Run.gold - current_reroll_cost < 0:
 		reroll_button.disabled = true
+	else:
+		reroll_button.disabled = false
+	skip_button.disabled = false
 
 
 func reroll_specified(craft_type):
