@@ -106,12 +106,10 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			SceneManager.show_shop_scene()
 			SceneManager.shop_scene.refill()
 		MapNode.Type.BONUS:
-			SceneManager.main_scene = SceneManager.action_card_scene
-			SceneManager.show_action_card_scene()
-			
-			ActionCardManager.show_action_cards(node.stage)
-			await Signals.action_card_selected
-			
+			SceneManager.main_scene = SceneManager.choice_scene
+			SceneManager.show_choice_scene()
+			SceneManager.choice_scene.spawn_heads()
+			await Signals.head_selected
 			Signals.bonus_amount_changed.emit()
 			
 			Transition.blackout_on()
