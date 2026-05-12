@@ -370,6 +370,8 @@ func add_domino_to_deck():
 	tween.tween_property(self, "global_position", pos, 0.5)
 	tween.tween_property(self, "scale", Vector2(0,0), 0.5)
 	DominoManager.temp_deck.append(self)
+	DominoManager.deck.append(self)
+	Signals.domino_added.emit()
 	domino_choice = false
 
 

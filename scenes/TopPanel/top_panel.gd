@@ -67,6 +67,7 @@ func _ready() -> void:
 	Signals.skulls_changed.connect(func(_skulls: int): create_tween().tween_property(self, "skulls", _skulls, 0.25))
 	skulls = Run.skulls
 	
+	Signals.domino_added.connect(update_domino_counter)
 	domino_amount_label.text = str(DominoManager.deck.size())
 	
 	Signals.head_amount_changed.connect(update_heads_counter)
@@ -81,6 +82,11 @@ func _ready() -> void:
 ## Сбрасывает значения в панели.
 func reset() -> void:
 	heads = Run.current_head_pool.size()
+
+
+## Обновляет кол-во домино.
+func update_domino_counter() -> void:
+	domino_amount_label.text = str(DominoManager.deck.size())
 
 
 ## Обновляет кол-во голов.
