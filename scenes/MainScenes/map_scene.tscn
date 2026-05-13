@@ -4,7 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://cvu5gcwvrg6gk" path="res://assets/Icons/TopPanelIcons/skull_icon.atlastex" id="2_kd8hc"]
 [ext_resource type="PackedScene" uid="uid://c4t765oqy66fj" path="res://scenes/Map/map.tscn" id="3_kd8hc"]
 [ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="5_oq6vs"]
+[ext_resource type="Texture2D" uid="uid://btaxaokybm6bs" path="res://assets/NinePatchTexture/9patch.png" id="5_v58fv"]
+[ext_resource type="Texture2D" uid="uid://seq5ll1twapj" path="res://assets/Icons/MapIcons/unknown_map_icon.atlastex" id="6_7q0x0"]
 [ext_resource type="FontFile" uid="uid://cdr1gk3kbvdd4" path="res://assets/Fonts/Vollda-Bold.otf" id="7_3vrjx"]
+[ext_resource type="Texture2D" uid="uid://cvyl8tia7gs6r" path="res://assets/Icons/MapIcons/shop_map_icon.atlastex" id="7_pdrbw"]
+[ext_resource type="Texture2D" uid="uid://dgwgr870uqs6u" path="res://assets/Icons/MapIcons/bonus_map_icon.atlastex" id="8_apxxu"]
+[ext_resource type="Texture2D" uid="uid://3q65om0qmd3q" path="res://assets/Icons/MapIcons/campfire_map_icon.atlastex" id="9_fttsh"]
+[ext_resource type="Texture2D" uid="uid://dmowypaa6fxwu" path="res://assets/Icons/MapIcons/battle_map_icon.atlastex" id="10_fh4if"]
+[ext_resource type="Texture2D" uid="uid://bi1mc3tkrqcsl" path="res://assets/Icons/MapIcons/battle_elite_map_icon.atlastex" id="11_qxb1u"]
 
 [node name="MapScene" type="Control" unique_id=1058918205]
 layout_mode = 3
@@ -35,6 +42,123 @@ anchor_bottom = 0.0
 offset_right = 121.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="LegendPanel" type="MarginContainer" parent="." unique_id=850708870]
+unique_name_in_owner = true
+z_index = 1
+custom_minimum_size = Vector2(60.5, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -84.0
+offset_right = -21.0
+offset_bottom = 84.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="LegendPanel" unique_id=47235920]
+layout_mode = 2
+texture = ExtResource("5_v58fv")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="LegendPanel" unique_id=1010771700]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LegendPanel/MarginContainer" unique_id=492999984]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="UnknownHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=4172946]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="LegendPanel/MarginContainer/VBoxContainer/UnknownHBox" unique_id=1784663601]
+custom_minimum_size = Vector2(23, 16)
+layout_mode = 2
+texture = ExtResource("6_7q0x0")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/UnknownHBox" unique_id=528616376]
+layout_mode = 2
+text = "ID_UNKNOWN"
+
+[node name="ShopHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=2113801629]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="LegendPanel/MarginContainer/VBoxContainer/ShopHBox" unique_id=1645796929]
+custom_minimum_size = Vector2(23, 16)
+layout_mode = 2
+texture = ExtResource("7_pdrbw")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/ShopHBox" unique_id=260275935]
+layout_mode = 2
+text = "ID_SHOP"
+
+[node name="BonusHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=1559016475]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="LegendPanel/MarginContainer/VBoxContainer/BonusHBox" unique_id=446174879]
+custom_minimum_size = Vector2(23, 16)
+layout_mode = 2
+texture = ExtResource("8_apxxu")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/BonusHBox" unique_id=1223477431]
+layout_mode = 2
+text = "ID_BONUS"
+
+[node name="CampfireHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=1777039616]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="LegendPanel/MarginContainer/VBoxContainer/CampfireHBox" unique_id=1402294655]
+custom_minimum_size = Vector2(23, 16)
+layout_mode = 2
+texture = ExtResource("9_fttsh")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/CampfireHBox" unique_id=1448746226]
+layout_mode = 2
+text = "ID_CAMPFIRE"
+
+[node name="BattleHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=2039323651]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="LegendPanel/MarginContainer/VBoxContainer/BattleHBox" unique_id=659946864]
+custom_minimum_size = Vector2(23, 16)
+layout_mode = 2
+texture = ExtResource("10_fh4if")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/BattleHBox" unique_id=275945023]
+layout_mode = 2
+text = "ID_BATTLE"
+
+[node name="BattleEliteHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=1771859020]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="LegendPanel/MarginContainer/VBoxContainer/BattleEliteHBox" unique_id=275692159]
+custom_minimum_size = Vector2(23, 16)
+layout_mode = 2
+texture = ExtResource("11_qxb1u")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/BattleEliteHBox" unique_id=1865409111]
+layout_mode = 2
+text = "ID_BATTLE_ELITE"
 
 [node name="Layout" type="MarginContainer" parent="." unique_id=1562952262]
 layout_mode = 1

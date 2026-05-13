@@ -59,7 +59,7 @@ ShopSlots=""
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://translation/Translation - Лист1(49).en.translation", "res://translation/Translation - Лист1(49).ru.translation")
+locale/translations=PackedStringArray("res://translation/loc.en.translation", "res://translation/loc.ru.translation")
 
 [physics]
 

@@ -1,4 +1,4 @@
-,en,ru
+id,en,ru
 UI,,
 play,PLAY,ИГРАТЬ
 tutorial,TUTORIAL,ОБУЧЕНИЕ
@@ -14,6 +14,15 @@ sfx_volume,Effects volume,Громкость эффектов
 music_volume,Music volume,Громкость музыки
 end_run,End run,Закончить забег
 block_damage,Block,Блок
+,,
+,,
+LEGEND,,
+ID_UNKNOWN,Unknown,Неизвестно
+ID_SHOP,Shop,Магазин
+ID_BONUS,Bonus,Бонус
+ID_CAMPFIRE,Campfire,Костер
+ID_BATTLE,Battle,Бой
+ID_BATTLE_ELITE,Elite Battle,Элитный Бой
 ,,
 ,,
 bone_bag_name,Tile Bag,Мешок для костей

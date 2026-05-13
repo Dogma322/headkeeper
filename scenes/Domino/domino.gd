@@ -793,14 +793,7 @@ func add_action() -> void:
 					ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.vulnerable, val[key]))
 				"weak":
 					ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.weak, val[key]))
-		
-		
-		#if a_type == "claws":
-			#ActionManager.add(AttackAction.new(self, Global.enemy, vals[0]["claws"]))
-			#vals[0]["claws"] += 4
-		#if b_type == "claws":
-			#ActionManager.add(AttackAction.new(self, Global.enemy, vals[1]["claws"]))
-			#vals[1]["claws"] += 4
+
 
 func get_tooltip_for_type(key: String) -> String:
 	match key:
