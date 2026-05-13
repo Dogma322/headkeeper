@@ -17,4 +17,3 @@ func execute() -> void:
 	elif value < 0:
 		target.health += -value
 	AnimationManager.spawn_anim(AnimationManager.heal_anim if value < 0 else AnimationManager.debuff_anim, target, 0)
-	Signals.hero_health_changed.emit()

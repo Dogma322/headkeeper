@@ -345,8 +345,10 @@ func return_to_meta() -> void:
 	Transition.blackout_on()
 	await get_tree().create_timer(1).timeout
 	Transition.blackout_off()
+	
 	reset_run_data()
 	Foreground.options_panel.show_box(Foreground.options_panel.meta_box)
+	
 	Global.map_scene.hide()
 	Global.fight_scene.hide()
 	
