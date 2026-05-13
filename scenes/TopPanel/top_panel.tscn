@@ -54,6 +54,8 @@ texture = ExtResource("7_gkv6x")
 toggle_mode = true
 button_pressed = true
 button_group = "top_panel_buttons"
+tooltip = "TT_MAP"
+tooltip_offset = 7
 
 [node name="HeadDeckButton" parent="MarginContainer/HBoxContainer" unique_id=386037324 instance=ExtResource("6_hnbga")]
 unique_name_in_owner = true
@@ -62,6 +64,8 @@ size_flags_vertical = 4
 texture = ExtResource("7_0k1ga")
 toggle_mode = true
 button_group = "top_panel_buttons"
+tooltip = "TT_HEADS"
+tooltip_offset = 8
 
 [node name="HeadAmountLabel" type="Label" parent="MarginContainer/HBoxContainer/HeadDeckButton" unique_id=1020687423]
 unique_name_in_owner = true
@@ -89,6 +93,8 @@ size_flags_vertical = 4
 texture = ExtResource("7_vphw7")
 toggle_mode = true
 button_group = "top_panel_buttons"
+tooltip = "TT_BONUSES"
+tooltip_offset = 8
 
 [node name="BonusAmountLabel" type="Label" parent="MarginContainer/HBoxContainer/BonusDeckButton" unique_id=1614137116]
 unique_name_in_owner = true
@@ -116,6 +122,8 @@ size_flags_vertical = 4
 texture = ExtResource("7_qkk5r")
 toggle_mode = true
 button_group = "top_panel_buttons"
+tooltip = "TT_DOMINOES"
+tooltip_offset = 9
 
 [node name="DominoAmountLabel" type="Label" parent="MarginContainer/HBoxContainer/DominoDeckButton" unique_id=1103629639]
 unique_name_in_owner = true

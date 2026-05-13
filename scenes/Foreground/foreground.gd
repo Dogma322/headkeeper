@@ -1,6 +1,7 @@
 extends Control
 
 @onready var options_panel: OptionsPanel = $OptionsPanel
+@onready var tooltip_panel: TooltipPanel = $TooltipPanel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

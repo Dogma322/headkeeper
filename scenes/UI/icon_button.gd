@@ -15,6 +15,8 @@ extends TextureRect
 				modulate = Color(1, 1, 1)
 @export var button_group: String
 @export var shortcut: Shortcut
+@export var tooltip: String
+@export var tooltip_offset: TooltipPanel.ShowOffset
 
 var active := true
 var disabled := false
@@ -53,9 +55,14 @@ func _on_mouse_entered() -> void:
 	if not active or disabled:
 		return
 	
+	if not tooltip.is_empty():
+		Foreground.tooltip_panel.description = tr(tooltip)
+		Foreground.tooltip_panel.show_tooltip(true, self, tooltip_offset)
+	
 	if toggle_mode and button_pressed:
 		return
 	modulate = Color(1.3, 1.3, 1.3)
+	
 
 
 func _on_mouse_exited() -> void:
@@ -64,9 +71,13 @@ func _on_mouse_exited() -> void:
 	if not active or disabled:
 		return
 	
+	if not tooltip.is_empty():
+		Foreground.tooltip_panel.hide_tooltip()
+	
 	if toggle_mode and button_pressed:
 		return
 	modulate = Color(1, 1, 1)
+	
 
 func _input(event: InputEvent) -> void:
 	if shortcut and shortcut.matches_event(event) and event.is_pressed() and not event.is_echo():

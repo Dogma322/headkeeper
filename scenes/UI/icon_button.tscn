@@ -6,6 +6,8 @@
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_jw7ho")
+tooltip = null
+tooltip_offset = null
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

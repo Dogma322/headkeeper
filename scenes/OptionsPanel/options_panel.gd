@@ -50,11 +50,14 @@ func show_panel(enabled: bool) -> void:
 		options_panel.visible = true
 		DominoManager.block_domino_input = true
 		options_button.texture = load("res://assets/UI/OptionsMenu/ExitButton.png")
+		options_button.tooltip = ""
+		Foreground.tooltip_panel.hide_tooltip()
 	else:
 		color_rect.visible = false
 		options_panel.visible = false
 		DominoManager.block_domino_input = false
 		options_button.texture = load("res://assets/UI/OptionsMenu/OptionsButton.png")
+		options_button.tooltip = "TT_SETTINGS"
 
 
 func _on_options_button_pressed() -> void:

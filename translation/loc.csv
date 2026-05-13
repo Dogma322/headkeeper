@@ -15,7 +15,6 @@ music_volume,Music volume,Громкость музыки
 end_run,End run,Закончить забег
 block_damage,Block,Блок
 ,,
-,,
 LEGEND,,
 ID_UNKNOWN,Unknown,Неизвестно
 ID_SHOP,Shop,Магазин
@@ -24,6 +23,12 @@ ID_CAMPFIRE,Campfire,Костер
 ID_BATTLE,Battle,Бой
 ID_BATTLE_ELITE,Elite Battle,Элитный Бой
 ,,
+TOOLTIPS,,
+TT_MAP,Map,Карта
+TT_HEADS,Head Deck,Колода Голов
+TT_BONUSES,Bonus Deck,Колода Бонусов
+TT_DOMINOES,Domino Deck,Колода Домино
+TT_SETTINGS,Settings,Настройки
 ,,
 bone_bag_name,Tile Bag,Мешок для костей
 discard_bag_name,Discard Bag,Мешок для сброса
