@@ -67,12 +67,16 @@ func _on_map_node_pressed(node: MapNode) -> void:
 		return
 	if SceneManager.main_scene != SceneManager.map_scene:
 		return
+	if node.done:
+		return
 	if not free_choice_mode:
 		if selected_node == null:
 			if node.coord.y != 0:
 				return
 			selected_node = node
 		else:
+			selected_node.done = true
+			
 			var found := false
 			for node2 in selected_node.next:
 				if node == node2:

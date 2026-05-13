@@ -2,14 +2,22 @@ extends Area2D
 class_name MapNode
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var done_sprite_2d: Sprite2D = $DoneSprite2D
 
 var next: Array[MapNode] = []
 var to_erase := false
 var coord: Vector2i
+var done: bool = false:
+	set(value):
+		done = value
+		done_sprite_2d.visible = value
+		done_sprite_2d.modulate.a = 0.0
+		create_tween().tween_property(done_sprite_2d, "modulate:a", 1.0, 0.5)
 
 var stage: int:
 	get:
 		return coord.y
+
 
 enum Type {
 	UNKNOWN = -1,
