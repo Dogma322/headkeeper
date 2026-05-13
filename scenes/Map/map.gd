@@ -220,13 +220,13 @@ func add_node(coord: Vector2i) -> MapNode:
 					for element in temp_mid_enemy_keys:
 						mid_enemy_pool_keys.push_back(element)
 					mid_enemy_pool_keys.shuffle()
-			elif progress >= 10 and progress < 15:
+			elif progress >= 10 and progress < 14:
 				instance.string_hint = late_enemy_pool_keys.pop_back()
 				if late_enemy_pool_keys.is_empty():
 					for element in temp_late_enemy_keys:
 						late_enemy_pool_keys.push_back(element)
 					late_enemy_pool_keys.shuffle()
-			elif progress == 15:
+			elif progress == 14:
 				instance.string_hint = "high_druid"
 	
 	instance.coord = coord
