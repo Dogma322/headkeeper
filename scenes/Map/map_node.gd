@@ -7,17 +7,25 @@ class_name MapNode
 var next: Array[MapNode] = []
 var to_erase := false
 var coord: Vector2i
+
 var done: bool = false:
 	set(value):
 		done = value
 		done_sprite_2d.visible = value
 		done_sprite_2d.modulate.a = 0.0
 		create_tween().tween_property(done_sprite_2d, "modulate:a", 1.0, 0.5)
+		
+var shadowed: bool = false:
+	set(value):
+		shadowed = value
+		if value:
+			sprite_2d.modulate = Color.DIM_GRAY
+		else:
+			sprite_2d.modulate = Color.WHITE
 
 var stage: int:
 	get:
 		return coord.y
-
 
 enum Type {
 	UNKNOWN = -1,
@@ -48,6 +56,7 @@ var string_hint: String = ""
 var number_hint: int = 0
 
 signal pressed
+
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:

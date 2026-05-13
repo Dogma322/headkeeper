@@ -93,7 +93,7 @@ expand_mode = 1
 
 [node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/UnknownHBox" unique_id=528616376]
 layout_mode = 2
-text = "ID_UNKNOWN"
+text = "ID_LEGEND_UNKNOWN"
 
 [node name="ShopHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=2113801629]
 layout_mode = 2
@@ -106,33 +106,33 @@ expand_mode = 1
 
 [node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/ShopHBox" unique_id=260275935]
 layout_mode = 2
-text = "ID_SHOP"
+text = "ID_LEGEND_SHOP"
 
-[node name="BonusHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=1559016475]
+[node name="HeadsHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=1559016475]
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="LegendPanel/MarginContainer/VBoxContainer/BonusHBox" unique_id=446174879]
+[node name="Icon" type="TextureRect" parent="LegendPanel/MarginContainer/VBoxContainer/HeadsHBox" unique_id=446174879]
 custom_minimum_size = Vector2(23, 16)
 layout_mode = 2
 texture = ExtResource("8_apxxu")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/BonusHBox" unique_id=1223477431]
+[node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/HeadsHBox" unique_id=1223477431]
 layout_mode = 2
-text = "ID_BONUS"
+text = "ID_LEGEND_HEADS"
 
-[node name="CampfireHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=1777039616]
+[node name="PondHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=1777039616]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="LegendPanel/MarginContainer/VBoxContainer/CampfireHBox" unique_id=1402294655]
+[node name="TextureRect" type="TextureRect" parent="LegendPanel/MarginContainer/VBoxContainer/PondHBox" unique_id=1402294655]
 custom_minimum_size = Vector2(23, 16)
 layout_mode = 2
 texture = ExtResource("9_fttsh")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/CampfireHBox" unique_id=1448746226]
+[node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/PondHBox" unique_id=1448746226]
 layout_mode = 2
-text = "ID_CAMPFIRE"
+text = "ID_LEGEND_POND"
 
 [node name="BattleHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=2039323651]
 layout_mode = 2
@@ -145,7 +145,7 @@ expand_mode = 1
 
 [node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/BattleHBox" unique_id=275945023]
 layout_mode = 2
-text = "ID_BATTLE"
+text = "ID_LEGEND_BATTLE"
 
 [node name="BattleEliteHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=1771859020]
 layout_mode = 2
@@ -158,7 +158,7 @@ expand_mode = 1
 
 [node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/BattleEliteHBox" unique_id=1865409111]
 layout_mode = 2
-text = "ID_BATTLE_ELITE"
+text = "ID_LEGEND_BATTLE_ELITE"
 
 [node name="Layout" type="MarginContainer" parent="." unique_id=1562952262]
 layout_mode = 1

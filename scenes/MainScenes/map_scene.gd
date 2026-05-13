@@ -46,15 +46,15 @@ func _on_gen_button_pressed() -> void:
 func _on_map_node_mouse_entered(node: MapNode) -> void:
 	match node.type:
 		MapNode.Type.BATTLE:
-			tooltip_panel.description = "[center]Битва с \"(%s)\"[/center]" % node.string_hint
+			tooltip_panel.description = "[center]%s[/center]" % [tr(&"ID_MAP_BATTLE")]
 		MapNode.Type.BATTLE_ELITE:
-			tooltip_panel.description = "[center]Битва с элитным \"(%s)\"[/center]" % node.string_hint
+			tooltip_panel.description = "[center]%s[/center]" % [tr(&"ID_MAP_BATTLE_ELITE")]
 		MapNode.Type.SHOP:
-			tooltip_panel.description = "[center]Магазин[/center]"
+			tooltip_panel.description = "[center]%s[/center]" % [tr(&"ID_MAP_SHOP")]
 		MapNode.Type.BONUS:
-			tooltip_panel.description = "[center]Бонус[/center]"
+			tooltip_panel.description = "[center]%s[/center]" % [tr(&"ID_MAP_HEADS")]
 		MapNode.Type.CAMPFIRE:
-			tooltip_panel.description = "[center]Костер[/center]"
+			tooltip_panel.description = "[center]%s[/center]" % [tr(&"ID_MAP_POND")]
 	tooltip_panel.show_tooltip()
 	tooltip_panel.position = node.global_position - Vector2(tooltip_panel.size.x / 2.0, tooltip_panel.size.y + 10)
 
@@ -74,6 +74,11 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			if node.coord.y != 0:
 				return
 			selected_node = node
+			for key in map.current_paths.keys():
+				if node in map.current_paths[key].nodes and not node.done:
+					node.shadowed = false
+				else:
+					node.shadowed = true
 		else:
 			selected_node.done = true
 			
@@ -85,6 +90,10 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			if not found:
 				return
 			selected_node = node
+			for key in map.current_paths.keys():
+				if node not in map.current_paths[key].nodes:
+					for node2 in map.current_paths[key].nodes:
+						node2.shadowed = true
 	else:
 		selected_node = node
 	current_progress += 1

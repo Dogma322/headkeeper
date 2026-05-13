@@ -16,12 +16,20 @@ end_run,End run,Закончить забег
 block_damage,Block,Блок
 ,,
 LEGEND,,
-ID_UNKNOWN,Unknown,Неизвестно
-ID_SHOP,Shop,Магазин
-ID_BONUS,Bonus,Бонус
-ID_CAMPFIRE,Campfire,Костер
-ID_BATTLE,Battle,Бой
-ID_BATTLE_ELITE,Elite Battle,Элитный Бой
+ID_LEGEND_UNKNOWN,Unknown,Неизвестно
+ID_LEGEND_SHOP,Merchant,Торговец
+ID_LEGEND_HEADS,Heads,Головы
+ID_LEGEND_POND,Pond,Пруд
+ID_LEGEND_BATTLE,Enemy,Бой
+ID_LEGEND_BATTLE_ELITE,Elite,Элитный Бой
+,,
+MAP
+ID_MAP_UNKNOWN,Unknown,Неизвестно
+ID_MAP_SHOP,Merchant,Торговец
+ID_MAP_HEADS,Heads,Головы
+ID_MAP_POND,Pond,Пруд
+ID_MAP_BATTLE,Enemy,Бой
+ID_MAP_BATTLE_ELITE,Elite,Элитный Бой
 ,,
 TOOLTIPS,,
 TT_MAP,Map,Карта
