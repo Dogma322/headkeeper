@@ -62,17 +62,17 @@ var deleted = false
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
 
 const ADDITIONAL_TOOLTIP_PANEL = preload("uid://dnje7ugtetwov")
-var extra_tooltip_panel: AdditionalTooltipPanel = null
 
 func set_additional_tooltip(type: String, key: String) -> void:
-	if extra_tooltip_panel == null:
-		extra_tooltip_panel = ADDITIONAL_TOOLTIP_PANEL.instantiate()
-		extra_tooltip_panel.type = type
-		extra_tooltip_panel.key = key
-		tooltip_stack.add_child(extra_tooltip_panel)
-	else:
-		extra_tooltip_panel.type = type
-		extra_tooltip_panel.key = key
+	for child in tooltip_stack.get_children():
+		if child is AdditionalTooltipPanel:
+			if child.key == key:
+				return
+	
+	var panel = ADDITIONAL_TOOLTIP_PANEL.instantiate()
+	panel.type = type
+	panel.key = key
+	tooltip_stack.add_child(panel)
 
 class SideSettings:
 	var types: PackedStringArray
@@ -108,9 +108,9 @@ static var type_to_string = {
 }
 
 func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> void:
-	if extra_tooltip_panel != null:
-		extra_tooltip_panel.queue_free()
-		extra_tooltip_panel = null
+	for tooltip_stack in tooltip_stack.get_children():
+		if tooltip_stack is AdditionalTooltipPanel:
+			tooltip_stack.queue_free()
 	
 	if a_settings != null:
 		for i in range(a_types.size()):
@@ -618,9 +618,10 @@ func remove_symbol(side: int, index: int):
 	if not found: # Полное удаление типа со всех сторон.
 		tags.erase(key)
 		
-		if extra_tooltip_panel != null and extra_tooltip_panel.key == key:
-			extra_tooltip_panel.queue_free()
-			extra_tooltip_panel = null
+		for child in tooltip_stack:
+			if child is AdditionalTooltipPanel:
+				if child.key == key:
+					child.queue_free()
 		
 		# Отсоединим сигналы.
 		match key:

@@ -6,3 +6,12 @@
 [node name="AdditionalTooltipPanel" unique_id=54216942 instance=ExtResource("1_d8rve")]
 script = ExtResource("2_k1siu")
 type = "Weak"
+caption = "st_weak_name"
+description = "st_weak_des"
+
+[node name="CaptionLabel" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(492999984) index="0" unique_id=165282364]
+visible = true
+text = "st_weak_name"
+
+[node name="DescriptionLabel" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(492999984) index="1" unique_id=463947924]
+text = "st_weak_des"
