@@ -236,6 +236,8 @@ bn_larva_des,"At the end of its turn, the enemy gains 2 Fury and restores 5 HP f
 ,,
 HEADS,,
 ,,
+ID_LEVEL,Lvl.,Ур.
+,,
 hd_berserk_name,Berserk,Берсерк
 hd_berserk_des,"When you play a tile with a value of %d, deal %d damage to enemy.","Когда вы играете кость со значением %d, наносит %d урона противнику."
 hd_berserk_des2,"When you play a tile with a value of %d, deal %d damage to enemy and apply %s Fury to you.","Когда вы играете кость со значением %d, наносит %d урона противнику и накладывает Ярость %d на вас."

@@ -23,6 +23,7 @@ var damage_mult = 1
 var bonus_damage = 0
 var incoming_damage_mult = 1
 var thorns_damage_mult := 1
+var domino_ignore_count := 0
 var is_dead := false
 
 var base_sprite_position
@@ -56,6 +57,7 @@ func reset() -> void:
 	bonus_damage = 0
 	incoming_damage_mult = 1
 	thorns_damage_mult = 1
+	domino_ignore_count = 0
 	is_dead = false
 
 

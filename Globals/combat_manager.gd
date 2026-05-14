@@ -73,12 +73,11 @@ func change_stage(_map_node, _elite: bool) -> void:
 
 
 func play_dominoes() -> void:
-	print("PLAY_D")
-	
-	Global.fight_scene.hide_menu()
-	
 	if DominoManager.dominoes_on_board.size() == 0:
 		return
+	
+	print("PLAY_D")
+	Global.fight_scene.hide_menu()
 	
 	DominoManager.block_domino_input = true
 	
@@ -90,8 +89,11 @@ func play_dominoes() -> void:
 	if Global.enemy.is_dead:
 		return
 	
-	
 	for dm in DominoManager.dominoes_on_board:
+		if Global.hero.domino_ignore_count > 0:
+			Global.hero.domino_ignore_count -= 1
+			ActionManager.add(NothingAction.new(self, Global.hero, 0))
+			continue
 		dm.add_actions()
 	Signals.play_dominoes.emit()
 	
@@ -126,6 +128,9 @@ func player_turn_begin(is_start: bool) -> void:
 	else:
 		add_hero_heads_turn_begin_actions()
 		await ActionManager.play_actions()
+	
+	add_enemy_heads_turn_begin_actions()
+	await ActionManager.play_actions()
 	
 	await get_tree().create_timer(0.5).timeout
 	
@@ -190,13 +195,14 @@ func enemy_turn_begin() -> void:
 		return 
 	
 	enemy_turn_end()
-	
-	
+
+
 func apply_enemy_turn_begin_status_effects():
 	for icon in Global.enemy.status_container.get_children():
 		if icon.status.turn_begin_effect:
 			StatusManager.apply_status_effect(icon.status)
-			
+
+
 func apply_hero_turn_begin_status_effects():
 	for icon in Global.hero.status_container.get_children():
 		if icon.status.turn_begin_effect:
@@ -211,6 +217,12 @@ func add_hero_heads_battle_begin_actions() -> void:
 
 func add_hero_heads_turn_begin_actions() -> void:
 	for head in Global.head_holder.get_children():
+		if head is Head:
+			head.turn_begin_add_action()
+
+
+func add_enemy_heads_turn_begin_actions() -> void:
+	for head in Global.enemy_head_holder.get_children():
 		if head is Head:
 			head.turn_begin_add_action()
 
