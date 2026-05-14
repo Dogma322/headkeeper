@@ -15,7 +15,7 @@ var done: bool = false:
 		done_sprite_2d.modulate.a = 0.0
 		create_tween().tween_property(done_sprite_2d, "modulate:a", 1.0, 0.5)
 		
-var shadowed: bool = false:
+var shadowed: bool = true:
 	set(value):
 		shadowed = value
 		if value:
@@ -57,6 +57,8 @@ var number_hint: int = 0
 
 signal pressed
 
+func _ready() -> void:
+	sprite_2d.modulate = Color.DIM_GRAY
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:

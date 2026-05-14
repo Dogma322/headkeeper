@@ -83,6 +83,8 @@ func generate() -> void:
 				floors[y - 1][x].next.push_back(node)
 				if x + 1 < grid_width:
 					floors[y - 1][x + 1].next.push_back(node)
+			else:
+				node.shadowed = false
 			arr.push_back(node)
 		floors.push_back(arr)
 	
@@ -169,7 +171,7 @@ func generate() -> void:
 	
 	#region Удалим лишние ноды.
 	
-	for arr in floors:
+	for arr: Array in floors:
 		for node in arr:
 			if node.to_erase:
 				node.queue_free()

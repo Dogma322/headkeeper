@@ -12,13 +12,13 @@ var current_progress := 0
 var player_origin : Vector2
 var free_choice_mode := false
 
+
 func reset():
 	moving = false
 	selected_node = null
 	current_progress = 0
 	player.position = player_origin
 	map.generate()
-
 
 func _ready() -> void:
 	player_origin = player.position
@@ -58,6 +58,7 @@ func _on_map_node_mouse_entered(node: MapNode) -> void:
 	tooltip_panel.show_tooltip()
 	tooltip_panel.position = node.global_position - Vector2(tooltip_panel.size.x / 2.0, tooltip_panel.size.y + 10)
 
+
 func _on_map_node_mouse_exited() -> void:
 	tooltip_panel.hide_tooltip()
 
@@ -73,15 +74,13 @@ func _on_map_node_pressed(node: MapNode) -> void:
 		if selected_node == null:
 			if node.coord.y != 0:
 				return
+			for node2 in map.floors[0]:
+				if node2 == node:
+					continue
+				if is_instance_valid(node2):
+					node2.shadowed = true
 			selected_node = node
-			for key in map.current_paths.keys():
-				if node in map.current_paths[key].nodes and not node.done:
-					node.shadowed = false
-				else:
-					node.shadowed = true
 		else:
-			selected_node.done = true
-			
 			var found := false
 			for node2 in selected_node.next:
 				if node == node2:
@@ -89,13 +88,16 @@ func _on_map_node_pressed(node: MapNode) -> void:
 					break
 			if not found:
 				return
+			selected_node.done = true
+			selected_node.shadowed = true
 			selected_node = node
-			for key in map.current_paths.keys():
-				if node not in map.current_paths[key].nodes:
-					for node2 in map.current_paths[key].nodes:
-						node2.shadowed = true
 	else:
 		selected_node = node
+	
+	for next in selected_node.next:
+		if is_instance_valid(next):
+			next.shadowed = false
+		
 	current_progress += 1
 	moving = true
 	
