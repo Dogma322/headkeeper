@@ -188,6 +188,8 @@ func remove_domino():
 
 func _on_area_2d_mouse_entered():
 	mouse_inside = true
+	if domino != null:
+		return
 	BoardManager.target_slot = self
 
 

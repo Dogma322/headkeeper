@@ -403,7 +403,18 @@ func start_drag():
 
 func _process(_delta):
 	if dragging and slot == null:
+		if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			stop_drag()
+			return
 		global_position = get_global_mouse_position() + drag_offset
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_MOUSE_EXIT \
+		or what == NOTIFICATION_APPLICATION_FOCUS_OUT \
+		or what == NOTIFICATION_WM_WINDOW_FOCUS_OUT:
+		if dragging:
+			stop_drag()
 
 
 func stop_drag():
@@ -419,6 +430,7 @@ func stop_drag():
 		if target_slot.domino:
 			Global.hand.add_domino(target_slot.domino)
 		target_slot.place_domino(self)
+		BoardManager.target_slot = null
 	else:
 		Global.hand.add_domino(self)
 		
