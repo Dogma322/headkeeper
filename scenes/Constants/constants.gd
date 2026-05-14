@@ -34,3 +34,8 @@ const MAX_POINTS = 4
 @export var hd_moon_armor_level_3 := 16
 @export var hd_moon_draw_level_3 := 1
 @export var hd_moon_damage_to_hero := 8
+
+@export_subgroup("False King", "hd")
+@export var hd_false_king_health_decrement := 45
+@export var hd_false_king_gold_level_2 = 150
+@export var hd_false_king_gold_level_3 = 300

@@ -44,7 +44,13 @@ class_name Head
 var key := ""
 var head_choice := false
 var invert_logic := false
-var level = 0
+var used := false
+var level := 0:
+	set(value):
+		if level == value:
+			return
+		level = value
+		used = false
 
 func _ready() -> void:
 	tooltip_stack.hide()
