@@ -51,9 +51,9 @@ func _on_map_node_mouse_entered(node: MapNode) -> void:
 			tooltip_panel.description = "[center]%s[/center]" % [tr(&"ID_MAP_BATTLE_ELITE")]
 		MapNode.Type.SHOP:
 			tooltip_panel.description = "[center]%s[/center]" % [tr(&"ID_MAP_SHOP")]
-		MapNode.Type.BONUS:
+		MapNode.Type.HEADS:
 			tooltip_panel.description = "[center]%s[/center]" % [tr(&"ID_MAP_HEADS")]
-		MapNode.Type.CAMPFIRE:
+		MapNode.Type.POND:
 			tooltip_panel.description = "[center]%s[/center]" % [tr(&"ID_MAP_POND")]
 	tooltip_panel.show_tooltip()
 	tooltip_panel.position = node.global_position - Vector2(tooltip_panel.size.x / 2.0, tooltip_panel.size.y + 10)
@@ -120,7 +120,7 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			SceneManager.main_scene = SceneManager.shop_scene
 			SceneManager.show_shop_scene()
 			SceneManager.shop_scene.refill()
-		MapNode.Type.BONUS:
+		MapNode.Type.HEADS:
 			SceneManager.main_scene = SceneManager.choice_scene
 			SceneManager.show_choice_scene()
 			SceneManager.choice_scene.spawn_heads()
@@ -133,7 +133,7 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			
 			SceneManager.main_scene = SceneManager.map_scene
 			SceneManager.show_map_scene()
-		MapNode.Type.CAMPFIRE:
+		MapNode.Type.POND:
 			SceneManager.main_scene = SceneManager.campfire_scene
 			SceneManager.show_campfire_scene()
 			

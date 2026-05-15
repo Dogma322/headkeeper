@@ -108,7 +108,7 @@ func player_turn_begin(is_start: bool) -> void:
 	print("P_BEGIN")
 	Signals.player_turn_begin.emit()
 	
-	if mode == Mode.CHOOSE_ELITE_HEAD:
+	if mode == Mode.CHOOSE_ELITE_HEAD and not map_node.is_final:
 		Global.fight_scene.show_head_ui()
 		await Signals.enemy_head_choosen
 		mode = Mode.BATTLE_ELITE
@@ -279,6 +279,7 @@ func show_rewards() -> void:
 				if upgrade_head:
 					Global.head_holder.move_child(current_enemy_head, Run.last_removed_head_pos + 1)
 				current_enemy_head.apply_passive_effect()
+				current_enemy_head = null
 				upgrade_head = false
 
 	
@@ -287,6 +288,10 @@ func show_rewards() -> void:
 
 	Global.fight_scene.hide_menu()
 	await get_tree().create_timer(1.0).timeout
+	
+	if map_node.is_final:
+		CombatManager.return_to_meta()
+		return
 	
 	SceneManager.main_scene = SceneManager.action_card_scene
 	SceneManager.show_action_card_scene()

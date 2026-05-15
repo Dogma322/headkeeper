@@ -27,13 +27,15 @@ var stage: int:
 	get:
 		return coord.y
 
+var is_final := false
+
 enum Type {
 	UNKNOWN = -1,
 	BATTLE,
 	BATTLE_ELITE,
 	SHOP,
-	BONUS,
-	CAMPFIRE,
+	HEADS,
+	POND,
 	MAX
 }
 
@@ -47,9 +49,9 @@ var type := Type.UNKNOWN:
 				sprite_2d.texture = preload("uid://bi1mc3tkrqcsl")
 			Type.SHOP:
 				sprite_2d.texture = preload("uid://cvyl8tia7gs6r")
-			Type.BONUS:
+			Type.HEADS:
 				sprite_2d.texture = preload("uid://dgwgr870uqs6u")
-			Type.CAMPFIRE:
+			Type.POND:
 				sprite_2d.texture = preload("uid://3q65om0qmd3q")
 			pass
 var string_hint: String = ""
@@ -57,8 +59,10 @@ var number_hint: int = 0
 
 signal pressed
 
+
 func _ready() -> void:
 	sprite_2d.modulate = Color.DIM_GRAY
+
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:

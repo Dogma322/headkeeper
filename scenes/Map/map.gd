@@ -201,7 +201,7 @@ func add_node(coord: Vector2i) -> MapNode:
 	# CAMPFIRE
 	# --------------
 	
-	var arr = [MapNode.Type.BATTLE, MapNode.Type.BATTLE_ELITE, MapNode.Type.SHOP, MapNode.Type.BONUS, MapNode.Type.CAMPFIRE]
+	var arr = [MapNode.Type.BATTLE, MapNode.Type.BATTLE_ELITE, MapNode.Type.SHOP, MapNode.Type.HEADS, MapNode.Type.POND]
 	var sum = level_settings[progress].probability_sum()
 	var arr_index = rng.rand_weighted([level_settings[progress].probability_battle_weight / sum, level_settings[progress].probability_battle_elite_weight / sum, level_settings[progress].probability_shop_weight / sum, level_settings[progress].probability_bonus_weight / sum, level_settings[progress].probability_campfire_weight / sum])
 	instance.type = arr[arr_index]
@@ -229,6 +229,7 @@ func add_node(coord: Vector2i) -> MapNode:
 						late_enemy_pool_keys.push_back(element)
 					late_enemy_pool_keys.shuffle()
 			elif progress == 14:
+				instance.is_final = true
 				instance.string_hint = "high_druid"
 	
 	instance.coord = coord

@@ -1,16 +1,16 @@
 extends HBoxContainer
 
 enum Type {
-	BONUS,
-	CAMPFIRE,
+	HEADS,
+	POND,
 }
 
-@export var type: Type = Type.BONUS
+@export var type: Type = Type.HEADS
 
 func _ready() -> void:
-	if type == Type.BONUS:
+	if type == Type.HEADS:
 		Global.action_card_container = self
-	elif type == Type.CAMPFIRE:
+	elif type == Type.POND:
 		Global.campfire_card_container = self
 
 func show_cont():
