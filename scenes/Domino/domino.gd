@@ -763,49 +763,48 @@ func play(domino: Domino):
 		add_action()
 
 func add_action() -> void:
-	if template != null:
-		for key in tags:
-			match key:
-				"attack", "attack2", "dagger", "spear":
-					ActionManager.add(AttackAction.new(self, Global.enemy, val[key]))
-				"claws":
-					ActionManager.add(AttackAction.new(self, Global.enemy, val[key] + accums[key]))
-					accums[key] += 4
-				"corruption", "corrupted_sphere":
-					ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.corruption, val[key]))
-				"defense":
-					ActionManager.add(BlockAction.new(self, Global.hero, val[key]))
-				"draw":
-					ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.draw, val[key]))
-				"fury":
-					ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.fury, val[key]))
-				"heal":
-					ActionManager.add(HealAction.new(self, Global.hero, val[key]))
-				"thorns":
-					ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.thorns, val[key]))
-				"thorned_shield":
-					ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.thorns, val[key]))
-				"shield_strike":
-					ActionManager.add(ShieldStrikeAction.new(self, Global.enemy))
-				"repeat":
-					ActionManager.add(BuffAction.new(self, Global.hero,StatusManager.repeat, val[key]))
-					DominoManager.double_next_dm += val[key]
-				"mace":
-					ActionManager.add(AttackAction.new(self, Global.enemy, DominoManager.dominoes_on_board.size() * val[key]))
-				"horn":
-					ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.fury, val[key]))
-				"hammer":
-					ActionManager.add(HammerAction.new(self, Global.enemy))
-				"crit":
-					ActionManager.add(BuffAction.new(self, Global.hero,StatusManager.crit, val[key]))
-				"corrupted_stuff":
-					ActionManager.add(CorruptedStuffAction.new(self, Global.enemy))
-				"skull":
-					ActionManager.add(SkullsAction.new(self, Global.enemy))
-				"vulnerable":
-					ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.vulnerable, val[key]))
-				"weak":
-					ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.weak, val[key]))
+	for key in tags:
+		match key:
+			"attack", "attack2", "dagger", "spear":
+				ActionManager.add(AttackAction.new(self, Global.enemy, val[key]))
+			"claws":
+				ActionManager.add(AttackAction.new(self, Global.enemy, val[key] + accums[key]))
+				accums[key] += 4
+			"corruption", "corrupted_sphere":
+				ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.corruption, val[key]))
+			"defense":
+				ActionManager.add(BlockAction.new(self, Global.hero, val[key]))
+			"draw":
+				ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.draw, val[key]))
+			"fury":
+				ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.fury, val[key]))
+			"heal":
+				ActionManager.add(HealAction.new(self, Global.hero, val[key]))
+			"thorns":
+				ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.thorns, val[key]))
+			"thorned_shield":
+				ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.thorns, val[key]))
+			"shield_strike":
+				ActionManager.add(ShieldStrikeAction.new(self, Global.enemy))
+			"repeat":
+				ActionManager.add(BuffAction.new(self, Global.hero,StatusManager.repeat, val[key]))
+				DominoManager.double_next_dm += val[key]
+			"mace":
+				ActionManager.add(AttackAction.new(self, Global.enemy, DominoManager.dominoes_on_board.size() * val[key]))
+			"horn":
+				ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.fury, val[key]))
+			"hammer":
+				ActionManager.add(HammerAction.new(self, Global.enemy))
+			"crit":
+				ActionManager.add(BuffAction.new(self, Global.hero,StatusManager.crit, val[key]))
+			"corrupted_stuff":
+				ActionManager.add(CorruptedStuffAction.new(self, Global.enemy))
+			"skull":
+				ActionManager.add(SkullsAction.new(self, Global.enemy))
+			"vulnerable":
+				ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.vulnerable, val[key]))
+			"weak":
+				ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.weak, val[key]))
 
 
 func get_tooltip_for_type(key: String) -> String:

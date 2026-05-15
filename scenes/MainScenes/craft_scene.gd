@@ -15,6 +15,8 @@ const SPACING := Vector2(40, 70)  # расстояние между домино
 @onready var dominoes = $Dominoes
 @onready var battle_background: TextureRect = $BattleBackground
 @onready var text_panel: TextPanel = %TextPanel
+@onready var tooltips_box: VBoxContainer = %TooltipsBox
+const TOOLTIP_PANEL = preload("uid://cbpouqrfw2p2t")
 
 @onready var symbol_pool = [
 	"attack",
@@ -106,9 +108,14 @@ func start():
 		reroll_button.disabled = false
 	skip_button.disabled = false
 
+func clear_tooltips() -> void:
+	tooltips_box.hide()
+	for child in tooltips_box.get_children():
+		child.queue_free()
 
 func reroll_specified(craft_type):
 	current_craft_type = craft_type
+	clear_tooltips()
 	match craft_type:
 		CraftType.NUMBER:
 			current_amount = randi_range(1, 4)
@@ -119,6 +126,11 @@ func reroll_specified(craft_type):
 			symbol_pool.shuffle()
 			current_type = symbol_pool[0]
 			text_panel.text = tr("craft_change_symbols") % [current_amount, DominoSideVisual.get_type_texture(current_type, "red").resource_path]
+			tooltips_box.show()
+			
+			var tooltip: TooltipPanel = TOOLTIP_PANEL.instantiate()
+			tooltips_box.add_child(tooltip)
+			tooltip.description = get_tooltip_for_type(current_type)
 		CraftType.COLOR:
 			color_pool.shuffle()
 			current_type = color_pool[0]
@@ -234,7 +246,8 @@ func _on_change_color_button_pressed() -> void:
 
 
 func _on_reroll_button_pressed() -> void:
-	reroll()
+	reroll_specified(2)
+	#reroll()
 
 
 func _on_skip_button_pressed() -> void:
@@ -253,3 +266,73 @@ func _on_domino_added_to_board(domino) -> void:
 func _on_domino_chain_removed() -> void:
 	disable_buttons(true)
 	current_domino = null
+
+func get_tooltip_for_type(key: String) -> String:
+	var extra_key = ""
+	var text = ""
+
+	match key:
+		"attack", "attack2":
+			text = TextFormatter.highlight_keywords(tr("DM_ATTACK_1_DESC"))
+		"corruption":
+			extra_key = "Corruption"
+			text = TextFormatter.highlight_keywords(tr("DM_CORRUPTION_1_DESC"))
+		"defense":
+			text = TextFormatter.highlight_keywords(tr("DM_DEFENSE_1_DESC"))
+		"draw":
+			text = TextFormatter.highlight_keywords(tr("DM_DRAW_1_DESC"))
+		"fury":
+			extra_key = "Fury"
+			text = TextFormatter.highlight_keywords(tr("DM_FURY_1_DESC"))
+		"heal":
+			text = TextFormatter.highlight_keywords(tr("DM_HEAL_1_DESC"))
+		"vulnerable":
+			extra_key = "Vulnerable"
+			text = TextFormatter.highlight_keywords(tr("DM_VULNERABLE_1_DESC"))
+		"weak":
+			extra_key = "Weak"
+			text = TextFormatter.highlight_keywords(tr("DM_WEAK_1_DESC"))
+		"thorns":
+			extra_key = "Thorns"
+			text = TextFormatter.highlight_keywords(tr("DM_THORNS_1_DESC"))
+		"spear":
+			text = TextFormatter.highlight_keywords(tr("DM_SPEAR_1_DESC"))
+		"thorned_shield":
+			text = TextFormatter.highlight_keywords(tr("DM_THORNED_SHIELD_1_DESC"))
+		"shield_strike":
+			text = TextFormatter.highlight_keywords(tr("DM_SHIELD_STRIKE_1_DESC"))
+		"shield":
+			text = TextFormatter.highlight_keywords(tr("DM_STEEL_SHIELD_1_DESC"))
+		"repeat":
+			text = TextFormatter.highlight_keywords(tr("DM_REPEAT_1_DESC"))
+		"mace":
+			text = TextFormatter.highlight_keywords(tr("DM_MACE_1_DESC"))
+		"horn":
+			text = TextFormatter.highlight_keywords(tr("DM_HORN_1_DESC"))
+		"hammer":
+			text = TextFormatter.highlight_keywords(tr("DM_HAMMER_1_DESC"))
+		"crit":
+			text = TextFormatter.highlight_keywords(tr("DM_CRIT_1_DESC"))
+		"dagger":
+			text = TextFormatter.highlight_keywords(tr("DM_DAGGER_1_DESC"))
+		"corrupted_stuff":
+			text = TextFormatter.highlight_keywords(tr("DM_DARK_STAFF_1_DESC"))
+		"corrupted_sphere":
+			text = TextFormatter.highlight_keywords(tr("DM_DARK_SPHERE_1_DESC"))
+		"claws":
+			text = TextFormatter.highlight_keywords(tr("DM_CLAWS_1_DESC"))
+		"skull":
+			return TextFormatter.highlight_keywords(tr("DM_4VAL_ATTACK_1_DESC"))
+	if not extra_key.is_empty():
+		var extra_tooltip: AdditionalTooltipPanel = Domino.ADDITIONAL_TOOLTIP_PANEL.instantiate()
+		extra_tooltip.type = extra_key
+		tooltips_box.add_child(extra_tooltip)
+	
+	
+	
+	if DominoSideVisual.type_to_tex.has(key):
+		return "[img]%s[/img] - %s" % [DominoSideVisual.type_to_tex[key]["red"].resource_path, text]
+	elif DominoSideVisual.special_to_tex.has(key):
+		return "[img]%s[/img] - %s" % [DominoSideVisual.special_to_tex[key].resource_path, text]
+	
+	return text
