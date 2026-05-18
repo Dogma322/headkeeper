@@ -2,7 +2,7 @@ extends VBoxContainer
 class_name MetaSlot
 
 @onready var icon_rect: TextureRect = %IconRect
-@onready var cost_label: Label = %CostLabel
+@onready var cost_label: RichTextLabel = %CostLabel
 
 @export var tooltip_offset: TooltipPanel.ShowOffset = TooltipPanel.ShowOffset.NONE
 
@@ -12,6 +12,7 @@ signal selected
 
 var hname := ""
 var description := ""
+var img = "[img]%s[/img]" % "res://assets/Icons/TopPanelIcons/skull_icon.atlastex"
 
 @export var head: HeadTemplate:
 	set(value):
@@ -26,13 +27,13 @@ var description := ""
 			h.free()
 			
 			icon_rect.texture = head.texture
-			cost_label.text = str(head.skulls_cost)
+			cost_label.text = img + str(head.skulls_cost)
 			cost_label.modulate = Color.WHITE
 		else:
 			hname = ""
 			description = ""
 			icon_rect.texture = null
-			cost_label.text = str(0)
+			cost_label.text = img + str(0)
 			cost_label.modulate = Color.TRANSPARENT
 
 var not_enough_skulls := false
@@ -89,7 +90,7 @@ func update_availability(skulls: int) -> void:
 
 func _ready() -> void:
 	icon_rect.texture = null
-	cost_label.text = str(0)
+	cost_label.text = img + str(0)
 	cost_label.modulate = Color.TRANSPARENT
 
 
