@@ -9,6 +9,7 @@ var evasion = preload("res://resources/statuses/evasion.tres")
 var draw = preload("res://resources/statuses/draw.tres")
 var fury = preload("res://resources/statuses/fury.tres")
 var repeat = preload("res://resources/statuses/repeat.tres")
+var repeat_bonus = preload("res://resources/statuses/repeat_bonus.tres")
 var crit = preload("res://resources/statuses/crit.tres")
 var devour = preload("res://resources/statuses/devour.tres")
 
@@ -20,10 +21,11 @@ var devour = preload("res://resources/statuses/devour.tres")
 	#target.status_container.add_status(new_status, stacks)
 
 
-func apply_status(status: StatusResource, stacks, target):
+func apply_status(status: StatusResource, stacks: int, target) -> void:
 	target.status_container.add_status(status.duplicate(true), stacks)
 
-func initialize_status(status: StatusResource):
+
+func initialize_status(status: StatusResource) -> void:
 	status.status_changed.connect(_on_status_changed.bind(status))
 	_on_status_changed(status)
 	
@@ -35,16 +37,18 @@ func initialize_status(status: StatusResource):
 			Signals.deal_hero_thorn_damage.connect(add_action.bind(status))
 
 
-func apply_status_effect(status: StatusResource):
+func apply_status_effect(status: StatusResource) -> void:
 	match status.id:
 		"corruption":
 			ActionManager.add(CorruptionAttackAction.new(Global.enemy, status.stacks))
 		"draw":
 			DominoManager.bonus_draw_counter += status.stacks
 			status.stacks = 0
+		"repeat_bonus":
+			status.owner.repeat_positive_bonus_counter += status.stacks
 
 
-func _on_status_changed(status: StatusResource):
+func _on_status_changed(status: StatusResource) -> void:
 	match status.id:
 		"vulnerable":
 			status.owner.incoming_damage_mult = 1.5
@@ -52,9 +56,11 @@ func _on_status_changed(status: StatusResource):
 			status.owner.bonus_damage = status.stacks
 		"weak":
 			status.owner.damage_mult = 0.75
+		"repeat_bonus":
+			status.owner.repeat_positive_bonus_counter = status.stacks
 
 
-func remove_status_effect(status: StatusResource):
+func remove_status_effect(status: StatusResource) -> void:
 	match status.id:
 		"vulnerable":
 			status.owner.incoming_damage_mult = 1
@@ -62,6 +68,8 @@ func remove_status_effect(status: StatusResource):
 			status.owner.damage_mult = 1
 		"fury":
 			status.owner.bonus_damage = 0
+		"repeat_bonus":
+			status.owner.repeat_positive_bonus_counter = 0
 	
 	if status.id == "thorns":
 		if status.owner == Global.hero:
@@ -70,7 +78,7 @@ func remove_status_effect(status: StatusResource):
 			Signals.deal_hero_thorn_damage.disconnect(add_action)
 
 
-func add_action(status: StatusResource):
+func add_action(status: StatusResource) -> void:
 	match status.id:
 		"thorns":
 			var target = null

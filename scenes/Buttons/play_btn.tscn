@@ -70,7 +70,7 @@ offset_top = 1.0
 offset_right = 96.0
 offset_bottom = 24.0
 theme = ExtResource("3_1red2")
-text = "PLAY"
+text = "ID_PLAY"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -4,6 +4,13 @@ extends HBoxContainer
 
 @onready var status_ui = preload("res://scenes/StatusIconUi/status_icon_ui.tscn")
 
+func remove_status(status):
+	for status_icon in get_children():
+		if status_icon.status.id == status.id:
+			StatusManager.remove_status_effect(status_icon.status)
+			status_icon.queue_free()
+			return
+
 func add_status(status, stacks):
 	
 	for status_icon in get_children():

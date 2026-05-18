@@ -47,3 +47,9 @@ const MAX_POINTS = 4
 @export var hd_corruptor_damage_level_2 := 4
 @export var hd_corruptor_damage_level_3 := 6
 @export var hd_corruptor_corruption_to_hero := 3
+
+@export_subgroup("Phantom", "hd_phantom")
+@export var hd_phantom_damage_level_1 := 2
+@export var hd_phantom_damage_level_2 := 4
+@export var hd_phantom_damage_level_3 := 6
+@export var hd_phantom_damage_to_hero := 1

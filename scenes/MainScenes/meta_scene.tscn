@@ -296,7 +296,7 @@ mouse_filter = 2
 
 [node name="PlayButton" parent="HBoxContainer/Control/MarginContainer/VBoxContainer" unique_id=2111038540 instance=ExtResource("5_5w8ji")]
 layout_mode = 2
-text = "play"
+text = "ID_PLAY"
 font_size = 4
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer" unique_id=413958035]
@@ -401,6 +401,8 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("3_j7sys")
+tooltip = ""
+tooltip_offset = 0
 
 [node name="TooltipPanel" parent="." unique_id=54216942 instance=ExtResource("7_c7faw")]
 unique_name_in_owner = true
@@ -421,8 +423,6 @@ offset_left = -60.5
 offset_top = -160.0
 offset_right = 60.5
 offset_bottom = -102.0
-caption = "st_weak_name"
-description = "st_weak_des"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=477858779]
 position = Vector2(311, 261)

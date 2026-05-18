@@ -129,6 +129,9 @@ func player_turn_begin(is_start: bool) -> void:
 		
 		Signals.fight_started.emit()
 	else:
+		add_hero_heads_turn_end_actions()
+		await ActionManager.play_actions()
+		
 		add_hero_heads_turn_begin_actions()
 		await ActionManager.play_actions()
 	
@@ -228,6 +231,12 @@ func add_hero_heads_turn_begin_actions() -> void:
 	for head in Global.head_holder.get_children():
 		if head is Head:
 			head.turn_begin_add_action()
+
+
+func add_hero_heads_turn_end_actions() -> void:
+	for head in Global.head_holder.get_children():
+		if head is Head:
+			head.turn_end_add_action()
 
 
 func add_enemy_heads_turn_begin_actions() -> void:

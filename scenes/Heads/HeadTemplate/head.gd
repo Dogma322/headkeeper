@@ -95,6 +95,11 @@ func turn_begin_add_action():
 	pass
 
 
+## Происходит при конце хода.
+func turn_end_add_action():
+	pass
+
+
 func apply_passive_effect():
 	pass
 

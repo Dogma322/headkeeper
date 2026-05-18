@@ -21,7 +21,7 @@ var offset:
 
 
 func _ready() -> void:
-	play_btn.text = tr("play")
+	play_btn.text = tr("ID_PLAY")
 	
 	if not Engine.is_editor_hint():
 		Signals.player_turn_end.connect(_on_player_turn_end)
