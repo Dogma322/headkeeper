@@ -121,6 +121,9 @@ func player_turn_begin(is_start: bool) -> void:
 		add_hero_heads_battle_begin_actions()
 		await ActionManager.play_actions()
 		
+		add_enemy_heads_battle_begin_actions()
+		await ActionManager.play_actions()
+		
 		add_hero_heads_turn_begin_actions()
 		await ActionManager.play_actions()
 		
@@ -211,6 +214,12 @@ func apply_hero_turn_begin_status_effects():
 
 func add_hero_heads_battle_begin_actions() -> void:
 	for head in Global.head_holder.get_children():
+		if head is Head:
+			head.battle_start_add_action()
+
+
+func add_enemy_heads_battle_begin_actions() -> void:
+	for head in Global.enemy_head_holder.get_children():
 		if head is Head:
 			head.battle_start_add_action()
 

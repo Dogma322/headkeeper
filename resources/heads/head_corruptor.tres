@@ -9,8 +9,8 @@ region = Rect2(384, 0, 32, 32)
 
 [resource]
 script = ExtResource("1_34pwq")
-hname = "hd_corruptor_name"
-desc = "hd_corruptor_des"
+hname = "HD_CORRUPTOR_NAME"
+desc = "HD_CORRUPTOR_DESC"
 skulls_cost = 5
 texture = SubResource("AtlasTexture_p2w5p")
 extra_tags = Array[String](["Corruption"])

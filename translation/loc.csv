@@ -312,8 +312,10 @@ hd_moon_des_elite,"Whenever you play every %dth tile, deal %s damage to hero.","
 hd_maw_name,Maw,Пасть
 hd_maw_des,Two bonuses start appearing on the board that double the damage of your next red die. -%s max HP.,"На поле начинают появляться 2 бонуса, которые удваивают урон следующей красной кости. -%s Макс. здоровья."
 ,,
-hd_corruptor_name,Corruptor,Осквернитель
-hd_corruptor_des,"When you apply Corruption, you additionally apply 2 more Corruption.",При наложении Скверны накладывается дополнительно 2 Скверны.
+HD_CORRUPTOR_NAME,Corruptor,Осквернитель
+HD_CORRUPTOR_DESC,"When you apply Corruption, you additionally apply %d more Corruption.",При наложении Скверны накладывается дополнительно %d Скверны.
+HD_CORRUPTOR_DESC2,"When you apply Corruption, you additionally apply %d more Corruption and deal %d damage to the enemy.",При наложении Скверны накладывается дополнительно %d Скверны и наносится %d урона противнику.
+HD_CORRUPTOR_DESC_ELITE,"At the start of the battle, the player is inflicted with %d Corruption.",В начале боя на игрока накладывается Скверна %d.
 ,,
 hd_druid_name,Druid,Друид
 hd_druid_des,"When you restore health, applies 2 Fury. -%s max HP.","Когда вы восстанавливаете здоровье, накладывает Ярость 2. -%s Макс. здоровья."

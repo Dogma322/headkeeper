@@ -101,7 +101,7 @@ static var type_to_string = {
 	"hammer": ["Attack"],
 	"crit": ["Skill"],
 	"dagger": ["Attack"],
-	"corrupted_stuff": ["Skill"],
+	"corrupted_staff": ["Skill"],
 	"corrupted_sphere": ["Skill"],
 	"claws": ["Attack"],
 	"skull": ["Attack"],
@@ -771,7 +771,7 @@ func add_action() -> void:
 				ActionManager.add(AttackAction.new(self, Global.enemy, val[key] + accums[key]))
 				accums[key] += 4
 			"corruption", "corrupted_sphere":
-				ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.corruption, val[key]))
+				ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.corruption, val[key] + DominoManager.corruption_bonus))
 			"defense":
 				ActionManager.add(BlockAction.new(self, Global.hero, val[key]))
 			"draw":
@@ -797,8 +797,8 @@ func add_action() -> void:
 				ActionManager.add(HammerAction.new(self, Global.enemy))
 			"crit":
 				ActionManager.add(BuffAction.new(self, Global.hero,StatusManager.crit, val[key]))
-			"corrupted_stuff":
-				ActionManager.add(CorruptedStuffAction.new(self, Global.enemy))
+			"corrupted_staff":
+				ActionManager.add(CorruptedStaffAction.new(self, Global.enemy))
 			"skull":
 				ActionManager.add(SkullsAction.new(self, Global.enemy))
 			"vulnerable":
@@ -812,7 +812,7 @@ func get_tooltip_for_type(key: String) -> String:
 		"attack", "attack2":
 			return TextFormatter.insert_colored_value(tr("attack_des"), final_damage(val[key]), val[key])
 		"corruption":
-			return TextFormatter.insert_colored_value(tr("corruption_des"), val[key], val[key])
+			return TextFormatter.insert_colored_value(tr("corruption_des"), final_corruption(val[key] + DominoManager.corruption_bonus), val[key])
 		"defense":
 			return TextFormatter.insert_colored_value(tr("defense_des"), final_block(val[key]), val[key])
 		"draw":
@@ -849,11 +849,10 @@ func get_tooltip_for_type(key: String) -> String:
 			return TextFormatter.highlight_keywords(tr("dm_crit_des"))
 		"dagger":
 			return TextFormatter.insert_colored_value(tr("dm_dagger_des"), final_damage(val[key]), val[key])
-		"corrupted_stuff":
-			var stuff_damage = DominoManager.value1_played_dominoes + DominoManager.corruption_bonus
-			return TextFormatter.insert_colored_value(tr("dm_dark_staff_des"), final_corruption(stuff_damage), stuff_damage)
+		"corrupted_staff":
+			return TextFormatter.insert_colored_value(tr("dm_dark_staff_des"), final_corruption(DominoManager.value1_played_dominoes + DominoManager.corruption_bonus), DominoManager.value1_played_dominoes)
 		"corrupted_sphere":
-			return TextFormatter.insert_colored_value(tr("dm_dark_sphere_des"), final_corruption(val[key]), val[key])
+			return TextFormatter.insert_colored_value(tr("dm_dark_sphere_des"), final_corruption(val[key] + DominoManager.corruption_bonus), val[key])
 		"claws":
 			return TextFormatter.insert_colored_value(tr("dm_claws_des"), final_damage(val[key] + accums[key]), val[key] + accums[key])
 		"skull":

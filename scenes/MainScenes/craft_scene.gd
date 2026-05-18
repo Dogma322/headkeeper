@@ -24,7 +24,7 @@ const TOOLTIP_PANEL = preload("uid://cbpouqrfw2p2t")
 	"claws",
 	"corruption",
 	"corrupted_sphere",
-	"corrupted_stuff",
+	"corrupted_staff",
 	"crit",
 	"dagger",
 	"defense",
@@ -315,7 +315,7 @@ func get_tooltip_for_type(key: String) -> String:
 			text = TextFormatter.highlight_keywords(tr("DM_CRIT_1_DESC"))
 		"dagger":
 			text = TextFormatter.highlight_keywords(tr("DM_DAGGER_1_DESC"))
-		"corrupted_stuff":
+		"corrupted_staff":
 			text = TextFormatter.highlight_keywords(tr("DM_DARK_STAFF_1_DESC"))
 		"corrupted_sphere":
 			text = TextFormatter.highlight_keywords(tr("DM_DARK_SPHERE_1_DESC"))

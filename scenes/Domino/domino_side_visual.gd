@@ -105,7 +105,7 @@ static var type_to_tex = {
 static var special_to_tex = {
 	"corruption": preload("res://assets/Dominoes/Symbols/corruption.atlastex"),
 	"corrupted_sphere": preload("res://assets/Dominoes/Symbols/corrupted_sphere.atlastex"),
-	"corrupted_stuff": preload("res://assets/Dominoes/Symbols/corrupted_stuff.atlastex"),
+	"corrupted_staff": preload("res://assets/Dominoes/Symbols/corrupted_staff.atlastex"),
 	"crit": preload("res://assets/Dominoes/Symbols/crit.atlastex"),
 	"draw": preload("res://assets/Dominoes/Symbols/draw.atlastex"),
 	"fury": preload("res://assets/Dominoes/Symbols/fury.atlastex"),

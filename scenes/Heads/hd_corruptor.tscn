@@ -20,5 +20,5 @@ texture = SubResource("AtlasTexture_p2w5p")
 [node name="AdditionalTooltipPanel" parent="TooltipStack" parent_id_path=PackedInt32Array(1268114038) index="1" unique_id=54216942 instance=ExtResource("5_tiyj8")]
 layout_mode = 2
 type = "Corruption"
-caption = "Скверна"
-description = "В начале хода наносит урон и уменьшается на 1."
+caption = "st_corruption_name"
+description = "st_corruption_des"

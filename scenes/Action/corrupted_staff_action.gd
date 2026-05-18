@@ -1,4 +1,4 @@
-class_name CorruptedStuffAction
+class_name CorruptedStaffAction
 extends Action
 
 var status

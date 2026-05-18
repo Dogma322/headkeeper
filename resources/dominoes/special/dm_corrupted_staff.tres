@@ -4,10 +4,7 @@
 
 [resource]
 script = ExtResource("1_nxl8a")
-b = 3
-a_type = "corrupted_stuff"
-b_type = "empty_green"
-a_types = PackedStringArray("corrupted_stuff")
+a_types = PackedStringArray("corrupted_staff")
 b_types = PackedStringArray("empty", "empty", "empty")
 a_color = "green"
 b_color = "green"

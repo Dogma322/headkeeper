@@ -57,7 +57,7 @@ var corruption_bonus = 0
 	"dm_defense_shield_strike": preload("res://resources/dominoes/special/dm_defense_shield_strike.tres"),
 	"dm_hammer": preload("res://resources/dominoes/special/dm_hammer.tres"),
 	"dm_mace": preload("res://resources/dominoes/special/dm_mace.tres"),
-	"dm_corrupted_staff": preload("res://resources/dominoes/special/dm_corrupted_stuff.tres"),
+	"dm_corrupted_staff": preload("res://resources/dominoes/special/dm_corrupted_staff.tres"),
 	"dm_4skulls": preload("res://resources/dominoes/special/dm_4_skull.tres"),
 	"dm_repeat": preload("res://resources/dominoes/special/dm_repeat.tres"),
 	"dm_defense_crit": preload("res://resources/dominoes/special/dm_defense_crit.tres"),

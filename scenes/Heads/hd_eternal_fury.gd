@@ -15,6 +15,7 @@ func _on_status_added(status: StatusResource) -> void:
 				ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.fury, 1))
 			2:
 				ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.fury, 2))
+	pass
 
 
 func update_desc() -> void:
@@ -28,6 +29,7 @@ func update_desc() -> void:
 				description = tr("hd_eternal_fury_des3")
 			_:
 				description = tr("hd_eternal_fury_des")
+	pass
 
 
 func apply_passive_effect() -> void:
@@ -36,7 +38,7 @@ func apply_passive_effect() -> void:
 	else:
 		BoardManager.bonus_pool.append(BoardManager.h_1fury)
 		BoardManager.bonus_pool.append(BoardManager.h_1fury)
-
+	pass
 
 
 func remove_passive_effect() -> void:
@@ -45,3 +47,4 @@ func remove_passive_effect() -> void:
 	else:
 		BoardManager.bonus_pool.erase(BoardManager.h_1fury)
 		BoardManager.bonus_pool.erase(BoardManager.h_1fury)
+	pass
