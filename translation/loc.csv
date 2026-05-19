@@ -266,10 +266,10 @@ HEADS,,
 ,,
 ID_LEVEL,Lvl.,Ур.
 ,,
-hd_berserk_name,Berserk,Берсерк
-hd_berserk_des,"When you play a tile with a value of %d, deal %d damage to enemy.","Когда вы играете кость со значением %d, наносит %d урона противнику."
-hd_berserk_des2,"When you play a tile with a value of %d, deal %d damage to enemy and apply %s Fury to you.","Когда вы играете кость со значением %d, наносит %d урона противнику и накладывает Ярость %d на вас."
-hd_berserk_des_elite,"When you play a tile with a value of %d, deal %d damage to you.","Когда вы играете кость со значением %d, вам наносится %d урона."
+HD_BERSERK_NAME,Berserk,Берсерк
+HD_BERSERK_DESC,"When you play a tile with a value of %d, deal %d damage to enemy.","Когда вы играете кость со значением %d, наносит %d урона противнику."
+HD_BERSERK_DESC2,"When you play a tile with a value of %d, deal %d damage to enemy and apply %s Fury to you.","Когда вы играете кость со значением %d, наносит %d урона противнику и накладывает Ярость %d на вас."
+HD_BERSERK_DESC_ELITE,"When you play a tile with a value of %d, deal %d damage to you.","Когда вы играете кость со значением %d, вам наносится %d урона."
 ,,
 hd_rock_name,Rock,Скала
 hd_rock_des,"When you play a blue tile, gain %s block. -%s max HP.","Когда вы играете синюю кость, дает %s брони. -%s Макс. здоровья."
@@ -326,8 +326,11 @@ hd_druid_des_elite,"When you restore health, applies 1 Fury to enemy.","Когд
 hd_brick_name,Construct,Конструкт
 hd_brick_des,Gаin %s block at the start of each turn.,В начале каждого хода дает %s брони.
 ,,
-hd_octopus_name,Apostle,Апостол
-hd_octopus_des,"When you play a green tile, apply Corruption %s  to the enemy. -%s max HP.","Когда вы играете зеленую кость, накладывает Скверна %s на врага. -%s Макс. здоровья."
+HD_APOSTLE_NAME,Apostle,Апостол
+HD_APOSTLE_DESC,"When you play a green tile, apply Corruption %d to the enemy. -%d max HP.","Когда вы играете зеленую кость, накладывает Скверна %d на врага. -%d Макс. здоровья."
+HD_APOSTLE_DESC2,"When you play a green tile, apply Corruption %d and Weak %d to the enemy. -%d max HP.","Когда вы играете зеленую кость, накладывает Скверна %d и Слабость %d на врага. -%d Макс. здоровья."
+HD_APOSTLE_DESC3,"When you play a green tile, apply Corruption %d, Weak %d and Vulnerable %d to the enemy. -%d max HP.","Когда вы играете зеленую кость, накладывает Скверна %d, Слабость %d и Уязвимость %d на врага. -%d Макс. здоровья."
+HD_APOSTLE_DESC_ELITE,"When you play a green tile, apply Corruption %d to the hero.","Когда вы играете зеленую кость, накладывает Скверна %d на героя."
 ,,
 HD_PHANTOM_NAME,Phantom,Фантом
 HD_PHANTOM_DESC,"Every time you activate the green bonus, it deals %d damage.","Каждый раз когда вы активируете зеленый бонус, наносит %d урона."

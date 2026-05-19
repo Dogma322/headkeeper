@@ -53,3 +53,13 @@ const MAX_POINTS = 4
 @export var hd_phantom_damage_level_2 := 4
 @export var hd_phantom_damage_level_3 := 6
 @export var hd_phantom_damage_to_hero := 1
+
+@export_subgroup("Apostle", "hd_apostle")
+@export var hd_apostle_corruption_level_1 := 2
+@export var hd_apostle_corruption_level_2 := 3
+@export var hd_apostle_corruption_level_3 := 4
+@export var hd_apostle_weak_level_2 := 1
+@export var hd_apostle_weak_level_3 := 1
+@export var hd_apostle_vulnerable_level_3 := 1
+@export var hd_apostle_corruption_to_hero := 1
+@export var hd_apostle_health_decrement := 20

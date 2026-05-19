@@ -13,8 +13,3 @@ func _init(_source, _target, _block: int) -> void:
 func execute() -> void:
 	target.take_block(block)
 	AnimationManager.spawn_anim(AnimationManager.armor_anim, target, block)
-
-
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_PREDELETE:
-		pass

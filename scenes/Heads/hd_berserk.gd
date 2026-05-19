@@ -7,14 +7,15 @@ func _ready() -> void:
 
 func update_desc() -> void:
 	if invert_logic:
-		description = tr("hd_berserk_des_elite") % [Constants.hd_berserk_activator_value, Constants.hd_berserk_damage_to_hero]
+		description = tr("HD_BERSERK_DESC_ELITE") % [Constants.hd_berserk_activator_value, Constants.hd_berserk_damage_to_hero]
 	else:
-		description = tr("hd_berserk_des") % [Constants.hd_berserk_activator_value, Constants.hd_berserk_damage_to_enemy]
 		match level:
 			1:
-				description = tr("hd_berserk_des2") % [Constants.hd_berserk_activator_value, Constants.hd_berserk_damage_to_enemy, Constants.hd_berserk_fury_level_2]
+				description = tr("HD_BERSERK_DESC2") % [Constants.hd_berserk_activator_value, Constants.hd_berserk_damage_to_enemy, Constants.hd_berserk_fury_level_2]
 			2:
-				description = tr("hd_berserk_des2") % [Constants.hd_berserk_activator_value, Constants.hd_berserk_damage_to_enemy, Constants.hd_berserk_fury_level_3]
+				description = tr("HD_BERSERK_DESC2") % [Constants.hd_berserk_activator_value, Constants.hd_berserk_damage_to_enemy, Constants.hd_berserk_fury_level_3]
+			_:
+				description = tr("HD_BERSERK_DESC") % [Constants.hd_berserk_activator_value, Constants.hd_berserk_damage_to_enemy]
 
 
 func play(count: int, _domino: Domino) -> void:
