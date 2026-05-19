@@ -83,6 +83,7 @@ func play_actions():
 		return
 
 	running = true
+	var bonuses = []
 
 	while queue.size() > 0:
 		
@@ -98,6 +99,8 @@ func play_actions():
 		
 		
 		if action.source != action.target:
+			if action.source is BoardBonus:
+				bonuses.push_back(action.source)
 			if action.source is Domino or action.source is BoardBonus or action.source is Head:
 				action.source.play_anim()
 				
@@ -106,9 +109,6 @@ func play_actions():
 					await Signals.projectile_hit
 				
 		action.execute()
-		
-		
-		
 		await get_tree().create_timer(0.35).timeout
 		
 		if Global.enemy.is_dead:
@@ -118,7 +118,10 @@ func play_actions():
 		if Global.hero.is_dead:
 			running = false
 			queue.clear()
-
+	
+	for bonus in bonuses:
+		bonus.queue_free()
+	
 	running = false
 	
 	Signals.actions_completed.emit()

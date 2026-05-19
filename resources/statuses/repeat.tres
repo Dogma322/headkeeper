@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="StatusResource" format=3 uid="uid://la58kpn3r802"]
+[gd_resource type="Resource" format=3 uid="uid://la58kpn3r802"]
 
-[ext_resource type="Script" uid="uid://dyln3pjhpe4xd" path="res://resources/statuses/template/status_resource.gd" id="1_f2uif"]
+[ext_resource type="Script" uid="uid://27t0pb8ck876" path="res://resources/statuses/repeat.gd" id="1_slmpw"]
 [ext_resource type="Texture2D" uid="uid://f4nkkac62hic" path="res://assets/Statuses/StatusAtlas.png" id="2_slmpw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bn2dw"]
@@ -8,7 +8,7 @@ atlas = ExtResource("2_slmpw")
 region = Rect2(144, 0, 16, 16)
 
 [resource]
-script = ExtResource("1_f2uif")
+script = ExtResource("1_slmpw")
 id = "repeat"
 stackable = true
 event_based_effect = true

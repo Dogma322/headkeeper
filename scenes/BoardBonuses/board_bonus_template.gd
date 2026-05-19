@@ -33,7 +33,6 @@ func play_anim():
 	tween.tween_property(self, "scale", Vector2(4,4), 0.5)
 	tween.tween_property(self, "modulate:a", 0.0, 0.5)
 	await tween.finished
-	queue_free()
 
 
 func add_actions():

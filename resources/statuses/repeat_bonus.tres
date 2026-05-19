@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="StatusResource" format=3 uid="uid://bhjkjdyx5jjuc"]
+[gd_resource type="Resource" format=3 uid="uid://bhjkjdyx5jjuc"]
 
-[ext_resource type="Script" uid="uid://dyln3pjhpe4xd" path="res://resources/statuses/template/status_resource.gd" id="1_hb61b"]
+[ext_resource type="Script" uid="uid://pr1vyt6ppx0" path="res://resources/statuses/repeat_bonus.gd" id="1_hb61b"]
 [ext_resource type="Texture2D" uid="uid://f4nkkac62hic" path="res://assets/Statuses/StatusAtlas.png" id="2_ayiwa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bn2dw"]
