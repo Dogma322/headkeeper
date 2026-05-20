@@ -10,15 +10,15 @@ func _ready() -> void:
 
 func update_desc() -> void:
 	if invert_logic:
-		description = TextFormatter.highlight_keywords(tr("HD_APOSTLE_DESC_ELITE") % [Constants.hd_apostle_corruption_to_hero])
+		description = tr("HD_APOSTLE_DESC_ELITE") % [Constants.hd_apostle_corruption_to_hero]
 	else:
 		match level:
 			1:
-				description = TextFormatter.highlight_keywords(tr("HD_APOSTLE_DESC2") % [Constants.hd_apostle_corruption_level_2 + DominoManager.corruption_bonus, Constants.hd_apostle_weak_level_2, Constants.hd_apostle_health_decrement])
+				description = tr("HD_APOSTLE_DESC2") % [Constants.hd_apostle_corruption_level_2 + DominoManager.corruption_bonus, Constants.hd_apostle_weak_level_2, Constants.hd_apostle_health_decrement]
 			2:
-				description = TextFormatter.highlight_keywords(tr("HD_APOSTLE_DESC3") % [Constants.hd_apostle_corruption_level_3 + DominoManager.corruption_bonus, Constants.hd_apostle_weak_level_3, Constants.hd_apostle_vulnerable_level_3, Constants.hd_apostle_health_decrement])
+				description = tr("HD_APOSTLE_DESC3") % [Constants.hd_apostle_corruption_level_3 + DominoManager.corruption_bonus, Constants.hd_apostle_weak_level_3, Constants.hd_apostle_vulnerable_level_3, Constants.hd_apostle_health_decrement]
 			_:
-				description = TextFormatter.highlight_keywords(tr("HD_APOSTLE_DESC") % [Constants.hd_apostle_corruption_level_1 + DominoManager.corruption_bonus, Constants.hd_apostle_health_decrement])
+				description = tr("HD_APOSTLE_DESC") % [Constants.hd_apostle_corruption_level_1 + DominoManager.corruption_bonus, Constants.hd_apostle_health_decrement]
 
 
 func apply_passive_effect() -> void:

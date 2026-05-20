@@ -299,11 +299,11 @@ hd_eternal_fury_des2,"Two bonuses start appearing on the board that apply 1 Fury
 hd_eternal_fury_des3,"Two bonuses start appearing on the board that apply 1 Fury to you. Every time you get a Fury you get additional Fury 2.","На поле начинают появляться 2 бонуса, которые накладывают на вас Ярость 1. Каждый раз когда вы получаете Ярость вы получаете дополнительно Ярость 2."
 hd_eternal_fury_des_elite,"A bonus start appearing on the board that apply 3 Fury to enemy.","На поле начинают появляться бонус, который накладывает на врага Ярость 3."
 ,,
-hd_chaos_name,Chaos,Хаос
-hd_chaos_des,"When you play a tile with a value of %s, deal 4 damage. The value changes each turn.","Когда вы играете кость со значением %s, наносит 4 урона. Значение меняется каждый ход."
-hd_chaos_des2,"When you play a tile with a value of %s, deal 5 damage and give you additonal status (Fury 1, Regen 1, Thorns 1, Draw 1). The value changes each turn.","Когда вы играете кость со значением %s, наносит 5 урона и накладывает на вас случайный положительный статус (Ярость 1, Регенерация 1, Шипы 1, Добор 1). Значение меняется каждый ход."
-hd_chaos_des3,"When you play a tile with a value of %s, deal 6 damage and give you additonal status (Fury 2, Regen 2, Thorns 2, Draw 2). The value changes each turn.","Когда вы играете кость со значением %s, наносит 6 урона и накладывает на вас случайный положительный статус (Ярость 2, Регенерация 2, Шипы 2, Добор 2). Значение меняется каждый ход."
-hd_chaos_des_elite,"When you play a tile with a value of %s, deal 2 damage to you. The value changes each turn.","Когда вы играете кость со значением %s, вам наносится 2 урона. Значение меняется каждый ход."
+HD_CHAOS_NAME,Chaos,Хаос
+HD_CHAOS_DESC,"When you play a tile with a value of %d, deal %d damage. The value changes each turn.","Когда вы играете кость со значением %d, наносит %d урона. Значение меняется каждый ход."
+HD_CHAOS_DESC2,"When you play a tile with a value of %s, deal %d damage and give you additonal status (Fury 1, Regen 1, Thorns 1, Draw 1). The value changes each turn.","Когда вы играете кость со значением %s, наносит %d урона и накладывает на вас случайный положительный статус (Ярость 1, Регенерация 1, Шипы 1, Добор 1). Значение меняется каждый ход."
+HD_CHAOS_DESC3,"When you play a tile with a value of %s, deal %d damage and give you additonal status (Fury 2, Regen 2, Thorns 2, Draw 2). The value changes each turn.","Когда вы играете кость со значением %s, наносит %d урона и накладывает на вас случайный положительный статус (Ярость 2, Регенерация 2, Шипы 2, Добор 2). Значение меняется каждый ход."
+HD_CHAOS_DESC_ELITE,"When you play a tile with a value of %s, deal %d damage to you. The value changes each turn.","Когда вы играете кость со значением %s, вам наносится %d урона. Значение меняется каждый ход."
 ,,
 hd_moon_name,Moon,Луна
 hd_moon_des,"Whenever you play every %dth tile, deal %s damage.","При разыгрывании каждой %d-й кости наносит %s урона."
@@ -319,9 +319,10 @@ HD_CORRUPTOR_DESC,"When you apply Corruption, you additionally apply %d more Cor
 HD_CORRUPTOR_DESC2,"When you apply Corruption, you additionally apply %d more Corruption and deal %d damage to the enemy.",При наложении Скверны накладывается дополнительно %d Скверны и наносится %d урона противнику.
 HD_CORRUPTOR_DESC_ELITE,"At the start of the battle, the player is inflicted with %d Corruption.",В начале боя на игрока накладывается Скверна %d.
 ,,
-hd_druid_name,Druid,Друид
-hd_druid_des,"When you restore health, applies 2 Fury. -%s max HP.","Когда вы восстанавливаете здоровье, накладывает Ярость 2. -%s Макс. здоровья."
-hd_druid_des_elite,"When you restore health, applies 1 Fury to enemy.","Когда вы восстанавливаете здоровье, накладывает Ярость 1 на врага."
+HD_DRUID_NAME,Druid,Друид
+HD_DRUID_DESC,"When you restore health, applies %d Fury. -%s max HP.","Когда вы восстанавливаете здоровье, накладывает Ярость %d. -%s Макс. здоровья."
+HD_DRUID_DESC2,"When you restore health, applies %d Fury and %d Crit. -%s max HP.","Когда вы восстанавливаете здоровье, накладывает Ярость %d и Крит %d. -%s Макс. здоровья."
+HD_DRUID_DESC_ELITE,"When you restore health, applies %d Fury to enemy.","Когда вы восстанавливаете здоровье, накладывает Ярость %d на врага."
 ,,
 hd_brick_name,Construct,Конструкт
 hd_brick_des,Gаin %s block at the start of each turn.,В начале каждого хода дает %s брони.

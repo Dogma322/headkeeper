@@ -9,8 +9,8 @@ region = Rect2(320, 0, 32, 32)
 
 [resource]
 script = ExtResource("1_lsxpb")
-hname = "hd_chaos_name"
-desc = "hd_chaos_des"
+hname = "HD_CHAOS_NAME"
+desc = "HD_CHAOS_DESC"
 skulls_cost = 10
 value = 1
 texture = SubResource("AtlasTexture_wq4ba")

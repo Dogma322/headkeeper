@@ -7,13 +7,22 @@ func _ready() -> void:
 
 func update_desc() -> void:
 	if invert_logic:
-		description = TextFormatter.highlight_keywords(tr("hd_druid_des_elite"))
+		description = TextFormatter.highlight_keywords(tr("HD_DRUID_DESC_ELITE") % [Constants.hd_druid_fury_to_enemy])
 	else:
-		description = TextFormatter.highlight_keywords(tr("hd_druid_des") % 20)
+		match level:
+			1:
+				description = TextFormatter.highlight_keywords(tr("HD_DRUID_DESC2") % [Constants.hd_druid_fury_level_2, Constants.hd_druid_crit_level_2, Constants.hd_druid_health_decrement])
+			2:
+				description = TextFormatter.highlight_keywords(tr("HD_DRUID_DESC2") % [Constants.hd_druid_fury_level_3, Constants.hd_druid_crit_level_3, Constants.hd_druid_health_decrement])
+			_:
+				description = TextFormatter.highlight_keywords(tr("HD_DRUID_DESC") % [Constants.hd_druid_fury_level_1, Constants.hd_druid_health_decrement])
 
 
 func apply_passive_effect() -> void:
-	ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, -20 if invert_logic else 20))
+	if invert_logic:
+		ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, -Constants.hd_druid_health_decrement))
+	else:
+		ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, Constants.hd_druid_health_decrement))
 	ActionManager.play_one_action()
 
 
@@ -21,4 +30,15 @@ func add_action() -> void:
 	if invert_logic:
 		ActionManager.add(BuffAction.new(self, Global.enemy, StatusManager.fury, 1))
 	else:
-		ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.fury, 2))
+		var fury = Constants.hd_druid_fury_level_1
+		var crit = 0
+		match level:
+			1:
+				fury = Constants.hd_druid_fury_level_2
+				crit = Constants.hd_druid_crit_level_2
+			2:
+				fury = Constants.hd_druid_fury_level_3
+				crit = Constants.hd_druid_crit_level_3
+		ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.fury, fury))
+		if crit > 0:
+			ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.crit, crit))

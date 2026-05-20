@@ -25,11 +25,12 @@ class_name Head
 		hd_name = value
 		if is_instance_valid(tooltip_panel):
 			tooltip_panel.caption = hd_name
+
 @onready var description: String:
 	set(value):
-		description = value
+		description = TextFormatter.highlight_keywords(value)
 		if is_instance_valid(tooltip_panel):
-			tooltip_panel.description = TextFormatter.highlight_keywords(value)
+			tooltip_panel.description = value
 
 @onready var damage := 0
 @onready var armor := 0

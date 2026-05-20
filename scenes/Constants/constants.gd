@@ -21,6 +21,21 @@ const MAX_POINTS = 4
 @export var hd_rock_armor_level_3 := 45
 @export var hd_rock_health_decrement := 15
 
+@export_subgroup("Chaos", "hd_chaos")
+@export var hd_chaos_damage_level_1 := 4
+@export var hd_chaos_damage_level_2 := 5
+@export var hd_chaos_damage_level_3 := 6
+@export var hd_chaos_damage_to_hero := 2
+
+@export_subgroup("Druid", "hd_druid")
+@export var hd_druid_fury_level_1 := 2
+@export var hd_druid_fury_level_2 := 2
+@export var hd_druid_fury_level_3 := 4
+@export var hd_druid_crit_level_2 := 1
+@export var hd_druid_crit_level_3 := 1
+@export var hd_druid_fury_to_enemy := 1
+@export var hd_druid_health_decrement := 20
+
 @export_subgroup("Thorn", "hd_thorn")
 @export var hd_thorn_thorns_to_hero := 4
 @export var hd_thorn_thorns_to_enemy := 2

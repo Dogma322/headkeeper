@@ -14,15 +14,15 @@ func _ready() -> void:
 
 func update_desc() -> void:
 	if invert_logic:
-		description = tr("hd_chaos_des_elite") % value
+		description = tr("HD_CHAOS_DESC_ELITE") % [value, Constants.hd_chaos_damage_to_hero]
 	else:
 		match level:
 			1:
-				description = tr("hd_chaos_des2") % value
+				description = tr("HD_CHAOS_DESC2") % [value, Constants.hd_chaos_damage_level_2]
 			2:
-				description = tr("hd_chaos_des3") % value
+				description = tr("HD_CHAOS_DESC3") % [value, Constants.hd_chaos_damage_level_3]
 			_:
-				description = tr("hd_chaos_des") % value
+				description = tr("HD_CHAOS_DESC") % [value, Constants.hd_chaos_damage_level_1]
 
 
 func apply_passive_effect() -> void:
@@ -61,15 +61,16 @@ func add_action() -> void:
 	
 	if invert_logic:
 		target = Global.hero
-		amount = 2
+		amount = Constants.hd_chaos_damage_to_hero
 	else:
 		target = Global.enemy
-		amount = 4
 		match level:
 			1:
-				amount = 5
+				amount = Constants.hd_apostle_corruption_level_2
 			2:
-				amount = 6
+				amount = Constants.hd_apostle_corruption_level_3
+			_:
+				amount = Constants.hd_apostle_corruption_level_1
 	
 	ActionManager.add(AttackAction.new(self, target, amount))
 	
