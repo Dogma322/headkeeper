@@ -15,16 +15,18 @@ func _ready() -> void:
 
 
 func update_desc() -> void:
+	var val = "x" if value == 0 else str(value)
+	
 	if invert_logic:
-		description = tr("HD_CHAOS_DESC_ELITE") % [value, Constants.hd_chaos_damage_to_hero]
+		description = tr("HD_CHAOS_DESC_ELITE") % [val, Constants.hd_chaos_damage_to_hero]
 	else:
 		match level:
 			1:
-				description = tr("HD_CHAOS_DESC2") % [value, Constants.hd_chaos_damage_level_2]
+				description = tr("HD_CHAOS_DESC2") % [val, Constants.hd_chaos_damage_level_2]
 			2:
-				description = tr("HD_CHAOS_DESC3") % [value, Constants.hd_chaos_damage_level_3]
+				description = tr("HD_CHAOS_DESC3") % [val, Constants.hd_chaos_damage_level_3]
 			_:
-				description = tr("HD_CHAOS_DESC") % [value, Constants.hd_chaos_damage_level_1]
+				description = tr("HD_CHAOS_DESC") % [val, Constants.hd_chaos_damage_level_1]
 
 
 func apply_passive_effect() -> void:

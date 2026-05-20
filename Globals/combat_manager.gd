@@ -135,9 +135,6 @@ func player_turn_begin(is_start: bool) -> void:
 		add_hero_heads_turn_begin_actions()
 		await ActionManager.play_actions()
 	
-	add_enemy_heads_turn_begin_actions()
-	await ActionManager.play_actions()
-	
 	await get_tree().create_timer(0.5).timeout
 	
 	if ActionManager.queue.size() > 0:
@@ -182,6 +179,9 @@ func enemy_turn_begin() -> void:
 	
 	if Global.enemy.is_dead:
 		return  
+	
+	add_enemy_heads_turn_begin_actions()
+	await ActionManager.play_actions()
 	
 	Global.enemy.add_action()
 	

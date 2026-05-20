@@ -30,12 +30,12 @@ class_name Head
 	set(value):
 		description = TextFormatter.highlight_keywords(value)
 		if is_instance_valid(tooltip_panel):
-			tooltip_panel.description = value
+			tooltip_panel.description = description
 
 @onready var damage := 0
 @onready var armor := 0
 @onready var heal := 0
-@onready var value := 1
+@onready var value := 0
 @onready var corruption := 0
 
 #@onready var final_damage
@@ -46,7 +46,7 @@ var key := ""
 var head_choice := false
 var invert_logic := false
 var used := false
-var level := 2:
+var level := 0:
 	set(value):
 		if level == value:
 			return

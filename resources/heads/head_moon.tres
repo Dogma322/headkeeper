@@ -9,8 +9,7 @@ region = Rect2(256, 1, 32, 32)
 
 [resource]
 script = ExtResource("1_72xjw")
-hname = "hd_moon_name"
-desc = "hd_moon_des"
+hname = "HD_MOON_NAME"
 skulls_cost = 8
 damage = 5
 texture = SubResource("AtlasTexture_24xyx")

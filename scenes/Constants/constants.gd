@@ -81,3 +81,11 @@ const MAX_POINTS = 4
 
 @export_subgroup("White Thorn", "hd_white_thorn")
 @export var hd_white_thorn_startup_thorns_level_3 := 6
+
+@export_subgroup("Construct", "hd_construct")
+@export var hd_construct_block_level_1 := 5
+@export var hd_construct_block_level_2 := 7
+@export var hd_construct_block_level_3 := 9
+@export var hd_construct_thorns_level_2 := 2
+@export var hd_construct_thorns_level_3 := 4
+@export var hd_construct_block_to_enemy := 5

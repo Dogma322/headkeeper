@@ -21,8 +21,8 @@ const SPECIAL_COLORS := {
 
 # Прочие ключевые слова (подсвечиваются оранжевым)
 const KEYWORDS := {
-	"ru": ["Ярость", "Ярости", "Слабость", "Слабости", "Шипы", "Шипов", "Скверна", "Скверны", "Уязвимость", "Уязвимости"],
-	"en": ["Fury", "Weak", "Thorns", "Corruption", "Vulnerable" ]
+	"ru": ["Ярость", "Ярости", "Слабость", "Слабости", "Шипы", "Шипов", "Скверна", "Скверны", "Уязвимость", "Уязвимости", "Регенерация", "Добор", "Крит"],
+	"en": ["Fury", "Weak", "Thorns", "Corruption", "Vulnerable", "Regen", "Draw", "Crit" ]
 }
 
 
@@ -66,8 +66,17 @@ func highlight_keywords(text: String) -> String:
 
 	# Потом обычные слова — если они ещё не закрашены
 	for word in commons:
-		if not text.find("[color=", text.find(word) - "[color=".length()) > -1:
-			text = text.replace(word, "[color=%s]%s[/color]" % [KEYWORD_COLOR, word])
+		var pos := text.find(word)
+		while pos != -1:
+			var before := text.substr(0, pos)
+			var last_open := before.rfind("[color=")
+			var last_close := before.rfind("[/color]")
+			if last_open == -1 or last_close > last_open:
+				var replacement := "[color=%s]%s[/color]" % [KEYWORD_COLOR, word]
+				text = text.substr(0, pos) + replacement + text.substr(pos + word.length())
+				pos = text.find(word, pos + replacement.length())
+			else:
+				pos = text.find(word, pos + word.length())
 
 	return text
 	

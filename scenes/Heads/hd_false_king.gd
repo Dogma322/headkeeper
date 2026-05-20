@@ -38,5 +38,5 @@ func turn_begin_add_action() -> void:
 	if invert_logic:
 		Global.hero.domino_ignore_count += 1
 		return
-	ActionManager.add(BuffAction.new(self, Global.hero,StatusManager.repeat, 1))
+	ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.repeat, 1))
 	DominoManager.double_next_dm += 1

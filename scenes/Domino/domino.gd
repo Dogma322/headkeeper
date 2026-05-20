@@ -622,7 +622,6 @@ func remove_symbol(side: int, index: int):
 			if child is AdditionalTooltipPanel:
 				if child.key == key:
 					child.queue_free()
-		
 		# Отсоединим сигналы.
 		match key:
 			"claws":

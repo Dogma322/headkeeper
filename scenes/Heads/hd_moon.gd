@@ -11,15 +11,15 @@ func _ready() -> void:
 
 func update_desc() -> void:
 	if invert_logic:
-		description = tr("hd_moon_des_elite") % [Constants.hd_moon_domino_activator_value, Constants.hd_moon_damage_to_hero]
+		description = tr("HD_MOON_DESC_ELITE") % [Constants.hd_moon_domino_activator_value, Constants.hd_moon_damage_to_hero]
 	else:
 		match level:
+			0:
+				description = tr("HD_MOON_DESC") % [Constants.hd_moon_domino_activator_value, Constants.hd_moon_damage_level_1]
 			1:
-				description = tr("hd_moon_des2") % [Constants.hd_moon_domino_activator_value, Constants.hd_moon_damage_level_2, Constants.hd_moon_armor_level_2]
+				description = tr("HD_MOON_DESC2") % [Constants.hd_moon_domino_activator_value, Constants.hd_moon_damage_level_2, Constants.hd_moon_armor_level_2]
 			2:
-				description = tr("hd_moon_des3") % [Constants.hd_moon_domino_activator_value, Constants.hd_moon_damage_level_3, Constants.hd_moon_armor_level_3, Constants.hd_moon_draw_level_3]
-			_:
-				description = tr("hd_moon_des") % [Constants.hd_moon_domino_activator_value, Constants.hd_moon_damage_level_1]
+				description = tr("HD_MOON_DESC3") % [Constants.hd_moon_domino_activator_value, Constants.hd_moon_damage_level_3, Constants.hd_moon_armor_level_3, Constants.hd_moon_draw_level_3]
 
 
 func apply_passive_effect() -> void:

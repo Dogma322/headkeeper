@@ -9,8 +9,7 @@ region = Rect2(417, 0, 32, 32)
 
 [resource]
 script = ExtResource("1_0lftk")
-hname = "hd_brick_name"
-desc = "hd_brick_des"
+hname = "HD_CONSTRUCT_NAME"
 skulls_cost = 15
 armor = 5
 texture = SubResource("AtlasTexture_ubfn8")
