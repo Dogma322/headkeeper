@@ -1,5 +1,7 @@
 extends Head
 
+## Голова : Друид
+
 func _ready() -> void:
 	Signals.hero_healed.connect(add_action)
 	super()
@@ -7,15 +9,15 @@ func _ready() -> void:
 
 func update_desc() -> void:
 	if invert_logic:
-		description = TextFormatter.highlight_keywords(tr("HD_DRUID_DESC_ELITE") % [Constants.hd_druid_fury_to_enemy])
+		description = tr("HD_DRUID_DESC_ELITE") % [Constants.hd_druid_fury_to_enemy]
 	else:
 		match level:
 			1:
-				description = TextFormatter.highlight_keywords(tr("HD_DRUID_DESC2") % [Constants.hd_druid_fury_level_2, Constants.hd_druid_crit_level_2, Constants.hd_druid_health_decrement])
+				description = tr("HD_DRUID_DESC2") % [Constants.hd_druid_fury_level_2, Constants.hd_druid_crit_level_2, Constants.hd_druid_health_decrement]
 			2:
-				description = TextFormatter.highlight_keywords(tr("HD_DRUID_DESC2") % [Constants.hd_druid_fury_level_3, Constants.hd_druid_crit_level_3, Constants.hd_druid_health_decrement])
+				description = tr("HD_DRUID_DESC2") % [Constants.hd_druid_fury_level_3, Constants.hd_druid_crit_level_3, Constants.hd_druid_health_decrement]
 			_:
-				description = TextFormatter.highlight_keywords(tr("HD_DRUID_DESC") % [Constants.hd_druid_fury_level_1, Constants.hd_druid_health_decrement])
+				description = tr("HD_DRUID_DESC") % [Constants.hd_druid_fury_level_1, Constants.hd_druid_health_decrement]
 
 
 func apply_passive_effect() -> void:

@@ -9,8 +9,7 @@ region = Rect2(352, 0, 32, 32)
 
 [resource]
 script = ExtResource("1_xpa38")
-hname = "hd_thorn_name"
-desc = "hd_thorn_des"
+hname = "HD_WHITE_THORN_NAME"
 skulls_cost = 5
 texture = SubResource("AtlasTexture_px25g")
 extra_tags = Array[String](["Thorns"])

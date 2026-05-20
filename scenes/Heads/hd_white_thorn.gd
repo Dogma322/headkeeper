@@ -2,23 +2,22 @@ extends Head
 
 ## Голова: Белый Шип
 
-
 func battle_start_add_action() -> void:
 	if not invert_logic and level == 2:
-		ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.thorns, 6))
+		ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.thorns, Constants.hd_white_thorn_startup_thorns_level_3))
 
 
 func update_desc() -> void:
 	if invert_logic:
-		description = tr("hd_thorn_des_elite")
+		description = tr("HD_WHITE_THORN_DESC_ELITE")
 	else:
 		match level:
+			0:
+				description = tr("HD_WHITE_THORN_DESC")
 			1:
-				description = tr("hd_thorn_des2")
+				description = tr("HD_WHITE_THORN_DESC2")
 			2:
-				description = tr("hd_thorn_des3")
-			_:
-				description = tr("hd_thorn_des")
+				description = tr("HD_WHITE_THORN_DESC3") % [Constants.hd_white_thorn_startup_thorns_level_3]
 
 
 func apply_passive_effect() -> void:
@@ -32,6 +31,7 @@ func apply_passive_effect() -> void:
 			2:
 				Global.hero.thorns_damage_mult = 2
 	pass
+
 
 func remove_passive_effect() -> void:
 	if invert_logic:

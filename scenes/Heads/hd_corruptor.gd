@@ -2,7 +2,6 @@ extends Head
 
 ## Голова : Осквернитель
 
-
 func _ready() -> void:
 	super()
 

@@ -1,5 +1,6 @@
 extends Head
 
+## Голова : Скала
 
 func _ready() -> void:
 	Signals.defense_dm_played.connect(play)
@@ -17,15 +18,15 @@ func battle_start_add_action() -> void:
 
 func update_desc() -> void:
 	if invert_logic:
-		description = tr("hd_rock_des_elite") % [Constants.hd_rock_armor_per_action_to_enemy]
+		description = tr("HD_ROCK_DESC_ELITE") % [Constants.hd_rock_armor_per_action_to_enemy]
 	else:
 		match level:
+			0:
+				description = tr("HD_ROCK_DESC") % [Constants.hd_rock_armor_per_action_to_hero_level_1, Constants.hd_rock_health_decrement]
 			1:
-				description = tr("hd_rock_des2") % [Constants.hd_rock_armor_per_action_to_hero_level_2, Constants.hd_rock_armor_level_2, Constants.hd_rock_health_decrement]
+				description = tr("HD_ROCK_DESC2") % [Constants.hd_rock_armor_per_action_to_hero_level_2, Constants.hd_rock_armor_level_2, Constants.hd_rock_health_decrement]
 			2:
-				description = tr("hd_rock_des2") % [Constants.hd_rock_armor_per_action_to_hero_level_3, Constants.hd_rock_armor_level_3, Constants.hd_rock_health_decrement]
-			_:
-				description = tr("hd_rock_des") % [Constants.hd_rock_armor_per_action_to_hero_level_1, Constants.hd_rock_health_decrement]
+				description = tr("HD_ROCK_DESC2") % [Constants.hd_rock_armor_per_action_to_hero_level_3, Constants.hd_rock_armor_level_3, Constants.hd_rock_health_decrement]
 
 
 func apply_passive_effect() -> void:

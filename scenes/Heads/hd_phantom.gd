@@ -2,7 +2,6 @@ extends Head
 
 ## Голова : Фантом
 
-
 func _ready() -> void:
 	Signals.green_bonus_played.connect(play)
 	super()

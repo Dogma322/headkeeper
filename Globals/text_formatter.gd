@@ -66,7 +66,7 @@ func highlight_keywords(text: String) -> String:
 
 	# Потом обычные слова — если они ещё не закрашены
 	for word in commons:
-		if not text.find("[color=", text.find(word) - 10) > -1:
+		if not text.find("[color=", text.find(word) - "[color=".length()) > -1:
 			text = text.replace(word, "[color=%s]%s[/color]" % [KEYWORD_COLOR, word])
 
 	return text

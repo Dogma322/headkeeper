@@ -2,7 +2,6 @@ extends Head
 
 ## Голова : Апостол
 
-
 func _ready() -> void:
 	Signals.skill_dm_played.connect(play)
 	super()

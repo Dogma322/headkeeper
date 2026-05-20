@@ -46,7 +46,7 @@ var key := ""
 var head_choice := false
 var invert_logic := false
 var used := false
-var level := 0:
+var level := 2:
 	set(value):
 		if level == value:
 			return

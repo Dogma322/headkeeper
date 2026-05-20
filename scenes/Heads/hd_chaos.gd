@@ -1,5 +1,7 @@
 extends Head
 
+## Голова : Хаос
+
 var last_domino = null
 
 

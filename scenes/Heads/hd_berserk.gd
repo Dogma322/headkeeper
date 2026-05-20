@@ -1,5 +1,7 @@
 extends Head
 
+## Голова : Берсерк
+
 func _ready() -> void:
 	Signals._dm_played.connect(play)
 	super()

@@ -78,3 +78,6 @@ const MAX_POINTS = 4
 @export var hd_apostle_vulnerable_level_3 := 1
 @export var hd_apostle_corruption_to_hero := 1
 @export var hd_apostle_health_decrement := 20
+
+@export_subgroup("White Thorn", "hd_white_thorn")
+@export var hd_white_thorn_startup_thorns_level_3 := 6

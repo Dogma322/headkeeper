@@ -2,11 +2,6 @@ extends Head
 
 ## Голова : Ложный Король
 
-
-func _ready() -> void:
-	super()
-
-
 func update_desc() -> void:
 	if invert_logic:
 		description = tr("hd_false_king_des_elite")

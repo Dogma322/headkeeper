@@ -2,7 +2,6 @@ extends Head
 
 ## Голова - Вечная Ярость.
 
-
 func _ready() -> void:
 	super()
 	Signals.status_added.connect(_on_status_added)
@@ -20,15 +19,15 @@ func _on_status_added(status: StatusResource) -> void:
 
 func update_desc() -> void:
 	if invert_logic:
-		description = tr("hd_eternal_fury_des_elite")
+		description = tr("HD_ETERNAL_FURY_DESC_ELITE")
 	else:
 		match level:
+			0:
+				description = tr("HD_ETERNAL_FURY_DESC")
 			1:
-				description = tr("hd_eternal_fury_des2")
+				description = tr("HD_ETERNAL_FURY_DESC2")
 			2:
-				description = tr("hd_eternal_fury_des3")
-			_:
-				description = tr("hd_eternal_fury_des")
+				description = tr("HD_ETERNAL_FURY_DESC3")
 	pass
 
 
