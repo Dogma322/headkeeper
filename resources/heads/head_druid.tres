@@ -10,7 +10,6 @@ region = Rect2(224, 0, 32, 32)
 [resource]
 script = ExtResource("1_ba2ml")
 hname = "HD_DRUID_NAME"
-desc = "HD_DRUID_DESC"
 skulls_cost = 12
 value = 20
 texture = SubResource("AtlasTexture_fbd4k")

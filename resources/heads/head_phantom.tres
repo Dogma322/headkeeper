@@ -10,7 +10,6 @@ region = Rect2(288, 0, 32, 32)
 [resource]
 script = ExtResource("1_5afh2")
 hname = "HD_PHANTOM_NAME"
-desc = "HD_PHANTOM_DESC"
 skulls_cost = 5
 damage = 2
 texture = SubResource("AtlasTexture_ad7qn")

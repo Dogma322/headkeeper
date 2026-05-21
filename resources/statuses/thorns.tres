@@ -10,7 +10,6 @@ region = Rect2(48, 0, 16, 16)
 [resource]
 script = ExtResource("1_111lq")
 id = "thorns"
-name_key = "Шипы"
 stackable = true
 event_based_effect = true
 texture = SubResource("AtlasTexture_5gqax")

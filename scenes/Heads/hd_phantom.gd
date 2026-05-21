@@ -12,12 +12,12 @@ func update_desc() -> void:
 		description = tr("HD_PHANTOM_DESC_ELITE") % [Constants.hd_phantom_damage_to_hero]
 	else:
 		match level:
+			0:
+				description = tr("HD_PHANTOM_DESC") % [Constants.hd_phantom_damage_level_1]
 			1:
 				description = tr("HD_PHANTOM_DESC2") % [Constants.hd_phantom_damage_level_2]
 			2:
 				description = tr("HD_PHANTOM_DESC3") % [Constants.hd_phantom_damage_level_3]
-			_:
-				description = tr("HD_PHANTOM_DESC") % [Constants.hd_phantom_damage_level_1]
 	pass
 
 
@@ -29,13 +29,16 @@ func add_action() -> void:
 	if invert_logic:
 		ActionManager.add(AttackAction.new(self, Global.hero, Constants.hd_phantom_damage_to_hero))
 	else:
-		var amount := Constants.hd_phantom_damage_level_1
+		var amount := 0
 		match level:
+			0:
+				amount = Constants.hd_phantom_damage_level_1
 			1:
 				amount = Constants.hd_phantom_damage_level_2
 			2:
 				amount = Constants.hd_phantom_damage_level_3
-		ActionManager.add(AttackAction.new(self, Global.enemy, amount))
+		if amount > 0:
+			ActionManager.add(AttackAction.new(self, Global.enemy, amount))
 
 
 func turn_begin_add_action() -> void:

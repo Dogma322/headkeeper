@@ -12,6 +12,7 @@ var repeat = preload("res://resources/statuses/repeat.tres")
 var repeat_bonus = preload("res://resources/statuses/repeat_bonus.tres")
 var crit = preload("res://resources/statuses/crit.tres")
 var devour = preload("res://resources/statuses/devour.tres")
+var regen = preload("res://resources/statuses/regen.tres")
 
 
 #func apply_status(status, stacks, target):
@@ -46,6 +47,8 @@ func apply_status_effect(status: StatusResource) -> void:
 			status.stacks = 0
 		"repeat_bonus":
 			status.owner.repeat_positive_bonus_counter += status.stacks
+		"regen":
+			ActionManager.add(HealAction.new(null, status.owner, status.stacks))
 
 
 func _on_status_changed(status: StatusResource) -> void:

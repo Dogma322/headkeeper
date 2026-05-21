@@ -48,7 +48,7 @@ func final_calculate_damage(source, target, damage):
 	return final_damage
 		
 		
-func get_status(target, status_id:String):
+func get_status(target, status_id: String) -> StatusResource:
 	for icon in target.status_container.get_children():
 		if icon.status.id == status_id:
 			return icon.status

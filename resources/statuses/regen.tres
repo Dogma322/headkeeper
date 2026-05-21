@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3 uid="uid://xa6vm6ifw208"]
+
+[ext_resource type="Script" uid="uid://bejeeg2dm3gpf" path="res://resources/statuses/regen.gd" id="1_5xc2t"]
+[ext_resource type="Texture2D" uid="uid://f4nkkac62hic" path="res://assets/Statuses/StatusAtlas.png" id="2_2wopp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_recj0"]
+atlas = ExtResource("2_2wopp")
+region = Rect2(64, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_5xc2t")
+id = "regen"
+reducible = true
+stackable = true
+turn_begin_effect = true
+texture = SubResource("AtlasTexture_recj0")
+metadata/_custom_type_script = "uid://dyln3pjhpe4xd"

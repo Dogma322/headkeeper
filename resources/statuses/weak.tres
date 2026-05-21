@@ -10,7 +10,6 @@ region = Rect2(16, 0, 16, 16)
 [resource]
 script = ExtResource("1_i16ux")
 id = "weak"
-name_key = "Слабость"
 reducible = true
 stackable = true
 texture = SubResource("AtlasTexture_mpike")

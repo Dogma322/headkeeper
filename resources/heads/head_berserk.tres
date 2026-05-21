@@ -10,7 +10,6 @@ region = Rect2(0, 0, 32, 32)
 [resource]
 script = ExtResource("1_rgwjr")
 hname = "HD_BERSERK_NAME"
-desc = "HD_BERSERK_DESC"
 skulls_cost = 3
 texture = SubResource("AtlasTexture_5lvl2")
 metadata/_custom_type_script = "uid://m5esxthxmlub"

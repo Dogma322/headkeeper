@@ -9,8 +9,7 @@ region = Rect2(449, 0, 32, 32)
 
 [resource]
 script = ExtResource("1_5fx7b")
-hname = "hd_plant_name"
-desc = "hd_plant_des"
+hname = "HD_WARDEN_NAME"
 skulls_cost = 15
 min_value = 3
 max_value = 20

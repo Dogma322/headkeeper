@@ -179,6 +179,8 @@ st_evasion_des,The next attack against the target deals 0 damage.,Следующ
 st_evasion_in_game_des,The next attack against the target deals 0 damage.,Следующая атака по цели нанесет 0 урона.
 st_draw_name,Draw,Добор
 st_draw_in_game_des,"At the start of the next turn, draw %s more tiles.",В начале следующего хода возьмите на %s костей больше.
+ST_REGEN,Regeneration,Регенерация
+ST_REGEN_DESC,"At the start of the next turn, restores %s HP and decreases by 1.",В начале следующего хода восстанавливает %s здоровья и уменьшается на 1.
 ,,
 st_invincible_name,Invincible,Неуязвимость
 st_invincible_des,Takes no damage.,Не получает урон.
@@ -341,8 +343,10 @@ HD_PHANTOM_DESC2,"Every time you activate the green bonus, it deals %d damage. D
 HD_PHANTOM_DESC3,"Every time you activate the green bonus, it deals %d damage. Triples the effect of the first bonus played during the turn.","Каждый раз когда вы активируете зеленый бонус, наносит %d урона. Утраивает эффект первого разыгранного за ход бонуса."
 HD_PHANTOM_DESC_ELITE,"Every time you activate the green bonus, it deals %d damage to the hero.","Каждый раз когда вы активируете зеленый бонус, наносит %d урона герою."
 ,,
-hd_plant_name,Warden,Хранитель
-hd_plant_des,Two bonuses start appearing on the board that restores %s HP. +%s max HP.,"На поле начинают появляться 2 бонуса, которые восстанавливают %s здоровья. +%s Макс. здоровья."
+HD_WARDEN_NAME,Warden,Хранитель
+HD_WARDEN_DESC,Two bonuses start appearing on the board that restores 3 HP. +%s max HP.,"На поле начинают появляться 2 бонуса, которые восстанавливают 3 здоровья. +%s Макс. здоровья."
+HD_WARDEN_DESC2,"Two bonuses start appearing on the board that restores 3 HP. At the start of the battle, applies Regen %d to you. +%s max HP.","На поле начинают появляться 2 бонуса, которые восстанавливают 3 здоровья. В начале боя накладывает на вас Регенерация %d. +%s Макс. здоровья."
+HD_WARDEN_DESC_ELITE,Two bonuses start appearing on the board that restores 5 HP to the enemy.,"На поле начинают появляться 2 бонуса, которые восстанавливают 5 здоровья противнику."
 ,,
 ,,
 ,,

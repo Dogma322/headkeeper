@@ -10,7 +10,6 @@ region = Rect2(33, 0, 32, 32)
 [resource]
 script = ExtResource("1_5y7a4")
 hname = "HD_ROCK_NAME"
-desc = "HD_ROCK_DESC"
 skulls_cost = 8
 texture = SubResource("AtlasTexture_prwl0")
 metadata/_custom_type_script = "uid://m5esxthxmlub"

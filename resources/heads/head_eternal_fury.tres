@@ -10,7 +10,6 @@ region = Rect2(160, 0, 32, 32)
 [resource]
 script = ExtResource("1_bedue")
 hname = "HD_ETERNAL_FURY_NAME"
-desc = "HD_ETERNAL_FURY_DESC"
 skulls_cost = 10
 texture = SubResource("AtlasTexture_f8f1w")
 extra_tags = Array[String](["Fury"])

@@ -89,3 +89,10 @@ const MAX_POINTS = 4
 @export var hd_construct_thorns_level_2 := 2
 @export var hd_construct_thorns_level_3 := 4
 @export var hd_construct_block_to_enemy := 5
+
+@export_subgroup("Warden", "hd_warden")
+@export var hd_warden_max_hp_increment_level_1 := 25
+@export var hd_warden_max_hp_increment_level_2 := 40
+@export var hd_warden_max_hp_increment_level_3 := 70
+@export var hd_warden_regen_level_2 := 3
+@export var hd_warden_regen_level_3 := 6

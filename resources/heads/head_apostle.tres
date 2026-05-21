@@ -10,7 +10,6 @@ region = Rect2(192, 0, 32, 32)
 [resource]
 script = ExtResource("1_dufl6")
 hname = "HD_APOSTLE_NAME"
-desc = "HD_APOSTLE_DESC"
 skulls_cost = 15
 corruption = 2
 value = 20
