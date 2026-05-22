@@ -51,6 +51,21 @@ var mouse_over_des = false
 
 var domino_choice = false
 var deleted = false
+var rotation_from = 0.0
+var rotation_target = 0.0
+
+const ROTATION_SPEED = 360.0
+
+var rotation_prop:
+	set(value):
+		rotation_prop = value
+		
+		var v = lerp(rotation_from, rotation_target, value)
+		rotation_degrees = v
+		top.slots_rotation = rotation_degrees
+		bottom.slots_rotation = rotation_degrees
+
+var rotation_tween: Tween
 
 @onready var aim_marker = $AimMarker
 @onready var top: DominoSideVisual = $Visual/Top
@@ -248,20 +263,43 @@ func final_block(_block):
 
 
 func rotate_in_hand() -> void:
-	var angle = 0
+	if rotation_tween and rotation_tween.is_running():
+		return
+	
 	if connected_side == 0:
 		connected_side = 1
 		initial_connected_side = 1
 	else:
 		connected_side = 0
 		initial_connected_side = 0
-		angle = 180
 	
-	rotation_degrees = angle % 360
+	rotation_from = rotation_degrees
+	rotation_target = rotation_from + 180.0
+	rotation_prop = 0.0
+	
+	var angle_diff = abs(rotation_target - rotation_from)
+	var duration = angle_diff / ROTATION_SPEED
+	
+	z_index = 1
+	
+	rotation_tween = create_tween().set_parallel()
+	rotation_tween.tween_property(self, "rotation_prop", 1.0, duration)
+	await rotation_tween.finished
+	
+	z_index = 0
+	
+	var final_angle = fmod(rotation_target, 360.0)
+	if final_angle < 0:
+		final_angle += 360.0
+	if final_angle >= 180.0:
+		final_angle = 180.0
+	else:
+		final_angle = 0.0
+	rotation_degrees = final_angle
+	top.slots_rotation = final_angle
+	bottom.slots_rotation = final_angle
 	tooltip_stack.global_position = global_position - Vector2(61, 32) - Vector2(0, tooltip_stack.get_child(0).size.y)
-	
-	top.slots_rotation = -rotation_degrees
-	bottom.slots_rotation = -rotation_degrees
+
 
 func rotate_to_match(required_value: int, dir: int):
 	var angle = 0
