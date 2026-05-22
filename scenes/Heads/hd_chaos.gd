@@ -79,12 +79,14 @@ func add_action() -> void:
 	ActionManager.add(AttackAction.new(self, target, amount))
 	
 	if not invert_logic and level > 0:
-		var choices = ["fury", "thorns", "draw"]
+		var choices = ["fury", "regen", "thorns", "draw"]
 		var choice = choices.pick_random()
 		
 		match choice:
 			"fury":
 				ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.fury, level))
+			"regen":
+				ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.regen, level))
 			"thorns":
 				ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.thorns, level))
 			"draw":

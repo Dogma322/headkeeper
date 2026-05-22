@@ -313,8 +313,10 @@ HD_MOON_DESC2,"Whenever you play every %dth tile, deal %s damage and give %s blo
 HD_MOON_DESC3,"Whenever you play every %dth tile, deal %s damage, give %s block and gives %s Draw.","При разыгрывании каждой %d-й кости наносит %s урона, дает %s брони и дает Добор %s."
 HD_MOON_DESC_ELITE,"Whenever you play every %dth tile, deal %s damage to hero.","При разыгрывании каждой %d-й кости наносит %s урона герою."
 ,,
-hd_maw_name,Maw,Пасть
-hd_maw_des,Two bonuses start appearing on the board that double the damage of your next red die. -%s max HP.,"На поле начинают появляться 2 бонуса, которые удваивают урон следующей красной кости. -%s Макс. здоровья."
+HD_MAW_NAME,Maw,Пасть
+HD_MAW_DESC,Two bonuses start appearing on the board that double the damage of your next red die. -%d max HP.,"На поле начинают появляться 2 бонуса, которые удваивают урон следующей красной кости. -%d Макс. здоровья."
+HD_MAW_DESC2,"Two bonuses start appearing on the board that double the damage of your next red die. At the start of the battle, applies Fury %d to you. -%d max HP.","На поле начинают появляться 2 бонуса, которые удваивают урон следующей красной кости. В начале боя накладывает на вас Ярость %d. -%d Макс. здоровья."
+HD_MAW_DESC_ELITE,"At the start of the battle, applies Fury %d to the enemy.",В начале боя накладывает на врага Ярость %d.
 ,,
 HD_CORRUPTOR_NAME,Corruptor,Осквернитель
 HD_CORRUPTOR_DESC,"When you apply Corruption, you additionally apply %d more Corruption.",При наложении Скверны накладывается дополнительно %d Скверны.

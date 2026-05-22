@@ -96,3 +96,9 @@ const MAX_POINTS = 4
 @export var hd_warden_max_hp_increment_level_3 := 70
 @export var hd_warden_regen_level_2 := 3
 @export var hd_warden_regen_level_3 := 6
+
+@export_subgroup("Maw", "hd_maw")
+@export var hd_maw_fury_level_2 := 4
+@export var hd_maw_fury_level_3 := 8
+@export var hd_maw_fury_to_enemy := 3
+@export var hd_maw_health_decrement := 35
