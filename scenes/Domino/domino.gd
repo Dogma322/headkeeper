@@ -36,7 +36,6 @@ var initial_connected_side := 1
 var dragging := false
 var returning_to_hand = false
 var drag_offset := Vector2.ZERO
-
 var domino_types = ["Attack"]
 
 var val := {}
@@ -47,14 +46,14 @@ var accums := {}
 
 var doubled = false
 
-var mouse_over_des = false
+var mouse_over = false
 
 var domino_choice = false
 var deleted = false
 var rotation_from = 0.0
 var rotation_target = 0.0
 
-const ROTATION_SPEED = 360.0
+const ROTATION_SPEED = 360.0*1.5
 
 var rotation_prop:
 	set(value):
@@ -65,6 +64,7 @@ var rotation_prop:
 		top.slots_rotation = rotation_degrees
 		bottom.slots_rotation = rotation_degrees
 
+var selection_tween: Tween
 var rotation_tween: Tween
 
 @onready var aim_marker = $AimMarker
@@ -372,6 +372,7 @@ func _on_area_2d_input_event(_viewport, event, _shape):
 		elif event.button_index == MOUSE_BUTTON_LEFT:
 			if not DominoManager.block_domino_input:
 				hide_description_fast()
+				
 		
 			if event.pressed:
 				if DominoManager.block_domino_input:
@@ -473,6 +474,11 @@ func stop_drag():
 		Global.hand.add_domino(self)
 		
 	dragging = false
+	
+	if selection_tween and selection_tween.is_running():
+		selection_tween.kill()
+	selection_tween = create_tween().set_parallel()
+	selection_tween.tween_property(self, "modulate", Color(1.0, 1.0, 1.0), 0.25)
 
 	z_index = 0
 
@@ -513,20 +519,37 @@ func play_anim():
 
 func _on_area_2d_mouse_entered() -> void:
 	if !DominoManager.dm_dragging:
+		if slot == null:
+			if selection_tween and selection_tween.is_running():
+				selection_tween.kill()
+		
+			selection_tween = create_tween().set_parallel()
+			selection_tween.tween_property(self, "modulate", Color(1.5, 1.5, 1.5), 0.25)
+			selection_tween.tween_property(self, "position:y", 310, 0.25)
+			selection_tween.tween_property(tooltip_stack, "position:y", 230.0, 0.25)
+		
 		Signals.play_domino_draged_sound.emit()
 		BoardManager.highlight_avaiable_slots([a,b])
 	else:
 		return
-	mouse_over_des = true
+	mouse_over = true
 	show_description()
 
 
 func _on_area_2d_mouse_exited() -> void:
 	if !DominoManager.dm_dragging:
 		BoardManager.disable_highlight()
+		if slot == null:
+			if selection_tween and selection_tween.is_running():
+				selection_tween.kill()
+			
+			selection_tween = create_tween().set_parallel()
+			selection_tween.tween_property(self, "modulate", Color(1.0, 1.0, 1.0), 0.25)
+			selection_tween.tween_property(self, "position:y", 320, 0.25)
+			selection_tween.tween_property(tooltip_stack, "position:y", 240.0, 0.25)
 	else:
 		return
-	mouse_over_des = false
+	mouse_over = false
 	hide_description()
 
 
