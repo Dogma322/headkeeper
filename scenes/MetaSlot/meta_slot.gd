@@ -79,12 +79,10 @@ func update_availability(skulls: int) -> void:
 	if not head or buyed:
 		return
 	if head.skulls_cost > skulls:
-		icon_rect.modulate = Color.DIM_GRAY
-		cost_label.modulate = Color.DIM_GRAY
+		icon_rect.modulate = Color(0.2, 0.2, 0.2)
 		not_enough_skulls = true
 	else:
 		icon_rect.modulate = Color.WHITE
-		cost_label.modulate = Color.WHITE
 		not_enough_skulls = false
 
 
