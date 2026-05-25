@@ -60,8 +60,8 @@ var rotation_prop:
 	set(value):
 		rotation_prop = value
 		
-		var v = lerp(rotation_from, rotation_target, value)
-		rotation_degrees = v
+		var v = lerp_angle(deg_to_rad(rotation_from), deg_to_rad(rotation_target), value)
+		rotation_degrees = rad_to_deg(v)
 		top.slots_rotation = -rotation_degrees
 		bottom.slots_rotation = -rotation_degrees
 
@@ -322,10 +322,7 @@ func dm_rotate(angle, tween):
 	
 	z_index = 1
 	
-	var angle_diff = abs(rotation_target - rotation_from)
-	var duration = angle_diff / ROTATION_SPEED
-	
-	tween.tween_property(self, "rotation_prop", 1.0, duration)
+	tween.tween_property(self, "rotation_prop", 1.0, 0.25)
 	await tween.finished
 	
 	z_index = 0
