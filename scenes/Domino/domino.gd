@@ -299,7 +299,6 @@ func rotate_in_hand() -> void:
 	rotation_degrees = final_angle
 	top.slots_rotation = final_angle
 	bottom.slots_rotation = final_angle
-	tooltip_stack.global_position = global_position - Vector2(61, 32) - Vector2(0, tooltip_stack.get_child(0).size.y)
 
 
 func rotate_to_match(required_value: int, dir: int):
@@ -335,7 +334,7 @@ func reset_rotation():
 	if bottom:
 		bottom.slots_rotation = angle
 
-func rotate_by_slot(connect_from: int, flow: int, connected_side: int):
+func rotate_by_slot(connect_from: int, flow: int, side: int):
 
 	var angle := 0
 
@@ -352,7 +351,7 @@ func rotate_by_slot(connect_from: int, flow: int, connected_side: int):
 		2: angle += 90      # RIGHT
 
 	# 🔥 переворот домино
-	if connected_side == 1:
+	if side == 1:
 		angle += 180
 
 	rotation_degrees = angle % 360
@@ -447,6 +446,7 @@ func _process(_delta):
 			stop_drag()
 			return
 		global_position = get_global_mouse_position() + drag_offset
+	tooltip_stack.position = Vector2(self.position.x - tooltip_stack.get_child(0).size.x / 2.0, self.position.y - tooltip_stack.size.y - 18 - 20)
 
 
 func _notification(what: int) -> void:
@@ -528,7 +528,6 @@ func _on_area_2d_mouse_entered() -> void:
 			selection_tween.tween_property(self, "modulate", Color(1.5, 1.5, 1.5), 0.25)
 			if SceneManager.battle_scene.is_visible_in_tree() or SceneManager.craft_scene.is_visible_in_tree():
 				selection_tween.tween_property(self, "position:y", 310, 0.25)
-				selection_tween.tween_property(tooltip_stack, "position:y", 230.0, 0.25)
 		
 		Signals.play_domino_draged_sound.emit()
 		BoardManager.highlight_avaiable_slots([a,b])
@@ -549,7 +548,6 @@ func _on_area_2d_mouse_exited() -> void:
 			selection_tween.tween_property(self, "modulate", Color(1.0, 1.0, 1.0), 0.25)
 			if SceneManager.battle_scene.is_visible_in_tree() or SceneManager.craft_scene.is_visible_in_tree():
 				selection_tween.tween_property(self, "position:y", 320, 0.25)
-				selection_tween.tween_property(tooltip_stack, "position:y", 240.0, 0.25)
 	else:
 		return
 	mouse_over = false
@@ -565,8 +563,7 @@ func show_description():
 	
 	for panel in tooltip_stack.get_children():
 		if panel is TooltipPanel:
-			await panel.show_tooltip(true)
-	tooltip_stack.global_position = global_position - Vector2(61, 32) - Vector2(0, tooltip_stack.get_child(0).size.y)
+			panel.show_tooltip(true)
 
 
 func hide_description():
