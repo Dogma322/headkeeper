@@ -526,8 +526,9 @@ func _on_area_2d_mouse_entered() -> void:
 		
 			selection_tween = create_tween().set_parallel()
 			selection_tween.tween_property(self, "modulate", Color(1.5, 1.5, 1.5), 0.25)
-			selection_tween.tween_property(self, "position:y", 310, 0.25)
-			selection_tween.tween_property(tooltip_stack, "position:y", 230.0, 0.25)
+			if SceneManager.battle_scene.is_visible_in_tree() or SceneManager.craft_scene.is_visible_in_tree():
+				selection_tween.tween_property(self, "position:y", 310, 0.25)
+				selection_tween.tween_property(tooltip_stack, "position:y", 230.0, 0.25)
 		
 		Signals.play_domino_draged_sound.emit()
 		BoardManager.highlight_avaiable_slots([a,b])
@@ -546,8 +547,9 @@ func _on_area_2d_mouse_exited() -> void:
 			
 			selection_tween = create_tween().set_parallel()
 			selection_tween.tween_property(self, "modulate", Color(1.0, 1.0, 1.0), 0.25)
-			selection_tween.tween_property(self, "position:y", 320, 0.25)
-			selection_tween.tween_property(tooltip_stack, "position:y", 240.0, 0.25)
+			if SceneManager.battle_scene.is_visible_in_tree() or SceneManager.craft_scene.is_visible_in_tree():
+				selection_tween.tween_property(self, "position:y", 320, 0.25)
+				selection_tween.tween_property(tooltip_stack, "position:y", 240.0, 0.25)
 	else:
 		return
 	mouse_over = false
