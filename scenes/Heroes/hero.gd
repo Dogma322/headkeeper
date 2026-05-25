@@ -61,6 +61,7 @@ func reset() -> void:
 	domino_ignore_count = 0
 	repeat_positive_bonus_counter = 0
 	is_dead = false
+	modulate = Color.WHITE
 
 
 func remove_block() -> void:
