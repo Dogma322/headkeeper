@@ -52,7 +52,6 @@ var domino_choice = false
 var deleted = false
 var rotation_from = 0.0
 var rotation_target = 0.0
-var current_degrees := 0.0
 
 const ROTATION_SPEED = 360.0*1.5
 
@@ -277,7 +276,6 @@ func rotate_in_hand() -> void:
 	
 	rotation_tween = create_tween()
 	dm_rotate(rotation_degrees + 180.0, rotation_tween)
-	current_degrees = fposmod(rotation_degrees + 180.0, 360.0)
 
 
 func rotate_to_match(dir: int, tween: Tween):
@@ -299,20 +297,18 @@ func rotate_to_match(dir: int, tween: Tween):
 	angle = fmod(angle, 360.0)
 	
 	dm_rotate(angle, tween)
-	current_degrees = angle
 	
 
 func reset_rotation():
 	var angle = 0.0
 	if connected_side == 0:
 		angle = 180.0
-	if is_equal_approx(current_degrees, angle):
+	if is_equal_approx(rotation_degrees, angle):
 		return
 	if rotation_tween and rotation_tween.is_running():
 		return
 	rotation_tween = create_tween()
 	dm_rotate(angle, rotation_tween)
-	current_degrees = angle
 
 
 func dm_rotate(angle, tween):

@@ -89,6 +89,7 @@ func update_layout():
 	for i in range(count):
 
 		var domino = dominoes[i]
+		domino.reset_rotation()
 
 		var center = (count - 1) / 2.0
 		var offset = i - center
@@ -99,8 +100,6 @@ func update_layout():
 		var y = -sin(t * PI) * curve
 
 		var pos = Vector2(x, y)
-
-		#domino.rotation_degrees = offset * fan_rotation
 
 		#domino.move_to_hand(pos)
 		move_to_hand(domino, pos)
