@@ -20,7 +20,7 @@ signal deck_changed
 signal discard_deck_changed
 
 signal status_added(status: StatusResource)
-signal domino_played
+signal domino_played(domino : Domino)
 signal green_bonus_played
 signal red_bonus_played
 signal yellow_bonus_played

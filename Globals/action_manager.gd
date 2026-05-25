@@ -91,8 +91,10 @@ func play_actions():
 		
 		##################
 		var repeat_status = get_status(Global.hero, "repeat")
-
+		var doubled := false
+		
 		if repeat_status and action.source is Domino and action.source.doubled:
+			doubled = action.source.doubled
 			action.source.doubled = false
 			repeat_status.stacks -= 1
 		####################
@@ -107,6 +109,12 @@ func play_actions():
 				if action is not NothingAction:
 					AnimationManager.spawn_proj(action.source.aim_marker.global_position, action.target.aim_marker.global_position, action)
 					await Signals.projectile_hit
+				
+				if action.source is Domino:
+					if doubled:
+						action.source.actions_completed.emit()
+						await get_tree().process_frame
+					action.source.actions_completed.emit()
 				
 		action.execute()
 		await get_tree().create_timer(0.35).timeout

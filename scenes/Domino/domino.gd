@@ -78,6 +78,8 @@ var rotation_tween: Tween
 
 const ADDITIONAL_TOOLTIP_PANEL = preload("uid://dnje7ugtetwov")
 
+signal actions_completed
+
 func set_additional_tooltip(type: String, key: String) -> void:
 	for child in tooltip_stack.get_children():
 		if child is AdditionalTooltipPanel:
@@ -188,8 +190,7 @@ func get_status(target, status_id:String):
 
 
 func domino_played():
-	
-	Signals.domino_played.emit()
+	Signals.domino_played.emit(self)
 	
 	for type in domino_types:
 		if type == "Attack":

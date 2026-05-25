@@ -27,7 +27,9 @@ func apply_passive_effect() -> void:
 	label.text = str(dm_counter)
 
 
-func increase_counter() -> void:
+func increase_counter(domino: Domino) -> void:
+	await domino.actions_completed
+	
 	dm_counter += 1
 	label.text = str(dm_counter)
 	
