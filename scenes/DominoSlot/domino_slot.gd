@@ -28,6 +28,8 @@ var mouse_inside := false
 
 var bonuses = []
 
+var moving_tween: Tween
+
 @onready var container = $Container
 
 
@@ -117,9 +119,9 @@ func can_place(new_domino:Domino):
 
 	return false
 
-
-
 func place_domino(new_domino: Domino):
+	moving_tween = create_tween().set_parallel()
+	
 	Signals.play_domino_added_to_slot_sound.emit()
 	var needed = get_required_value()
 
@@ -129,13 +131,13 @@ func place_domino(new_domino: Domino):
 			new_domino.connected_side = 0
 		else:
 			new_domino.connected_side = 1
-
-		new_domino.rotate_to_match(needed, direction)
+		
+		new_domino.rotate_to_match(direction, moving_tween)
 
 	domino = new_domino
 	new_domino.slot = self
 
-	new_domino.global_position = global_position
+	moving_tween.tween_property(new_domino, "global_position", global_position, 0.25)
 
 	DominoManager.dominoes_on_board.append(new_domino)
 

@@ -100,7 +100,7 @@ func update_layout():
 
 		var pos = Vector2(x, y)
 
-		domino.rotation_degrees = offset * fan_rotation
+		#domino.rotation_degrees = offset * fan_rotation
 
 		#domino.move_to_hand(pos)
 		move_to_hand(domino, pos)

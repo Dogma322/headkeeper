@@ -52,6 +52,7 @@ var domino_choice = false
 var deleted = false
 var rotation_from = 0.0
 var rotation_target = 0.0
+var current_degrees := 0.0
 
 const ROTATION_SPEED = 360.0*1.5
 
@@ -61,8 +62,8 @@ var rotation_prop:
 		
 		var v = lerp(rotation_from, rotation_target, value)
 		rotation_degrees = v
-		top.slots_rotation = rotation_degrees
-		bottom.slots_rotation = rotation_degrees
+		top.slots_rotation = -rotation_degrees
+		bottom.slots_rotation = -rotation_degrees
 
 var selection_tween: Tween
 var rotation_tween: Tween
@@ -125,9 +126,9 @@ static var type_to_string = {
 }
 
 func setup(a_settings: SideSettings = null, b_settings: SideSettings = null) -> void:
-	for tooltip_stack in tooltip_stack.get_children():
-		if tooltip_stack is AdditionalTooltipPanel:
-			tooltip_stack.queue_free()
+	for stack in tooltip_stack.get_children():
+		if stack is AdditionalTooltipPanel:
+			stack.queue_free()
 	
 	if a_settings != null:
 		for i in range(a_types.size()):
@@ -274,65 +275,72 @@ func rotate_in_hand() -> void:
 		connected_side = 0
 		initial_connected_side = 0
 	
+	rotation_tween = create_tween()
+	dm_rotate(rotation_degrees + 180.0, rotation_tween)
+	current_degrees = fposmod(rotation_degrees + 180.0, 360.0)
+
+
+func rotate_to_match(dir: int, tween: Tween):
+	var angle = 0.0
+
+	match dir:
+		DominoSlot.Direction.UP:
+			angle = 180.0
+		DominoSlot.Direction.DOWN:
+			angle = 0.0
+		DominoSlot.Direction.LEFT:
+			angle = 90.0
+		DominoSlot.Direction.RIGHT:
+			angle = 270.0
+
+	if connected_side == 1:
+		angle += 180.0
+	
+	angle = fmod(angle, 360.0)
+	
+	dm_rotate(angle, tween)
+	current_degrees = angle
+	
+
+func reset_rotation():
+	var angle = 0.0
+	if connected_side == 0:
+		angle = 180.0
+	if is_equal_approx(current_degrees, angle):
+		return
+	if rotation_tween and rotation_tween.is_running():
+		return
+	rotation_tween = create_tween()
+	dm_rotate(angle, rotation_tween)
+	current_degrees = angle
+
+
+func dm_rotate(angle, tween):
 	rotation_from = rotation_degrees
-	rotation_target = rotation_from + 180.0
+	rotation_target = angle
 	rotation_prop = 0.0
+	
+	z_index = 1
 	
 	var angle_diff = abs(rotation_target - rotation_from)
 	var duration = angle_diff / ROTATION_SPEED
 	
-	z_index = 1
-	
-	rotation_tween = create_tween().set_parallel()
-	rotation_tween.tween_property(self, "rotation_prop", 1.0, duration)
-	await rotation_tween.finished
+	tween.tween_property(self, "rotation_prop", 1.0, duration)
+	await tween.finished
 	
 	z_index = 0
 	
-	var final_angle = fmod(rotation_target, 360.0)
-	if final_angle < 0:
-		final_angle += 360.0
-	if final_angle >= 180.0:
-		final_angle = 180.0
-	else:
-		final_angle = 0.0
-	rotation_degrees = final_angle
-	top.slots_rotation = final_angle
-	bottom.slots_rotation = final_angle
-
-
-func rotate_to_match(required_value: int, dir: int):
-	var angle = 0
-
-	match dir:
-		DominoSlot.Direction.UP:
-			angle = 180
-		DominoSlot.Direction.DOWN:
-			angle = 0
-		DominoSlot.Direction.LEFT:
-			angle = 90
-		DominoSlot.Direction.RIGHT:
-			angle = 270
-
-	if connected_side == 1:
-		angle += 180
-
-	rotation_degrees = angle % 360
+	#if final_angle < 0:
+		#final_angle += 360.0
+	#if final_angle >= 180.0:
+		#final_angle = 180.0
+	#else:
+		#final_angle = 0.0
 	
-	top.slots_rotation = -rotation_degrees
-	bottom.slots_rotation = -rotation_degrees
-
-func reset_rotation():
-	var angle = 0
-	if connected_side == 0:
-		angle = 180
-	# Сбрасываем основное вращение домино
 	rotation_degrees = angle
-	# Сбрасываем вращение иконок
-	if top:
-		top.slots_rotation = angle
-	if bottom:
-		bottom.slots_rotation = angle
+	top.slots_rotation = -angle
+	bottom.slots_rotation = -angle
+
 
 func rotate_by_slot(connect_from: int, flow: int, side: int):
 
