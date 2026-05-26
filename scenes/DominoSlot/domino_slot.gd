@@ -137,7 +137,7 @@ func place_domino(new_domino: Domino):
 	domino = new_domino
 	new_domino.slot = self
 
-	moving_tween.tween_property(new_domino, "global_position", global_position, 0.25)
+	moving_tween.tween_property(new_domino, "global_position", global_position, 0.125)
 
 	DominoManager.dominoes_on_board.append(new_domino)
 
