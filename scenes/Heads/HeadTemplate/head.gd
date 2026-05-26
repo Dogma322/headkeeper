@@ -52,6 +52,7 @@ var level := 0:
 			return
 		level = value
 		tooltip_panel.caption = hd_name + " (%s%s)" % [tr(&"ID_LEVEL"), str(level + 1)]
+		head_sprite.texture = template.textures[level]
 		used = false
 
 func _ready() -> void:
