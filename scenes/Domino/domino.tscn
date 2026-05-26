@@ -59,6 +59,8 @@ gradient = SubResource("Gradient_phxvf")
 texture = ExtResource("4_phxvf")
 texture_mode = 1
 script = ExtResource("4_h0tfr")
+max_trail_points = 15
+fade_speed = 1000.0
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
