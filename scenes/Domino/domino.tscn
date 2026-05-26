@@ -53,8 +53,7 @@ layout_mode = 2
 
 [node name="Trail" type="Line2D" parent="." unique_id=1443473597]
 top_level = true
-points = PackedVector2Array(-0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0)
-width = 60.0
+width = 0.0
 width_curve = SubResource("Curve_h0tfr")
 gradient = SubResource("Gradient_phxvf")
 texture = ExtResource("4_phxvf")

@@ -36,43 +36,54 @@ var corruption_bonus = 0
 	"4_2_def_heal" : preload("res://resources/dominoes/start/dm_start_4_2_defense_heal.tres"),
 }
 
-@onready var domino_templates := {
-	"dm_4_1_attack_weak": preload("res://resources/dominoes/dm_4_1_attack_weak.tres"),
-	"dm_3_3_attack2_corruption": preload("res://resources/dominoes/dm_3_3_attack2_corruption.tres"),
-	"dm_2_1_fury": preload("res://resources/dominoes/dm_2_1_fury.tres"),
-	"dm_4_3_attack2_heal": preload("res://resources/dominoes/dm_4_3_attack2_heal.tres"),
-	"dm_4_2_defense_thorns": preload("res://resources/dominoes/dm_4_2_defense_thorns.tres"),
-	"dm_2_2_thorns": preload("res://resources/dominoes/dm_2_2_thorns.tres"),
-	"dm_2_1_defense_draw": preload("res://resources/dominoes/dm_2_1_defense_draw.tres"),
-	"dm_3_2_heal": preload("res://resources/dominoes/dm_3_2_heal.tres"),
-	"dm_3_2_corruption": preload("res://resources/dominoes/dm_3_2_corruption.tres"),
-	"dm_3_2_corruption_weak": preload("res://resources/dominoes/dm_3_2_corruption_weak.tres"),
-	"dm_4_1_attack_draw": preload("res://resources/dominoes/dm_4_1_attack_draw.tres"),
-	
-	"dm_spear": preload("res://resources/dominoes/special/dm_spear.tres"),
-	"dm_steel_shield": preload("res://resources/dominoes/special/dm_steel_shield.tres"),
-	"dm_corrupted_sphere": preload("res://resources/dominoes/special/dm_corrupted_sphere.tres"),
-	"dm_claws": preload("res://resources/dominoes/special/dm_claws_2.tres"),
-	"dm_dagger": preload("res://resources/dominoes/special/dm_dagger.tres"),
-	"dm_defense_shield_strike": preload("res://resources/dominoes/special/dm_defense_shield_strike.tres"),
-	"dm_hammer": preload("res://resources/dominoes/special/dm_hammer.tres"),
-	"dm_mace": preload("res://resources/dominoes/special/dm_mace.tres"),
-	"dm_corrupted_staff": preload("res://resources/dominoes/special/dm_corrupted_staff.tres"),
-	"dm_4skulls": preload("res://resources/dominoes/special/dm_4_skull.tres"),
-	"dm_repeat": preload("res://resources/dominoes/special/dm_repeat.tres"),
-	"dm_defense_crit": preload("res://resources/dominoes/special/dm_defense_crit.tres"),
-	"dm_thorned_shield": preload("res://resources/dominoes/special/dm_thorned_shield.tres"),
-	"dm_horn": preload("res://resources/dominoes/special/dm_horn.tres"),
-}
+@onready var domino_templates := {}
 
 #var temp_domino_pool 
 
-
-
 func _ready() -> void:
+	load_domino_templates()
 	reset()
 	Signals.reset_run_data.connect(reset)
 
+func load_domino_templates() -> void:
+	var dir_path = "res://resources/dominoes"
+	var dir = DirAccess.open(dir_path)
+	if dir == null:
+		push_warning("Could not open directory: " + dir_path)
+		return
+	
+	domino_templates.clear()
+	
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if dir.current_is_dir():
+			# Skip 'start' folder
+			if file_name != "start":
+				load_templates_from_subdir(dir_path + "/" + file_name)
+		else:
+			# Check if it's a .tres file in root dominoes folder
+			if file_name.ends_with(".tres"):
+				var key = file_name.get_basename()
+				var resource_path = dir_path + "/" + file_name
+				domino_templates[key] = load(resource_path)
+		file_name = dir.get_next()
+	dir.list_dir_end()
+
+func load_templates_from_subdir(subdir_path: String) -> void:
+	var subdir = DirAccess.open(subdir_path)
+	if subdir == null:
+		return
+	
+	subdir.list_dir_begin()
+	var file_name = subdir.get_next()
+	while file_name != "":
+		if not subdir.current_is_dir() and file_name.ends_with(".tres"):
+			var key = file_name.get_basename()
+			var resource_path = subdir_path + "/" + file_name
+			domino_templates[key] = load(resource_path)
+		file_name = subdir.get_next()
+	subdir.list_dir_end()
 
 func add_to_discard(domino: Domino) -> void:
 	discard.append(domino)
