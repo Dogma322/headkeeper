@@ -65,7 +65,7 @@ func _ready() -> void:
 		heal = template.heal
 		value = template.value
 		corruption = template.corruption
-		head_sprite.texture = template.texture
+		head_sprite.texture = template.textures[0]
 	
 	update_desc()
 

@@ -1,16 +1,14 @@
 [gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://cg6ig5qcso1re"]
 
 [ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_xpa38"]
-[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_oqsfl"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_px25g"]
-atlas = ExtResource("2_oqsfl")
-region = Rect2(352, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://b8a0ajo4dpv75" path="res://assets/Heads/WhiteThorn/white_thorn1.atlastex" id="2_hp4xa"]
+[ext_resource type="Texture2D" uid="uid://dyibdm3vyoe7p" path="res://assets/Heads/WhiteThorn/white_thorn2.atlastex" id="3_2ea27"]
+[ext_resource type="Texture2D" uid="uid://cefc0lypxl0s1" path="res://assets/Heads/WhiteThorn/white_thorn3.atlastex" id="4_8whfy"]
 
 [resource]
 script = ExtResource("1_xpa38")
 hname = "HD_WHITE_THORN_NAME"
 skulls_cost = 5
-texture = SubResource("AtlasTexture_px25g")
+textures = Array[Texture2D]([ExtResource("2_hp4xa"), ExtResource("3_2ea27"), ExtResource("4_8whfy")])
 extra_tags = Array[String](["Thorns"])
 metadata/_custom_type_script = "uid://m5esxthxmlub"

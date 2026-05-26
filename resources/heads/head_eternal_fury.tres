@@ -1,16 +1,14 @@
 [gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://c5ds2qbv1lmn4"]
 
 [ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_bedue"]
-[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_ldyru"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f8f1w"]
-atlas = ExtResource("2_ldyru")
-region = Rect2(160, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://d2now6ohv2r4h" path="res://assets/Heads/EternalFury/eternal_fury1.atlastex" id="2_tkgkb"]
+[ext_resource type="Texture2D" uid="uid://ch23r28rvprg0" path="res://assets/Heads/EternalFury/eternal_fury2.atlastex" id="3_kg418"]
+[ext_resource type="Texture2D" uid="uid://84ty35tivdxb" path="res://assets/Heads/EternalFury/eternal_fury3.atlastex" id="4_emyt5"]
 
 [resource]
 script = ExtResource("1_bedue")
 hname = "HD_ETERNAL_FURY_NAME"
 skulls_cost = 10
-texture = SubResource("AtlasTexture_f8f1w")
+textures = Array[Texture2D]([ExtResource("2_tkgkb"), ExtResource("3_kg418"), ExtResource("4_emyt5")])
 extra_tags = Array[String](["Fury"])
 metadata/_custom_type_script = "uid://m5esxthxmlub"

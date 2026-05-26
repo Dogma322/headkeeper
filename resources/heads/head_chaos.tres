@@ -1,16 +1,14 @@
 [gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://d003re24s0oh1"]
 
 [ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_lsxpb"]
-[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_ak72v"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wq4ba"]
-atlas = ExtResource("2_ak72v")
-region = Rect2(320, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://bm36cpdxhntuu" path="res://assets/Heads/Chaos/chaos1.atlastex" id="2_7b2vv"]
+[ext_resource type="Texture2D" uid="uid://dmngx6ic3rey7" path="res://assets/Heads/Chaos/chaos2.atlastex" id="3_qpnnk"]
+[ext_resource type="Texture2D" uid="uid://b1fitb4tv703r" path="res://assets/Heads/Chaos/chaos3.atlastex" id="4_vhykq"]
 
 [resource]
 script = ExtResource("1_lsxpb")
 hname = "HD_CHAOS_NAME"
 skulls_cost = 10
 value = 1
-texture = SubResource("AtlasTexture_wq4ba")
+textures = Array[Texture2D]([ExtResource("2_7b2vv"), ExtResource("3_qpnnk"), ExtResource("4_vhykq")])
 metadata/_custom_type_script = "uid://m5esxthxmlub"

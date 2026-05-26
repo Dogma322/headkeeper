@@ -26,7 +26,7 @@ var img = "[img]%s[/img]" % "res://assets/Icons/TopPanelIcons/skull_icon.atlaste
 			description = h.description
 			h.free()
 			
-			icon_rect.texture = head.texture
+			icon_rect.texture = head.textures[0]
 			cost_label.text = img + str(head.skulls_cost)
 			cost_label.modulate = Color.WHITE
 		else:

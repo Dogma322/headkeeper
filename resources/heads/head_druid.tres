@@ -1,17 +1,15 @@
 [gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://cudrdtyou6ptb"]
 
 [ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_ba2ml"]
-[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_7ssra"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fbd4k"]
-atlas = ExtResource("2_7ssra")
-region = Rect2(224, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://cus47kxsphxh5" path="res://assets/Heads/Druid/druid1.atlastex" id="2_huub1"]
+[ext_resource type="Texture2D" uid="uid://brl35wdrmrkkm" path="res://assets/Heads/Druid/druid2.atlastex" id="3_d7i7a"]
+[ext_resource type="Texture2D" uid="uid://dajf1f01lh1lk" path="res://assets/Heads/Druid/druid3.atlastex" id="4_wnh6f"]
 
 [resource]
 script = ExtResource("1_ba2ml")
 hname = "HD_DRUID_NAME"
 skulls_cost = 12
 value = 20
-texture = SubResource("AtlasTexture_fbd4k")
+textures = Array[Texture2D]([ExtResource("2_huub1"), ExtResource("3_d7i7a"), ExtResource("4_wnh6f")])
 extra_tags = Array[String](["Fury"])
 metadata/_custom_type_script = "uid://m5esxthxmlub"

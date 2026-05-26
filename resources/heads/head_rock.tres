@@ -1,15 +1,13 @@
 [gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://c1iy3nm52kro4"]
 
 [ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_5y7a4"]
-[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_gmc65"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_prwl0"]
-atlas = ExtResource("2_gmc65")
-region = Rect2(33, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://d00pfwms8i1no" path="res://assets/Heads/Rock/rock1.atlastex" id="2_hyiik"]
+[ext_resource type="Texture2D" uid="uid://bqhap2kksr16a" path="res://assets/Heads/Rock/rock2.atlastex" id="3_h63jo"]
+[ext_resource type="Texture2D" uid="uid://i55vvkd6dmgl" path="res://assets/Heads/Rock/rock3.atlastex" id="4_an5oa"]
 
 [resource]
 script = ExtResource("1_5y7a4")
 hname = "HD_ROCK_NAME"
 skulls_cost = 8
-texture = SubResource("AtlasTexture_prwl0")
+textures = Array[Texture2D]([ExtResource("2_hyiik"), ExtResource("3_h63jo"), ExtResource("4_an5oa")])
 metadata/_custom_type_script = "uid://m5esxthxmlub"

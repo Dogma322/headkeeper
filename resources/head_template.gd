@@ -11,7 +11,8 @@ class_name HeadTemplate
 @export var value = 0
 @export var min_value = 0
 @export var max_value = 0
-@export var texture: Texture2D
+
+@export var textures: Array[Texture2D] = [null, null, null]
 
 @export_enum("Weak", "Fury", "Corruption", "Thorns", "Vulnerable", "Evasion") var extra_tags: Array[String]
 

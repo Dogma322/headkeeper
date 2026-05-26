@@ -1,16 +1,14 @@
 [gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://cn7ucsk881nd4"]
 
 [ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_72xjw"]
-[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlas.png" id="2_b7hfa"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_24xyx"]
-atlas = ExtResource("2_b7hfa")
-region = Rect2(256, 1, 32, 32)
+[ext_resource type="Texture2D" uid="uid://do0favcnren27" path="res://assets/Heads/Moon/moon1.atlastex" id="2_5hklq"]
+[ext_resource type="Texture2D" uid="uid://cwbpnbwsdyyp4" path="res://assets/Heads/Moon/moon2.atlastex" id="3_7eg44"]
+[ext_resource type="Texture2D" uid="uid://b120quptfne6p" path="res://assets/Heads/Moon/moon3.atlastex" id="4_ahf2a"]
 
 [resource]
 script = ExtResource("1_72xjw")
 hname = "HD_MOON_NAME"
 skulls_cost = 8
 damage = 5
-texture = SubResource("AtlasTexture_24xyx")
+textures = Array[Texture2D]([ExtResource("2_5hklq"), ExtResource("3_7eg44"), ExtResource("4_ahf2a")])
 metadata/_custom_type_script = "uid://m5esxthxmlub"
