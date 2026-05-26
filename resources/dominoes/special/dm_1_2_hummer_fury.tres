@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DominoTemplate" format=3 uid="uid://c1naiyfuccjdu"]
+
+[ext_resource type="Script" uid="uid://25lu10tiiq0q" path="res://resources/domino_template.gd" id="1_5doka"]
+
+[resource]
+script = ExtResource("1_5doka")
+a_types = PackedStringArray("hummer")
+b_types = PackedStringArray("fury", "fury")
+b_color = "green"
+metadata/_custom_type_script = "uid://25lu10tiiq0q"

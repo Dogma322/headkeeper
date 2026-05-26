@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DominoTemplate" format=3 uid="uid://b5yrt50k5iif1"]
+
+[ext_resource type="Script" uid="uid://25lu10tiiq0q" path="res://resources/domino_template.gd" id="1_tjy5a"]
+
+[resource]
+script = ExtResource("1_tjy5a")
+a_types = PackedStringArray("mace")
+b_types = PackedStringArray("vulnerable", "vulnerable", "vulnerable")
+b_color = "green"
+metadata/_custom_type_script = "uid://25lu10tiiq0q"
