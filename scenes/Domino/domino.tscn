@@ -3,9 +3,18 @@
 [ext_resource type="Script" uid="uid://cojc613kiq7f1" path="res://scenes/Domino/domino.gd" id="1_flni0"]
 [ext_resource type="PackedScene" uid="uid://d2mar4lhr2lnv" path="res://scenes/Domino/domino_side_visual.tscn" id="2_c0hci"]
 [ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="2_fjr85"]
+[ext_resource type="Script" uid="uid://ccpbbpvk3gt53" path="res://scenes/Domino/trail.gd" id="4_h0tfr"]
+[ext_resource type="Texture2D" uid="uid://d3wnu881rxoqm" path="res://assets/Dominoes/DominoGhost.png" id="4_phxvf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2aomr"]
 size = Vector2(32, 64)
+
+[sub_resource type="Curve" id="Curve_h0tfr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_phxvf"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
 [node name="Domino" type="Node2D" unique_id=1771172059 groups=["Dominoes"]]
 script = ExtResource("1_flni0")
@@ -41,6 +50,16 @@ mouse_filter = 2
 [node name="TooltipPanel" parent="TooltipStack" unique_id=54216942 instance=ExtResource("2_fjr85")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="Trail" type="Line2D" parent="." unique_id=1443473597]
+top_level = true
+points = PackedVector2Array(-0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0, -0.5, 0)
+width = 60.0
+width_curve = SubResource("Curve_h0tfr")
+gradient = SubResource("Gradient_phxvf")
+texture = ExtResource("4_phxvf")
+texture_mode = 1
+script = ExtResource("4_h0tfr")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

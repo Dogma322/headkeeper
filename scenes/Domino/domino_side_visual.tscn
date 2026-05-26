@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://5gddgjrtvseu" path="res://assets/Dominoes/Symbols/slot_red.atlastex" id="3_leip2"]
 
 [node name="DominoSideVisual" type="Node2D" unique_id=730110398]
+z_index = 1
 script = ExtResource("1_mrbo6")
 
 [node name="SideSprite" type="Sprite2D" parent="." unique_id=1637365802]
