@@ -1,24 +1,20 @@
 [gd_scene format=3 uid="uid://b144qpeck2qcn"]
 
 [ext_resource type="PackedScene" uid="uid://wnn8ykfdaka3" path="res://scenes/Heads/HeadTemplate/head.tscn" id="1_joxfh"]
-[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlasOld.png" id="2_d06p4"]
 [ext_resource type="Script" uid="uid://7jtt8rdiat1u" path="res://scenes/Heads/hd_eternal_fury.gd" id="2_f8f1w"]
 [ext_resource type="Resource" uid="uid://c5ds2qbv1lmn4" path="res://resources/heads/head_eternal_fury.tres" id="3_w1o4v"]
+[ext_resource type="Texture2D" uid="uid://d2now6ohv2r4h" path="res://assets/Heads/EternalFury/eternal_fury1.atlastex" id="4_w1o4v"]
 [ext_resource type="PackedScene" uid="uid://dnje7ugtetwov" path="res://scenes/UI/additional_tooltip_panel.tscn" id="5_27rfd"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f8f1w"]
-atlas = ExtResource("2_d06p4")
-region = Rect2(160, 0, 32, 32)
 
 [node name="hd_eternal_fury" unique_id=1378211630 instance=ExtResource("1_joxfh")]
 script = ExtResource("2_f8f1w")
 template = ExtResource("3_w1o4v")
 
 [node name="Sprite2D" parent="." index="0" unique_id=1248791630]
-texture = SubResource("AtlasTexture_f8f1w")
+texture = ExtResource("4_w1o4v")
 
 [node name="AdditionalTooltipPanel" parent="TooltipStack" parent_id_path=PackedInt32Array(1268114038) index="1" unique_id=54216942 instance=ExtResource("5_27rfd")]
 layout_mode = 2
 type = "Fury"
-caption = "Ярость"
-description = "Добавляет дополнительный урон к атакам."
+caption = "st_strength_name"
+description = "st_strength_des"

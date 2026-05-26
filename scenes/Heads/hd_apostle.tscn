@@ -2,23 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://wnn8ykfdaka3" path="res://scenes/Heads/HeadTemplate/head.tscn" id="1_6cd35"]
 [ext_resource type="Script" uid="uid://cce82dmwk0yr1" path="res://scenes/Heads/hd_apostle.gd" id="2_gqsk3"]
-[ext_resource type="Texture2D" uid="uid://7f06qdykbfjr" path="res://assets/Heads/HeadAtlasOld.png" id="3_a2bnp"]
 [ext_resource type="Resource" uid="uid://b183epmn8waqs" path="res://resources/heads/head_apostle.tres" id="3_tjlea"]
+[ext_resource type="Texture2D" uid="uid://ckp1xwliwdhbk" path="res://assets/Heads/Apostle/apostle1.atlastex" id="4_tjlea"]
 [ext_resource type="PackedScene" uid="uid://dnje7ugtetwov" path="res://scenes/UI/additional_tooltip_panel.tscn" id="5_tjlea"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iu4rg"]
-atlas = ExtResource("3_a2bnp")
-region = Rect2(192, 0, 32, 32)
 
 [node name="hd_apostle" unique_id=1378211630 instance=ExtResource("1_6cd35")]
 script = ExtResource("2_gqsk3")
 template = ExtResource("3_tjlea")
 
 [node name="Sprite2D" parent="." index="0" unique_id=1248791630]
-texture = SubResource("AtlasTexture_iu4rg")
+texture = ExtResource("4_tjlea")
 
 [node name="AdditionalTooltipPanel" parent="TooltipStack" parent_id_path=PackedInt32Array(1268114038) index="1" unique_id=54216942 instance=ExtResource("5_tjlea")]
 layout_mode = 2
 type = "Corruption"
-caption = "Скверна"
-description = "В начале хода наносит урон и уменьшается на 1."
+caption = "st_corruption_name"
+description = "st_corruption_des"
