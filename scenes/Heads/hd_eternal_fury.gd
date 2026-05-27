@@ -37,6 +37,8 @@ func apply_passive_effect() -> void:
 	else:
 		BoardManager.bonus_pool.append(BoardManager.h_1fury)
 		BoardManager.bonus_pool.append(BoardManager.h_1fury)
+		BoardManager.bonus_pool.append(BoardManager.h_1fury)
+		BoardManager.bonus_pool.append(BoardManager.h_1fury)
 	pass
 
 
@@ -44,6 +46,8 @@ func remove_passive_effect() -> void:
 	if invert_logic:
 		Global.enemy.bonus_pool.erase(BoardManager.e_3fury)
 	else:
+		BoardManager.bonus_pool.erase(BoardManager.h_1fury)
+		BoardManager.bonus_pool.erase(BoardManager.h_1fury)
 		BoardManager.bonus_pool.erase(BoardManager.h_1fury)
 		BoardManager.bonus_pool.erase(BoardManager.h_1fury)
 	pass

@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("1_tkgkb")
 hname = "HD_ETERNAL_FURY_NAME"
-skulls_cost = 10
+skulls_cost = 15
 textures = Array[Texture2D]([ExtResource("2_tkgkb"), ExtResource("3_kg418"), ExtResource("4_emyt5")])
 extra_tags = Array[String](["Fury"])
 metadata/_custom_type_script = "uid://m5esxthxmlub"

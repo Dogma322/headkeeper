@@ -1,6 +1,6 @@
 [gd_resource type="Resource" format=3 uid="uid://cg6ig5qcso1re"]
 
-[ext_resource type="Script" uid="uid://h21hm8n2hqtk" path="res://resources/heads/head_white_thorn.gd" id="1_hp4xa"]
+[ext_resource type="Script" uid="uid://ubmw3wl34vtc" path="res://resources/heads/head_white_thorn.gd" id="1_hp4xa"]
 [ext_resource type="Texture2D" uid="uid://b8a0ajo4dpv75" path="res://assets/Heads/WhiteThorn/white_thorn1.atlastex" id="2_hp4xa"]
 [ext_resource type="Texture2D" uid="uid://dyibdm3vyoe7p" path="res://assets/Heads/WhiteThorn/white_thorn2.atlastex" id="3_2ea27"]
 [ext_resource type="Texture2D" uid="uid://cefc0lypxl0s1" path="res://assets/Heads/WhiteThorn/white_thorn3.atlastex" id="4_8whfy"]
@@ -8,7 +8,8 @@
 [resource]
 script = ExtResource("1_hp4xa")
 hname = "HD_WHITE_THORN_NAME"
-skulls_cost = 5
+skulls_cost = 10
+gold_cost = 180
 textures = Array[Texture2D]([ExtResource("2_hp4xa"), ExtResource("3_2ea27"), ExtResource("4_8whfy")])
 extra_tags = Array[String](["Thorns"])
 metadata/_custom_type_script = "uid://m5esxthxmlub"

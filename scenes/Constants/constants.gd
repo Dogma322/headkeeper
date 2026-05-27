@@ -64,15 +64,15 @@ const MAX_POINTS = 4
 @export var hd_corruptor_corruption_to_hero := 3
 
 @export_subgroup("Phantom", "hd_phantom")
-@export var hd_phantom_damage_level_1 := 2
-@export var hd_phantom_damage_level_2 := 4
-@export var hd_phantom_damage_level_3 := 6
+@export var hd_phantom_damage_level_1 := 3
+@export var hd_phantom_damage_level_2 := 5
+@export var hd_phantom_damage_level_3 := 7
 @export var hd_phantom_damage_to_hero := 1
 
 @export_subgroup("Apostle", "hd_apostle")
-@export var hd_apostle_corruption_level_1 := 2
-@export var hd_apostle_corruption_level_2 := 3
-@export var hd_apostle_corruption_level_3 := 4
+@export var hd_apostle_corruption_level_1 := 3
+@export var hd_apostle_corruption_level_2 := 4
+@export var hd_apostle_corruption_level_3 := 5
 @export var hd_apostle_weak_level_2 := 1
 @export var hd_apostle_weak_level_3 := 1
 @export var hd_apostle_vulnerable_level_3 := 1
@@ -91,11 +91,11 @@ const MAX_POINTS = 4
 @export var hd_construct_block_to_enemy := 5
 
 @export_subgroup("Warden", "hd_warden")
-@export var hd_warden_max_hp_increment_level_1 := 25
-@export var hd_warden_max_hp_increment_level_2 := 40
+@export var hd_warden_max_hp_increment_level_1 := 30
+@export var hd_warden_max_hp_increment_level_2 := 45
 @export var hd_warden_max_hp_increment_level_3 := 70
-@export var hd_warden_regen_level_2 := 3
-@export var hd_warden_regen_level_3 := 6
+@export var hd_warden_regen_level_2 := 4
+@export var hd_warden_regen_level_3 := 8
 
 @export_subgroup("Maw", "hd_maw")
 @export var hd_maw_fury_level_2 := 4

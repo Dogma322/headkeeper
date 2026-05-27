@@ -8,6 +8,7 @@
 [resource]
 script = ExtResource("1_nsjfi")
 hname = "HD_CONSTRUCT_NAME"
-skulls_cost = 15
+skulls_cost = 12
+gold_cost = 100
 textures = Array[Texture2D]([ExtResource("2_nsjfi"), ExtResource("3_txati"), ExtResource("4_t6y1c")])
 metadata/_custom_type_script = "uid://m5esxthxmlub"

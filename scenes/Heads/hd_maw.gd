@@ -41,9 +41,13 @@ func apply_passive_effect() -> void:
 	if not invert_logic:
 		BoardManager.bonus_pool.append(BonusManager.bonus_effects.h_1crit)
 		BoardManager.bonus_pool.append(BonusManager.bonus_effects.h_1crit)
+		BoardManager.bonus_pool.append(BonusManager.bonus_effects.h_1crit)
+		BoardManager.bonus_pool.append(BonusManager.bonus_effects.h_1crit)
 
 
 func remove_passive_effect() -> void:
 	if not invert_logic:
+		BoardManager.bonus_pool.erase(BonusManager.bonus_effects.h_1crit)
+		BoardManager.bonus_pool.erase(BonusManager.bonus_effects.h_1crit)
 		BoardManager.bonus_pool.erase(BonusManager.bonus_effects.h_1crit)
 		BoardManager.bonus_pool.erase(BonusManager.bonus_effects.h_1crit)

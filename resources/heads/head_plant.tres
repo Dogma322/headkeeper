@@ -1,6 +1,6 @@
 [gd_resource type="Resource" format=3 uid="uid://dd7ws1h0n2x7i"]
 
-[ext_resource type="Script" uid="uid://bynbr3hjx77a" path="res://resources/heads/head_plant.gd" id="1_1oyb0"]
+[ext_resource type="Script" uid="uid://b0bdf6g58njxi" path="res://resources/heads/head_plant.gd" id="1_1oyb0"]
 [ext_resource type="Texture2D" uid="uid://c6ipugjvt5yu1" path="res://assets/Heads/Plant/plant1.atlastex" id="2_1oyb0"]
 [ext_resource type="Texture2D" uid="uid://gfueg34ka3y5" path="res://assets/Heads/Plant/plant2.atlastex" id="3_2os5v"]
 [ext_resource type="Texture2D" uid="uid://bst78nega82hg" path="res://assets/Heads/Plant/plant3.atlastex" id="4_4horn"]
@@ -9,5 +9,6 @@
 script = ExtResource("1_1oyb0")
 hname = "HD_WARDEN_NAME"
 skulls_cost = 15
+gold_cost = 180
 textures = Array[Texture2D]([ExtResource("2_1oyb0"), ExtResource("3_2os5v"), ExtResource("4_4horn")])
 metadata/_custom_type_script = "uid://m5esxthxmlub"

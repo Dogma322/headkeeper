@@ -1,6 +1,6 @@
 [gd_resource type="Resource" format=3 uid="uid://cn7ucsk881nd4"]
 
-[ext_resource type="Script" uid="uid://d3qt1mcejpbku" path="res://resources/heads/head_moon.gd" id="1_5hklq"]
+[ext_resource type="Script" uid="uid://dhiv7cclbsnp" path="res://resources/heads/head_moon.gd" id="1_5hklq"]
 [ext_resource type="Texture2D" uid="uid://do0favcnren27" path="res://assets/Heads/Moon/moon1.atlastex" id="2_5hklq"]
 [ext_resource type="Texture2D" uid="uid://cwbpnbwsdyyp4" path="res://assets/Heads/Moon/moon2.atlastex" id="3_7eg44"]
 [ext_resource type="Texture2D" uid="uid://b120quptfne6p" path="res://assets/Heads/Moon/moon3.atlastex" id="4_ahf2a"]
@@ -9,5 +9,6 @@
 script = ExtResource("1_5hklq")
 hname = "HD_MOON_NAME"
 skulls_cost = 8
+gold_cost = 180
 textures = Array[Texture2D]([ExtResource("2_5hklq"), ExtResource("3_7eg44"), ExtResource("4_ahf2a")])
 metadata/_custom_type_script = "uid://m5esxthxmlub"

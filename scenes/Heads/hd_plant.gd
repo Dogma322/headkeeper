@@ -33,19 +33,19 @@ func apply_passive_effect() -> void:
 	if invert_logic:
 		match level:
 			0:
-				ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, Constants.hd_warden_max_hp_increment_level_1))
-			1:
-				ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, Constants.hd_warden_max_hp_increment_level_2))
-			2:
-				ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, Constants.hd_warden_max_hp_increment_level_3))
-	else:
-		match level:
-			0:
 				ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, -Constants.hd_warden_max_hp_increment_level_1))
 			1:
 				ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, -Constants.hd_warden_max_hp_increment_level_2))
 			2:
 				ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, -Constants.hd_warden_max_hp_increment_level_3))
+	else:
+		match level:
+			0:
+				ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, Constants.hd_warden_max_hp_increment_level_1))
+			1:
+				ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, Constants.hd_warden_max_hp_increment_level_2))
+			2:
+				ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, Constants.hd_warden_max_hp_increment_level_3))
 	ActionManager.play_one_action()
 	
 	if invert_logic:

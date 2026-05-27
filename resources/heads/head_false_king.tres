@@ -1,6 +1,6 @@
 [gd_resource type="Resource" format=3 uid="uid://c18kgsdlepduu"]
 
-[ext_resource type="Script" uid="uid://bsbghn18nr4s2" path="res://resources/heads/head_false_king.gd" id="1_ns4uy"]
+[ext_resource type="Script" uid="uid://ck80btvv8rswj" path="res://resources/heads/head_false_king.gd" id="1_ns4uy"]
 [ext_resource type="Texture2D" uid="uid://d3wkeiudnjyl8" path="res://assets/Heads/FalseKing/false_king1.atlastex" id="2_ns4uy"]
 [ext_resource type="Texture2D" uid="uid://cmov8l1pg33jk" path="res://assets/Heads/FalseKing/false_king2.atlastex" id="3_inhym"]
 [ext_resource type="Texture2D" uid="uid://dumjv7db3cjf1" path="res://assets/Heads/FalseKing/false_king3.atlastex" id="4_gg1gk"]
@@ -8,6 +8,7 @@
 [resource]
 script = ExtResource("1_ns4uy")
 hname = "HD_FALSE_KING_NAME"
-skulls_cost = 20
+skulls_cost = 12
+gold_cost = 100
 textures = Array[Texture2D]([ExtResource("2_ns4uy"), ExtResource("3_inhym"), ExtResource("4_gg1gk")])
 metadata/_custom_type_script = "uid://m5esxthxmlub"
