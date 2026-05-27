@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://c1iy3nm52kro4"]
+[gd_resource type="Resource" format=3 uid="uid://c1iy3nm52kro4"]
 
-[ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_5y7a4"]
+[ext_resource type="Script" uid="uid://u3imaq1s5ksy" path="res://resources/heads/head_rock.gd" id="1_hyiik"]
 [ext_resource type="Texture2D" uid="uid://d00pfwms8i1no" path="res://assets/Heads/Rock/rock1.atlastex" id="2_hyiik"]
 [ext_resource type="Texture2D" uid="uid://bqhap2kksr16a" path="res://assets/Heads/Rock/rock2.atlastex" id="3_h63jo"]
 [ext_resource type="Texture2D" uid="uid://i55vvkd6dmgl" path="res://assets/Heads/Rock/rock3.atlastex" id="4_an5oa"]
 
 [resource]
-script = ExtResource("1_5y7a4")
+script = ExtResource("1_hyiik")
 hname = "HD_ROCK_NAME"
 skulls_cost = 8
 textures = Array[Texture2D]([ExtResource("2_hyiik"), ExtResource("3_h63jo"), ExtResource("4_an5oa")])

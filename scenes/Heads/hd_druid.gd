@@ -12,12 +12,12 @@ func update_desc() -> void:
 		description = tr("HD_DRUID_DESC_ELITE") % [Constants.hd_druid_fury_to_enemy]
 	else:
 		match level:
+			0:
+				description = tr("HD_DRUID_DESC") % [Constants.hd_druid_fury_level_1, Constants.hd_druid_health_decrement]
 			1:
 				description = tr("HD_DRUID_DESC2") % [Constants.hd_druid_fury_level_2, Constants.hd_druid_crit_level_2, Constants.hd_druid_health_decrement]
 			2:
 				description = tr("HD_DRUID_DESC2") % [Constants.hd_druid_fury_level_3, Constants.hd_druid_crit_level_3, Constants.hd_druid_health_decrement]
-			_:
-				description = tr("HD_DRUID_DESC") % [Constants.hd_druid_fury_level_1, Constants.hd_druid_health_decrement]
 
 
 func apply_passive_effect() -> void:

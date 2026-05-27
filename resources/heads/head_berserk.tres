@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://0qp88mncti2o"]
+[gd_resource type="Resource" format=3 uid="uid://0qp88mncti2o"]
 
-[ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_rgwjr"]
+[ext_resource type="Script" uid="uid://c3qxxscsop723" path="res://resources/heads/head_berserk.gd" id="1_bdjk8"]
 [ext_resource type="Texture2D" uid="uid://cclphbupbmttm" path="res://assets/Heads/Berserk/berserk1.atlastex" id="2_bdjk8"]
 [ext_resource type="Texture2D" uid="uid://cx833mlom13ay" path="res://assets/Heads/Berserk/berserk2.atlastex" id="3_kknav"]
 [ext_resource type="Texture2D" uid="uid://bo1j1uwu2rgy7" path="res://assets/Heads/Berserk/berserk3.atlastex" id="4_4jl1t"]
 
 [resource]
-script = ExtResource("1_rgwjr")
+script = ExtResource("1_bdjk8")
 hname = "HD_BERSERK_NAME"
 skulls_cost = 3
 textures = Array[Texture2D]([ExtResource("2_bdjk8"), ExtResource("3_kknav"), ExtResource("4_4jl1t")])

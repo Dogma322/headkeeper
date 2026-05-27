@@ -9,6 +9,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2aomr"]
 size = Vector2(32, 64)
 
+[sub_resource type="Curve" id="Curve_h0tfr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_phxvf"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
 [sub_resource type="Gradient" id="Gradient_25ybd"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
@@ -44,13 +51,6 @@ scale_max = 0.049999997
 scale_curve = SubResource("CurveTexture_w6t7c")
 alpha_curve = SubResource("CurveTexture_25ybd")
 
-[sub_resource type="Curve" id="Curve_h0tfr"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_phxvf"]
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
-
 [node name="Domino" type="Node2D" unique_id=1771172059 groups=["Dominoes"]]
 script = ExtResource("1_flni0")
 
@@ -70,13 +70,6 @@ side = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1296131305]
 visible = false
 shape = SubResource("RectangleShape2D_2aomr")
-
-[node name="TrailParticles" type="GPUParticles2D" parent="." unique_id=1965162134]
-emitting = false
-amount = 15
-texture = SubResource("GradientTexture2D_h0tfr")
-lifetime = 0.3
-process_material = SubResource("ParticleProcessMaterial_25ybd")
 
 [node name="AimMarker" type="Marker2D" parent="." unique_id=1837320360]
 
@@ -104,6 +97,13 @@ script = ExtResource("4_h0tfr")
 max_trail_points = 15
 fade_speed = 1000.0
 particles = NodePath("../TrailParticles")
+
+[node name="TrailParticles" type="GPUParticles2D" parent="." unique_id=1965162134]
+emitting = false
+amount = 15
+texture = SubResource("GradientTexture2D_h0tfr")
+lifetime = 0.3
+process_material = SubResource("ParticleProcessMaterial_25ybd")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

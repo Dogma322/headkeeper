@@ -11,12 +11,12 @@ func update_desc() -> void:
 		description = tr("HD_CORRUPTOR_DESC_ELITE") % [Constants.hd_corruptor_corruption_to_hero]
 	else:
 		match level:
+			0:
+				description = tr("HD_CORRUPTOR_DESC") % [Constants.hd_corruptor_corruption_level_1]
 			1:
 				description = tr("HD_CORRUPTOR_DESC2") % [Constants.hd_corruptor_corruption_level_2, Constants.hd_corruptor_damage_level_2]
 			2:
 				description = tr("HD_CORRUPTOR_DESC2") % [Constants.hd_corruptor_corruption_level_3, Constants.hd_corruptor_damage_level_3]
-			_:
-				description = tr("HD_CORRUPTOR_DESC") % [Constants.hd_corruptor_corruption_level_1]
 	pass
 
 

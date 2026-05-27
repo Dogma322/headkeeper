@@ -98,12 +98,9 @@ func _on_icon_rect_mouse_entered() -> void:
 		icon_rect.modulate = Color.WHITE.darkened(0.25)
 	match item_type:
 		ItemType.HEAD:
-			# HACK: но не придумал ничего лучше
-			var h: Head = HeadManager.head_pool[item_key].instantiate()
-			h.update_desc()
-			screen.tooltip_panel.caption = h.hd_name
-			screen.tooltip_panel.description = h.description
-			h.free()
+			var head: HeadTemplate = HeadManager.head_templates[item_key]
+			screen.tooltip_panel.caption = head.get_translated_name()
+			screen.tooltip_panel.description = head.get_translated_desc()
 		ItemType.BONUS:
 			var bonus: BonusTemplate = BonusManager.bonus_templates[item_key]
 			screen.tooltip_panel.caption = ""

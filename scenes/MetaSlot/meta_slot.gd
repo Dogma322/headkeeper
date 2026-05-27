@@ -18,14 +18,8 @@ var img = "[img]%s[/img]" % "res://assets/Icons/TopPanelIcons/skull_icon.atlaste
 	set(value):
 		head = value
 		if head:
-			# HACK: но не придумал ничего лучше
-			var h: Head = HeadManager.head_pool[key].instantiate()
-			h.key = key
-			h.update_desc()
-			hname = h.hd_name
-			description = h.description
-			h.free()
-			
+			hname = head.get_translated_name()
+			description = head.get_translated_desc()
 			icon_rect.texture = head.textures[0]
 			cost_label.text = img + str(head.skulls_cost)
 			cost_label.modulate = Color.WHITE

@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://c5ds2qbv1lmn4"]
+[gd_resource type="Resource" format=3 uid="uid://c5ds2qbv1lmn4"]
 
-[ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_bedue"]
+[ext_resource type="Script" uid="uid://c18db8yrx4sms" path="res://resources/heads/head_eternal_fury.gd" id="1_tkgkb"]
 [ext_resource type="Texture2D" uid="uid://d2now6ohv2r4h" path="res://assets/Heads/EternalFury/eternal_fury1.atlastex" id="2_tkgkb"]
 [ext_resource type="Texture2D" uid="uid://ch23r28rvprg0" path="res://assets/Heads/EternalFury/eternal_fury2.atlastex" id="3_kg418"]
 [ext_resource type="Texture2D" uid="uid://84ty35tivdxb" path="res://assets/Heads/EternalFury/eternal_fury3.atlastex" id="4_emyt5"]
 
 [resource]
-script = ExtResource("1_bedue")
+script = ExtResource("1_tkgkb")
 hname = "HD_ETERNAL_FURY_NAME"
 skulls_cost = 10
 textures = Array[Texture2D]([ExtResource("2_tkgkb"), ExtResource("3_kg418"), ExtResource("4_emyt5")])

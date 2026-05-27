@@ -32,15 +32,6 @@ class_name Head
 		if is_instance_valid(tooltip_panel):
 			tooltip_panel.description = description
 
-@onready var damage := 0
-@onready var armor := 0
-@onready var heal := 0
-@onready var value := 0
-@onready var corruption := 0
-
-#@onready var final_damage
-#@onready var final_armor
-#@onready var final_heal
 
 var key := ""
 var head_choice := false
@@ -55,17 +46,13 @@ var level := 0:
 		head_sprite.texture = template.textures[level]
 		used = false
 
+
 func _ready() -> void:
 	tooltip_stack.hide()
 	label.visible = false
 	
 	if template:
 		hd_name = template.get_translated_name()
-		damage = template.damage
-		armor = template.armor
-		heal = template.heal
-		value = template.value
-		corruption = template.corruption
 		head_sprite.texture = template.textures[0]
 	
 	update_desc()
@@ -176,4 +163,3 @@ func hide_des():
 	for panel in tooltip_stack.get_children():
 		if panel is TooltipPanel:
 			panel.hide_tooltip()
-	await get_tree().create_timer(0.15).timeout

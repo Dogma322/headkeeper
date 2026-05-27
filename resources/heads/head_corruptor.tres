@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://b5iucmi55vm7d"]
+[gd_resource type="Resource" format=3 uid="uid://b5iucmi55vm7d"]
 
-[ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_34pwq"]
+[ext_resource type="Script" uid="uid://jvaqor23shts" path="res://resources/heads/head_corruptor.gd" id="1_rmf3c"]
 [ext_resource type="Texture2D" uid="uid://gj672t885e7u" path="res://assets/Heads/Corruptor/corruptor1.atlastex" id="2_rmf3c"]
 [ext_resource type="Texture2D" uid="uid://c6w56jgsxmq6s" path="res://assets/Heads/Corruptor/corruptor2.atlastex" id="3_80j03"]
 [ext_resource type="Texture2D" uid="uid://de61n8re3kmyv" path="res://assets/Heads/Corruptor/corruptor3.atlastex" id="4_yohon"]
 
 [resource]
-script = ExtResource("1_34pwq")
+script = ExtResource("1_rmf3c")
 hname = "HD_CORRUPTOR_NAME"
 skulls_cost = 5
 textures = Array[Texture2D]([ExtResource("2_rmf3c"), ExtResource("3_80j03"), ExtResource("4_yohon")])

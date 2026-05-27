@@ -4,16 +4,15 @@ extends Head
 
 func update_desc() -> void:
 	if invert_logic:
-		description = tr("hd_false_king_des_elite")
+		description = tr("HD_FALSE_KING_DESC_ELITE")
 	else:
 		match level:
+			0:
+				description = tr("HD_FALSE_KING_DESC") % [Constants.hd_false_king_health_decrement]
 			1:
-				description = tr("hd_false_king_des2") % [Constants.hd_false_king_gold_level_2, Constants.hd_false_king_health_decrement]
+				description = tr("HD_FALSE_KING_DESC2") % [Constants.hd_false_king_gold_level_2, Constants.hd_false_king_health_decrement]
 			2:
-				description = tr("hd_false_king_des2") % [Constants.hd_false_king_gold_level_3, Constants.hd_false_king_health_decrement]
-			_:
-				description = tr("hd_false_king_des") % [Constants.hd_false_king_health_decrement]
-
+				description = tr("HD_FALSE_KING_DESC2") % [Constants.hd_false_king_gold_level_3, Constants.hd_false_king_health_decrement]
 
 func apply_passive_effect() -> void:
 	if not used:

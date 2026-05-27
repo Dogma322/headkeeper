@@ -1,14 +1,13 @@
-[gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://ctcao6h8mhtnf"]
+[gd_resource type="Resource" format=3 uid="uid://ctcao6h8mhtnf"]
 
-[ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_0lftk"]
+[ext_resource type="Script" uid="uid://c4eosgqyeusu4" path="res://resources/heads/head_construct.gd" id="1_nsjfi"]
 [ext_resource type="Texture2D" uid="uid://srp8jrdxepo7" path="res://assets/Heads/Construct/construct1.atlastex" id="2_nsjfi"]
 [ext_resource type="Texture2D" uid="uid://by8x5xitnvkhx" path="res://assets/Heads/Construct/construct2.atlastex" id="3_txati"]
 [ext_resource type="Texture2D" uid="uid://cuwebybe2ktyb" path="res://assets/Heads/Construct/construct3.atlastex" id="4_t6y1c"]
 
 [resource]
-script = ExtResource("1_0lftk")
+script = ExtResource("1_nsjfi")
 hname = "HD_CONSTRUCT_NAME"
 skulls_cost = 15
-armor = 5
 textures = Array[Texture2D]([ExtResource("2_nsjfi"), ExtResource("3_txati"), ExtResource("4_t6y1c")])
 metadata/_custom_type_script = "uid://m5esxthxmlub"

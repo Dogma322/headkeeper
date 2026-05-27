@@ -278,16 +278,16 @@ HD_ROCK_DESC,"When you play a blue tile, gain %s block. -%s max HP.","Когда
 HD_ROCK_DESC2,"When you play a blue tile, gain %s block. +%s block at battle start. -%s max HP.","Когда вы играете синюю кость, дает %s брони. +%s брони в начале боя. -%s Макс. здоровья."
 HD_ROCK_DESC_ELITE,"When you play a blue tile, give %s block to the enemy.","Когда вы играете синюю кость, дает %s брони вашему противнику."
 ,,
-hd_squid_name,Brain Eater,Мозгоед
-hd_squid_des,"At the start of your turn, draw 1 additional tile.",В начале хода вы берете на 1 кость больше.
-hd_squid_des2,"At the start of your turn, draw 1 additional tile from deck and 1 tile from draw deck.",В начале хода вы берете 1 кость из колоды и 1 кость из сброса.
-hd_squid_des3,"At the start of your turn, draw 1 additional tile from deck, 1 tile from draw deck, and 1 random tile","В начале хода вы берете 1 кость из колоды, 1 кость из сброса и 1 случайную кость."
-hd_squid_des_elite,Reduces the draw at the beginning of the turn by 1.,Уменьшает добор в начале хода на 1.
+HD_SQUID_NAME,Brain Eater,Мозгоед
+HD_SQUID_DESC,"At the start of your turn, draw 1 additional tile.",В начале хода вы берете на 1 кость больше.
+HD_SQUID_DESC2,"At the start of your turn, draw 1 additional tile from deck and 1 tile from draw deck.",В начале хода вы берете 1 кость из колоды и 1 кость из сброса.
+HD_SQUID_DESC3,"At the start of your turn, draw 1 additional tile from deck, 1 tile from draw deck, and 1 random tile","В начале хода вы берете 1 кость из колоды, 1 кость из сброса и 1 случайную кость."
+HD_SQUID_DESC_ELITE,Reduces the draw at the beginning of the turn by 1.,Уменьшает добор в начале хода на 1.
 ,,
-hd_false_king_name,False King,Ложный Король
-hd_false_king_des,Your first tile played each turn triggers twice. -%s max HP.,Ваша первая кость за ход сработает дважды. -%s Макс. здоровья.
-hd_false_king_des2,Your first tile played each turn triggers twice. +%s gold upon receipt. -%s max HP.,Ваша первая кость за ход сработает дважды. +%s золота при получении. -%s Макс. здоровья. 
-hd_false_king_des_elite,Cancel first tile you played each turn.,Отменяет первую кость сыгранную за ход.
+HD_FALSE_KING_NAME,False King,Ложный Король
+HD_FALSE_KING_DESC,Your first tile played each turn triggers twice. -%s max HP.,Ваша первая кость за ход сработает дважды. -%s Макс. здоровья.
+HD_FALSE_KING_DESC2,Your first tile played each turn triggers twice. +%s gold upon receipt. -%s max HP.,Ваша первая кость за ход сработает дважды. +%s золота при получении. -%s Макс. здоровья. 
+HD_FALSE_KING_DESC_ELITE,Cancel first tile you played each turn.,Отменяет первую кость сыгранную за ход.
 ,,
 HD_WHITE_THORN_NAME,White Thorn,Белый Шип
 HD_WHITE_THORN_DESC,"A bonus that apply Thorns 4 to you begins to appear on the board.","На поле начинает появляться бонус, который накладывает Шипы 4 на вас."

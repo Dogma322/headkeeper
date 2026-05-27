@@ -1,16 +1,14 @@
-[gd_resource type="Resource" script_class="HeadTemplate" format=3 uid="uid://b183epmn8waqs"]
+[gd_resource type="Resource" format=3 uid="uid://b183epmn8waqs"]
 
-[ext_resource type="Script" uid="uid://m5esxthxmlub" path="res://resources/head_template.gd" id="1_dufl6"]
+[ext_resource type="Script" uid="uid://dhwkl2wuxvw0n" path="res://resources/heads/head_apostle.gd" id="1_ladvv"]
 [ext_resource type="Texture2D" uid="uid://ckp1xwliwdhbk" path="res://assets/Heads/Apostle/apostle1.atlastex" id="2_ladvv"]
 [ext_resource type="Texture2D" uid="uid://bvyrshrqjs865" path="res://assets/Heads/Apostle/apostle2.atlastex" id="3_y01hb"]
 [ext_resource type="Texture2D" uid="uid://nfi3bytehnp" path="res://assets/Heads/Apostle/apostle3.atlastex" id="4_idtbt"]
 
 [resource]
-script = ExtResource("1_dufl6")
+script = ExtResource("1_ladvv")
 hname = "HD_APOSTLE_NAME"
 skulls_cost = 15
-corruption = 2
-value = 20
 textures = Array[Texture2D]([ExtResource("2_ladvv"), ExtResource("3_y01hb"), ExtResource("4_idtbt")])
 extra_tags = Array[String](["Corruption"])
 metadata/_custom_type_script = "uid://m5esxthxmlub"

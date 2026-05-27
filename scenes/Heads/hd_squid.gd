@@ -8,15 +8,15 @@ func _ready() -> void:
 
 func update_desc():
 	if invert_logic:
-		description = tr("hd_squid_des_elite")
+		description = tr("HD_SQUID_DESC_ELITE")
 	else:
 		match level:
+			0:
+				description = tr("HD_SQUID_DESC")
 			1:
-				description = tr("hd_squid_des2")
+				description = tr("HD_SQUID_DESC2")
 			2:
-				description = tr("hd_squid_des3")
-			_:
-				description = tr("hd_squid_des")
+				description = tr("HD_SQUID_DESC3")
 
 
 func apply_passive_effect():
