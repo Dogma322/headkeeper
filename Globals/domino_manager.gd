@@ -16,11 +16,9 @@ var value2_played_dominoes = 0
 var value3_played_dominoes = 0
 var value4_played_dominoes = 0
 
-
 var dm_dragging = false
 var block_domino_input = false
 var delete_mode = false
-	
 
 var double_next_dm = 0
 var corruption_bonus = 0
@@ -38,12 +36,12 @@ var corruption_bonus = 0
 
 @onready var domino_templates := {}
 
-#var temp_domino_pool 
 
 func _ready() -> void:
 	load_domino_templates()
 	reset()
 	Signals.reset_run_data.connect(reset)
+
 
 func load_domino_templates() -> void:
 	var dir_path = "res://resources/dominoes"
@@ -70,6 +68,7 @@ func load_domino_templates() -> void:
 		file_name = dir.get_next()
 	dir.list_dir_end()
 
+
 func load_templates_from_subdir(subdir_path: String) -> void:
 	var subdir = DirAccess.open(subdir_path)
 	if subdir == null:
@@ -84,6 +83,7 @@ func load_templates_from_subdir(subdir_path: String) -> void:
 			domino_templates[key] = load(resource_path)
 		file_name = subdir.get_next()
 	subdir.list_dir_end()
+
 
 func add_to_discard(domino: Domino) -> void:
 	discard.append(domino)
@@ -113,6 +113,7 @@ func reset():
 		dm.queue_free()
 	
 	set_deck()
+
 
 func set_deck():
 	for i in range(1): 
@@ -144,6 +145,7 @@ func reshuffle_discard_into_deck():
 
 func reset_turn_data():
 	pass
-	
+
+
 func reset_run_data():
 	pass

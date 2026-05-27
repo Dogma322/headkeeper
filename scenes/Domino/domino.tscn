@@ -95,7 +95,7 @@ layout_mode = 2
 
 [node name="Trail" type="Line2D" parent="." unique_id=1443473597 node_paths=PackedStringArray("particles")]
 top_level = true
-width = 3.596695e-08
+width = 0.0
 width_curve = SubResource("Curve_h0tfr")
 gradient = SubResource("Gradient_phxvf")
 texture = ExtResource("4_phxvf")

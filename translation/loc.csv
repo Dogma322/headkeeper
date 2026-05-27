@@ -126,7 +126,7 @@ dm_repeat_des,The next tile triggers twice.,Следующая кость сра
 dm_dagger_des,Deals %s damage. Triggers each time you restore health.,Наносит %s урона. Срабатывает каждый раз когда вы восстанавливаете здоровье.
 dm_hammer_des,Deals 2 damage for each your bonus activated this battle. (Deals %s damage).,Наносит 2 урона за каждый ваш активированный бонус в этом бою. (Наносит %s урона). 
 dm_dark_staff_des,Applies Corruption 1 for each tile with a value of 1 played this battle. (Applies %s Corruption),Накладывает Скверна 1 за каждую разыгранную кость со значением 1 в этом бою. (Накладывает %s Скверны).
-dm_shield_strike_des,Deals damage equal to your block.,Наносит урон равный вашей броне.
+DM_SHIELD_STRIKE_DESC,Deals damage equal to your block x%d. (Deals %d damage),Наносит урон равный вашей броне x%d. (Нанесет %d урона).
 dm_mace_des,Deals 3 damage for each tile played this turn. (Deals %s damage).,Наносит 3 урона за каждую сыгранную в этом ходу кость. (Наносит %s урона)
 ,,
 ,,

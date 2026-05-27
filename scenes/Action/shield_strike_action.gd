@@ -1,15 +1,19 @@
 class_name ShieldStrikeAction
 extends Action
 
-var damage:int
+var damage: int
+var mult: int
 
-func _init(_source,_target):
+
+func _init(_source, _target, _mult: int) -> void:
 	source = _source
 	target = _target
+	mult = _mult
 
-func execute():
-	damage = Global.hero.block
-	var final_damage = damage
+
+func execute() -> void:
+	damage = Global.hero.block * mult
+	var final_damage := damage
 	
 	if source is Domino:
 		final_damage = ActionManager.final_calculate_damage(source, target, damage)

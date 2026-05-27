@@ -777,7 +777,7 @@ func push_symbol(side: int, key: String, index := -1):
 			if not Signals._2dm_played.is_connected(play):
 				Signals._2dm_played.connect(play)
 		"shield_strike":
-			add(key, 2)
+			add(key, 1)
 		"shield":
 			add(key, 3)
 			if not Signals.defense_dm_played.is_connected(play):
@@ -846,7 +846,7 @@ func add_action() -> void:
 			"thorned_shield":
 				ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.thorns, val[key]))
 			"shield_strike":
-				ActionManager.add(ShieldStrikeAction.new(self, Global.enemy))
+				ActionManager.add(ShieldStrikeAction.new(self, Global.enemy, val[key]))
 			"repeat":
 				ActionManager.add(BuffAction.new(self, Global.hero,StatusManager.repeat, val[key]))
 				DominoManager.double_next_dm += val[key]
@@ -893,7 +893,10 @@ func get_tooltip_for_type(key: String) -> String:
 		"thorned_shield":
 			return TextFormatter.insert_colored_value(tr("dm_thorned_shield_des"), final_block(val[key]), val[key])
 		"shield_strike":
-			return TextFormatter.highlight_keywords(tr("dm_shield_strike_des"))
+			var block = Global.hero.block + val.get("defense", 0)
+			for domino: Domino in DominoManager.dominoes_on_board:
+				block += domino.val.get("defense", 0)
+			return TextFormatter.highlight_keywords(tr("DM_SHIELD_STRIKE_DESC") % [val[key], block * val[key]])
 		"shield":
 			return TextFormatter.insert_colored_value(tr("dm_steel_shield_des"), final_block(val[key]), val[key])
 		"repeat":
