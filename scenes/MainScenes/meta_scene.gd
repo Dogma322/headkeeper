@@ -206,7 +206,7 @@ func _on_item_selected(item: MetaSlot) -> void:
 
 
 func _on_item_mouse_entered(item: MetaSlot) -> void:
-	if not item.head or item.is_selected:
+	if not item.head or item.is_selected or not item.buyed:
 		return
 	tooltip_panel.caption = item.hname
 	tooltip_panel.description = item.description
