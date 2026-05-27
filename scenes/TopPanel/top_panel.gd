@@ -1,6 +1,7 @@
 extends PanelContainer
 class_name TopPanel
 
+@onready var stage_label: Label = %StageLabel
 @onready var health_points_label: Label = %HpLabel
 @onready var gold_label: Label = %GoldLabel
 @onready var skulls_label: Label = %SkullsLabel
@@ -14,6 +15,11 @@ class_name TopPanel
 @onready var bonus_deck_button: IconButton = %BonusDeckButton
 @onready var domino_deck_button: IconButton = %DominoDeckButton
 
+var stage: int = 0:
+	set(value):
+		stage = value
+		stage_label.text = tr("ID_STAGE") % [str(value)]
+
 var disabled: bool = false:
 	set(value):
 		disabled = value
@@ -21,7 +27,6 @@ var disabled: bool = false:
 		head_deck_button.disabled = value
 		bonus_deck_button.disabled = value
 		domino_deck_button.disabled = value
-
 
 var health_points := 0:
 	set(value):
@@ -52,6 +57,7 @@ var heads := 0:
 	set(value):
 		heads = value
 		head_amount_label.text = str(heads)
+
 
 func _ready() -> void:
 	disabled = true

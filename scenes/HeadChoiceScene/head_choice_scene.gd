@@ -122,7 +122,7 @@ func align_choices():
 
 	var screen = get_viewport_rect().size
 	var total_width = (choices.size() - 1) * spacing
-	var start_x = screen.x / 2 - total_width / 2
+	var start_x = screen.x / 2.0 - total_width / 2.0
 
 	for i in range(choices.size()):
 

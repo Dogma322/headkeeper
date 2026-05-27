@@ -1,11 +1,26 @@
 [gd_scene format=3 uid="uid://cdx24mq4bbdgo"]
 
 [ext_resource type="Theme" uid="uid://dqyxam6mhw2pp" path="res://scenes/TextThemes/volda12.tres" id="1_bq13k"]
-[ext_resource type="Script" uid="uid://un7rinkawwbn" path="res://scenes/GeneratedLabels/stage_label.gd" id="1_shg0l"]
+
+[sub_resource type="GDScript" id="GDScript_shg0l"]
+script/source = "extends Label
+
+
+func _ready() -> void:
+	update_text.call_deferred()
+	Signals.stage_changed.connect(update_text)
+
+func update_text():
+	var stage = 0
+	if CombatManager.map_node != null:
+		stage = CombatManager.map_node.stage
+	
+	text = tr(\"stage\") % stage
+"
 
 [node name="StageLabel" type="Label" unique_id=725999995]
 offset_right = 45.0
 offset_bottom = 14.0625
 theme = ExtResource("1_bq13k")
-text = "Stage 1/10"
-script = ExtResource("1_shg0l")
+text = "Stage 0"
+script = SubResource("GDScript_shg0l")

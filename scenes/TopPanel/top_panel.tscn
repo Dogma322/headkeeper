@@ -39,7 +39,7 @@ theme_override_constants/margin_top = 3
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=92367071]
 layout_mode = 2
 
-[node name="ActLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=553534010]
+[node name="StageLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=553534010]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_r6b6f")

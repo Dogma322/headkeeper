@@ -5,7 +5,6 @@ class_name OptionsPanel
 @onready var options_panel = %OptionsPanel
 @onready var color_rect: ColorRect = $ColorRect
 @onready var options_button: IconButton = %OptionsButton
-@onready var stage_label: Label = %StageLabel
 @onready var sfx_label: Label = %SfxLabel
 @onready var music_label: Label = %MusicLabel
 @onready var meta_box: VBoxContainer = %MetaBox
@@ -73,8 +72,6 @@ func _on_options_button_pressed() -> void:
 
 
 func update_labels() -> void:
-	if not Engine.is_editor_hint():
-		stage_label.text = tr("stage") % CombatManager.stage
 	sfx_label.text = tr("sfx_volume")
 	music_label.text = tr("music_volume")
 

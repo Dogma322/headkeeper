@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://cagbtkvoqcjjb" path="res://scenes/DeckBags/discard_bag.tscn" id="9_lhbvr"]
 [ext_resource type="PackedScene" uid="uid://drlsgry4o0pof" path="res://scenes/BoardBonusContainer/board_bonus_container.tscn" id="10_lhbvr"]
 [ext_resource type="PackedScene" uid="uid://bbvfro8a5geyx" path="res://scenes/HeadHolder/head_holder.tscn" id="11_aonfs"]
-[ext_resource type="PackedScene" uid="uid://cdx24mq4bbdgo" path="res://scenes/GeneratedLabels/stage_label.tscn" id="11_vranq"]
 [ext_resource type="PackedScene" uid="uid://cs7y2wp3ykjsq" path="res://scenes/GeneratedLabels/timer_label.tscn" id="12_qc22i"]
 [ext_resource type="Script" uid="uid://bubde0rijkg0k" path="res://scenes/UI/tooltip_stack.gd" id="16_vranq"]
 [ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="17_qc22i"]
@@ -114,9 +113,6 @@ offset_top = 7.0
 offset_right = 599.0
 offset_bottom = 32.0
 theme_override_constants/separation = 0
-
-[node name="StageLabel" parent="UI/VBoxContainer" unique_id=725999995 instance=ExtResource("11_vranq")]
-layout_mode = 2
 
 [node name="TimerLabel" parent="UI/VBoxContainer" unique_id=68907037 instance=ExtResource("12_qc22i")]
 layout_mode = 2

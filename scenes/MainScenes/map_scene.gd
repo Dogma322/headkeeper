@@ -8,7 +8,10 @@ class_name MapScene
 
 var moving = false
 var selected_node: MapNode = null
-var current_progress := 0
+var current_progress := 0:
+	set(value):
+		current_progress = value
+		SceneManager.top_panel.stage = current_progress
 var player_origin : Vector2
 var free_choice_mode := false
 

@@ -9,11 +9,12 @@ skip,Skip,Пропустить
 victory,VICTORY,ПОБЕДА
 endless_mode,Endless mode,Бесконечный режим
 give_up,Give up,Сдаться
-stage,Stage %s,Этап %s
+ID_STAGE,Stage %s,Этап %s
 sfx_volume,Effects volume,Громкость эффектов
 music_volume,Music volume,Громкость музыки
 end_run,End run,Закончить забег
 block_damage,Block,Блок
+ID_MENU,Menu,Меню
 ,,
 LEGEND,,
 ID_LEGEND_UNKNOWN,Unknown,Неизвестно
