@@ -25,6 +25,8 @@ func apply_passive_effect() -> void:
 		Global.enemy.bonus_pool.append(BoardManager.e_2thorns)
 	else:
 		BoardManager.bonus_pool.append(BoardManager.h_thorns)
+		BoardManager.bonus_pool.append(BoardManager.h_thorns)
+
 		match level:
 			1:
 				Global.hero.thorns_damage_mult = 2
@@ -38,6 +40,8 @@ func remove_passive_effect() -> void:
 		Global.enemy.bonus_pool.erase(BoardManager.e_2thorns)
 	else:
 		BoardManager.bonus_pool.erase(BoardManager.h_thorns)
+		BoardManager.bonus_pool.erase(BoardManager.h_thorns)
+
 		match level:
 			1:
 				Global.hero.thorns_damage_mult = 1

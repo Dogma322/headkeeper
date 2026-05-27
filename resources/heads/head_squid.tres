@@ -8,6 +8,6 @@
 [resource]
 script = ExtResource("1_wu06a")
 hname = "HD_SQUID_NAME"
-skulls_cost = 10
+skulls_cost = 12
 textures = Array[Texture2D]([ExtResource("2_wu06a"), ExtResource("3_e43ws"), ExtResource("4_8blr4")])
 metadata/_custom_type_script = "uid://m5esxthxmlub"
