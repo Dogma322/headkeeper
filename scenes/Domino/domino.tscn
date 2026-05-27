@@ -9,6 +9,41 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2aomr"]
 size = Vector2(32, 64)
 
+[sub_resource type="Gradient" id="Gradient_25ybd"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h0tfr"]
+gradient = SubResource("Gradient_25ybd")
+fill = 1
+
+[sub_resource type="Curve" id="Curve_phxvf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_25ybd"]
+curve = SubResource("Curve_phxvf")
+
+[sub_resource type="Curve" id="Curve_h2tr8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_w6t7c"]
+curve = SubResource("Curve_h2tr8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_25ybd"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(20, 20, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.049999997
+scale_curve = SubResource("CurveTexture_w6t7c")
+alpha_curve = SubResource("CurveTexture_25ybd")
+
 [sub_resource type="Curve" id="Curve_h0tfr"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -36,6 +71,13 @@ side = true
 visible = false
 shape = SubResource("RectangleShape2D_2aomr")
 
+[node name="TrailParticles" type="GPUParticles2D" parent="." unique_id=1965162134]
+emitting = false
+amount = 15
+texture = SubResource("GradientTexture2D_h0tfr")
+lifetime = 0.3
+process_material = SubResource("ParticleProcessMaterial_25ybd")
+
 [node name="AimMarker" type="Marker2D" parent="." unique_id=1837320360]
 
 [node name="TooltipStack" type="HBoxContainer" parent="." unique_id=1929530369]
@@ -51,9 +93,9 @@ mouse_filter = 2
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Trail" type="Line2D" parent="." unique_id=1443473597]
+[node name="Trail" type="Line2D" parent="." unique_id=1443473597 node_paths=PackedStringArray("particles")]
 top_level = true
-width = 0.0
+width = 3.596695e-08
 width_curve = SubResource("Curve_h0tfr")
 gradient = SubResource("Gradient_phxvf")
 texture = ExtResource("4_phxvf")
@@ -61,6 +103,7 @@ texture_mode = 1
 script = ExtResource("4_h0tfr")
 max_trail_points = 15
 fade_speed = 1000.0
+particles = NodePath("../TrailParticles")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

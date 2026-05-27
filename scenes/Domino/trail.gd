@@ -9,6 +9,8 @@ var radius: float = 0.0
 @export var max_trail_points: int = 30
 @export var fade_speed: float = 300.0
 
+@export var particles: GPUParticles2D
+
 var target_width: float = max_width
 
 func _ready() -> void:
@@ -24,6 +26,10 @@ func _process(delta: float) -> void:
 	if is_fast_movement:
 		var dir = delta_pos.normalized()
 		
+		# Enable particles during movement
+		if particles:
+			particles.emitting = true
+		
 		# Width based on movement direction:
 		# horizontal (abs(dir.x) = 1) -> max width, vertical (abs(dir.y) = 1) -> half width
 		var horizontal_factor = abs(dir.x)
@@ -34,6 +40,10 @@ func _process(delta: float) -> void:
 		if points.size() > max_trail_points:
 			remove_point(0)
 	else:
+		# Disable particles when stopped
+		if particles:
+			particles.emitting = false
+		
 		# Fade out remaining trail
 		target_width = maxf(0.0, target_width - fade_speed * delta)
 		
