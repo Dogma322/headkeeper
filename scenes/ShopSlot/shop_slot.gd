@@ -50,7 +50,7 @@ var item_key := "":
 		match item_type:
 			ItemType.HEAD:
 				var head: HeadTemplate = HeadManager.head_templates[item_key]
-				icon_rect.texture = head.texture
+				icon_rect.texture = head.textures[0]
 			ItemType.BONUS:
 				var bonus: BonusTemplate = BonusManager.bonus_templates[item_key]
 				icon_rect.texture = bonus.texture
