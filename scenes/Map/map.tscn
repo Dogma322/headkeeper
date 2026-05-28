@@ -11,6 +11,7 @@ probability_battle_elite_weight = 0.0
 probability_shop_weight = 0.0
 probability_bonus_weight = 0.0
 probability_campfire_weight = 0.0
+probability_event_weight = 0.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_app3p"]
@@ -151,6 +152,7 @@ probability_battle_elite_weight = 1.0
 probability_shop_weight = 0.0
 probability_bonus_weight = 0.0
 probability_campfire_weight = 0.0
+probability_event_weight = 0.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [node name="Map" type="Control" unique_id=1312997953]

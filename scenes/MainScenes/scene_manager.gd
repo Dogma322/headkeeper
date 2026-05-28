@@ -11,6 +11,7 @@ extends Control
 @onready var remove_domino_scene: RemoveDominoScene = %RemoveDominoScene
 @onready var campfire_scene: CampfireScene = %CampfireScene
 @onready var shop_scene: ShopScene = %ShopScene
+@onready var event_scene: EventScene = %EventScene
 
 @onready var scenes = [
 	map_scene,
@@ -22,6 +23,7 @@ extends Control
 	remove_domino_scene,
 	campfire_scene,
 	shop_scene,
+	event_scene,
 ]
 
 @onready var back_button: IconButton = $BackButton
@@ -31,6 +33,7 @@ extends Control
 var previous_scene: ScreenBase = null
 var current_scene: ScreenBase = null
 var main_scene: ScreenBase = null
+
 
 func _ready() -> void:
 	map_scene.top_panel_button = top_panel.map_button
@@ -152,6 +155,11 @@ func show_campfire_scene() -> void:
 
 func show_shop_scene() -> void:
 	show_scene(shop_scene)
+
+
+func show_event_scene(event: EventTemplate) -> void:
+	show_scene(event_scene)
+	event_scene.start_event(event)
 
 
 func show_back_button(enabled: bool) -> void:

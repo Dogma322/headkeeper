@@ -23,6 +23,7 @@ buses/default_bus_layout="uid://65d4462qb0xp"
 
 Constants="*uid://fsj348d6ou6y"
 MetaManager="*uid://om6x1gnfc45s"
+EventsManager="*uid://bhhthf50qmi3t"
 Run="*uid://fglvfx6yqt50"
 BoardManager="*uid://h5bj6gegd8b2"
 Global="*uid://bvh7rsw62i480"

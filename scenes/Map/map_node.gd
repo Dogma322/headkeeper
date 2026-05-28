@@ -36,6 +36,7 @@ enum Type {
 	SHOP,
 	HEADS,
 	POND,
+	EVENT,
 	MAX
 }
 
@@ -53,7 +54,10 @@ var type := Type.UNKNOWN:
 				sprite_2d.texture = preload("uid://dgwgr870uqs6u")
 			Type.POND:
 				sprite_2d.texture = preload("uid://3q65om0qmd3q")
+			Type.EVENT:
+				sprite_2d.texture = preload("uid://seq5ll1twapj")
 			pass
+
 var string_hint: String = ""
 var number_hint: int = 0
 

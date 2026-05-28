@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EventSceneTemplate" format=3 uid="uid://bpu5812alc6ui"]
+
+[ext_resource type="Script" uid="uid://dthav6vdfjni6" path="res://resources/event_scene_template.gd" id="1_6eta2"]
+
+[resource]
+script = ExtResource("1_6eta2")
+id = "ID_EVENT_EXIT"
+metadata/_custom_type_script = "uid://dthav6vdfjni6"

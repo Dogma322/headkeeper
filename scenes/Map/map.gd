@@ -194,19 +194,35 @@ func add_node(coord: Vector2i) -> MapNode:
 	# --------------
 	# MapNode.Type
 	# --------------
+	# UNKNOWN = -1,
 	# BATTLE,
-	# BATTLE_ELITE
+	# BATTLE_ELITE,
 	# SHOP,
-	# BONUS,
-	# CAMPFIRE
+	# HEADS,
+	# POND,
+	# EVENT,
+	# MAX
 	# --------------
 	
-	var arr = [MapNode.Type.BATTLE, MapNode.Type.BATTLE_ELITE, MapNode.Type.SHOP, MapNode.Type.HEADS, MapNode.Type.POND]
+	var arr = [MapNode.Type.BATTLE, MapNode.Type.BATTLE_ELITE, MapNode.Type.SHOP, MapNode.Type.HEADS, MapNode.Type.POND, MapNode.Type.EVENT]
 	var sum = level_settings[progress].probability_sum()
-	var arr_index = rng.rand_weighted([level_settings[progress].probability_battle_weight / sum, level_settings[progress].probability_battle_elite_weight / sum, level_settings[progress].probability_shop_weight / sum, level_settings[progress].probability_bonus_weight / sum, level_settings[progress].probability_campfire_weight / sum])
+	var arr_index = rng.rand_weighted([
+		level_settings[progress].probability_battle_weight / sum,
+		level_settings[progress].probability_battle_elite_weight / sum,
+		level_settings[progress].probability_shop_weight / sum,
+		level_settings[progress].probability_bonus_weight / sum,
+		level_settings[progress].probability_campfire_weight / sum,
+		level_settings[progress].probability_event_weight / sum])
 	instance.type = arr[arr_index]
 	
 	match instance.type:
+		MapNode.Type.EVENT:
+			var events: Dictionary = Run.reserved_events_pool
+			var pool = []
+			for key in events:
+				pool.push_back(key)
+			pool.shuffle()
+			instance.string_hint = pool[0]
 		MapNode.Type.BATTLE, MapNode.Type.BATTLE_ELITE:
 			if progress == 0:
 				instance.string_hint = "wolf1"

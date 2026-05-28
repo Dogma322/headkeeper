@@ -65,3 +65,45 @@ func load_settings():
 		AudioServer.set_bus_volume_db(
 		music_bus_index,
 		data.music_db)
+
+
+func load_templates(folder: String, templates: Dictionary, excluded_folders: PackedStringArray = []) -> void:
+	var dir_path = folder
+	var dir = DirAccess.open(dir_path)
+	if dir == null:
+		push_warning("Could not open directory: " + dir_path)
+		return
+	
+	templates.clear()
+	
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if dir.current_is_dir():
+			# Skip 'start' folder
+			if not file_name in excluded_folders:
+				load_templates_from_subdir(dir_path + "/" + file_name, templates)
+		else:
+			# Check if it's a .tres file in root dominoes folder
+			if file_name.ends_with(".tres"):
+				var key = file_name.get_basename()
+				var resource_path = dir_path + "/" + file_name
+				templates[key] = load(resource_path)
+		file_name = dir.get_next()
+	dir.list_dir_end()
+
+
+func load_templates_from_subdir(subdir_path: String, templates: Dictionary) -> void:
+	var subdir = DirAccess.open(subdir_path)
+	if subdir == null:
+		return
+	
+	subdir.list_dir_begin()
+	var file_name = subdir.get_next()
+	while file_name != "":
+		if not subdir.current_is_dir() and file_name.ends_with(".tres"):
+			var key = file_name.get_basename()
+			var resource_path = subdir_path + "/" + file_name
+			templates[key] = load(resource_path)
+		file_name = subdir.get_next()
+	subdir.list_dir_end()

@@ -82,19 +82,6 @@ unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 
-[node name="UnknownHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=4172946]
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="LegendPanel/MarginContainer/VBoxContainer/UnknownHBox" unique_id=1784663601]
-custom_minimum_size = Vector2(23, 16)
-layout_mode = 2
-texture = ExtResource("6_7q0x0")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/UnknownHBox" unique_id=528616376]
-layout_mode = 2
-text = "ID_LEGEND_UNKNOWN"
-
 [node name="ShopHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=2113801629]
 layout_mode = 2
 
@@ -159,6 +146,19 @@ expand_mode = 1
 [node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/BattleEliteHBox" unique_id=1865409111]
 layout_mode = 2
 text = "ID_LEGEND_BATTLE_ELITE"
+
+[node name="UnknownHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=4172946]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="LegendPanel/MarginContainer/VBoxContainer/UnknownHBox" unique_id=1784663601]
+custom_minimum_size = Vector2(23, 16)
+layout_mode = 2
+texture = ExtResource("6_7q0x0")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/UnknownHBox" unique_id=528616376]
+layout_mode = 2
+text = "ID_LEGEND_EVENT"
 
 [node name="Layout" type="MarginContainer" parent="." unique_id=1562952262]
 layout_mode = 1

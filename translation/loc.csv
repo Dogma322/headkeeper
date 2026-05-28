@@ -23,6 +23,7 @@ ID_LEGEND_HEADS,Heads,Головы
 ID_LEGEND_POND,Pond,Пруд
 ID_LEGEND_BATTLE,Enemy,Бой
 ID_LEGEND_BATTLE_ELITE,Elite,Элитный Бой
+ID_LEGEND_EVENT,Event,Событие
 ,,
 MAP
 ID_MAP_UNKNOWN,Unknown,Неизвестно
@@ -31,6 +32,7 @@ ID_MAP_HEADS,Heads,Головы
 ID_MAP_POND,Pond,Пруд
 ID_MAP_BATTLE,Enemy,Бой
 ID_MAP_BATTLE_ELITE,Elite,Элитный Бой
+ID_MAP_EVENT,Event,Событие
 ,,
 TOOLTIPS,,
 TT_MAP,Map,Карта
@@ -367,3 +369,12 @@ tutorial_9,Certain special tiles can be activated by other tiles.,Некотор
 tutorial_10,"Hover over a tile to see its effect, then play it.","Наведись на кость, чтобы узнать её эффект, и разыграй её."
 tutorial_11,Play the remaining tiles to finish off the enemy.,"Разыграй оставшиеся кости, чтобы добить врага."
 tutorial_12,Excellent! You know the basics. Now the real battle begins.,Отлично! Ты знаешь основы. Дальше начинается реальный бой.
+,,
+,,
+,,
+EVENTS,,
+EVENT_EXIT_BTN,Exit,Выход
+EVENT_GREED_CURSE_NAME,The Curse of Greed,Проклятие Жадности
+EVENT_GREED_CURSE_START_DESC,"Before you stands a mossy crypt. A man stands at the entrance, looking like he's fleeing, covered head to toe in gold, and only his right eye and a small part of his head still reveal his humanity. At the sight of you, tears roll down his gilded cheek, and the look in his last eye is pleading.","Перед вами замшелый склеп. На входе стоит человек в позе убегающего, с ног до головы он покрыт золотом и лишь правый глаз и небольшая часть головы еще выдает в нем человека. При виде вас по его золоченой щеке покатились слёзы, во взгляде последнего глаза читалась мольба."
+EVENT_GREED_CURSE_CHOOSE_1,End the suffering of the damned,Закончить страдания проклятого
+EVENT_GREED_CURSE_REWARD_1,Get the "Greedy Fool" head (all dominoes you get in the future will automatically be repainted yellow/gold),Получить голову “Алчный глупец” (все полученные в будущем домино будут автоматически перекрашиваться в желтый/золотой цвет)

@@ -23,66 +23,15 @@ var delete_mode = false
 var double_next_dm = 0
 var corruption_bonus = 0
 
-@onready var start_deck := {
-	"2_1_atk" : preload("res://resources/dominoes/start/dm_start_2_1_attack.tres"),
-	"2_1_def" : preload("res://resources/dominoes/start/dm_start_2_1_defense.tres"),
-	"3_1_atk" : preload("res://resources/dominoes/start/dm_start_3_1_attack.tres"),
-	"3_1_def" : preload("res://resources/dominoes/start/dm_start_3_1_defense.tres"),
-	"3_2_atk" : preload("res://resources/dominoes/start/dm_start_3_2_attack.tres"),
-	"3_2_def" : preload("res://resources/dominoes/start/dm_start_3_2_defense.tres"),
-	"4_2_atk_vulnerable": preload("res://resources/dominoes/start/dm_start_4_2_attack_vulnerable.tres"),
-	"4_2_def_heal" : preload("res://resources/dominoes/start/dm_start_4_2_defense_heal.tres"),
-}
-
+@onready var start_deck := {}
 @onready var domino_templates := {}
 
 
 func _ready() -> void:
-	load_domino_templates()
+	Global.load_templates("res://resources/dominoes", domino_templates, ["start"])
+	Global.load_templates("res://resources/dominoes/start", start_deck)
 	reset()
 	Signals.reset_run_data.connect(reset)
-
-
-func load_domino_templates() -> void:
-	var dir_path = "res://resources/dominoes"
-	var dir = DirAccess.open(dir_path)
-	if dir == null:
-		push_warning("Could not open directory: " + dir_path)
-		return
-	
-	domino_templates.clear()
-	
-	dir.list_dir_begin()
-	var file_name = dir.get_next()
-	while file_name != "":
-		if dir.current_is_dir():
-			# Skip 'start' folder
-			if file_name != "start":
-				load_templates_from_subdir(dir_path + "/" + file_name)
-		else:
-			# Check if it's a .tres file in root dominoes folder
-			if file_name.ends_with(".tres"):
-				var key = file_name.get_basename()
-				var resource_path = dir_path + "/" + file_name
-				domino_templates[key] = load(resource_path)
-		file_name = dir.get_next()
-	dir.list_dir_end()
-
-
-func load_templates_from_subdir(subdir_path: String) -> void:
-	var subdir = DirAccess.open(subdir_path)
-	if subdir == null:
-		return
-	
-	subdir.list_dir_begin()
-	var file_name = subdir.get_next()
-	while file_name != "":
-		if not subdir.current_is_dir() and file_name.ends_with(".tres"):
-			var key = file_name.get_basename()
-			var resource_path = subdir_path + "/" + file_name
-			domino_templates[key] = load(resource_path)
-		file_name = subdir.get_next()
-	subdir.list_dir_end()
 
 
 func add_to_discard(domino: Domino) -> void:

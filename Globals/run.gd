@@ -7,6 +7,8 @@ var current_head_pool: Array[Head] = []
 var current_head_pool_keys: PackedStringArray
 var last_removed_head_pos = 0
 
+var reserved_events_pool := {}
+
 var current_bonus_pool := {}
 
 var skulls := 0:
@@ -33,6 +35,8 @@ func reset_data() -> void:
 	current_bonus_pool = BonusManager.bonus_templates.duplicate()
 	current_bonus_pool.erase("attack5")
 	current_bonus_pool.erase("defense5")
+	
+	reserved_events_pool = EventsManager.events.duplicate()
 
 
 func _ready() -> void:

@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bemk37cis2wkk"]
+
+[ext_resource type="Script" uid="uid://dfo415vhectqm" path="res://scenes/UI/event_button.gd" id="1_ira2o"]
+[ext_resource type="Texture2D" uid="uid://bndl8c1s1fhsc" path="res://assets/NinePatchTexture/ButtonLayout.png" id="2_6j84t"]
+[ext_resource type="Theme" uid="uid://u6ptbmerxst5" path="res://scenes/TextThemes/volda7.tres" id="3_i8yb2"]
+
+[node name="EventButton" type="MarginContainer" unique_id=885226573]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ira2o")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=741547398]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_6j84t")
+region_rect = Rect2(0, 0, 46, 46)
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=718200050]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=18331195]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1113910737]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("3_i8yb2")
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RewardLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1158247455]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("3_i8yb2")
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

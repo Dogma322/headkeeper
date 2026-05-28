@@ -4,7 +4,7 @@ class_name MapScene
 @onready var map: Map = $Map
 @onready var player: Sprite2D = $Player
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
-@onready var act_label: Label = %ActLabel
+
 
 var moving = false
 var selected_node: MapNode = null
@@ -22,6 +22,7 @@ func reset():
 	current_progress = 0
 	player.position = player_origin
 	map.generate()
+
 
 func _ready() -> void:
 	player_origin = player.position
@@ -58,6 +59,8 @@ func _on_map_node_mouse_entered(node: MapNode) -> void:
 			tooltip_panel.description = "[center]%s[/center]" % [tr(&"ID_MAP_HEADS")]
 		MapNode.Type.POND:
 			tooltip_panel.description = "[center]%s[/center]" % [tr(&"ID_MAP_POND")]
+		MapNode.Type.EVENT:
+			tooltip_panel.description = "[center]%s[/center]" % [tr(&"ID_MAP_EVENT")]
 	tooltip_panel.show_tooltip()
 	tooltip_panel.position = node.global_position - Vector2(tooltip_panel.size.x / 2.0, tooltip_panel.size.y + 10)
 
@@ -150,3 +153,14 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			
 			SceneManager.main_scene = SceneManager.map_scene
 			SceneManager.show_map_scene()
+		MapNode.Type.EVENT:
+			SceneManager.main_scene = SceneManager.event_scene
+			SceneManager.show_event_scene(EventsManager.events[node.string_hint])
+			
+			await Signals.event_ended
+			await get_tree().create_timer(0.5).timeout
+			
+			Transition.blackout_on()
+			await get_tree().create_timer(1.0).timeout
+			SceneManager.event_scene.end()
+			Transition.blackout_off()

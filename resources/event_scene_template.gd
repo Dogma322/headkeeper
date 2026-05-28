@@ -1,0 +1,31 @@
+extends Resource
+class_name EventSceneTemplate
+
+## ID.
+@export var id: String
+
+## Заголовок.
+@export var title: String
+
+## Описание.
+@export var description: String
+
+## Текстура.
+@export var art: Texture2D
+
+## Описание в кнопке выбора этой сцены.
+@export var choose_text: String
+
+## Описание награды в кнопке выбора этой сцены.
+@export var choose_reward_text: String
+
+## Под-сцены.
+## Если пусто то создает одну кнопку - выхода.
+@export var next: Array[EventSceneTemplate] = []
+
+signal entered(id: String)
+
+
+## Происходит при входе в эту сцену события.
+func _on_entered() -> void:
+	entered.emit(id)
