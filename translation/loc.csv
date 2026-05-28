@@ -276,7 +276,7 @@ HD_BERSERK_DESC_ELITE,"When you play a tile with a value of %d, deal %d damage t
 HD_ROCK_NAME,Rock,Скала
 HD_ROCK_DESC,"When you play a blue tile, gain %s block. -%s max HP.","Когда вы играете синюю кость, дает %s брони. -%s Макс. здоровья."
 HD_ROCK_DESC2,"When you play a blue tile, gain %s block. +%s block at battle start. -%s max HP.","Когда вы играете синюю кость, дает %s брони. +%s брони в начале боя. -%s Макс. здоровья."
-HD_ROCK_DESC_ELITE,"When you play a blue tile, give %s block to the enemy.","Когда вы играете синюю кость, дает %s брони вашему противнику."
+HD_ROCK_DESC_ELITE,"When you play a blue tile, give %s block to the enemy.","Когда вы играете синюю кость, дает %s брони вашему противнику. +%s Макс. здоровья противнику."
 ,,
 HD_SQUID_NAME,Brain Eater,Мозгоед
 HD_SQUID_DESC,"At the start of your turn, draw 1 additional tile.",В начале хода вы берете на 1 кость больше.
@@ -287,7 +287,7 @@ HD_SQUID_DESC_ELITE,Reduces the draw at the beginning of the turn by 1.,Умен
 HD_FALSE_KING_NAME,False King,Ложный Король
 HD_FALSE_KING_DESC,Your first tile played each turn triggers twice. -%s max HP.,Ваша первая кость за ход сработает дважды. -%s Макс. здоровья.
 HD_FALSE_KING_DESC2,Your first tile played each turn triggers twice. +%s gold upon receipt. -%s max HP.,Ваша первая кость за ход сработает дважды. +%s золота при получении. -%s Макс. здоровья. 
-HD_FALSE_KING_DESC_ELITE,Cancel first tile you played each turn.,Отменяет первую кость сыгранную за ход.
+HD_FALSE_KING_DESC_ELITE,Cancel first tile you played each turn.,Отменяет первую кость сыгранную за ход. +%s Макс. здоровья противнику.
 ,,
 HD_WHITE_THORN_NAME,White Thorn,Белый Шип
 HD_WHITE_THORN_DESC,"Two bonuses that apply Thorns 4 to you begins to appear on the board.","На поле начинают появляться 2 бонуса, каждый накладывает Шипы 4 на вас."
@@ -316,7 +316,7 @@ HD_MOON_DESC_ELITE,"Whenever you play every %dth tile, deal %s damage to hero.",
 HD_MAW_NAME,Maw,Пасть
 HD_MAW_DESC,Three bonuses start appearing on the board that double the damage of your next red die. -%d max HP.,"На поле начинают появляться 3 бонуса, которые удваивают урон следующей красной кости. -%d Макс. здоровья."
 HD_MAW_DESC2,"Three bonuses start appearing on the board that double the damage of your next red die. At the start of the battle, applies Fury %d to you. -%d max HP.","На поле начинают появляться 3 бонуса, которые удваивают урон следующей красной кости. В начале боя накладывает на вас Ярость %d. -%d Макс. здоровья."
-HD_MAW_DESC_ELITE,"At the start of the battle, applies Fury %d to the enemy.",В начале боя накладывает на врага Ярость %d.
+HD_MAW_DESC_ELITE,"At the start of the battle, applies Fury %d to the enemy.",В начале боя накладывает на врага Ярость %d. +%d Макс. здоровья противнику.
 ,,
 HD_CORRUPTOR_NAME,Corruptor,Осквернитель
 HD_CORRUPTOR_DESC,"When you apply Corruption, you additionally apply %d more Corruption.",При наложении Скверны накладывается дополнительно %d Скверны.
@@ -326,7 +326,7 @@ HD_CORRUPTOR_DESC_ELITE,"At the start of the battle, the player is inflicted wit
 HD_DRUID_NAME,Druid,Друид
 HD_DRUID_DESC,"When you restore health, applies %d Fury. -%s max HP.","Когда вы восстанавливаете здоровье, накладывает Ярость %d. -%s Макс. здоровья."
 HD_DRUID_DESC2,"When you restore health, applies %d Fury and %d Crit. -%s max HP.","Когда вы восстанавливаете здоровье, накладывает Ярость %d и Крит %d. -%s Макс. здоровья."
-HD_DRUID_DESC_ELITE,"When you restore health, applies %d Fury to enemy.","Когда вы восстанавливаете здоровье, накладывает Ярость %d на врага."
+HD_DRUID_DESC_ELITE,"When you restore health, applies %d Fury to enemy.","Когда вы восстанавливаете здоровье, накладывает Ярость %d на врага. +%s Макс. здоровья противнику."
 ,,
 HD_CONSTRUCT_NAME,Construct,Конструкт
 HD_CONSTRUCT_DESC,Gаin %d block at the start of each turn.,В начале каждого хода дает %d брони.
@@ -337,7 +337,7 @@ HD_APOSTLE_NAME,Apostle,Апостол
 HD_APOSTLE_DESC,"When you play a green tile, apply Corruption %d to the enemy. -%d max HP.","Когда вы играете зеленую кость, накладывает Скверна %d на врага. -%d Макс. здоровья."
 HD_APOSTLE_DESC2,"When you play a green tile, apply Corruption %d and Weak %d to the enemy. -%d max HP.","Когда вы играете зеленую кость, накладывает Скверна %d и Слабость %d на врага. -%d Макс. здоровья."
 HD_APOSTLE_DESC3,"When you play a green tile, apply Corruption %d, Weak %d and Vulnerable %d to the enemy. -%d max HP.","Когда вы играете зеленую кость, накладывает Скверна %d, Слабость %d и Уязвимость %d на врага. -%d Макс. здоровья."
-HD_APOSTLE_DESC_ELITE,"When you play a green tile, apply Corruption %d to the hero.","Когда вы играете зеленую кость, накладывает Скверна %d на героя."
+HD_APOSTLE_DESC_ELITE,"When you play a green tile, apply Corruption %d to the hero.","Когда вы играете зеленую кость, накладывает Скверна %d на героя. +%d Макс. здоровья противнику."
 ,,
 HD_PHANTOM_NAME,Phantom,Фантом
 HD_PHANTOM_DESC,"Every time you activate the green bonus, it deals %d damage.","Каждый раз когда вы активируете зеленый бонус, наносит %d урона."
@@ -348,7 +348,7 @@ HD_PHANTOM_DESC_ELITE,"Every time you activate the green bonus, it deals %d dama
 HD_WARDEN_NAME,Warden,Хранитель
 HD_WARDEN_DESC,Three bonuses start appearing on the board that restores 3 HP. -%s max HP.,"На поле начинают появляться 3 бонуса, которые восстанавливают 3 здоровья. -%s Макс. здоровья."
 HD_WARDEN_DESC2,"Three bonuses start appearing on the board that restores 3 HP. At the start of the battle, applies Regen %d to you. -%s max HP.","На поле начинают появляться 3 бонуса, которые восстанавливают 3 здоровья. В начале боя накладывает на вас Регенерация %d. -%s Макс. здоровья."
-HD_WARDEN_DESC_ELITE,Three bonuses start appearing on the board that restores 5 HP to the enemy.,"На поле начинают появляться 2 бонуса, которые восстанавливают 5 здоровья противнику."
+HD_WARDEN_DESC_ELITE,Three bonuses start appearing on the board that restores 5 HP to the enemy.,"На поле начинают появляться 2 бонуса, которые восстанавливают 5 здоровья противнику. +%s Макс. здоровья противнику."
 ,,
 ,,
 ,,

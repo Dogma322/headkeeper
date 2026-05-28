@@ -4,7 +4,7 @@ extends Head
 
 func update_desc() -> void:
 	if invert_logic:
-		description = tr("HD_FALSE_KING_DESC_ELITE")
+		description = tr("HD_FALSE_KING_DESC_ELITE") % [Constants.hd_false_king_health_decrement]
 	else:
 		match level:
 			0:
@@ -27,7 +27,7 @@ func apply_passive_effect() -> void:
 		Run.gold += gold
 	
 	if invert_logic:
-		ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, -Constants.hd_false_king_health_decrement))
+		ActionManager.add(ChangeMaxHpAction.new(self, Global.enemy, -Constants.hd_false_king_health_decrement))
 	else:
 		ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, Constants.hd_false_king_health_decrement))
 	ActionManager.play_one_action()

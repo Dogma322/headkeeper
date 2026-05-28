@@ -18,7 +18,7 @@ func battle_start_add_action() -> void:
 
 func update_desc() -> void:
 	if invert_logic:
-		description = tr("HD_WARDEN_DESC_ELITE")
+		description = tr("HD_WARDEN_DESC_ELITE") % [Constants.hd_warden_max_hp_increment_level_1]
 	else:
 		match level:
 			0:
@@ -33,11 +33,11 @@ func apply_passive_effect() -> void:
 	if invert_logic:
 		match level:
 			0:
-				ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, -Constants.hd_warden_max_hp_increment_level_1))
+				ActionManager.add(ChangeMaxHpAction.new(self, Global.enemy, Constants.hd_warden_max_hp_increment_level_1))
 			1:
-				ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, -Constants.hd_warden_max_hp_increment_level_2))
+				ActionManager.add(ChangeMaxHpAction.new(self, Global.enemy, Constants.hd_warden_max_hp_increment_level_2))
 			2:
-				ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, -Constants.hd_warden_max_hp_increment_level_3))
+				ActionManager.add(ChangeMaxHpAction.new(self, Global.enemy, Constants.hd_warden_max_hp_increment_level_3))
 	else:
 		match level:
 			0:

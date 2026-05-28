@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func update_desc() -> void:
 	if invert_logic:
-		description = tr("HD_MAW_DESC_ELITE") % [Constants.hd_maw_fury_to_enemy]
+		description = tr("HD_MAW_DESC_ELITE") % [Constants.hd_maw_fury_to_enemy, Constants.hd_maw_health_decrement]
 	else:
 		match level:
 			0:
@@ -33,7 +33,7 @@ func battle_start_add_action() -> void:
 
 func apply_passive_effect() -> void:
 	if invert_logic:
-		ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, -Constants.hd_maw_health_decrement))
+		ActionManager.add(ChangeMaxHpAction.new(self, Global.enemy, -Constants.hd_maw_health_decrement))
 	else:
 		ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, Constants.hd_maw_health_decrement))
 	ActionManager.play_one_action()

@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func update_desc() -> void:
 	if invert_logic:
-		description = tr("HD_DRUID_DESC_ELITE") % [Constants.hd_druid_fury_to_enemy]
+		description = tr("HD_DRUID_DESC_ELITE") % [Constants.hd_druid_fury_to_enemy, Constants.hd_druid_health_decrement]
 	else:
 		match level:
 			0:
@@ -22,7 +22,7 @@ func update_desc() -> void:
 
 func apply_passive_effect() -> void:
 	if invert_logic:
-		ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, -Constants.hd_druid_health_decrement))
+		ActionManager.add(ChangeMaxHpAction.new(self, Global.enemy, -Constants.hd_druid_health_decrement))
 	else:
 		ActionManager.add(ChangeMaxHpAction.new(self, Global.hero, Constants.hd_druid_health_decrement))
 	ActionManager.play_one_action()
