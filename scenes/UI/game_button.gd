@@ -62,10 +62,10 @@ func _notification(what: int) -> void:
 		buttons.erase(self)
 
 func _gui_input(event: InputEvent) -> void:
-	if not active:
-		return
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MouseButton.MOUSE_BUTTON_LEFT and not disabled:
+			if not active:
+				return
 			pressed.emit()
 
 static func activate_all_buttons(enabled := true) -> void:

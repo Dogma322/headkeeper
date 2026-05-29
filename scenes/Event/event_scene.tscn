@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c7tgsxh5args7"]
 
 [ext_resource type="Script" uid="uid://c8g7qdogfm0gl" path="res://scenes/Event/event_scene.gd" id="1_htktn"]
-[ext_resource type="FontFile" uid="uid://cdr1gk3kbvdd4" path="res://assets/Fonts/Vollda-Bold.otf" id="1_p3c2n"]
 
 [node name="EventScene" type="Control" unique_id=880814598]
 layout_mode = 3
@@ -28,7 +27,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
+theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
@@ -42,13 +41,16 @@ size_flags_horizontal = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=560141113]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 15
+alignment = 1
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1469727875]
+[node name="TitleLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1486155789]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_p3c2n")
-theme_override_font_sizes/font_size = 24
+bbcode_enabled = true
 text = "Title"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -57,7 +59,14 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/line_separation = 10
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 10
+theme_override_font_sizes/bold_italics_font_size = 10
+theme_override_font_sizes/italics_font_size = 10
+theme_override_font_sizes/mono_font_size = 10
 bbcode_enabled = true
+vertical_alignment = 1
 
 [node name="ButtonsVBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=109709644]
 unique_name_in_owner = true

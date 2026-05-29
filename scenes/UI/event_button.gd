@@ -15,5 +15,6 @@ class_name EventButton
 
 
 func _ready() -> void:
+	super()
 	reward_label.text = reward_text
 	reward_label.visible = not reward_text.is_empty()

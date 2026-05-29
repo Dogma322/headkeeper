@@ -164,3 +164,6 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			await get_tree().create_timer(1.0).timeout
 			SceneManager.event_scene.end()
 			Transition.blackout_off()
+			
+			SceneManager.main_scene = SceneManager.map_scene
+			SceneManager.show_map_scene()

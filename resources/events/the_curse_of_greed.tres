@@ -2,19 +2,49 @@
 
 [ext_resource type="Script" uid="uid://dthav6vdfjni6" path="res://resources/event_scene_template.gd" id="1_8srh6"]
 [ext_resource type="Script" uid="uid://da3c4s3u5mnrv" path="res://resources/event_template.gd" id="1_irk0b"]
+[ext_resource type="Script" uid="uid://cyv40paix5e6t" path="res://resources/event_actions/event_action.gd" id="1_ywhsg"]
+[ext_resource type="Script" uid="uid://da326wqikkvq6" path="res://resources/event_actions/event_action_add_gold.gd" id="3_1swhj"]
+[ext_resource type="Script" uid="uid://bo7j71wf2pmpt" path="res://resources/event_actions/event_action_remove_random_domino.gd" id="3_ae7cq"]
 
 [sub_resource type="Resource" id="Resource_8srh6"]
 script = ExtResource("1_8srh6")
+id = "GREED_CURSE_CHOOSE_1"
 title = "EVENT_GREED_CURSE_NAME"
 choose_text = "EVENT_GREED_CURSE_CHOOSE_1"
 choose_reward_text = "EVENT_GREED_CURSE_REWARD_1"
+metadata/_custom_type_script = "uid://dthav6vdfjni6"
+
+[sub_resource type="Resource" id="Resource_ywhsg"]
+script = ExtResource("1_8srh6")
+id = "GREED_CURSE_CHOOSE_2"
+title = "EVENT_GREED_CURSE_NAME"
+choose_text = "EVENT_GREED_CURSE_CHOOSE_2"
+choose_reward_text = "EVENT_GREED_CURSE_REWARD_2"
+metadata/_custom_type_script = "uid://dthav6vdfjni6"
+
+[sub_resource type="Resource" id="Resource_6tif3"]
+script = ExtResource("3_ae7cq")
+metadata/_custom_type_script = "uid://bo7j71wf2pmpt"
+
+[sub_resource type="Resource" id="Resource_ae7cq"]
+script = ExtResource("3_1swhj")
+amount = 50
+metadata/_custom_type_script = "uid://da326wqikkvq6"
+
+[sub_resource type="Resource" id="Resource_1swhj"]
+script = ExtResource("1_8srh6")
+id = "GREED_CURSE_CHOOSE_3"
+title = "EVENT_GREED_CURSE_NAME"
+choose_text = "EVENT_GREED_CURSE_CHOOSE_3"
+choose_reward_text = "EVENT_GREED_CURSE_REWARD_3"
+actions = Array[ExtResource("1_ywhsg")]([SubResource("Resource_6tif3"), SubResource("Resource_ae7cq")])
 metadata/_custom_type_script = "uid://dthav6vdfjni6"
 
 [sub_resource type="Resource" id="Resource_1q8e7"]
 script = ExtResource("1_8srh6")
 title = "EVENT_GREED_CURSE_NAME"
 description = "EVENT_GREED_CURSE_START_DESC"
-next = Array[ExtResource("1_8srh6")]([SubResource("Resource_8srh6"), null, null])
+next = Array[ExtResource("1_8srh6")]([SubResource("Resource_8srh6"), SubResource("Resource_ywhsg"), SubResource("Resource_1swhj")])
 metadata/_custom_type_script = "uid://dthav6vdfjni6"
 
 [resource]

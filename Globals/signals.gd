@@ -78,5 +78,4 @@ signal play_heal_sound
 signal play_status_sound
 
 signal scene_changed
-signal event_played(event_id: String)
 signal event_ended

@@ -23,9 +23,5 @@ class_name EventSceneTemplate
 ## Если пусто то создает одну кнопку - выхода.
 @export var next: Array[EventSceneTemplate] = []
 
-signal entered(id: String)
-
-
-## Происходит при входе в эту сцену события.
-func _on_entered() -> void:
-	entered.emit(id)
+## Действия.
+@export var actions: Array[EventAction] = []
