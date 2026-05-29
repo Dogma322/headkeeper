@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("1_hp4xa")
 hname = "HD_WHITE_THORN_NAME"
-skulls_cost = 10
+skulls_cost = 12
 gold_cost = 180
 textures = Array[Texture2D]([ExtResource("2_hp4xa"), ExtResource("3_2ea27"), ExtResource("4_8whfy")])
 extra_tags = Array[String](["Thorns"])

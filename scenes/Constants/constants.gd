@@ -7,7 +7,7 @@ const MAX_POINTS = 4
 
 @export_subgroup("Berserk", "hd_berserk")
 @export_range(MIN_POINTS, MAX_POINTS) var hd_berserk_activator_value := 3
-@export var hd_berserk_damage_to_enemy := 3
+@export var hd_berserk_damage_to_enemy := 5
 @export var hd_berserk_damage_to_hero := 1
 @export var hd_berserk_fury_level_2 := 1
 @export var hd_berserk_fury_level_3 := 2
@@ -19,7 +19,7 @@ const MAX_POINTS = 4
 @export var hd_rock_armor_per_action_to_enemy := 1
 @export var hd_rock_armor_level_2 := 15
 @export var hd_rock_armor_level_3 := 45
-@export var hd_rock_health_decrement := 30
+@export var hd_rock_health_decrement := 20
 
 @export_subgroup("Chaos", "hd_chaos")
 @export var hd_chaos_damage_level_1 := 4
@@ -34,7 +34,7 @@ const MAX_POINTS = 4
 @export var hd_druid_crit_level_2 := 1
 @export var hd_druid_crit_level_3 := 1
 @export var hd_druid_fury_to_enemy := 1
-@export var hd_druid_health_decrement := 30
+@export var hd_druid_health_decrement := 20
 
 @export_subgroup("Thorn", "hd_thorn")
 @export var hd_thorn_thorns_to_hero := 4
@@ -56,17 +56,17 @@ const MAX_POINTS = 4
 @export var hd_false_king_gold_level_3 = 300
 
 @export_subgroup("Corruptor", "hd_corruptor")
-@export var hd_corruptor_corruption_level_1 := 2
-@export var hd_corruptor_corruption_level_2 := 3
-@export var hd_corruptor_corruption_level_3 := 4
+@export var hd_corruptor_corruption_level_1 := 4
+@export var hd_corruptor_corruption_level_2 := 5
+@export var hd_corruptor_corruption_level_3 := 6
 @export var hd_corruptor_damage_level_2 := 4
 @export var hd_corruptor_damage_level_3 := 6
 @export var hd_corruptor_corruption_to_hero := 3
 
 @export_subgroup("Phantom", "hd_phantom")
-@export var hd_phantom_damage_level_1 := 2
-@export var hd_phantom_damage_level_2 := 4
-@export var hd_phantom_damage_level_3 := 6
+@export var hd_phantom_damage_level_1 := 6
+@export var hd_phantom_damage_level_2 := 8
+@export var hd_phantom_damage_level_3 := 10
 @export var hd_phantom_damage_to_hero := 1
 
 @export_subgroup("Apostle", "hd_apostle")
@@ -101,4 +101,4 @@ const MAX_POINTS = 4
 @export var hd_maw_fury_level_2 := 4
 @export var hd_maw_fury_level_3 := 8
 @export var hd_maw_fury_to_enemy := 3
-@export var hd_maw_health_decrement := 35
+@export var hd_maw_health_decrement := 25

@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("1_c8vni")
 hname = "HD_PHANTOM_NAME"
-skulls_cost = 6
-gold_cost = 180
+skulls_cost = 10
+gold_cost = 120
 textures = Array[Texture2D]([ExtResource("2_c8vni"), ExtResource("3_sumql"), ExtResource("4_s1n27")])
 metadata/_custom_type_script = "uid://m5esxthxmlub"

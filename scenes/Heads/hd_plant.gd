@@ -51,9 +51,7 @@ func apply_passive_effect() -> void:
 	if invert_logic:
 		Global.enemy.bonus_pool.append(BoardManager.e_5heal)
 		Global.enemy.bonus_pool.append(BoardManager.e_5heal)
-		Global.enemy.bonus_pool.append(BoardManager.e_5heal)
 	else:
-		BoardManager.bonus_pool.append(BonusManager.bonus_effects.h_3heal)
 		BoardManager.bonus_pool.append(BonusManager.bonus_effects.h_3heal)
 		BoardManager.bonus_pool.append(BonusManager.bonus_effects.h_3heal)
 
@@ -63,8 +61,6 @@ func remove_passive_effect() -> void:
 	if invert_logic:
 		Global.enemy.bonus_pool.erase(BoardManager.e_5heal)
 		Global.enemy.bonus_pool.erase(BoardManager.e_5heal)
-		Global.enemy.bonus_pool.erase(BoardManager.e_5heal)
 	else:
-		BoardManager.bonus_pool.erase(BonusManager.bonus_effects.h_3heal)
 		BoardManager.bonus_pool.erase(BonusManager.bonus_effects.h_3heal)
 		BoardManager.bonus_pool.erase(BonusManager.bonus_effects.h_3heal)

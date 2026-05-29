@@ -290,9 +290,9 @@ HD_FALSE_KING_DESC2,Your first tile played each turn triggers twice. +%s gold up
 HD_FALSE_KING_DESC_ELITE,Cancel first tile you played each turn.,Отменяет первую кость сыгранную за ход. +%s Макс. здоровья противнику.
 ,,
 HD_WHITE_THORN_NAME,White Thorn,Белый Шип
-HD_WHITE_THORN_DESC,"Two bonuses that apply Thorns 4 to you begins to appear on the board.","На поле начинают появляться 2 бонуса, каждый накладывает Шипы 4 на вас."
-HD_WHITE_THORN_DESC2,"Two bonuses that apply Thorns 4 to you begins to appear on the board. Thorns deal double damage.","На поле начинают появляться 2 бонуса, каждый накладывает Шипы 4 на вас. Шипы наносят двойной урон."
-HD_WHITE_THORN_DESC3,"Two bonuses that apply Thorns 4 to you begins to appear on the board. Thorns deal double damage. Add Thorns %d at battle start.","На поле начинают появляться 2 бонуса, каждый накладывает Шипы 4 на вас. Шипы наносят двойной урон. В начале боя накладывает Шипы %d."
+HD_WHITE_THORN_DESC,"Two bonuses that apply Thorns 3 to you begins to appear on the board.","На поле начинают появляться 2 бонуса, каждый накладывает Шипы 3 на вас."
+HD_WHITE_THORN_DESC2,"Two bonuses that apply Thorns 3 to you begins to appear on the board. Thorns deal double damage.","На поле начинают появляться 2 бонуса, каждый накладывает Шипы 3 на вас. Шипы наносят двойной урон."
+HD_WHITE_THORN_DESC3,"Two bonuses that apply Thorns 3 to you begins to appear on the board. Thorns deal double damage. Add Thorns %d at battle start.","На поле начинают появляться 2 бонуса, каждый накладывает Шипы 3 на вас. Шипы наносят двойной урон. В начале боя накладывает Шипы %d."
 HD_WHITE_THORN_DESC_ELITE,"A bonus that apply Thorns 2 to enemy begins to appear on the board.","На поле начинает появляться бонус, который накладывает Шипы 2 на врага."
 ,,
 HD_ETERNAL_FURY_NAME,Eternal Fury,Вечная Ярость
@@ -314,8 +314,8 @@ HD_MOON_DESC3,"Whenever you play every %dth tile, deal %s damage, give %s block 
 HD_MOON_DESC_ELITE,"Whenever you play every %dth tile, deal %s damage to hero.","При разыгрывании каждой %d-й кости наносит %s урона герою."
 ,,
 HD_MAW_NAME,Maw,Пасть
-HD_MAW_DESC,Three bonuses start appearing on the board that double the damage of your next red die. -%d max HP.,"На поле начинают появляться 3 бонуса, которые удваивают урон следующей красной кости. -%d Макс. здоровья."
-HD_MAW_DESC2,"Three bonuses start appearing on the board that double the damage of your next red die. At the start of the battle, applies Fury %d to you. -%d max HP.","На поле начинают появляться 3 бонуса, которые удваивают урон следующей красной кости. В начале боя накладывает на вас Ярость %d. -%d Макс. здоровья."
+HD_MAW_DESC,Two bonuses start appearing on the board that double the damage of your next red die. -%d max HP.,"На поле начинают появляться 2 бонуса, которые удваивают урон следующей красной кости. -%d Макс. здоровья."
+HD_MAW_DESC2,"Two bonuses start appearing on the board that double the damage of your next red die. At the start of the battle, applies Fury %d to you. -%d max HP.","На поле начинают появляться 2 бонуса, которые удваивают урон следующей красной кости. В начале боя накладывает на вас Ярость %d. -%d Макс. здоровья."
 HD_MAW_DESC_ELITE,"At the start of the battle, applies Fury %d to the enemy.",В начале боя накладывает на врага Ярость %d. +%d Макс. здоровья противнику.
 ,,
 HD_CORRUPTOR_NAME,Corruptor,Осквернитель
@@ -346,8 +346,8 @@ HD_PHANTOM_DESC3,"Every time you activate the green bonus, it deals %d damage. T
 HD_PHANTOM_DESC_ELITE,"Every time you activate the green bonus, it deals %d damage to the hero.","Каждый раз когда вы активируете зеленый бонус, наносит %d урона герою."
 ,,
 HD_WARDEN_NAME,Warden,Хранитель
-HD_WARDEN_DESC,Three bonuses start appearing on the board that restores 3 HP. -%s max HP.,"На поле начинают появляться 3 бонуса, которые восстанавливают 3 здоровья. -%s Макс. здоровья."
-HD_WARDEN_DESC2,"Three bonuses start appearing on the board that restores 3 HP. At the start of the battle, applies Regen %d to you. -%s max HP.","На поле начинают появляться 3 бонуса, которые восстанавливают 3 здоровья. В начале боя накладывает на вас Регенерация %d. -%s Макс. здоровья."
+HD_WARDEN_DESC,Two bonuses start appearing on the board that restores 3 HP. -%s max HP.,"На поле начинают появляться 2 бонуса, которые восстанавливают 3 здоровья. -%s Макс. здоровья."
+HD_WARDEN_DESC2,"Two bonuses start appearing on the board that restores 3 HP. At the start of the battle, applies Regen %d to you. -%s max HP.","На поле начинают появляться 2 бонуса, которые восстанавливают 3 здоровья. В начале боя накладывает на вас Регенерация %d. -%s Макс. здоровья."
 HD_WARDEN_DESC_ELITE,Three bonuses start appearing on the board that restores 5 HP to the enemy.,"На поле начинают появляться 2 бонуса, которые восстанавливают 5 здоровья противнику. +%s Макс. здоровья противнику."
 ,,
 ,,

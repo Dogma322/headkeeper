@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("1_7b2vv")
 hname = "HD_CHAOS_NAME"
-skulls_cost = 6
-gold_cost = 180
+skulls_cost = 10
+gold_cost = 120
 textures = Array[Texture2D]([ExtResource("2_7b2vv"), ExtResource("3_qpnnk"), ExtResource("4_vhykq")])
 metadata/_custom_type_script = "uid://m5esxthxmlub"

@@ -8,8 +8,8 @@
 [resource]
 script = ExtResource("1_rmf3c")
 hname = "HD_CORRUPTOR_NAME"
-skulls_cost = 7
-gold_cost = 180
+skulls_cost = 10
+gold_cost = 120
 textures = Array[Texture2D]([ExtResource("2_rmf3c"), ExtResource("3_80j03"), ExtResource("4_yohon")])
 extra_tags = Array[String](["Corruption"])
 metadata/_custom_type_script = "uid://m5esxthxmlub"
