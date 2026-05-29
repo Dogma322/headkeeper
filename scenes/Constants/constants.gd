@@ -56,9 +56,9 @@ const MAX_POINTS = 4
 @export var hd_false_king_gold_level_3 = 300
 
 @export_subgroup("Corruptor", "hd_corruptor")
-@export var hd_corruptor_corruption_level_1 := 4
-@export var hd_corruptor_corruption_level_2 := 5
-@export var hd_corruptor_corruption_level_3 := 6
+@export var hd_corruptor_corruption_level_1 := 2
+@export var hd_corruptor_corruption_level_2 := 3
+@export var hd_corruptor_corruption_level_3 := 4
 @export var hd_corruptor_damage_level_2 := 4
 @export var hd_corruptor_damage_level_3 := 6
 @export var hd_corruptor_corruption_to_hero := 3
