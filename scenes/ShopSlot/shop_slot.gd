@@ -57,12 +57,14 @@ var item_key := "":
 			ItemType.DOMINO:
 				domino = Global.domino_scene.instantiate()
 				add_child(domino)
+				domino.name = "Domino"
 				domino.position = Vector2(16, 32)
 				
 				var domino_template: DominoTemplate = DominoManager.domino_templates[item_key]
 				domino.template = domino_template
 				domino.setup(Domino.SideSettings.new(domino_template.a_types, domino_template.a_color),
 				Domino.SideSettings.new(domino_template.b_types, domino_template.b_color))
+				domino.update_labels()
 
 func _ready() -> void:
 	match item_type:
@@ -96,6 +98,8 @@ func _on_icon_rect_mouse_entered() -> void:
 		icon_rect.modulate = Color.WHITE.darkened(0.5)
 	else:
 		icon_rect.modulate = Color.WHITE.darkened(0.25)
+	
+	var offset = TooltipPanel.ShowOffset.RIGHT_CENTER
 	match item_type:
 		ItemType.HEAD:
 			var head: HeadTemplate = HeadManager.head_templates[item_key]
@@ -106,15 +110,20 @@ func _on_icon_rect_mouse_entered() -> void:
 			screen.tooltip_panel.caption = ""
 			screen.tooltip_panel.description = tr(bonus.desc)
 		ItemType.DOMINO:
-			domino.show_description()
-			domino.modulate = Color.WEB_GRAY
+			await domino.show_description()
+			var tooltip = domino.tooltip_stack
+			if tooltip.get_child_count() > 0:
+				tooltip.position = Vector2(-tooltip.size.x / 2.0, -tooltip.size.y - 5)
+			tooltip.modulate.a = 1.0
+			domino.set_color(Color.WEB_GRAY)
+			return
 		ItemType.REMOVE_DOMINO:
 			screen.tooltip_panel.caption = ""
 			screen.tooltip_panel.description = tr("remove_card_des")
 	
 	if item_type != ItemType.DOMINO:
 		screen.tooltip_panel.reset_size()
-		screen.tooltip_panel.show_tooltip(true, icon_rect, TooltipPanel.ShowOffset.RIGHT_CENTER)
+		screen.tooltip_panel.show_tooltip(true, icon_rect, offset)
 
 
 func _on_icon_rect_mouse_exited() -> void:
@@ -125,7 +134,7 @@ func _on_icon_rect_mouse_exited() -> void:
 	else:
 		icon_rect.modulate = Color.WHITE
 	if item_type == ItemType.DOMINO:
-		domino.modulate = Color.WHITE
+		domino.set_color(Color.WHITE)
 		domino.hide_description()
 	else:
 		screen.tooltip_panel.hide_tooltip()

@@ -16,7 +16,8 @@ enum ShowOffset {
 	LEFT_BOTTOM,
 	BOTTOM_LEFT,
 	BOTTOM_CENTER,
-	BOTTOM_RIGHT
+	BOTTOM_RIGHT,
+	TOP_CENTER
 }
 
 @export var caption: String:
@@ -95,6 +96,10 @@ func show_tooltip(await_frame: bool = false, ui_element: Control = null, offset 
 			global_position.x = ui_element.global_position.x + ui_element.size.x - size.x
 			global_position.y = ui_element.global_position.y + ui_element.size.y
 			pass
+		ShowOffset.TOP_CENTER:
+			assert(ui_element)
+			global_position.x = ui_element.global_position.x + ui_element.size.x / 2 - size.x / 2
+			global_position.y = ui_element.global_position.y - size.y
 	
 	if tween and tween.is_running():
 		tween.kill()

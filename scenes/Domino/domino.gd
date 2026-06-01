@@ -75,6 +75,7 @@ var rotation_tween: Tween
 @onready var description: String = ""
 @onready var tooltip_stack: HBoxContainer = %TooltipStack
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
+@onready var rect: Control = $Rect
 
 const ADDITIONAL_TOOLTIP_PANEL = preload("uid://dnje7ugtetwov")
 
@@ -441,13 +442,19 @@ func start_drag():
 		slot.remove_chain()
 
 
+func set_color(color : Color) -> void:
+	top.modulate = color
+	bottom.modulate = color
+	pass
+
+
 func _process(_delta):
 	if dragging and slot == null:
 		if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			stop_drag()
 			return
 		global_position = get_global_mouse_position() + drag_offset
-	tooltip_stack.position = Vector2(self.position.x - tooltip_stack.get_child(0).size.x / 2.0, self.position.y - tooltip_stack.size.y - 18 - 20)
+	tooltip_stack.position = Vector2(rect.position.x + rect.size.x / 2.0 - tooltip_stack.get_child(0).size.x / 2.0, rect.position.y - tooltip_stack.size.y)
 
 
 func _notification(what: int) -> void:
@@ -560,10 +567,11 @@ func show_description():
 		return
 	if dragging:
 		return
-	update_labels()
+	await update_labels()
 	
 	for panel in tooltip_stack.get_children():
 		if panel is TooltipPanel:
+			panel.z_index = 100
 			panel.show_tooltip(true)
 
 

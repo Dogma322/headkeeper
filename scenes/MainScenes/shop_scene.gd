@@ -6,6 +6,7 @@ class_name ShopScene
 @onready var bonus_slots: Array[ShopSlot] = [%BonusSlot, %BonusSlot2, %BonusSlot3]
 @onready var domino_slots: Array[ShopSlot] = [%DominoSlot, %DominoSlot2, %DominoSlot3, %DominoSlot4, %DominoSlot5]
 @onready var remove_domino_slot: ShopSlot = %RemoveDominoSlot
+@onready var tooltip_stack: HBoxContainer = %TooltipStack
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
 
 var money_tween: Tween
