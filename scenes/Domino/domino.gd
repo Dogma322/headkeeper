@@ -647,7 +647,7 @@ func show_description():
 		return
 	if dragging:
 		return
-	update_labels()
+	await update_labels()
 	
 	for panel in tooltip_stack.get_children():
 		if panel is TooltipPanel:
@@ -765,7 +765,7 @@ func remove_symbol(side: int, index: int):
 	if not found: # Полное удаление типа со всех сторон.
 		tags.erase(key)
 		
-		for child in tooltip_stack:
+		for child in tooltip_stack.get_children():
 			if child is AdditionalTooltipPanel:
 				if child.key == key:
 					child.queue_free()

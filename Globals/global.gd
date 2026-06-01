@@ -69,41 +69,46 @@ func load_settings():
 
 func load_templates(folder: String, templates: Dictionary, excluded_folders: PackedStringArray = []) -> void:
 	var dir_path = folder
-	var dir = DirAccess.open(dir_path)
-	if dir == null:
-		push_warning("Could not open directory: " + dir_path)
-		return
+	if not dir_path.begins_with("res://"):
+		dir_path = "res://" + dir_path
 	
 	templates.clear()
 	
+	var all_files = find_all_tres_files(dir_path, excluded_folders)
+	for file_path in all_files:
+		var key = file_path.get_file().get_basename()
+		templates[key] = load(file_path)
+
+
+func find_all_tres_files(base_path: String, excluded: PackedStringArray) -> Array[String]:
+	var results: Array[String] = []
+	
+	var dir = DirAccess.open(base_path)
+	if dir == null:
+		return results
+	
+	dir.include_navigational = false
 	dir.list_dir_begin()
-	var file_name = dir.get_next()
-	while file_name != "":
-		if dir.current_is_dir():
-			# Skip 'start' folder
-			if not file_name in excluded_folders:
-				load_templates_from_subdir(dir_path + "/" + file_name, templates)
-		else:
-			# Check if it's a .tres file in root dominoes folder
-			if file_name.ends_with(".tres"):
-				var key = file_name.get_basename()
-				var resource_path = dir_path + "/" + file_name
-				templates[key] = load(resource_path)
-		file_name = dir.get_next()
+	
+	var entries = []
+	var entry = dir.get_next()
+	while entry != "":
+		entries.append(entry)
+		entry = dir.get_next()
 	dir.list_dir_end()
+	
+	for e in entries:
+		var full_path = base_path + "/" + e
+		if DirAccess.dir_exists_absolute(full_path):
+			if not e in excluded:
+				results.append_array(find_all_tres_files(full_path, excluded))
+		elif e.ends_with(".tres.remap"):
+			results.append(full_path.replace(".tres.remap", ".tres"))
+		elif e.ends_with(".tres"):
+			results.append(full_path)
+	
+	return results
 
 
 func load_templates_from_subdir(subdir_path: String, templates: Dictionary) -> void:
-	var subdir = DirAccess.open(subdir_path)
-	if subdir == null:
-		return
-	
-	subdir.list_dir_begin()
-	var file_name = subdir.get_next()
-	while file_name != "":
-		if not subdir.current_is_dir() and file_name.ends_with(".tres"):
-			var key = file_name.get_basename()
-			var resource_path = subdir_path + "/" + file_name
-			templates[key] = load(resource_path)
-		file_name = subdir.get_next()
-	subdir.list_dir_end()
+	pass # Not used anymore
