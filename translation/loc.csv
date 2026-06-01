@@ -103,6 +103,7 @@ DM_THORNED_SHIELD_1_DESC,Gain 2 block and applies Thorns 2. Triggers each time y
 ,,
 DM_4VAL_ATTACK_1_DESC,Deals 2 damage for each tile with a value of 4 played this fight.,Наносит 2 урона за каждую разыгранную кость со значением 4 в этом бою.
 ,,
+ID_EMPTY_DESC,Empty slot,Пустой слот
 attack_des,Deal %s damage.,Наносит %s урона.
 defense_des,Give %s block.,Дает %s брони.
 heal_des,Restores %s HP.,Восстанавливает %s здоровья.

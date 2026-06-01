@@ -110,11 +110,7 @@ func _on_icon_rect_mouse_entered() -> void:
 			screen.tooltip_panel.caption = ""
 			screen.tooltip_panel.description = tr(bonus.desc)
 		ItemType.DOMINO:
-			await domino.show_description()
-			var tooltip = domino.tooltip_stack
-			if tooltip.get_child_count() > 0:
-				tooltip.position = Vector2(-tooltip.size.x / 2.0, -tooltip.size.y - 5)
-			tooltip.modulate.a = 1.0
+			domino.show_description()
 			domino.set_color(Color.WEB_GRAY)
 			return
 		ItemType.REMOVE_DOMINO:

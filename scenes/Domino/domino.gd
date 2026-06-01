@@ -91,6 +91,7 @@ func set_additional_tooltip(type: String, key: String) -> void:
 	panel.type = type
 	panel.key = key
 	tooltip_stack.add_child(panel)
+	panel.hide()
 
 class SideSettings:
 	var types: PackedStringArray
@@ -567,7 +568,7 @@ func show_description():
 		return
 	if dragging:
 		return
-	await update_labels()
+	update_labels()
 	
 	for panel in tooltip_stack.get_children():
 		if panel is TooltipPanel:
@@ -587,22 +588,19 @@ func hide_description_fast():
 
 
 func update_labels():
-	await get_tree().process_frame
-	
 	var tooltip := ""
 	var i := 0
 	for tag: String in tags:
-		if tag == "empty":
-			continue
 		if i > 0:
 			tooltip += "\n"
 		var count = a_types.count(tag) + b_types.count(tag)
 		var count_string = "" if count == 1 else "(%s)" % str(count)
 		if DominoSideVisual.type_to_tex.has(tag):
 			tooltip += "[img]%s[/img]%s - %s" % [DominoSideVisual.type_to_tex[tag]["red"].resource_path, count_string, get_tooltip_for_type(tag)]
+			i += 1
 		elif DominoSideVisual.special_to_tex.has(tag):
 			tooltip += "[img]%s[/img]%s - %s" % [DominoSideVisual.special_to_tex[tag].resource_path, count_string, get_tooltip_for_type(tag)]
-		i += 1
+			i += 1
 	tooltip_panel.description = tooltip
 
 
@@ -878,6 +876,8 @@ func add_action() -> void:
 
 func get_tooltip_for_type(key: String) -> String:
 	match key:
+		"empty":
+			return TextFormatter.highlight_keywords(tr("ID_EMPTY_DESC"))
 		"attack", "attack2":
 			return TextFormatter.insert_colored_value(tr("attack_des"), final_damage(val[key]), val[key])
 		"corruption":
