@@ -137,6 +137,9 @@ func align_choices():
 		)
 
 		obj.position = pos
+		
+		if obj is Domino:
+			obj.saved_pos = pos
 
 		base_positions.append(pos)
 		offsets.append(randf() * TAU)
@@ -236,6 +239,10 @@ func _process(delta):
 
 		if not is_instance_valid(obj):
 			continue
+
+		if obj is Domino:
+			if obj.is_tween_played():
+				continue
 
 		var base = base_positions[i]
 

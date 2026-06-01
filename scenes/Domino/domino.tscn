@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="2_fjr85"]
 [ext_resource type="Script" uid="uid://ccpbbpvk3gt53" path="res://scenes/Domino/trail.gd" id="4_h0tfr"]
 [ext_resource type="Texture2D" uid="uid://d3wnu881rxoqm" path="res://assets/Dominoes/DominoGhost.png" id="4_phxvf"]
+[ext_resource type="Texture2D" uid="uid://bw4bhup2cqyvg" path="res://assets/Dominoes/DominoFloat.png" id="6_h2tr8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2aomr"]
 size = Vector2(32, 64)
@@ -92,6 +93,7 @@ mouse_filter = 2
 
 [node name="TooltipPanel" parent="TooltipStack" unique_id=54216942 instance=ExtResource("2_fjr85")]
 unique_name_in_owner = true
+visible = false
 z_index = 0
 layout_mode = 2
 
@@ -113,6 +115,14 @@ amount = 15
 texture = SubResource("GradientTexture2D_h0tfr")
 lifetime = 0.3
 process_material = SubResource("ParticleProcessMaterial_25ybd")
+
+[node name="DominoFloat" type="Sprite2D" parent="." unique_id=1191887466]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+position = Vector2(9.536743e-07, 0)
+scale = Vector2(3.5555556, 4.2666664)
+texture = ExtResource("6_h2tr8")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

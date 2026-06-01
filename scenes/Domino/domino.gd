@@ -76,6 +76,9 @@ var rotation_tween: Tween
 @onready var tooltip_stack: HBoxContainer = %TooltipStack
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
 @onready var rect: Control = $Rect
+@onready var domino_float: Sprite2D = %DominoFloat
+@onready var trail: Line2D = $Trail
+@onready var trail_particles: GPUParticles2D = $TrailParticles
 
 const ADDITIONAL_TOOLTIP_PANEL = preload("uid://dnje7ugtetwov")
 
@@ -167,7 +170,6 @@ func _ready() -> void:
 	if template != null:
 		domino_types.clear()
 		setup(SideSettings.new(template.a_types, template.a_color), SideSettings.new(template.b_types, template.b_color))
-	
 	#update_labels()
 	hide_description_fast()
 
@@ -390,10 +392,10 @@ func _on_area_2d_input_event(_viewport, event, _shape):
 				if domino_choice:
 					if Global.choice_scene.choice_locked:
 						return
+					
 					Global.choice_scene.choice_selected(self)
 					add_domino_to_deck()
 					Signals.domino_selected.emit()
-					return
 					
 				if slot:
 					slot.remove_chain()
@@ -403,16 +405,90 @@ func _on_area_2d_input_event(_viewport, event, _shape):
 			else:
 				stop_drag()
 
+
+func is_tween_played():
+	if rotate_tween and rotate_tween.is_running():
+		return true
+	if scale_tween and scale_tween.is_running():
+		return true
+	if deck_tween and deck_tween.is_running():
+		return true
+	return false
+
+
+var saved_pos := Vector2.ZERO
+var rotate_tween: Tween
+var scale_tween: Tween
+var deck_tween: Tween
+
+
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton:
+		#if event.pressed and event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
+			#if transformed:
+				#transformed = false
+				#if deck_tween and deck_tween.is_running():
+					#deck_tween.kill()
+				#if rotate_tween and rotate_tween.is_running():
+					#rotate_tween.kill()
+				#if scale_tween and scale_tween.is_running():
+					#scale_tween.kill()
+				#reset()
+
+func reset() -> void:
+	scale = Vector2(1, 1)
+	domino_float.visible = false
+	trail_particles.modulate = Color.WHITE
+	trail.modulate = Color.WHITE
+	trail.max_width = 60.0
+	modulate.a = 1.0
+
 func add_domino_to_deck():
-	var tween = get_tree().create_tween()
-	var pos = Vector2(15,300)
-	tween.set_parallel()
-	tween.tween_property(self, "global_position", pos, 0.5)
-	tween.tween_property(self, "scale", Vector2(0,0), 0.5)
+	hide_description()
+	
+	domino_float.visible = true
+	domino_float.modulate.a = 0.0
+	
+	trail_particles.modulate = Color.ORANGE
+	trail.modulate = Color.ORANGE
+	trail.max_trail_points = 30
+	
+	scale_tween = get_tree().create_tween().set_parallel()
+	scale_tween.tween_property(self, "scale", Vector2(0.25, 0.25), 0.25)
+	scale_tween.tween_property(trail, "max_width", 10.0, 0.25)
+	
+	rotate_tween = get_tree().create_tween()
+	rotate_tween.tween_property(self, "rotation_degrees", rotation_degrees + 90, 0.125)
+	rotate_tween.tween_property(self, "rotation_degrees", rotation_degrees, 0.125)
+	
+	deck_tween = get_tree().create_tween().set_parallel()
+	var pos = SceneManager.top_panel.domino_deck_button.global_position + SceneManager.top_panel.domino_deck_button.size / 2.0
+	
+	var start_pos = global_position
+	var mid_pos = (start_pos + pos) / 2.0 + Vector2(0, 200)
+	
+	deck_tween.tween_property(domino_float, "modulate:a", 1.0, 0.25)
+	
+	deck_tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	deck_tween.tween_method(arc_move.bind(start_pos, mid_pos, pos), 0.0, 1.0, 0.75)
+	
+	deck_tween.chain()
+	deck_tween.tween_property(self, "modulate:a", 0.0, 0.25)
+	await deck_tween.finished
+	
 	DominoManager.temp_deck.append(self)
 	DominoManager.deck.append(self)
 	Signals.domino_amount_changed.emit()
 	domino_choice = false
+	
+	await get_tree().create_timer(0.6).timeout
+	reset()
+
+
+func arc_move(t: float, start: Vector2, mid: Vector2, end: Vector2) -> void:
+	var p0 = start.lerp(mid, t)
+	var p1 = mid.lerp(end, t)
+	global_position = p0.lerp(p1, t)
 
 
 func remove_from_deck():
@@ -430,6 +506,9 @@ func remove_from_deck():
 
 
 func start_drag():
+	if is_tween_played():
+		return
+	
 	DominoManager.dm_dragging = true
 	if returning_to_hand:
 		return

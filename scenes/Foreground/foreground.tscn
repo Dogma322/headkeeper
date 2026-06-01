@@ -19,6 +19,9 @@ top_level = true
 layout_mode = 1
 mouse_filter = 2
 
+[node name="OptionsPanel" parent="OptionsPanel" index="1" unique_id=1586685150]
+visible = false
+
 [node name="GenButton" parent="OptionsPanel/OptionsPanel/MarginContainer/VBoxContainer/MapBox" parent_id_path=PackedInt32Array(117387146, 1366646638) index="0" unique_id=771409310]
 text = "Перегенерить карту"
 
