@@ -241,7 +241,7 @@ func _process(delta):
 			continue
 
 		if obj is Domino:
-			if obj.is_tween_played():
+			if obj.transferred_to_deck:
 				continue
 
 		var base = base_positions[i]

@@ -50,8 +50,14 @@ var mouse_over = false
 
 var domino_choice = false
 var deleted = false
+var transferred_to_deck := false
 var rotation_from = 0.0
 var rotation_target = 0.0
+
+var saved_pos := Vector2.ZERO
+var rotate_tween: Tween
+var scale_tween: Tween
+var deck_tween: Tween
 
 const ROTATION_SPEED = 360.0*1.5
 
@@ -406,22 +412,6 @@ func _on_area_2d_input_event(_viewport, event, _shape):
 				stop_drag()
 
 
-func is_tween_played():
-	if rotate_tween and rotate_tween.is_running():
-		return true
-	if scale_tween and scale_tween.is_running():
-		return true
-	if deck_tween and deck_tween.is_running():
-		return true
-	return false
-
-
-var saved_pos := Vector2.ZERO
-var rotate_tween: Tween
-var scale_tween: Tween
-var deck_tween: Tween
-
-
 #func _input(event: InputEvent) -> void:
 	#if event is InputEventMouseButton:
 		#if event.pressed and event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
@@ -442,16 +432,21 @@ func reset() -> void:
 	trail.modulate = Color.WHITE
 	trail.max_width = 60.0
 	modulate.a = 1.0
+	z_index = 0
+	transferred_to_deck = false
 
 func add_domino_to_deck():
 	hide_description()
 	
+	z_index = 100
 	domino_float.visible = true
 	domino_float.modulate.a = 0.0
 	
 	trail_particles.modulate = Color.ORANGE
 	trail.modulate = Color.ORANGE
 	trail.max_trail_points = 30
+	
+	transferred_to_deck = true
 	
 	scale_tween = get_tree().create_tween().set_parallel()
 	scale_tween.tween_property(self, "scale", Vector2(0.25, 0.25), 0.25)
@@ -481,7 +476,7 @@ func add_domino_to_deck():
 	Signals.domino_amount_changed.emit()
 	domino_choice = false
 	
-	await get_tree().create_timer(0.6).timeout
+	hide()
 	reset()
 
 
@@ -506,7 +501,7 @@ func remove_from_deck():
 
 
 func start_drag():
-	if is_tween_played():
+	if transferred_to_deck:
 		return
 	
 	DominoManager.dm_dragging = true
@@ -610,6 +605,9 @@ func play_anim():
 
 
 func _on_area_2d_mouse_entered() -> void:
+	if transferred_to_deck:
+		return
+	
 	if !DominoManager.dm_dragging:
 		if slot == null:
 			if selection_tween and selection_tween.is_running():
@@ -629,6 +627,9 @@ func _on_area_2d_mouse_entered() -> void:
 
 
 func _on_area_2d_mouse_exited() -> void:
+	if transferred_to_deck:
+		return
+	
 	if !DominoManager.dm_dragging:
 		BoardManager.disable_highlight()
 		if slot == null:

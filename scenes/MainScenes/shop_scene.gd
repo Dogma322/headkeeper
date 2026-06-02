@@ -78,9 +78,16 @@ func bonus_selected(slot: ShopSlot) -> void:
 
 func domino_selected(slot: ShopSlot) -> void:
 	if buy(slot):
-		slot.domino.add_domino_to_deck()
-		slot.domino.get_parent().remove_child(slot.domino)
+		var domino = slot.domino
+		domino.hide_description_fast()
+		var pos = domino.global_position
+		slot.remove_child(domino)
+		Foreground.add_child(domino)
+		domino.global_position = pos
 		slot.domino = null
+		domino.add_domino_to_deck()
+		await domino.deck_tween.finished
+		Foreground.remove_child(domino)
 
 
 func show_remove_domino_scene(slot: ShopSlot) -> void:
