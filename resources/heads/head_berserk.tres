@@ -9,5 +9,6 @@
 script = ExtResource("1_bdjk8")
 hname = "HD_BERSERK_NAME"
 skulls_cost = 7
+gold_cost = 120
 textures = Array[Texture2D]([ExtResource("2_bdjk8"), ExtResource("3_kknav"), ExtResource("4_4jl1t")])
 metadata/_custom_type_script = "uid://m5esxthxmlub"
