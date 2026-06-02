@@ -59,6 +59,7 @@ var item_key := "":
 				add_child(domino)
 				domino.name = "Domino"
 				domino.position = Vector2(16, 32)
+				domino.tooltip_stack.top_level = false
 				
 				var domino_template: DominoTemplate = DominoManager.domino_templates[item_key]
 				domino.template = domino_template

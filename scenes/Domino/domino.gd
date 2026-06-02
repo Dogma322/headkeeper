@@ -534,7 +534,10 @@ func _process(_delta):
 			stop_drag()
 			return
 		global_position = get_global_mouse_position() + drag_offset
-	tooltip_stack.position = Vector2(rect.position.x + rect.size.x / 2.0 - tooltip_stack.get_child(0).size.x / 2.0, rect.position.y - tooltip_stack.size.y)
+	if tooltip_stack.top_level:
+		tooltip_stack.position = Vector2(self.position.x - tooltip_stack.get_child(0).size.x / 2.0, self.position.y - tooltip_stack.size.y - 18 - 20)
+	else:
+		tooltip_stack.position = Vector2(rect.position.x + rect.size.x / 2.0 - tooltip_stack.get_child(0).size.x / 2.0, rect.position.y - tooltip_stack.size.y)
 
 
 func _notification(what: int) -> void:
