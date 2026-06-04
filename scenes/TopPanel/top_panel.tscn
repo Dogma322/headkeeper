@@ -5,14 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://ct3ak0ohnuyfp" path="res://assets/Icons/TopPanelIcons/coin_icon.atlastex" id="4_kf5qq"]
 [ext_resource type="Texture2D" uid="uid://cvu5gcwvrg6gk" path="res://assets/Icons/TopPanelIcons/skull_icon.atlastex" id="5_kf5qq"]
 [ext_resource type="Theme" uid="uid://df5t7rctr0cta" path="res://scenes/TextThemes/Monocraft8.tres" id="5_qkk5r"]
+[ext_resource type="Texture2D" uid="uid://gak3gsvpalws" path="res://assets/Icons/TopPanelIcons/inventory_icon.atlastex" id="5_vphw7"]
 [ext_resource type="Texture2D" uid="uid://ci74iiqinxbs5" path="res://assets/Icons/TopPanelIcons/consumables.atlastex" id="6_gkv6x"]
 [ext_resource type="PackedScene" uid="uid://bo8xaqmke5324" path="res://scenes/UI/icon_button.tscn" id="6_hnbga"]
-[ext_resource type="Texture2D" uid="uid://7i411m8dqct1" path="res://assets/Icons/TopPanelIcons/head_deck_icon.atlastex" id="7_0k1ga"]
 [ext_resource type="Texture2D" uid="uid://cw87ws8io6qyy" path="res://assets/Icons/TopPanelIcons/map_icon.atlastex" id="7_gkv6x"]
-[ext_resource type="Texture2D" uid="uid://83k0is8v8c8p" path="res://assets/Icons/TopPanelIcons/domino_deck_icon.atlastex" id="7_qkk5r"]
 [ext_resource type="FontFile" uid="uid://cdr1gk3kbvdd4" path="res://assets/Fonts/Vollda-Bold.otf" id="7_r6b6f"]
-[ext_resource type="Texture2D" uid="uid://1s64mba1kg7e" path="res://assets/Icons/TopPanelIcons/bonus_deck_icon.atlastex" id="7_vphw7"]
-[ext_resource type="FontFile" uid="uid://bg2a4wo64yqve" path="res://assets/Fonts/shadowpixelF1.ttf" id="11_my7ya"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ttnmq"]
 content_margin_left = 3.0
@@ -55,94 +52,17 @@ toggle_mode = true
 button_pressed = true
 button_group = "top_panel_buttons"
 tooltip = "TT_MAP"
-tooltip_offset = 7
-
-[node name="HeadDeckButton" parent="MarginContainer/HBoxContainer" unique_id=386037324 instance=ExtResource("6_hnbga")]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 4
-texture = ExtResource("7_0k1ga")
-toggle_mode = true
-button_group = "top_panel_buttons"
-tooltip = "TT_HEADS"
-tooltip_offset = 8
-
-[node name="HeadAmountLabel" type="Label" parent="MarginContainer/HBoxContainer/HeadDeckButton" unique_id=1020687423]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -10.0
-offset_top = -10.0
-offset_right = -2.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("11_my7ya")
-theme_override_font_sizes/font_size = 6
-text = "0"
-horizontal_alignment = 2
-
-[node name="BonusDeckButton" parent="MarginContainer/HBoxContainer" unique_id=1283611821 instance=ExtResource("6_hnbga")]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 4
-texture = ExtResource("7_vphw7")
-toggle_mode = true
-button_group = "top_panel_buttons"
-tooltip = "TT_BONUSES"
-tooltip_offset = 8
-
-[node name="BonusAmountLabel" type="Label" parent="MarginContainer/HBoxContainer/BonusDeckButton" unique_id=1614137116]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -10.0
-offset_top = -10.0
-offset_right = -2.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("11_my7ya")
-theme_override_font_sizes/font_size = 6
-text = "0"
-horizontal_alignment = 2
-
-[node name="DominoDeckButton" parent="MarginContainer/HBoxContainer" unique_id=672487379 instance=ExtResource("6_hnbga")]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 4
-texture = ExtResource("7_qkk5r")
-toggle_mode = true
-button_group = "top_panel_buttons"
-tooltip = "TT_DOMINOES"
 tooltip_offset = 9
 
-[node name="DominoAmountLabel" type="Label" parent="MarginContainer/HBoxContainer/DominoDeckButton" unique_id=1103629639]
+[node name="InventoryButton" parent="MarginContainer/HBoxContainer" unique_id=672487379 instance=ExtResource("6_hnbga")]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -10.0
-offset_top = -10.0
-offset_right = -2.0
-offset_bottom = -2.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("11_my7ya")
-theme_override_font_sizes/font_size = 6
-text = "0"
-horizontal_alignment = 2
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("5_vphw7")
+toggle_mode = true
+button_group = "top_panel_buttons"
+tooltip = "TT_INVENTORY"
+tooltip_offset = 9
 
 [node name="SettingsOffset" type="Control" parent="MarginContainer/HBoxContainer" unique_id=244280390]
 custom_minimum_size = Vector2(25, 0)
@@ -232,6 +152,4 @@ texture = ExtResource("6_gkv6x")
 stretch_mode = 3
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/MapButton" to="." method="_on_map_button_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/HeadDeckButton" to="." method="_on_head_deck_button_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/BonusDeckButton" to="." method="_on_bonus_deck_button_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/DominoDeckButton" to="." method="_on_domino_deck_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/InventoryButton" to="." method="_on_inventory_button_pressed"]

@@ -34,13 +34,16 @@ ID_MAP_BATTLE,Enemy,Бой
 ID_MAP_BATTLE_ELITE,Elite,Элитный Бой
 ID_MAP_EVENT,Event,Событие
 ,,
+ID_DECK,Dominoes Deck,Колода Домино
 ID_HEADS,Heads %d/%d,Головы %d/%d
+ID_BONUSES,Field bonuses,Бонусы поля
 ,,
 TOOLTIPS,,
 TT_MAP,Map,Карта
 TT_HEADS,Head Deck,Колода Голов
 TT_BONUSES,Bonus Deck,Колода Бонусов
 TT_DOMINOES,Domino Deck,Колода Домино
+TT_INVENTORY,Inventory,Инвентарь
 TT_SETTINGS,Settings,Настройки
 ,,
 bone_bag_name,Tile Bag,Мешок для костей

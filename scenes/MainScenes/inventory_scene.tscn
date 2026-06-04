@@ -1,18 +1,19 @@
 [gd_scene format=3 uid="uid://ck28vxoe8rxf5"]
 
 [ext_resource type="Theme" uid="uid://davkwt5hr65jn" path="res://main.theme" id="1_cmadi"]
-[ext_resource type="Script" uid="uid://bsep52kh8fs4s" path="res://scenes/MainScenes/overview_scene.gd" id="2_lxkos"]
+[ext_resource type="Script" uid="uid://bsep52kh8fs4s" path="res://scenes/MainScenes/inventory_scene.gd" id="2_lxkos"]
 [ext_resource type="FontFile" uid="uid://rbyocnxc7lmn" path="res://assets/Fonts/PressStart2P-Regular.ttf" id="3_lxkos"]
-[ext_resource type="Texture2D" uid="uid://bynrgg2h15m1a" path="res://assets/Overview/DecksMenuLayout.png" id="3_rkt2x"]
+[ext_resource type="Texture2D" uid="uid://bynrgg2h15m1a" path="res://assets/Inventory/DecksMenuLayout.png" id="3_rkt2x"]
 [ext_resource type="Texture2D" uid="uid://cjard68ir67is" path="res://assets/NinePatchTexture/Dialog.png" id="5_rkt2x"]
 
-[node name="OverviewScene" type="Control" unique_id=1282232543]
+[node name="InventoryScene" type="Control" unique_id=1282232543]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("1_cmadi")
 script = ExtResource("2_lxkos")
 
@@ -24,7 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
+mouse_filter = 2
 texture = ExtResource("3_rkt2x")
 expand_mode = 1
 
@@ -35,47 +36,45 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
+mouse_filter = 2
 theme_override_constants/margin_left = 64
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=371253318]
 layout_mode = 2
-mouse_filter = 0
+mouse_filter = 2
 theme_override_constants/separation = 32
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=1132708621]
 layout_mode = 2
-mouse_filter = 0
+mouse_filter = 2
 theme_override_constants/margin_top = -4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer" unique_id=1173927597]
 layout_mode = 2
 size_flags_horizontal = 3
-mouse_filter = 0
 theme_override_constants/separation = 3
 alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=289986940]
 layout_mode = 2
 size_flags_vertical = 1
-mouse_filter = 0
+mouse_filter = 1
 theme_override_fonts/font = ExtResource("3_lxkos")
 theme_override_font_sizes/font_size = 10
-text = "Колода домино"
+text = "ID_DECK"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1263562105]
 layout_mode = 2
-mouse_filter = 0
 theme_override_constants/separation = 0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=64890839]
 custom_minimum_size = Vector2(272, 240)
 layout_mode = 2
 size_flags_horizontal = 3
-mouse_filter = 0
+mouse_filter = 1
 texture = ExtResource("5_rkt2x")
 patch_margin_left = 32
 patch_margin_top = 32
@@ -89,18 +88,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
 
 [node name="Control" type="Control" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect/VBoxContainer" unique_id=2064487812]
 custom_minimum_size = Vector2(0, 11)
 layout_mode = 2
+mouse_filter = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect/VBoxContainer" unique_id=903696360]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-mouse_filter = 0
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
@@ -109,7 +107,6 @@ clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-mouse_filter = 0
 theme_override_constants/margin_left = 17
 
 [node name="DominoContainer" type="HFlowContainer" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect/VBoxContainer/ScrollContainer/MarginContainer" unique_id=997596175]
@@ -122,6 +119,7 @@ theme_override_constants/v_separation = 9
 [node name="Control2" type="Control" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/NinePatchRect/VBoxContainer" unique_id=1414439301]
 custom_minimum_size = Vector2(0, 11.955)
 layout_mode = 2
+mouse_filter = 1
 
 [node name="VScrollBar" type="VScrollBar" parent="MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1622453594]
 unique_name_in_owner = true
@@ -129,33 +127,33 @@ modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 max_value = 283.0
 page = 210.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=1453407652]
 layout_mode = 2
-mouse_filter = 0
+mouse_filter = 2
 theme_override_constants/margin_top = -4
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer2" unique_id=1137065033]
 layout_mode = 2
-mouse_filter = 0
+mouse_filter = 2
 theme_override_constants/separation = 3
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer2" unique_id=1661092372]
 layout_mode = 2
-mouse_filter = 0
+mouse_filter = 2
 theme_override_constants/separation = 3
 
 [node name="HeadsLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer2/VBoxContainer" unique_id=506939687]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
-mouse_filter = 0
 theme_override_fonts/font = ExtResource("3_lxkos")
 theme_override_font_sizes/font_size = 10
-text = "Головы 0/5"
+text = "ID_HEADS"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -164,7 +162,6 @@ uppercase = true
 custom_minimum_size = Vector2(192, 64)
 layout_mode = 2
 size_flags_horizontal = 3
-mouse_filter = 0
 texture = ExtResource("5_rkt2x")
 patch_margin_left = 32
 patch_margin_top = 32
@@ -178,7 +175,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
+mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
@@ -187,21 +184,20 @@ theme_override_constants/margin_bottom = 16
 [node name="HeadsContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer2/VBoxContainer/NinePatchRect/MarginContainer" unique_id=1690639667]
 unique_name_in_owner = true
 layout_mode = 2
-mouse_filter = 0
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer2" unique_id=1119431017]
 layout_mode = 2
-mouse_filter = 0
+mouse_filter = 2
 theme_override_constants/separation = 3
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer2/VBoxContainer2" unique_id=1120497380]
 layout_mode = 2
 size_flags_vertical = 1
-mouse_filter = 0
 theme_override_fonts/font = ExtResource("3_lxkos")
 theme_override_font_sizes/font_size = 10
-text = "Бонусы поля"
+text = "ID_BONUSES"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -210,7 +206,6 @@ uppercase = true
 custom_minimum_size = Vector2(192, 160)
 layout_mode = 2
 size_flags_horizontal = 3
-mouse_filter = 0
 texture = ExtResource("5_rkt2x")
 patch_margin_left = 32
 patch_margin_top = 32
@@ -224,6 +219,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
@@ -232,5 +228,6 @@ theme_override_constants/margin_bottom = 16
 [node name="BonusesContainer" type="HFlowContainer" parent="MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer2/VBoxContainer2/NinePatchRect/MarginContainer" unique_id=2114122747]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
+mouse_filter = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4

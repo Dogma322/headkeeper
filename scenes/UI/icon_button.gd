@@ -68,11 +68,11 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	mouse_over = false
 	
-	if not active or disabled:
-		return
-	
 	if not tooltip.is_empty():
 		Foreground.tooltip_panel.hide_tooltip()
+	
+	if not active or disabled:
+		return
 	
 	if toggle_mode and button_pressed:
 		return

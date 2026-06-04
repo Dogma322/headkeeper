@@ -1,6 +1,8 @@
 @tool
 extends ScreenBase
 
+## Экран инвентаря.
+
 @onready var scroll_container: ScrollContainer = %ScrollContainer
 @onready var v_scroll_bar: VScrollBar = %VScrollBar
 @onready var domino_container: HFlowContainer = %DominoContainer
@@ -141,7 +143,7 @@ func update_bonus_list() -> void:
 	for scene in BoardManager.bonus_pool:
 		var bonus: BoardBonus = scene.instantiate()
 		bonuses_container.add_child(bonus)
-		bonus.custom_minimum_size = Vector2(32, 32)
+		bonus.custom_minimum_size = Vector2(28, 28)
 		pool.push_back(bonus)
 	
 	var total = pool.size()

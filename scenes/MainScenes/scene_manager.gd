@@ -12,7 +12,7 @@ extends Control
 @onready var campfire_scene: CampfireScene = %CampfireScene
 @onready var shop_scene: ShopScene = %ShopScene
 @onready var event_scene: EventScene = %EventScene
-@onready var overview_scene: Control = %OverviewScene
+@onready var inventory_scene: Control = %InventoryScene
 
 @onready var scenes = [
 	map_scene,
@@ -25,7 +25,7 @@ extends Control
 	campfire_scene,
 	shop_scene,
 	event_scene,
-	overview_scene
+	inventory_scene
 ]
 
 @onready var back_button: IconButton = %BackButton
@@ -103,14 +103,15 @@ func show_bonus_list_scene() -> void:
 	item_list_scene.update_bonus_list()
 
 
-func show_overview_scene() -> void:
-	show_scene(overview_scene)
-
-
 func show_domino_list_scene(source: ItemListScene.DominoSource) -> void:
 	show_scene(item_list_scene)
 	item_list_scene.top_panel_button = SceneManager.top_panel.domino_deck_button
 	item_list_scene.update_domino_list(source)
+
+
+func show_inventory_scene() -> void:
+	show_scene(inventory_scene)
+	inventory_scene.top_panel_button = SceneManager.top_panel.inventory_button
 
 
 func show_battle_scene(map_node: MapNode, elite: bool) -> void:

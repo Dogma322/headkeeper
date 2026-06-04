@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bb8bufwutf1xg" path="res://scenes/MainScenes/shop_scene.tscn" id="12_reosh"]
 [ext_resource type="PackedScene" uid="uid://c7tgsxh5args7" path="res://scenes/Event/event_scene.tscn" id="13_re6mt"]
 [ext_resource type="PackedScene" uid="uid://dve4apve17rh4" path="res://scenes/VhsShader/vhs_shader.tscn" id="14_5a81w"]
-[ext_resource type="PackedScene" uid="uid://ck28vxoe8rxf5" path="res://scenes/MainScenes/overview_scene.tscn" id="14_hiss1"]
+[ext_resource type="PackedScene" uid="uid://ck28vxoe8rxf5" path="res://scenes/MainScenes/inventory_scene.tscn" id="14_hiss1"]
 [ext_resource type="PackedScene" uid="uid://bo8xaqmke5324" path="res://scenes/UI/icon_button.tscn" id="15_re6mt"]
 [ext_resource type="Texture2D" uid="uid://cagl8rxfu18kd" path="res://assets/UI/Buttons/BackBtn.png" id="16_hiss1"]
 
@@ -33,6 +33,7 @@ script = ExtResource("1_ack50")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 expand_mode = 1
 metadata/_edit_lock_ = true
 
@@ -102,7 +103,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="OverviewScene" parent="." unique_id=1282232543 instance=ExtResource("14_hiss1")]
+[node name="InventoryScene" parent="." unique_id=1282232543 instance=ExtResource("14_hiss1")]
 unique_name_in_owner = true
 layout_mode = 2
 

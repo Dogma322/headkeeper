@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj5xjnb7ny0gf"
-path="res://.godot/imported/DominoDeckSlider.png-f918dff8d7e572c28ad21fb1d4eb3afd.ctex"
+uid="uid://bynrgg2h15m1a"
+path="res://.godot/imported/DecksMenuLayout.png-e521dd60ffec61e1751e88b01e58bfcc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Overview/DominoDeckSlider.png"
-dest_files=["res://.godot/imported/DominoDeckSlider.png-f918dff8d7e572c28ad21fb1d4eb3afd.ctex"]
+source_file="res://assets/Inventory/DecksMenuLayout.png"
+dest_files=["res://.godot/imported/DecksMenuLayout.png-e521dd60ffec61e1751e88b01e58bfcc.ctex"]
 
 [params]
 
