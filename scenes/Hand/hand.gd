@@ -10,7 +10,6 @@ class_name Hand
 var dominoes:Array[Domino] = []
 
 
-
 func _ready():
 	Global.hand = self
 	Signals.reset_run_data.connect(reset)

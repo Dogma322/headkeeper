@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bpdrdg014nrh8"]
+
+[ext_resource type="Script" uid="uid://c3shaimot46jo" path="res://scenes/Heads/HeadTemplate/head_container.gd" id="1_of7nc"]
+
+[node name="HeadContainer" type="Control" unique_id=313488453]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchor_right = 0.05
+anchor_bottom = 0.08888889
+pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("1_of7nc")
+metadata/_edit_use_anchors_ = true

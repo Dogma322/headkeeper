@@ -16,7 +16,6 @@ script = ExtResource("1_qrntt")
 [node name="DesArea" type="Area2D" parent="." unique_id=592936283]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DesArea" unique_id=743844504]
-position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_ajw7s")
 
 [node name="TooltipStack" type="HBoxContainer" parent="." unique_id=1268114038]

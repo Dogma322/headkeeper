@@ -1,12 +1,12 @@
 class_name Domino
 extends Node2D
 
-@export_range(1, 4) var a:int:
+@export_range(1, 4) var a: int:
 	set(value):
 		a = value
 		top.count = a
 		
-@export_range(1, 4) var b:int:
+@export_range(1, 4) var b: int:
 	set(value):
 		b = value
 		bottom.count = b
@@ -27,9 +27,9 @@ var b_color: String:
 
 @export var template: DominoTemplate = null
 
-var target_position:Vector2
+var target_position: Vector2
 
-var slot:DominoSlot = null
+var slot: DominoSlot = null
 var connected_side := 1
 var initial_connected_side := 1
 
@@ -59,7 +59,7 @@ var rotate_tween: Tween
 var scale_tween: Tween
 var deck_tween: Tween
 
-const ROTATION_SPEED = 360.0*1.5
+const ROTATION_SPEED = 360.0 * 1.5
 
 var rotation_prop:
 	set(value):
@@ -67,12 +67,13 @@ var rotation_prop:
 		
 		var v = lerp_angle(deg_to_rad(rotation_from), deg_to_rad(rotation_target), value)
 		rotation_degrees = rad_to_deg(v)
-		top.slots_rotation = -rotation_degrees
-		bottom.slots_rotation = -rotation_degrees
+		top.slots_rotation = - rotation_degrees
+		bottom.slots_rotation = - rotation_degrees
 
 var selection_tween: Tween
 var rotation_tween: Tween
 
+@onready var area_2d: Area2D = $Area2D
 @onready var aim_marker = $AimMarker
 @onready var top: DominoSideVisual = $Visual/Top
 @onready var bottom: DominoSideVisual = $Visual/Bottom
@@ -192,7 +193,7 @@ func add_actions():
 	domino_played()
 
 
-func get_status(target, status_id:String):
+func get_status(target, status_id: String):
 	for icon in target.status_container.get_children():
 		if icon.status.id == status_id:
 			return icon.status
@@ -259,7 +260,6 @@ func final_corruption(_corruption):
 
 
 func get_open_value():
-
 	if connected_side == 0:
 		return b
 
@@ -341,25 +341,24 @@ func dm_rotate(angle, tween):
 		#final_angle = 0.0
 	
 	rotation_degrees = angle
-	top.slots_rotation = -angle
-	bottom.slots_rotation = -angle
+	top.slots_rotation = - angle
+	bottom.slots_rotation = - angle
 
 
 func rotate_by_slot(connect_from: int, flow: int, side: int):
-
 	var angle := 0
 
 	# 🔥 откуда подключились
 	match connect_from:
-		0: angle = 0        # TOP
-		1: angle = 180      # BOTTOM
-		2: angle = -90      # LEFT
-		3: angle = 90       # RIGHT
+		0: angle = 0 # TOP
+		1: angle = 180 # BOTTOM
+		2: angle = -90 # LEFT
+		3: angle = 90 # RIGHT
 
 	# 🔥 куда идёт цепь
 	match flow:
-		1: angle -= 90      # LEFT
-		2: angle += 90      # RIGHT
+		1: angle -= 90 # LEFT
+		2: angle += 90 # RIGHT
 
 	# 🔥 переворот домино
 	if side == 1:
@@ -368,48 +367,9 @@ func rotate_by_slot(connect_from: int, flow: int, side: int):
 	rotation_degrees = angle % 360
 
 	# 🔥 фикс иконок
-	top.slots_rotation = -rotation_degrees
-	bottom.slots_rotation = -rotation_degrees
+	top.slots_rotation = - rotation_degrees
+	bottom.slots_rotation = - rotation_degrees
 
-func _on_area_2d_input_event(_viewport, event, _shape):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT:
-			if DominoManager.block_domino_input:
-				return
-			if slot:
-				return
-			if event.pressed:
-				rotate_in_hand()
-		elif event.button_index == MOUSE_BUTTON_LEFT:
-			if not DominoManager.block_domino_input:
-				hide_description_fast()
-				
-		
-			if event.pressed:
-				if DominoManager.block_domino_input:
-					return
-				
-				if DominoManager.delete_mode:
-					if !deleted:
-						deleted = true
-						remove_from_deck()
-					return
-				
-				if domino_choice:
-					if Global.choice_scene.choice_locked:
-						return
-					
-					Global.choice_scene.choice_selected(self)
-					add_domino_to_deck()
-					Signals.domino_selected.emit()
-					
-				if slot:
-					slot.remove_chain()
-					#Global.hand.add_domino(self
-				else:
-					start_drag()
-			else:
-				stop_drag()
 
 
 #func _input(event: InputEvent) -> void:
@@ -491,7 +451,7 @@ func remove_from_deck():
 	var tween = get_tree().create_tween()
 	tween.set_parallel()
 
-	tween.tween_property(self, "scale", Vector2(0,0), 0.25)
+	tween.tween_property(self, "scale", Vector2(0, 0), 0.25)
 	tween.tween_property(self, "rotation_degrees", 180, 0.25)
 	await tween.finished
 	DominoManager.temp_deck.erase(self)
@@ -517,7 +477,7 @@ func start_drag():
 		slot.remove_chain()
 
 
-func set_color(color : Color) -> void:
+func set_color(color: Color) -> void:
 	top.modulate = color
 	bottom.modulate = color
 	pass
@@ -530,7 +490,7 @@ func _process(_delta):
 			return
 		global_position = get_global_mouse_position() + drag_offset
 	if tooltip_stack.top_level:
-		tooltip_stack.position = Vector2(self.position.x - tooltip_stack.get_child(0).size.x / 2.0, self.position.y - tooltip_stack.size.y - 18 - 20)
+		tooltip_stack.global_position = Vector2(self.global_position.x - tooltip_stack.get_child(0).size.x / 2.0, self.global_position.y - tooltip_stack.size.y - 18 - 20)
 	else:
 		tooltip_stack.position = Vector2(rect.position.x + rect.size.x / 2.0 - tooltip_stack.get_child(0).size.x / 2.0, rect.position.y - tooltip_stack.size.y)
 
@@ -570,10 +530,10 @@ func stop_drag():
 	z_index = 0
 
 
-func move_to_hand(pos:Vector2):
+func move_to_hand(pos: Vector2):
 	returning_to_hand = true
 	reset_rotation()
-	connected_side = 1 
+	connected_side = 1
 	
 	var tween = create_tween()
 	
@@ -604,6 +564,46 @@ func play_anim():
 	z_index = 0
 
 
+func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			if DominoManager.block_domino_input:
+				return
+			if slot:
+				return
+			if event.pressed:
+				rotate_in_hand()
+		elif event.button_index == MOUSE_BUTTON_LEFT:
+			if not DominoManager.block_domino_input:
+				hide_description_fast()
+				
+		
+			if event.pressed:
+				if DominoManager.block_domino_input:
+					return
+				
+				if DominoManager.delete_mode:
+					if !deleted:
+						deleted = true
+						remove_from_deck()
+					return
+				
+				if domino_choice:
+					if Global.choice_scene.choice_locked:
+						return
+					
+					Global.choice_scene.choice_selected(self)
+					add_domino_to_deck()
+					Signals.domino_selected.emit()
+					
+				if slot:
+					slot.remove_chain()
+					#Global.hand.add_domino(self
+				else:
+					start_drag()
+			else:
+				stop_drag()
+
 func _on_area_2d_mouse_entered() -> void:
 	if transferred_to_deck:
 		return
@@ -619,7 +619,7 @@ func _on_area_2d_mouse_entered() -> void:
 				selection_tween.tween_property(self, "position:y", 310, 0.25)
 		
 		Signals.play_domino_draged_sound.emit()
-		BoardManager.highlight_avaiable_slots([a,b])
+		BoardManager.highlight_avaiable_slots([a, b])
 	else:
 		return
 	mouse_over = true
@@ -937,7 +937,7 @@ func add_action() -> void:
 			"shield_strike":
 				ActionManager.add(ShieldStrikeAction.new(self, Global.enemy, val[key]))
 			"repeat":
-				ActionManager.add(BuffAction.new(self, Global.hero,StatusManager.repeat, val[key]))
+				ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.repeat, val[key]))
 				DominoManager.double_next_dm += val[key]
 			"mace":
 				ActionManager.add(AttackAction.new(self, Global.enemy, DominoManager.dominoes_on_board.size() * val[key]))
@@ -946,7 +946,7 @@ func add_action() -> void:
 			"hammer":
 				ActionManager.add(HammerAction.new(self, Global.enemy))
 			"crit":
-				ActionManager.add(BuffAction.new(self, Global.hero,StatusManager.crit, val[key]))
+				ActionManager.add(BuffAction.new(self, Global.hero, StatusManager.crit, val[key]))
 			"corrupted_staff":
 				ActionManager.add(CorruptedStaffAction.new(self, Global.enemy))
 			"skull":

@@ -126,16 +126,16 @@ func _on_map_button_pressed() -> void:
 func _on_domino_deck_button_pressed() -> void:
 	if SceneManager.current_scene != SceneManager.item_list_scene:
 		await Transition.blackout()
-	SceneManager.show_domino_list_scene(ItemListScene.DominoSource.ALL)
+	SceneManager.show_overview_scene()
 
 
 func _on_bonus_deck_button_pressed() -> void:
 	if SceneManager.current_scene != SceneManager.item_list_scene:
 		await Transition.blackout()
-	SceneManager.show_bonus_list_scene()
+	SceneManager.show_overview_scene()
 
 
 func _on_head_deck_button_pressed() -> void:
 	if SceneManager.current_scene != SceneManager.item_list_scene:
 		await Transition.blackout()
-	SceneManager.show_head_list_scene()
+	SceneManager.show_overview_scene()

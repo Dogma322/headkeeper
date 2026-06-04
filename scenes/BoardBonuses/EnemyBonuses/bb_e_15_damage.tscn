@@ -9,6 +9,7 @@ atlas = ExtResource("3_chwsf")
 region = Rect2(964, 48, 28, 28)
 
 [node name="bb_e_15damage" unique_id=470544141 instance=ExtResource("1_wemas")]
+texture = SubResource("AtlasTexture_sh428")
 script = ExtResource("2_bgfqu")
 
 [node name="Sprite2D" parent="." index="0" unique_id=790081820]

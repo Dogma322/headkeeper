@@ -34,6 +34,8 @@ ID_MAP_BATTLE,Enemy,Бой
 ID_MAP_BATTLE_ELITE,Elite,Элитный Бой
 ID_MAP_EVENT,Event,Событие
 ,,
+ID_HEADS,Heads %d/%d,Головы %d/%d
+,,
 TOOLTIPS,,
 TT_MAP,Map,Карта
 TT_HEADS,Head Deck,Колода Голов

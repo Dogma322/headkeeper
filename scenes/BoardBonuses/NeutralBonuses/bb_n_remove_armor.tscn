@@ -9,7 +9,5 @@ atlas = ExtResource("3_2qbwb")
 region = Rect2(934, 112, 28, 28)
 
 [node name="bb_n_remove_armor" unique_id=470544141 instance=ExtResource("1_hyn0i")]
-script = ExtResource("2_l01py")
-
-[node name="Sprite2D" parent="." index="0" unique_id=790081820]
 texture = SubResource("AtlasTexture_my77b")
+script = ExtResource("2_l01py")

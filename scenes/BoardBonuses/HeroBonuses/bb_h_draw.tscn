@@ -9,6 +9,7 @@ atlas = ExtResource("2_0771p")
 region = Rect2(874, 16, 28, 28)
 
 [node name="bb_h_draw" unique_id=470544141 instance=ExtResource("1_qgrdy")]
+texture = SubResource("AtlasTexture_3apxa")
 script = ExtResource("2_3apxa")
 type = 1
 

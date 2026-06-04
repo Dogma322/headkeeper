@@ -6,6 +6,7 @@ class_name Head
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
 @onready var aim_marker = $AimMarker
 @onready var label = $Label
+@onready var des_area: Area2D = $DesArea
 
 @export var template: HeadTemplate:
 	set(value):

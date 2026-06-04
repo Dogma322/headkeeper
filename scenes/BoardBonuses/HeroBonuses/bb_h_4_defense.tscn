@@ -9,6 +9,7 @@ atlas = ExtResource("3_jsolk")
 region = Rect2(934, 16, 28, 28)
 
 [node name="bb_h_4_defense" unique_id=470544141 instance=ExtResource("1_kvehb")]
+texture = SubResource("AtlasTexture_52gs3")
 script = ExtResource("2_b4gpv")
 type = 1
 
