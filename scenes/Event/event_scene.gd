@@ -7,6 +7,7 @@ class_name EventScene
 
 const EVENT_BUTTON = preload("uid://bemk37cis2wkk")
 
+var current_event_scene: EventSceneTemplate
 
 func start_event(event: EventTemplate) -> void:
 	assert(event)
@@ -15,28 +16,38 @@ func start_event(event: EventTemplate) -> void:
 	start_event_scene(event.event_scene)
 
 
-func end() -> void:
-	# Очистим предыдущие кнопки.
-	for btn in buttons_vbox_container.get_children():
-		btn.queue_free()
+func start() -> void:
+	if current_event_scene and current_event_scene.art:
+		SceneManager.background.texture = current_event_scene.art
+	else:
+		SceneManager.background.set_map_background()
 
 
 func end_event() -> void:
+	current_event_scene = null
 	Signals.event_ended.emit()
 
 
 func start_event_scene(event_scene: EventSceneTemplate) -> void:
+	current_event_scene = event_scene
+	
 	# Очистим предыдущие кнопки.
 	for btn in buttons_vbox_container.get_children():
 		btn.queue_free()
 	
 	# Проиграем действия события.
 	for action: EventAction in event_scene.actions:
-		if action:
+		if action and not action.applied:
 			action.play()
+			action.applied = true
 	
 	title_label.text = "[color=gold]%s[/color]" % tr(event_scene.title)
 	description_rich_text_label.text = tr(event_scene.description)
+	
+	if event_scene.art:
+		SceneManager.background.texture = event_scene.art
+	else:
+		SceneManager.background.set_map_background()
 	
 	if event_scene.next.is_empty():
 		var button: EventButton = EVENT_BUTTON.instantiate()

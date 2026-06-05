@@ -88,6 +88,7 @@ func new_run() -> void:
 
 func show_map_scene() -> void:
 	show_scene(map_scene)
+	map_scene.top_panel_button = SceneManager.top_panel.map_button
 	map_scene.moving = false
 
 

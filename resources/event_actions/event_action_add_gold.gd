@@ -6,7 +6,4 @@ class_name EventActionAddGold
 @export var amount := 0
 
 func play() -> void:
-	if applied:
-		return
 	Run.gold += amount
-	super()

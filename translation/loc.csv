@@ -380,11 +380,28 @@ tutorial_12,Excellent! You know the basics. Now the real battle begins.,Отли
 ,,
 EVENTS,,
 EVENT_EXIT_BTN,Exit,Выход
-EVENT_GREED_CURSE_NAME,The Curse of Greed,Проклятие Жадности
-EVENT_GREED_CURSE_START_DESC,"Before you stands a mossy crypt. A man stands at the entrance, looking like he's fleeing, covered head to toe in gold, and only his right eye and a small part of his head still reveal his humanity. At the sight of you, tears roll down his gilded cheek, and the look in his last eye is pleading.","Перед вами замшелый склеп. На входе стоит человек в позе убегающего, с ног до головы он покрыт золотом и лишь правый глаз и небольшая часть головы еще выдает в нем человека. При виде вас по его золоченой щеке покатились слёзы, во взгляде последнего глаза читалась мольба."
-EVENT_GREED_CURSE_CHOOSE_1,End the suffering of the damned,Закончить страдания проклятого
-EVENT_GREED_CURSE_REWARD_1,"Get the “Greedy Fool” head","Получить голову “Алчный глупец”"
-EVENT_GREED_CURSE_CHOOSE_2,Cut off a finger,Отрезать палец
-EVENT_GREED_CURSE_REWARD_2,"Get the “Golden Finger” domino","Получить домино “Золотой Палец”"
-EVENT_GREED_CURSE_CHOOSE_3,Try to take the money,Попытаться забрать деньги
-EVENT_GREED_CURSE_REWARD_3,Lose a random domino and gain 50 gold,Потерять случайное домино и получить 50 золото
+,,
+EVENT_CURSE_OF_GREED_NAME,The Curse of Greed,Проклятие Жадности
+EVENT_CURSE_OF_GREED_START,"Before you stands a mossy crypt. A man stands at the entrance, looking like he's fleeing, covered head to toe in gold, and only his right eye and a small part of his head still reveal his humanity. At the sight of you, tears roll down his gilded cheek, and the look in his last eye is pleading.","Перед вами замшелый склеп. На входе стоит человек в позе убегающего, с ног до головы он покрыт золотом и лишь правый глаз и небольшая часть головы еще выдает в нем человека. При виде вас по его золоченой щеке покатились слёзы, во взгляде последнего глаза читалась мольба."
+EVENT_CURSE_OF_GREED_CHOOSE_1,End the suffering of the damned,Закончить страдания проклятого
+EVENT_CURSE_OF_GREED_REWARD_1,"Get the “Greedy Fool” head","Получить голову “Алчный глупец”"
+EVENT_CURSE_OF_GREED_CHOOSE_2,Cut off a finger,Отрезать палец
+EVENT_CURSE_OF_GREED_REWARD_2,"Get the “Golden Finger” domino","Получить домино “Золотой Палец”"
+EVENT_CURSE_OF_GREED_CHOOSE_3,Try to take the money,Попытаться забрать деньги
+EVENT_CURSE_OF_GREED_REWARD_3,Lose a random domino and gain 50 gold,Потерять случайное домино и получить 50 золото
+,,
+EVENT_DRAGON_SKELETON_NAME,Dragon Skeleton,Скелет Дракона
+EVENT_DRAGON_SKELETON_START,"The remains of a dragon rest in front of you. Just a human-sized skull. These ancient creatures disappeared many centuries ago, but even their bones still retain tremendous power.","Перед тобой покоятся останки дракона. Один лишь череп размером с человека. Эти древние создания исчезли много веков назад, но даже их кости до сих пор хранят огромную силу."
+EVENT_DRAGON_SKELETON_CHOOSE_1,Pick up a tooth,Забрать зуб
+EVENT_DRAGON_SKELETON_REWARD_1,"Lose 10 health, add the dragon's tooth symbol to the domino (the dragon's horn symbol gives 2 rage, increases the rage given by 2 until the end of the battle)","Потерять 10 здоровья, добавить символ зуб дракона на домино (символ рог дракона - дает 2 Ярости, увеличивает даваемую Ярость на 2 до конца боя)"
+EVENT_DRAGON_SKELETON_CHOOSE_2,Pick up the horn,Забрать рог
+EVENT_DRAGON_SKELETON_REWARD_2,Get a bonus that imposes Rage 1,"Получить бонус, который накладывает Ярость 1"
+EVENT_DRAGON_SKELETON_CHOOSE_3,Absorb the power of the dragon,Впитать силу дракона
+EVENT_DRAGON_SKELETON_REWARD_3,Lose 20 health and get a fireball bonus (deals 15 damage),Потерять 20 здоровья и получить бонус Огненный Шар (наносит 15 урона)
+,,
+EVENT_ALTAR_OF_ETERNITY,Altar of Eternity,Алтарь Вечности
+EVENT_ALTAR_OF_ETERNITY_START,"The Headless One approaches the Altar of Eternity and…","Безголовый подходит к Алтарю Вечности и…"
+EVENT_ALTAR_OF_ETERNITY_CHOOSE_1,Places the head on the pedestal and burns it,Кладет на постамент голову и сжигает ее
+EVENT_ALTAR_OF_ETERNITY_REWARD_1,"Lose head and get +50 HP","Потерять голову и получить +50 Здоровья”"
+EVENT_ALTAR_OF_ETERNITY_CHOOSE_2,Pass by,Пройти мимо
+

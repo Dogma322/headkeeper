@@ -165,5 +165,6 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			SceneManager.event_scene.end()
 			Transition.blackout_off()
 			
+			SceneManager.top_panel.map_button.button_pressed = true
 			SceneManager.main_scene = SceneManager.map_scene
 			SceneManager.show_map_scene()

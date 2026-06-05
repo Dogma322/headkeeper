@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://cbpouqrfw2p2t"]
 
 [ext_resource type="Script" uid="uid://0gdm61xwrd77" path="res://scenes/UI/tooltip_panel.gd" id="1_buoy1"]
+[ext_resource type="Theme" uid="uid://davkwt5hr65jn" path="res://main.theme" id="1_v84me"]
 [ext_resource type="Texture2D" uid="uid://btaxaokybm6bs" path="res://assets/NinePatchTexture/9patch.png" id="2_ip1om"]
-[ext_resource type="Theme" uid="uid://mh7q61dm1im4" path="res://scenes/TextThemes/volda10.tres" id="3_8oksv"]
-[ext_resource type="Theme" uid="uid://u6ptbmerxst5" path="res://scenes/TextThemes/volda7.tres" id="4_okodk"]
 
 [node name="TooltipPanel" type="MarginContainer" unique_id=54216942]
 z_index = 1
@@ -14,6 +13,7 @@ anchor_bottom = 0.083333336
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_v84me")
 script = ExtResource("1_buoy1")
 metadata/_edit_use_anchors_ = true
 
@@ -42,14 +42,18 @@ mouse_filter = 2
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-theme = ExtResource("3_8oksv")
-theme_override_colors/font_color = Color(1, 0.6862745, 0.3019608, 1)
+theme_type_variation = &"CaptionLabel"
 
 [node name="DescriptionLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=463947924]
 unique_name_in_owner = true
+clip_contents = false
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
-theme = ExtResource("4_okodk")
+theme_override_font_sizes/normal_font_size = 7
+theme_override_font_sizes/bold_font_size = 7
+theme_override_font_sizes/bold_italics_font_size = 7
+theme_override_font_sizes/italics_font_size = 7
+theme_override_font_sizes/mono_font_size = 7
 bbcode_enabled = true
 fit_content = true

@@ -2,16 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="1_d8rve"]
 [ext_resource type="Script" uid="uid://li6bdg1urnxd" path="res://scenes/UI/additional_tooltip_panel.gd" id="2_k1siu"]
+[ext_resource type="Theme" uid="uid://davkwt5hr65jn" path="res://main.theme" id="3_k1siu"]
 
 [node name="AdditionalTooltipPanel" unique_id=54216942 instance=ExtResource("1_d8rve")]
 script = ExtResource("2_k1siu")
 type = "Weak"
-caption = "st_weak_name"
-description = "st_weak_des"
+caption = "Слабость"
+description = "Цель наносит на 25% меньше урона от атак."
 
 [node name="CaptionLabel" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(492999984) index="0" unique_id=165282364]
 visible = true
-text = "st_weak_name"
+text = "Слабость"
 
 [node name="DescriptionLabel" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(492999984) index="1" unique_id=463947924]
-text = "st_weak_des"
+theme = ExtResource("3_k1siu")
+text = "Цель наносит на 25% меньше урона от атак."

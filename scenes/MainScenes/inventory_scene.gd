@@ -28,6 +28,7 @@ func _ready() -> void:
 
 
 func start() -> void:
+	SceneManager.background.set_map_background()
 	update_domino_list()
 	update_head_list()
 	update_bonus_list()

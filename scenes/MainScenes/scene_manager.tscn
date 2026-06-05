@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cp0e26n3nl6rm" path="res://scenes/MainScenes/map_scene.tscn" id="1_5xbpf"]
 [ext_resource type="Script" uid="uid://dikeh7fck30r2" path="res://scenes/MainScenes/scene_manager.gd" id="1_ack50"]
+[ext_resource type="Theme" uid="uid://davkwt5hr65jn" path="res://main.theme" id="1_r2ilk"]
 [ext_resource type="PackedScene" uid="uid://bn0602p7re11e" path="res://scenes/Background/background.tscn" id="2_gaf2n"]
 [ext_resource type="PackedScene" uid="uid://dks3x17ep5x0n" path="res://scenes/MainScenes/battle_scene.tscn" id="3_1y7cv"]
 [ext_resource type="PackedScene" uid="uid://dqqa4aqr54880" path="res://scenes/TopPanel/top_panel.tscn" id="3_reosh"]
@@ -16,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dve4apve17rh4" path="res://scenes/VhsShader/vhs_shader.tscn" id="14_5a81w"]
 [ext_resource type="PackedScene" uid="uid://ck28vxoe8rxf5" path="res://scenes/MainScenes/inventory_scene.tscn" id="14_hiss1"]
 [ext_resource type="PackedScene" uid="uid://bo8xaqmke5324" path="res://scenes/UI/icon_button.tscn" id="15_re6mt"]
-[ext_resource type="Texture2D" uid="uid://cagl8rxfu18kd" path="res://assets/UI/Buttons/BackBtn.png" id="16_hiss1"]
+[ext_resource type="Texture2D" uid="uid://djdugluicgupd" path="res://assets/UI/Buttons/BackBtn.png" id="16_hiss1"]
 
 [node name="SceneManager" type="MarginContainer" unique_id=2134074927]
 anchors_preset = 15
@@ -27,6 +28,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+theme = ExtResource("1_r2ilk")
 script = ExtResource("1_ack50")
 
 [node name="Background" parent="." unique_id=631565350 instance=ExtResource("2_gaf2n")]
@@ -123,7 +125,5 @@ layout_mode = 2
 size_flags_vertical = 8
 texture = ExtResource("16_hiss1")
 expand_mode = 1
-tooltip = ""
-tooltip_offset = 0
 
 [connection signal="pressed" from="MarginContainer/BackButton" to="." method="_on_back_button_pressed"]

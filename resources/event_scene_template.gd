@@ -1,9 +1,6 @@
 extends Resource
 class_name EventSceneTemplate
 
-## ID.
-@export var id: String
-
 ## Заголовок.
 @export var title: String
 

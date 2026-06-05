@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bndl8c1s1fhsc" path="res://assets/NinePatchTexture/ButtonLayout.png" id="1_x1gdt"]
 [ext_resource type="Script" uid="uid://c4pql8c835fgc" path="res://scenes/UI/game_button.gd" id="2_2w8b1"]
-[ext_resource type="Theme" uid="uid://u6ptbmerxst5" path="res://scenes/TextThemes/volda7.tres" id="3_bq1d8"]
+[ext_resource type="FontFile" uid="uid://cncgp1vcslf53" path="res://assets/Fonts/Vollda-Original.otf" id="3_bq1d8"]
 
 [node name="GameButton" type="MarginContainer" unique_id=885226573]
 offset_right = 40.0
@@ -30,7 +30,7 @@ theme_override_constants/margin_bottom = 5
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
-theme = ExtResource("3_bq1d8")
+theme_override_fonts/normal_font = ExtResource("3_bq1d8")
 bbcode_enabled = true
 fit_content = true
 autowrap_mode = 0

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dfo415vhectqm" path="res://scenes/UI/event_button.gd" id="1_ira2o"]
 [ext_resource type="Texture2D" uid="uid://bndl8c1s1fhsc" path="res://assets/NinePatchTexture/ButtonLayout.png" id="2_6j84t"]
-[ext_resource type="Theme" uid="uid://u6ptbmerxst5" path="res://scenes/TextThemes/volda7.tres" id="3_i8yb2"]
+[ext_resource type="FontFile" uid="uid://cncgp1vcslf53" path="res://assets/Fonts/Vollda-Original.otf" id="3_ira2o"]
 
 [node name="EventButton" type="MarginContainer" unique_id=885226573]
 offset_right = 40.0
@@ -35,8 +35,12 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
-theme = ExtResource("3_i8yb2")
+theme_override_fonts/normal_font = ExtResource("3_ira2o")
 theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 10
+theme_override_font_sizes/bold_italics_font_size = 10
+theme_override_font_sizes/italics_font_size = 10
+theme_override_font_sizes/mono_font_size = 10
 bbcode_enabled = true
 fit_content = true
 
@@ -45,7 +49,12 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 mouse_filter = 2
-theme = ExtResource("3_i8yb2")
+theme_override_fonts/normal_font = ExtResource("3_ira2o")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+theme_override_font_sizes/bold_italics_font_size = 8
+theme_override_font_sizes/italics_font_size = 8
+theme_override_font_sizes/mono_font_size = 8
 bbcode_enabled = true
 fit_content = true
 

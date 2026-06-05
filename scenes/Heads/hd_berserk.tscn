@@ -11,3 +11,6 @@ template = ExtResource("3_5lvl2")
 
 [node name="Sprite2D" parent="." index="0" unique_id=1248791630]
 texture = ExtResource("4_5lvl2")
+
+[node name="TooltipStack" parent="." index="2" unique_id=1268114038]
+script = null

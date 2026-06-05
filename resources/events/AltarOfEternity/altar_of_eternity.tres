@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EventTemplate" format=3 uid="uid://dli8b1e8wsh62"]
+
+[ext_resource type="Script" uid="uid://cyv40paix5e6t" path="res://resources/event_actions/event_action.gd" id="1_ah34l"]
+[ext_resource type="Script" uid="uid://da3c4s3u5mnrv" path="res://resources/event_template.gd" id="1_hs4ws"]
+[ext_resource type="Script" uid="uid://dthav6vdfjni6" path="res://resources/event_scene_template.gd" id="2_e844q"]
+
+[sub_resource type="Resource" id="Resource_pf7en"]
+script = ExtResource("2_e844q")
+metadata/_custom_type_script = "uid://dthav6vdfjni6"
+
+[resource]
+script = ExtResource("1_hs4ws")
+name_str = "Алтарь Вечности"
+event_scene = SubResource("Resource_pf7en")
+metadata/_custom_type_script = "uid://da3c4s3u5mnrv"

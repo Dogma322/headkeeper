@@ -39,17 +39,24 @@ static var buttons = []
 var active := true
 
 func _update_font_size():
+	var amount := 0
+	
 	match font_size:
 		0:
-			label.theme = preload("res://scenes/TextThemes/volda7.tres")
+			amount = 7
 		1:
-			label.theme = preload("res://scenes/TextThemes/volda8.tres")
+			amount = 8
 		2:
-			label.theme = preload("res://scenes/TextThemes/volda10.tres")
+			amount = 10
 		3:
-			label.theme = preload("res://scenes/TextThemes/volda12.tres")
+			amount = 12
 		4:
-			label.theme = preload("res://scenes/TextThemes/volda15.tres")
+			amount = 15
+	label.add_theme_font_size_override("normal_font_size", amount)
+	label.add_theme_font_size_override("bold_font_size", amount)
+	label.add_theme_font_size_override("bold_italics_font_size", amount)
+	label.add_theme_font_size_override("italics_font_size", amount)
+	label.add_theme_font_size_override("mono_font_size", amount)
 
 func _ready() -> void:
 	buttons.push_back(self)

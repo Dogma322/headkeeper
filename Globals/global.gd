@@ -108,7 +108,3 @@ func find_all_tres_files(base_path: String, excluded: PackedStringArray) -> Arra
 			results.append(full_path)
 	
 	return results
-
-
-func load_templates_from_subdir(subdir_path: String, templates: Dictionary) -> void:
-	pass # Not used anymore

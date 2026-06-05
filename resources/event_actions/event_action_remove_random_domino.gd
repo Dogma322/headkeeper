@@ -38,12 +38,7 @@ func _on_mouse_exited() -> void:
 
 
 func play() -> void:
-	if applied:
-		return
-	
 	var domino = DominoManager.deck[current_index]
 	DominoManager.temp_deck.erase(domino)
 	DominoManager.deck.erase(domino)
 	domino.queue_free()
-	
-	super()
