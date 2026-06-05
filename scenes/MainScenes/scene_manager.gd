@@ -106,7 +106,6 @@ func show_bonus_list_scene() -> void:
 
 func show_domino_list_scene(source: ItemListScene.DominoSource) -> void:
 	show_scene(item_list_scene)
-	item_list_scene.top_panel_button = SceneManager.top_panel.domino_deck_button
 	item_list_scene.update_domino_list(source)
 
 
