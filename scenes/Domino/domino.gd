@@ -417,7 +417,7 @@ func add_domino_to_deck():
 	rotate_tween.tween_property(self, "rotation_degrees", rotation_degrees, 0.125)
 	
 	deck_tween = get_tree().create_tween().set_parallel()
-	var pos = SceneManager.top_panel.domino_deck_button.global_position + SceneManager.top_panel.domino_deck_button.size / 2.0
+	var pos = SceneManager.top_panel.inventory_button.global_position + SceneManager.top_panel.inventory_button.size / 2.0
 	
 	var start_pos = global_position
 	var mid_pos = (start_pos + pos) / 2.0 + Vector2(0, 200)
