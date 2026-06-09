@@ -131,7 +131,6 @@ func _on_map_node_pressed(node: MapNode) -> void:
 			SceneManager.show_choice_scene()
 			SceneManager.choice_scene.spawn_heads()
 			await Signals.head_selected
-			Signals.bonus_amount_changed.emit()
 			
 			Transition.blackout_on()
 			await get_tree().create_timer(1.0).timeout

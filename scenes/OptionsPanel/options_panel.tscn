@@ -68,7 +68,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("3_04qni")
 theme_type_variation = &"MenuLabel"
-text = "Громкость эффектов"
+text = "ID_SFX_VOLUME"
 
 [node name="SfxSlider" parent="OptionsPanel/MarginContainer/VBoxContainer" unique_id=1484721557 instance=ExtResource("4_2427u")]
 layout_mode = 2
@@ -79,7 +79,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("3_04qni")
 theme_type_variation = &"MenuLabel"
-text = "Громкость музыки"
+text = "ID_MUSIC_VOLUME"
 
 [node name="MusicSlider" parent="OptionsPanel/MarginContainer/VBoxContainer" unique_id=273278515 instance=ExtResource("4_2427u")]
 layout_mode = 2
@@ -100,7 +100,7 @@ font_size = 2
 
 [node name="MetaExitBtn" parent="OptionsPanel/MarginContainer/VBoxContainer/MetaBox" unique_id=1348921828 instance=ExtResource("6_2427u")]
 layout_mode = 2
-text = "Выход"
+text = "ID_EXIT"
 font_size = 3
 
 [node name="BattleBox" type="VBoxContainer" parent="OptionsPanel/MarginContainer/VBoxContainer" unique_id=1974140398]

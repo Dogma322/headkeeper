@@ -64,7 +64,6 @@ signal stage_changed
 signal skulls_changed(skulls: int)
 signal gold_changed(gold: int)
 signal head_amount_changed
-signal bonus_amount_changed
 
 signal play_domino_added_to_slot_sound
 signal play_domino_draged_sound

@@ -78,6 +78,7 @@ func set_deck():
 			deck.append(domino)
 		
 	temp_deck = deck.duplicate()
+	Signals.deck_changed.emit()
 
 
 func reshuffle_discard_into_deck():
@@ -90,6 +91,7 @@ func reshuffle_discard_into_deck():
 	
 	# Перемешиваем колоду
 	temp_deck.shuffle()
+	Signals.deck_changed.emit()
 
 
 func reset_turn_data():

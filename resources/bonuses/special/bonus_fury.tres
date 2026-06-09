@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BonusTemplate" format=3 uid="uid://btabs7kwitmpl"]
+
+[ext_resource type="Script" uid="uid://bp60jca031260" path="res://resources/bonus_template.gd" id="1_wy2dq"]
+[ext_resource type="Texture2D" uid="uid://bmgiu5ipko2ca" path="res://assets/Bonuses/bonus_fury.atlastex" id="2_wy2dq"]
+
+[resource]
+script = ExtResource("1_wy2dq")
+desc = "crit_bb_card_des"
+tag = "h_1fury"
+texture = ExtResource("2_wy2dq")
+metadata/_custom_type_script = "uid://bp60jca031260"

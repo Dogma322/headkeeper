@@ -1,7 +1,7 @@
 id,en,ru
 UI,,
 ID_PLAY,Play,Играть
-tutorial,TUTORIAL,ОБУЧЕНИЕ
+ID_TUTORIAL,TUTORIAL,ОБУЧЕНИЕ
 end_turn,End turn,Завершить ход
 choose_bone,Choose a tile,Выберите кость
 choose_head,Choose and add a head,Выберите и добавьте голову
@@ -10,20 +10,12 @@ victory,VICTORY,ПОБЕДА
 endless_mode,Endless mode,Бесконечный режим
 give_up,Give up,Сдаться
 ID_STAGE,Stage %s,Этап %s
-sfx_volume,Effects volume,Громкость эффектов
-music_volume,Music volume,Громкость музыки
+ID_SFX_VOLUME,Effects volume,Громкость эффектов
+ID_MUSIC_VOLUME,Music volume,Громкость музыки
 end_run,End run,Закончить забег
 block_damage,Block,Блок
 ID_MENU,Menu,Меню
-,,
-LEGEND,,
-ID_LEGEND_UNKNOWN,Unknown,Неизвестно
-ID_LEGEND_SHOP,Merchant,Торговец
-ID_LEGEND_HEADS,Heads,Головы
-ID_LEGEND_POND,Pond,Пруд
-ID_LEGEND_BATTLE,Enemy,Бой
-ID_LEGEND_BATTLE_ELITE,Elite,Элитный Бой
-ID_LEGEND_EVENT,Event,Событие
+ID_EXIT,Exit,Выход
 ,,
 MAP
 ID_MAP_UNKNOWN,Unknown,Неизвестно
@@ -34,21 +26,20 @@ ID_MAP_BATTLE,Enemy,Бой
 ID_MAP_BATTLE_ELITE,Elite,Элитный Бой
 ID_MAP_EVENT,Event,Событие
 ,,
+BATTLE,,
+ID_BONE_BAG,Tile Bag,Мешок для костей
+ID_DISCARD_BAG,Discard Bag,Мешок для сброса
+ID_BAG_DESC,Currently contains %s of your tiles.,В мешке сейчас %s костей.
+,,
+INVENTORY,,
 ID_DECK,Dominoes Deck,Колода Домино
 ID_HEADS,Heads %d/%d,Головы %d/%d
 ID_BONUSES,Field bonuses,Бонусы поля
 ,,
 TOOLTIPS,,
 TT_MAP,Map,Карта
-TT_HEADS,Head Deck,Колода Голов
-TT_BONUSES,Bonus Deck,Колода Бонусов
-TT_DOMINOES,Domino Deck,Колода Домино
 TT_INVENTORY,Inventory,Инвентарь
 TT_SETTINGS,Settings,Настройки
-,,
-bone_bag_name,Tile Bag,Мешок для костей
-discard_bag_name,Discard Bag,Мешок для сброса
-bag_des,Currently contains %s of your tiles.,В мешке сейчас %s костей.
 ,,
 intent_attack_des,The enemy intends to attack.,Враг планирует атаковать.
 intent_attack_buff_des,The enemy intends to attack and apply a buff to itself.,Враг планирует атаковать и наложить на себя положительный эффект.
@@ -141,6 +132,7 @@ dm_mace_des,Deals 3 damage for each tile played this turn. (Deals %s damage).,Н
 ,,
 dm_bonus_up_des,All bonuses gain +%s power until the end of the battle.,Ваши бонусы получают +%s к силе до конца боя.
 dm_crit_des,The next red tile deals double damage.,Следующая красная кость наносит двойной урон.
+DM_FIREBALL_DESC,Deals 15 damage to the enemy.,Наносит 15 урона врагу.
 dm_activate_bonus_des,Activates a random green bonus and doubles its effect.,Активирует случайный зелёный бонус и удваивает его эффект.
 dm_remove_bonus_des,Removes a random red bonus from the board.,Убирает случайный красный бонус с поля.
 dm_cloak_des,Discard all tiles from your hand and draw 3 tiles.,Сбросьте все кости из руки и возьмите 3 кости.
@@ -222,6 +214,7 @@ bn_crit_name,Crit Bonus,Бонус Крита
 bn_repeat_name,Repeat Bonus,Бонус Повтора
 bn_weak_name,Weak Bonus,Бонус Слабости
 bn_vulnerable_name,Vulnerable Bonus,Бонус Уязвимости
+BN_FIREBALL_NAME,Fireball Bonus,Бонус Огненный Шар
 ,,
 ,,
 ,,
@@ -397,11 +390,10 @@ EVENT_DRAGON_SKELETON_REWARD_1,"Lose 10 health, add the dragon's tooth symbol to
 EVENT_DRAGON_SKELETON_CHOOSE_2,Pick up the horn,Забрать рог
 EVENT_DRAGON_SKELETON_REWARD_2,Get a bonus that imposes Rage 1,"Получить бонус, который накладывает Ярость 1"
 EVENT_DRAGON_SKELETON_CHOOSE_3,Absorb the power of the dragon,Впитать силу дракона
-EVENT_DRAGON_SKELETON_REWARD_3,Lose 20 health and get a fireball bonus (deals 15 damage),Потерять 20 здоровья и получить бонус Огненный Шар (наносит 15 урона)
+EVENT_DRAGON_SKELETON_REWARD_3,Lose 20 health and get a Fireball bonus (deals 15 damage to the enemy),Потерять 20 здоровья и получить бонус Огненный Шар (наносит 15 урона противнику)
 ,,
 EVENT_ALTAR_OF_ETERNITY,Altar of Eternity,Алтарь Вечности
 EVENT_ALTAR_OF_ETERNITY_START,"The Headless One approaches the Altar of Eternity and…","Безголовый подходит к Алтарю Вечности и…"
 EVENT_ALTAR_OF_ETERNITY_CHOOSE_1,Places the head on the pedestal and burns it,Кладет на постамент голову и сжигает ее
 EVENT_ALTAR_OF_ETERNITY_REWARD_1,"Lose head and get +50 HP","Потерять голову и получить +50 Здоровья”"
 EVENT_ALTAR_OF_ETERNITY_CHOOSE_2,Pass by,Пройти мимо
-

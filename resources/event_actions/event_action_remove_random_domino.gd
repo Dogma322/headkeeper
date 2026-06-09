@@ -42,3 +42,4 @@ func play() -> void:
 	DominoManager.temp_deck.erase(domino)
 	DominoManager.deck.erase(domino)
 	domino.queue_free()
+	Signals.deck_changed.emit()

@@ -73,7 +73,6 @@ func bonus_selected(slot: ShopSlot) -> void:
 		var bonus_fx = BonusManager.bonus_effects[bonus.tag]
 		if not BoardManager.bonus_pool.has(bonus_fx):
 			BoardManager.bonus_pool.append(bonus_fx)
-			Signals.bonus_amount_changed.emit()
 
 
 func domino_selected(slot: ShopSlot) -> void:

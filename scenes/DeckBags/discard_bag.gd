@@ -21,8 +21,7 @@ func hide_description() -> void:
 
 func update_labels() -> void:
 	deck_label.text = str(DominoManager.discard.size())
-	tooltip_panel.caption = tr("discard_bag_name")
-	tooltip_panel.description = tr("bag_des") % DominoManager.discard.size()
+	tooltip_panel.description = tr("ID_BAG_DESC") % DominoManager.discard.size()
 
 
 func _on_mouse_entered() -> void:

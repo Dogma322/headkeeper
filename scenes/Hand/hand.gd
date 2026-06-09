@@ -7,23 +7,24 @@ class_name Hand
 @export var curve := 0
 @export var fan_rotation := 0
 
-var dominoes:Array[Domino] = []
+var dominoes: Array[Domino] = []
 
 
-func _ready():
+func _ready() -> void:
 	Global.hand = self
 	Signals.reset_run_data.connect(reset)
 
 	global_position.y = hand_height
 	#draw_dominoes()
 	#adding_dm()
-		
-func adding_dm():
+
+
+func adding_dm() -> void:
 	for i in range(5):
 		add_domino(Global.domino_scene.instantiate())
 
-func move_to_hand(domino: Domino, pos: Vector2) -> void:
 
+func move_to_hand(domino: Domino, pos: Vector2) -> void:
 	domino.returning_to_hand = true
 	domino.reset_rotation()
 
@@ -48,58 +49,48 @@ func move_to_hand(domino: Domino, pos: Vector2) -> void:
 	domino.returning_to_hand = false
 
 
-
-
 func add_domino(domino:Domino):
-
 	domino.slot = null
 	domino.connected_side = domino.initial_connected_side
 	
 	if domino not in dominoes:
 		dominoes.append(domino)
-
-
+	
+	
 	if domino.get_parent():
 		domino.get_parent().remove_child(domino)
-
-		
+	
+	
 	var root = SceneManager.current_scene
 	root.add_child(domino)
-
+	
 	update_layout()
-
 
 
 func remove_domino(domino:Domino):
-
 	dominoes.erase(domino)
-
 	update_layout()
 
 
-
 func update_layout():
-
 	var count = dominoes.size()
-
 	if count == 0:
 		return
-
+	
 	for i in range(count):
-
 		var domino = dominoes[i]
 		domino.reset_rotation()
-
+		
 		var center = (count - 1) / 2.0
 		var offset = i - center
-
+		
 		var x = offset * spacing + hand_width
-
+		
 		var t = float(i) / (count - 1) if count > 1 else 0.5
 		var y = -sin(t * PI) * curve
-
+		
 		var pos = Vector2(x, y)
-
+		
 		#domino.move_to_hand(pos)
 		move_to_hand(domino, pos)
 
@@ -112,6 +103,7 @@ func draw_all_dominoes() -> void:
 		
 		var domino = DominoManager.temp_deck.pick_random()
 		DominoManager.temp_deck.erase(domino)
+		Signals.deck_changed.emit()
 		
 		if domino.get_parent():
 			domino.get_parent().remove_child(domino)
@@ -147,6 +139,7 @@ func draw_dominoes() -> void:
 
 		var domino = DominoManager.temp_deck.pick_random()
 		DominoManager.temp_deck.erase(domino)
+		Signals.deck_changed.emit()
 		
 		# Если кость уже где-то, убираем.
 		if domino.get_parent():
@@ -160,14 +153,13 @@ func draw_dominoes() -> void:
 	print(dominoes.size())
 
 		
-func draw_domino(domino):
-	
+func draw_domino(domino: Domino) -> void:
 	domino.scale = Vector2(0.2, 0.2)
 	domino.global_position = Vector2(15,300)
 	
+	DominoManager.temp_deck.erase(domino)
+	Signals.deck_changed.emit()   
 	
-	DominoManager.temp_deck.erase(domino)   
-
 	add_domino(domino)
 
 
@@ -183,7 +175,7 @@ func reset() -> void:
 	DominoManager.dominoes_on_board.clear()
 
 
-func discard_all_dominoes():
+func discard_all_dominoes() -> void:
 	# Собираем все домино из руки и из played_domino
 	
 	Signals.play_discard_all_dominoes_sound.emit()
@@ -192,32 +184,32 @@ func discard_all_dominoes():
 	all_dominoes.append_array(dominoes)
 	all_dominoes.append_array(DominoManager.dominoes_on_board)
 	
-
-	for domino in all_dominoes:
+	
+	for domino: Domino in all_dominoes:
 		domino.reset_rotation()
 		if domino.slot:
 			domino.slot.remove_domino()
 		
 		if !is_instance_valid(domino):
 			continue
-
+		
 		# Случайный сдвиг по X
 		var random_offset_x := randf_range(-100, 100)
 		# Куда падает (ниже экрана)
 		var target_y := get_viewport_rect().size.y + 200
 		var target_position := Vector2(domino.position.x + random_offset_x, target_y)
-
+		
 		# Случайная длительность падения
 		var duration := randf_range(0.5, 1.0)
-
+		
 		var tween := get_tree().create_tween()
 		tween.tween_property(domino, "position", target_position, duration)\
 			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
-
+		
 		# Немного вращения для красоты
 		var random_rotation := randf_range(-2*PI, 2*PI)
 		tween.parallel().tween_property(domino, "rotation", random_rotation, duration)
-
+		
 		# После падения — переносим в сброс
 		tween.finished.connect(func():
 			if is_instance_valid(domino):
@@ -229,7 +221,7 @@ func discard_all_dominoes():
 					
 		)
 		DominoManager.add_to_discard(domino)
-
+	
 	
 	# очищаем списки
 	dominoes.clear()

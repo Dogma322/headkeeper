@@ -38,13 +38,11 @@ func _ready() -> void:
 	else:
 		options_panel.visible = visible_by_default
 		color_rect.visible = visible_by_default
-	update_labels.call_deferred()
 	change_board_generation_btn.text = "Рандомные поля: вкл"
 
 
 func show_panel(enabled: bool) -> void:
 	if enabled:
-		update_labels()
 		color_rect.visible = true
 		options_panel.visible = true
 		DominoManager.block_domino_input = true
@@ -69,11 +67,6 @@ func _on_options_button_pressed() -> void:
 		show_panel(true)
 	else:
 		show_panel(false)
-
-
-func update_labels() -> void:
-	sfx_label.text = tr("sfx_volume")
-	music_label.text = tr("music_volume")
 
 
 func _on_end_run_btn_pressed() -> void:

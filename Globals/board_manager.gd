@@ -6,7 +6,6 @@ var green_bonuses_activated = 0
 
 
 @onready var h_thorns = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_thorns.tscn")
-@onready var h_1fury = preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_fury.tscn")
 
 @onready var e_5dmg = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_5_damage.tscn")
 @onready var e_10dmg = preload("res://scenes/BoardBonuses/EnemyBonuses/bb_e_10_damage.tscn")

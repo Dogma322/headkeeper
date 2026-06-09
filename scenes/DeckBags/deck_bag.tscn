@@ -24,8 +24,8 @@ layout_mode = 1
 anchor_top = -0.7090909
 anchor_right = 2.6888888
 anchor_bottom = 0.0
-caption = "bone_bag_name"
-description = "bag_des"
+caption = "ID_BONE_BAG"
+description = "ID_BAG_DESC"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

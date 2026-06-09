@@ -11,7 +11,14 @@ var bonus_templates: Dictionary = {
 	"weak": preload("res://resources/bonuses/bonus_weak.tres"),
 }
 
+var special_bonus_templates: Dictionary = {
+	"fury": preload("res://resources/bonuses/special/bonus_fury.tres"),
+	"fireball": preload("res://resources/bonuses/special/bonus_fireball.tres"),
+}
+
 var bonus_effects: Dictionary = {
+	# bonus_templates
+	
 	"h_5dmg_bonus": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_5_damage.tscn"),
 	"h_1crit": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_crit.tscn"),
 	"h_4def_bonus": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_4_defense.tscn"),
@@ -19,5 +26,10 @@ var bonus_effects: Dictionary = {
 	"h_3heal": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_heal.tscn"),
 	"h_1repeat": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_repeat.tscn"),
 	"h_1vulnerable": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_vulnerable.tscn"),
-	"h_1weak": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_weak.tscn")
+	"h_1weak": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_weak.tscn"),
+	
+	# special_bonus_templates
+	
+	"h_1fury": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_fury.tscn"),
+	"h_1fireball": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_fireball.tscn")
 }

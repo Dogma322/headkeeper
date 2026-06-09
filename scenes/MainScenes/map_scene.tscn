@@ -93,7 +93,7 @@ expand_mode = 1
 
 [node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/ShopHBox" unique_id=260275935]
 layout_mode = 2
-text = "ID_LEGEND_SHOP"
+text = "ID_MAP_SHOP"
 
 [node name="HeadsHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=1559016475]
 layout_mode = 2
@@ -106,7 +106,7 @@ expand_mode = 1
 
 [node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/HeadsHBox" unique_id=1223477431]
 layout_mode = 2
-text = "ID_LEGEND_HEADS"
+text = "ID_MAP_HEADS"
 
 [node name="PondHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=1777039616]
 layout_mode = 2
@@ -119,7 +119,7 @@ expand_mode = 1
 
 [node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/PondHBox" unique_id=1448746226]
 layout_mode = 2
-text = "ID_LEGEND_POND"
+text = "ID_MAP_POND"
 
 [node name="BattleHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=2039323651]
 layout_mode = 2
@@ -132,7 +132,7 @@ expand_mode = 1
 
 [node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/BattleHBox" unique_id=275945023]
 layout_mode = 2
-text = "ID_LEGEND_BATTLE"
+text = "ID_MAP_BATTLE"
 
 [node name="BattleEliteHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=1771859020]
 layout_mode = 2
@@ -145,7 +145,7 @@ expand_mode = 1
 
 [node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/BattleEliteHBox" unique_id=1865409111]
 layout_mode = 2
-text = "ID_LEGEND_BATTLE_ELITE"
+text = "ID_MAP_BATTLE_ELITE"
 
 [node name="UnknownHBox" type="HBoxContainer" parent="LegendPanel/MarginContainer/VBoxContainer" unique_id=4172946]
 layout_mode = 2
@@ -158,7 +158,7 @@ expand_mode = 1
 
 [node name="Label" type="Label" parent="LegendPanel/MarginContainer/VBoxContainer/UnknownHBox" unique_id=528616376]
 layout_mode = 2
-text = "ID_LEGEND_EVENT"
+text = "ID_MAP_EVENT"
 
 [node name="Layout" type="MarginContainer" parent="." unique_id=1562952262]
 layout_mode = 1

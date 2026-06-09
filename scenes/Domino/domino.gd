@@ -433,6 +433,7 @@ func add_domino_to_deck():
 	
 	DominoManager.temp_deck.append(self)
 	DominoManager.deck.append(self)
+	Signals.deck_changed.emit()
 	Signals.domino_amount_changed.emit()
 	domino_choice = false
 	
@@ -457,6 +458,7 @@ func remove_from_deck():
 	DominoManager.temp_deck.erase(self)
 	DominoManager.deck.erase(self)
 	Signals.domino_amount_changed.emit()
+	Signals.deck_changed.emit()
 	queue_free()
 
 
