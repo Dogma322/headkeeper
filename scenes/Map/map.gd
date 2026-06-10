@@ -219,8 +219,9 @@ func add_node(coord: Vector2i) -> MapNode:
 		MapNode.Type.EVENT:
 			var events: Dictionary = Run.reserved_events_pool
 			var pool = []
-			for key in events:
-				pool.push_back(key)
+			for key: String in events.keys():
+				if EventsManager.events[key].act == Run.act:
+					pool.push_back(key)
 			pool.shuffle()
 			instance.string_hint = pool[0]
 		MapNode.Type.BATTLE, MapNode.Type.BATTLE_ELITE:

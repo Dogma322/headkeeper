@@ -11,5 +11,6 @@ metadata/_custom_type_script = "uid://dthav6vdfjni6"
 [resource]
 script = ExtResource("1_hs4ws")
 name_str = "Алтарь Вечности"
+act = 2
 event_scene = SubResource("Resource_pf7en")
 metadata/_custom_type_script = "uid://da3c4s3u5mnrv"

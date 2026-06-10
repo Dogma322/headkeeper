@@ -11,6 +11,8 @@ var reserved_events_pool := {}
 
 var current_bonus_pool := {}
 
+var act := 1
+
 var skulls := 0:
 	set(value):
 		if skulls == value:
@@ -51,6 +53,7 @@ func reset():
 	MetaManager.save_data()
 	skulls = 0
 	gold = 0
+	act = 1
 	
 	for head in Global.enemy_head_holder.get_children():
 		if head is Head:

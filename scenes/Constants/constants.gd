@@ -102,3 +102,9 @@ const MAX_POINTS = 4
 @export var hd_maw_fury_level_3 := 8
 @export var hd_maw_fury_to_enemy := 3
 @export var hd_maw_health_decrement := 35
+
+@export_subgroup("Cursed Witch", "hd_cursed_witch")
+@export var hd_cursed_witch_buff_level_1 := 2
+@export var hd_cursed_witch_buff_level_2 := 3
+@export var hd_cursed_witch_buff_level_3 := 4
+@export var hd_cursed_witch_debuff := 2

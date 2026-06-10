@@ -352,6 +352,10 @@ HD_WARDEN_DESC,Two bonuses start appearing on the board that restores 3 HP. +%s 
 HD_WARDEN_DESC2,"Two bonuses start appearing on the board that restores 3 HP. At the start of the battle, applies Regen %d to you. +%s max HP.","На поле начинают появляться 2 бонуса, которые восстанавливают 3 здоровья. В начале боя накладывает на вас Регенерация %d. +%s Макс. здоровья."
 HD_WARDEN_DESC_ELITE,Two bonuses start appearing on the board that restores 5 HP to the enemy.,"На поле начинают появляться 2 бонуса, которые восстанавливают 5 здоровья противнику."
 ,,
+HD_CURSED_WITCH_NAME,Cursed Witch,Проклятая Ведьма
+HD_CURSED_WITCH_DESC,"At the start of the battle, applies Weakness %d and Vulnerable %d to the enemy.",В начале боя накладывает на врага Слабость %d и Уязвимость %d.
+HD_CURSED_WITCH_DESC_ELITE,"At the start of the battle, applies Weakness %d and Vulnerable %d to the hero.",В начале боя накладывает на героя Слабость %d и Уязвимость %d.
+,,
 ,,
 ,,
 TUTORIAL,,
@@ -397,3 +401,10 @@ EVENT_ALTAR_OF_ETERNITY_START,"The Headless One approaches the Altar of Eternity
 EVENT_ALTAR_OF_ETERNITY_CHOOSE_1,Places the head on the pedestal and burns it,Кладет на постамент голову и сжигает ее
 EVENT_ALTAR_OF_ETERNITY_REWARD_1,"Lose head and get +50 HP","Потерять голову и получить +50 Здоровья”"
 EVENT_ALTAR_OF_ETERNITY_CHOOSE_2,Pass by,Пройти мимо
+,,
+EVENT_PRISONER_NAME,Prisoner,Заключенная
+EVENT_PRISONER_START,"You come across a cage suspended from a tree, and a woman is sitting in the cage. ""Stranger, I'm cursed to rot in this cage forever. Please, take my head to the Altar of Eternity and put me out of my misery.""","Ты натыкаешься на клетку, подвешенную на дереве, а в клетке сидит женщина. ""Незнакомец, я проклята вечно гнить в этой клетке. Умоляю, отнеси мою голову к Алтарю Вечности и избавь от мучений."""
+EVENT_PRISONER_CHOOSE_1,Agree to help,Согласиться помочь
+EVENT_PRISONER_REWARD_1,Get the head of the Cursed Witch,Получить голову Проклятая ведьма
+EVENT_PRISONER_CHOOSE_2,Search the cage and leave,Обыскать клетку и уйти
+EVENT_PRISONER_REWARD_2,+50 Gold,+50 золота

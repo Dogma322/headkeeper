@@ -27,7 +27,7 @@ func adding_dm() -> void:
 func move_to_hand(domino: Domino, pos: Vector2) -> void:
 	domino.returning_to_hand = true
 	domino.reset_rotation()
-
+	
 	var tween = create_tween()
 	tween.set_parallel()
 	tween.tween_property(
@@ -45,7 +45,7 @@ func move_to_hand(domino: Domino, pos: Vector2) -> void:
 	).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	Signals.play_domino_draged_sound.emit()
 	await tween.finished
-
+	
 	domino.returning_to_hand = false
 
 
@@ -107,7 +107,7 @@ func draw_all_dominoes() -> void:
 		
 		if domino.get_parent():
 			domino.get_parent().remove_child(domino)
-			
+		
 		draw_domino(domino)
 		await get_tree().create_timer(0.1).timeout
 
@@ -136,7 +136,7 @@ func draw_dominoes() -> void:
 		
 		if DominoManager.temp_deck.size() <= 0:
 			DominoManager.reshuffle_discard_into_deck()
-
+		
 		var domino = DominoManager.temp_deck.pick_random()
 		DominoManager.temp_deck.erase(domino)
 		Signals.deck_changed.emit()
@@ -144,7 +144,7 @@ func draw_dominoes() -> void:
 		# Если кость уже где-то, убираем.
 		if domino.get_parent():
 			domino.get_parent().remove_child(domino)
-			
+		
 		draw_domino(domino)
 		await get_tree().create_timer(0.1).timeout
 		
