@@ -1,9 +1,10 @@
 extends BoardBonus
 
 
-func add_action():
+func add_action() -> void:
 	ActionManager.add(BuffAction.new(self, Global.enemy, StatusManager.thorns, 2))
-	
-func update_labels():
+
+
+func update_labels() -> void:
 	tooltip_panel.caption = tr("bn_enm_thorns_name")
 	tooltip_panel.description = TextFormatter.highlight_keywords(tr("bn_enm_thorns_des") % 2)

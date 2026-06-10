@@ -12,9 +12,6 @@ region = Rect2(934, 48, 28, 28)
 texture = SubResource("AtlasTexture_0nryk")
 script = ExtResource("2_5lrvk")
 
-[node name="Sprite2D" parent="." index="0" unique_id=790081820]
-texture = SubResource("AtlasTexture_0nryk")
-
-[node name="ValueLabel" parent="." index="2" unique_id=1340414324]
+[node name="ValueLabel" parent="." index="1" unique_id=1340414324]
 offset_left = 5.0
 text = "5"
