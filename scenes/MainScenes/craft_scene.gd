@@ -72,6 +72,7 @@ var current_craft_type := CraftType.UNKNOWN
 var current_amount := 0
 var current_type := ""
 var demo_mode := false
+var is_event := false
 
 const REROLL_INC = 5
 
@@ -94,11 +95,20 @@ func start_demo():
 
 func start():
 	demo_mode = false
+	is_event = false
 	battle_background.hide()
 	
 	Global.hand.draw_all_dominoes()
 	accept_button.disabled = true
-	
+
+
+func clear_tooltips() -> void:
+	tooltips_box.hide()
+	for child in tooltips_box.get_children():
+		child.queue_free()
+
+
+func start_normally():
 	current_reroll_cost = 0
 	reroll()
 	current_reroll_cost = REROLL_INC
@@ -107,13 +117,29 @@ func start():
 	else:
 		reroll_button.disabled = false
 	skip_button.disabled = false
+	reroll_button.visible = true
 
-func clear_tooltips() -> void:
-	tooltips_box.hide()
-	for child in tooltips_box.get_children():
-		child.queue_free()
 
-func reroll_specified(craft_type):
+func start_with_symbols(symbol: String, amount: int, can_reroll: bool) -> void:
+	current_craft_type = CraftType.SYMBOL
+	clear_tooltips()
+	
+	current_amount = amount
+	current_type = symbol
+	text_panel.text = tr("craft_change_symbols") % [current_amount, DominoSideVisual.get_type_texture(current_type, "red").resource_path]
+	tooltips_box.show()
+	
+	var tooltip: TooltipPanel = TOOLTIP_PANEL.instantiate()
+	tooltips_box.add_child(tooltip)
+	tooltip.description = get_tooltip_for_type(current_type)
+
+	current_reroll_cost = 0
+	current_reroll_cost = REROLL_INC
+	reroll_button.visible = can_reroll
+	is_event = true
+
+
+func reroll_specified(craft_type: CraftType) -> void:
 	current_craft_type = craft_type
 	clear_tooltips()
 	match craft_type:
@@ -209,6 +235,8 @@ func finish():
 		SceneManager.map_scene.reset()
 	else:
 		Signals.domino_selected.emit()
+		if is_event:
+			Signals.event_ended.emit()
 
 
 func _on_accept_button_pressed() -> void:
@@ -246,8 +274,7 @@ func _on_change_color_button_pressed() -> void:
 
 
 func _on_reroll_button_pressed() -> void:
-	reroll_specified(2)
-	#reroll()
+	reroll()
 
 
 func _on_skip_button_pressed() -> void:

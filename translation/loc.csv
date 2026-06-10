@@ -36,6 +36,11 @@ ID_DECK,Dominoes Deck,Колода Домино
 ID_HEADS,Heads %d/%d,Головы %d/%d
 ID_BONUSES,Field bonuses,Бонусы поля
 ,,
+CRAFT,,
+ID_CRAFT_UPGRADE,Upgrade,Улучшить
+ID_CRAFT_REROLL,Reroll,Обновить
+ID_CRAFT_SKIP,Skip,Пропустить
+,,
 TOOLTIPS,,
 TT_MAP,Map,Карта
 TT_INVENTORY,Inventory,Инвентарь
@@ -408,3 +413,12 @@ EVENT_PRISONER_CHOOSE_1,Agree to help,Согласиться помочь
 EVENT_PRISONER_REWARD_1,Get the head of the Cursed Witch,Получить голову Проклятая ведьма
 EVENT_PRISONER_CHOOSE_2,Search the cage and leave,Обыскать клетку и уйти
 EVENT_PRISONER_REWARD_2,+50 Gold,+50 золота
+,,
+EVENT_VAMPIRE_NAME,Vampire,Вампир
+EVENT_VAMPIRE_START,"You meet a vampire on the way. He holds his own fang in his hands. He says:
+""I'm weak. Give me your blood and I'll give you my fang.""","На пути ты встречаешь вампира. в руках он держит собственный клык. Он говорит:
+— Я ослаб. Дай мне своей крови и я отдам тебе свой клык."
+EVENT_VAMPIRE_CHOOSE_1,Give a vampire your blood,Дать вампиру своей крови
+EVENT_VAMPIRE_REWARD_1,Lose 15 health points and get the Vampire Fang bonus,Потерять 15 здоровья и получить бонус Клык вампира 
+EVENT_VAMPIRE_CHOOSE_2,Chase away the vampire,Прогнать вампира
+EVENT_VAMPIRE_REWARD_2,Add 2 Claws symbols to dominoes,Добавить 2 символа Когти на домино

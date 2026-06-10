@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="EventTemplate" format=3 uid="uid://x3pgrjneoybo"]
+
+[ext_resource type="Script" uid="uid://da3c4s3u5mnrv" path="res://resources/event_template.gd" id="1_00hgq"]
+[ext_resource type="Script" uid="uid://cyv40paix5e6t" path="res://resources/event_actions/event_action.gd" id="1_77ldl"]
+[ext_resource type="Texture2D" uid="uid://57u7b78jbufi" path="res://resources/events/Act1/Vampire/vampire.png" id="2_qlgpf"]
+[ext_resource type="Script" uid="uid://dthav6vdfjni6" path="res://resources/event_scene_template.gd" id="3_6bmos"]
+[ext_resource type="Script" uid="uid://bqxa0o04up0fi" path="res://resources/event_actions/event_action_add_health_points.gd" id="4_6bmos"]
+[ext_resource type="Script" uid="uid://kkks0de0nxu6" path="res://resources/event_actions/event_action_add_bonus.gd" id="5_66t1x"]
+[ext_resource type="Script" uid="uid://8fsbyxahncpu" path="res://resources/craft_recipe.gd" id="6_3avg2"]
+[ext_resource type="Script" uid="uid://g1vnbumdo8fd" path="res://resources/event_actions/event_action_craft.gd" id="6_66t1x"]
+
+[sub_resource type="Resource" id="Resource_3avg2"]
+script = ExtResource("4_6bmos")
+amount = -15
+metadata/_custom_type_script = "uid://bqxa0o04up0fi"
+
+[sub_resource type="Resource" id="Resource_noieh"]
+script = ExtResource("5_66t1x")
+id = "vampire_fang"
+metadata/_custom_type_script = "uid://kkks0de0nxu6"
+
+[sub_resource type="Resource" id="Resource_77ldl"]
+script = ExtResource("3_6bmos")
+title = "EVENT_VAMPIRE_NAME"
+choose_text = "EVENT_VAMPIRE_CHOOSE_1"
+choose_reward_text = "EVENT_VAMPIRE_REWARD_1"
+actions = Array[ExtResource("1_77ldl")]([SubResource("Resource_3avg2"), SubResource("Resource_noieh")])
+metadata/_custom_type_script = "uid://dthav6vdfjni6"
+
+[sub_resource type="Resource" id="Resource_obmyg"]
+script = ExtResource("6_3avg2")
+amount = 2
+symbol = "claws"
+metadata/_custom_type_script = "uid://8fsbyxahncpu"
+
+[sub_resource type="Resource" id="Resource_7yhjw"]
+script = ExtResource("6_66t1x")
+can_reroll = false
+craft_receipts = Array[ExtResource("6_3avg2")]([SubResource("Resource_obmyg")])
+metadata/_custom_type_script = "uid://g1vnbumdo8fd"
+
+[sub_resource type="Resource" id="Resource_jetpe"]
+script = ExtResource("3_6bmos")
+title = "EVENT_VAMPIRE_NAME"
+choose_text = "EVENT_VAMPIRE_CHOOSE_2"
+choose_reward_text = "EVENT_VAMPIRE_REWARD_2"
+actions = Array[ExtResource("1_77ldl")]([SubResource("Resource_7yhjw")])
+metadata/_custom_type_script = "uid://dthav6vdfjni6"
+
+[sub_resource type="Resource" id="Resource_66t1x"]
+script = ExtResource("3_6bmos")
+title = "EVENT_VAMPIRE_NAME"
+description = "EVENT_VAMPIRE_START"
+art = ExtResource("2_qlgpf")
+next = Array[ExtResource("3_6bmos")]([SubResource("Resource_77ldl"), SubResource("Resource_jetpe")])
+metadata/_custom_type_script = "uid://dthav6vdfjni6"
+
+[resource]
+script = ExtResource("1_00hgq")
+name_str = "Вампир"
+event_scene = SubResource("Resource_66t1x")
+metadata/_custom_type_script = "uid://da3c4s3u5mnrv"

@@ -142,8 +142,12 @@ func show_choice_scene() -> void:
 	show_scene(choice_scene)
 
 
-func show_craft_scene() -> void:
+func show_craft_scene(event: EventActionCraft = null) -> void:
 	show_scene(craft_scene)
+	if event == null or event.craft_receipts.is_empty():
+		craft_scene.start_normally()
+	else:
+		craft_scene.start_with_symbols(event.craft_receipts[0].symbol, event.craft_receipts[0].amount, event.can_reroll)
 
 
 func show_remove_domino_scene(amount: int) -> void:

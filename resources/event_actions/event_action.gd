@@ -3,6 +3,7 @@ extends Resource
 class_name EventAction
 
 var applied := false
+var pass_to_screen := false
 
 func init() -> void:
 	pass

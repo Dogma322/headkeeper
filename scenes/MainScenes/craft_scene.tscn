@@ -29,7 +29,7 @@ position = Vector2(318, 149)
 is_temp = true
 
 [node name="BoardSprite" parent="BoardCraft" index="0" unique_id=224441976]
-z_index = 1
+z_index = 2
 texture = ExtResource("5_a8qar")
 
 [node name="Slots" parent="BoardCraft" index="1" unique_id=180253986]
@@ -51,6 +51,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TextPanel" parent="." unique_id=54216942 instance=ExtResource("6_jg3uq")]
 unique_name_in_owner = true
+z_index = 2
 layout_mode = 1
 anchor_left = 0.3640625
 anchor_top = 0.041666668
@@ -67,7 +68,7 @@ offset_left = 238.0
 offset_top = 207.0
 offset_right = 399.0
 offset_bottom = 233.875
-text = "Upgrade"
+text = "ID_CRAFT_UPGRADE"
 font_size = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1712827494]
@@ -80,13 +81,13 @@ offset_bottom = 88.0
 [node name="RerollButton" parent="VBoxContainer" unique_id=1519040811 instance=ExtResource("9_il8bo")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Reroll"
+text = "ID_CRAFT_REROLL"
 font_size = 3
 
 [node name="SkipButton" parent="VBoxContainer" unique_id=825077508 instance=ExtResource("9_il8bo")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Skip"
+text = "ID_CRAFT_SKIP"
 font_size = 3
 
 [connection signal="pressed" from="AcceptButton" to="." method="_on_accept_button_pressed"]

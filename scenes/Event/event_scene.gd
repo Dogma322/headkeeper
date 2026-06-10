@@ -30,13 +30,22 @@ func end_event() -> void:
 
 func start_event_scene(event_scene: EventSceneTemplate) -> void:
 	# Проиграем действия события.
+	var pass_to_screen := false
+	
 	for action: EventAction in event_scene.actions:
 		if action and not action.applied:
+			if action.pass_to_screen:
+				pass_to_screen = true
+				
+				Transition.blackout_on()
+				await get_tree().create_timer(1.0).timeout
+				Transition.blackout_off()
 			action.play()
 			action.applied = true
 	
 	if event_scene.next.is_empty():
-		end_event()
+		if not pass_to_screen:
+			end_event()
 		
 		#var button: EventButton = EVENT_BUTTON.instantiate()
 		#button.text = "[color=gold]%s[/color]" % tr("EVENT_EXIT_BTN")

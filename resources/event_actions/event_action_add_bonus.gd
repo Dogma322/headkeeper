@@ -17,4 +17,4 @@ func play() -> void:
 		if not BoardManager.bonus_pool.has(bonus_fx):
 			BoardManager.bonus_pool.append(bonus_fx)
 	else:
-		printerr("bonus == null, id = \"%s\"" % [id])
+		printerr("EventActionAddBonus error: \"%s\" does not exist" % [id])

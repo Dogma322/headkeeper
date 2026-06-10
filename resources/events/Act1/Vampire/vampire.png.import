@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd6hxja6o417g"
-path="res://.godot/imported/the_curse_of_greed.png-740acc71d0b580d6d7a4c074f30aeb5a.ctex"
+uid="uid://57u7b78jbufi"
+path="res://.godot/imported/vampire.png-5b4187c86d55d7df1d993a5801c62205.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/events/TheCurseOfGreed/the_curse_of_greed.png"
-dest_files=["res://.godot/imported/the_curse_of_greed.png-740acc71d0b580d6d7a4c074f30aeb5a.ctex"]
+source_file="res://resources/events/Act1/Vampire/vampire.png"
+dest_files=["res://.godot/imported/vampire.png-5b4187c86d55d7df1d993a5801c62205.ctex"]
 
 [params]
 

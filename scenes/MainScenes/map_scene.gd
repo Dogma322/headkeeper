@@ -28,6 +28,7 @@ func _ready() -> void:
 	player_origin = player.position
 	Global.map_scene = self
 	Transition.blackout_off()
+	Signals.event_ended.connect(_on_event_ended)
 
 
 func start() -> void:
@@ -155,15 +156,16 @@ func _on_map_node_pressed(node: MapNode) -> void:
 		MapNode.Type.EVENT:
 			SceneManager.main_scene = SceneManager.event_scene
 			SceneManager.show_event_scene(EventsManager.events[node.string_hint])
-			
-			await Signals.event_ended
-			await get_tree().create_timer(0.5).timeout
-			
-			Transition.blackout_on()
-			await get_tree().create_timer(1.0).timeout
-			SceneManager.event_scene.end()
-			Transition.blackout_off()
-			
-			SceneManager.top_panel.map_button.button_pressed = true
-			SceneManager.main_scene = SceneManager.map_scene
-			SceneManager.show_map_scene()
+
+
+func _on_event_ended():
+	await get_tree().create_timer(0.5).timeout
+	
+	Transition.blackout_on()
+	await get_tree().create_timer(1.0).timeout
+	SceneManager.event_scene.end()
+	Transition.blackout_off()
+	
+	SceneManager.top_panel.map_button.button_pressed = true
+	SceneManager.main_scene = SceneManager.map_scene
+	SceneManager.show_map_scene()
