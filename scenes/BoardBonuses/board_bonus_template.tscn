@@ -8,10 +8,11 @@
 
 [node name="BoardBonusTemplate" type="TextureRect" unique_id=470544141]
 anchors_preset = -1
-anchor_right = 0.05
-anchor_bottom = 0.08888889
+anchor_right = 0.04375
+anchor_bottom = 0.07777778
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("1_px202")
+expand_mode = 2
 script = ExtResource("1_tjdc5")
 metadata/_edit_use_anchors_ = true
 
