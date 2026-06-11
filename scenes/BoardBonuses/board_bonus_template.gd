@@ -1,3 +1,4 @@
+@tool
 extends TextureRect
 class_name BoardBonus
 
@@ -5,9 +6,18 @@ class_name BoardBonus
 
 enum Distance {ANY, NEAR, MIDDLE, FAR}
 
-@export var type: Type
+@export var type: Type:
+	set(value):
+		type = value
+		match type:
+			Type.DEBUFF:
+				texture = preload("res://assets/Dominoes/Blocks/red_block.atlastex")
+				pass
+			Type.BUFF:
+				texture = preload("res://assets/Dominoes/Blocks/green_block.atlastex")
+				pass
 
-enum Type {RED, GREEN, YELLOW}
+enum Type {DEBUFF, BUFF, NEUTRAL}
 
 var slot_owner
 
@@ -21,6 +31,17 @@ var slot_owner
 @onready var description: String
 
 func _ready() -> void:
+	match type:
+		Type.DEBUFF:
+			texture = preload("res://assets/Dominoes/Blocks/red_block.atlastex")
+			pass
+		Type.BUFF:
+			texture = preload("res://assets/Dominoes/Blocks/green_block.atlastex")
+			pass
+	
+	if Engine.is_editor_hint():
+		return
+	
 	update_labels()
 	tooltip_panel.hide()
 
@@ -47,11 +68,12 @@ func add_action():
 
 
 func bonus_played():
-	if type == 0:
+	if type == Type.DEBUFF:
 		Signals.red_bonus_played.emit()
-	if type == 1:
+	if type == Type.BUFF:
 		Signals.green_bonus_played.emit()
-	if type == 2:
+		Global.hero.repeat_positive_bonus_counter = 0
+	if type == Type.NEUTRAL:
 		Signals.yellow_bonus_played.emit()
 
 

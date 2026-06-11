@@ -1,10 +1,11 @@
 extends BoardBonus
 
+## Бонус: Проклятие Шипов(1).
 
 func add_action() -> void:
 	ActionManager.add(BuffAction.new(self, Global.enemy, StatusManager.thorns, 1))
 
 
 func update_labels() -> void:
-	tooltip_panel.caption = tr("bn_enm_thorns_name")
-	tooltip_panel.description = TextFormatter.highlight_keywords(tr("bn_enm_thorns_des") % 1)
+	tooltip_panel.caption = tr("BN_ENM_THORNS_NAME")
+	tooltip_panel.description = TextFormatter.highlight_keywords(tr("BN_ENM_THORNS_DESC") % 1)

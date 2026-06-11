@@ -1,17 +1,14 @@
 [gd_scene format=3 uid="uid://y2gpqujcdgnt"]
 
-[ext_resource type="Texture2D" uid="uid://bvd65ldh14utt" path="res://assets/Dominoes/Blocks/green_block.atlastex" id="1_px202"]
 [ext_resource type="Script" uid="uid://cka0aiwmd0jwc" path="res://scenes/BoardBonuses/board_bonus_template.gd" id="1_tjdc5"]
 [ext_resource type="Theme" uid="uid://r5h8i48sghj8" path="res://scenes/AdditionalDescriptionPanel/Press8.tres" id="3_uv2fs"]
 [ext_resource type="PackedScene" uid="uid://cbpouqrfw2p2t" path="res://scenes/UI/tooltip_panel.tscn" id="4_bdrln"]
-[ext_resource type="Texture2D" uid="uid://cng0xtnhha5sx" path="res://assets/Dominoes/Symbols/fury.atlastex" id="4_px202"]
 
 [node name="BoardBonusTemplate" type="TextureRect" unique_id=470544141]
 anchors_preset = -1
 anchor_right = 0.04375
 anchor_bottom = 0.07777778
 pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("1_px202")
 expand_mode = 2
 script = ExtResource("1_tjdc5")
 metadata/_edit_use_anchors_ = true
@@ -43,10 +40,9 @@ text = "1"
 [node name="IconRect" type="TextureRect" parent="HBoxContainer" unique_id=719965728]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("4_px202")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1593218824]
-position = Vector2(16, 16)
+position = Vector2(14, 14)
 
 [node name="TooltipPanel" parent="." unique_id=54216942 instance=ExtResource("4_bdrln")]
 layout_mode = 1

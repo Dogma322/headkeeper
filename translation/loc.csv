@@ -224,22 +224,22 @@ BN_WEAK_NAME,Weak Bonus,Бонус Слабости
 ,,
 ,,
 ,,
-bn_enm_strength_name,Strength Curse,Проклятие Силы
-bn_enm_strength_des,Applies Rage %s to the enemy.,Накладывает на врага Ярость %s.
+BN_ENM_EVASION_NAME,Evasion Curse,Проклятие Уклонения
+BN_ENM_EVASION_DESC,Applies Evasion %s to the enemy.,Накладывает на врага Уклонение %s.
+BN_ENM_FURY_NAME,Fury Curse,Проклятие Ярости
+BN_ENM_FURY_DESC,Applies Rage %s to the enemy.,Накладывает на врага Ярость %s.
 bn_enm_attack_name,Attack Curse,Проклятие Атаки
 bn_enm_attack_des,You take %s damage.,Вы получаете %s урона.
 bn_enm_defense_name,Armor Curse,Проклятие Брони
 bn_enm_defense_des,The enemy gains %s block.,Враг получает %s брони.
 bn_enm_heal_name,Heal Curse,Проклятие Лечения
 bn_enm_heal_des,The enemy restores %s HP.,Враг восстанавливает %s здоровья.
-bn_enm_vulnerable_name,Vulnerable Curse,Проклятие Уязвимости
-bn_enm_vulnerable_des,Applies Vulnerable %s to you.,Накладывает на вас Уязвимость %s.
-bn_enm_weak_name,Weak Curse,Проклятие Слабости
-bn_enm_weak_des,Applies Weak %s to you.,Накладывает на вас Слабость %s.
-bn_enm_evasion_name,Evasion Curse,Проклятие Уклонения
-bn_enm_evasion_des,Applies Evasion %s to the enemy.,Накладывает на врага Уклонение %s.
-bn_enm_thorns_name,Thorns Curse,Проклятие Шипов
-bn_enm_thorns_des,Applies Thorns %s to the enemy.,Накладывает на врага Шипы %s.
+BN_ENM_VULNERABLE_NAME,Vulnerable Curse,Проклятие Уязвимости
+BN_ENM_VULNERABLE_DESC,Applies Vulnerable %s to you.,Накладывает на вас Уязвимость %s.
+BN_ENM_WEAK_NAME,Weak Curse,Проклятие Слабости
+BN_ENM_WEAK_DESC,Applies Weak %s to you.,Накладывает на вас Слабость %s.
+BN_ENM_THORNS_NAME,Thorns Curse,Проклятие Шипов
+BN_ENM_THORNS_DESC,Applies Thorns %s to the enemy.,Накладывает на врага Шипы %s.
 bn_enm_void_name,Void,Пустота
 bn_enm_void_des,Instantly kills you.,Моментально убивает вас.
 ,,

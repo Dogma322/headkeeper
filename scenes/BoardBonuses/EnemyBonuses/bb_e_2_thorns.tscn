@@ -1,20 +1,24 @@
 [gd_scene format=3 uid="uid://bpskeowftdng0"]
 
 [ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_owh82"]
-[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="2_pfgpp"]
+[ext_resource type="Texture2D" uid="uid://dom6w08wocfhk" path="res://assets/Dominoes/Blocks/red_block.atlastex" id="2_fdlxr"]
 [ext_resource type="Script" uid="uid://cwhlxt5f0qmum" path="res://scenes/BoardBonuses/EnemyBonuses/bb_e_2_thorns.gd" id="2_q7cc0"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q7cc0"]
-atlas = ExtResource("2_pfgpp")
-region = Rect2(784, 48, 28, 28)
+[ext_resource type="Texture2D" uid="uid://b8gnvwslo5des" path="res://assets/Dominoes/Symbols/thorns.atlastex" id="4_fdlxr"]
 
 [node name="bb_e_2thorns" unique_id=470544141 instance=ExtResource("1_owh82")]
-texture = SubResource("AtlasTexture_q7cc0")
+texture = ExtResource("2_fdlxr")
 script = ExtResource("2_q7cc0")
 
-[node name="Sprite2D" parent="." index="0" unique_id=790081820]
-texture = SubResource("AtlasTexture_q7cc0")
-
-[node name="ValueLabel" parent="." index="2" unique_id=1340414324]
-offset_left = 5.0
+[node name="ValueLabel" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="0" unique_id=1340414324]
 text = "2"
+
+[node name="IconRect" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="1" unique_id=719965728]
+texture = ExtResource("4_fdlxr")
+
+[node name="TooltipPanel" parent="." index="2" unique_id=54216942]
+anchor_right = 6.178571
+anchor_bottom = 2.2142856
+offset_right = 0.0
+offset_bottom = 3.8146973e-06
+caption = "BN_ENM_THORNS_NAME"
+description = "BN_ENM_THORNS_DESC"

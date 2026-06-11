@@ -1,16 +1,28 @@
 [gd_scene format=3 uid="uid://dndf1dhgtdxdw"]
 
 [ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_60or3"]
+[ext_resource type="Texture2D" uid="uid://dom6w08wocfhk" path="res://assets/Dominoes/Blocks/red_block.atlastex" id="2_4ymmv"]
 [ext_resource type="Script" uid="uid://d4imjbe0pumt7" path="res://scenes/BoardBonuses/EnemyBonuses/bb_e_1_evasion.gd" id="2_u2lf3"]
-[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_4ymmv"]
+[ext_resource type="Texture2D" uid="uid://f4nkkac62hic" path="res://assets/Statuses/StatusAtlas.png" id="4_jc5jf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jc5jf"]
-atlas = ExtResource("3_4ymmv")
-region = Rect2(844, 80, 28, 28)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2eqlf"]
+atlas = ExtResource("4_jc5jf")
+region = Rect2(96, 0, 16, 16)
 
 [node name="bb_e_1evasion" unique_id=470544141 instance=ExtResource("1_60or3")]
-texture = SubResource("AtlasTexture_jc5jf")
+texture = ExtResource("2_4ymmv")
 script = ExtResource("2_u2lf3")
 
-[node name="Sprite2D" parent="." index="0" unique_id=790081820]
-texture = SubResource("AtlasTexture_jc5jf")
+[node name="ValueLabel" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="0" unique_id=1340414324]
+visible = false
+
+[node name="IconRect" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="1" unique_id=719965728]
+texture = SubResource("AtlasTexture_2eqlf")
+
+[node name="TooltipPanel" parent="." index="2" unique_id=54216942]
+anchor_right = 6.178571
+anchor_bottom = 2.2142856
+offset_right = 0.0
+offset_bottom = 3.8146973e-06
+caption = "BN_ENM_EVASION_NAME"
+description = "BN_ENM_EVASION_DESC"
