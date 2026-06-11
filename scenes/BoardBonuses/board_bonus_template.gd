@@ -9,13 +9,14 @@ enum Distance {ANY, NEAR, MIDDLE, FAR}
 @export var type: Type:
 	set(value):
 		type = value
-		match type:
-			Type.DEBUFF:
-				texture = preload("res://assets/Dominoes/Blocks/red_block.atlastex")
-				pass
-			Type.BUFF:
-				texture = preload("res://assets/Dominoes/Blocks/green_block.atlastex")
-				pass
+		if icon_rect and icon_rect.texture != null:
+			match type:
+				Type.DEBUFF:
+					texture = preload("res://assets/Dominoes/Blocks/red_block.atlastex")
+					pass
+				Type.BUFF:
+					texture = preload("res://assets/Dominoes/Blocks/green_block.atlastex")
+					pass
 
 enum Type {DEBUFF, BUFF, NEUTRAL}
 
@@ -33,10 +34,10 @@ var slot_owner
 func _ready() -> void:
 	match type:
 		Type.DEBUFF:
-			texture = preload("res://assets/Dominoes/Blocks/red_block.atlastex")
+			set_deferred("texture", load("res://assets/Dominoes/Blocks/red_block.atlastex"))
 			pass
 		Type.BUFF:
-			texture = preload("res://assets/Dominoes/Blocks/green_block.atlastex")
+			set_deferred("texture", load("res://assets/Dominoes/Blocks/green_block.atlastex"))
 			pass
 	
 	if Engine.is_editor_hint():
@@ -44,7 +45,7 @@ func _ready() -> void:
 	
 	update_labels()
 	tooltip_panel.hide()
-
+	
 
 func play_anim():
 	if type == 1:

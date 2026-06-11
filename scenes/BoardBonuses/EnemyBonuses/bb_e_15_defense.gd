@@ -1,10 +1,12 @@
+@tool
 extends BoardBonus
 
+## Бонус: Проклятие Брони(15).
 
 func add_action() -> void:
 	ActionManager.add(BlockAction.new(self, Global.enemy, 15))
 
 
 func update_labels() -> void:
-	tooltip_panel.caption = tr("bn_enm_defense_name")
-	tooltip_panel.description = TextFormatter.highlight_keywords(tr("bn_enm_defense_des") % 15)
+	tooltip_panel.caption = tr("BN_ENM_DEFENSE_NAME")
+	tooltip_panel.description = TextFormatter.highlight_keywords(tr("BN_ENM_DEFENSE_DESC") % 15)
