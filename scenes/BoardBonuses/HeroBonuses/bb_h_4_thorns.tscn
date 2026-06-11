@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://3kb2s8nq8b7d"]
+
+[ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_fc2ol"]
+[ext_resource type="Script" uid="uid://w3gpj3wjmj3i" path="res://scenes/BoardBonuses/HeroBonuses/bb_h_4_thorns.gd" id="2_0sh1l"]
+[ext_resource type="Texture2D" uid="uid://b8gnvwslo5des" path="res://assets/Dominoes/Symbols/thorns.atlastex" id="3_kb56s"]
+
+[node name="bb_h_4_thorns" unique_id=470544141 instance=ExtResource("1_fc2ol")]
+script = ExtResource("2_0sh1l")
+type = 1
+
+[node name="ValueLabel" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="0" unique_id=1340414324]
+text = "4"
+
+[node name="IconRect" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="1" unique_id=719965728]
+texture = ExtResource("3_kb56s")
+
+[node name="TooltipPanel" parent="." index="2" unique_id=54216942]
+anchor_right = 5.6620255
+anchor_bottom = 2.177381
+offset_right = 0.0
+offset_bottom = 0.0
+caption = "BN_THORNS_NAME"
+description = "BN_THORNS_DESC"

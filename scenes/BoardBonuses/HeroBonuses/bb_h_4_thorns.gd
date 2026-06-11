@@ -1,5 +1,6 @@
 extends BoardBonus
 
+## Бонус Шипов(4).
 
 func add_action() -> void:
 	for i in range(1 + Global.hero.repeat_positive_bonus_counter):
@@ -7,8 +8,8 @@ func add_action() -> void:
 
 
 func update_labels() -> void:
-	tooltip_panel.caption = tr("bn_thorns_name")
-	tooltip_panel.description = TextFormatter.highlight_keywords(tr("thorns_des") % 4)
+	tooltip_panel.caption = tr("BN_THORNS_NAME")
+	tooltip_panel.description = TextFormatter.highlight_keywords(tr("BN_THORNS_DESC") % 4)
 
 
 func bonus_played() -> void:

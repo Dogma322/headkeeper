@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://dlsabncyolp7k"]
 
 [ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_ffmfq"]
-[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="2_n0pwg"]
 [ext_resource type="Script" uid="uid://fx4oijsekcjc" path="res://scenes/BoardBonuses/HeroBonuses/bb_h_1_fireball.gd" id="3_ffmfq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5cg67"]
-atlas = ExtResource("2_n0pwg")
-region = Rect2(814, 16, 28, 28)
-
 [node name="bb_h_1fireball" unique_id=470544141 instance=ExtResource("1_ffmfq")]
-texture = SubResource("AtlasTexture_5cg67")
 script = ExtResource("3_ffmfq")
+
+[node name="ValueLabel" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="0" unique_id=1340414324]
+visible = false
+
+[node name="TooltipPanel" parent="." index="2" unique_id=54216942]
+anchor_right = 5.6620255
+anchor_bottom = 2.177381
+offset_right = 0.0
+offset_bottom = 0.0
+caption = "BN_FIREBALL_NAME"
+description = "BN_FIREBALL_DESC"

@@ -2,16 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_vylfc"]
 [ext_resource type="Script" uid="uid://cqpv5x41040q5" path="res://scenes/BoardBonuses/HeroBonuses/bb_h_1_weak.gd" id="2_8hi4p"]
-[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="2_p5ss1"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8hi4p"]
-atlas = ExtResource("2_p5ss1")
-region = Rect2(754, 16, 28, 28)
+[ext_resource type="Texture2D" uid="uid://067gyfakv2ou" path="res://assets/Dominoes/Symbols/weak.atlastex" id="3_8hi4p"]
 
 [node name="bb_h_1weak" unique_id=470544141 instance=ExtResource("1_vylfc")]
-texture = SubResource("AtlasTexture_8hi4p")
 script = ExtResource("2_8hi4p")
 type = 1
 
-[node name="Sprite2D" parent="." index="0" unique_id=790081820]
-texture = SubResource("AtlasTexture_8hi4p")
+[node name="IconRect" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="1" unique_id=719965728]
+texture = ExtResource("3_8hi4p")
+
+[node name="TooltipPanel" parent="." index="2" unique_id=54216942]
+anchor_right = 5.6620255
+anchor_bottom = 2.177381
+offset_right = 0.0
+offset_bottom = 0.0
+caption = "BN_WEAK_NAME"
+description = "BN_WEAK_DESC"

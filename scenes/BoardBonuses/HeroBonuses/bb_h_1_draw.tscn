@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bxefulev4fux4"]
+
+[ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_anbdc"]
+[ext_resource type="Script" uid="uid://d3keya1qgnl8x" path="res://scenes/BoardBonuses/HeroBonuses/bb_h_1_draw.gd" id="2_hdey4"]
+[ext_resource type="Texture2D" uid="uid://b5rhadnlpv7yv" path="res://assets/Dominoes/Symbols/draw.atlastex" id="3_s7sou"]
+
+[node name="bb_h_draw" unique_id=470544141 instance=ExtResource("1_anbdc")]
+script = ExtResource("2_hdey4")
+type = 1
+
+[node name="ValueLabel" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="0" unique_id=1340414324]
+visible = false
+
+[node name="IconRect" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="1" unique_id=719965728]
+texture = ExtResource("3_s7sou")
+
+[node name="TooltipPanel" parent="." index="2" unique_id=54216942]
+anchor_right = 5.6620255
+anchor_bottom = 2.177381
+offset_right = 0.0
+offset_bottom = 0.0
+caption = "BN_DRAW_NAME"
+description = "BN_DRAW_DESC"

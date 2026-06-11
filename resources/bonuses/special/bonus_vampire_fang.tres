@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BonusTemplate" format=3 uid="uid://dyo2jsg7l7oka"]
+
+[ext_resource type="Script" uid="uid://bp60jca031260" path="res://resources/bonus_template.gd" id="1_8efip"]
+
+[resource]
+script = ExtResource("1_8efip")
+gold_cost = 0
+tag = "h_1fireball"
+metadata/_custom_type_script = "uid://bp60jca031260"

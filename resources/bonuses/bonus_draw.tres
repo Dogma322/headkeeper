@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_h8711")
 desc = "draw_bb_card_des"
-tag = "h_draw"
+tag = "h_1draw"
 texture = ExtResource("2_h8711")
 metadata/_custom_type_script = "uid://bp60jca031260"

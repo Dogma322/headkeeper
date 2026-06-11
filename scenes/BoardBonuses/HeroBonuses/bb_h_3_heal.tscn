@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://eiiauemfy1dn"]
+
+[ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_l3db7"]
+[ext_resource type="Script" uid="uid://u88ut46ll2et" path="res://scenes/BoardBonuses/HeroBonuses/bb_h_3_heal.gd" id="2_057ue"]
+[ext_resource type="Texture2D" uid="uid://cn2tyfqrjf123" path="res://assets/Dominoes/Symbols/heal.atlastex" id="3_djiwr"]
+
+[node name="bb_h_3_heal" unique_id=470544141 instance=ExtResource("1_l3db7")]
+script = ExtResource("2_057ue")
+type = 1
+
+[node name="ValueLabel" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="0" unique_id=1340414324]
+text = "3"
+
+[node name="IconRect" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="1" unique_id=719965728]
+texture = ExtResource("3_djiwr")
+
+[node name="TooltipPanel" parent="." index="2" unique_id=54216942]
+caption = "BN_HEAL_NAME"
+description = "BN_HEAL_DESC"

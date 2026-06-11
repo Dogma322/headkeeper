@@ -2,9 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_kw4cr"]
 [ext_resource type="Script" uid="uid://bsnwd1wbuod2h" path="res://scenes/BoardBonuses/HeroBonuses/bb_h_1_fury.gd" id="2_1ux7g"]
-[ext_resource type="Texture2D" uid="uid://bmgiu5ipko2ca" path="res://assets/Bonuses/bonus_fury.atlastex" id="2_u7023"]
 
 [node name="bb_h_1fury" unique_id=470544141 instance=ExtResource("1_kw4cr")]
-texture = ExtResource("2_u7023")
 script = ExtResource("2_1ux7g")
 type = 1
+
+[node name="ValueLabel" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="0" unique_id=1340414324]
+visible = false
+
+[node name="TooltipPanel" parent="." index="2" unique_id=54216942]
+anchor_right = 5.6620255
+anchor_bottom = 2.177381
+offset_right = 0.0
+offset_bottom = 0.0
+caption = "BN_FURY_NAME"
+description = "BN_FURY_DESC"

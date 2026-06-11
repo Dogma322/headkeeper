@@ -22,14 +22,15 @@ var bonus_effects: Dictionary = {
 	"h_5dmg_bonus": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_5_damage.tscn"),
 	"h_1crit": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_crit.tscn"),
 	"h_4def_bonus": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_4_defense.tscn"),
-	"h_draw": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_draw.tscn"),
-	"h_3heal": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_heal.tscn"),
+	"h_1draw": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_draw.tscn"),
+	"h_3heal": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_3_heal.tscn"),
 	"h_1repeat": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_repeat.tscn"),
 	"h_1vulnerable": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_vulnerable.tscn"),
 	"h_1weak": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_weak.tscn"),
 	
 	# special_bonus_templates
 	
+	"h_1fireball": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_fireball.tscn"),
 	"h_1fury": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_fury.tscn"),
-	"h_1fireball": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_fireball.tscn")
+	"h_1vampire_fang": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_vampire_fang.tscn")
 }

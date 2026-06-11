@@ -964,21 +964,21 @@ func get_tooltip_for_type(key: String) -> String:
 		"empty":
 			return TextFormatter.highlight_keywords(tr("ID_EMPTY_DESC"))
 		"attack", "attack2":
-			return TextFormatter.insert_colored_value(tr("attack_des"), final_damage(val[key]), val[key])
+			return TextFormatter.insert_colored_value(tr("DM_ATTACK_DESC"), final_damage(val[key]), val[key])
 		"corruption":
 			return TextFormatter.insert_colored_value(tr("corruption_des"), final_corruption(val[key] + DominoManager.corruption_bonus), val[key])
 		"defense":
-			return TextFormatter.insert_colored_value(tr("defense_des"), final_block(val[key]), val[key])
+			return TextFormatter.insert_colored_value(tr("DM_DEFENSE_DESC"), final_block(val[key]), val[key])
 		"draw":
 			return TextFormatter.highlight_keywords(tr("draw_2+_des") % val[key])
 		"fury":
-			return TextFormatter.highlight_keywords(tr("strength_des") % val[key])
+			return TextFormatter.highlight_keywords(tr("DM_STRENGTH_DESC") % val[key])
 		"heal":
 			return TextFormatter.highlight_keywords(tr("heal_des") % val[key])
 		"vulnerable":
-			return TextFormatter.highlight_keywords(tr("vulnerable_des") % val[key])
+			return TextFormatter.highlight_keywords(tr("DM_VULNERABLE_DESC") % val[key])
 		"weak":
-			return TextFormatter.highlight_keywords(tr("weak_des") % val[key])
+			return TextFormatter.highlight_keywords(tr("DM_WEAK_DESC") % val[key])
 		"thorns":
 			return TextFormatter.highlight_keywords(tr("thorns_des") % val[key])
 		"spear":
@@ -993,7 +993,7 @@ func get_tooltip_for_type(key: String) -> String:
 		"shield":
 			return TextFormatter.insert_colored_value(tr("dm_steel_shield_des"), final_block(val[key]), val[key])
 		"repeat":
-			return TextFormatter.highlight_keywords(tr("dm_repeat_des"))
+			return TextFormatter.highlight_keywords(tr("DM_REPEAT_DESC"))
 		"mace":
 			var mace_damage = DominoManager.dominoes_on_board.size() * val[key] + val[key]
 			return TextFormatter.insert_colored_value(tr("dm_mace_des"), final_damage(mace_damage), mace_damage + val[key])

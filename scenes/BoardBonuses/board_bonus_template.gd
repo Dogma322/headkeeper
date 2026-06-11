@@ -11,12 +11,14 @@ enum Type {RED, GREEN, YELLOW}
 
 var slot_owner
 
+@onready var value_label: Label = %ValueLabel
+@onready var icon_rect: TextureRect = %IconRect
+
 @onready var aim_marker = $Marker2D
 @onready var tooltip_panel: TooltipPanel = $TooltipPanel
 
 @onready var bb_name: String
 @onready var description: String
-@onready var value_label = $ValueLabel
 
 func _ready() -> void:
 	update_labels()

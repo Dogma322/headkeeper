@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bqs22aj8agpas"]
+
+[ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_vkwwd"]
+[ext_resource type="Script" uid="uid://c6tdefrntmvoa" path="res://scenes/BoardBonuses/HeroBonuses/bb_h_1_vampire_fang.gd" id="2_bhuon"]
+
+[node name="bb_h_1vampire_fang" unique_id=470544141 instance=ExtResource("1_vkwwd")]
+script = ExtResource("2_bhuon")
+
+[node name="ValueLabel" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="0" unique_id=1340414324]
+visible = false
+
+[node name="TooltipPanel" parent="." index="2" unique_id=54216942]
+anchor_right = 5.6620255
+anchor_bottom = 2.177381
+offset_right = 0.0
+offset_bottom = 0.0
+caption = "BN_VAMPIRE_FANG_NAME"
+description = "BN_VAMPIRE_FANG_DESC"
