@@ -15,8 +15,8 @@ extends ScreenBase
 @export_range(1.0, 100.0) var shrink_amount = 5.0
 @export_range(0.0, 100.0) var dec_amount = 1.612
 
-const DOMINO_CONTAINER = preload("uid://qh0ecd074sot")
-const HEAD_CONTAINER = preload("uid://bpdrdg014nrh8")
+const DOMINO_CONTAINER = preload("res://scenes/Domino/domino_container.tscn")
+const HEAD_CONTAINER = preload("res://scenes/Heads/HeadTemplate/head_container.tscn")
 
 var dominoes = []
 var heads = []
