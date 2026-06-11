@@ -16,5 +16,9 @@ text = "5"
 texture = ExtResource("4_ndwk7")
 
 [node name="TooltipPanel" parent="." index="2" unique_id=54216942]
+anchor_right = 6.178571
+anchor_bottom = 2.2142856
+offset_right = 0.0
+offset_bottom = 3.8146973e-06
 caption = "BN_ENM_HEAL_NAME"
 description = "BN_ENM_HEAL_DESC"

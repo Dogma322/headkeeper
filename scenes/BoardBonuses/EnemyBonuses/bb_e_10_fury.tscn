@@ -2,19 +2,23 @@
 
 [ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_s585l"]
 [ext_resource type="Script" uid="uid://8vl2mwluogo0" path="res://scenes/BoardBonuses/EnemyBonuses/bb_e_10_fury.gd" id="2_r7dm8"]
-[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="3_pyvw1"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rhdao"]
-atlas = ExtResource("3_pyvw1")
-region = Rect2(904, 48, 28, 28)
+[ext_resource type="Texture2D" uid="uid://dom6w08wocfhk" path="res://assets/Dominoes/Blocks/red_block.atlastex" id="2_rhdao"]
+[ext_resource type="Texture2D" uid="uid://cng0xtnhha5sx" path="res://assets/Dominoes/Symbols/fury.atlastex" id="4_e58p8"]
 
 [node name="bb_e_10fury" unique_id=470544141 instance=ExtResource("1_s585l")]
-texture = SubResource("AtlasTexture_rhdao")
+texture = ExtResource("2_rhdao")
 script = ExtResource("2_r7dm8")
 
-[node name="Sprite2D" parent="." index="0" unique_id=790081820]
-texture = SubResource("AtlasTexture_rhdao")
-
-[node name="ValueLabel" parent="." index="2" unique_id=1340414324]
-offset_left = -1.0
+[node name="ValueLabel" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="0" unique_id=1340414324]
 text = "10"
+
+[node name="IconRect" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="1" unique_id=719965728]
+texture = ExtResource("4_e58p8")
+
+[node name="TooltipPanel" parent="." index="2" unique_id=54216942]
+anchor_right = 6.178571
+anchor_bottom = 2.2142856
+offset_right = 0.0
+offset_bottom = 3.8146973e-06
+caption = "BN_ENM_FURY_NAME"
+description = "BN_ENM_FURY_DESC"

@@ -1,16 +1,20 @@
 [gd_scene format=3 uid="uid://8xxh862huq8l"]
 
 [ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_60cuh"]
-[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="2_h575n"]
+[ext_resource type="Texture2D" uid="uid://dom6w08wocfhk" path="res://assets/Dominoes/Blocks/red_block.atlastex" id="2_h575n"]
 [ext_resource type="Script" uid="uid://mxivnigvlk3m" path="res://scenes/BoardBonuses/EnemyBonuses/bb_e_10_heal.gd" id="3_je85o"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_trgch"]
-atlas = ExtResource("2_h575n")
-region = Rect2(874, 48, 28, 28)
+[ext_resource type="Texture2D" uid="uid://cn2tyfqrjf123" path="res://assets/Dominoes/Symbols/heal.atlastex" id="4_je85o"]
 
 [node name="bb_e_10heal" unique_id=470544141 instance=ExtResource("1_60cuh")]
-texture = SubResource("AtlasTexture_trgch")
+texture = ExtResource("2_h575n")
 script = ExtResource("3_je85o")
 
 [node name="ValueLabel" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="0" unique_id=1340414324]
 text = "10"
+
+[node name="IconRect" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="1" unique_id=719965728]
+texture = ExtResource("4_je85o")
+
+[node name="TooltipPanel" parent="." index="2" unique_id=54216942]
+caption = "BN_ENM_HEAL_NAME"
+description = "BN_ENM_HEAL_DESC"

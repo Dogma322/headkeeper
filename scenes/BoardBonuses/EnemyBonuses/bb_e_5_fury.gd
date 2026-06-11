@@ -1,7 +1,7 @@
 @tool
 extends BoardBonus
 
-## Бонус: Проклятье Ярости.
+## Бонус: Проклятие Ярости(5).
 
 func add_action() -> void:
 	ActionManager.add(BuffAction.new(self, Global.enemy, StatusManager.fury, 5))

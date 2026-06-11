@@ -1,7 +1,7 @@
 @tool
 extends BoardBonus
 
-## Бонус: Проклятье Брони(5).
+## Бонус: Проклятие Брони(5).
 
 func add_action() -> void:
 	ActionManager.add(BlockAction.new(self, Global.enemy, 5))
