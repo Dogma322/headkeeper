@@ -224,16 +224,16 @@ BN_WEAK_NAME,Weak Bonus,Бонус Слабости
 ,,
 ,,
 ,,
+BN_ENM_ATTACK_NAME,Attack Curse,Проклятие Атаки
+BN_ENM_ATTACK_DESC,You take %s damage.,Вы получаете %s урона.
+BN_ENM_DEFENSE_NAME,Armor Curse,Проклятие Брони
+BN_ENM_DEFENSE_DESC,The enemy gains %s block.,Враг получает %s брони.
 BN_ENM_EVASION_NAME,Evasion Curse,Проклятие Уклонения
 BN_ENM_EVASION_DESC,Applies Evasion %s to the enemy.,Накладывает на врага Уклонение %s.
 BN_ENM_FURY_NAME,Fury Curse,Проклятие Ярости
 BN_ENM_FURY_DESC,Applies Rage %s to the enemy.,Накладывает на врага Ярость %s.
-bn_enm_attack_name,Attack Curse,Проклятие Атаки
-bn_enm_attack_des,You take %s damage.,Вы получаете %s урона.
-bn_enm_defense_name,Armor Curse,Проклятие Брони
-bn_enm_defense_des,The enemy gains %s block.,Враг получает %s брони.
-bn_enm_heal_name,Heal Curse,Проклятие Лечения
-bn_enm_heal_des,The enemy restores %s HP.,Враг восстанавливает %s здоровья.
+BN_ENM_HEAL_NAME,Heal Curse,Проклятие Лечения
+BN_ENM_HEAL_DESC,The enemy restores %s HP.,Враг восстанавливает %s здоровья.
 BN_ENM_VULNERABLE_NAME,Vulnerable Curse,Проклятие Уязвимости
 BN_ENM_VULNERABLE_DESC,Applies Vulnerable %s to you.,Накладывает на вас Уязвимость %s.
 BN_ENM_WEAK_NAME,Weak Curse,Проклятие Слабости

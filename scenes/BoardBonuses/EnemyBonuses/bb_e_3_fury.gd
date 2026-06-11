@@ -1,3 +1,4 @@
+@tool
 extends BoardBonus
 
 ## Бонус: Проклятие Ярости(3).
