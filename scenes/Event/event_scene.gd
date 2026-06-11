@@ -5,7 +5,7 @@ class_name EventScene
 @onready var description_rich_text_label: RichTextLabel = %DescriptionRichTextLabel
 @onready var buttons_vbox_container: VBoxContainer = %ButtonsVBoxContainer
 
-const EVENT_BUTTON = preload("uid://bemk37cis2wkk")
+const EVENT_BUTTON = preload("res://scenes/UI/event_button.tscn")
 
 var current_event_scene: EventSceneTemplate
 
