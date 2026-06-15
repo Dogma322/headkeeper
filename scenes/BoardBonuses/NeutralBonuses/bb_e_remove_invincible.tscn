@@ -12,5 +12,5 @@ region = Rect2(964, 112, 28, 28)
 texture = SubResource("AtlasTexture_m6qdu")
 script = ExtResource("2_m6qdu")
 
-[node name="Sprite2D" parent="." index="0" unique_id=790081820]
-texture = SubResource("AtlasTexture_m6qdu")
+[node name="ValueLabel" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="0" unique_id=1340414324]
+visible = false

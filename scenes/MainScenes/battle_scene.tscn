@@ -4,8 +4,6 @@
 [ext_resource type="Script" uid="uid://kd473y2mdxg0" path="res://scenes/MainScenes/battle_scene.gd" id="1_ydxg7"]
 [ext_resource type="FontFile" uid="uid://cdr1gk3kbvdd4" path="res://assets/Fonts/Vollda-Bold.otf" id="2_36n0a"]
 [ext_resource type="PackedScene" uid="uid://bss08hflnscb3" path="res://scenes/Boards/BoardTemplate/board_1.tscn" id="3_qxp17"]
-[ext_resource type="PackedScene" uid="uid://cpolkxs6npnhc" path="res://scenes/Heroes/hero.tscn" id="4_qc22i"]
-[ext_resource type="PackedScene" uid="uid://c63tsp6yujri6" path="res://scenes/Enemies/MushCaves/enm_armored_mush.tscn" id="5_vun5q"]
 [ext_resource type="PackedScene" uid="uid://ddpmj3a51u373" path="res://scenes/UI/game_button.tscn" id="7_76b4e"]
 [ext_resource type="PackedScene" uid="uid://fvbwyoeuebsq" path="res://scenes/DeckBags/deck_bag.tscn" id="8_qxp17"]
 [ext_resource type="Script" uid="uid://dwpk36y7pnpsa" path="res://scenes/MainScenes/combat_ui.gd" id="8_uk3cr"]
@@ -59,10 +57,12 @@ position = Vector2(320, -145)
 
 [node name="Characters" type="Node2D" parent="." unique_id=585567734]
 
-[node name="Hero" parent="Characters" unique_id=534144501 instance=ExtResource("4_qc22i")]
+[node name="HeroSpawnPos" type="Marker2D" parent="Characters" unique_id=1539817165]
+unique_name_in_owner = true
 position = Vector2(111, 220)
 
-[node name="EnmArmoredMush" parent="Characters" unique_id=1770774892 instance=ExtResource("5_vun5q")]
+[node name="EnemySpawnPos" type="Marker2D" parent="Characters" unique_id=229333099]
+unique_name_in_owner = true
 position = Vector2(535, 220)
 
 [node name="MainButtonsBox" type="VBoxContainer" parent="." unique_id=1625423660]
@@ -117,15 +117,12 @@ theme_override_constants/separation = 0
 [node name="TimerLabel" parent="UI/VBoxContainer" unique_id=68907037 instance=ExtResource("12_qc22i")]
 layout_mode = 2
 
-[node name="HeadHolder" parent="." unique_id=2074985017 instance=ExtResource("11_aonfs")]
-center_position = Vector2(111, 170)
-
 [node name="CenterHeadHolder" parent="." unique_id=182073813 instance=ExtResource("11_aonfs")]
-center_position = Vector2(320, 170)
+position = Vector2(320, 180)
 holder_type = "Center"
 
 [node name="EnemyHeadHolder" parent="." unique_id=1674420254 instance=ExtResource("11_aonfs")]
-center_position = Vector2(535, 100)
+position = Vector2(535, 151)
 holder_type = "Enemy"
 
 [node name="Camera" parent="." unique_id=888122831 instance=ExtResource("19_mjddb")]

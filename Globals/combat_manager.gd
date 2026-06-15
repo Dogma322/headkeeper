@@ -364,12 +364,14 @@ func reset_fight_data() -> void:
 
 
 func clear_statuses() -> void:
-	for icon in Global.hero.status_container.get_children():
-		StatusManager.remove_status_effect(icon.status)
-		icon.queue_free()
-	for icon in Global.enemy.status_container.get_children():
-		StatusManager.remove_status_effect(icon.status)
-		icon.queue_free()
+	if Global.hero:
+		for icon in Global.hero.status_container.get_children():
+			StatusManager.remove_status_effect(icon.status)
+			icon.queue_free()
+	if Global.enemy:
+		for icon in Global.enemy.status_container.get_children():
+			StatusManager.remove_status_effect(icon.status)
+			icon.queue_free()
 
 
 func hero_dead() -> void:

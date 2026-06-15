@@ -11,3 +11,6 @@ region = Rect2(904, 80, 28, 28)
 [node name="bb_e_decrease_5_max_hp" unique_id=470544141 instance=ExtResource("1_q085i")]
 texture = SubResource("AtlasTexture_7vjkv")
 script = ExtResource("2_kpylk")
+
+[node name="ValueLabel" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="0" unique_id=1340414324]
+visible = false

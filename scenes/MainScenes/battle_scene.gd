@@ -2,12 +2,14 @@
 extends ScreenBase
 class_name BattleScene
 
-@onready var characters = $Characters
 @onready var play_btn: GameButton = %PlayBtn
 @onready var main_buttons_box: VBoxContainer = $MainButtonsBox
 @onready var board_1: Board = $Board/Board1
 @onready var hand: Node2D = $Hand
 @onready var camera: Node2D = $Camera
+
+@onready var hero_spawn_pos: Marker2D = %HeroSpawnPos
+@onready var enemy_spawn_pos: Marker2D = %EnemySpawnPos
 
 @onready var heads_ui: VBoxContainer = %HeadsUI
 
@@ -29,7 +31,9 @@ func _ready() -> void:
 		Signals.domino_chain_removed.connect(_on_domino_chain_removed)
 		Global.play_btn = self
 		Global.fight_scene = self
-
+		
+		var hero = preload("res://scenes/Heroes/hero_knight.tscn").instantiate()
+		hero_spawn_pos.add_child(hero)
 
 func show_head_ui() -> void:
 	var final_pool := []
@@ -67,9 +71,9 @@ func show_head_ui() -> void:
 		random_head = null
 	else:
 		Global.enemy_head_holder.add_child(new_head)
-		new_head.global_position = Global.enemy_head_holder.center_position
+		new_head.global_position = Global.enemy_head_holder.global_position
 		
-		head_origin = Global.head_holder.center_position
+		head_origin = Global.head_holder.global_position
 		heads_ui.show()
 		heads_ui.modulate.a = 0.0
 		create_tween().tween_property(heads_ui, "modulate:a", 1.0, 0.5)

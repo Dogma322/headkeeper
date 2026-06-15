@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c41vudwbdthya"]
+
+[ext_resource type="PackedScene" uid="uid://cpolkxs6npnhc" path="res://scenes/Heroes/hero.tscn" id="1_xq7nx"]
+[ext_resource type="Texture2D" uid="uid://cd3733vei7r7b" path="res://assets/Heroes/hero_1_knight.png" id="2_8lq2k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gxupr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8lq2k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="HeroKnight" unique_id=534144501 instance=ExtResource("1_xq7nx")]
+
+[node name="AnimatedSprite2D" parent="." index="1" unique_id=1799847895]
+position = Vector2(-20, -19)
+sprite_frames = SubResource("SpriteFrames_gxupr")
+
+[node name="HeadHolder" parent="." index="2" unique_id=2074985017]
+position = Vector2(0, -93)

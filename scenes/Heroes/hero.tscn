@@ -1,78 +1,14 @@
 [gd_scene format=3 uid="uid://cpolkxs6npnhc"]
 
 [ext_resource type="Script" uid="uid://qgmnadm5qmxi" path="res://scenes/Heroes/hero.gd" id="1_ddi63"]
-[ext_resource type="Texture2D" uid="uid://b3xp13akpqd23" path="res://assets/Heroes/Hero1Anim/HeroNewAnimation4.png" id="2_f6wkj"]
 [ext_resource type="PackedScene" uid="uid://cqx21jp2erd6f" path="res://scenes/DynamicShadow/dynamic_shadow.tscn" id="2_pyxpm"]
 [ext_resource type="Texture2D" uid="uid://b1kh07hg3pi8b" path="res://assets/UI/HPBar/Under2.png" id="3_kto8s"]
+[ext_resource type="PackedScene" uid="uid://bbvfro8a5geyx" path="res://scenes/HeadHolder/head_holder.tscn" id="3_pyxpm"]
 [ext_resource type="Texture2D" uid="uid://bb45ada0y8mxj" path="res://assets/UI/HPBar/Over2.png" id="4_i5btq"]
 [ext_resource type="Texture2D" uid="uid://hlb83quv0ufa" path="res://assets/UI/HPBar/Progress2.png" id="5_pyxpm"]
 [ext_resource type="Theme" uid="uid://df5t7rctr0cta" path="res://scenes/TextThemes/Monocraft8.tres" id="6_5gxdn"]
 [ext_resource type="Texture2D" uid="uid://jxgvj1rrw6me" path="res://assets/Icons/ArmorIcon/ArmorIcon.png" id="7_i5btq"]
 [ext_resource type="PackedScene" uid="uid://btuuwdwpgo70s" path="res://scenes/StatusContainer/status_container.tscn" id="7_kto8s"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y6xcm"]
-atlas = ExtResource("2_f6wkj")
-region = Rect2(0, 0, 128, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rqjwg"]
-atlas = ExtResource("2_f6wkj")
-region = Rect2(128, 0, 128, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ra811"]
-atlas = ExtResource("2_f6wkj")
-region = Rect2(256, 0, 128, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ty24"]
-atlas = ExtResource("2_f6wkj")
-region = Rect2(384, 0, 128, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uiq3a"]
-atlas = ExtResource("2_f6wkj")
-region = Rect2(512, 0, 128, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wqi7g"]
-atlas = ExtResource("2_f6wkj")
-region = Rect2(640, 0, 128, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p5772"]
-atlas = ExtResource("2_f6wkj")
-region = Rect2(768, 0, 128, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7cn0s"]
-atlas = ExtResource("2_f6wkj")
-region = Rect2(896, 0, 128, 80)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_lr0g2"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y6xcm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rqjwg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ra811")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0ty24")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uiq3a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wqi7g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p5772")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7cn0s")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
 
 [node name="Hero" type="Node2D" unique_id=534144501]
 script = ExtResource("1_ddi63")
@@ -81,10 +17,9 @@ script = ExtResource("1_ddi63")
 position = Vector2(0, 34)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1799847895]
-position = Vector2(-12, -1)
-sprite_frames = SubResource("SpriteFrames_lr0g2")
 autoplay = "default"
-frame_progress = 0.6557244
+
+[node name="HeadHolder" parent="." unique_id=2074985017 instance=ExtResource("3_pyxpm")]
 
 [node name="HpBar" type="TextureProgressBar" parent="." unique_id=1606423636]
 offset_left = -47.0
@@ -126,7 +61,6 @@ text = "23"
 horizontal_alignment = 1
 
 [node name="AimMarker" type="Marker2D" parent="." unique_id=488929154]
-position = Vector2(-3, -18)
 
 [node name="StatusContainer" parent="." unique_id=680689049 node_paths=PackedStringArray("status_owner") instance=ExtResource("7_kto8s")]
 offset_left = -45.0

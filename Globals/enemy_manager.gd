@@ -1,7 +1,5 @@
 extends Node
 
-var pos = Vector2(535,220)
-
 @onready var wolf1 = preload("res://scenes/Enemies/Forest/enm_wolf_1.tscn")
 @onready var high_druid = preload("res://scenes/Enemies/Forest/enm_high_druid.tscn")
 
@@ -176,10 +174,9 @@ func set_enemy(map_node: MapNode):
 			new_enemy = enemy.instantiate()
 
 	
-	Global.fight_scene.characters.add_child(new_enemy)
+	Global.fight_scene.enemy_spawn_pos.add_child(new_enemy)
 	Global.enemy = new_enemy
-	Global.enemy.global_position = pos
-	Global.enemy_head_holder.center_position.y = new_enemy.intent_icon.global_position.y - 16
+	Global.enemy_head_holder.global_position.y = new_enemy.intent_icon.global_position.y - 16
 	
 	#set_background()
 	#set_music()

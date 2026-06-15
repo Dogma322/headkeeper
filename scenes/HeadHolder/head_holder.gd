@@ -1,14 +1,6 @@
 @tool
-extends Node2D
+extends Marker2D
 
-@onready var marker_2d: Marker2D = $Marker2D
-
-@export var center_position: Vector2 = Vector2(100, 116):  # Точка, относительно которой выравниваются головы
-	set(value):
-		center_position = value
-		if is_instance_valid(marker_2d):
-			marker_2d.global_position = center_position
-		
 @export var hand_width: float = 200                   # ширина зоны, в которой будут головы
 @export var amplitude: float = 3                      # амплитуда синусоиды
 @export var spacing: float = 35                       # расстояние между головами
@@ -18,7 +10,6 @@ extends Node2D
 var time: float = 0.0
 
 func _ready() -> void:
-	marker_2d.global_position = center_position
 	if not Engine.is_editor_hint():
 		match holder_type:
 			"Hero":
@@ -39,15 +30,15 @@ func update_head_positions() -> void:
 		return
 
 	var total_width: float = (total_heads - 1) * spacing
-	var start_x: float = center_position.x - total_width / 2.0  # теперь центр относительно указанной точки
+	var start_x: float = global_position.x - total_width / 2.0  # теперь центр относительно указанной точки
 
 	for i in range(total_heads):
 		var head: Node2D = heads[i]
 		var target_x: float = start_x + i * spacing
-		var target_y: float = center_position.y + sin(time * 3 + i * 0.5) * amplitude
+		var target_y: float = global_position.y + sin(time * 3 + i * 0.5) * amplitude
 		var target_position: Vector2 = Vector2(target_x, target_y)
 
 		# создаем твины для плавного перемещения
 		var tween := get_tree().create_tween()
 		tween.set_parallel()
-		tween.tween_property(head, "position", target_position, move_duration)
+		tween.tween_property(head, "global_position", target_position, move_duration)

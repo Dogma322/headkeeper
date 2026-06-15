@@ -2,7 +2,5 @@
 
 [ext_resource type="Script" uid="uid://m4nwb3335s0d" path="res://scenes/HeadHolder/head_holder.gd" id="1_1vkbp"]
 
-[node name="HeadHolder" type="Node2D" unique_id=2074985017]
+[node name="HeadHolder" type="Marker2D" unique_id=1713313369]
 script = ExtResource("1_1vkbp")
-
-[node name="Marker2D" type="Marker2D" parent="." unique_id=1486822953]

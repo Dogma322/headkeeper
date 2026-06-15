@@ -13,5 +13,5 @@ texture = SubResource("AtlasTexture_a057v")
 script = ExtResource("2_qb4ui")
 distance = 3
 
-[node name="Sprite2D" parent="." index="0" unique_id=790081820]
-texture = SubResource("AtlasTexture_a057v")
+[node name="ValueLabel" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="0" unique_id=1340414324]
+visible = false

@@ -6,8 +6,7 @@ class_name MetaScene
 @onready var tooltip_panel: TooltipPanel = %TooltipPanel
 @onready var additional_tooltip_panel: MarginContainer = %AdditionalTooltipPanel
 @onready var skulls_label: RichTextLabel = %SkullsLabel
-@onready var head_animation_player: AnimationPlayer = %HeadAnimationPlayer
-@onready var head_marker_2d: Marker2D = %Marker2D
+@onready var head_marker_2d: Marker2D = %HeadMarker2D
 @onready var cancel_button: GameButton = %CancelButton
 
 var slots: Array[MetaSlot] = []
@@ -97,7 +96,6 @@ func _ready() -> void:
 	load_heads()
 	started_skulls = MetaManager.skulls
 	showed_skulls = MetaManager.skulls
-	head_animation_player.play("head_anim")
 	cancel_button.disabled = true
 	
 	Foreground.options_panel.show_box(Foreground.options_panel.meta_box)
