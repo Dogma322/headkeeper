@@ -2,38 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_fgcu8"]
 [ext_resource type="Script" uid="uid://f7khuoof303g" path="res://scenes/Enemies/Forest/enm_bear.gd" id="2_583wp"]
-[ext_resource type="Texture2D" uid="uid://int0tmnjx2yi" path="res://assets/Enemies/Forest/BearWithShadow-Sheet.png" id="2_omwne"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_583wp"]
-atlas = ExtResource("2_omwne")
-region = Rect2(0, 0, 192, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xynbn"]
-atlas = ExtResource("2_omwne")
-region = Rect2(192, 0, 192, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ygrl4"]
-atlas = ExtResource("2_omwne")
-region = Rect2(384, 0, 192, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_478k1"]
-atlas = ExtResource("2_omwne")
-region = Rect2(576, 0, 192, 160)
+[ext_resource type="Texture2D" uid="uid://1ro35nb3oefm" path="res://assets/Enemies/Forest/Bear.png" id="3_583wp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aa7ex"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_583wp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xynbn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ygrl4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_478k1")
+"texture": ExtResource("3_583wp")
 }],
 "loop": true,
 "name": &"default",
@@ -51,6 +26,6 @@ offset_top = -143.0
 offset_bottom = -111.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=641482034]
-position = Vector2(-14, -36)
+position = Vector2(-14, -40)
 sprite_frames = SubResource("SpriteFrames_aa7ex")
 autoplay = "default"

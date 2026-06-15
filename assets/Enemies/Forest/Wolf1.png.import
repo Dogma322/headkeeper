@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djnq7yfe75esr"
-path="res://.godot/imported/Deer2WithShadow-Sheet.png-7e0ebaee3424f5be2090720cb8856e64.ctex"
+uid="uid://dmx0eyuyhghea"
+path="res://.godot/imported/Wolf1.png-a5e62f338f1670f9ee185df91e24ea36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemies/Forest/Deer2WithShadow-Sheet.png"
-dest_files=["res://.godot/imported/Deer2WithShadow-Sheet.png-7e0ebaee3424f5be2090720cb8856e64.ctex"]
+source_file="res://assets/Enemies/Forest/Wolf1.png"
+dest_files=["res://.godot/imported/Wolf1.png-a5e62f338f1670f9ee185df91e24ea36.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfpo3l4kjqbsd"
-path="res://.godot/imported/Wolf2WithShadow-Sheet.png-77c9302564b57d9c863b7f1305280009.ctex"
+uid="uid://cx80c2k38kvb3"
+path="res://.godot/imported/CrowWoman.png-fa42d63c2e562315c6c153e25ef7c910.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemies/Forest/Wolf2WithShadow-Sheet.png"
-dest_files=["res://.godot/imported/Wolf2WithShadow-Sheet.png-77c9302564b57d9c863b7f1305280009.ctex"]
+source_file="res://assets/Enemies/Forest/CrowWoman.png"
+dest_files=["res://.godot/imported/CrowWoman.png-fa42d63c2e562315c6c153e25ef7c910.ctex"]
 
 [params]
 

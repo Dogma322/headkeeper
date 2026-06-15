@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b475tm77bmwk1"
-path="res://.godot/imported/CrowWomanWithShadow-Sheet.png-be8c8d4518368f8e21639b392aee669f.ctex"
+uid="uid://gxlorujy77em"
+path="res://.godot/imported/InfestedCultistWithShadow-Sheet.png-52fde43938f4ad013697304d2ac621bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemies/Forest/CrowWomanWithShadow-Sheet.png"
-dest_files=["res://.godot/imported/CrowWomanWithShadow-Sheet.png-be8c8d4518368f8e21639b392aee669f.ctex"]
+source_file="res://assets/Enemies/Forest/Old/InfestedCultistWithShadow-Sheet.png"
+dest_files=["res://.godot/imported/InfestedCultistWithShadow-Sheet.png-52fde43938f4ad013697304d2ac621bc.ctex"]
 
 [params]
 

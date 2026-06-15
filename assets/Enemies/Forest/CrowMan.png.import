@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgp626ig5nlbf"
-path="res://.godot/imported/DeerWithShadow-Sheet.png-9a71995c0c824eaba7d82023c51fdc3d.ctex"
+uid="uid://c1uysfjpl27h5"
+path="res://.godot/imported/CrowMan.png-fc4d554f3efd6a7ba2a96c05aaaa7077.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemies/Forest/DeerWithShadow-Sheet.png"
-dest_files=["res://.godot/imported/DeerWithShadow-Sheet.png-9a71995c0c824eaba7d82023c51fdc3d.ctex"]
+source_file="res://assets/Enemies/Forest/CrowMan.png"
+dest_files=["res://.godot/imported/CrowMan.png-fc4d554f3efd6a7ba2a96c05aaaa7077.ctex"]
 
 [params]
 

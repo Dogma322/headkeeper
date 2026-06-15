@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://int0tmnjx2yi"
-path="res://.godot/imported/BearWithShadow-Sheet.png-1a782df76daf2bd76816411188a664f2.ctex"
+uid="uid://buqubns61ictn"
+path="res://.godot/imported/dragon_skeleton.png-b597329d8581c1abfd7c741139bf896b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemies/Forest/BearWithShadow-Sheet.png"
-dest_files=["res://.godot/imported/BearWithShadow-Sheet.png-1a782df76daf2bd76816411188a664f2.ctex"]
+source_file="res://resources/events/Act1/DragonSkeleton/dragon_skeleton.png"
+dest_files=["res://.godot/imported/dragon_skeleton.png-b597329d8581c1abfd7c741139bf896b.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gxlorujy77em"
-path="res://.godot/imported/InfestedCultistWithShadow-Sheet.png-c339d76ee0c8507c76d17e9a6d67532d.ctex"
+uid="uid://drio65rjnb1ut"
+path="res://.godot/imported/Tree.png-c01060f177b7223e19f828ccd9544206.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemies/Forest/InfestedCultistWithShadow-Sheet.png"
-dest_files=["res://.godot/imported/InfestedCultistWithShadow-Sheet.png-c339d76ee0c8507c76d17e9a6d67532d.ctex"]
+source_file="res://assets/Enemies/Forest/Tree.png"
+dest_files=["res://.godot/imported/Tree.png-c01060f177b7223e19f828ccd9544206.ctex"]
 
 [params]
 

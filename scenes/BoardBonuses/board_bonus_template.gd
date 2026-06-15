@@ -32,13 +32,14 @@ var slot_owner
 @onready var description: String
 
 func _ready() -> void:
-	match type:
-		Type.DEBUFF:
-			set_deferred("texture", load("res://assets/Dominoes/Blocks/red_block.atlastex"))
-			pass
-		Type.BUFF:
-			set_deferred("texture", load("res://assets/Dominoes/Blocks/green_block.atlastex"))
-			pass
+	if icon_rect.texture != null:
+		match type:
+			Type.DEBUFF:
+				texture = load("res://assets/Dominoes/Blocks/red_block.atlastex")
+			Type.BUFF:
+				texture = load("res://assets/Dominoes/Blocks/green_block.atlastex")
+			Type.NEUTRAL:
+				texture = load("res://assets/Dominoes/Blocks/grey_block.atlastex")
 	
 	if Engine.is_editor_hint():
 		return

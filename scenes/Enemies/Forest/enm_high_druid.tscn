@@ -2,38 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_p27m4"]
 [ext_resource type="Script" uid="uid://rb50uh75x6r4" path="res://scenes/Enemies/Forest/enm_high_druid.gd" id="2_fnyt6"]
-[ext_resource type="Texture2D" uid="uid://j5ml057f0o4b" path="res://assets/Enemies/Forest/MainCultistWithShadow-Sheet.png" id="2_qaphx"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fnyt6"]
-atlas = ExtResource("2_qaphx")
-region = Rect2(0, 0, 192, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iccke"]
-atlas = ExtResource("2_qaphx")
-region = Rect2(192, 0, 192, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5qdy6"]
-atlas = ExtResource("2_qaphx")
-region = Rect2(384, 0, 192, 160)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_txvfn"]
-atlas = ExtResource("2_qaphx")
-region = Rect2(576, 0, 192, 160)
+[ext_resource type="Texture2D" uid="uid://c22djev8df24j" path="res://assets/Enemies/Forest/HighDruid.png" id="3_fnyt6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p8gu0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fnyt6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iccke")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5qdy6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_txvfn")
+"texture": ExtResource("3_fnyt6")
 }],
 "loop": true,
 "name": &"default",
@@ -51,6 +26,6 @@ offset_top = -135.0
 offset_bottom = -103.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1776141134]
-position = Vector2(-2, -40)
+position = Vector2(8, -33)
 sprite_frames = SubResource("SpriteFrames_p8gu0")
 autoplay = "default"

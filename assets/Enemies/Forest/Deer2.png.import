@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckxowlxtavq40"
-path="res://.godot/imported/InfestedCultist2WithShadow-Sheet.png-79f7c0b6bdac41ceb6342de1144af10b.ctex"
+uid="uid://c2xem2uw7y7b5"
+path="res://.godot/imported/Deer2.png-6459ea983291d4447f05beeffa8c49e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemies/Forest/InfestedCultist2WithShadow-Sheet.png"
-dest_files=["res://.godot/imported/InfestedCultist2WithShadow-Sheet.png-79f7c0b6bdac41ceb6342de1144af10b.ctex"]
+source_file="res://assets/Enemies/Forest/Deer2.png"
+dest_files=["res://.godot/imported/Deer2.png-6459ea983291d4447f05beeffa8c49e5.ctex"]
 
 [params]
 
