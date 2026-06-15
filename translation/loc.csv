@@ -108,7 +108,7 @@ ID_EMPTY_DESC,Empty slot,Пустой слот
 DM_ATTACK_DESC,Deal %s damage.,Наносит %s урона.
 DM_DEFENSE_DESC,Give %s block.,Дает %s брони.
 heal_des,Restores %s HP.,Восстанавливает %s здоровья.
-corruption_des,Apply Corruption %s.,Накладывает Скверна %s.
+DM_CORRUPTION_DESC,Apply Corruption %s.,Накладывает Скверна %s.
 DM_WEAK_DESC,Apply Weak %s.,Накладывает Слабость %s.
 DM_STRENGTH_DESC,Apply Fury %s.,Накладывает Ярость %s.
 thorns_des,Apply Thorns %s.,Накладывает Шипы %s.

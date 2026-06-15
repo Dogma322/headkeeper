@@ -187,8 +187,5 @@ func _on_back_button_pressed() -> void:
 		if main_scene.top_panel_button != null:
 			main_scene.top_panel_button.button_pressed = true
 		
-		if current_scene == item_list_scene:
-			item_list_scene.current_mode = ItemListScene.Mode.NONE
-		
 		await Transition.blackout()
 		show_scene(main_scene)

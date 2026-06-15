@@ -93,6 +93,8 @@ func spawn_dominoes():
 	var temp_dominoes = DominoManager.domino_templates.values().duplicate()
 
 	for i in range(3):
+		if temp_dominoes.is_empty():
+			break
 
 		var template = temp_dominoes.pick_random()
 		temp_dominoes.erase(template) # чтобы не выбрать ту же карту дважды

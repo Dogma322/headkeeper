@@ -966,7 +966,7 @@ func get_tooltip_for_type(key: String) -> String:
 		"attack", "attack2":
 			return TextFormatter.insert_colored_value(tr("DM_ATTACK_DESC"), final_damage(val[key]), val[key])
 		"corruption":
-			return TextFormatter.insert_colored_value(tr("corruption_des"), final_corruption(val[key] + DominoManager.corruption_bonus), val[key])
+			return TextFormatter.insert_colored_value(tr("DM_CORRUPTION_DESC"), final_corruption(val[key] + DominoManager.corruption_bonus), val[key])
 		"defense":
 			return TextFormatter.insert_colored_value(tr("DM_DEFENSE_DESC"), final_block(val[key]), val[key])
 		"draw":

@@ -220,3 +220,4 @@ func end() -> void:
 	if current_mode == Mode.DOMINO:
 		DominoManager.block_domino_input = false
 		current_domino_source = DominoSource.NONE
+	current_mode = Mode.NONE

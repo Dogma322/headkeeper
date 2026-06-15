@@ -50,8 +50,6 @@ func clear_discard() -> void:
 
 
 func reset():
-	#temp_domino_pool = domino_templates.duplicate()
-	
 	dominoes_on_board.clear()
 	temp_deck.clear()
 	deck.clear()
