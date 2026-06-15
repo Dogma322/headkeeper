@@ -1,6 +1,23 @@
 [gd_scene format=3 uid="uid://bn0602p7re11e"]
 
 [ext_resource type="Script" uid="uid://bv4mqurwudlwh" path="res://scenes/Background/background.gd" id="1_xma12"]
+[ext_resource type="Texture2D" uid="uid://cjymq3d8tq3in" path="res://assets/Backgrounds/forest_1/forest_background1_3.png" id="2_d3pbo"]
+[ext_resource type="Texture2D" uid="uid://dnjhtpe558sdg" path="res://assets/Backgrounds/forest_1/forest_background1_4_left.png" id="2_dk05f"]
+[ext_resource type="Texture2D" uid="uid://ddamh7np85gk2" path="res://assets/Backgrounds/forest_1/forest_background1_4_right.png" id="3_d3pbo"]
 
 [node name="Background" type="TextureRect" unique_id=1447473875]
 script = ExtResource("1_xma12")
+
+[node name="Forest" type="Node2D" parent="." unique_id=1504377763]
+
+[node name="Sprite2D3" type="Sprite2D" parent="Forest" unique_id=1702966973]
+texture = ExtResource("2_d3pbo")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Forest" unique_id=959156171]
+position = Vector2(99, 287)
+texture = ExtResource("2_dk05f")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Forest" unique_id=229740674]
+position = Vector2(549, 283)
+texture = ExtResource("3_d3pbo")
