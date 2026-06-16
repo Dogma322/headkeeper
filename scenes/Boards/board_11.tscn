@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b0agjls2cdstg"]
+
+[ext_resource type="PackedScene" uid="uid://dx2yty7752sow" path="res://scenes/Boards/BoardTemplate/board_template.tscn" id="1_fg06k"]
+[ext_resource type="Script" uid="uid://cp3uyb1sqsy50" path="res://scenes/Boards/board_11.gd" id="2_bixjr"]
+[ext_resource type="Texture2D" uid="uid://hit5usp5nfnm" path="res://assets/UI/Board/Board15.png" id="2_tlhi1"]
+[ext_resource type="PackedScene" uid="uid://b024032pallcd" path="res://scenes/DominoSlot/domino_slot.tscn" id="4_uobp4"]
+[ext_resource type="PackedScene" uid="uid://d2xfxeooqsmmv" path="res://scenes/DominoSlot/domino_slot_horizontal.tscn" id="5_y54f5"]
+
+[node name="Board11" unique_id=183639370 instance=ExtResource("1_fg06k")]
+script = ExtResource("2_bixjr")
+
+[node name="BoardSprite" parent="." index="0" unique_id=224441976]
+texture = ExtResource("2_tlhi1")
+
+[node name="DominoSlot1" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="0" unique_id=1301988008 instance=ExtResource("4_uobp4")]
+position = Vector2(0, -32)
+slot_distance = 0
+start_slot = true
+orientation = 1
+
+[node name="DominoSlot2" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="1" unique_id=1912884291 node_paths=PackedStringArray("parent_slot") instance=ExtResource("4_uobp4")]
+position = Vector2(0, 32)
+direction = 1
+parent_slot = NodePath("../DominoSlot1")
+orientation = 1
+
+[node name="DominoSlotHorizontal" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="2" unique_id=1815297257 node_paths=PackedStringArray("parent_slot") instance=ExtResource("5_y54f5")]
+position = Vector2(-48, -48)
+direction = 2
+slot_distance = 1
+parent_slot = NodePath("../DominoSlot1")
+
+[node name="DominoSlotHorizontal2" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="3" unique_id=964501387 node_paths=PackedStringArray("parent_slot") instance=ExtResource("5_y54f5")]
+position = Vector2(48, -48)
+direction = 3
+slot_distance = 1
+parent_slot = NodePath("../DominoSlot1")

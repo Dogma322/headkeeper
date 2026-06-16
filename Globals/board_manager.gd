@@ -47,7 +47,23 @@ var green_bonuses_activated = 0
 @onready var board8 = preload("res://scenes/Boards/board_8.tscn")
 @onready var board9 = preload("res://scenes/Boards/board_9.tscn")
 
+@onready var board10 = preload("res://scenes/Boards/board_10.tscn")
+@onready var board11 = preload("res://scenes/Boards/board_11.tscn")
+@onready var board12 = preload("res://scenes/Boards/board_12.tscn")
+@onready var board13 = preload("res://scenes/Boards/board_13.tscn")
+@onready var board14 = preload("res://scenes/Boards/board_14.tscn")
+@onready var board15 = preload("res://scenes/Boards/board_15.tscn")
+@onready var board16 = preload("res://scenes/Boards/board_16.tscn")
+@onready var board17 = preload("res://scenes/Boards/board_17.tscn")
+
+@onready var centaur_board1 = preload("res://scenes/Boards/centaur_board_1.tscn")
+@onready var centaur_board2 = preload("res://scenes/Boards/centaur_board_2.tscn")
+@onready var centaur_board3 = preload("res://scenes/Boards/centaur_board_3.tscn")
+@onready var centaur_board4 = preload("res://scenes/Boards/centaur_board_4.tscn")
+
 @onready var board_pool 
+
+
 
 var slots = []
 var target_slot

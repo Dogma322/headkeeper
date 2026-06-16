@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://6n8gdtg0hupg"]
+
+[ext_resource type="PackedScene" uid="uid://dx2yty7752sow" path="res://scenes/Boards/BoardTemplate/board_template.tscn" id="1_4plbn"]
+[ext_resource type="Script" uid="uid://cy2ynoua0tbo5" path="res://scenes/Boards/centaur_board_4.gd" id="2_obmbf"]
+[ext_resource type="Texture2D" uid="uid://dhb341ycrduc2" path="res://assets/UI/Board/CentaurBoard4.png" id="3_8jffr"]
+[ext_resource type="PackedScene" uid="uid://b024032pallcd" path="res://scenes/DominoSlot/domino_slot.tscn" id="4_0j3wc"]
+
+[node name="CentaurBoard4" unique_id=183639370 instance=ExtResource("1_4plbn")]
+script = ExtResource("2_obmbf")
+
+[node name="BoardSprite" parent="." index="0" unique_id=224441976]
+texture = ExtResource("3_8jffr")
+
+[node name="DominoSlot" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="0" unique_id=1301988008 instance=ExtResource("4_0j3wc")]
+slot_distance = 0
+start_slot = true
+orientation = 1
+
+[node name="DominoSlot2" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="1" unique_id=2049258293 node_paths=PackedStringArray("parent_slot") instance=ExtResource("4_0j3wc")]
+position = Vector2(0, -64)
+parent_slot = NodePath("../DominoSlot")
+orientation = 1
+
+[node name="DominoSlot3" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="2" unique_id=485728302 node_paths=PackedStringArray("parent_slot") instance=ExtResource("4_0j3wc")]
+position = Vector2(0, 64)
+direction = 1
+parent_slot = NodePath("../DominoSlot")
+orientation = 1

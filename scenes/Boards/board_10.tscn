@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://c82p7icw32wmp"]
+
+[ext_resource type="PackedScene" uid="uid://dx2yty7752sow" path="res://scenes/Boards/BoardTemplate/board_template.tscn" id="1_iqd26"]
+[ext_resource type="Texture2D" uid="uid://dhjecffdtuqwa" path="res://assets/UI/Board/Board14.png" id="2_ef310"]
+[ext_resource type="Script" uid="uid://df2mmrepxi3cm" path="res://scenes/Boards/board_10.gd" id="2_lbpfk"]
+[ext_resource type="PackedScene" uid="uid://b024032pallcd" path="res://scenes/DominoSlot/domino_slot.tscn" id="3_lbpfk"]
+[ext_resource type="PackedScene" uid="uid://d2xfxeooqsmmv" path="res://scenes/DominoSlot/domino_slot_horizontal.tscn" id="4_rrfx0"]
+
+[node name="Board10" unique_id=183639370 instance=ExtResource("1_iqd26")]
+script = ExtResource("2_lbpfk")
+
+[node name="BoardSprite" parent="." index="0" unique_id=224441976]
+texture = ExtResource("2_ef310")
+
+[node name="DominoSlot" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="0" unique_id=1301988008 instance=ExtResource("3_lbpfk")]
+position = Vector2(0, 32)
+slot_distance = 0
+start_slot = true
+orientation = 1
+
+[node name="DominoSlotHorizontal" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="1" unique_id=1815297257 node_paths=PackedStringArray("parent_slot") instance=ExtResource("4_rrfx0")]
+position = Vector2(-48, 16)
+direction = 2
+slot_distance = 1
+parent_slot = NodePath("../DominoSlot")
+
+[node name="DominoSlot2" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="2" unique_id=1757553666 node_paths=PackedStringArray("parent_slot") instance=ExtResource("3_lbpfk")]
+position = Vector2(-64, -32)
+slot_distance = 2
+parent_slot = NodePath("../DominoSlotHorizontal")
+orientation = 1
+
+[node name="DominoSlotHorizontal2" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="3" unique_id=1782108918 node_paths=PackedStringArray("parent_slot") instance=ExtResource("4_rrfx0")]
+position = Vector2(48, 16)
+direction = 3
+slot_distance = 1
+parent_slot = NodePath("../DominoSlot")
+
+[node name="DominoSlot3" parent="Slots" parent_id_path=PackedInt32Array(180253986) index="4" unique_id=1781887806 node_paths=PackedStringArray("parent_slot") instance=ExtResource("3_lbpfk")]
+position = Vector2(64, -32)
+slot_distance = 2
+parent_slot = NodePath("../DominoSlotHorizontal2")
+orientation = 1
