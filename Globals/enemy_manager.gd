@@ -1,13 +1,12 @@
 extends Node
 
 @onready var wolf1 = preload("res://scenes/Enemies/Forest/enm_wolf_1.tscn")
-@onready var high_druid = preload("res://scenes/Enemies/Forest/enm_high_druid.tscn")
 
 #@onready var tutorial_mushman = preload("res://scenes/Enemies/MushroomCaves/enm_tutorial_mushman.tscn")
 #@onready var wolf1 = preload("res://scenes/Enemies/Forest/enm_wolf_1.tscn")
 #@onready var high_druid = preload("res://scenes/Enemies/Forest/enm_high_druid.tscn")
 
-@onready var pool = {
+@onready var pool := {
 	#region Tutorial Enemies
 	
 	"wolf1": preload("res://scenes/Enemies/Forest/enm_wolf_1.tscn"),
@@ -22,6 +21,8 @@ extends Node
 	"dark_witch": preload("res://scenes/Enemies/Swamp/enm_dark_witch_1.tscn"),
 	"mush_warrior": preload("res://scenes/Enemies/MushCaves/enm_mush_warrior.tscn"),
 	"mother_mush": preload("res://scenes/Enemies/MushCaves/enm_mother_mush.tscn"),
+	"tree": preload("res://scenes/Enemies/Forest/enm_tree.tscn"),
+	"boar1": preload("res://scenes/Enemies/Forest/enm_boar_1.tscn"),
 	
 	#endregion
 	
@@ -41,6 +42,7 @@ extends Node
 	
 	#region Late Enemies
 	
+	"crowman": preload("res://scenes/Enemies/Forest/enm_crowman.tscn"),
 	"crowwoman": preload("res://scenes/Enemies/Forest/enm_crowwoman.tscn"),
 	"wolf2": preload("res://scenes/Enemies/Forest/enm_wolf_2.tscn"),
 	"shadow_goat": preload("res://scenes/Enemies/Swamp/enm_shadow_goat.tscn"),
@@ -51,7 +53,7 @@ extends Node
 	
 	#region Bosses
 	
-	"high_druid": preload("res://scenes/Enemies/Forest/enm_high_druid.tscn"),
+	"high_druid": preload("res://scenes/Enemies/Bosses/enm_high_druid.tscn"),
 	
 	#endregion
 	
@@ -73,7 +75,9 @@ extends Node
 	"cultist1",
 	"dark_witch",
 	"mush_warrior",
-	"mother_mush"
+	"mother_mush",
+	"tree",
+	"boar1"
 ]
 
 @onready var mid_enemy_keys: = [
@@ -89,6 +93,7 @@ extends Node
 ]
 
 @onready var late_enemy_keys: = [
+	"crowman",
 	"crowwoman",
 	"wolf2",
 	"shadow_goat",
@@ -164,7 +169,7 @@ func set_enemy(map_node: MapNode):
 			new_enemy = enemy.instantiate()
 			
 		if CombatManager.stage == 10:
-			new_enemy = high_druid.instantiate()
+			new_enemy = pool.high_druid.instantiate()
 
 		if CombatManager.stage > 10:
 			var keys = endless_mode_keys

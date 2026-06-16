@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dad2ufo6o0cxo"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_npt1f"]
+[ext_resource type="Script" uid="uid://dl64yxlh54gt1" path="res://scenes/Enemies/Forest/enm_tree.gd" id="2_3erkx"]
+[ext_resource type="Texture2D" uid="uid://drio65rjnb1ut" path="res://assets/Enemies/Forest/Tree.png" id="2_rol0b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3erkx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rol0b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EnemyTemplate" unique_id=1770774892 instance=ExtResource("1_npt1f")]
+script = ExtResource("2_3erkx")
+
+[node name="IntentIcon" parent="." index="3" unique_id=354376541]
+offset_left = -15.0
+offset_top = -154.0
+offset_right = 17.0
+offset_bottom = -122.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1714889975]
+position = Vector2(-12, -46)
+sprite_frames = SubResource("SpriteFrames_3erkx")
+autoplay = "default"

@@ -26,6 +26,6 @@ offset_top = -143.0
 offset_bottom = -111.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=641482034]
-position = Vector2(-14, -40)
+position = Vector2(-14, -45)
 sprite_frames = SubResource("SpriteFrames_aa7ex")
 autoplay = "default"

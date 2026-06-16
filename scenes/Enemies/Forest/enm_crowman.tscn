@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ck385kurinngo"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_y0iy7"]
+[ext_resource type="Script" uid="uid://dfsr31ha5wfgt" path="res://scenes/Enemies/Forest/enm_crowman.gd" id="2_cxe87"]
+[ext_resource type="Texture2D" uid="uid://c1uysfjpl27h5" path="res://assets/Enemies/Forest/CrowMan.png" id="2_mavys"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cxe87"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mavys")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EnemyTemplate" unique_id=1770774892 instance=ExtResource("1_y0iy7")]
+script = ExtResource("2_cxe87")
+
+[node name="IntentIcon" parent="." index="3" unique_id=354376541]
+offset_top = -150.0
+offset_bottom = -118.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1583448303]
+position = Vector2(-15, -37)
+sprite_frames = SubResource("SpriteFrames_cxe87")
