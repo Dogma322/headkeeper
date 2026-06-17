@@ -33,6 +33,12 @@ func apply_passive_effect() -> void:
 	ActionManager.play_one_action()
 
 
+func battle_start_add_action() -> void:
+	if invert_logic:
+		Global.hero.domino_ignore_count += 1
+		return
+
+
 func turn_begin_add_action() -> void:
 	if invert_logic:
 		Global.hero.domino_ignore_count += 1
