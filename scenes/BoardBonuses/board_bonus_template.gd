@@ -61,12 +61,16 @@ func play_anim():
 
 
 func add_actions():
-	add_action()
+	if type == Type.BUFF:
+		for i in range(1 + Global.hero.repeat_positive_bonus_counter):
+			add_action()
+	else:
+		add_action()
 	bonus_played()
 
 
 func add_action():
-	ActionManager.add(AttackAction.new(self, Global.enemy, 5))
+	pass
 
 
 func bonus_played():

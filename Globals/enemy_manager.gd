@@ -53,7 +53,7 @@ extends Node
 	
 	#region Bosses
 	
-	"high_druid": preload("res://scenes/Enemies/Bosses/enm_high_druid.tscn"),
+	"boss1": preload("res://scenes/Enemies/Bosses/enm_boss1.tscn"),
 	
 	#endregion
 	
@@ -169,7 +169,7 @@ func set_enemy(map_node: MapNode):
 			new_enemy = enemy.instantiate()
 			
 		if CombatManager.stage == 10:
-			new_enemy = pool.high_druid.instantiate()
+			new_enemy = pool.boss1.instantiate()
 
 		if CombatManager.stage > 10:
 			var keys = endless_mode_keys

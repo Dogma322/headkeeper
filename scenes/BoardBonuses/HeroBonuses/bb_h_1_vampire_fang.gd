@@ -4,9 +4,8 @@ extends BoardBonus
 ## Бонус Вампирский Клык(1).
 
 func add_action() -> void:
-	for i in range(1 + Global.hero.repeat_positive_bonus_counter):
-		ActionManager.add(AttackAction.new(self, Global.enemy, 6))
-		ActionManager.add(HealAction.new(self, Global.hero, 3))
+	ActionManager.add(AttackAction.new(self, Global.enemy, 6))
+	ActionManager.add(HealAction.new(self, Global.hero, 3))
 
 
 func update_labels() -> void:

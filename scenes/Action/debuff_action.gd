@@ -2,17 +2,19 @@ class_name DebuffAction
 extends Action
 
 var status
-var stacks
+var stacks: int = 0
 
-func _init(_source,_target,_status,_stacks):
+func _init(_source, _target, _status, _stacks: int) -> void:
 	source = _source
 	target = _target
 	status = _status
 	stacks = _stacks
 
-func execute():
+
+func execute() -> void:
 	print("EXECUTE ACTION:", status.id, " stacks:", stacks)
-	StatusManager.apply_status(status, stacks, target)
 	AnimationManager.spawn_anim(AnimationManager.debuff_anim, target, 0)
+	
 	status.update_text()
 	AnimationManager.spawn_status_label(target, status.name, stacks)
+	StatusManager.apply_status(status, stacks, target)

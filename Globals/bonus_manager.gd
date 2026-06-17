@@ -14,6 +14,7 @@ var bonus_templates: Dictionary = {
 var special_bonus_templates: Dictionary = {
 	"fury": preload("res://resources/bonuses/special/bonus_fury.tres"),
 	"fireball": preload("res://resources/bonuses/special/bonus_fireball.tres"),
+	"vampire_fang": preload("res://resources/bonuses/special/bonus_vampire_fang.tres"),
 }
 
 var bonus_effects: Dictionary = {

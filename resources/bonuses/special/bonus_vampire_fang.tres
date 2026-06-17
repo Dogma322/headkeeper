@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_8efip")
 gold_cost = 0
-tag = "h_1fireball"
+tag = "h_1vampire_fang"
 metadata/_custom_type_script = "uid://bp60jca031260"

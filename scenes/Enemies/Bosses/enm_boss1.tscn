@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://csq102wqxe7hg"]
 
-[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_p27m4"]
-[ext_resource type="Script" uid="uid://rb50uh75x6r4" path="res://scenes/Enemies/Bosses/enm_high_druid.gd" id="2_fnyt6"]
-[ext_resource type="Texture2D" uid="uid://c22djev8df24j" path="res://assets/Enemies/Forest/HighDruid.png" id="3_fnyt6"]
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_suu3e"]
+[ext_resource type="Script" uid="uid://rb50uh75x6r4" path="res://scenes/Enemies/Bosses/enm_boss1.gd" id="2_mn10n"]
+[ext_resource type="Texture2D" uid="uid://c22djev8df24j" path="res://assets/Enemies/Forest/HighDruid.png" id="3_a16ss"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p8gu0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_fnyt6")
+"texture": ExtResource("3_a16ss")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="enm_high_druid" unique_id=1770774892 instance=ExtResource("1_p27m4")]
-script = ExtResource("2_fnyt6")
+[node name="enm_boss1" unique_id=1770774892 instance=ExtResource("1_suu3e")]
+script = ExtResource("2_mn10n")
 
 [node name="AimMarker" parent="." index="1" unique_id=1904937536]
 position = Vector2(-6, -48)

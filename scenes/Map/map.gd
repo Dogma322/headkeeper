@@ -247,7 +247,7 @@ func add_node(coord: Vector2i) -> MapNode:
 					late_enemy_pool_keys.shuffle()
 			elif progress == 14:
 				instance.is_final = true
-				instance.string_hint = "high_druid"
+				instance.string_hint = "boss1"
 	
 	instance.coord = coord
 	instance.position = pos
