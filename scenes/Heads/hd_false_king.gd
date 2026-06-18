@@ -14,6 +14,7 @@ func update_desc() -> void:
 			2:
 				description = tr("HD_FALSE_KING_DESC2") % [Constants.hd_false_king_gold_level_3, Constants.hd_false_king_health_decrement]
 
+
 func apply_passive_effect() -> void:
 	if not used:
 		used = true

@@ -5,7 +5,7 @@ func _ready():
 	max_health = 100
 	health = max_health
 	
-	bonus_pool = [BoardManager.e_5heal]
+	bonus_pool = [BoardManager.e_decrease_5_max_hp, BoardManager.e_5dmg, BoardManager.e_5dmg]
 	behavior_mode = BehaviorMode.SEQUENTIAL
 	first_action_index = 0
 

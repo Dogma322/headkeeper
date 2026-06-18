@@ -1,0 +1,7 @@
+[gd_resource type="Resource" format=3 uid="uid://227coxk23vcr"]
+
+[ext_resource type="Script" uid="uid://dkkhajss0w10a" path="res://resources/statuses/devour.gd" id="1_trm48"]
+
+[resource]
+script = ExtResource("1_trm48")
+metadata/_custom_type_script = "uid://dyln3pjhpe4xd"

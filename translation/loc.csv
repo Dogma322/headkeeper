@@ -193,6 +193,8 @@ st_invincible_in_game_des,Takes no damage. Activate a yellow bonus on the board 
 st_devour_name,Devouring,Пожирание
 st_devour_des,"At the end of its turn, the enemy gains 2 Fury and restores 5 HP for each Larva on the board.",В конце своего хода враг получит 2 Ярости и восстановит 5 здоровья за каждую Личинку на поле.
 st_devour_in_game_des,"At the end of its turn, the enemy gains 2 Fury and restores 5 HP for each Larva on the board.",В конце своего хода враг получит 2 Ярости и восстановит 5 здоровья за каждую Личинку на поле.
+ST_DISORIENT_NAME,Disorientation,Дизориентация
+ST_DISORIENT_DESC,,"Меняет поле каждый ход"
 ,,
 ,,
 ,,

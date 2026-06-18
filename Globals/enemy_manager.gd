@@ -48,6 +48,7 @@ extends Node
 	"shadow_goat": preload("res://scenes/Enemies/Swamp/enm_shadow_goat.tscn"),
 	"bear": preload("res://scenes/Enemies/Forest/enm_bear.tscn"),
 	"king": preload("res://scenes/Enemies/MushCaves/enm_king.tscn"),
+	"high_druid": preload("res://scenes/Enemies/Forest/enm_high_druid.tscn"),
 	
 	#endregion
 	
@@ -98,10 +99,10 @@ extends Node
 	"wolf2",
 	"shadow_goat",
 	"bear",
-	"king"
+	"king",
+	"high_druid",
 ]
 
-	
 @onready var endless_mode_keys: = [
 	"void_warriror",
 	"void_wisp1",
@@ -115,69 +116,28 @@ extends Node
 @onready var temp_mid_enemy_keys = mid_enemy_keys.duplicate()
 @onready var temp_late_enemy_keys = late_enemy_keys.duplicate()
 
-func _ready():
+
+func _ready() -> void:
 	Signals.reset_run_data.connect(reset_enemy_pools)
 
 
-func reset_enemy_pools():
+func reset_enemy_pools() -> void:
 	temp_early_enemy_keys = early_enemy_keys.duplicate()
 	temp_mid_enemy_keys = mid_enemy_keys.duplicate()
 	temp_late_enemy_keys = late_enemy_keys.duplicate()
-	
-func set_enemy(map_node: MapNode):
+
+
+func set_enemy(map_node: MapNode) -> void:
 	if Global.enemy:
 		Global.enemy.queue_free()
-		
-	var new_enemy
 	
-	if map_node != null:
-		var enemy: PackedScene = null
-		
-		if pool.has(map_node.string_hint):
-			enemy = pool[map_node.string_hint]
-		
-		new_enemy = enemy.instantiate()
-	else:
-		if CombatManager.stage == 0:
-			new_enemy = wolf1.instantiate()
-			
-		if CombatManager.stage == 1:
-			new_enemy = wolf1.instantiate()
-			
-		if CombatManager.stage > 1 and CombatManager.stage < 4:
-			var keys =  temp_early_enemy_keys
-			var random_key = keys.pick_random()
-			var enemy = pool[random_key]
-
-			temp_early_enemy_keys.erase(random_key)
-			new_enemy = enemy.instantiate()
-			
-		if CombatManager.stage >= 4 and CombatManager.stage < 7:
-			var keys = temp_mid_enemy_keys
-			var random_key = keys.pick_random()
-			var enemy = pool[random_key]
-
-			temp_mid_enemy_keys.erase(random_key)
-			new_enemy = enemy.instantiate()
-			
-		if CombatManager.stage >= 7 and CombatManager.stage < 10:
-			var keys = temp_late_enemy_keys
-			var random_key = keys.pick_random()
-			var enemy = pool[random_key]
-
-			temp_late_enemy_keys.erase(random_key)
-			new_enemy = enemy.instantiate()
-			
-		if CombatManager.stage == 10:
-			new_enemy = pool.boss1.instantiate()
-
-		if CombatManager.stage > 10:
-			var keys = endless_mode_keys
-			var random_key = keys.pick_random()
-			var enemy = pool[random_key]
-			
-			new_enemy = enemy.instantiate()
-
+	var new_enemy
+	var enemy: PackedScene = null
+	
+	if pool.has(map_node.string_hint):
+		enemy = pool[map_node.string_hint]
+	
+	new_enemy = enemy.instantiate()
 	
 	Global.fight_scene.enemy_spawn_pos.add_child(new_enemy)
 	Global.enemy = new_enemy
@@ -185,6 +145,3 @@ func set_enemy(map_node: MapNode):
 	
 	#set_background()
 	#set_music()
-		
-
-	
