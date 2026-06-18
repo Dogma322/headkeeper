@@ -6,6 +6,9 @@ class_name Map
 @export var min_path_count := 4
 @export var max_path_count := 4
 @export var branch_count := 3
+## Seed for deterministic map generation. Set to 0 for a random seed,
+## any other value produces the same map every time for that seed.
+@export var map_seed: int = 0
 
 @export var level_settings: Array[LevelSettings]
 
@@ -50,7 +53,18 @@ func clear():
 
 func _ready() -> void:
 	randomize()
-	rng.randomize()
+
+
+func _shuffle_rng(arr: Array) -> void:
+	# Deterministic Fisher-Yates shuffle that uses the local `rng` instance
+	# (Godot's built-in Array.shuffle() relies on the global RNG and would
+	# break reproducibility when map_seed is set).
+	for i in range(arr.size() - 1, 0, -1):
+		var j := rng.randi_range(0, i)
+		var tmp = arr[i]
+		arr[i] = arr[j]
+		arr[j] = tmp
+
 
 func reset_enemy_pools():
 	temp_early_enemy_keys = EnemyManager.early_enemy_keys.duplicate()
@@ -59,15 +73,24 @@ func reset_enemy_pools():
 
 	for element in temp_early_enemy_keys:
 		early_enemy_pool_keys.push_back(element)
-	early_enemy_pool_keys.shuffle()
+	_shuffle_rng(early_enemy_pool_keys)
 	for element in temp_mid_enemy_keys:
 		mid_enemy_pool_keys.push_back(element)
-	mid_enemy_pool_keys.shuffle()
+	_shuffle_rng(mid_enemy_pool_keys)
 	for element in temp_late_enemy_keys:
 		late_enemy_pool_keys.push_back(element)
-	late_enemy_pool_keys.shuffle()
+	_shuffle_rng(late_enemy_pool_keys)
 
-func generate() -> void:
+func generate(passed_seed: int = 0) -> void:
+	# Resolve the RNG seed for this generation pass.
+	# Explicit argument (`passed_seed`) wins over the @export inspector value.
+	# 0 means "use a random seed"; any other value yields a deterministic map.
+	var resolved_seed: int = passed_seed if passed_seed != 0 else map_seed
+	if resolved_seed != 0:
+		rng.seed = resolved_seed
+	else:
+		rng.randomize()
+
 	clear()
 	reset_enemy_pools()
 	
@@ -97,13 +120,13 @@ func generate() -> void:
 	if min_path_count == max_path_count:
 		path_count = min(max_path_count, grid_width)
 	else:
-		path_count = randi_range(min(min_path_count, grid_width), min(max_path_count, grid_width))
+		path_count = rng.randi_range(min(min_path_count, grid_width), min(max_path_count, grid_width))
 	while floor_nodes.size() != path_count:
-		floor_nodes = floors[0].filter(func(_node): return randi_range(0, 1))
+		floor_nodes = floors[0].filter(func(_node): return rng.randi_range(0, 1))
 	var path_id = 0
 	for node: MapNode in floors[0]:
 		if node in floor_nodes:
-			var random_color = Color(randf(), randf(), randf())
+			var random_color = Color(rng.randf(), rng.randf(), rng.randf())
 			if Vector3(random_color.r, random_color.g, random_color.b).length() < 0.5:
 				random_color = random_color.lightened(0.25)
 			current_paths[path_id] = MapPath.new([node], random_color)
@@ -136,7 +159,7 @@ func generate() -> void:
 				
 				if not arr.is_empty():
 					if arr.size() > 1:
-						arr.shuffle()
+						_shuffle_rng(arr)
 					for node in arr:
 						if node == arr[0]:
 							continue
@@ -222,7 +245,7 @@ func add_node(coord: Vector2i) -> MapNode:
 			for key: String in events.keys():
 				if EventsManager.events[key].act == Run.act:
 					pool.push_back(key)
-			pool.shuffle()
+			_shuffle_rng(pool)
 			instance.string_hint = pool[0]
 		MapNode.Type.BATTLE, MapNode.Type.BATTLE_ELITE:
 			if progress == 0:
@@ -232,19 +255,19 @@ func add_node(coord: Vector2i) -> MapNode:
 				if early_enemy_pool_keys.is_empty():
 					for element in temp_early_enemy_keys:
 						early_enemy_pool_keys.push_back(element)
-					early_enemy_pool_keys.shuffle()
+					_shuffle_rng(early_enemy_pool_keys)
 			elif progress >= 5 and progress < 10:
 				instance.string_hint = mid_enemy_pool_keys.pop_back()
 				if mid_enemy_pool_keys.is_empty():
 					for element in temp_mid_enemy_keys:
 						mid_enemy_pool_keys.push_back(element)
-					mid_enemy_pool_keys.shuffle()
+					_shuffle_rng(mid_enemy_pool_keys)
 			elif progress >= 10 and progress < 14:
 				instance.string_hint = late_enemy_pool_keys.pop_back()
 				if late_enemy_pool_keys.is_empty():
 					for element in temp_late_enemy_keys:
 						late_enemy_pool_keys.push_back(element)
-					late_enemy_pool_keys.shuffle()
+					_shuffle_rng(late_enemy_pool_keys)
 			elif progress == 14:
 				instance.is_final = true
 				instance.string_hint = "boss1"
@@ -262,11 +285,10 @@ func _draw() -> void:
 	#for node in nodes:
 	#	for next_node in node.next:
 	#		draw_line(node.global_position, next_node.global_position, Color.GRAY)
-	
 	for key in current_paths:
 		var path = current_paths[key]
 		var i = 0
 		for node in path.nodes:
 			if i > 0:
-				draw_line(path.nodes[i - 1].global_position, node.global_position, Color.WHITE)
+				draw_line(path.nodes[i - 1].global_position, node.global_position, path.color)
 			i += 1
