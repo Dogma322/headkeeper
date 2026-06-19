@@ -7,6 +7,7 @@ class_name MapNode
 var next: Array[MapNode] = []
 var to_erase := false
 var coord: Vector2i
+var generated := false
 
 var done: bool = false:
 	set(value):
@@ -44,18 +45,20 @@ var type := Type.UNKNOWN:
 	set(value):
 		type = value
 		match value:
+			Type.UNKNOWN:
+				sprite_2d.texture = preload("res://assets/Icons/MapIcons/point_map_icon.atlastex")
 			Type.BATTLE:
-				sprite_2d.texture = preload("uid://dmowypaa6fxwu")
+				sprite_2d.texture = preload("res://assets/Icons/MapIcons/battle_map_icon.atlastex")
 			Type.BATTLE_ELITE:
-				sprite_2d.texture = preload("uid://bi1mc3tkrqcsl")
+				sprite_2d.texture = preload("res://assets/Icons/MapIcons/battle_elite_map_icon.atlastex")
 			Type.SHOP:
-				sprite_2d.texture = preload("uid://cvyl8tia7gs6r")
+				sprite_2d.texture = preload("res://assets/Icons/MapIcons/shop_map_icon.atlastex")
 			Type.HEADS:
-				sprite_2d.texture = preload("uid://dgwgr870uqs6u")
+				sprite_2d.texture = preload("res://assets/Icons/MapIcons/bonus_map_icon.atlastex")
 			Type.POND:
-				sprite_2d.texture = preload("uid://3q65om0qmd3q")
+				sprite_2d.texture = preload("res://assets/Icons/MapIcons/campfire_map_icon.atlastex")
 			Type.EVENT:
-				sprite_2d.texture = preload("uid://seq5ll1twapj")
+				sprite_2d.texture = preload("res://assets/Icons/MapIcons/unknown_map_icon.atlastex")
 			pass
 
 var string_hint: String = ""
@@ -66,6 +69,21 @@ signal pressed
 
 func _ready() -> void:
 	sprite_2d.modulate = Color.DIM_GRAY
+	match type:
+		Type.UNKNOWN:
+			sprite_2d.texture = preload("res://assets/Icons/MapIcons/point_map_icon.atlastex")
+		Type.BATTLE:
+			sprite_2d.texture = preload("res://assets/Icons/MapIcons/battle_map_icon.atlastex")
+		Type.BATTLE_ELITE:
+			sprite_2d.texture = preload("res://assets/Icons/MapIcons/battle_elite_map_icon.atlastex")
+		Type.SHOP:
+			sprite_2d.texture = preload("res://assets/Icons/MapIcons/shop_map_icon.atlastex")
+		Type.HEADS:
+			sprite_2d.texture = preload("res://assets/Icons/MapIcons/bonus_map_icon.atlastex")
+		Type.POND:
+			sprite_2d.texture = preload("res://assets/Icons/MapIcons/campfire_map_icon.atlastex")
+		Type.EVENT:
+			sprite_2d.texture = preload("res://assets/Icons/MapIcons/unknown_map_icon.atlastex")
 
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:

@@ -165,8 +165,22 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_4rr3d")
 grid_height = 14
-branch_count = 5
+min_path_count = 6
+max_path_count = 6
+path_colors = PackedColorArray(1, 0.5141998, 0.44802636, 1, 0.58482325, 0.62034196, 1, 1, 0.01866665, 0.56, 0, 1, 0.9666667, 1, 0, 1)
 level_settings = Array[ExtResource("2_d6mms")]([SubResource("Resource_2rm8l"), SubResource("Resource_app3p"), SubResource("Resource_ykc5i"), SubResource("Resource_57bgo"), SubResource("Resource_2yrau"), SubResource("Resource_m76i7"), SubResource("Resource_dmbmi"), SubResource("Resource_5ugwt"), SubResource("Resource_eftq7"), SubResource("Resource_xllsm"), SubResource("Resource_1f7lc"), SubResource("Resource_aasa8"), SubResource("Resource_53cjn"), SubResource("Resource_d6mms"), SubResource("Resource_exngo")])
 
 [node name="Start" type="Marker2D" parent="." unique_id=233173522]
-position = Vector2(320, 338)
+position = Vector2(320, 313)
+
+[node name="ContinueButton" type="Button" parent="." unique_id=40033173]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_right = 8.0
+grow_vertical = 0
+text = "Продолжить"
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

@@ -9,6 +9,7 @@ class_name Map
 ## Seed for deterministic map generation. Set to 0 for a random seed,
 ## any other value produces the same map every time for that seed.
 @export var map_seed: int = 0
+@export var path_colors: PackedColorArray
 
 @export var level_settings: Array[LevelSettings]
 
@@ -18,10 +19,12 @@ class_name Map
 signal node_mouse_entered(node: MapNode)
 signal node_mouse_exited
 signal node_pressed(node: MapNode)
+signal continue_pressed
+signal path_completed
 
 var nodes = []
 var floors = []
-var current_paths = {}
+var current_paths = []
 
 @onready var temp_early_enemy_keys = EnemyManager.early_enemy_keys.duplicate()
 @onready var temp_mid_enemy_keys = EnemyManager.mid_enemy_keys.duplicate()
@@ -35,7 +38,7 @@ var late_enemy_pool_keys = []
 @onready var rng := RandomNumberGenerator.new()
 
 class MapPath:
-	var nodes
+	var nodes := []
 	var color: Color
 
 	func _init(_nodes, _color):
@@ -52,13 +55,18 @@ func clear():
 
 
 func _ready() -> void:
-	randomize()
+	pass
 
 
 func _shuffle_rng(arr: Array) -> void:
 	# Deterministic Fisher-Yates shuffle that uses the local `rng` instance
 	# (Godot's built-in Array.shuffle() relies on the global RNG and would
 	# break reproducibility when map_seed is set).
+	# Arrays of size 0 or 1 need no shuffling. The early-return also avoids the
+	# undefined-behavior path in `randi_range(0, -1)` that would otherwise fire
+	# for an empty array (range(-1, 0, -1) yields one iteration with i = -1).
+	if arr.size() <= 1:
+		return
 	for i in range(arr.size() - 1, 0, -1):
 		var j := rng.randi_range(0, i)
 		var tmp = arr[i]
@@ -81,6 +89,122 @@ func reset_enemy_pools():
 		late_enemy_pool_keys.push_back(element)
 	_shuffle_rng(late_enemy_pool_keys)
 
+
+func _on_continue_button_pressed() -> void:
+	continue_pressed.emit()
+
+
+func generate_all_points() -> void:
+	for y in range(grid_height):
+		var arr: Array[MapNode] = []
+		for x in range(grid_width):
+			var node = add_empty_node(Vector2i(x, y))
+			if y > 0:
+				if x - 1 >= 0:
+					floors[y - 1][x - 1].next.push_back(node)
+				floors[y - 1][x].next.push_back(node)
+				if x + 1 < grid_width:
+					floors[y - 1][x + 1].next.push_back(node)
+			node.to_erase = true
+			
+			arr.push_back(node)
+		floors.push_back(arr)
+
+
+func mark_started_points() -> void:
+	# Number of starting paths to spawn, derived from the @export bounds.
+	# When the bounds differ, draw the actual count from the deterministic
+	# `rng` so the same seed produces the same number of paths.
+	var path_count := 0
+	if min_path_count == max_path_count:
+		path_count = min(max_path_count, floors[0].size())
+	else:
+		path_count = rng.randi_range(min(min_path_count, grid_width), min(max_path_count, grid_width))
+	path_count = min(path_count, floors[0].size())
+
+	var pool: Array[MapNode] = floors[0].duplicate()
+	_shuffle_rng(pool)
+	for i in range(path_count):
+		pool[i].shadowed = false
+
+
+func build_path(floor_index: int, path: MapPath) -> bool:
+	if floor_index == floors.size():
+		path_completed.emit()
+		return true
+	var node = path.nodes[-1]
+	var x = node.coord.x
+	var start_offset := 0
+	var count := 0
+	if x == 0:
+		count = 2
+	elif x == grid_width - 1:
+		count = 2
+		start_offset = -1
+	else:
+		count = 3
+		start_offset = -1
+	var candidates: Array[MapNode] = []
+	for i in range(count):
+		candidates.push_back(floors[floor_index][x + start_offset + i])
+	_shuffle_rng(candidates)
+	
+	var chosen: MapNode = null
+	for candidate in candidates:
+		var intersection := false
+		for other_path in current_paths:
+			if other_path == path:
+				continue
+			if other_path.nodes.size() > floor_index:
+				var other_node = other_path.nodes[floor_index]
+				if candidates.has(other_node):
+					if other_node.coord.x < other_path.nodes[floor_index - 1].coord.x:
+						if other_node.coord.x < candidate.coord.x:
+							intersection = true
+					elif other_node.coord.x > other_path.nodes[floor_index - 1].coord.x:
+						if other_node.coord.x > candidate.coord.x:
+							intersection = true
+		if not intersection:
+			chosen = candidate
+			break
+	if chosen == null:
+		return false
+	chosen.shadowed = false
+	path.nodes.push_back(chosen)
+	queue_redraw()
+	#await continue_pressed
+	return await build_path(floor_index + 1, path)
+
+
+func build_paths() -> void:
+	for node: MapNode in floors[0]:
+		if node.shadowed:
+			continue
+		var color = Color.WHITE
+		#if path_colors.size() >= current_paths.size():
+		#	var index = current_paths.size()
+		#	color = path_colors[index]
+		var path = MapPath.new([node], color)
+		current_paths.push_back(path)
+		build_path(1, path)
+		#await path_completed
+
+
+func build_events() -> void:
+	for path in current_paths:
+		for node in path.nodes:
+			if not node.generated:
+				setup_node(node)
+
+
+func remove_unconnected_nodes() -> void:
+	for arr: Array in floors:
+		for node in arr:
+			if node.to_erase:
+				node.queue_free()
+				nodes.erase(node)
+
+
 func generate(passed_seed: int = 0) -> void:
 	# Resolve the RNG seed for this generation pass.
 	# Explicit argument (`passed_seed`) wins over the @export inspector value.
@@ -90,129 +214,42 @@ func generate(passed_seed: int = 0) -> void:
 		rng.seed = resolved_seed
 	else:
 		rng.randomize()
+	#rng.state = -7680105014316610089
+
+	
+	# Diagnostic output: shows the actual rng state used for generation.
+	# If you see the same SEED/STATE across two runs and the trees still differ,
+	# the non-determinism is in user code outside this script (or in a script
+	# the map instantiates). Otherwise the trees must be identical.
+	#print("SEED:", rng.seed)
+	#print("STATE:", rng.state)
 
 	clear()
 	reset_enemy_pools()
-	
-	#region Сгенерируем граф.
-	
-	for y in range(grid_height):
-		var arr: Array[MapNode] = []
-		for x in range(grid_width):
-			var node = add_node(Vector2i(x, y))
-			if y > 0:
-				if x - 1 >= 0:
-					floors[y - 1][x - 1].next.push_back(node)
-				floors[y - 1][x].next.push_back(node)
-				if x + 1 < grid_width:
-					floors[y - 1][x + 1].next.push_back(node)
-			else:
-				node.shadowed = false
-			arr.push_back(node)
-		floors.push_back(arr)
-	
-	#endregion
-	
-	#region Создадим начальные точки путей.
-	
-	var floor_nodes = []
-	var path_count = 0
-	if min_path_count == max_path_count:
-		path_count = min(max_path_count, grid_width)
-	else:
-		path_count = rng.randi_range(min(min_path_count, grid_width), min(max_path_count, grid_width))
-	while floor_nodes.size() != path_count:
-		floor_nodes = floors[0].filter(func(_node): return rng.randi_range(0, 1))
-	var path_id = 0
-	for node: MapNode in floors[0]:
-		if node in floor_nodes:
-			var random_color = Color(rng.randf(), rng.randf(), rng.randf())
-			if Vector3(random_color.r, random_color.g, random_color.b).length() < 0.5:
-				random_color = random_color.lightened(0.25)
-			current_paths[path_id] = MapPath.new([node], random_color)
-		path_id += 1
-		
-	#endregion
-	
-	#region Пройдем по дереву и продолжим пути.
-	
-	for y in range(grid_height):
-		for x in range(grid_width):
-			if current_paths.has(x):
-				var path = current_paths[x]
-				var arr = []
-				var current = path.nodes[-1]
-				
-				for next in current.next:
-					arr.push_back(next)
-				
-				for other_path in current_paths.values():
-					if other_path == path:
-						continue
-					if arr.is_empty():
-						break
-					if y < other_path.nodes.size():
-						for element in arr:
-							if other_path.nodes[y].coord.x == element.coord.x:
-								current.next.erase(element)
-								arr.erase(element)
-				
-				if not arr.is_empty():
-					if arr.size() > 1:
-						_shuffle_rng(arr)
-					for node in arr:
-						if node == arr[0]:
-							continue
-						current.next.erase(node)
-					path.nodes.push_back(arr[0])
-	
-	#endregion
-	
-	#region Пометим для удаления не входящие в пути ноды.
-	
-	for arr in floors:
-		for node in arr:
-			var found = false
-			for path in current_paths.values():
-				if path.nodes.has(node):
-					found = true
-					break
-			if not found:
-				node.to_erase = true
-	
-	#endregion
-	
-	#region Создадим ноду с боссом.
-	
-	var boss_node = add_node(Vector2i(3, grid_height))
-	for path: MapPath in current_paths.values():
-		path.nodes[-1].next.push_back(boss_node)
-		path.nodes.push_back(boss_node)
-	floors.push_back([boss_node])
-	
-	#endregion
-	
-	#region Удалим лишние ноды.
-	
-	for arr: Array in floors:
-		for node in arr:
-			if node.to_erase:
-				node.queue_free()
-				nodes.erase(node)
-	
-	#endregion
-	
+
+	generate_all_points()
+	mark_started_points()
+	build_paths()
+	build_events()
+	remove_unconnected_nodes()
 	queue_redraw()
 
 
-func add_node(coord: Vector2i) -> MapNode:
+func add_empty_node(coord: Vector2i) -> MapNode:
 	var offset2 := get_viewport_rect().size.x / 10.0
 	var pos = Vector2(coord.x * 20 - offset2, -coord.y * 20)
 	
 	var instance: MapNode = grid_node_scene.instantiate()
 	start.add_child(instance)
-	
-	var progress = coord.y
+	instance.shadowed = true
+	instance.coord = coord
+	instance.position = pos
+	nodes.push_back(instance)
+	return instance
+
+
+func setup_node(instance) -> void:
+	var progress = instance.coord.y
 	
 	# --------------
 	# MapNode.Type
@@ -272,23 +309,21 @@ func add_node(coord: Vector2i) -> MapNode:
 				instance.is_final = true
 				instance.string_hint = "boss1"
 	
-	instance.coord = coord
-	instance.position = pos
 	instance.mouse_entered.connect(func(): node_mouse_entered.emit(instance))
 	instance.mouse_exited.connect(func(): node_mouse_exited.emit())
 	instance.pressed.connect(func(): node_pressed.emit(instance))
-	nodes.push_back(instance)
-	return instance
+	
+	instance.generated = true
+	instance.to_erase = false
 
 
 func _draw() -> void:
 	#for node in nodes:
 	#	for next_node in node.next:
 	#		draw_line(node.global_position, next_node.global_position, Color.GRAY)
-	for key in current_paths:
-		var path = current_paths[key]
+	for path in current_paths:
 		var i = 0
 		for node in path.nodes:
 			if i > 0:
-				draw_line(path.nodes[i - 1].global_position, node.global_position, path.color)
+				draw_line(path.nodes[i - 1].global_position, node.global_position, Color.WHITE)
 			i += 1
