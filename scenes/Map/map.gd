@@ -11,11 +11,13 @@ class_name Map
 @export var map_seed: int = 0
 @export var events_seed: int = 0
 @export var path_colors: PackedColorArray
+@export var build_path_test_mode := false
 
 @export var level_settings: Array[LevelSettings]
 
 
 @onready var start: Marker2D = $Start
+@onready var continue_button: Button = $ContinueButton
 
 signal node_mouse_entered(node: MapNode)
 signal node_mouse_exited
@@ -57,6 +59,7 @@ func clear():
 
 
 func _ready() -> void:
+	continue_button.visible = build_path_test_mode
 	pass
 
 
@@ -152,35 +155,47 @@ func build_path(floor_index: int, path: MapPath) -> bool:
 	else:
 		count = 3
 		start_offset = -1
+	var potential = []
+	for i in range(count):
+		potential.push_back(floors[floor_index][x + start_offset + i])
+	
+	if build_path_test_mode:
+		print("\nNEXT\n")
+		
 	var candidates: Array[MapNode] = []
 	for i in range(count):
-		candidates.push_back(floors[floor_index][x + start_offset + i])
-	_shuffle_rng(candidates)
-	
-	var chosen: MapNode = null
-	for candidate in candidates:
+		var candidate = floors[floor_index][x + start_offset + i]
+		
 		var intersection := false
 		for other_path in current_paths:
 			if other_path == path:
 				continue
 			if other_path.nodes.size() > floor_index:
-				var other_node = other_path.nodes[floor_index]
-				if candidates.has(other_node):
-					if other_node.coord.x < other_path.nodes[floor_index - 1].coord.x:
-						if other_node.coord.x < candidate.coord.x:
-							intersection = true
-					elif other_node.coord.x > other_path.nodes[floor_index - 1].coord.x:
-						if other_node.coord.x > candidate.coord.x:
-							intersection = true
+				if not potential.has(candidate):
+					continue
+				if other_path.nodes[floor_index - 1].coord.x == node.coord.x:
+					# Линии идут из одинаковой точки - разрешить.
+					continue
+				if other_path.nodes[floor_index].coord.x == candidate.coord.x:
+					continue
+				if Geometry2D.segment_intersects_segment(Vector2(other_path.nodes[floor_index - 1].coord), Vector2(other_path.nodes[floor_index].coord), Vector2(node.coord), Vector2(candidate.coord)) != null:
+					intersection = true
+					break
+			if intersection:
+				break
 		if not intersection:
-			chosen = candidate
-			break
-	if chosen == null:
-		return false
+			candidates.push_back(candidate)
+			if build_path_test_mode:
+				print(candidate.coord)
+			
+		
+	_shuffle_rng(candidates)
+	var chosen = candidates[0]
 	chosen.shadowed = false
 	path.nodes.push_back(chosen)
 	queue_redraw()
-	#await continue_pressed
+	if build_path_test_mode:
+		await continue_pressed
 	return await build_path(floor_index + 1, path)
 
 
@@ -195,7 +210,8 @@ func build_paths() -> void:
 		var path = MapPath.new([node], color)
 		current_paths.push_back(path)
 		build_path(1, path)
-		#await path_completed
+		if build_path_test_mode:
+			await path_completed
 
 
 func build_events() -> void:
@@ -232,10 +248,12 @@ func generate(passed_map_seed: int = 0, passed_events_seed: int = 0) -> void:
 	generate_all_points()
 	mark_started_points()
 	build_paths()
+	if build_path_test_mode:
+		return
 	build_events()
 	remove_unconnected_nodes()
 	
-	var boss_node = add_empty_node(Vector2i(grid_width / 2, grid_height))
+	var boss_node = add_empty_node(Vector2i(roundi(grid_width / 2.0) - 1, grid_height))
 	boss_node.shadowed = false
 	setup_node(boss_node)
 	
@@ -335,5 +353,5 @@ func _draw() -> void:
 		var i = 0
 		for node in path.nodes:
 			if i > 0:
-				draw_line(path.nodes[i - 1].global_position, node.global_position, Color.WHITE)
+				draw_line(path.nodes[i - 1].global_position, node.global_position, Color(Color.WHITE, 0.25), 2.0)
 			i += 1
