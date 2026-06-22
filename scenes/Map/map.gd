@@ -9,6 +9,7 @@ class_name Map
 ## Seed for deterministic map generation. Set to 0 for a random seed,
 ## any other value produces the same map every time for that seed.
 @export var map_seed: int = 0
+@export var events_seed: int = 0
 @export var path_colors: PackedColorArray
 
 @export var level_settings: Array[LevelSettings]
@@ -36,6 +37,7 @@ var late_enemy_pool_keys = []
 
 @onready var grid_node_scene = preload("res://scenes/Map/map_node.tscn")
 @onready var rng := RandomNumberGenerator.new()
+@onready var events_rng := RandomNumberGenerator.new()
 
 class MapPath:
 	var nodes := []
@@ -58,7 +60,10 @@ func _ready() -> void:
 	pass
 
 
-func _shuffle_rng(arr: Array) -> void:
+func _shuffle_rng(arr: Array, _rng: RandomNumberGenerator = null) -> void:
+	if _rng == null:
+		_rng = rng
+	
 	# Deterministic Fisher-Yates shuffle that uses the local `rng` instance
 	# (Godot's built-in Array.shuffle() relies on the global RNG and would
 	# break reproducibility when map_seed is set).
@@ -68,7 +73,7 @@ func _shuffle_rng(arr: Array) -> void:
 	if arr.size() <= 1:
 		return
 	for i in range(arr.size() - 1, 0, -1):
-		var j := rng.randi_range(0, i)
+		var j := _rng.randi_range(0, i)
 		var tmp = arr[i]
 		arr[i] = arr[j]
 		arr[j] = tmp
@@ -79,15 +84,18 @@ func reset_enemy_pools():
 	temp_mid_enemy_keys = EnemyManager.mid_enemy_keys.duplicate()
 	temp_late_enemy_keys = EnemyManager.late_enemy_keys.duplicate()
 
+	early_enemy_pool_keys.clear()
 	for element in temp_early_enemy_keys:
 		early_enemy_pool_keys.push_back(element)
-	_shuffle_rng(early_enemy_pool_keys)
+	_shuffle_rng(early_enemy_pool_keys, events_rng)
+	mid_enemy_pool_keys.clear()
 	for element in temp_mid_enemy_keys:
 		mid_enemy_pool_keys.push_back(element)
-	_shuffle_rng(mid_enemy_pool_keys)
+	_shuffle_rng(mid_enemy_pool_keys, events_rng)
+	late_enemy_pool_keys.clear()
 	for element in temp_late_enemy_keys:
 		late_enemy_pool_keys.push_back(element)
-	_shuffle_rng(late_enemy_pool_keys)
+	_shuffle_rng(late_enemy_pool_keys, events_rng)
 
 
 func _on_continue_button_pressed() -> void:
@@ -205,24 +213,18 @@ func remove_unconnected_nodes() -> void:
 				nodes.erase(node)
 
 
-func generate(passed_seed: int = 0) -> void:
-	# Resolve the RNG seed for this generation pass.
-	# Explicit argument (`passed_seed`) wins over the @export inspector value.
-	# 0 means "use a random seed"; any other value yields a deterministic map.
-	var resolved_seed: int = passed_seed if passed_seed != 0 else map_seed
-	if resolved_seed != 0:
-		rng.seed = resolved_seed
+func generate(passed_map_seed: int = 0, passed_events_seed: int = 0) -> void:
+	var resolved_map_seed: int = passed_map_seed if passed_map_seed != 0 else map_seed
+	if resolved_map_seed != 0:
+		rng.seed = resolved_map_seed
 	else:
 		rng.randomize()
-	#rng.state = -7680105014316610089
-
 	
-	# Diagnostic output: shows the actual rng state used for generation.
-	# If you see the same SEED/STATE across two runs and the trees still differ,
-	# the non-determinism is in user code outside this script (or in a script
-	# the map instantiates). Otherwise the trees must be identical.
-	#print("SEED:", rng.seed)
-	#print("STATE:", rng.state)
+	var resolved_events_seed: int = passed_events_seed if passed_map_seed != 0 else events_seed
+	if resolved_events_seed != 0:
+		events_rng.seed = resolved_events_seed
+	else:
+		events_rng.randomize()
 
 	clear()
 	reset_enemy_pools()
@@ -232,6 +234,14 @@ func generate(passed_seed: int = 0) -> void:
 	build_paths()
 	build_events()
 	remove_unconnected_nodes()
+	
+	var boss_node = add_empty_node(Vector2i(grid_width / 2, grid_height))
+	boss_node.shadowed = false
+	setup_node(boss_node)
+	
+	for path: MapPath in current_paths:
+		path.nodes.push_back(boss_node)
+	
 	queue_redraw()
 
 
@@ -266,7 +276,7 @@ func setup_node(instance) -> void:
 	
 	var arr = [MapNode.Type.BATTLE, MapNode.Type.BATTLE_ELITE, MapNode.Type.SHOP, MapNode.Type.HEADS, MapNode.Type.POND, MapNode.Type.EVENT]
 	var sum = level_settings[progress].probability_sum()
-	var arr_index = rng.rand_weighted([
+	var arr_index = events_rng.rand_weighted([
 		level_settings[progress].probability_battle_weight / sum,
 		level_settings[progress].probability_battle_elite_weight / sum,
 		level_settings[progress].probability_shop_weight / sum,
@@ -282,7 +292,7 @@ func setup_node(instance) -> void:
 			for key: String in events.keys():
 				if EventsManager.events[key].act == Run.act:
 					pool.push_back(key)
-			_shuffle_rng(pool)
+			_shuffle_rng(pool, events_rng)
 			instance.string_hint = pool[0]
 		MapNode.Type.BATTLE, MapNode.Type.BATTLE_ELITE:
 			if progress == 0:
@@ -292,19 +302,19 @@ func setup_node(instance) -> void:
 				if early_enemy_pool_keys.is_empty():
 					for element in temp_early_enemy_keys:
 						early_enemy_pool_keys.push_back(element)
-					_shuffle_rng(early_enemy_pool_keys)
+					_shuffle_rng(early_enemy_pool_keys, events_rng)
 			elif progress >= 5 and progress < 10:
 				instance.string_hint = mid_enemy_pool_keys.pop_back()
 				if mid_enemy_pool_keys.is_empty():
 					for element in temp_mid_enemy_keys:
 						mid_enemy_pool_keys.push_back(element)
-					_shuffle_rng(mid_enemy_pool_keys)
+					_shuffle_rng(mid_enemy_pool_keys, events_rng)
 			elif progress >= 10 and progress < 14:
 				instance.string_hint = late_enemy_pool_keys.pop_back()
 				if late_enemy_pool_keys.is_empty():
 					for element in temp_late_enemy_keys:
 						late_enemy_pool_keys.push_back(element)
-					_shuffle_rng(late_enemy_pool_keys)
+					_shuffle_rng(late_enemy_pool_keys, events_rng)
 			elif progress == 14:
 				instance.is_final = true
 				instance.string_hint = "boss1"
