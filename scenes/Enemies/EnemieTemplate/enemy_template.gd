@@ -63,6 +63,7 @@ var incoming_damage_mult = 1:
 		update_damage_label()
 
 var location = "MushroomCaves"
+var board = ""
 
 var invinsible = false
 var evasion = 0

@@ -3,6 +3,7 @@ extends Enemy
 
 func _ready() -> void:
 	location = "MutatingForest"
+	board = "board17"
 	max_health = 40
 	health = max_health
 	
@@ -21,7 +22,7 @@ func _ready() -> void:
 		{
 			"func": Callable(self,"action2"),
 			"intent": IntentState.ATTACK,
-			"damage": 14,
+			"damage": 13,
 			"chance": 25,
 			"max_repeats": 1
 		},
@@ -29,15 +30,10 @@ func _ready() -> void:
 
 
 func action1() -> void:
-	ActionManager.add(
-		AttackAction.new(self, Global.hero, final_damage(9))
-	)
-	ActionManager.add(
-		DebuffAction.new(self, Global.hero, StatusManager.weak, 4)
-	)
+	ActionManager.add(AttackDebuffAction.new(self, Global.hero, final_damage(9), StatusManager.weak, 2))
 
 
 func action2() -> void:
 	ActionManager.add(
-		AttackAction.new(self, Global.hero, final_damage(14))
+		AttackAction.new(self, Global.hero, final_damage(13))
 	)

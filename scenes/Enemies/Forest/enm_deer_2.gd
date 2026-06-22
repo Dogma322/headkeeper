@@ -3,7 +3,8 @@ extends Enemy
 
 func _ready():
 	location = "MutatingForest"
-	max_health = 90
+	board = "board10"
+	max_health = 55
 	health = max_health
 	
 	bonus_pool = [BoardManager.e_10heal, BoardManager.e_15heal, BoardManager.e_5fury]
@@ -17,7 +18,7 @@ func _ready():
 	{
 		"func": Callable(self,"action_attack"),
 		"intent": IntentState.ATTACK,
-		"damage": 18,
+		"damage": 15,
 		"chance": 25,
 		"max_repeats": 1
 	},
@@ -32,7 +33,6 @@ func _ready():
 	]
 
 	super()
-
 	plan_next_action()
 
 
@@ -52,7 +52,7 @@ func action_attack():
 func action_buff():
 
 	ActionManager.add(
-		HealAction.new(self,self,15)
+		HealAction.new(self, self, 15)
 	)
 	ActionManager.add(
 		BuffAction.new(self, self,StatusManager.fury,4)

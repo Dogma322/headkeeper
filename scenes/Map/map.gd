@@ -30,11 +30,9 @@ var floors = []
 var current_paths = []
 
 @onready var temp_early_enemy_keys = EnemyManager.early_enemy_keys.duplicate()
-@onready var temp_mid_enemy_keys = EnemyManager.mid_enemy_keys.duplicate()
 @onready var temp_late_enemy_keys = EnemyManager.late_enemy_keys.duplicate()
 
 var early_enemy_pool_keys = []
-var mid_enemy_pool_keys = []
 var late_enemy_pool_keys = []
 
 @onready var grid_node_scene = preload("res://scenes/Map/map_node.tscn")
@@ -84,17 +82,12 @@ func _shuffle_rng(arr: Array, _rng: RandomNumberGenerator = null) -> void:
 
 func reset_enemy_pools():
 	temp_early_enemy_keys = EnemyManager.early_enemy_keys.duplicate()
-	temp_mid_enemy_keys = EnemyManager.mid_enemy_keys.duplicate()
 	temp_late_enemy_keys = EnemyManager.late_enemy_keys.duplicate()
 
 	early_enemy_pool_keys.clear()
 	for element in temp_early_enemy_keys:
 		early_enemy_pool_keys.push_back(element)
 	_shuffle_rng(early_enemy_pool_keys, events_rng)
-	mid_enemy_pool_keys.clear()
-	for element in temp_mid_enemy_keys:
-		mid_enemy_pool_keys.push_back(element)
-	_shuffle_rng(mid_enemy_pool_keys, events_rng)
 	late_enemy_pool_keys.clear()
 	for element in temp_late_enemy_keys:
 		late_enemy_pool_keys.push_back(element)
@@ -313,29 +306,21 @@ func setup_node(instance) -> void:
 			_shuffle_rng(pool, events_rng)
 			instance.string_hint = pool[0]
 		MapNode.Type.BATTLE, MapNode.Type.BATTLE_ELITE:
-			if progress == 0:
-				instance.string_hint = "wolf1"
-			elif progress >= 1 and progress < 5:
+			if progress == 14:
+				instance.is_final = true
+				instance.string_hint = "boss1"
+			elif Run.battle_count < 3:
 				instance.string_hint = early_enemy_pool_keys.pop_back()
 				if early_enemy_pool_keys.is_empty():
 					for element in temp_early_enemy_keys:
 						early_enemy_pool_keys.push_back(element)
 					_shuffle_rng(early_enemy_pool_keys, events_rng)
-			elif progress >= 5 and progress < 10:
-				instance.string_hint = mid_enemy_pool_keys.pop_back()
-				if mid_enemy_pool_keys.is_empty():
-					for element in temp_mid_enemy_keys:
-						mid_enemy_pool_keys.push_back(element)
-					_shuffle_rng(mid_enemy_pool_keys, events_rng)
-			elif progress >= 10 and progress < 14:
+			else:
 				instance.string_hint = late_enemy_pool_keys.pop_back()
 				if late_enemy_pool_keys.is_empty():
 					for element in temp_late_enemy_keys:
 						late_enemy_pool_keys.push_back(element)
 					_shuffle_rng(late_enemy_pool_keys, events_rng)
-			elif progress == 14:
-				instance.is_final = true
-				instance.string_hint = "boss1"
 	
 	instance.mouse_entered.connect(func(): node_mouse_entered.emit(instance))
 	instance.mouse_exited.connect(func(): node_mouse_exited.emit())

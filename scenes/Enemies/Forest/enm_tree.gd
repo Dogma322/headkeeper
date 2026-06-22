@@ -2,6 +2,7 @@ extends Enemy
 
 func _ready():
 	location = "MutatingForest"
+	board = "board11"
 	max_health = 35
 	health = max_health
 	
@@ -41,5 +42,5 @@ func action_buff() -> void:
 		BuffAction.new(self, self, StatusManager.fury, 4)
 	)
 	ActionManager.add(
-		HealAction.new(self, self, 6)
+		HealAction.new(self, self, 4)
 	)

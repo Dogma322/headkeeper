@@ -7,12 +7,6 @@ extends Node
 #@onready var high_druid = preload("res://scenes/Enemies/Forest/enm_high_druid.tscn")
 
 @onready var pool := {
-	#region Tutorial Enemies
-	
-	"wolf1": preload("res://scenes/Enemies/Forest/enm_wolf_1.tscn"),
-	
-	#endregion
-	
 	#region Early Enemies
 	
 	"mushman2": preload("res://scenes/Enemies/MushCaves/enm_mushman_1.tscn"),
@@ -26,7 +20,7 @@ extends Node
 	
 	#endregion
 	
-	#region Middle Enemies
+	#region Late Enemies
 	
 	"armored_mush2": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
 	"cultist2": preload("res://scenes/Enemies/Forest/enm_cultist_2.tscn"),
@@ -37,11 +31,6 @@ extends Node
 	"horned_witch": preload("res://scenes/Enemies/Swamp/enm_horned_witch_2.tscn"),
 	"turret": preload("res://scenes/Enemies/MushCaves/enm_turret.tscn"),
 	"shadow": preload("res://scenes/Enemies/Swamp/enm_shadow.tscn"),
-	
-	#endregion
-	
-	#region Late Enemies
-	
 	"crowman": preload("res://scenes/Enemies/Forest/enm_crowman.tscn"),
 	"crowwoman": preload("res://scenes/Enemies/Forest/enm_crowwoman.tscn"),
 	"wolf2": preload("res://scenes/Enemies/Forest/enm_wolf_2.tscn"),
@@ -49,6 +38,11 @@ extends Node
 	"bear": preload("res://scenes/Enemies/Forest/enm_bear.tscn"),
 	"king": preload("res://scenes/Enemies/MushCaves/enm_king.tscn"),
 	"high_druid": preload("res://scenes/Enemies/Forest/enm_high_druid.tscn"),
+	"wolf1": preload("res://scenes/Enemies/Forest/enm_wolf_1.tscn"),
+	
+	#endregion
+	
+	#region Elite Enemies
 	
 	#endregion
 	
@@ -70,7 +64,7 @@ extends Node
 	#endregion
 }
 
-@onready var early_enemy_keys: = [
+@onready var early_enemy_keys := [
 	"mushman2",
 	"young_witch",
 	"cultist1",
@@ -81,7 +75,7 @@ extends Node
 	"boar1"
 ]
 
-@onready var mid_enemy_keys: = [
+@onready var late_enemy_keys := [
 	"armored_mush2",
 	"cultist2",
 	"dark_witch2",
@@ -90,10 +84,7 @@ extends Node
 	"elder_witch",
 	"horned_witch",
 	"turret",
-	"shadow"
-]
-
-@onready var late_enemy_keys: = [
+	"shadow",
 	"crowman",
 	"crowwoman",
 	"wolf2",
@@ -101,9 +92,14 @@ extends Node
 	"bear",
 	"king",
 	"high_druid",
+	# wolf1
 ]
 
-@onready var endless_mode_keys: = [
+@onready var elite_enemy_keys := [
+	
+]
+
+@onready var endless_mode_keys := [
 	"void_warriror",
 	"void_wisp1",
 	"void_wisp2",
@@ -113,8 +109,8 @@ extends Node
 ]
 
 @onready var temp_early_enemy_keys = early_enemy_keys.duplicate()
-@onready var temp_mid_enemy_keys = mid_enemy_keys.duplicate()
 @onready var temp_late_enemy_keys = late_enemy_keys.duplicate()
+@onready var temp_elite_enemy_keys = elite_enemy_keys.duplicate()
 
 
 func _ready() -> void:
@@ -123,8 +119,8 @@ func _ready() -> void:
 
 func reset_enemy_pools() -> void:
 	temp_early_enemy_keys = early_enemy_keys.duplicate()
-	temp_mid_enemy_keys = mid_enemy_keys.duplicate()
 	temp_late_enemy_keys = late_enemy_keys.duplicate()
+	temp_elite_enemy_keys = elite_enemy_keys.duplicate()
 
 
 func set_enemy(map_node: MapNode) -> void:

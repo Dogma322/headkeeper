@@ -63,7 +63,11 @@ var green_bonuses_activated = 0
 
 @onready var board_pool 
 
-
+@onready var boards = {
+	"board10": preload("res://scenes/Boards/board_10.tscn"),
+	"board11": preload("res://scenes/Boards/board_11.tscn"),
+	"board17": preload("res://scenes/Boards/board_17.tscn"),
+}
 
 var slots = []
 var target_slot
@@ -84,21 +88,25 @@ func reset_run():
 		board_pool = [board1, board5, board6, board7, board8, board9]
 	else:
 		board_pool = [board1]
-	
-func generate_board():
+
+
+func generate_board() -> void:
 	var pos = Global.board.global_position
+	var board_scene = null
+	
+	if not Global.enemy.board.is_empty():
+		board_scene = BoardManager.boards[Global.enemy.board]
+	else:
+		if board_pool.size() == 0:
+			if random_boards:
+				board_pool = [board1, board5, board6, board7, board8, board9]
+			else:
+				board_pool = [board1]
 
-	if board_pool.size() == 0:
-		if random_boards:
-			board_pool = [board1, board5, board6, board7, board8, board9]
-		else:
-			board_pool = [board1]
-
-	var board_scene = board_pool.pick_random() # ← берём сцену
-	board_pool.erase(board_scene)              # ← удаляем сцену
+		board_scene = board_pool.pick_random() # ← берём сцену
+		board_pool.erase(board_scene)              # ← удаляем сцену
 
 	var new_board = board_scene.instantiate() # ← создаём объект
-
 	Global.board.queue_free()
 	Global.board = new_board
 	Global.fight_scene.add_child(new_board)

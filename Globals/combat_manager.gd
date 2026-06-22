@@ -266,6 +266,7 @@ func enemy_dead():
 
 
 func show_rewards() -> void:
+	Run.battle_count += 1
 	DominoManager.block_domino_input = false
 #	show_domino_choice()
 	
