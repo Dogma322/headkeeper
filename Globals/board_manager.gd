@@ -66,6 +66,7 @@ var green_bonuses_activated = 0
 @onready var boards = {
 	"board10": preload("res://scenes/Boards/board_10.tscn"),
 	"board11": preload("res://scenes/Boards/board_11.tscn"),
+	"board14": preload("res://scenes/Boards/board_14.tscn"),
 	"board17": preload("res://scenes/Boards/board_17.tscn"),
 }
 

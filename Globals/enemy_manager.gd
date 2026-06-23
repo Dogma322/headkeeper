@@ -65,14 +65,18 @@ extends Node
 }
 
 @onready var early_enemy_keys := [
-	"mushman2",
-	"young_witch",
-	"cultist1",
-	"dark_witch",
-	"mush_warrior",
-	"mother_mush",
-	"tree",
 	"boar1"
+	
+	#"mushman2",
+	#"young_witch",
+	#"cultist1",
+	#"dark_witch",
+	#"mush_warrior",
+	#"mother_mush",
+	#
+	#"tree",
+	#"boar1",
+	#"deer2",
 ]
 
 @onready var late_enemy_keys := [
@@ -80,7 +84,6 @@ extends Node
 	"cultist2",
 	"dark_witch2",
 	"mother_mush2",
-	"deer2",
 	"elder_witch",
 	"horned_witch",
 	"turret",

@@ -35,3 +35,7 @@ var bonus_effects: Dictionary = {
 	"h_1fury": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_fury.tscn"),
 	"h_1vampire_fang": preload("res://scenes/BoardBonuses/HeroBonuses/bb_h_1_vampire_fang.tscn")
 }
+
+var neutral_bonuses: Dictionary = {	
+	"remove_5fury": preload("res://scenes/BoardBonuses/NeutralBonuses/bb_n_remove_5_fury.tscn")
+}

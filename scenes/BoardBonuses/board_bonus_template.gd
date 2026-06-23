@@ -39,7 +39,7 @@ func _ready() -> void:
 			Type.BUFF:
 				texture = load("res://assets/Dominoes/Blocks/green_block.atlastex")
 			Type.NEUTRAL:
-				texture = load("res://assets/Dominoes/Blocks/grey_block.atlastex")
+				texture = load("res://assets/Dominoes/Blocks/yellow_block.atlastex")
 	
 	if Engine.is_editor_hint():
 		return

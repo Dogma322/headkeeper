@@ -1,5 +1,5 @@
+@tool
 extends BoardBonus
-
 
 func add_action():
 	ActionManager.add(DebuffAction.new(self, Global.enemy, StatusManager.fury, -5))

@@ -27,6 +27,8 @@ func _ready() -> void:
 			"max_repeats": 1
 		},
 	]
+	super()
+	plan_next_action()
 
 
 func action1() -> void:

@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://b7wsomsm3auop"]
 
 [ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_70upi"]
-[ext_resource type="Texture2D" uid="uid://dom6w08wocfhk" path="res://assets/Dominoes/Blocks/red_block.atlastex" id="2_1ul85"]
 [ext_resource type="Script" uid="uid://che2yovu4tjeg" path="res://scenes/BoardBonuses/EnemyBonuses/bb_e_3_fury.gd" id="2_70upi"]
 [ext_resource type="Texture2D" uid="uid://cng0xtnhha5sx" path="res://assets/Dominoes/Symbols/fury.atlastex" id="4_1ul85"]
 
 [node name="bb_e_3fury" unique_id=470544141 instance=ExtResource("1_70upi")]
-texture = ExtResource("2_1ul85")
 script = ExtResource("2_70upi")
 
 [node name="ValueLabel" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="0" unique_id=1340414324]
