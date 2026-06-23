@@ -21,3 +21,5 @@ anchor_right = 6.178571
 anchor_bottom = 2.2142856
 offset_right = 0.0
 offset_bottom = 3.8146973e-06
+caption = "BN_NTR_REMOVE_FURY_NAME"
+description = "BN_NTR_REMOVE_FURY_DESC"

@@ -1,22 +1,21 @@
 [gd_scene format=3 uid="uid://c0uae4hvpkpd1"]
 
 [ext_resource type="PackedScene" uid="uid://y2gpqujcdgnt" path="res://scenes/BoardBonuses/board_bonus_template.tscn" id="1_wob8t"]
-[ext_resource type="Texture2D" uid="uid://w87ce88sdh83" path="res://assets/Dominoes/DominoAtlas.png" id="2_2xjnn"]
+[ext_resource type="Texture2D" uid="uid://evy4smmy5s88" path="res://assets/Dominoes/Blocks/yellow_block.atlastex" id="2_53ce6"]
 [ext_resource type="Script" uid="uid://8257wwbd4dr8" path="res://scenes/BoardBonuses/NeutralBonuses/bb_n_remove_10_fury.gd" id="2_xsol2"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xsol2"]
-atlas = ExtResource("2_2xjnn")
-region = Rect2(904, 112, 28, 28)
+[ext_resource type="Texture2D" uid="uid://cng0xtnhha5sx" path="res://assets/Dominoes/Symbols/fury.atlastex" id="4_53ce6"]
 
 [node name="bb_n_remove_10_fury" unique_id=470544141 instance=ExtResource("1_wob8t")]
-texture = SubResource("AtlasTexture_xsol2")
+texture = ExtResource("2_53ce6")
 script = ExtResource("2_xsol2")
+type = 2
 
-[node name="Sprite2D" parent="." index="0" unique_id=790081820]
-texture = SubResource("AtlasTexture_xsol2")
-
-[node name="ValueLabel" parent="." index="2" unique_id=1340414324]
-offset_left = 2.0
-offset_top = 4.0
-offset_bottom = 12.0
+[node name="ValueLabel" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="0" unique_id=1340414324]
 text = "-10"
+
+[node name="IconRect" parent="HBoxContainer" parent_id_path=PackedInt32Array(1216974943) index="1" unique_id=719965728]
+texture = ExtResource("4_53ce6")
+
+[node name="TooltipPanel" parent="." index="2" unique_id=54216942]
+caption = "BN_NTR_REMOVE_FURY_NAME"
+description = "BN_NTR_REMOVE_FURY_DESC"
