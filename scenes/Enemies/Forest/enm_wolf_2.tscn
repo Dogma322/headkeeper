@@ -10,12 +10,12 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_5drgp")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="enm_wolf2" unique_id=1770774892 instance=ExtResource("1_dut31")]
+[node name="EnemyTemplateWolf2" unique_id=1770774892 instance=ExtResource("1_dut31")]
 script = ExtResource("2_5drgp")
 
 [node name="AimMarker" parent="." index="1" unique_id=1904937536]

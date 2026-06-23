@@ -9,7 +9,7 @@ func _ready():
 	
 	has_phase2 = true
 	bonus_pool2 = [BoardManager.e_5dmg, BoardManager.e_5dmg, BoardManager.e_5dmg, BoardManager.e_5dmg]
-	phase2_hp_threshold = 49
+	phase2_hp_threshold = 50
 	
 	behavior_mode = BehaviorMode.SEQUENTIAL
 	first_action_index = 0

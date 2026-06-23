@@ -1,31 +1,28 @@
 extends Node
 
-@onready var wolf1 = preload("res://scenes/Enemies/Forest/enm_wolf_1.tscn")
-
-#@onready var tutorial_mushman = preload("res://scenes/Enemies/MushroomCaves/enm_tutorial_mushman.tscn")
-#@onready var wolf1 = preload("res://scenes/Enemies/Forest/enm_wolf_1.tscn")
-#@onready var high_druid = preload("res://scenes/Enemies/Forest/enm_high_druid.tscn")
-
 @onready var pool := {
 	#region Early Enemies
+	
+	"tree": preload("res://scenes/Enemies/Forest/enm_tree.tscn"),
+	"boar": preload("res://scenes/Enemies/Forest/enm_boar.tscn"),
+	"deer": preload("res://scenes/Enemies/Forest/enm_deer.tscn"),
 	
 	"mushman2": preload("res://scenes/Enemies/MushCaves/enm_mushman_1.tscn"),
 	"young_witch": preload("res://scenes/Enemies/Swamp/enm_young_witch_1.tscn"),
 	"dark_witch": preload("res://scenes/Enemies/Swamp/enm_dark_witch_1.tscn"),
 	"mush_warrior": preload("res://scenes/Enemies/MushCaves/enm_mush_warrior.tscn"),
 	"mother_mush": preload("res://scenes/Enemies/MushCaves/enm_mother_mush.tscn"),
-	"tree": preload("res://scenes/Enemies/Forest/enm_tree.tscn"),
-	"boar1": preload("res://scenes/Enemies/Forest/enm_boar_1.tscn"),
 	
 	#endregion
 	
 	#region Late Enemies
 	
-	"armored_mush2": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
+	"bear": preload("res://scenes/Enemies/Forest/enm_bear.tscn"),
 	"cultist": preload("res://scenes/Enemies/Forest/enm_cultist.tscn"),
+	
+	"armored_mush2": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
 	"dark_witch2": preload("res://scenes/Enemies/Swamp/enm_dark_witch_2.tscn"),
 	"mother_mush2": preload("res://scenes/Enemies/MushCaves/enm_mother_mus_2.tscn"),
-	"deer2": preload("res://scenes/Enemies/Forest/enm_deer_2.tscn"),
 	"elder_witch": preload("res://scenes/Enemies/Swamp/enm_elder_witch.tscn"),
 	"horned_witch": preload("res://scenes/Enemies/Swamp/enm_horned_witch_2.tscn"),
 	"turret": preload("res://scenes/Enemies/MushCaves/enm_turret.tscn"),
@@ -34,10 +31,9 @@ extends Node
 	"crowwoman": preload("res://scenes/Enemies/Forest/enm_crowwoman.tscn"),
 	"wolf2": preload("res://scenes/Enemies/Forest/enm_wolf_2.tscn"),
 	"shadow_goat": preload("res://scenes/Enemies/Swamp/enm_shadow_goat.tscn"),
-	"bear": preload("res://scenes/Enemies/Forest/enm_bear.tscn"),
 	"king": preload("res://scenes/Enemies/MushCaves/enm_king.tscn"),
 	"high_druid": preload("res://scenes/Enemies/Forest/enm_high_druid.tscn"),
-	"wolf1": preload("res://scenes/Enemies/Forest/enm_wolf_1.tscn"),
+	"wolf": preload("res://scenes/Enemies/Forest/enm_wolf.tscn"),
 	
 	#endregion
 	
@@ -63,21 +59,25 @@ extends Node
 	#endregion
 }
 
-@onready var early_enemy_keys := [	
+@onready var early_enemy_keys := [
+	"tree",
+	"boar",
+	"deer",
+	
 	"mushman2",
 	"young_witch",
 	"dark_witch",
 	"mush_warrior",
 	"mother_mush",
-	
-	"tree",
-	"boar1",
-	"deer2",
 ]
 
 @onready var late_enemy_keys := [
-	"armored_mush2",
+	"bear",
 	"cultist",
+	"crowwoman",
+	"wolf",
+	
+	"armored_mush2",
 	"dark_witch2",
 	"mother_mush2",
 	"elder_witch",
@@ -85,13 +85,10 @@ extends Node
 	"turret",
 	"shadow",
 	"crowman",
-	"crowwoman",
 	"wolf2",
 	"shadow_goat",
-	"bear",
 	"king",
 	"high_druid",
-	# wolf1
 ]
 
 @onready var elite_enemy_keys := [

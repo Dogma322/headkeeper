@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bnbkoid1r85sl"]
+
+[ext_resource type="PackedScene" uid="uid://cyuqq1npphoex" path="res://scenes/Enemies/EnemieTemplate/enemy_template.tscn" id="1_8yd7y"]
+[ext_resource type="Script" uid="uid://7pravyoh7r21" path="res://scenes/Enemies/Forest/enm_deer.gd" id="2_b26sk"]
+[ext_resource type="Texture2D" uid="uid://icvhmucoe3lh" path="res://assets/Enemies/Forest/Deer1.png" id="3_f3xho"]
+[ext_resource type="Texture2D" uid="uid://c2xem2uw7y7b5" path="res://assets/Enemies/Forest/Deer2.png" id="4_3abk4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pwfas"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_f3xho")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_csr07"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_3abk4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EnemyTemplateDeer" unique_id=1770774892 instance=ExtResource("1_8yd7y")]
+script = ExtResource("2_b26sk")
+
+[node name="AimMarker" parent="." index="1" unique_id=1904937536]
+position = Vector2(-14, -49)
+
+[node name="IntentIcon" parent="." index="3" unique_id=354376541]
+offset_left = -25.0
+offset_top = -166.0
+offset_right = 7.0
+offset_bottom = -134.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=425618209]
+position = Vector2(-23, -54)
+sprite_frames = SubResource("SpriteFrames_pwfas")
+autoplay = "default"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." index="5" unique_id=284690720]
+visible = false
+position = Vector2(-20.5, -56)
+sprite_frames = SubResource("SpriteFrames_csr07")
+autoplay = "default"
+frame_progress = 0.332854

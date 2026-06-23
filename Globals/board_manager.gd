@@ -35,49 +35,41 @@ var green_bonuses_activated = 0
 
 @onready var bonus_pool = [BonusManager.bonus_effects.h_5dmg_bonus, BonusManager.bonus_effects.h_4def_bonus]
 
-@onready var board1 = preload("res://scenes/Boards/BoardTemplate/board_1.tscn")
-
-@onready var board2 = preload("res://scenes/Boards/board_2.tscn")
-@onready var board3 = preload("res://scenes/Boards/board_3.tscn")
-@onready var board4 = preload("res://scenes/Boards/board_4.tscn")
-
-@onready var board5 = preload("res://scenes/Boards/board_5.tscn")
-@onready var board6 = preload("res://scenes/Boards/board_6.tscn")
-@onready var board7 = preload("res://scenes/Boards/board_7.tscn")
-@onready var board8 = preload("res://scenes/Boards/board_8.tscn")
-@onready var board9 = preload("res://scenes/Boards/board_9.tscn")
-
-@onready var board10 = preload("res://scenes/Boards/board_10.tscn")
-@onready var board11 = preload("res://scenes/Boards/board_11.tscn")
-@onready var board12 = preload("res://scenes/Boards/board_12.tscn")
-@onready var board13 = preload("res://scenes/Boards/board_13.tscn")
-@onready var board14 = preload("res://scenes/Boards/board_14.tscn")
-@onready var board15 = preload("res://scenes/Boards/board_15.tscn")
-@onready var board16 = preload("res://scenes/Boards/board_16.tscn")
-@onready var board17 = preload("res://scenes/Boards/board_17.tscn")
-
 @onready var centaur_board1 = preload("res://scenes/Boards/centaur_board_1.tscn")
 @onready var centaur_board2 = preload("res://scenes/Boards/centaur_board_2.tscn")
 @onready var centaur_board3 = preload("res://scenes/Boards/centaur_board_3.tscn")
 @onready var centaur_board4 = preload("res://scenes/Boards/centaur_board_4.tscn")
 
-@onready var board_pool 
-
 @onready var boards = {
+	"board1": preload("res://scenes/Boards/board_1.tscn"),
+	"board2": preload("res://scenes/Boards/board_2.tscn"),
+	"board3": preload("res://scenes/Boards/board_3.tscn"),
+	"board4": preload("res://scenes/Boards/board_4.tscn"),
+	"board5": preload("res://scenes/Boards/board_5.tscn"),
+	"board6": preload("res://scenes/Boards/board_6.tscn"),
+	"board7": preload("res://scenes/Boards/board_7.tscn"),
+	"board8": preload("res://scenes/Boards/board_8.tscn"),
+	"board9": preload("res://scenes/Boards/board_9.tscn"),
 	"board10": preload("res://scenes/Boards/board_10.tscn"),
 	"board11": preload("res://scenes/Boards/board_11.tscn"),
+	"board12": preload("res://scenes/Boards/board_12.tscn"),
+	"board13": preload("res://scenes/Boards/board_13.tscn"),
 	"board14": preload("res://scenes/Boards/board_14.tscn"),
+	"board15": preload("res://scenes/Boards/board_15.tscn"),
+	"board16": preload("res://scenes/Boards/board_16.tscn"),
 	"board17": preload("res://scenes/Boards/board_17.tscn"),
 }
+
+@onready var board_pool 
 
 var slots = []
 var target_slot
 
 func _ready():
 	if random_boards == true:
-		board_pool = [board1, board5, board6, board7, board8, board9]
+		board_pool = [boards.board1, boards.board5, boards.board6, boards.board7, boards.board8, boards.board9]
 	else:
-		board_pool = [board1]
+		board_pool = [boards.board1]
 	
 	
 	slots = get_tree().get_nodes_in_group("domino_slots")
@@ -86,9 +78,9 @@ func _ready():
 func reset_run():
 	bonus_pool = [BonusManager.bonus_effects.h_5dmg_bonus, BonusManager.bonus_effects.h_4def_bonus]
 	if random_boards == true:
-		board_pool = [board1, board5, board6, board7, board8, board9]
+		board_pool = [boards.board1, boards.board5, boards.board6, boards.board7, boards.board8, boards.board9]
 	else:
-		board_pool = [board1]
+		board_pool = [boards.board1]
 
 
 func generate_board() -> void:
@@ -100,9 +92,9 @@ func generate_board() -> void:
 	else:
 		if board_pool.size() == 0:
 			if random_boards:
-				board_pool = [board1, board5, board6, board7, board8, board9]
+				board_pool = [boards.board1, boards.board5, boards.board6, boards.board7, boards.board8, boards.board9]
 			else:
-				board_pool = [board1]
+				board_pool = [boards.board1]
 
 		board_scene = board_pool.pick_random() # ← берём сцену
 		board_pool.erase(board_scene)              # ← удаляем сцену

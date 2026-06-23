@@ -1,8 +1,9 @@
 extends Enemy
 
 
-func _ready():
+func _ready() -> void:
 	location = "MutatingForest"
+	board = "board7"
 	max_health = 90
 	health = max_health
 	
@@ -39,6 +40,7 @@ func action_attack_buff1() -> void:
 	ActionManager.add(
 		BuffAction.new(self, self, StatusManager.evasion, 2)
 	)
+
 
 func action_attack_buff2() -> void:
 	ActionManager.add(

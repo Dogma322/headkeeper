@@ -15,7 +15,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="EnemyTemplate" unique_id=1770774892 instance=ExtResource("1_npt1f")]
+[node name="EnemyTemplateTree" unique_id=1770774892 instance=ExtResource("1_npt1f")]
 script = ExtResource("2_3erkx")
 
 [node name="IntentIcon" parent="." index="3" unique_id=354376541]

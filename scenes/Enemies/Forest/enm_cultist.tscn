@@ -27,7 +27,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="enm_cultist1" unique_id=1770774892 instance=ExtResource("1_pwfas")]
+[node name="EnemyTemplateCultist" unique_id=1770774892 instance=ExtResource("1_pwfas")]
 script = ExtResource("2_pwfas")
 
 [node name="AimMarker" parent="." index="1" unique_id=1904937536]
@@ -45,6 +45,6 @@ frame_progress = 0.17060544
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." index="5" unique_id=465426249]
 visible = false
-position = Vector2(0, -49)
+position = Vector2(0, -48)
 sprite_frames = SubResource("SpriteFrames_mxdry")
 autoplay = "default"

@@ -10,12 +10,12 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_mavys")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="EnemyTemplate" unique_id=1770774892 instance=ExtResource("1_y0iy7")]
+[node name="EnemyTemplateCrowman" unique_id=1770774892 instance=ExtResource("1_y0iy7")]
 script = ExtResource("2_cxe87")
 
 [node name="IntentIcon" parent="." index="3" unique_id=354376541]

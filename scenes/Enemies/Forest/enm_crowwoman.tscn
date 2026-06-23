@@ -10,12 +10,12 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_hg7ul")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="enm_crowwoman" unique_id=1770774892 instance=ExtResource("1_7qtys")]
+[node name="EnemyTemplateCrowwoman" unique_id=1770774892 instance=ExtResource("1_7qtys")]
 script = ExtResource("2_hg7ul")
 
 [node name="AimMarker" parent="." index="1" unique_id=1904937536]

@@ -10,12 +10,12 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_fnyt6")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="EnemyTemplate" unique_id=1770774892 instance=ExtResource("1_p27m4")]
+[node name="EnemyTemplateHighDruid" unique_id=1770774892 instance=ExtResource("1_p27m4")]
 script = ExtResource("2_fnyt6")
 
 [node name="IntentIcon" parent="." index="3" unique_id=354376541]

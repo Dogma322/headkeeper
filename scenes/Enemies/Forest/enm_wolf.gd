@@ -3,29 +3,25 @@ extends Enemy
 
 func _ready():
 	location = "MutatingForest"
-	max_health = 40
+	max_health = 110
 	health = max_health
 	
 	bonus_pool = [BoardManager.e_5dmg, BoardManager.e_5dmg]
-
+	
 	behavior_mode = BehaviorMode.SEQUENTIAL
 	first_action_index = 0
-
-
+	
 	actions = [
-
-	{
-		"func": Callable(self,"action_attack"),
-		"intent": IntentState.ATTACK,
-		"damage": 12,
-		"chance": 25,
-		"max_repeats": 1
-	},
-
+		{
+			"func": Callable(self,"action_attack"),
+			"intent": IntentState.ATTACK,
+			"damage": 12,
+			"chance": 25,
+			"max_repeats": 1
+		},
 	]
-
+	
 	super()
-
 	plan_next_action()
 
 

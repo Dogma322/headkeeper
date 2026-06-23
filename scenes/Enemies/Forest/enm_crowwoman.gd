@@ -1,55 +1,46 @@
 extends Enemy
 
 
-func _ready():
+func _ready() -> void:
 	location = "MutatingForest"
-	max_health = 130
+	board = "board15"
+	max_health = 85
 	health = max_health
 	
-	bonus_pool = [BoardManager.e_15heal, BoardManager.e_1evasion, BoardManager.e_1evasion, BoardManager.n_remove_5fury]
-
+	bonus_pool = [BoardManager.e_10dmg, BoardManager.e_10dmg]
+	
 	behavior_mode = BehaviorMode.SEQUENTIAL
 	first_action_index = 0
-
-
+	
 	actions = [
-
-	{
-		"func": Callable(self,"action_attack"),
-		"intent": IntentState.ATTACK,
-		"damage": 25,
-		"chance": 25,
-		"max_repeats": 1
-	},
-
-	{
-		"func": Callable(self,"action_buff"),
-		"intent": IntentState.BUFF,
-		"chance": 30,
-		"max_repeats": 2
-	},
-
+		{
+			"func": Callable(self,"action_attack"),
+			"intent": IntentState.ATTACK_DEBUFF,
+			"damage": 13,
+			"chance": 25,
+			"max_repeats": 1
+		},
+		{
+			"func": Callable(self,"action_buff"),
+			"intent": IntentState.BUFF,
+			"chance": 30,
+			"max_repeats": 2
+		},
 	]
-
+	
 	super()
-
 	plan_next_action()
 
 
-
-
-func action_attack():
-
+func action_attack() -> void:
 	ActionManager.add(
-		AttackAction.new(self, Global.hero, final_damage(25))
+		AttackDebuffAction.new(self, Global.hero, final_damage(13), StatusManager.weak, 2)
 	)
-	
 
 
-func action_buff():
+func action_buff() -> void:
 	ActionManager.add(
-		BuffAction.new(self, self,StatusManager.evasion,3)
+		HealAction.new(self, self, 8)
 	)
-	ActionManager.add(
-		BuffAction.new(self, self,StatusManager.fury,15)
-	)
+	if bonus_pool.size() < 6:
+		bonus_pool.append(BoardManager.e_10dmg)

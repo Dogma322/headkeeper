@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cg5l71wy8ih5v"
-path="res://.godot/imported/Boar1.png-be69c92df78bfa1f30e1ca767a4647e1.ctex"
+path="res://.godot/imported/Boar.png-8811ecbfe50a0f5552dabf4bb17fe482.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemies/Forest/Boar1.png"
-dest_files=["res://.godot/imported/Boar1.png-be69c92df78bfa1f30e1ca767a4647e1.ctex"]
+source_file="res://assets/Enemies/Forest/Boar.png"
+dest_files=["res://.godot/imported/Boar.png-8811ecbfe50a0f5552dabf4bb17fe482.ctex"]
 
 [params]
 
