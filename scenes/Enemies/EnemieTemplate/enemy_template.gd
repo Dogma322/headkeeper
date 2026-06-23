@@ -68,13 +68,9 @@ var board = ""
 var invinsible = false
 var evasion = 0
 var larvas = 0
-
-
 var statuses = []
-
 var behavior_mode = BehaviorMode.SEQUENTIAL
 
-var actions = []
 var current_action_index = -1
 var last_action_index = -1
 var repeat_counter = 0
@@ -94,9 +90,18 @@ var is_dead = false
 var base_sprite_position
 var damage_tween: Tween
 
+# Фаза 1
+
+var actions = []
 var bonus_pool = []
 
+# Фаза 2
 
+var has_phase2 := false
+var phase2_hp_threshold := 0
+
+var actions2 := []
+var bonus_pool2 := []
 
 func _ready():
 	base_sprite_position = sprite.position

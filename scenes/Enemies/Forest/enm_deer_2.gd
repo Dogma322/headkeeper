@@ -9,6 +9,10 @@ func _ready() -> void:
 	
 	bonus_pool = [BoardManager.e_5heal]
 	
+	has_phase2 = true
+	bonus_pool2 = [BoardManager.e_3fury]
+	phase2_hp_threshold = 35
+	
 	behavior_mode = BehaviorMode.SEQUENTIAL
 	first_action_index = 0
 	
@@ -21,6 +25,16 @@ func _ready() -> void:
 			"max_repeats": 1
 		},
 	]
+	
+	actions2 = [
+		{
+			"func": Callable(self,"action_attack_phase2"),
+			"intent": IntentState.ATTACK,
+			"damage": 15,
+			"chance": 25,
+			"max_repeats": 1
+		}
+	]
 
 	super()
 	plan_next_action()
@@ -29,4 +43,9 @@ func _ready() -> void:
 func action_attack() -> void:
 	ActionManager.add(
 		AttackAction.new(self, Global.hero, final_damage(9))
+	)
+
+func action_attack_phase2() -> void:
+	ActionManager.add(
+		AttackAction.new(self, Global.hero, final_damage(15))
 	)

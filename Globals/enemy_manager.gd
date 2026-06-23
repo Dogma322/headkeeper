@@ -11,7 +11,6 @@ extends Node
 	
 	"mushman2": preload("res://scenes/Enemies/MushCaves/enm_mushman_1.tscn"),
 	"young_witch": preload("res://scenes/Enemies/Swamp/enm_young_witch_1.tscn"),
-	"cultist1": preload("res://scenes/Enemies/Forest/enm_cultist_1.tscn"),
 	"dark_witch": preload("res://scenes/Enemies/Swamp/enm_dark_witch_1.tscn"),
 	"mush_warrior": preload("res://scenes/Enemies/MushCaves/enm_mush_warrior.tscn"),
 	"mother_mush": preload("res://scenes/Enemies/MushCaves/enm_mother_mush.tscn"),
@@ -23,7 +22,7 @@ extends Node
 	#region Late Enemies
 	
 	"armored_mush2": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
-	"cultist2": preload("res://scenes/Enemies/Forest/enm_cultist_2.tscn"),
+	"cultist": preload("res://scenes/Enemies/Forest/enm_cultist.tscn"),
 	"dark_witch2": preload("res://scenes/Enemies/Swamp/enm_dark_witch_2.tscn"),
 	"mother_mush2": preload("res://scenes/Enemies/MushCaves/enm_mother_mus_2.tscn"),
 	"deer2": preload("res://scenes/Enemies/Forest/enm_deer_2.tscn"),
@@ -64,24 +63,21 @@ extends Node
 	#endregion
 }
 
-@onready var early_enemy_keys := [
-	"boar1"
+@onready var early_enemy_keys := [	
+	"mushman2",
+	"young_witch",
+	"dark_witch",
+	"mush_warrior",
+	"mother_mush",
 	
-	#"mushman2",
-	#"young_witch",
-	#"cultist1",
-	#"dark_witch",
-	#"mush_warrior",
-	#"mother_mush",
-	#
-	#"tree",
-	#"boar1",
-	#"deer2",
+	"tree",
+	"boar1",
+	"deer2",
 ]
 
 @onready var late_enemy_keys := [
 	"armored_mush2",
-	"cultist2",
+	"cultist",
 	"dark_witch2",
 	"mother_mush2",
 	"elder_witch",
