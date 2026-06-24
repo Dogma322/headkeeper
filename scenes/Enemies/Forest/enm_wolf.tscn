@@ -34,10 +34,10 @@ script = ExtResource("2_a3jfs")
 position = Vector2(-16, -21)
 
 [node name="IntentIcon" parent="." index="3" unique_id=354376541]
-offset_left = -14.0
-offset_top = -80.0
-offset_right = 18.0
-offset_bottom = -48.0
+offset_left = -35.0
+offset_top = -123.0
+offset_right = -3.0
+offset_bottom = -91.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4" unique_id=1360406396]
 position = Vector2(-22, -15)
@@ -47,6 +47,6 @@ frame_progress = 0.9520521
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." index="5" unique_id=2146590337]
 visible = false
-position = Vector2(-23, -40)
+position = Vector2(-24, -32)
 sprite_frames = SubResource("SpriteFrames_rg4tx")
 autoplay = "default"

@@ -19,6 +19,10 @@ extends Node
 	
 	"bear": preload("res://scenes/Enemies/Forest/enm_bear.tscn"),
 	"cultist": preload("res://scenes/Enemies/Forest/enm_cultist.tscn"),
+	"crowwoman": preload("res://scenes/Enemies/Forest/enm_crowwoman.tscn"),
+	"wolf": preload("res://scenes/Enemies/Forest/enm_wolf.tscn"),
+	"crowman": preload("res://scenes/Enemies/Forest/enm_crowman.tscn"),
+	"mushroom_mage": preload("res://scenes/Enemies/Forest/enm_mushroom_mage.tscn"),
 	
 	"armored_mush2": preload("res://scenes/Enemies/MushCaves/enm_armored_mush.tscn"),
 	"dark_witch2": preload("res://scenes/Enemies/Swamp/enm_dark_witch_2.tscn"),
@@ -27,13 +31,8 @@ extends Node
 	"horned_witch": preload("res://scenes/Enemies/Swamp/enm_horned_witch_2.tscn"),
 	"turret": preload("res://scenes/Enemies/MushCaves/enm_turret.tscn"),
 	"shadow": preload("res://scenes/Enemies/Swamp/enm_shadow.tscn"),
-	"crowman": preload("res://scenes/Enemies/Forest/enm_crowman.tscn"),
-	"crowwoman": preload("res://scenes/Enemies/Forest/enm_crowwoman.tscn"),
-	"wolf2": preload("res://scenes/Enemies/Forest/enm_wolf_2.tscn"),
 	"shadow_goat": preload("res://scenes/Enemies/Swamp/enm_shadow_goat.tscn"),
 	"king": preload("res://scenes/Enemies/MushCaves/enm_king.tscn"),
-	"high_druid": preload("res://scenes/Enemies/Forest/enm_high_druid.tscn"),
-	"wolf": preload("res://scenes/Enemies/Forest/enm_wolf.tscn"),
 	
 	#endregion
 	
@@ -60,15 +59,17 @@ extends Node
 }
 
 @onready var early_enemy_keys := [
-	"tree",
-	"boar",
-	"deer",
+	"mushroom_mage"
 	
-	"mushman2",
-	"young_witch",
-	"dark_witch",
-	"mush_warrior",
-	"mother_mush",
+	#"tree",
+	#"boar",
+	#"deer",
+	#
+	#"mushman2",
+	#"young_witch",
+	#"dark_witch",
+	#"mush_warrior",
+	#"mother_mush",
 ]
 
 @onready var late_enemy_keys := [
@@ -76,6 +77,8 @@ extends Node
 	"cultist",
 	"crowwoman",
 	"wolf",
+	"crowman",
+	"mushroom_mage",
 	
 	"armored_mush2",
 	"dark_witch2",
@@ -84,11 +87,8 @@ extends Node
 	"horned_witch",
 	"turret",
 	"shadow",
-	"crowman",
-	"wolf2",
 	"shadow_goat",
 	"king",
-	"high_druid",
 ]
 
 @onready var elite_enemy_keys := [

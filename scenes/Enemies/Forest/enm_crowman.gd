@@ -1,5 +1,6 @@
 extends Enemy
 
+## Шаблон врага: Копейщик.
 
 func _ready() -> void:
 	location = "MutatingForest"
@@ -8,13 +9,9 @@ func _ready() -> void:
 	health = max_health
 	
 	bonus_pool = [BoardManager.e_3fury, BoardManager.e_3fury]
-
-	behavior_mode = BehaviorMode.SEQUENTIAL
-	first_action_index = 0
-
 	actions = [
 		{
-			"func": Callable(self,"action_attack"),
+			"func": Callable(self,"action_attack_buff1"),
 			"intent": IntentState.ATTACK_BUFF,
 			"damage": 12,
 			"chance": 25,
@@ -28,6 +25,9 @@ func _ready() -> void:
 			"max_repeats": 1
 		},
 	]
+	
+	behavior_mode = BehaviorMode.SEQUENTIAL
+	first_action_index = 0
 	
 	super()
 	plan_next_action()

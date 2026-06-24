@@ -87,8 +87,14 @@ func generate_board() -> void:
 	var pos = Global.board.global_position
 	var board_scene = null
 	
-	if not Global.enemy.board.is_empty():
-		board_scene = BoardManager.boards[Global.enemy.board]
+	var board_name = Global.enemy.board
+	if not board_name.is_empty():
+		if board_name == "random":
+			var temp := []
+			temp.append_array(BoardManager.boards.values())
+			board_scene = temp.pick_random()
+		else:
+			board_scene = BoardManager.boards[Global.enemy.board]
 	else:
 		if board_pool.size() == 0:
 			if random_boards:

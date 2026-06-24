@@ -16,13 +16,14 @@ func set_map_background():
 
 func set_battle_background():
 	hide_scenery()
-	if Global.enemy.location == "MushroomCaves":
-		texture = load("res://assets/Backgrounds/DarkMushBackground2.png")
-	if Global.enemy.location == "MutatingForest":
-		texture = load("res://assets/Backgrounds/forest_1/forest_background1_1.png")
-		forest.show()
-	if Global.enemy.location == "CursedSwamp":
-		texture = load("res://assets/Backgrounds/SwampEternalSabbath.png")
+	match Global.enemy.location:
+		"MutatingForest":
+			texture = load("res://assets/Backgrounds/forest_1/forest_background1_1.png")
+			forest.show()
+		"MushroomCaves":
+			texture = load("res://assets/Backgrounds/DarkMushBackground2.png")
+		"CursedSwamp":
+			texture = load("res://assets/Backgrounds/SwampEternalSabbath.png")
 
 func set_campfire_background():
 	hide_scenery()

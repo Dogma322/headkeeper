@@ -1,5 +1,6 @@
 extends Enemy
 
+## Шаблон врага : Псарь.
 
 func _ready() -> void:
 	location = "MutatingForest"
@@ -8,10 +9,6 @@ func _ready() -> void:
 	health = max_health
 	
 	bonus_pool = [BoardManager.e_10dmg, BoardManager.e_10dmg]
-	
-	behavior_mode = BehaviorMode.SEQUENTIAL
-	first_action_index = 0
-	
 	actions = [
 		{
 			"func": Callable(self,"action_attack"),
@@ -27,6 +24,9 @@ func _ready() -> void:
 			"max_repeats": 2
 		},
 	]
+	
+	behavior_mode = BehaviorMode.SEQUENTIAL
+	first_action_index = 0
 	
 	super()
 	plan_next_action()

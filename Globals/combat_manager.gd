@@ -171,6 +171,10 @@ func enemy_turn_begin() -> void:
 	await get_tree().create_timer(0.5).timeout
 	Signals.enemy_turn_begin.emit()
 	
+	if Global.enemy.board == "random":
+		BoardManager.generate_board()
+		await get_tree().create_timer(0.5).timeout
+	
 	print("E_BEGIN")
 	player_turn = false
 	

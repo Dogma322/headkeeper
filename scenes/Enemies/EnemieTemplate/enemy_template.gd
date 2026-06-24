@@ -92,16 +92,16 @@ var damage_tween: Tween
 
 # Фаза 1
 
-var actions = []
-var bonus_pool = []
+var bonus_pool := []
+var actions := []
 
 # Фаза 2
 
 var has_phase2 := false
 var phase2_hp_threshold := 0
 
-var actions2 := []
 var bonus_pool2 := []
+var actions2 := []
 
 func _ready():
 	base_sprite_position = sprite.position
