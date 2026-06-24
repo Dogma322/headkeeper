@@ -1,6 +1,110 @@
 [gd_scene format=3 uid="uid://2gvh11rpmgge"]
 
 [ext_resource type="Script" uid="uid://cvanbtj4oxt7a" path="res://scenes/SoundManager/sound_manager.gd" id="1_yr1ov"]
+[ext_resource type="AudioStream" uid="uid://0u2eykh3o011" path="res://assets/Sound/Sounds/SFX/AtackWPN_1.ogg" id="2_qxrw2"]
+[ext_resource type="AudioStream" uid="uid://c658dq3sh47il" path="res://assets/Sound/Sounds/SFX/AtackWPN_2.ogg" id="3_ymg06"]
+[ext_resource type="AudioStream" uid="uid://bxw3o1b0hmju2" path="res://assets/Sound/Sounds/SFX/DefSHLD_1.ogg" id="4_oowdb"]
+[ext_resource type="AudioStream" uid="uid://dng3do6woo11p" path="res://assets/Sound/Sounds/SFX/DefSHLD_2.ogg" id="5_1dg0t"]
+[ext_resource type="AudioStream" uid="uid://cao50gbg0jw8t" path="res://assets/Sound/Sounds/SFX/DamageEnemy_1.ogg" id="6_c8n8d"]
+[ext_resource type="AudioStream" uid="uid://cdqkbbq67wq4n" path="res://assets/Sound/Sounds/SFX/DamageEnemy_2.ogg" id="7_p1bj5"]
+[ext_resource type="AudioStream" uid="uid://c3p48dvykermk" path="res://assets/Sound/Sounds/SFX/DamagePers.ogg" id="8_1sj6n"]
+[ext_resource type="AudioStream" uid="uid://bibvpufrg2pig" path="res://assets/Sound/Sounds/SFX/WolfAtack.ogg" id="9_4g5m6"]
+[ext_resource type="AudioStream" uid="uid://cbmyq1eyjxyiw" path="res://assets/Sound/Sounds/SFX/TakeWPN.ogg" id="10_15lff"]
+[ext_resource type="AudioStream" uid="uid://mm8162bj6gl5" path="res://assets/Sound/Sounds/SFX/PutWPN.ogg" id="11_s6vtj"]
+[ext_resource type="AudioStream" uid="uid://c3hvp5j8ivq8t" path="res://assets/Sound/Sounds/SFX/TakeSHLD.ogg" id="12_dvrk6"]
+[ext_resource type="AudioStream" uid="uid://cbu6k1h2as8rf" path="res://assets/Sound/Sounds/SFX/PutSHLD.ogg" id="13_2ogoj"]
+[ext_resource type="AudioStream" uid="uid://dhmglwkbwdvxq" path="res://assets/Sound/Sounds/SFX/WrongItem.ogg" id="14_a0e5m"]
+[ext_resource type="AudioStream" uid="uid://bkrxr32jc17vq" path="res://assets/Sound/Sounds/SFX/BoardApp.ogg" id="15_04nth"]
+[ext_resource type="AudioStream" uid="uid://b8bg3ps0hvkyx" path="res://assets/Sound/Sounds/SFX/DominoesDiscard.ogg" id="16_1vial"]
+[ext_resource type="AudioStream" uid="uid://ccinwdfx54e5y" path="res://assets/Sound/Sounds/SFX/DominoApp.ogg" id="16_p1bj5"]
+[ext_resource type="AudioStream" uid="uid://4o7tco7oysfs" path="res://assets/Sound/Sounds/SFX/DominoFlip.ogg" id="17_70p6x"]
+[ext_resource type="AudioStream" uid="uid://chbsh86i6s5pb" path="res://assets/Sound/Sounds/SFX/DominoHover_1.ogg" id="18_wwnu7"]
+[ext_resource type="AudioStream" uid="uid://c2dvuccmjbr7x" path="res://assets/Sound/Sounds/SFX/DominoHover_2.ogg" id="19_hfk34"]
+[ext_resource type="AudioStream" uid="uid://c4mekookyuwyp" path="res://assets/Sound/Sounds/SFX/DominoHover_3.ogg" id="20_ecfvg"]
+[ext_resource type="AudioStream" uid="uid://dngq781fedf3h" path="res://assets/Sound/Sounds/SFX/DominoHover_4.ogg" id="21_uumvg"]
+[ext_resource type="AudioStream" uid="uid://dawhu15r24mk5" path="res://assets/Sound/Sounds/SFX/Play_btn.ogg" id="22_cj84p"]
+[ext_resource type="AudioStream" uid="uid://meaoayap77bo" path="res://assets/Sound/Sounds/SFX/ToBattle_btn.ogg" id="23_krjp3"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eqayx"]
+random_pitch = 1.0110353
+streams_count = 2
+stream_0/stream = ExtResource("2_qxrw2")
+stream_1/stream = ExtResource("3_ymg06")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xh02e"]
+streams_count = 2
+stream_0/stream = ExtResource("4_oowdb")
+stream_1/stream = ExtResource("5_1dg0t")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_72jqp"]
+streams_count = 2
+stream_0/stream = ExtResource("6_c8n8d")
+stream_1/stream = ExtResource("7_p1bj5")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_olrm1"]
+streams_count = 1
+stream_0/stream = ExtResource("8_1sj6n")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sgyhj"]
+streams_count = 1
+stream_0/stream = ExtResource("9_4g5m6")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l810i"]
+random_pitch = 1.0448169
+streams_count = 1
+stream_0/stream = ExtResource("10_15lff")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2ubn0"]
+random_pitch = 1.0334725
+streams_count = 1
+stream_0/stream = ExtResource("11_s6vtj")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k56tu"]
+random_pitch = 1.0277575
+streams_count = 1
+stream_0/stream = ExtResource("12_dvrk6")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6kvws"]
+random_pitch = 1.0277575
+streams_count = 1
+stream_0/stream = ExtResource("13_2ogoj")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5wj0s"]
+random_pitch = 1.0563467
+streams_count = 1
+stream_0/stream = ExtResource("14_a0e5m")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qw22h"]
+streams_count = 1
+stream_0/stream = ExtResource("15_04nth")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1sj6n"]
+streams_count = 1
+stream_0/stream = ExtResource("16_p1bj5")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_w37yf"]
+streams_count = 1
+stream_0/stream = ExtResource("16_1vial")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4hyq4"]
+streams_count = 1
+stream_0/stream = ExtResource("17_70p6x")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gqyml"]
+random_pitch = 1.0221924
+streams_count = 4
+stream_0/stream = ExtResource("18_wwnu7")
+stream_1/stream = ExtResource("19_hfk34")
+stream_2/stream = ExtResource("20_ecfvg")
+stream_3/stream = ExtResource("21_uumvg")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0t878"]
+streams_count = 1
+stream_0/stream = ExtResource("22_cj84p")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0cnpd"]
+streams_count = 1
+stream_0/stream = ExtResource("23_krjp3")
 
 [node name="SoundManager" type="Node2D" unique_id=1573611069]
 script = ExtResource("1_yr1ov")
@@ -14,3 +118,81 @@ autoplay = true
 bus = &"Music"
 
 [node name="Sounds" type="Node" parent="." unique_id=1215338238]
+
+[node name="Fight" type="Node" parent="." unique_id=1243432726]
+
+[node name="AtackWPN" type="AudioStreamPlayer" parent="Fight" unique_id=421221602]
+stream = SubResource("AudioStreamRandomizer_eqayx")
+bus = &"SFX"
+
+[node name="DefSHLD" type="AudioStreamPlayer" parent="Fight" unique_id=1504089455]
+stream = SubResource("AudioStreamRandomizer_xh02e")
+volume_db = -6.0
+bus = &"SFX"
+
+[node name="DamageEnemy" type="AudioStreamPlayer" parent="Fight" unique_id=94439100]
+stream = SubResource("AudioStreamRandomizer_72jqp")
+bus = &"SFX"
+
+[node name="DamagePers" type="AudioStreamPlayer" parent="Fight" unique_id=1317396306]
+stream = SubResource("AudioStreamRandomizer_olrm1")
+volume_db = -4.0
+bus = &"SFX"
+
+[node name="EnemyVoices" type="Node" parent="Fight" unique_id=1859031723]
+
+[node name="WolfAtack" type="AudioStreamPlayer" parent="Fight/EnemyVoices" unique_id=635863251]
+stream = SubResource("AudioStreamRandomizer_sgyhj")
+bus = &"SFX"
+
+[node name="Domino" type="Node" parent="." unique_id=226985519]
+
+[node name="TakeWPN" type="AudioStreamPlayer" parent="Domino" unique_id=707894071]
+stream = SubResource("AudioStreamRandomizer_l810i")
+bus = &"SFX"
+
+[node name="PutWPN" type="AudioStreamPlayer" parent="Domino" unique_id=1107137347]
+stream = SubResource("AudioStreamRandomizer_2ubn0")
+bus = &"SFX"
+
+[node name="TakeSHLD" type="AudioStreamPlayer" parent="Domino" unique_id=2143122627]
+stream = SubResource("AudioStreamRandomizer_k56tu")
+bus = &"SFX"
+
+[node name="PutSHLD" type="AudioStreamPlayer" parent="Domino" unique_id=1366878010]
+stream = SubResource("AudioStreamRandomizer_6kvws")
+bus = &"SFX"
+
+[node name="WrongItem" type="AudioStreamPlayer" parent="Domino" unique_id=797174079]
+stream = SubResource("AudioStreamRandomizer_5wj0s")
+bus = &"SFX"
+
+[node name="BoardApp" type="AudioStreamPlayer" parent="Domino" unique_id=2043370122]
+stream = SubResource("AudioStreamRandomizer_qw22h")
+bus = &"SFX"
+
+[node name="DominoApp" type="AudioStreamPlayer" parent="Domino" unique_id=491071658]
+stream = SubResource("AudioStreamRandomizer_1sj6n")
+bus = &"SFX"
+
+[node name="DominoesDiscard" type="AudioStreamPlayer" parent="Domino" unique_id=104635199]
+stream = SubResource("AudioStreamRandomizer_w37yf")
+bus = &"SFX"
+
+[node name="DominoFlip" type="AudioStreamPlayer" parent="Domino" unique_id=1455374796]
+stream = SubResource("AudioStreamRandomizer_4hyq4")
+bus = &"SFX"
+
+[node name="DominoHover" type="AudioStreamPlayer" parent="Domino" unique_id=998558706]
+stream = SubResource("AudioStreamRandomizer_gqyml")
+bus = &"SFX"
+
+[node name="UI" type="Node" parent="." unique_id=1506670641]
+
+[node name="Play_btn" type="AudioStreamPlayer" parent="UI" unique_id=817843006]
+stream = SubResource("AudioStreamRandomizer_0t878")
+bus = &"SFX"
+
+[node name="ToBattle_btn" type="AudioStreamPlayer" parent="UI" unique_id=1479743014]
+stream = SubResource("AudioStreamRandomizer_0cnpd")
+bus = &"SFX"
