@@ -17,51 +17,56 @@ metadata/_custom_type_script = "uid://bsf8plublguny"
 [sub_resource type="Resource" id="Resource_app3p"]
 resource_name = "Level 2"
 script = ExtResource("2_d6mms")
-probability_battle_weight = 48.0
+probability_battle_weight = 47.0
 probability_battle_elite_weight = 0.0
-probability_shop_weight = 15.0
+probability_shop_weight = 8.0
 probability_bonus_weight = 0.0
-probability_campfire_weight = 12.0
+probability_campfire_weight = 15.0
+probability_event_weight = 29.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_ykc5i"]
 resource_name = "Level 3"
 script = ExtResource("2_d6mms")
-probability_battle_weight = 48.0
+probability_battle_weight = 47.0
 probability_battle_elite_weight = 0.0
-probability_shop_weight = 15.0
+probability_shop_weight = 8.0
 probability_bonus_weight = 0.0
-probability_campfire_weight = 12.0
-metadata/_custom_type_script = "uid://bsf8plublguny"
-
-[sub_resource type="Resource" id="Resource_57bgo"]
-resource_name = "Level 4"
-script = ExtResource("2_d6mms")
-probability_battle_weight = 48.0
-probability_battle_elite_weight = 0.0
-probability_shop_weight = 15.0
-probability_bonus_weight = 0.0
-probability_campfire_weight = 12.0
+probability_campfire_weight = 15.0
+probability_event_weight = 29.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_2yrau"]
+resource_name = "Level 4"
+script = ExtResource("2_d6mms")
+probability_battle_weight = 47.0
+probability_battle_elite_weight = 0.0
+probability_shop_weight = 8.0
+probability_bonus_weight = 0.0
+probability_campfire_weight = 15.0
+probability_event_weight = 29.0
+metadata/_custom_type_script = "uid://bsf8plublguny"
+
+[sub_resource type="Resource" id="Resource_57bgo"]
 resource_name = "Level 5"
 script = ExtResource("2_d6mms")
-probability_battle_weight = 48.0
+probability_battle_weight = 47.0
 probability_battle_elite_weight = 0.0
-probability_shop_weight = 15.0
+probability_shop_weight = 8.0
 probability_bonus_weight = 0.0
-probability_campfire_weight = 12.0
+probability_campfire_weight = 15.0
+probability_event_weight = 29.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_m76i7"]
 resource_name = "Level 6"
 script = ExtResource("2_d6mms")
-probability_battle_weight = 48.0
-probability_battle_elite_weight = 16.0
-probability_shop_weight = 15.0
+probability_battle_weight = 47.0
+probability_battle_elite_weight = 0.0
+probability_shop_weight = 8.0
 probability_bonus_weight = 0.0
-probability_campfire_weight = 12.0
+probability_campfire_weight = 15.0
+probability_event_weight = 29.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_dmbmi"]
@@ -72,66 +77,73 @@ probability_battle_elite_weight = 0.0
 probability_shop_weight = 0.0
 probability_bonus_weight = 1.0
 probability_campfire_weight = 0.0
+probability_event_weight = 0.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_5ugwt"]
 resource_name = "Level 8"
 script = ExtResource("2_d6mms")
-probability_battle_weight = 48.0
-probability_battle_elite_weight = 16.0
-probability_shop_weight = 15.0
+probability_battle_weight = 35.0
+probability_battle_elite_weight = 13.0
+probability_shop_weight = 8.0
 probability_bonus_weight = 0.0
-probability_campfire_weight = 12.0
-metadata/_custom_type_script = "uid://bsf8plublguny"
-
-[sub_resource type="Resource" id="Resource_eftq7"]
-resource_name = "Level 9"
-script = ExtResource("2_d6mms")
-probability_battle_weight = 48.0
-probability_battle_elite_weight = 16.0
-probability_shop_weight = 15.0
-probability_bonus_weight = 0.0
-probability_campfire_weight = 12.0
+probability_campfire_weight = 15.0
+probability_event_weight = 29.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_xllsm"]
+resource_name = "Level 9"
+script = ExtResource("2_d6mms")
+probability_battle_weight = 35.0
+probability_battle_elite_weight = 13.0
+probability_shop_weight = 8.0
+probability_bonus_weight = 0.0
+probability_campfire_weight = 15.0
+probability_event_weight = 29.0
+metadata/_custom_type_script = "uid://bsf8plublguny"
+
+[sub_resource type="Resource" id="Resource_eftq7"]
 resource_name = "Level 10"
 script = ExtResource("2_d6mms")
-probability_battle_weight = 48.0
-probability_battle_elite_weight = 16.0
-probability_shop_weight = 15.0
+probability_battle_weight = 35.0
+probability_battle_elite_weight = 13.0
+probability_shop_weight = 8.0
 probability_bonus_weight = 0.0
-probability_campfire_weight = 12.0
+probability_campfire_weight = 15.0
+probability_event_weight = 29.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_1f7lc"]
 resource_name = "Level 11"
 script = ExtResource("2_d6mms")
-probability_battle_weight = 48.0
-probability_battle_elite_weight = 16.0
-probability_shop_weight = 15.0
+probability_battle_weight = 35.0
+probability_battle_elite_weight = 13.0
+probability_shop_weight = 8.0
 probability_bonus_weight = 0.0
-probability_campfire_weight = 12.0
+probability_campfire_weight = 15.0
+probability_event_weight = 29.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_aasa8"]
 resource_name = "Level 12"
 script = ExtResource("2_d6mms")
-probability_battle_weight = 48.0
-probability_battle_elite_weight = 16.0
-probability_shop_weight = 15.0
+probability_battle_weight = 35.0
+probability_battle_elite_weight = 13.0
+probability_shop_weight = 8.0
 probability_bonus_weight = 0.0
-probability_campfire_weight = 12.0
+probability_campfire_weight = 15.0
+probability_event_weight = 29.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_53cjn"]
 resource_name = "Level 13"
 script = ExtResource("2_d6mms")
-probability_battle_weight = 48.0
-probability_battle_elite_weight = 16.0
-probability_shop_weight = 15.0
+probability_battle_weight = 35.0
+probability_battle_elite_weight = 13.0
+probability_shop_weight = 8.0
 probability_bonus_weight = 0.0
-probability_campfire_weight = 12.0
+probability_campfire_weight = 15.0
+probability_event_weight = 29.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_d6mms"]
@@ -142,6 +154,7 @@ probability_battle_elite_weight = 0.0
 probability_shop_weight = 0.0
 probability_bonus_weight = 0.0
 probability_campfire_weight = 1.0
+probability_event_weight = 0.0
 metadata/_custom_type_script = "uid://bsf8plublguny"
 
 [sub_resource type="Resource" id="Resource_exngo"]
@@ -165,10 +178,8 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_4rr3d")
 grid_height = 14
-min_path_count = 6
-max_path_count = 6
 path_colors = PackedColorArray(1, 0.5141998, 0.44802636, 1, 0.58482325, 0.62034196, 1, 1, 0.01866665, 0.56, 0, 1, 0.9666667, 1, 0, 1)
-level_settings = Array[ExtResource("2_d6mms")]([SubResource("Resource_2rm8l"), SubResource("Resource_app3p"), SubResource("Resource_ykc5i"), SubResource("Resource_57bgo"), SubResource("Resource_2yrau"), SubResource("Resource_m76i7"), SubResource("Resource_dmbmi"), SubResource("Resource_5ugwt"), SubResource("Resource_eftq7"), SubResource("Resource_xllsm"), SubResource("Resource_1f7lc"), SubResource("Resource_aasa8"), SubResource("Resource_53cjn"), SubResource("Resource_d6mms"), SubResource("Resource_exngo")])
+level_settings = Array[ExtResource("2_d6mms")]([SubResource("Resource_2rm8l"), SubResource("Resource_app3p"), SubResource("Resource_ykc5i"), SubResource("Resource_2yrau"), SubResource("Resource_57bgo"), SubResource("Resource_m76i7"), SubResource("Resource_dmbmi"), SubResource("Resource_5ugwt"), SubResource("Resource_xllsm"), SubResource("Resource_eftq7"), SubResource("Resource_1f7lc"), SubResource("Resource_aasa8"), SubResource("Resource_53cjn"), SubResource("Resource_d6mms"), SubResource("Resource_exngo")])
 
 [node name="Start" type="Marker2D" parent="." unique_id=233173522]
 position = Vector2(320, 313)
